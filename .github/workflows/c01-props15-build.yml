@@ -19,7 +19,7 @@ jobs:
       - name: Install Blender CLI
         run: |
           sudo apt-get update
-          sudo apt-get install -y --no-install-recommends blender
+          sudo apt-get install -y --no-install-recommends blender python3-numpy
           blender --version | head -4
       - name: Create actual blend sources and FBX exports
         run: blender --background --python Tools/C01Props15/blender_build.py

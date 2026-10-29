@@ -21,12 +21,21 @@ jobs:
       - name: Install real Blender
         run: |
           sudo apt-get update
-          sudo apt-get install -y blender git-lfs python3-numpy
+          sudo apt-get install -y blender git-lfs python3-numpy xvfb xauth libegl1 libgl1 libopengl0
           git lfs install --local
       - name: Static real geometry QA
         run: python3 C01InteriorProps_Source/Tools/qa_gltf.py
       - name: Produce actual native blend, FBX and nine PNG renders
-        run: blender -b --factory-startup --python-exit-code 1 --python C01InteriorProps_Source/Tools/build_blender.py -- .
+        run: xvfb-run -a blender -b --factory-startup --python-exit-code 1 --python C01InteriorProps_Source/Tools/build_blender.py -- .
+      - name: Upload actual FBX Blender and rendered PNG artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-17-Real-Models-Blender-FBX-PNG
+          if-no-files-found: error
+          path: |
+            C01InteriorProps_Source/Blender/*.blend
+            Assets/C01InteriorProps/Models/*.fbx
+            C01InteriorProps_Source/Previews/*.png
       - name: Push binary outputs through Git LFS
         run: |
           git config user.name "github-actions[bot]"

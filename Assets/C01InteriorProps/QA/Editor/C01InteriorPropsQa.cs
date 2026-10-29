@@ -44,7 +44,9 @@ namespace C01.InteriorProps.QA.Editor
                 : new string[0];
             foreach (var id in Ids)
             {
-                var matches = paths.Where(p => TokenMatch(Path.GetFileNameWithoutExtension(p), id)).ToArray();
+                var exact = paths.Where(p => string.Equals(Path.GetFileNameWithoutExtension(p), id, StringComparison.OrdinalIgnoreCase)).ToArray();
+                // Material variants (e.g. P16-03_Amber) are not duplicate primary prefabs.
+                var matches = exact.Length > 0 ? exact : paths.Where(p => TokenMatch(Path.GetFileNameWithoutExtension(p), id)).ToArray();
                 var r = new AssetResult {
                     id=id, status="BLOCKED", prefabPath="", meshStatus="NOT RUN",
                     normalsStatus="NOT RUN", uvStatus="NOT RUN", scaleStatus="NOT RUN",

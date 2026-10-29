@@ -19,10 +19,10 @@ jobs:
       - name: Install Blender CLI
         run: |
           sudo apt-get update
-          sudo apt-get install -y --no-install-recommends blender python3-numpy
+          sudo apt-get install -y --no-install-recommends blender python3-numpy xvfb libegl1 libgl1 libgl1-mesa-dri libopengl0
           blender --version | head -4
       - name: Create actual blend sources and FBX exports
-        run: blender --background --python Tools/C01Props15/blender_build.py
+        run: LIBGL_ALWAYS_SOFTWARE=1 xvfb-run -a blender --background --python Tools/C01Props15/blender_build.py
       - name: Check real file signatures and record SHA256
         run: python3 Tools/C01Props15/validate_generated.py
       - name: Commit generated real binaries back to isolated branch

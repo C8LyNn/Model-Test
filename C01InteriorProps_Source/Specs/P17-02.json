@@ -1,0 +1,358 @@
+{
+  "id": "P17-02",
+  "name": "Door Access Keypad",
+  "dimensions": [
+    0.18,
+    0.07,
+    0.28
+  ],
+  "pivot": "wall mounting plane Z=0; bottom center Y=0",
+  "mount": "wall +Z into accessible interior; mounting center 1.35m above floor",
+  "intended": "airlocks D1-D4; beside frame, not on moving leaf",
+  "collider": {
+    "center": [
+      0,
+      0.14,
+      0.035
+    ],
+    "size": [
+      0.18,
+      0.28,
+      0.07
+    ]
+  },
+  "children": [
+    {
+      "type": "box",
+      "name": "MountBacking",
+      "pos": [
+        0,
+        0.14,
+        0.008
+      ],
+      "size": [
+        0.18,
+        0.28,
+        0.016
+      ],
+      "mat": "STEEL",
+      "parent": "ROOT"
+    },
+    {
+      "type": "box",
+      "name": "Gasket",
+      "pos": [
+        0,
+        0.14,
+        0.021
+      ],
+      "size": [
+        0.15,
+        0.255,
+        0.01
+      ],
+      "mat": "DARK",
+      "parent": "ROOT"
+    },
+    {
+      "type": "box",
+      "name": "Housing",
+      "pos": [
+        0,
+        0.14,
+        0.04
+      ],
+      "size": [
+        0.159,
+        0.245,
+        0.035
+      ],
+      "mat": "DARK",
+      "parent": "ROOT"
+    },
+    {
+      "type": "box",
+      "name": "HeaderLED",
+      "pos": [
+        0,
+        0.234,
+        0.061
+      ],
+      "size": [
+        0.11,
+        0.025,
+        0.008
+      ],
+      "mat": "EMISSION",
+      "parent": "ROOT"
+    },
+    {
+      "type": "box",
+      "name": "Keybed",
+      "pos": [
+        0,
+        0.125,
+        0.061
+      ],
+      "size": [
+        0.128,
+        0.155,
+        0.006
+      ],
+      "mat": "STEEL",
+      "parent": "ROOT"
+    },
+    {
+      "type": "box",
+      "name": "Key_01",
+      "pos": [
+        -0.041,
+        0.181,
+        0.066
+      ],
+      "size": [
+        0.029,
+        0.027,
+        0.008
+      ],
+      "mat": "DARK",
+      "parent": "ROOT"
+    },
+    {
+      "type": "box",
+      "name": "Key_02",
+      "pos": [
+        0,
+        0.181,
+        0.066
+      ],
+      "size": [
+        0.029,
+        0.027,
+        0.008
+      ],
+      "mat": "DARK",
+      "parent": "ROOT"
+    },
+    {
+      "type": "box",
+      "name": "Key_03",
+      "pos": [
+        0.041,
+        0.181,
+        0.066
+      ],
+      "size": [
+        0.029,
+        0.027,
+        0.008
+      ],
+      "mat": "DARK",
+      "parent": "ROOT"
+    },
+    {
+      "type": "box",
+      "name": "Key_04",
+      "pos": [
+        -0.041,
+        0.145,
+        0.066
+      ],
+      "size": [
+        0.029,
+        0.027,
+        0.008
+      ],
+      "mat": "DARK",
+      "parent": "ROOT"
+    },
+    {
+      "type": "box",
+      "name": "Key_05",
+      "pos": [
+        0,
+        0.145,
+        0.066
+      ],
+      "size": [
+        0.029,
+        0.027,
+        0.008
+      ],
+      "mat": "DARK",
+      "parent": "ROOT"
+    },
+    {
+      "type": "box",
+      "name": "Key_06",
+      "pos": [
+        0.041,
+        0.145,
+        0.066
+      ],
+      "size": [
+        0.029,
+        0.027,
+        0.008
+      ],
+      "mat": "DARK",
+      "parent": "ROOT"
+    },
+    {
+      "type": "box",
+      "name": "Key_07",
+      "pos": [
+        -0.041,
+        0.109,
+        0.066
+      ],
+      "size": [
+        0.029,
+        0.027,
+        0.008
+      ],
+      "mat": "DARK",
+      "parent": "ROOT"
+    },
+    {
+      "type": "box",
+      "name": "Key_08",
+      "pos": [
+        0,
+        0.109,
+        0.066
+      ],
+      "size": [
+        0.029,
+        0.027,
+        0.008
+      ],
+      "mat": "DARK",
+      "parent": "ROOT"
+    },
+    {
+      "type": "box",
+      "name": "Key_09",
+      "pos": [
+        0.041,
+        0.109,
+        0.066
+      ],
+      "size": [
+        0.029,
+        0.027,
+        0.008
+      ],
+      "mat": "DARK",
+      "parent": "ROOT"
+    },
+    {
+      "type": "box",
+      "name": "Key_10",
+      "pos": [
+        -0.041,
+        0.07300000000000001,
+        0.066
+      ],
+      "size": [
+        0.029,
+        0.027,
+        0.008
+      ],
+      "mat": "DARK",
+      "parent": "ROOT"
+    },
+    {
+      "type": "box",
+      "name": "Key_11",
+      "pos": [
+        0,
+        0.07300000000000001,
+        0.066
+      ],
+      "size": [
+        0.029,
+        0.027,
+        0.008
+      ],
+      "mat": "DARK",
+      "parent": "ROOT"
+    },
+    {
+      "type": "box",
+      "name": "Key_12",
+      "pos": [
+        0.041,
+        0.07300000000000001,
+        0.066
+      ],
+      "size": [
+        0.029,
+        0.027,
+        0.008
+      ],
+      "mat": "CAUTION",
+      "parent": "ROOT"
+    },
+    {
+      "type": "box",
+      "name": "BottomStatus",
+      "pos": [
+        0,
+        0.034,
+        0.06
+      ],
+      "size": [
+        0.087,
+        0.009,
+        0.008
+      ],
+      "mat": "EMISSION",
+      "parent": "ROOT"
+    },
+    {
+      "type": "box",
+      "name": "LeftClamp",
+      "pos": [
+        -0.075,
+        0.14,
+        0.038
+      ],
+      "size": [
+        0.008,
+        0.19,
+        0.052
+      ],
+      "mat": "STEEL",
+      "parent": "ROOT"
+    },
+    {
+      "type": "box",
+      "name": "RightClamp",
+      "pos": [
+        0.075,
+        0.14,
+        0.038
+      ],
+      "size": [
+        0.008,
+        0.19,
+        0.052
+      ],
+      "mat": "STEEL",
+      "parent": "ROOT"
+    }
+  ],
+  "expectedTriangleCount": 240,
+  "state": "mesh_data_created; Blender FBX and Unity still require execution",
+  "version": "0.1.0",
+  "units": "meters",
+  "axes": "Y up; +Z toward access side for keypad",
+  "materials": [
+    "STEEL",
+    "DARK",
+    "CAUTION",
+    "EMISSION"
+  ],
+  "owner": "C01-17"
+}

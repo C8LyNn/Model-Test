@@ -1,0 +1,239 @@
+{
+  "id": "P17-03",
+  "name": "Mechanical Lever Control",
+  "dimensions": [
+    0.4,
+    0.3,
+    0.55
+  ],
+  "pivot": "floor bottom center; lever pivot at [0,0.35,-0.02] Y-up",
+  "mount": "floor; machinery and laboratory",
+  "intended": "engineering; lab",
+  "collider": {
+    "center": [
+      0,
+      0.17,
+      0
+    ],
+    "size": [
+      0.4,
+      0.34,
+      0.3
+    ]
+  },
+  "lever": {
+    "name": "LeverPivot",
+    "pos": [
+      0,
+      0.35,
+      -0.015
+    ],
+    "rotationAxis": "X",
+    "rangeDegrees": [
+      0,
+      45
+    ]
+  },
+  "children": [
+    {
+      "type": "box",
+      "name": "Base",
+      "pos": [
+        0,
+        0.052,
+        0
+      ],
+      "size": [
+        0.4,
+        0.104,
+        0.3
+      ],
+      "mat": "DARK",
+      "parent": "ROOT"
+    },
+    {
+      "type": "box",
+      "name": "Housing",
+      "pos": [
+        0,
+        0.213,
+        0
+      ],
+      "size": [
+        0.355,
+        0.218,
+        0.27
+      ],
+      "mat": "STEEL",
+      "parent": "ROOT"
+    },
+    {
+      "type": "box",
+      "name": "TopCap",
+      "pos": [
+        0,
+        0.337,
+        0
+      ],
+      "size": [
+        0.38,
+        0.048,
+        0.295
+      ],
+      "mat": "DARK",
+      "parent": "ROOT"
+    },
+    {
+      "type": "box",
+      "name": "FrontPanel",
+      "pos": [
+        0,
+        0.213,
+        -0.14
+      ],
+      "size": [
+        0.23,
+        0.13,
+        0.016
+      ],
+      "mat": "DARK",
+      "parent": "ROOT"
+    },
+    {
+      "type": "box",
+      "name": "StatusLED",
+      "pos": [
+        0,
+        0.231,
+        -0.154
+      ],
+      "size": [
+        0.13,
+        0.017,
+        0.007
+      ],
+      "mat": "EMISSION",
+      "parent": "ROOT"
+    },
+    {
+      "type": "box",
+      "name": "WarningBar",
+      "pos": [
+        0,
+        0.095,
+        -0.155
+      ],
+      "size": [
+        0.31,
+        0.018,
+        0.012
+      ],
+      "mat": "CAUTION",
+      "parent": "ROOT"
+    },
+    {
+      "type": "box",
+      "name": "LeverSocket",
+      "pos": [
+        0,
+        0.369,
+        -0.015
+      ],
+      "size": [
+        0.135,
+        0.035,
+        0.135
+      ],
+      "mat": "STEEL",
+      "parent": "ROOT"
+    },
+    {
+      "type": "cylinder",
+      "name": "LeverShaft",
+      "pos": [
+        0,
+        0.089,
+        0
+      ],
+      "radius": 0.014,
+      "length": 0.18,
+      "sides": 12,
+      "mat": "STEEL",
+      "parent": "LeverPivot"
+    },
+    {
+      "type": "cylinder",
+      "name": "LeverGrip",
+      "pos": [
+        0,
+        0.17,
+        0
+      ],
+      "radius": 0.034,
+      "length": 0.06,
+      "sides": 12,
+      "mat": "CAUTION",
+      "parent": "LeverPivot"
+    },
+    {
+      "type": "box",
+      "name": "PivotAnchorVisual",
+      "pos": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        0.085,
+        0.025,
+        0.07
+      ],
+      "mat": "DARK",
+      "parent": "LeverPivot"
+    },
+    {
+      "type": "box",
+      "name": "FootL",
+      "pos": [
+        -0.158,
+        0.016,
+        -0.03
+      ],
+      "size": [
+        0.08,
+        0.032,
+        0.14
+      ],
+      "mat": "STEEL",
+      "parent": "ROOT"
+    },
+    {
+      "type": "box",
+      "name": "FootR",
+      "pos": [
+        0.158,
+        0.016,
+        -0.03
+      ],
+      "size": [
+        0.08,
+        0.032,
+        0.14
+      ],
+      "mat": "STEEL",
+      "parent": "ROOT"
+    }
+  ],
+  "expectedTriangleCount": 208,
+  "state": "mesh_data_created; Blender FBX and Unity still require execution",
+  "version": "0.1.0",
+  "units": "meters",
+  "axes": "Y up; +Z toward access side for keypad",
+  "materials": [
+    "STEEL",
+    "DARK",
+    "CAUTION",
+    "EMISSION"
+  ],
+  "owner": "C01-17"
+}

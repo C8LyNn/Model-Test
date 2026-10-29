@@ -1,0 +1,310 @@
+{
+  "id": "P17-01",
+  "name": "Bridge Control Console",
+  "dimensions": [
+    1.6,
+    0.65,
+    1.1
+  ],
+  "pivot": "floor bottom center; Y=0",
+  "mount": "floor",
+  "intended": "bridge; control rooms",
+  "collider": {
+    "center": [
+      0,
+      0.53,
+      0
+    ],
+    "size": [
+      1.6,
+      1.06,
+      0.65
+    ]
+  },
+  "children": [
+    {
+      "type": "box",
+      "name": "Plinth",
+      "pos": [
+        0,
+        0.052,
+        0
+      ],
+      "size": [
+        1.52,
+        0.104,
+        0.56
+      ],
+      "mat": "DARK",
+      "parent": "ROOT"
+    },
+    {
+      "type": "box",
+      "name": "LeftLeg",
+      "pos": [
+        -0.62,
+        0.45,
+        0.035
+      ],
+      "size": [
+        0.16,
+        0.79,
+        0.47
+      ],
+      "mat": "STEEL",
+      "parent": "ROOT"
+    },
+    {
+      "type": "box",
+      "name": "RightLeg",
+      "pos": [
+        0.62,
+        0.45,
+        0.035
+      ],
+      "size": [
+        0.16,
+        0.79,
+        0.47
+      ],
+      "mat": "STEEL",
+      "parent": "ROOT"
+    },
+    {
+      "type": "box",
+      "name": "Backbone",
+      "pos": [
+        0,
+        0.43,
+        0.22
+      ],
+      "size": [
+        1.23,
+        0.73,
+        0.12
+      ],
+      "mat": "DARK",
+      "parent": "ROOT"
+    },
+    {
+      "type": "box",
+      "name": "TopDeck",
+      "pos": [
+        0,
+        0.824,
+        0
+      ],
+      "size": [
+        1.6,
+        0.088,
+        0.65
+      ],
+      "mat": "STEEL",
+      "parent": "ROOT"
+    },
+    {
+      "type": "box",
+      "name": "FrontRim",
+      "pos": [
+        0,
+        0.775,
+        -0.29
+      ],
+      "size": [
+        1.54,
+        0.04,
+        0.05
+      ],
+      "mat": "CAUTION",
+      "parent": "ROOT"
+    },
+    {
+      "type": "box",
+      "name": "Keyboard",
+      "pos": [
+        0,
+        0.873,
+        -0.17
+      ],
+      "size": [
+        0.91,
+        0.013,
+        0.21
+      ],
+      "mat": "DARK",
+      "parent": "ROOT"
+    },
+    {
+      "type": "box",
+      "name": "KeyboardGlow",
+      "pos": [
+        0,
+        0.882,
+        -0.18
+      ],
+      "size": [
+        0.56,
+        0.004,
+        0.028
+      ],
+      "mat": "EMISSION",
+      "parent": "ROOT"
+    },
+    {
+      "type": "box",
+      "name": "ScreenHousing",
+      "pos": [
+        0,
+        0.973,
+        0.225
+      ],
+      "size": [
+        1.25,
+        0.23,
+        0.09
+      ],
+      "mat": "DARK",
+      "parent": "ROOT"
+    },
+    {
+      "type": "box",
+      "name": "ScreenGlass",
+      "pos": [
+        0,
+        0.973,
+        0.174
+      ],
+      "size": [
+        1.13,
+        0.17,
+        0.01
+      ],
+      "mat": "EMISSION",
+      "parent": "ROOT"
+    },
+    {
+      "type": "box",
+      "name": "ScreenTopTrim",
+      "pos": [
+        0,
+        1.083,
+        0.22
+      ],
+      "size": [
+        1.31,
+        0.034,
+        0.12
+      ],
+      "mat": "STEEL",
+      "parent": "ROOT"
+    },
+    {
+      "type": "box",
+      "name": "ScreenBottomTrim",
+      "pos": [
+        0,
+        0.861,
+        0.22
+      ],
+      "size": [
+        1.31,
+        0.022,
+        0.12
+      ],
+      "mat": "STEEL",
+      "parent": "ROOT"
+    },
+    {
+      "type": "box",
+      "name": "ConsoleSideLED_L",
+      "pos": [
+        -0.7,
+        0.861,
+        -0.1
+      ],
+      "size": [
+        0.025,
+        0.009,
+        0.15
+      ],
+      "mat": "CAUTION",
+      "parent": "ROOT"
+    },
+    {
+      "type": "box",
+      "name": "ConsoleSideLED_R",
+      "pos": [
+        0.7,
+        0.861,
+        -0.1
+      ],
+      "size": [
+        0.025,
+        0.009,
+        0.15
+      ],
+      "mat": "CAUTION",
+      "parent": "ROOT"
+    },
+    {
+      "type": "box",
+      "name": "Button_L",
+      "pos": [
+        -0.56,
+        0.88,
+        -0.18
+      ],
+      "size": [
+        0.075,
+        0.014,
+        0.075
+      ],
+      "mat": "CAUTION",
+      "parent": "ROOT"
+    },
+    {
+      "type": "box",
+      "name": "Button_R",
+      "pos": [
+        0.56,
+        0.88,
+        -0.18
+      ],
+      "size": [
+        0.075,
+        0.014,
+        0.075
+      ],
+      "mat": "CAUTION",
+      "parent": "ROOT"
+    },
+    {
+      "type": "box",
+      "name": "RearPanel",
+      "pos": [
+        0,
+        0.65,
+        0.274
+      ],
+      "size": [
+        0.96,
+        0.2,
+        0.032
+      ],
+      "mat": "DARK",
+      "parent": "ROOT"
+    }
+  ],
+  "expectedTriangleCount": 204,
+  "state": "mesh_data_created; Blender FBX and Unity still require execution",
+  "version": "0.1.0",
+  "units": "meters",
+  "axes": "Y up; +Z toward access side for keypad",
+  "materials": [
+    "STEEL",
+    "DARK",
+    "CAUTION",
+    "EMISSION"
+  ],
+  "owner": "C01-17"
+}

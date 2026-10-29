@@ -1,0 +1,355 @@
+{
+  "contract_id": "C01-PROP-INTERFACE-0.2.1",
+  "extension_of": "C01-MAS-0.2-W02",
+  "scope": "NON_STRUCTURAL_PROPS_ONLY",
+  "status": "C01-01_LOCKED_FOR_PILOT_PENDING_INDEPENDENT_QA",
+  "ship_reference": {
+    "branch": "codex/c01-ship-integration",
+    "pull_request": 1,
+    "ship_grid_m": 3,
+    "corridor_nominal_width_m": 3,
+    "do_not_modify": [
+      "ship_meshes",
+      "ship_structural_prefabs",
+      "ship_layout",
+      "doors",
+      "deck_levels",
+      "ship_scenes"
+    ]
+  },
+  "axes": {
+    "unity": "X right, Y up, Z forward",
+    "prop_front_local": "-Z",
+    "scale": [
+      1,
+      1,
+      1
+    ],
+    "wdh_order": [
+      "x_width",
+      "z_depth",
+      "y_height"
+    ]
+  },
+  "pivot_profiles": {
+    "floor": {
+      "pivot": "ground-center",
+      "bounds": "x=±W/2;y=[0,H];z=±D/2",
+      "socket_normal": [
+        0,
+        1,
+        0
+      ]
+    },
+    "wall": {
+      "pivot": "rear-face-center",
+      "bounds": "x=±W/2;y=±H/2;z=[-D,0]",
+      "socket_normal": [
+        0,
+        0,
+        -1
+      ]
+    },
+    "ceiling": {
+      "pivot": "top-center",
+      "bounds": "x=±W/2;y=[-H,0];z=±D/2",
+      "socket_normal": [
+        0,
+        -1,
+        0
+      ]
+    },
+    "rail": {
+      "pivot": "run-start-center",
+      "bounds": "x=[0,W];y=±H/2;z=±D/2",
+      "socket_normal": null
+    }
+  },
+  "limits": {
+    "max_material_slots": 4,
+    "dimension_tolerance_m": 0.002,
+    "local_pivot_tolerance_m": 0.001,
+    "scale_tolerance": 0.0001,
+    "max_approved_variance_from_nominal_m": 0.01,
+    "physical_contact_penetration_m": 0.0001,
+    "geometry_guideline": "closed solids, outward normals, no accidental coplanar duplicates"
+  },
+  "assets": [
+    {
+      "id": "P15-01",
+      "owner": "C01-15",
+      "slug": "pipe_straight_1m",
+      "nominal_wdh_m": [
+        1,
+        0.14,
+        0.14
+      ],
+      "allowed_mount_surfaces": [
+        "wall",
+        "ceiling"
+      ],
+      "default_mount": "rail",
+      "required_part_rule": "none",
+      "max_materials": 3,
+      "source_issue": 3
+    },
+    {
+      "id": "P15-02",
+      "owner": "C01-15",
+      "slug": "vent_grille",
+      "nominal_wdh_m": [
+        0.6,
+        0.08,
+        0.4
+      ],
+      "allowed_mount_surfaces": [
+        "wall"
+      ],
+      "default_mount": "wall",
+      "required_part_rule": "none",
+      "max_materials": 3,
+      "source_issue": 3
+    },
+    {
+      "id": "P15-03",
+      "owner": "C01-15",
+      "slug": "service_cabinet",
+      "nominal_wdh_m": [
+        0.8,
+        0.35,
+        1.8
+      ],
+      "allowed_mount_surfaces": [
+        "floor"
+      ],
+      "default_mount": "floor",
+      "required_part_rule": "cover",
+      "max_materials": 3,
+      "source_issue": 3
+    },
+    {
+      "id": "P16-01",
+      "owner": "C01-16",
+      "slug": "ceiling_lightbar",
+      "nominal_wdh_m": [
+        1.2,
+        0.15,
+        0.12
+      ],
+      "allowed_mount_surfaces": [
+        "ceiling"
+      ],
+      "default_mount": "ceiling",
+      "required_part_rule": "emissive_child",
+      "max_materials": 4,
+      "source_issue": 4
+    },
+    {
+      "id": "P16-02",
+      "owner": "C01-16",
+      "slug": "emergency_wall_lamp",
+      "nominal_wdh_m": [
+        0.35,
+        0.14,
+        0.22
+      ],
+      "allowed_mount_surfaces": [
+        "wall"
+      ],
+      "default_mount": "wall",
+      "required_part_rule": "none",
+      "max_materials": 4,
+      "source_issue": 4
+    },
+    {
+      "id": "P16-03",
+      "owner": "C01-16",
+      "slug": "status_beacon",
+      "nominal_wdh_m": [
+        0.2,
+        0.2,
+        0.3
+      ],
+      "allowed_mount_surfaces": [
+        "wall",
+        "ceiling",
+        "floor"
+      ],
+      "default_mount": "wall",
+      "required_part_rule": "material_variants_3",
+      "max_materials": 4,
+      "source_issue": 4
+    },
+    {
+      "id": "P17-01",
+      "owner": "C01-17",
+      "slug": "control_console",
+      "nominal_wdh_m": [
+        1.6,
+        0.65,
+        1.1
+      ],
+      "allowed_mount_surfaces": [
+        "floor"
+      ],
+      "default_mount": "floor",
+      "required_part_rule": "screen_child",
+      "max_materials": 4,
+      "source_issue": 5
+    },
+    {
+      "id": "P17-02",
+      "owner": "C01-17",
+      "slug": "door_access_keypad",
+      "nominal_wdh_m": [
+        0.18,
+        0.07,
+        0.28
+      ],
+      "allowed_mount_surfaces": [
+        "wall"
+      ],
+      "default_mount": "wall",
+      "required_part_rule": "none",
+      "max_materials": 4,
+      "source_issue": 5
+    },
+    {
+      "id": "P17-03",
+      "owner": "C01-17",
+      "slug": "lever_control",
+      "nominal_wdh_m": [
+        0.4,
+        0.3,
+        0.55
+      ],
+      "allowed_mount_surfaces": [
+        "floor",
+        "wall"
+      ],
+      "default_mount": "floor",
+      "required_part_rule": "hinge_lever",
+      "max_materials": 4,
+      "source_issue": 5
+    },
+    {
+      "id": "P18-01",
+      "owner": "C01-18",
+      "slug": "cargo_crate",
+      "nominal_wdh_m": [
+        0.9,
+        0.9,
+        0.9
+      ],
+      "allowed_mount_surfaces": [
+        "floor"
+      ],
+      "default_mount": "floor",
+      "required_part_rule": "none",
+      "max_materials": 3,
+      "source_issue": 6
+    },
+    {
+      "id": "P18-02",
+      "owner": "C01-18",
+      "slug": "storage_rack",
+      "nominal_wdh_m": [
+        2.1,
+        0.8,
+        2.1
+      ],
+      "allowed_mount_surfaces": [
+        "floor"
+      ],
+      "default_mount": "floor",
+      "required_part_rule": "none",
+      "max_materials": 3,
+      "source_issue": 6
+    },
+    {
+      "id": "P18-03",
+      "owner": "C01-18",
+      "slug": "maintenance_cart",
+      "nominal_wdh_m": [
+        1,
+        0.7,
+        1.2
+      ],
+      "allowed_mount_surfaces": [
+        "floor"
+      ],
+      "default_mount": "floor",
+      "required_part_rule": "wheels",
+      "max_materials": 3,
+      "source_issue": 6
+    },
+    {
+      "id": "P19-01",
+      "owner": "C01-19",
+      "slug": "crew_bunk",
+      "nominal_wdh_m": [
+        0.95,
+        2.1,
+        0.65
+      ],
+      "allowed_mount_surfaces": [
+        "floor"
+      ],
+      "default_mount": "floor",
+      "required_part_rule": "mattress_child",
+      "max_materials": 3,
+      "source_issue": 7
+    },
+    {
+      "id": "P19-02",
+      "owner": "C01-19",
+      "slug": "crew_locker",
+      "nominal_wdh_m": [
+        0.65,
+        0.55,
+        1.8
+      ],
+      "allowed_mount_surfaces": [
+        "floor"
+      ],
+      "default_mount": "floor",
+      "required_part_rule": "optional_hinged_door",
+      "max_materials": 3,
+      "source_issue": 7
+    },
+    {
+      "id": "P19-03",
+      "owner": "C01-19",
+      "slug": "desk",
+      "nominal_wdh_m": [
+        1.4,
+        0.65,
+        0.75
+      ],
+      "allowed_mount_surfaces": [
+        "floor"
+      ],
+      "default_mount": "floor",
+      "required_part_rule": "none",
+      "max_materials": 3,
+      "source_issue": 7
+    },
+    {
+      "id": "P19-04",
+      "owner": "C01-19",
+      "slug": "chair",
+      "nominal_wdh_m": [
+        0.6,
+        0.6,
+        0.95
+      ],
+      "allowed_mount_surfaces": [
+        "floor"
+      ],
+      "default_mount": "floor",
+      "required_part_rule": "none",
+      "max_materials": 3,
+      "source_issue": 7
+    }
+  ]
+}

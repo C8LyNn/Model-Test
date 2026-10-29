@@ -10,12 +10,12 @@ namespace C01.Ship {
         public ShipAirlock[] airlocks;
         public bool walking;
         public float walkSpeed=3.5f,flySpeed=14;
-        Vector3 overviewPosition;Quaternion overviewRotation;float fallSpeed;
-        void Start(){overviewPosition=view.transform.position;overviewRotation=view.transform.rotation;player.enabled=false;}
+        Vector3 overviewPosition;Quaternion overviewRotation;float fallSpeed,overviewSize=26;
+        void Start(){overviewPosition=view.transform.position;overviewRotation=view.transform.rotation;overviewSize=view.orthographicSize;player.enabled=false;}
         public void SetWalking(bool value){
             walking=value;player.enabled=value;
             if(value){view.orthographic=false;view.transform.SetParent(player.transform,false);view.transform.localPosition=new Vector3(0,1.6f,0);view.transform.localRotation=Quaternion.identity;roofs.SetActive(true);labels.SetActive(false);}
-            else{view.transform.SetParent(null,true);view.transform.SetPositionAndRotation(overviewPosition,overviewRotation);view.orthographic=true;view.orthographicSize=26;roofs.SetActive(false);labels.SetActive(true);}
+            else{view.transform.SetParent(null,true);view.transform.SetPositionAndRotation(overviewPosition,overviewRotation);view.orthographic=true;view.orthographicSize=overviewSize;roofs.SetActive(false);labels.SetActive(true);}
         }
         public void Interact(C01Door door){
             var airlock=airlocks.FirstOrDefault(a=>a.doorA==door||a.doorB==door);

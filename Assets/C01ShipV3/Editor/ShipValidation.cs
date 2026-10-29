@@ -61,7 +61,8 @@ namespace C01.Ship.Editor {
                     if(Physics.ComputePenetration(all[i],all[i].transform.position,all[i].transform.rotation,all[j],all[j].transform.position,all[j].transform.rotation,out var direction,out float depth)&&depth>.0005f){r.penetrations++;Check(false,"Static penetration "+Owner(all[i])+" <> "+Owner(all[j])+" depth="+depth);}
                 }
                 foreach(var p in data.placements.Where(p=>p.category=="Floors"||p.category=="Ceilings")){
-                    var inst=byId[p.id][0];bool floor=p.category=="Floors";var localColliders=inst.GetComponentsInChildren<Collider>(true);
+                    if(!byId.TryGetValue(p.id,out var surfaces)||surfaces.Length!=1)continue;
+                    var inst=surfaces[0];bool floor=p.category=="Floors";var localColliders=inst.GetComponentsInChildren<Collider>(true);
                     foreach(var c in localColliders){
                         var b=c.bounds;float plane=floor?0:3;if(Mathf.Abs((floor?b.max.y:b.min.y)-plane)>.001f)continue;
                         // A custom clipped polygon uses its vertex centroid, not the possibly empty AABB centre.
@@ -109,11 +110,12 @@ namespace C01.Ship.Editor {
                 sources.Add(s);
             }
             var settings=NavMesh.GetSettingsByIndex(0);settings.agentRadius=.28f;settings.agentHeight=1.8f;settings.agentClimb=.18f;settings.agentSlope=45;settings.overrideVoxelSize=true;settings.voxelSize=.07f;settings.overrideTileSize=true;settings.tileSize=128;
-            var nav=NavMeshBuilder.BuildNavMeshData(settings,sources,new Bounds(new Vector3(21,1.5f,10.5f),new Vector3(80,10,36)),Vector3.zero,Quaternion.identity);check(nav!=null,"NavMesh build failed");if(nav==null)return;
+            float centerZ=(data.body[2]+data.body[3])*.5f;
+            var nav=NavMeshBuilder.BuildNavMeshData(settings,sources,new Bounds(new Vector3(21,1.5f,centerZ),new Vector3(80,10,data.body[3]-data.body[2]+15)),Vector3.zero,Quaternion.identity);check(nav!=null,"NavMesh build failed");if(nav==null)return;
             if(persist){string path=ShipBuilder.Root+"/Data/Ship_OpenDoors_NavMesh.asset";var old=AssetDatabase.LoadAssetAtPath<NavMeshData>(path);if(old!=null){EditorUtility.CopySerialized(nav,old);UnityEngine.Object.DestroyImmediate(nav);nav=old;}else AssetDatabase.CreateAsset(nav,path);}
             var handle=NavMesh.AddNavMeshData(nav);
             try{
-                bool start=NavMesh.SamplePosition(new Vector3(-3,.1f,10.5f),out var from,.6f,NavMesh.AllAreas);check(start,"Bridge NavMesh start not found");
+                bool start=NavMesh.SamplePosition(ShipBuilder.V(data.zones.First(z=>z.id=="BRIDGE").waypoint)+Vector3.up*.1f,out var from,.6f,NavMesh.AllAreas);check(start,"Bridge NavMesh start not found");
                 foreach(var z in data.zones){
                     var target=ShipBuilder.V(z.waypoint)+Vector3.up*.1f;bool sampled=NavMesh.SamplePosition(target,out var to,.6f,NavMesh.AllAreas);var route=new NavMeshPath();bool ok=start&&sampled&&NavMesh.CalculatePath(from.position,to.position,NavMesh.AllAreas,route)&&route.status==NavMeshPathStatus.PathComplete;
                     check(ok,"Unreachable zone "+z.id);if(ok)r.reachableZones++;float length=0;for(int i=1;i<route.corners.Length;i++)length+=Vector3.Distance(route.corners[i-1],route.corners[i]);r.routes.Add(new Route{zone=z.id,status=ok?"PASS":"FAIL",length=length,sampleDistance=sampled?Vector3.Distance(target,to.position):-1,corners=route.corners});
@@ -122,27 +124,31 @@ namespace C01.Ship.Editor {
             if(persist)AssetDatabase.SaveAssets();
         }
         public static void Capture(){
+            var data=ShipBuilder.Read();float height=data.body[3]-data.body[2],centerZ=(data.body[2]+data.body[3])*.5f;var zones=data.zones.ToDictionary(z=>z.id);
+            float north=zones["KOSZARY"].bounds[2],mainNorth=zones["MAIN_W"].bounds[3],cabinNorth=zones["C01"].bounds[2],size=26+(height-21)*.5f;
             string folder=Path.Combine(ShipBuilder.QA,"Screenshots");Directory.CreateDirectory(folder);var root=Master();var roofs=root.transform.Find("Ceilings").gameObject;var labels=root.transform.Find("Labels").gameObject;var cam=Camera.main;
             var originalPosition=cam.transform.position;var originalRotation=cam.transform.rotation;
+            bool oldRoof=roofs.activeSelf,oldLabels=labels.activeSelf,oldOrtho=cam.orthographic;float oldSize=cam.orthographicSize,oldFov=cam.fieldOfView;
             void Shot(string file,Vector3 pos,Vector3 target,bool ortho,float size=26,bool plan=false){
                 cam.transform.position=pos;cam.transform.rotation=Quaternion.LookRotation(target-pos,plan?Vector3.forward:Vector3.up);cam.orthographic=ortho;cam.orthographicSize=size;cam.fieldOfView=65;
                 var rt=new RenderTexture(2200,1250,24);cam.targetTexture=rt;cam.Render();var old=RenderTexture.active;RenderTexture.active=rt;var texture=new Texture2D(2200,1250,TextureFormat.RGB24,false);texture.ReadPixels(new Rect(0,0,2200,1250),0,0);texture.Apply();File.WriteAllBytes(Path.Combine(folder,file+".png"),texture.EncodeToPNG());RenderTexture.active=old;cam.targetTexture=null;UnityEngine.Object.DestroyImmediate(texture);UnityEngine.Object.DestroyImmediate(rt);
             }
             roofs.SetActive(false);labels.SetActive(true);SetDoors(root,90);
-            Shot("01_Ship_Plan",new Vector3(21.5f,70,10.5f),new Vector3(21.5f,0,10.5f),true,22,true);
-            Shot("02_Ship_Cutaway",new Vector3(42,58,-48),new Vector3(20,0,10.5f),true,27);
-            labels.SetActive(false);Shot("03_Ship_Cutaway_Clear",new Vector3(42,58,-48),new Vector3(20,0,10.5f),true,27);
-            roofs.SetActive(true);SetDoors(root,0);Shot("04_Ship_Exterior",new Vector3(42,48,-48),new Vector3(20,.5f,10.5f),true,27);
-            SetDoors(root,90);Shot("05_Bridge",new Vector3(-1.5f,1.65f,10.5f),new Vector3(-9,1.5f,10.5f),false);
-            Shot("06_Main_Corridor",new Vector3(3,1.65f,10.5f),new Vector3(40,1.65f,10.5f),false);
-            Shot("07_Cabin",new Vector3(5.3f,1.65f,12.8f),new Vector3(.5f,1.2f,14),false);
-            Shot("08_Laboratory",new Vector3(22.5f,1.65f,16.6f),new Vector3(17,1.3f,18.5f),false);
-            Shot("09_Medical",new Vector3(37.5f,1.65f,16.2f),new Vector3(42,1.2f,20),false);
+            Shot("01_Ship_Plan",new Vector3(21.5f,70,centerZ),new Vector3(21.5f,0,centerZ),true,Mathf.Max(22,(height+10)*.5f),true);
+            Shot("02_Ship_Cutaway",new Vector3(42,65,centerZ-65),new Vector3(20,0,centerZ),true,size+1);
+            labels.SetActive(false);Shot("03_Ship_Cutaway_Clear",new Vector3(42,65,centerZ-65),new Vector3(20,0,centerZ),true,size+1);
+            roofs.SetActive(true);SetDoors(root,0);Shot("04_Ship_Exterior",new Vector3(42,55,centerZ-65),new Vector3(20,.5f,centerZ),true,size+1);
+            SetDoors(root,90);Shot("05_Bridge",new Vector3(-1.5f,1.65f,centerZ),new Vector3(-9,1.5f,centerZ),false);
+            Shot("06_Main_Corridor",new Vector3(3,1.65f,centerZ),new Vector3(40,1.65f,centerZ),false);
+            Shot("07_Cabin",new Vector3(5.3f,1.65f,cabinNorth+.8f),new Vector3(.5f,1.2f,cabinNorth+2),false);
+            Shot("08_Laboratory",new Vector3(22.5f,1.65f,north+1.6f),new Vector3(17,1.3f,north+3.5f),false);
+            Shot("09_Medical",new Vector3(37.5f,1.65f,north+1.2f),new Vector3(42,1.2f,north+5),false);
             Shot("10_Engineering",new Vector3(22.5f,1.65f,4.8f),new Vector3(18.5f,1.3f,2),false);
-            Shot("11_Stern_Airlock",new Vector3(46.5f,1.65f,13),new Vector3(46.5f,1.65f,22),false);
-            roofs.SetActive(false);Shot("12_Five_Engines",new Vector3(67,23,-8),new Vector3(51,1.1f,10.5f),true,17);
-            SetDoors(root,0);labels.SetActive(true);cam.orthographic=true;cam.orthographicSize=26;cam.transform.SetPositionAndRotation(originalPosition,originalRotation);
-            File.WriteAllText(Path.Combine(ShipBuilder.QA,"unity_renders.txt"),"12 actual Unity URP Camera.Render outputs; "+Application.unityVersion);
+            Shot("11_Stern_Airlock",new Vector3(46.5f,1.65f,centerZ+2.5f),new Vector3(46.5f,1.65f,height+1),false);
+            Shot("13_Extended_Side_Corridor",new Vector3(7.5f,1.65f,mainNorth+.2f),new Vector3(7.5f,1.65f,north+.5f),false);
+            roofs.SetActive(false);Shot("12_Five_Engines",new Vector3(67,32,centerZ-25),new Vector3(51,1.1f,centerZ),true,23);
+            SetDoors(root,0);roofs.SetActive(oldRoof);labels.SetActive(oldLabels);cam.orthographic=oldOrtho;cam.orthographicSize=oldSize;cam.fieldOfView=oldFov;cam.transform.SetPositionAndRotation(originalPosition,originalRotation);
+            File.WriteAllText(Path.Combine(ShipBuilder.QA,"unity_renders.txt"),"13 actual Unity URP Camera.Render outputs; "+Application.unityVersion);
         }
     }
 }

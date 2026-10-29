@@ -33,17 +33,31 @@ namespace C01.Ship.Tests {
         }
         [UnityTest] public IEnumerator PlayerTraversesOpenMainCorridorCabinAndSternExit(){
             yield return SceneManager.LoadSceneAsync("C01_Ship_FromPlan");yield return null;
-            var explorer=Object.FindFirstObjectByType<ShipExplorer>();explorer.SetWalking(true);
+            var explorer=Object.FindFirstObjectByType<ShipExplorer>();float overviewSize=explorer.view.orthographicSize;explorer.SetWalking(true);
             foreach(var door in explorer.doors)door.SetAngleImmediate(90);Physics.SyncTransforms();yield return new WaitForFixedUpdate();
             var player=explorer.player;
             for(int i=0;i<300&&player.transform.position.x<46.3f;i++){player.Move(new Vector3(.18f,-.05f,0));yield return new WaitForFixedUpdate();}
             Assert.Greater(player.transform.position.x,46.2f,"Blocked main corridor / D1 / D2 / stern entry");Assert.That(player.transform.position.y,Is.InRange(-.02f,.15f));
-            player.enabled=false;player.transform.position=new Vector3(8.2f,.02f,13.5f);player.enabled=true;
+            var zones=Object.FindObjectsByType<ShipZone>(FindObjectsSortMode.None).ToDictionary(z=>z.zoneId);
+            player.enabled=false;player.transform.position=new Vector3(8.2f,.02f,zones["XN1"].transform.position.z);player.enabled=true;
             for(int i=0;i<25;i++){player.Move(new Vector3(-.2f,-.03f,0));yield return new WaitForFixedUpdate();}
             Assert.Less(player.transform.position.x,3.5f,"Cabin entry blocked");
-            player.enabled=false;player.transform.position=new Vector3(46.5f,.02f,16.5f);player.enabled=true;
+            player.enabled=false;player.transform.position=new Vector3(46.5f,.02f,zones["D3"].transform.position.z-3);player.enabled=true;
             for(int i=0;i<31;i++){player.Move(new Vector3(0,-.03f,.2f));yield return new WaitForFixedUpdate();}
-            Assert.Greater(player.transform.position.z,22.3f,"Stern exit airlock blocked");Assert.That(player.transform.position.y,Is.InRange(-.02f,.15f));
+            Assert.Greater(player.transform.position.z,zones["EXIT_N"].transform.position.z-.2f,"Stern exit airlock blocked");Assert.That(player.transform.position.y,Is.InRange(-.02f,.15f));
+            explorer.SetWalking(false);Assert.IsTrue(explorer.view.orthographic);Assert.AreEqual(overviewSize,explorer.view.orthographicSize,.001f,"Expanded overview framing changed after walking");
+        }
+        [UnityTest] public IEnumerator PlayerTraversesAllSixExtendedSideCorridors(){
+            yield return SceneManager.LoadSceneAsync("C01_Ship_FromPlan");yield return null;
+            var explorer=Object.FindFirstObjectByType<ShipExplorer>();explorer.SetWalking(true);foreach(var door in explorer.doors)door.SetAngleImmediate(90);Physics.SyncTransforms();
+            var zones=Object.FindObjectsByType<ShipZone>(FindObjectsSortMode.None).ToDictionary(z=>z.zoneId);var player=explorer.player;
+            float mainZ=zones["MAIN_W"].transform.position.z;
+            foreach(string side in new[]{"N","S"})for(int index=1;index<=3;index++){
+                string id="X"+side+index;var branch=zones[id];float direction=side=="N"?1:-1;float target=branch.transform.position.z+direction*6;
+                player.enabled=false;player.transform.position=new Vector3(branch.transform.position.x,.02f,mainZ);player.enabled=true;Physics.SyncTransforms();yield return new WaitForFixedUpdate();
+                for(int step=0;step<90&&direction*(target-player.transform.position.z)>.15f;step++){player.Move(new Vector3(0,-.04f,direction*.18f));yield return new WaitForFixedUpdate();}
+                Assert.Less(Mathf.Abs(target-player.transform.position.z),.35f,"Blocked extended side corridor "+id);Assert.That(player.transform.position.y,Is.InRange(-.02f,.15f),id);
+            }
         }
     }
 }

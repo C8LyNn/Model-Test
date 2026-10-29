@@ -17,7 +17,16 @@ namespace C01.Ship.Editor {
         static Dictionary<string,Material> materials;
         public static Vector3 V(float[] p)=>new Vector3(p[0],p[1],p[2]);
         static Color ColorOf(float[] c)=>new Color(c[0],c[1],c[2],c.Length>3?c[3]:1);
-        static void Save(UnityEngine.Object obj,string path){var old=AssetDatabase.LoadAssetAtPath<UnityEngine.Object>(path);if(old!=null){EditorUtility.CopySerialized(obj,old);UnityEngine.Object.DestroyImmediate(obj);}else AssetDatabase.CreateAsset(obj,path);}
+        static void Save(UnityEngine.Object obj,string path){
+            var old=AssetDatabase.LoadAssetAtPath<UnityEngine.Object>(path);
+            if(old!=null){
+                if(old is Mesh mesh&&obj is Mesh generated){
+                    // Mesh setters invalidate the existing GPU buffers; serialized copies can leave the preview stale until reload.
+                    mesh.Clear();mesh.indexFormat=generated.indexFormat;mesh.vertices=generated.vertices;mesh.uv=generated.uv;mesh.normals=generated.normals;mesh.triangles=generated.triangles;mesh.bounds=generated.bounds;mesh.name=generated.name;mesh.UploadMeshData(false);
+                }else EditorUtility.CopySerialized(obj,old);
+                EditorUtility.SetDirty(old);UnityEngine.Object.DestroyImmediate(obj);
+            }else AssetDatabase.CreateAsset(obj,path);
+        }
         public static Mesh Prism(ShipPartData p){
             int n=p.outline.Length/2;var vertices=new List<Vector3>();var tris=new List<int>();var uv=new List<Vector2>();
             void Vertex(int i,float y){vertices.Add(new Vector3(p.outline[i*2],y,p.outline[i*2+1]));uv.Add(new Vector2(p.outline[i*2],p.outline[i*2+1]));}
@@ -34,6 +43,7 @@ namespace C01.Ship.Editor {
         }
         [MenuItem("Tools/C01 Ship/Build ship from reference plan")]
         public static void Build(){
+            if(!Application.isBatchMode&&Enumerable.Range(0,UnityEngine.SceneManagement.SceneManager.sceneCount).Any(i=>UnityEngine.SceneManagement.SceneManager.GetSceneAt(i).isDirty))throw new InvalidOperationException("Save modified scenes before rebuilding the ship.");
             foreach(var dir in new[]{"Meshes","Materials","Prefabs","Scenes","Models"})Directory.CreateDirectory(Root+"/"+dir);Directory.CreateDirectory(QA);AssetDatabase.Refresh();
             var data=Read();materials=new Dictionary<string,Material>();
             foreach(var d in data.materials)materials[d.role]=Material(d.role,ColorOf(d.color),d.role=="GLASS");
@@ -76,21 +86,22 @@ namespace C01.Ship.Editor {
             groups["Ceilings"].gameObject.SetActive(false);
             PrefabUtility.SaveAsPrefabAsset(master,MasterPath);UnityEngine.Object.DestroyImmediate(master);
             var scene=EditorSceneManager.NewScene(NewSceneSetup.EmptyScene,NewSceneMode.Single);master=(GameObject)PrefabUtility.InstantiatePrefab(AssetDatabase.LoadAssetAtPath<GameObject>(MasterPath));
-            var rp=AssetDatabase.LoadAssetAtPath<UniversalRenderPipelineAsset>("Assets/C01Modular/Settings/C01_URP.asset");GraphicsSettings.defaultRenderPipeline=rp;QualitySettings.renderPipeline=rp;PlayerSettings.colorSpace=ColorSpace.Linear;PlayerSettings.productName="C01 Ship From Plan";
+            if(GraphicsSettings.defaultRenderPipeline==null){var rp=AssetDatabase.LoadAssetAtPath<UniversalRenderPipelineAsset>("Assets/C01Modular/Settings/C01_URP.asset");GraphicsSettings.defaultRenderPipeline=rp;QualitySettings.renderPipeline=rp;}
             RenderSettings.ambientMode=AmbientMode.Flat;RenderSettings.ambientLight=new Color(.32f,.39f,.48f);RenderSettings.fog=false;
             var sun=new GameObject("Ship key light");sun.transform.rotation=Quaternion.Euler(48,-35,0);var light=sun.AddComponent<Light>();light.type=LightType.Directional;light.intensity=1.4f;light.shadows=LightShadows.Soft;
             foreach(var z in data.zones.Where(z=>z.kind!="cabin"&&z.kind!="exterior"&&!z.id.StartsWith("X"))){var g=new GameObject(z.id+" light");g.transform.position=V(z.waypoint)+Vector3.up*2.72f;var l=g.AddComponent<Light>();l.type=LightType.Point;l.range=z.kind=="sector"?13:8;l.intensity=2.6f;l.color=z.id=="ENGINEERING"?new Color(1,.72f,.4f):new Color(.6f,.84f,1);}
-            var cameraGO=new GameObject("Main Camera");cameraGO.tag="MainCamera";var camera=cameraGO.AddComponent<Camera>();camera.nearClipPlane=.03f;camera.farClipPlane=300;camera.clearFlags=CameraClearFlags.SolidColor;camera.backgroundColor=new Color(.018f,.027f,.045f);camera.orthographic=true;camera.orthographicSize=26;cameraGO.AddComponent<AudioListener>();cameraGO.AddComponent<UniversalAdditionalCameraData>();cameraGO.transform.position=new Vector3(45,57,-45);cameraGO.transform.LookAt(new Vector3(21,0,10.5f));
-            var playerGO=new GameObject("Explorer Player");playerGO.transform.position=new Vector3(-3,.02f,10.5f);playerGO.transform.rotation=Quaternion.Euler(0,90,0);var controller=playerGO.AddComponent<CharacterController>();controller.height=1.8f;controller.radius=.28f;controller.center=new Vector3(0,.9f,0);controller.stepOffset=.18f;controller.enabled=false;
+            float centerZ=(data.body[2]+data.body[3])*.5f;
+            var cameraGO=new GameObject("Main Camera");cameraGO.tag="MainCamera";var camera=cameraGO.AddComponent<Camera>();camera.nearClipPlane=.03f;camera.farClipPlane=300;camera.clearFlags=CameraClearFlags.SolidColor;camera.backgroundColor=new Color(.018f,.027f,.045f);camera.orthographic=true;camera.orthographicSize=26+(data.body[3]-data.body[2]-21)*.5f;cameraGO.AddComponent<AudioListener>();cameraGO.AddComponent<UniversalAdditionalCameraData>();cameraGO.transform.position=new Vector3(45,65,centerZ-65);cameraGO.transform.LookAt(new Vector3(21,0,centerZ));
+            var playerGO=new GameObject("Explorer Player");playerGO.transform.position=V(data.zones.First(z=>z.id=="BRIDGE").waypoint)+Vector3.up*.02f;playerGO.transform.rotation=Quaternion.Euler(0,90,0);var controller=playerGO.AddComponent<CharacterController>();controller.height=1.8f;controller.radius=.28f;controller.center=new Vector3(0,.9f,0);controller.stepOffset=.18f;controller.enabled=false;
             var controls=new GameObject("Ship Controls").AddComponent<ShipExplorer>();controls.master=master;controls.roofs=master.transform.Find("Ceilings").gameObject;controls.labels=master.transform.Find("Labels").gameObject;controls.player=controller;controls.view=camera;controls.doors=master.GetComponentsInChildren<C01Door>();controls.airlocks=master.GetComponentsInChildren<ShipAirlock>();
-            EditorSceneManager.SaveScene(scene,ScenePath);EditorBuildSettings.scenes=new[]{new EditorBuildSettingsScene(ScenePath,true),new EditorBuildSettingsScene(C01.Editor.C01Builder.ScenePath,true)};AssetDatabase.SaveAssets();AssetDatabase.Refresh();
+            EditorSceneManager.SaveScene(scene,ScenePath);var buildScenes=EditorBuildSettings.scenes.Where(s=>s.path!=ScenePath).ToList();buildScenes.Insert(0,new EditorBuildSettingsScene(ScenePath,true));if(!buildScenes.Any(s=>s.path==C01.Editor.C01Builder.ScenePath))buildScenes.Add(new EditorBuildSettingsScene(C01.Editor.C01Builder.ScenePath,true));EditorBuildSettings.scenes=buildScenes.ToArray();AssetDatabase.SaveAssets();AssetDatabase.Refresh();
             Debug.Log("C01_SHIP_BUILD: "+data.placements.Length+" editable source placements; "+controls.doors.Length+" doors");
         }
         public static void Export(){
             string container=Path.GetFullPath(Path.Combine(Application.dataPath,"../.."));string doc=Root+"/Documentation";Directory.CreateDirectory(doc);
             if(File.Exists(Path.Combine(container,"Tools/build_ship.py")))foreach(string relative in new[]{"README_PL.md","docs/QA_REPORT_PL.md","docs/PLAN_MAPPING_PL.md","QA/layout_qa.json","QA/geometry_qa.json","QA/sweep_qa.json","QA/unity_ship_qa.json","QA/blender_ship_qa.json","QA/verification_summary.json","Reference/ship_plan.png"}){string source=Path.Combine(container,relative);if(File.Exists(source))File.Copy(source,Path.Combine(doc,Path.GetFileName(source)),true);}
             AssetDatabase.Refresh();
-            Directory.CreateDirectory(QA);AssetDatabase.ExportPackage(new[]{"Assets/C01Modular",Root},Path.Combine(QA,"C01_Ship_FromPlan_v3.0.unitypackage"),ExportPackageOptions.Recurse);
+            Directory.CreateDirectory(QA);var folders=new List<string>{"Assets/C01Modular",Root};if(AssetDatabase.IsValidFolder("Assets/C01Integration"))folders.Add("Assets/C01Integration");AssetDatabase.ExportPackage(folders.ToArray(),Path.Combine(QA,"C01_Ship_FromPlan_v3.1.unitypackage"),ExportPackageOptions.Recurse);
         }
         public static void Batch(){
             try{Build();ShipValidation.Run();ShipValidation.Capture();Export();File.WriteAllText(Path.Combine(QA,"unity_success.txt"),Application.unityVersion+"\n"+DateTime.UtcNow.ToString("O"));if(Application.isBatchMode)EditorApplication.Exit(0);}

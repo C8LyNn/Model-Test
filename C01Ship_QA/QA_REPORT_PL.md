@@ -1,26 +1,24 @@
-# Raport QA — import C01 do Model Test
+# QA — C01 v3.1 / wydłużone boczne korytarze
 
-Wynik końcowy: **PASS**. Pełny przebieg 2026-10-29 09:12:08–09:13:00 UTC w działającym Unity 6000.3.14f1, DX12, z ustawieniami projektu docelowego.
+Projekt: Model Test, Unity 6000.3.14f1, URP 17.3.0, Input System 1.19.0, DX12.
+
+Konfiguracja: korpus 45 × 33 m, sześć bocznych odnóg 3 × 9 m, główny i rufowy korytarz nominalnie 3 m, kajuty 6 × 9 m. 858 instancji w skali 1; 7343 pełne bryły/collidery; 36 drzwi; 62 aktualne modele niestandardowe FBX. 1845 m² ciągłych podłóg.
 
 ## Dowody
 
-| Kontrola | Wynik | Plik |
-|---|---|---|
-| Biblioteka i statek — EditMode | 12 PASS, 0 FAIL, 0 SKIP | model_test_editmode.xml |
-| Biblioteka i statek — PlayMode | 4 PASS, 0 FAIL, 0 SKIP | model_test_playmode.xml |
-| Statyczna geometria, powierzchnie, drzwi i FBX | PASS, 0 błędów | unity_ship_qa.json |
-| Dostępność stref przy otwartych drzwiach | 35/35 | unity_ship_qa.json/routes |
-| Weryfikacja wizualna | 12 rzeczywistych renderów, obejrzany przekrój i podgląd Game | Screenshots/ |
-| Transfer plików biblioteki i statku | 1265 plików, 0 różnic SHA256 po imporcie i testach | transfer_verification.json |
+- `python_tests_target.log`: 11 testów wymiarów, topologii, pełnego pokrycia, braków i geometrii.
+- `model_test_editmode.xml`: 15 testów; sockety, rotacje, spójność importu i sceny, brakujące framugi, silnik, podłoga i sufit w wydłużonej odnodze.
+- `model_test_playmode.xml`: 5 testów; przejście przez wszystkie 6 odnóg do sektorów, korytarz, kajutę i rufę; 4 śluzy; niezależne kąty drzwi; zachowanie kadru po spacerze.
+- `unity_ship_qa.json`: 0 błędów, 0 penetracji, 3276 pozycji drzwi, 2832 promienie powierzchni, 35/35 dostępnych stref, 62 zaimportowane FBX.
+- `geometry_qa.json`, `sweep_qa.json`: 7343 bryły we wszystkich detalach; brak penetracji przy 0° i 90°, brak kolizji w 3276 pozycjach pojedynczych drzwi i 16562 niezależnych kombinacjach dwóch bliskich drzwi.
+- `blender_ship_qa.json`: rzeczywisty eksport Blender/FBX/OBJ/GLB, 62/62 testy powrotnego importu FBX PASS.
+- `Screenshots/`: 13 rzeczywistych renderów Unity, w tym rzut, przekrój i wnętrze dłuższej odnogi. Obejrzano rzut, przekrój i ujęcie 13; końcowy kadłub ma ciągły obrys, a przejścia, podłogi i sufity są widoczne.
+- `host_settings_qa.txt`: zachowane nazwa Model Test, profile PC_RPAsset, Linear i poprzednie sceny.
 
-Scena jest otwarta w edytorze. Dodano ją jako pierwszą do Build Scenes oraz dodano scenę ThreeRooms wymaganą przez bazowy test drzwi. Zachowano SampleScene, nazwę Model Test, URP 17.3.0 i Input System 1.19.0. Wcześniejsze lokalne zmiany użytkownika pozostają poza commitem integracji.
+Aktualny status pełnego przebiegu jest w `integration_status.txt`; historia prób w `integration_progress.txt`. Wcześniejsze red i negative FAIL są oczekiwane: wykazały brak długości w v3.0 oraz błąd słownika przy celowym usuwaniu podłogi/sufitu. Walidator teraz zapisuje raport z brakującym ID i kończy kontrolowanym błędem. Podczas pierwszej przebudowy zaobserwowano też stary podgląd kadłuba w buforach siatki; zapis generowanych siatek teraz jawnie aktualizuje dane geometrii i bufor GPU.
 
-Pełny test PlayMode obejmuje 3 drzwi sceny bazowej, niezależne kąty sąsiadujących drzwi statku, cztery śluzy i fizyczne przejście CharacterController przez korytarz, kajutę oraz wyjście rufowe. Testy EditMode obejmują brakującą framugę, brakujący silnik, niezmienność zapisanego NavMesh przy negatywnym audycie oraz sockety wariantów ścian w czterech rotacjach.
+## NOT RUN i zakres
 
-W trakcie integracji poprawiono wywołanie SceneView API i synchronizację jednorazowego żądania testów. Rozszerzony test wykrył brak sceny bazowej na liście Build Scenes; po dodaniu sceny kompletny zestaw przeszedł. Historia prób pozostaje w integration_progress.txt. Raporty unity_negative_* mają celowo FAIL, jako dowód wykrywania braków konstrukcji.
+Samodzielny build aplikacji, ręczna sesja użytkownika oraz opcjonalny import OBJ/GLB do Unity: NOT RUN. Automatyczny CharacterController faktycznie przeszedł odnogi i przejścia w PlayMode. NavMesh dotyczy drzwi otwartych. Symulacja lotu/ciśnienia nie należy do tego zestawu.
 
-## Ograniczenia
-
-NOT RUN: samodzielny build aplikacji, ręczna sesja sterowania, ponowny eksport Blender w projekcie docelowym, opcjonalny import OBJ/GLB do Unity. Rzeczywiste źródło Blender i eksporty zostały przeniesione z wcześniejszej zweryfikowanej paczki v3.0.
-
-Brak nowego wykrytego błędu blokującego scenę. Zapis NavMesh dotyczy stanu otwartych drzwi; runtime gracza używa colliderów. Symulacja lotu i ciśnienia nie należy do tej sceny testowej.
+Nie zwiększano szczegółowości wyposażenia. Poprzednia wersja zachowana w Git, paczce v3.0 i dodatkowej kopii ZIP sprzed przebudowy.

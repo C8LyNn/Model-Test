@@ -8,5 +8,5 @@ namespace C01.Ship {
     [Serializable] public class ShipPlacementData {public string id,module,category,zone;public float x,y,z,yaw;}
     [Serializable] public class ShipMaterialData {public string role;public float[] color;}
     [Serializable] public class ShipAirlockData {public string id;public string[] doors;}
-    [Serializable] public class ShipData {public string version,reference;public float[] body,bridge_outline;public ShipZoneData[] zones;public ShipDoorData[] doors;public ShipModuleData[] modules;public ShipPlacementData[] placements;public ShipMaterialData[] materials;public ShipAirlockData[] airlocks;}
+    [Serializable] public class ShipData {public string version,reference;public float corridor_width,branch_length;public float[] body,bridge_outline;public ShipZoneData[] zones;public ShipDoorData[] doors;public ShipModuleData[] modules;public ShipPlacementData[] placements;public ShipMaterialData[] materials;public ShipAirlockData[] airlocks;}
 }

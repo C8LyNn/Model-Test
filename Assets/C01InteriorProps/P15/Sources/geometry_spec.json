@@ -146,23 +146,81 @@
         0.138
       ],
       "hinge_axis": "+Y",
-      "hinge_swing": "0 to -95 degrees: leaf opens toward +Z",
+      "hinge_swing": "0 to -90 degrees: leaf opens toward +Z",
       "colliders": [
         {
           "component": "Body",
+          "name": "Back",
           "center": [
             0,
             0.9,
-            -0.0235
+            -0.1625
           ],
           "size": [
             0.8,
             1.8,
-            0.303
+            0.025
+          ]
+        },
+        {
+          "component": "Body",
+          "name": "LeftSide",
+          "center": [
+            -0.3875,
+            0.9,
+            -0.0175
+          ],
+          "size": [
+            0.025,
+            1.8,
+            0.29
+          ]
+        },
+        {
+          "component": "Body",
+          "name": "RightSide",
+          "center": [
+            0.3875,
+            0.9,
+            -0.0175
+          ],
+          "size": [
+            0.025,
+            1.8,
+            0.29
+          ]
+        },
+        {
+          "component": "Body",
+          "name": "Bottom",
+          "center": [
+            0,
+            0.0225,
+            -0.0175
+          ],
+          "size": [
+            0.75,
+            0.045,
+            0.29
+          ]
+        },
+        {
+          "component": "Body",
+          "name": "Top",
+          "center": [
+            0,
+            1.7775,
+            -0.0175
+          ],
+          "size": [
+            0.75,
+            0.045,
+            0.29
           ]
         },
         {
           "component": "Door",
+          "name": "DoorLeaf",
           "center": [
             0.35,
             0.9,

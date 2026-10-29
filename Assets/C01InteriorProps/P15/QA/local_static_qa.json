@@ -1,0 +1,67 @@
+{
+  "owner": "C01-15",
+  "parent_issue": 2,
+  "issue": 3,
+  "producer": "Python local trimesh+Shapely geometry audit",
+  "environment": "Python 3.13, trimesh 4.11.1, Shapely 2.1.2",
+  "test_type": "STATIC_ONLY_NOT_UNITY_NOT_BLENDER",
+  "source": "geometry_spec.json / local GLB-OBJ meshes",
+  "mesh": [
+    {
+      "id": "P15-01",
+      "triangles": 544,
+      "measured_wdh_m": [
+        1,
+        0.141,
+        0.14
+      ],
+      "geometry": "PASS",
+      "normal_primitives": "PASS"
+    },
+    {
+      "id": "P15-02",
+      "triangles": 304,
+      "measured_wdh_m": [
+        0.6,
+        0.08,
+        0.4
+      ],
+      "geometry": "PASS",
+      "normal_primitives": "PASS"
+    },
+    {
+      "id": "P15-03",
+      "triangles": 288,
+      "measured_wdh_m": [
+        0.8,
+        0.3495,
+        1.8
+      ],
+      "geometry": "PASS",
+      "normal_primitives": "PASS"
+    }
+  ],
+  "contract_checks": {
+    "total": 22,
+    "passed": 22,
+    "failed": 0,
+    "scope": "primitive dimensions, bounds, unique names, material limits, modular ports, cabinet floor and independent door component"
+  },
+  "hinge_approximation": {
+    "range_degrees": [
+      0,
+      90
+    ],
+    "step_degrees": 0.5,
+    "positions": 181,
+    "broadphase_checks": 14661,
+    "collision_pairs": 0,
+    "status": "PASS",
+    "caveat": "2D projected box overlap with Y-height gating, not Unity physics"
+  },
+  "native_blender_file_signature": "SEE separate CI QA/blender_export_validation.json",
+  "fbx_import": "NOT RUN",
+  "unity_prefabs": "NOT RUN",
+  "unity_clearance": "NOT RUN",
+  "independent_qa": "NOT RUN"
+}

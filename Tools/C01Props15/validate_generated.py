@@ -18,5 +18,7 @@ report={'scope':'file signatures/hash only; not Blender geometry QA or Unity imp
         'unity':'NOT RUN','independent_qa':'NOT RUN'}
 (P/'QA').mkdir(parents=True,exist_ok=True)
 (P/'QA/blender_export_validation.json').write_text(json.dumps(report,indent=2)+'\n')
+for entry in out:
+    print(entry['status'], entry['size'], entry['path'])
 print(report['result'],'signatures checked:',len(out))
 if report['result']!='PASS':raise SystemExit(1)

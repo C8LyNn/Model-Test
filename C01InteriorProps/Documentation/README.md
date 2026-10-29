@@ -11,12 +11,12 @@ The integrator is real Unity Editor C# source. As of 2026-10-29, the base branch
 ## Input staging (individual supplier PRs first)
 
 Merge/rebase individually reviewed supplier PRs #3–7 onto this integration branch. Each asset must have a stable unique prefix `P15-01`, `P15-02`, etc., and include:
-- exactly one `Pxx-yy*.fbx`, **with imported actual MeshFilter**;
+- exactly one `Pxx-yy*.fbx` **under Unity Assets**, with imported actual MeshFilter;
 - exactly one `Pxx-yy*.blend`, native Blender source;
 - at least three `Pxx-yy*.png` or JPG previews from distinct angles;
 - supplier manifest with dimensions, Y-up origin, mount, material slots, collision, triangle count, version.
   
-Recommended staging path: `Assets/C01InteriorProps/Incoming/Pxx-yy/Pxx-yy_{source.blend,export.fbx,front.png,side.png,iso.png}`. The builder scans `Assets` for **exactly** this ID prefix and will reject duplicates; it excludes its own Generated folder.
+Recommended paths: FBX in `Assets/C01InteriorProps/Incoming/Pxx-yy/Pxx-yy_export.fbx`; native Blender sources in `C01InteriorProps/Sources/Pxx-yy_source.blend`; preview images in `C01InteriorProps/Previews/Pxx-yy_{front,side,iso}.png` (outside Assets). The builder scans `Assets` and the named external source/preview directories for the unique asset prefix and rejects duplicates. Its own `Generated` folder is excluded.
 
 ### Unity 6 URP invocation
 

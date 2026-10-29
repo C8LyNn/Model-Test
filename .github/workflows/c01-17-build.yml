@@ -21,7 +21,7 @@ jobs:
       - name: Install real Blender
         run: |
           sudo apt-get update
-          sudo apt-get install -y blender git-lfs
+          sudo apt-get install -y blender git-lfs python3-numpy
           git lfs install --local
       - name: Static real geometry QA
         run: python3 C01InteriorProps_Source/Tools/qa_gltf.py

@@ -1,0 +1,40 @@
+name: C01 Interior Props Registry
+
+on:
+  push:
+    branches:
+      - 'c01/props-03-asset-library'
+  pull_request:
+    paths:
+      - 'C01InteriorProps_Library/**'
+      - '.github/workflows/c01-interior-props-registry.yml'
+  workflow_dispatch:
+
+jobs:
+  static-registry:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout with LFS payloads
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate manifest metadata and honest missing-file reporting
+        run: python C01InteriorProps_Library/tools/registry.py audit
+      - name: Run registry unit tests
+        run: python -m unittest discover -s C01InteriorProps_Library/tests -v
+      - name: Confirm incomplete pilot is blocked from release
+        shell: bash
+        run: |
+          set +e
+          python C01InteriorProps_Library/tools/registry.py release
+          code=$?
+          set -e
+          if [ "$code" -ne 2 ]; then
+            echo "Unexpected release gate exit: $code (expected 2 while assets are absent)"
+            exit 1
+          fi
+          echo "Release blocked as expected pending producer deliveries"

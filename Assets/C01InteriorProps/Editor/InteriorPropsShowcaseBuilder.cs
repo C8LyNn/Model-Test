@@ -69,7 +69,18 @@ namespace C01.InteriorProps.Editor
 
         static string[] SourceFiles()
         {
-            return Directory.GetFiles(Application.dataPath, "*", SearchOption.AllDirectories)
+            // FBX must be imported under Assets; native .blend and evidence images may
+            // stay outside Assets to avoid Unity requiring a local Blender installation.
+            string project = Path.GetFullPath(Path.Combine(Application.dataPath,".."));
+            var paths = new List<string>(Directory.GetFiles(Application.dataPath,"*",SearchOption.AllDirectories));
+            foreach (string extra in new[]{"C01InteriorProps/Sources","C01InteriorProps/Previews",
+                                          "C01InteriorProps/Incoming","C01InteriorProps/Suppliers"})
+            {
+                string folder=Path.Combine(project,extra);
+                if (Directory.Exists(folder))
+                    paths.AddRange(Directory.GetFiles(folder,"*",SearchOption.AllDirectories));
+            }
+            return paths.Distinct(StringComparer.OrdinalIgnoreCase)
                 .Where(p => !p.Replace('\\','/').Contains("/C01InteriorProps/Generated/"))
                 .Where(p => new[] { ".fbx", ".blend", ".png", ".jpg", ".jpeg" }
                     .Contains(Path.GetExtension(p).ToLowerInvariant())).ToArray();
@@ -83,12 +94,14 @@ namespace C01.InteriorProps.Editor
                     n.Length > id.Length && (n[id.Length] == '_' || n[id.Length] == '-'));
         }
 
-        static string ToAssetPath(string absolute)
+        static string ToProjectPath(string absolute)
         {
             if (string.IsNullOrEmpty(absolute)) return null;
-            string a = absolute.Replace('\\','/');
-            string root = Application.dataPath.Replace('\\','/');
-            return "Assets" + a.Substring(root.Length);
+            string a = Path.GetFullPath(absolute).Replace('\\','/');
+            string root = Path.GetFullPath(Path.Combine(Application.dataPath,"..")).Replace('\\','/');
+            if (!a.StartsWith(root+"/",StringComparison.OrdinalIgnoreCase))
+                throw new InvalidOperationException("Source file outside Unity project: "+a);
+            return a.Substring(root.Length+1);
         }
 
         static Bounds CalculateBounds(GameObject instance, out int triangles)
@@ -130,16 +143,19 @@ namespace C01.InteriorProps.Editor
                 var fbx = owned.Where(p => Path.GetExtension(p).Equals(".fbx",StringComparison.OrdinalIgnoreCase)).ToArray();
                 var blend = owned.Where(p => Path.GetExtension(p).Equals(".blend",StringComparison.OrdinalIgnoreCase)).ToArray();
                 item.Previews = owned.Where(p => new[]{".png",".jpg",".jpeg"}
-                    .Contains(Path.GetExtension(p).ToLowerInvariant())).Select(ToAssetPath).ToArray();
-                item.Fbx = fbx.Length == 1 ? ToAssetPath(fbx[0]) : null;
-                item.Blend = blend.Length == 1 ? ToAssetPath(blend[0]) : null;
+                    .Contains(Path.GetExtension(p).ToLowerInvariant())).Select(ToProjectPath).ToArray();
+                item.Fbx = fbx.Length == 1 ? ToProjectPath(fbx[0]) : null;
+                item.Blend = blend.Length == 1 ? ToProjectPath(blend[0]) : null;
                 var errors = new List<string>();
                 if (fbx.Length != 1) errors.Add("FBX count="+fbx.Length);
                 if (blend.Length != 1) errors.Add("BLEND count="+blend.Length);
                 if (item.Previews.Length < 3) errors.Add("previews="+item.Previews.Length+" (need 3 angles)");
                 if (item.Fbx != null)
                 {
-                    item.Model = AssetDatabase.LoadAssetAtPath<GameObject>(item.Fbx);
+                    if (!item.Fbx.StartsWith("Assets/",StringComparison.OrdinalIgnoreCase))
+                        errors.Add("FBX must be under Unity Assets/ folder");
+                    item.Model = item.Fbx.StartsWith("Assets/",StringComparison.OrdinalIgnoreCase)
+                        ? AssetDatabase.LoadAssetAtPath<GameObject>(item.Fbx) : null;
                     if (item.Model == null) errors.Add("Unity FBX importer has no model GameObject");
                     else
                     {

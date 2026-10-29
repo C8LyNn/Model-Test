@@ -73,7 +73,11 @@ public static class C01Props15PrefabBuilder {
 
             var c=new GameObject("P15-03_Cabinet");
             Attach(c,"FBX_P15-03_Body","P15-03_Body.fbx");
-            Box(c,new Vector3(0,.9f,-.0235f),new Vector3(.8f,1.8f,.303f));
+            Box(c,new Vector3(0,.9f,-.1625f),new Vector3(.8f,1.8f,.025f));
+            Box(c,new Vector3(-.3875f,.9f,-.0175f),new Vector3(.025f,1.8f,.29f));
+            Box(c,new Vector3(.3875f,.9f,-.0175f),new Vector3(.025f,1.8f,.29f));
+            Box(c,new Vector3(0,.0225f,-.0175f),new Vector3(.75f,.045f,.29f));
+            Box(c,new Vector3(0,1.7775f,-.0175f),new Vector3(.75f,.045f,.29f));
             var hinge=new GameObject("Door_Hinge_Y");
             hinge.transform.SetParent(c.transform,false);
             hinge.transform.localPosition=new Vector3(-.352f,0,.138f);

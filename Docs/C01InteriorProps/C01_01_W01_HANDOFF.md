@@ -11,7 +11,7 @@
 - `Docs/C01InteriorProps/manifest_example_UNVERIFIED.json`: deliberately incomplete reference; **NOT a model**.
 - `Tools/c01_props/validate_props.py`: standard-library manifest verifier; checks file existence and SHA-256; `static:PASS` never implies Blender/Unity PASS.
 - `Tools/c01_props/blender_export_prop.py`: helper to export existing authored Blender collections, **requires Blender and actual meshes**; does not generate placeholder geometry.
-- `Tests/c01_props/test_validator.py`: 14 unit tests, including expected rejection of incorrect or falsely complete data.
+- `Tests/c01_props/test_validator.py`: 15 unit tests, including expected rejection of incorrect or falsely complete data.
 
 ## Executed tests in C01-01 local runtime
 

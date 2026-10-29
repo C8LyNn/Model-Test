@@ -1,0 +1,76 @@
+{
+  "version": "C01 Ship From Plan v3.0",
+  "date_local": "2026-10-29",
+  "timezone": "Europe/Warsaw",
+  "manifest_sha256": "07d02ddb115aecc57940f37a21a416e16403e50311f47cd330ae8dbac0a61ab4",
+  "reference_sha256": "a5e83a536151ab2a9934cb42df4448013f1bc4000e94e2779e04cb2f8eae8dc0",
+  "python": {
+    "status": "PASS",
+    "tests": 6
+  },
+  "layout": "PASS",
+  "geometry": "PASS",
+  "door_sweeps": "PASS",
+  "unity": "PASS",
+  "blender": "PASS",
+  "editmode": {
+    "status": "PASS",
+    "passed": 12,
+    "failed": 0,
+    "skipped": 0,
+    "tests": [
+      "C01.Tests.C01EditTests.CompleteScenePassesGeometryPhysicsAndImportAudit",
+      "C01.Tests.C01EditTests.ImportedPackageKeepsQaInsideTargetProject",
+      "C01.Tests.C01EditTests.MissingNestedFrameIsRejected",
+      "C01.Tests.C01EditTests.WallVariantsHaveUnchangedGraphSocketTransforms(\"W01_Wall_3m\")",
+      "C01.Tests.C01EditTests.WallVariantsHaveUnchangedGraphSocketTransforms(\"W02_Wall_3m_Variant\")",
+      "C01.Tests.C01EditTests.WallVariantsHaveUnchangedGraphSocketTransforms(\"W05_Wall_3m_Service\")",
+      "C01.Tests.C01EditTests.WallVariantsHaveUnchangedGraphSocketTransforms(\"W04_DoorWall_3m\")",
+      "C01.Ship.Tests.ShipEditTests.MissingDoorFrameIsRejected",
+      "C01.Ship.Tests.ShipEditTests.MissingEngineIsRejected",
+      "C01.Ship.Tests.ShipEditTests.NegativeAuditDoesNotModifyDeliveredNavmesh",
+      "C01.Ship.Tests.ShipEditTests.PackageQaStaysInsideIndependentTargetProject",
+      "C01.Ship.Tests.ShipEditTests.ReferenceScenePassesFullGeometryAndRoutes"
+    ]
+  },
+  "playmode": {
+    "status": "PASS",
+    "passed": 4,
+    "failed": 0,
+    "skipped": 0,
+    "tests": [
+      "C01.Tests.C01DoorPlayTests.EachDoorOpensIndependentlyAndReturnsToItsSocket",
+      "C01.Ship.Tests.ShipPlayTests.FourAirlocksCloseOppositeDoorBeforeOpening",
+      "C01.Ship.Tests.ShipPlayTests.NeighbourDoorsDoNotCollideAtIndependentAngles",
+      "C01.Ship.Tests.ShipPlayTests.PlayerTraversesOpenMainCorridorCabinAndSternExit"
+    ]
+  },
+  "counts": {
+    "zones": 35,
+    "cabins": 12,
+    "doors": 36,
+    "engines": 5,
+    "floor_tiles": 132,
+    "floor_area_m2": 1161.0000000000002,
+    "walls": 137,
+    "nodes": 112,
+    "reachable_zones": 35
+  },
+  "solids": 5393,
+  "new_models": 54,
+  "independent_door_combinations": 132496,
+  "previous_version": {
+    "status": "PASS",
+    "files_checked": 586,
+    "changed": []
+  },
+  "visual_review": "12 saved Unity renders and both Blender renders inspected against the reference",
+  "not_run": [
+    "Standalone player build outside the Editor",
+    "Manual human mouse/keyboard session",
+    "Unity imports of optional GLB/OBJ",
+    "Atmosphere/pressure and ship-flight simulation"
+  ],
+  "scope": "One styled, explorable ship scene; metre scale chosen because reference is schematic; open-door NavMesh audit is static, character movement uses colliders",
+  "status": "PASS"
+}

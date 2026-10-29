@@ -11,11 +11,11 @@ All paths are **proposed staging**, not claims that these files exist.
 | C01-19 / #7 | P19-01 P19-02 P19-03 P19-04 | bunk, locker, desk, chair |
 
 Preferred relative file names inside each supplier staging folder:
-- `Pxx-yy_source.blend`
-- `Pxx-yy_export.fbx`
-- `Pxx-yy_front.png`
-- `Pxx-yy_side.png`
-- `Pxx-yy_iso.png`
+- `C01InteriorProps/Sources/Pxx-yy_source.blend` (native Blender source outside Assets)
+- `Assets/C01InteriorProps/Incoming/Pxx-yy/Pxx-yy_export.fbx` (Unity-imported model)
+- `C01InteriorProps/Previews/Pxx-yy_front.png`
+- `C01InteriorProps/Previews/Pxx-yy_side.png`
+- `C01InteriorProps/Previews/Pxx-yy_iso.png`
 - `Pxx-yy_manifest.json`
 
 Do not conflate GitHub issue #3–7 assignments with explicit GitHub assignee state. All five are open. C01-10 is an integrator and does not edit their meshes.

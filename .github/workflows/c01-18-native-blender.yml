@@ -1,0 +1,47 @@
+name: C01-18 Native Blender Build (QA artifact)
+on:
+  push:
+    branches:
+      - c01/props-18-cargo
+    paths:
+      - '.github/workflows/c01-18-native-blender.yml'
+      - 'Assets/C01InteriorProps/C01-18/Models/**'
+      - 'Assets/C01InteriorProps/C01-18/Sources/**'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  blender-bake:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+      - name: Install Blender
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y blender
+          blender --version
+      - name: Convert OBJ to native Blender and binary FBX
+        run: |
+          blender -b --python Assets/C01InteriorProps/C01-18/Sources/build_blender.py -- "$PWD/Assets/C01InteriorProps/C01-18"
+      - name: Verify native outputs
+        run: |
+          set -euo pipefail
+          for id in P18-01 P18-02 P18-03; do
+            blend="Assets/C01InteriorProps/C01-18/Sources/$id.blend"
+            fbx="Assets/C01InteriorProps/C01-18/Models/$id.fbx"
+            test -s "$blend"
+            test -s "$fbx"
+            head -c 7 "$blend" | grep -aFx "BLENDER"
+            head -c 18 "$fbx" | grep -a "Kaydara FBX Binary"
+          done
+      - uses: actions/upload-artifact@v4
+        with:
+          name: C01-18-native-blender-fbx
+          path: |
+            Assets/C01InteriorProps/C01-18/Sources/*.blend
+            Assets/C01InteriorProps/C01-18/Models/*.fbx
+          if-no-files-found: error
+          retention-days: 14

@@ -61,7 +61,7 @@ for asset,meta in S['assets'].items():
         if p['asset']!=asset:continue
         o=primitive(p,mats[p['material']]);o.parent=roots[p['component']]
         parts[p['component']].append(o)
-    bpy.ops.wm.save_as_mainfile(filepath=str(BL/(asset+'.blend')),compress=True)
+    bpy.ops.wm.save_as_mainfile(filepath=str(BL/(asset+'.blend')),compress=False)
     full=sum(([root]+parts[c] for c,root in roots.items()),[])
     export(FBX/(asset+'.fbx'),full)
     if asset=='P15-03':

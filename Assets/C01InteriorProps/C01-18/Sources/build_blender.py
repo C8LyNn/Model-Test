@@ -19,5 +19,5 @@ for name in ('P18-01','P18-02','P18-03'):
  bpy.ops.object.select_all(action='DESELECT')
  for o in objects:o.select_set(True)
  bpy.context.view_layer.objects.active=objects[0]
- bpy.ops.export_scene.fbx(filepath=str(root/'Models'/(name+'.fbx')),axis_forward='-Z',axis_up='Y',apply_unit_scale=True,add_leaf_bones=False,object_types={'MESH'})
+ bpy.ops.export_scene.fbx(filepath=str(root/'Models'/(name+'.fbx')))
  print('BLENDER_OK',name,len(objects))

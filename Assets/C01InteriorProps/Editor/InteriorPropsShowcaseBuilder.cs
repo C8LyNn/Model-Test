@@ -101,7 +101,7 @@ namespace C01.InteriorProps.Editor
             {
                 if (f.sharedMesh == null) continue;
                 Mesh m = f.sharedMesh;
-                triangles += (int)(m.GetIndexCount(0) / 3);
+                for (int sub=0; sub<m.subMeshCount; sub++) triangles += (int)(m.GetIndexCount(sub) / 3);
                 Bounds mb = m.bounds;
                 var tr = f.transform;
                 foreach (int dx in new[] { -1, 1 })
@@ -256,10 +256,23 @@ namespace C01.InteriorProps.Editor
                 throw new IOException("SaveScene returned false: "+file);
         }
 
+        static void ReferenceFixture(string name, Vector3 position, Vector3 size, Transform parent)
+        {
+            // Separate greybox test fixture: not a Pxx asset and not part of the existing ship.
+            var go = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            go.name = "REFERENCE_ONLY_" + name;
+            go.transform.SetParent(parent,false);
+            go.transform.localPosition = position;
+            go.transform.localScale = size;
+        }
+
         static void SaveRoom(string filename, Dictionary<string,GameObject> prefabs, string[] ids, Vector3[] points)
         {
             EditorSceneManager.NewScene(NewSceneSetup.EmptyScene,NewSceneMode.Single);
             var root = new GameObject(filename);
+            var fixtures = new GameObject("REFERENCE_ROOM_TEST_FIXTURES");
+            ReferenceFixture("Floor",new Vector3(2.5f,-.1f,2.5f),new Vector3(5f,.2f,5f),fixtures.transform);
+            ReferenceFixture("BackWall",new Vector3(2.5f,1.5f,5f),new Vector3(5f,3f,.15f),fixtures.transform);
             for (int i=0; i<ids.Length; i++)
             {
                 var s = Specs.First(x => x.Id == ids[i]);

@@ -1,0 +1,37 @@
+name: C01-17 Generate Blender Sources and FBX
+on:
+  push:
+    branches:
+      - c01/props-17-controls
+    paths:
+      - 'C01InteriorProps_Source/Specs/**'
+      - 'C01InteriorProps_Source/Tools/**'
+      - 'Assets/C01InteriorProps/Models/*.gltf'
+      - '.github/workflows/c01-17-build.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  blender-assets:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - name: Install real Blender
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y blender git-lfs
+          git lfs install --local
+      - name: Static real geometry QA
+        run: python3 C01InteriorProps_Source/Tools/qa_gltf.py
+      - name: Produce actual native blend, FBX and nine PNG renders
+        run: blender -b --factory-startup --python-exit-code 1 --python C01InteriorProps_Source/Tools/build_blender.py -- .
+      - name: Push binary outputs through Git LFS
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add C01InteriorProps_Source/Blender C01InteriorProps_Source/Previews Assets/C01InteriorProps/Models/*.fbx
+          if git diff --cached --quiet; then echo "No generated changes"; exit 0; fi
+          git commit -m "build(C01-17): real Blender FBX renders (LFS)"
+          git push origin HEAD:c01/props-17-controls

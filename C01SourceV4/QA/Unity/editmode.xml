@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="8" result="Passed" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-29 19:00:22Z" end-time="2026-10-29 19:01:42Z" duration="79,7343158">
+  <test-suite type="TestSuite" id="1000" name="Model Test" fullname="Model Test" runstate="Runnable" testcasecount="23" result="Passed" start-time="2026-10-29 19:00:22Z" end-time="2026-10-29 19:01:42Z" duration="79.734316" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1039" name="C01ShipV4.EditTests.dll" fullname="C:/Users/kubap/Documents/GitHub/Model Test/Library/ScriptAssemblies/C01ShipV4.EditTests.dll" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-10-29 19:00:22Z" end-time="2026-10-29 19:01:42Z" duration="79.726319" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="29120" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1040" name="C01" fullname="C01" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-10-29 19:00:22Z" end-time="2026-10-29 19:01:42Z" duration="79.725562" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1041" name="Ship" fullname="C01.Ship" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-10-29 19:00:22Z" end-time="2026-10-29 19:01:42Z" duration="79.724810" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1042" name="V4" fullname="C01.Ship.V4" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-10-29 19:00:22Z" end-time="2026-10-29 19:01:42Z" duration="79.724473" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestSuite" id="1043" name="Tests" fullname="C01.Ship.V4.Tests" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-10-29 19:00:22Z" end-time="2026-10-29 19:01:42Z" duration="79.724010" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1029" name="ShipV4EditTests" fullname="C01.Ship.V4.Tests.ShipV4EditTests" classname="C01.Ship.V4.Tests.ShipV4EditTests" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-10-29 19:00:22Z" end-time="2026-10-29 19:01:42Z" duration="79.723179" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1030" name="ActualSavedSceneMatchesSourceAndGeometry" fullname="C01.Ship.V4.Tests.ShipV4EditTests.ActualSavedSceneMatchesSourceAndGeometry" methodname="ActualSavedSceneMatchesSourceAndGeometry" classname="C01.Ship.V4.Tests.ShipV4EditTests" runstate="Runnable" seed="1862501632" result="Passed" start-time="2026-10-29 19:00:22Z" end-time="2026-10-29 19:00:31Z" duration="8.718991" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[C01 v4 audit PASS: 4304 placements / 17218 parts / 98 routes
+]]></output>
+                </test-case>
+                <test-case id="1036" name="ColliderMustMatchFullSourceDimensions" fullname="C01.Ship.V4.Tests.ShipV4EditTests.ColliderMustMatchFullSourceDimensions" methodname="ColliderMustMatchFullSourceDimensions" classname="C01.Ship.V4.Tests.ShipV4EditTests" runstate="Runnable" seed="498809929" result="Passed" start-time="2026-10-29 19:00:31Z" end-time="2026-10-29 19:00:36Z" duration="5.300576" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1035" name="MissingCabinBedIsRejectedAndSavedNavMeshIsUntouched" fullname="C01.Ship.V4.Tests.ShipV4EditTests.MissingCabinBedIsRejectedAndSavedNavMeshIsUntouched" methodname="MissingCabinBedIsRejectedAndSavedNavMeshIsUntouched" classname="C01.Ship.V4.Tests.ShipV4EditTests" runstate="Runnable" seed="426174759" result="Passed" start-time="2026-10-29 19:00:36Z" end-time="2026-10-29 19:00:46Z" duration="9.319265" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1034" name="MissingGateButtonIsRejected" fullname="C01.Ship.V4.Tests.ShipV4EditTests.MissingGateButtonIsRejected" methodname="MissingGateButtonIsRejected" classname="C01.Ship.V4.Tests.ShipV4EditTests" runstate="Runnable" seed="47889926" result="Passed" start-time="2026-10-29 19:00:46Z" end-time="2026-10-29 19:00:51Z" duration="5.332206" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-suite type="ParameterizedMethod" id="1033" name="MissingSurfaceIsRejectedWithFailReport" fullname="C01.Ship.V4.Tests.ShipV4EditTests.MissingSurfaceIsRejectedWithFailReport" classname="C01.Ship.V4.Tests.ShipV4EditTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-29 19:00:51Z" end-time="2026-10-29 19:01:01Z" duration="10.264053" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+                  <properties />
+                  <test-case id="1031" name="MissingSurfaceIsRejectedWithFailReport(&quot;Floors&quot;)" fullname="C01.Ship.V4.Tests.ShipV4EditTests.MissingSurfaceIsRejectedWithFailReport(&quot;Floors&quot;)" methodname="MissingSurfaceIsRejectedWithFailReport" classname="C01.Ship.V4.Tests.ShipV4EditTests" runstate="Runnable" seed="247992491" result="Passed" start-time="2026-10-29 19:00:51Z" end-time="2026-10-29 19:00:56Z" duration="5.205348" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1032" name="MissingSurfaceIsRejectedWithFailReport(&quot;Ceilings&quot;)" fullname="C01.Ship.V4.Tests.ShipV4EditTests.MissingSurfaceIsRejectedWithFailReport(&quot;Ceilings&quot;)" methodname="MissingSurfaceIsRejectedWithFailReport" classname="C01.Ship.V4.Tests.ShipV4EditTests" runstate="Runnable" seed="60909121" result="Passed" start-time="2026-10-29 19:00:56Z" end-time="2026-10-29 19:01:01Z" duration="5.037631" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                </test-suite>
+                <test-case id="1038" name="RebuildPreservesHostSettingsAndStableAssetGuids" fullname="C01.Ship.V4.Tests.ShipV4EditTests.RebuildPreservesHostSettingsAndStableAssetGuids" methodname="RebuildPreservesHostSettingsAndStableAssetGuids" classname="C01.Ship.V4.Tests.ShipV4EditTests" runstate="Runnable" seed="1924098088" result="Passed" start-time="2026-10-29 19:01:01Z" end-time="2026-10-29 19:01:37Z" duration="36.206043" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1037" name="RotatedModuleSocketsPreserveWorldPositionAndNormal" fullname="C01.Ship.V4.Tests.ShipV4EditTests.RotatedModuleSocketsPreserveWorldPositionAndNormal" methodname="RotatedModuleSocketsPreserveWorldPositionAndNormal" classname="C01.Ship.V4.Tests.ShipV4EditTests" runstate="Runnable" seed="1720578915" result="Passed" start-time="2026-10-29 19:01:37Z" end-time="2026-10-29 19:01:42Z" duration="4.566515" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[Saving results to: C:\Users\kubap\Documents\GitHub\Model Test\C01ShipV4_QA\editmode.xml
+]]></output>
+                </test-case>
+              </test-suite>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

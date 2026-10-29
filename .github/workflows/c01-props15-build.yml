@@ -1,0 +1,40 @@
+name: C01-15 real Blender sources FBX previews
+on:
+  push:
+    branches:
+      - c01/props-15-installations
+    paths:
+      - .github/workflows/c01-props15-build.yml
+      - Tools/C01Props15/**
+      - Assets/C01InteriorProps/P15/Sources/geometry_spec.json
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  blender-export:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Blender CLI
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends blender
+          blender --version | head -4
+      - name: Create actual blend sources and FBX exports
+        run: blender --background --python Tools/C01Props15/blender_build.py
+      - name: Check real file signatures and record SHA256
+        run: python3 Tools/C01Props15/validate_generated.py
+      - name: Commit generated real binaries back to isolated branch
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Assets/C01InteriorProps/P15/Sources/Blender/
+          git add Assets/C01InteriorProps/P15/Models/FBX/
+          git add Assets/C01InteriorProps/P15/Previews/Blender/
+          git add Assets/C01InteriorProps/P15/QA/blender_export_validation.json
+          if ! git diff --cached --quiet; then
+            git commit -m "C01-15: generated actual Blender FBX and preview artifacts"
+            git push origin HEAD:c01/props-15-installations
+          fi

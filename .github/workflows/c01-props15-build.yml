@@ -36,5 +36,7 @@ jobs:
           git add Assets/C01InteriorProps/P15/QA/blender_export_validation.json
           if ! git diff --cached --quiet; then
             git commit -m "C01-15: generated actual Blender FBX and preview artifacts"
+            git fetch origin c01/props-15-installations
+            git rebase origin/c01/props-15-installations
             git push origin HEAD:c01/props-15-installations
           fi

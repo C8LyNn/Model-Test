@@ -58,6 +58,9 @@ class TestC01PropValidation(unittest.TestCase):
     def test_missing_separate_part_rejected(self):
         m=fixture('P18-03');m['moving_parts']=[]
         self.assertIn('REQUIRED_MOVING_CHILD_MISSING',self.result(m)['errors'])
+    def test_mount_pivot_surface_mismatch_rejected(self):
+        m=fixture('P16-03');m['mount_surface']='ceiling'
+        self.assertIn('MOUNT_PIVOT_PROFILE_MISMATCH',self.result(m)['errors'])
     def test_wrong_status_colors_rejected(self):
         m=fixture('P16-03');m['material_variants']=['red']
         self.assertIn('STATUS_VARIANTS_MISSING',self.result(m)['errors'])

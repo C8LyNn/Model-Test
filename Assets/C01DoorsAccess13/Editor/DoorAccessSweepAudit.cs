@@ -38,6 +38,7 @@ namespace C01.Doors.Access
             public int accessoriesFound;
             public int movingLeavesChecked;
             public int possibleIntersections;
+            public int visualColliderMismatches;
             public int incompleteChecks;
             public List<Finding> findings = new List<Finding>();
         }
@@ -90,6 +91,26 @@ namespace C01.Doors.Access
                 if (!accessoryCollider)
                     Incomplete(report, "ACCESSORY_RENDERER_ONLY", accessory.name,
                         "Geometry bounds used; accessory has no enabled collision volume");
+
+                // P17-02 access-reader has a strict fixed-wall visual/collider contract.
+                // Do not let its historical root box collider hide oversized new mesh details.
+                if (accessory.name.IndexOf("P17-02", StringComparison.OrdinalIgnoreCase) >= 0)
+                {
+                    Bounds visual, physical;
+                    bool visualFound = TryRendererBounds(accessory.gameObject, out visual);
+                    bool colliderFound = TryColliderBounds(accessory.gameObject, out physical);
+                    if (!visualFound || !colliderFound)
+                        Incomplete(report, "READER_VISUAL_OR_COLLIDER_MISSING", accessory.name,
+                            "P17-02 requires both actual enabled renderers and a fixed-envelope collider");
+                    else if (ExtendsOutside(visual, physical, 0.03f))
+                    {
+                        report.visualColliderMismatches++;
+                        Add(report, "ERROR_READER_VISUAL_COLLIDER_MISMATCH", "", accessory.name,
+                            "P17-02 render geometry protrudes >30 mm beyond collider AABB; " +
+                            "verify imported FBX actual mesh (oversized fasteners, misbound guide mesh, pivot), " +
+                            "do NOT accept based only on root box collider.");
+                    }
+                }
 
                 bool boundToController = accessory.GetComponent<ShipButtonV4>() != null ||
                     accessory.GetComponentInParent<ShipButtonV4>() != null ||
@@ -153,7 +174,7 @@ namespace C01.Doors.Access
                 }
             }
 
-            if (report.possibleIntersections == 0 && report.incompleteChecks == 0)
+            if (report.possibleIntersections == 0 && report.visualColliderMismatches == 0 && report.incompleteChecks == 0)
                 Add(report, "STATIC_BROADPHASE_CLEAR", "", "",
                     "No potential AABB conflicts in inspected scope; NOT Unity PlayMode or independent QA");
             else
@@ -166,10 +187,12 @@ namespace C01.Doors.Access
             File.WriteAllText(path, JsonUtility.ToJson(report, true));
             Debug.Log("[C01-13] gates=" + report.gatesFound + " props=" + report.accessoriesFound +
                 " leavesChecked=" + report.movingLeavesChecked + " possible=" +
-                report.possibleIntersections + " incomplete=" + report.incompleteChecks +
+                report.possibleIntersections + " visualMismatch=" + report.visualColliderMismatches +
+                " incomplete=" + report.incompleteChecks +
                 "; report=" + path);
             EditorUtility.DisplayDialog("C01-13 Gate Access Audit",
                 "Possible AABB conflicts: " + report.possibleIntersections +
+                "\nVisual/Collider mismatches: " + report.visualColliderMismatches +
                 "\nIncomplete checks: " + report.incompleteChecks +
                 "\nReport: " + path + "\nNo formal QA or PlayMode verdict.", "OK");
         }
@@ -198,7 +221,8 @@ namespace C01.Doors.Access
                 else result.Encapsulate(c.bounds);
                 usedCollider = true;
             }
-            if (found) return true;
+            // Conservative broadphase must union BOTH colliders and visible meshes.
+            // Otherwise an oversized imported screw hidden by a small root collider is missed.
             foreach (var renderer in go.GetComponentsInChildren<Renderer>(true))
             {
                 if (!renderer.enabled || !renderer.gameObject.activeInHierarchy) continue;
@@ -206,6 +230,42 @@ namespace C01.Doors.Access
                 else result.Encapsulate(renderer.bounds);
             }
             return found;
+        }
+
+        static bool TryRendererBounds(GameObject go, out Bounds bounds)
+        {
+            bounds = new Bounds();
+            bool found = false;
+            foreach (var renderer in go.GetComponentsInChildren<Renderer>(true))
+            {
+                if (!renderer.enabled || !renderer.gameObject.activeInHierarchy) continue;
+                if (!found) { bounds = renderer.bounds; found = true; }
+                else bounds.Encapsulate(renderer.bounds);
+            }
+            return found;
+        }
+
+        static bool TryColliderBounds(GameObject go, out Bounds bounds)
+        {
+            bounds = new Bounds();
+            bool found = false;
+            foreach (var collider in go.GetComponentsInChildren<Collider>(true))
+            {
+                if (!collider.enabled || !collider.gameObject.activeInHierarchy) continue;
+                if (!found) { bounds = collider.bounds; found = true; }
+                else bounds.Encapsulate(collider.bounds);
+            }
+            return found;
+        }
+
+        static bool ExtendsOutside(Bounds visual, Bounds collider, float tolerance)
+        {
+            return visual.min.x < collider.min.x - tolerance ||
+                   visual.min.y < collider.min.y - tolerance ||
+                   visual.min.z < collider.min.z - tolerance ||
+                   visual.max.x > collider.max.x + tolerance ||
+                   visual.max.y > collider.max.y + tolerance ||
+                   visual.max.z > collider.max.z + tolerance;
         }
 
         static void Incomplete(Evidence report, string code, string name, string reason)

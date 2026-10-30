@@ -30,6 +30,8 @@ jobs:
         run: xvfb-run -a blender -b --factory-startup --python-exit-code 1 --python C01InteriorProps_W02/Tools/topology_repair.py -- .
       - name: PASS03 reimport repaired FBX and verify UV, scale and pivots
         run: xvfb-run -a blender -b --factory-startup --python-exit-code 1 --python C01InteriorProps_W02/Tools/fbx_roundtrip.py -- .
+      - name: PASS04 strict Blender-source versus real FBX audit
+        run: xvfb-run -a blender -b --factory-startup --python-exit-code 1 --python C01InteriorProps_W02/Tools/pass04_strict_fbx.py -- .
       - name: Upload sources and renders as direct artifact
         uses: actions/upload-artifact@v4
         with:
@@ -41,11 +43,12 @@ jobs:
             C01InteriorProps_W02/Previews/*.png
             C01InteriorProps_W02/QA/BLENDER_FBX_ROUNDTRIP.json
             C01InteriorProps_W02/QA/PASS03/**
+            C01InteriorProps_W02/QA/PASS04/**
       - name: Commit real binary sources/exports through Git LFS
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add C01InteriorProps_W02/Blender Assets/C01InteriorProps/W02/Models/*.fbx C01InteriorProps_W02/Previews C01InteriorProps_W02/QA/BLENDER_FBX_ROUNDTRIP.json C01InteriorProps_W02/QA/PASS03
+          git add C01InteriorProps_W02/Blender Assets/C01InteriorProps/W02/Models/*.fbx C01InteriorProps_W02/Previews C01InteriorProps_W02/QA/BLENDER_FBX_ROUNDTRIP.json C01InteriorProps_W02/QA/PASS03 C01InteriorProps_W02/QA/PASS04
           if git diff --cached --quiet; then echo "No changes"; exit 0; fi
           git commit -m "build(C01-17 W02): native Blender FBX and 12 previews (LFS)"
           git push origin HEAD:c01/props-17-wave02

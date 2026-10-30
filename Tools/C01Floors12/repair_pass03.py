@@ -153,7 +153,7 @@ def one(id,stem):
  previews['endcap_closeup_after']=screenshot(obj,id,'ENDCAP_CLOSEUP',zoom=True)
  bpy.ops.object.select_all(action='DESELECT');obj.select_set(True);bpy.context.view_layer.objects.active=obj
  blend=OUT/'Blend'/f'{stem}_v003.blend';fbx=OUT/'FBX'/f'{stem}_v003.fbx'
- bpy.ops.wm.save_as_mainfile(filepath=str(blend),compress=True)
+ bpy.ops.wm.save_as_mainfile(filepath=str(blend),compress=False)
  bpy.ops.export_scene.fbx(filepath=str(fbx),use_selection=True,object_types={'MESH'},
   global_scale=1,apply_unit_scale=True,axis_forward='-Z',axis_up='Y',
   add_leaf_bones=False,bake_anim=False,use_mesh_modifiers=False)

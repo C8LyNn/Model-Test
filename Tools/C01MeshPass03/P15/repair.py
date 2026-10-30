@@ -82,10 +82,10 @@ def audit_meshes(objects):
 def repair_part(o,log):
  pre=audit_obj(o)
  bm=bmesh.new();bm.from_mesh(o.data)
- bm.verts.ensure_lookup_table();bm.edges.ensure_lookup_table();bm.faces.ensure_lookup_table()
+ bm.verts.ensure_lookup_table();bm.edges.ensure_lookup_table();bm.faces.ensure_lookup_table();bm.verts.index_update()
  duplicates={}
  for face in list(bm.faces):
-  k=tuple(sorted(id(v) for v in face.verts))
+  k=tuple(sorted(v.index for v in face.verts))
   if k in duplicates:
    bmesh.ops.delete(bm,geom=[face],context="FACES")
    log.append({"mesh":o.name,"type":"duplicate_face","action":"deleted duplicate face"})
@@ -207,7 +207,7 @@ for aid in IDS:
  backupfbx=BEFORE/(aid+".fbx")
  if not backup.exists():shutil.copy2(original,backup)
  if outputfbx.exists() and not backupfbx.exists():shutil.copy2(outputfbx,backupfbx)
- bpy.ops.wm.open_mainfile(filepath=str(original))
+ bpy.ops.wm.open_mainfile(filepath=str(backup))
  objs=list_objects()
  before=audit_meshes(objs)
  orig_geometry={o.name:{"mesh_name":o.data.name,"object_type":o.type,"location":tuple(round(v,8) for v in o.location),
@@ -233,6 +233,11 @@ for aid in IDS:
  geometry_identity=all(name in new_geo and
    all(orig_geometry[name][k]==new_geo[name][k] for k in ("location","scale","rotation","parent"))
    for name in orig_geometry) and len(orig_geometry)==len(new_geo)
+ # Abort if faces or boundaries are lost except the 2 intended gauge end caps.
+ loss=before["total"]["triangles"]-after["total"]["triangles"]
+ allowable=40 if aid=="P15-07" else 0
+ if loss>allowable or after["total"]["boundary_edges"]>before["total"]["boundary_edges"]:
+  raise RuntimeError("safety gate "+aid+" triangle loss="+str(loss)+" boundaries="+str(before["total"]["boundary_edges"])+"/"+str(after["total"]["boundary_edges"]))
  before_bounds=state_bounds(newobjs)
  # save real changed source and re-export always from original source objects
  bpy.ops.wm.save_as_mainfile(filepath=str(original),compress=False)

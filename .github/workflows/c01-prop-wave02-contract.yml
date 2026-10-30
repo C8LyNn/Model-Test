@@ -21,7 +21,7 @@ jobs:
           python-version: '3.11'
       - name: Compile Wave02 Python source
         run: python -m py_compile Tools/c01_props/validate_wave02.py Tests/c01_props/test_wave02.py
-      - name: Run 16 Wave02 synthetic unit tests
+      - name: Run 18 Wave02 synthetic unit tests
         run: python -m unittest discover -s Tests/c01_props -p 'test_wave02.py' -v
       - name: Check actual 20-slot Wave02 contract against immutable Wave01
         run: python Tools/c01_props/validate_wave02.py --output /tmp/c01_wave02_contract_report.json

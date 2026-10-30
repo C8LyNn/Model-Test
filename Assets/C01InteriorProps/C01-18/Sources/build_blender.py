@@ -53,7 +53,35 @@ for name in ('P18-01','P18-02','P18-03'):
     world=retainer.matrix_world.copy()
     retainer.parent=pin
     retainer.matrix_world=world
- expected={'P18-01':(41,844),'P18-02':(51,1044),'P18-03':(57,1628)}
+ # Reference-driven PASS16: new moving lid keepers inherit lid transform,
+ # whereas rear-brace and caster-plate fasteners remain on rigid supports.
+ if name=='P18-01':
+  lid=by_name.get('Upper_Lid')
+  if lid is None:raise RuntimeError('P18-01 missing Upper_Lid')
+  for side in ('L','R'):
+   child=by_name.get('FrontLatch_'+side+'_UpperKeeper')
+   if child is None:raise RuntimeError('P18-01 missing lid keeper '+side)
+   world=child.matrix_world.copy()
+   child.parent=lid
+   child.matrix_world=world
+ if name=='P18-02':
+  for height in ('0.60','1.48'):
+   for side in ('L','R'):
+    parent=by_name.get('BackSupport_'+height+'_Gusset_'+side)
+    child=by_name.get('BackSupport_'+height+'_GussetFastener_'+side)
+    if parent is None or child is None:raise RuntimeError('P18-02 missing rear gusset/fastener '+height+side)
+    world=child.matrix_world.copy()
+    child.parent=parent
+    child.matrix_world=world
+ if name=='P18-03':
+  for wheel in ('Wheel_LB','Wheel_LF','Wheel_RB','Wheel_RF'):
+   parent=by_name.get(wheel+'_Anchor')
+   child=by_name.get(wheel+'_AnchorRetainer')
+   if parent is None or child is None:raise RuntimeError('P18-03 missing stationary caster mount '+wheel)
+   world=child.matrix_world.copy()
+   child.parent=parent
+   child.matrix_world=world
+ expected={'P18-01':(43,868),'P18-02':(55,1172),'P18-03':(61,1724)}
  assert len(objects)==expected[name][0], f'{name} expected {expected[name][0]} authored mesh parts, got {len(objects)}'
  tri=lambda arr:sum(max(0,len(p.vertices)-2) for o in arr for p in o.data.polygons)
  assert tri(objects)==expected[name][1], f'{name} authored triangles changed: {tri(objects)}'

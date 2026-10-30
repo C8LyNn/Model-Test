@@ -21,8 +21,9 @@ jobs:
       - name: Install actual Blender
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y blender
+          sudo apt-get install -y blender python3-numpy
           blender --version | head -n 2
+          blender --background --python-exit-code 13 --python-expr 'import numpy; print("NUMPY_OK", numpy.__version__)'
       - name: Compile audit source
         run: python3 -m py_compile Tools/c01_mesh_repair/topology_audit.py Tests/c01_mesh_repair/test_topology_blender.py Tools/c01_mesh_repair/compare_topology_reports.py Tests/c01_mesh_repair/test_compare_reports.py
       - name: Compare report safety tests (10/10)
@@ -57,8 +58,9 @@ jobs:
       - name: Install actual Blender
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y blender
+          sudo apt-get install -y blender python3-numpy
           blender --version | head -n 2
+          blender --background --python-exit-code 13 --python-expr 'import numpy; print("NUMPY_OK", numpy.__version__)'
       - name: Capture producer commit identities
         run: |
           mkdir -p reports
@@ -179,7 +181,7 @@ jobs:
       - name: Install actual Blender
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y blender
+          sudo apt-get install -y blender python3-numpy
       - name: Repair ONLY exact detached-face boxes in historical production .blend
         shell: bash
         run: |

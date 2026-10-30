@@ -23,6 +23,8 @@ jobs:
           blender --version | head -4
       - name: Create actual blend sources and FBX exports
         run: LIBGL_ALWAYS_SOFTWARE=1 xvfb-run -a blender --background --python Tools/C01Props15/blender_build.py
+      - name: Import actual FBX into Blender and audit UV normals materials
+        run: LIBGL_ALWAYS_SOFTWARE=1 xvfb-run -a blender --background --python Tools/C01Props15/blender_verify.py
       - name: Check real file signatures and record SHA256
         run: python3 Tools/C01Props15/validate_generated.py
       - name: Commit generated real binaries back to isolated branch
@@ -34,6 +36,7 @@ jobs:
           git add Assets/C01InteriorProps/P15/Models/FBX/
           git add Assets/C01InteriorProps/P15/Previews/Blender/
           git add Assets/C01InteriorProps/P15/QA/blender_export_validation.json
+          git add Assets/C01InteriorProps/P15/QA/blender_mesh_roundtrip.json
           if ! git diff --cached --quiet; then
             git commit -m "C01-15: generated actual Blender FBX and preview artifacts"
             git fetch origin c01/props-15-installations

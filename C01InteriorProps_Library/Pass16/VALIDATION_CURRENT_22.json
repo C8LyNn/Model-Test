@@ -1,0 +1,65 @@
+{
+  "schema": "C01-03-PASS16-CURRENT-REGISTRY-QA-22",
+  "date": "2026-10-30",
+  "actual_check_scope": "C01-03 metadata, source hash receipts and source reference index. Existing C01-02 scoped independent source mesh tests linked separately; Blender native export, final binary QA, Unity NOT RUN.",
+  "input_blobs": {
+    "live_registry_git_blob_sha1": "74d18f2c67c4e1b7b3e0f1fc57935b44614fe105",
+    "reference_library_git_blob_sha1": "6f834cb60525096093d9f603a9d517a1ce146a7e",
+    "independent_C01_02_report_git_blob_sha1": "7cf6b5de21fb79a292c88febb8eeccf40a6180a6"
+  },
+  "tests": {
+    "existing_asset_IDs_36": true,
+    "unique_IDs": true,
+    "owner_distribution_7_7_7_7_8": true,
+    "actual_SHA256_sources_exactly_10": true,
+    "each_sha256_64_lower_hex": true,
+    "each_git_blob_sha1_40_lower_hex": true,
+    "each_source_commit_SHA1_40_lower_hex": true,
+    "all_source_pins_to_existing_model_ids": true,
+    "P15_shared_spec_version_is_0_1_5": true,
+    "P17_01_actual_source_after_repair": true,
+    "P18_aggregate_159_parts_3764_triangles": true,
+    "P16_detail_8_parts_160_triangles": true,
+    "reference_families_5": true,
+    "reference_links_23": true,
+    "each_family_3_to_5_links": true,
+    "reference_model_ID_valid": true,
+    "no_external_media_claimed_licensed": true,
+    "all_native_new_Blender_SHA_null": true,
+    "all_native_new_FBX_SHA_null": true,
+    "all_Unity_not_run": true,
+    "all_36_release_blocked": true,
+    "P19_07_visual_hold": true,
+    "P19_01_offline_candidate_not_promoted": true
+  },
+  "checks_PASS": 23,
+  "checks_FAIL": 0,
+  "actions": {
+    "recent_failed_workflow_job_samples": [
+      {
+        "run_id": 41138429511,
+        "name": "blender-binary-export",
+        "runner_id": null,
+        "executed_steps": 0
+      },
+      {
+        "run_id": 41138214564,
+        "name": "blender-export",
+        "runner_id": null,
+        "executed_steps": 0
+      },
+      {
+        "run_id": 41137473086,
+        "name": "check-manifest",
+        "runner_id": null,
+        "executed_steps": 0
+      }
+    ],
+    "runner_failure_root_cause": "UNKNOWN",
+    "Blender_4_x_native_export": "NOT_RUN",
+    "Unity6_URP": "NOT_RUN",
+    "native_release": "BLOCKED_36_OF_36"
+  },
+  "no_merge": true,
+  "no_new_asset_ids": true
+}

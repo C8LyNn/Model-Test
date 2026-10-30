@@ -32,7 +32,7 @@ namespace C01.Doors.Access
             public string scope;
             public string utc;
             public string contract = "C01-SHIP-V4 SLIDING GATES (NOT LEGACY D01/D02)";
-            public string method = "World-space Collider.bounds AABB translational sweep; conservative broadphase only";
+            public string method = "World-space Collider+Renderer AABB translational sweep; conservative broadphase plus P17-02 visual/collider envelope check";
             public float safetyMarginMetres = ClearanceM;
             public int gatesFound;
             public int accessoriesFound;

@@ -1,0 +1,197 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "C01 PASS03 Actual Blender Mesh Topology Report",
+  "description": "Reports must be generated from the real Blender mesh API, before and after repair. Schema alone is not quality acceptance.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "asset_id",
+    "phase",
+    "source_blend_sha256",
+    "inspection_tool",
+    "blender_version",
+    "producer_commit",
+    "meshes",
+    "evidence_paths"
+  ],
+  "properties": {
+    "asset_id": {
+      "type": "string",
+      "pattern": "^C01-P(15|16|17|18|19)-[0-9]{2}$"
+    },
+    "phase": {
+      "type": "string",
+      "enum": [
+        "BEFORE",
+        "AFTER"
+      ]
+    },
+    "source_blend_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "producer_commit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "inspection_tool": {
+      "const": "BLENDER_MESH_API"
+    },
+    "blender_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidence_paths": {
+      "type": "object",
+      "required": [
+        "wireframe"
+      ],
+      "properties": {
+        "wireframe": {
+          "type": "string",
+          "minLength": 1
+        },
+        "shaded": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "detail": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "meshes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "mesh_name",
+          "vertices",
+          "edges",
+          "faces",
+          "triangles",
+          "connected_components",
+          "loose_vertices",
+          "loose_edges",
+          "degenerate_faces",
+          "duplicate_faces",
+          "duplicate_vertex_candidates",
+          "boundary_edges",
+          "non_manifold_edges",
+          "winding_inconsistencies",
+          "t_junction_candidates",
+          "self_intersection_candidates",
+          "coplanar_overlap_candidates",
+          "intentional_exceptions"
+        ],
+        "properties": {
+          "mesh_name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "intentionally_open": {
+            "type": "boolean"
+          },
+          "intentionally_moving_part": {
+            "type": "boolean"
+          },
+          "intentional_exceptions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "kind",
+                "affected_component",
+                "reason"
+              ],
+              "properties": {
+                "kind": {
+                  "type": "string"
+                },
+                "affected_component": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "reason": {
+                  "type": "string",
+                  "minLength": 10
+                }
+              }
+            }
+          },
+          "vertices": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "edges": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "faces": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "triangles": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "connected_components": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "loose_vertices": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "loose_edges": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "degenerate_faces": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "duplicate_faces": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "duplicate_vertex_candidates": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "boundary_edges": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "non_manifold_edges": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "winding_inconsistencies": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "t_junction_candidates": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "self_intersection_candidates": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "coplanar_overlap_candidates": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

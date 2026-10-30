@@ -1,0 +1,55 @@
+{
+  "schema": "C01_P15_PASS12_DETAIL_SOURCE_CHECK_V1",
+  "scope": "P15-03 existing electrical cabinet, original model ID only",
+  "authoring_source_commit": "4783222ca7e83ca55b745cbf658a555bd6531a17",
+  "authoring_source_blob_git_sha": "198f2e571c3d514c7cca8d09b2718bd8466a4797",
+  "old_source_blob_git_sha": "c5570227748e7a45ebb78c4d552727af260a2d71",
+  "source_geometry_modified": true,
+  "actual_authoring_change": "Two mechanical hinge assemblies: 2 body mounts, 2 body axle pins, 2 door sleeves. Original 24 geometry parts remain byte-semantically unchanged in live source JSON.",
+  "before": {
+    "parts": 24,
+    "triangles": 288
+  },
+  "after_offline_candidate": {
+    "parts": 30,
+    "triangles": 440,
+    "added_triangles": 152,
+    "added_parts": 6,
+    "closed_watertight_objects": 30,
+    "degenerate_triangles": 0
+  },
+  "integrity_checks": {
+    "source_parts_unchanged": true,
+    "source_asset_transforms_pivots_unchanged": true,
+    "source_material_roles_unchanged": true,
+    "original_source_spec_git_readback": "PASS",
+    "offline_geometry_glb_reload": "PASS",
+    "before_after_model_bounds_identical": true,
+    "count_of_new_part_to_existing_bbox_interface_tests": 8,
+    "bbox_interface_tests": "PASS_AS_CANDIDATES_NOT_TRUE_TRIANGLE_INTERSECTION",
+    "native_new_blend": "NOT RUN",
+    "actual_blender_binary_fbx": "NOT RUN",
+    "blender_roundtrip": "NOT RUN",
+    "native_uv0_normals": "NOT RUN",
+    "independent_C01_02": "NOT RUN",
+    "unity_6_urp": "NOT RUN"
+  },
+  "added_part_names": [
+    "Hinge_Lower_Mount",
+    "Hinge_Lower_AxlePin",
+    "Hinge_Lower_Sleeve",
+    "Hinge_Upper_Mount",
+    "Hinge_Upper_AxlePin",
+    "Hinge_Upper_Sleeve"
+  ],
+  "offline_candidate_sha256": {
+    "glb": "dad208d97949c5f69a5effceb07f5d9c158a08257dc08caeac939ab7b4208b21",
+    "obj": "be98d200e5d8cc138a1bdb11ff8bc8b856990a74c89a33b41efa567e16e8c185",
+    "zip": "3a063480d35088e3981c8928cf55bf36126ff8e55d827c492fb32fed219e3edb"
+  },
+  "provenance_note": "Offline GLB/OBJ generated from original Wave01 .zip authoring spec and six equivalent extra hinge components. Current GitHub source was independently read and proved old 57 entries unchanged plus exactly six new parts. Legacy original GLB SHA matches archived P15-03 model manifest. Offline candidate is NOT a substitute for current authoritative Blender source and MUST NOT be promoted as native Blender/FBX.",
+  "release_gate": "DRAFT_REVIEW_ONLY_NEEDS_OWNER_ACTION_FOR_REAL_BLENDER4_NATIVE_EXPORT",
+  "no_new_model_ids": true,
+  "no_ship_changes": true,
+  "no_merge": true
+}

@@ -1,0 +1,135 @@
+{
+  "schema": "C01-15_DETAIL_PASS15_P15-01_SOURCE_QA",
+  "owner": "C01-15",
+  "asset_id": "P15-01",
+  "stage": "AUTHORING_SOURCE_WITH_OFFLINE_GEOMETRY_QA",
+  "issue": 36,
+  "pr": 16,
+  "authoring_source": {
+    "path": "Assets/C01InteriorProps/P15/Sources/geometry_spec.json",
+    "commit_sha": "4de19533a134203d415f39f07fef449f0b41f4a8",
+    "git_blob_sha1": "eb015d7714a5d4179275ead0f8a3af21e767696a",
+    "file_sha256": "7f3d602af1040431134aa4cca236fb36c9613d77160b383f175ec6c02d144703",
+    "version_before": "0.1.3",
+    "version_after": "0.1.4"
+  },
+  "asset_ids_added": 0,
+  "other_assets_modified": 0,
+  "actual_source_changes": {
+    "original_total_parts": 67,
+    "new_total_parts": 75,
+    "original_P15_01_parts": 17,
+    "new_P15_01_parts": 25,
+    "existing_parts_corrected": [
+      "UClipTop230",
+      "UClipBottom230",
+      "Bolt0.23_-0.055",
+      "Bolt0.23_0.055",
+      "UClipTop770",
+      "UClipBottom770",
+      "Bolt0.77_-0.055",
+      "Bolt0.77_0.055"
+    ],
+    "new_parts": [
+      "ClampTieRear230",
+      "ClampTieFront230",
+      "ClampLockScrewTop230",
+      "ClampLockScrewBottom230",
+      "ClampTieRear770",
+      "ClampTieFront770",
+      "ClampLockScrewTop770",
+      "ClampLockScrewBottom770"
+    ]
+  },
+  "physical_interfaces_mm": {
+    "old_mount_bolt_gap": 0.5,
+    "new_mount_bolt_plate_penetration": 0.5,
+    "old_clip_to_pipe_gap": 8.5,
+    "new_clip_to_pipe_tangency": 0,
+    "rear_tie_to_plate_penetration": 2,
+    "rear_tie_to_post_positive": true,
+    "rear_tie_clearance_from_pipe": 1.5,
+    "front_tie_clearance_from_pipe": 2.5,
+    "top_bottom_clip_to_rear_tie_overlap_y": 8.5,
+    "top_bottom_clip_to_rear_tie_overlap_z": 3.5,
+    "top_bottom_clip_to_front_tie_overlap_y": 8.5,
+    "top_bottom_clip_to_front_tie_overlap_z": 6.5,
+    "lock_screw_to_front_tie_seat": 1,
+    "lock_screw_front_face_protrusion": 1
+  },
+  "offline_reconstructed_P15_01": {
+    "original_parts": 17,
+    "after_parts": 25,
+    "original_vertices": 306,
+    "after_vertices": 394,
+    "original_triangles": 544,
+    "after_triangles": 688,
+    "original_and_after_degenerate_triangles": 0,
+    "after_watertight_parts": 25,
+    "after_consistent_winding_parts": 25,
+    "after_positive_volume_parts": 25,
+    "original_bounds_xyz_m": [
+      [
+        0,
+        -0.07,
+        0
+      ],
+      [
+        1,
+        0.07,
+        0.141
+      ]
+    ],
+    "after_bounds_xyz_m": [
+      [
+        0,
+        -0.066,
+        0
+      ],
+      [
+        1,
+        0.066,
+        0.141
+      ]
+    ],
+    "same_facing_axis_aligned_coplanar_overlap_pairs_before": 0,
+    "same_facing_axis_aligned_coplanar_overlap_pairs_after": 0,
+    "same_facing_axis_aligned_coplanar_area_m2_before": 0,
+    "same_facing_axis_aligned_coplanar_area_m2_after": 0,
+    "analytic_contact_checks": "48/48 PASS",
+    "glb_offline_sha256": "a92e2df83c3a58621907f0a0420600823b2e5cf4020447ad416585e4a0ef68a7"
+  },
+  "user_package": {
+    "name": "C01-15_DETAIL_PASS15_P15-01_SOURCE_QA.zip",
+    "sha256": "84cdabf3cddcc844afa96f112f996d1ab3f1242c0c10e7be00fd1e125983bdc2",
+    "contents": [
+      "P15-01_BEFORE_PASS15_SHADED.png",
+      "P15-01_BEFORE_PASS15_WIREFRAME.png",
+      "P15-01_AFTER_PASS15_SHADED.png",
+      "P15-01_AFTER_PASS15_WIREFRAME.png",
+      "P15-01_PASS15_OFFLINE_SOURCE_CANDIDATE.glb",
+      "P15-01_PASS15_OFFLINE_QA.json",
+      "README.md"
+    ],
+    "provenance": "Offline Python trimesh/matplotlib reconstruction from exact authoring spec; NOT native Blender renders or Blender exporter."
+  },
+  "caveats": [
+    "Axis-aligned same-facing coplanar scan does not prove absence of oblique overlap, full interpenetration or visual z-fighting.",
+    "Analytical box/cylinder contact checks do not replace Blender surface-level or Unity runtime clearance testing.",
+    "Offline GLB was not created by Blender and must not replace the stale production FBX."
+  ],
+  "gates": {
+    "source_changes_committed": "PASS",
+    "targeted_source_contact": "PASS",
+    "offline_reconstructed_mesh_topology": "PASS",
+    "source_sided_planar_overlap": "PASS",
+    "native_blender_4_save": "NOT_RUN",
+    "new_blender_binary_fbx_export": "NOT_RUN",
+    "new_blender_fbx_reimport": "NOT_RUN",
+    "authentic_blender_shaded_wireframe": "NOT_RUN",
+    "independent_C01_02": "PENDING",
+    "Unity6_URP": "NOT_RUN",
+    "release": "BLOCKED_NEEDS_OWNER_ACTION"
+  },
+  "next_action": "Use authorized Blender 4.x + hydrated Git LFS to generate real P15-01.blend and binary P15-01.fbx from current v0.1.4 spec; inspect clamp/pipe tangency and per-mesh UV0/normals/cross-part intersections, take same-camera native before/after, record actual model SHA256, request independent C01-02 final binary QA and C01-10 Unity staging. Keep PR16 DRAFT/no merge."
+}

@@ -1,0 +1,67 @@
+{
+  "contract": "C01-MAS-0.2-W02 / legacy PORTAL_P01",
+  "source": "Actual original v002 GLB triangles",
+  "scope": "D01 D02 only, not P15-P19 props",
+  "status": "LOCAL_STATIC_PASS; DCC_UNITY_QA_PENDING",
+  "inputHashes": {
+    "D01": "661fce22f352640f4a9dd2153dc48be019d2064b89afbf367a8ebfe326ca4bc5",
+    "D02": "8604ac2e53be8fce93e015ad916e9a65baff31cb87938ac83b831003c1303e2c"
+  },
+  "before": {
+    "D01": {
+      "vertices": 24,
+      "edges": 54,
+      "faces": 36,
+      "triangles": 36,
+      "components": 3,
+      "missingUV0": true,
+      "internalCoplanarContactPairCount": 2,
+      "eachContactAreaM2": 0.019999980926513672,
+      "degenerate": 0,
+      "nonManifold": 0,
+      "boundary": 0
+    },
+    "D02": {
+      "vertices": 8,
+      "edges": 18,
+      "faces": 12,
+      "triangles": 12,
+      "components": 1,
+      "missingUV0": true,
+      "degenerate": 0,
+      "nonManifold": 0,
+      "boundary": 0
+    }
+  },
+  "after": {
+    "D01": {
+      "vertices": 20,
+      "edges": 54,
+      "faces": 36,
+      "triangles": 36,
+      "components": 1,
+      "uv0": true,
+      "internalCoplanarContactPairCount": 0,
+      "degenerate": 0,
+      "nonManifold": 0,
+      "boundary": 0
+    },
+    "D02": {
+      "vertices": 8,
+      "edges": 18,
+      "faces": 12,
+      "triangles": 12,
+      "components": 1,
+      "uv0": true,
+      "degenerate": 0,
+      "nonManifold": 0,
+      "boundary": 0
+    }
+  },
+  "checks": "Local package validator: 35 PASS, 0 FAIL (static file format and geometry checks only)",
+  "blender": "NOT_RUN",
+  "unity": "NOT_RUN",
+  "QA": "PENDING",
+  "binaryExportInThisPR": "MISSING (provided as separate downloadable package)",
+  "blenderNativeBlendInThisPR": "MISSING"
+}

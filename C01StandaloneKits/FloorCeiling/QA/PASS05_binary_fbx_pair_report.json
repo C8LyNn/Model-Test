@@ -1,0 +1,72 @@
+{
+  "scope": "historical F01 F02 C01 only; outside 36 P15-P19",
+  "source": "real binary FBX-7400 v002/v003, standalone local test 2026-10-30",
+  "models": {
+    "F01": {
+      "fbx_sha256_before": "d721b969556530028a6c850e26e57c6269347c07a5f490740e05b8b5b8881167",
+      "fbx_sha256_after": "077a2b04520b116d0a28f62d78f8a75b67354a59f528a8814417207d077f24aa",
+      "geometry_signature_same": true,
+      "v_e_f_t_before": [
+        16,
+        28,
+        14,
+        28
+      ],
+      "v_e_f_t_after": [
+        16,
+        28,
+        14,
+        28
+      ],
+      "uv0_degenerate_triangles_before": 4,
+      "uv0_degenerate_triangles_after": 0,
+      "fbx_v003_error_count": 0
+    },
+    "F02": {
+      "fbx_sha256_before": "1089290bc02eb133802706cfe417dbb0323f740160864042f9a3dab210332507",
+      "fbx_sha256_after": "c0bb15467d3657d501e8d7516457bdba08cea6addace9079a1fa291a45c31346",
+      "geometry_signature_same": true,
+      "v_e_f_t_before": [
+        16,
+        28,
+        14,
+        28
+      ],
+      "v_e_f_t_after": [
+        16,
+        28,
+        14,
+        28
+      ],
+      "uv0_degenerate_triangles_before": 4,
+      "uv0_degenerate_triangles_after": 0,
+      "fbx_v003_error_count": 0
+    },
+    "C01": {
+      "fbx_sha256_before": "d65985743a5dd6230dd849b199173d60052ee9ed8a2fd4da04f0ee43b8459f78",
+      "fbx_sha256_after": "28a6af0913dc18b787b2833a1e9d0b62260917c92765abc586e6e501600de164",
+      "geometry_signature_same": true,
+      "v_e_f_t_before": [
+        16,
+        28,
+        14,
+        28
+      ],
+      "v_e_f_t_after": [
+        16,
+        28,
+        14,
+        28
+      ],
+      "uv0_degenerate_triangles_before": 4,
+      "uv0_degenerate_triangles_after": 0,
+      "fbx_v003_error_count": 0
+    }
+  },
+  "method": "FBX raw vertices polygon index normals UV material extraction, indexed topology and per-loop checks",
+  "full_reproducer": "C01-12_PASS05_REAL_BINARY_FBX_BEFORE_AFTER.zip/compare_pass05.py",
+  "blender_pass05": "NOT_RUN",
+  "unity_pass05": "NOT_RUN",
+  "independent_qa": "PENDING",
+  "model_changed_pass05": false
+}

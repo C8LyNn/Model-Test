@@ -1,0 +1,2560 @@
+{
+  "schema": "C01-03-PASS13-36-ASSET-CONTACT_AND_SHA_RELEASE_REGISTRY",
+  "issue": "https://github.com/C8LyNn/Model-Test/issues/36",
+  "native_export_issue": "https://github.com/C8LyNn/Model-Test/issues/33",
+  "owner": "C01-03",
+  "source_of_pass12_manifest_git_blob": "f442c42d6b9c5ff0fb74368bc473f084b32f0901",
+  "actual_GitHub_evidence_blob_SHA": {
+    "prior": "f442c42d6b9c5ff0fb74368bc473f084b32f0901",
+    "p18": "3a9931dde9e8b9255f8fc8401c93bade307c754e",
+    "p17": "3633507fc4c07f90f5c59f6fe36e9f8f8da0753c",
+    "p15": "81bf33fc201e893e74a5752597b784d54369b9e9",
+    "p19a": "cae639dca7a22edc4d50fc99410f6e1a9a33ce12",
+    "p19b": "a7449aa987107bf79657215d6fc078721cd0488f"
+  },
+  "producer_head_SHA_pins": {
+    "12": "06afbd660c4d5fe9ab2f522cbae3b42bb59926f2",
+    "15": "7bd4bf809932514bd25b49e5a9bb3855aa5f1997",
+    "16": "09173a980a21fd00f3e8a364570b8f388996dfae",
+    "17": "cf405ed6636c9788cfd4c9d4d35e99a8683902dc",
+    "18": "24b03911ee423240d03a5de5b39a1655b257b131",
+    "23": "95acf91c5ce32df1e02ad118b7663a356a913f10",
+    "25": "0f35d273ae564a22f39e73e020b620e300a40778",
+    "26": "2a716f81394538b07f1dd83d7d94932d080ecaca",
+    "28": "7dbd44f37e702ab0eccd128968bcf8a19af2d7b2",
+    "29": "7cef36d2a6818ee06a2db902f18b88b2f4d54454"
+  },
+  "source_contact_algorithm": "Actual v vertices per OBJ object grouped, strict positive AABB overlap graph; any disjoint AABB proves no spatial contact. glTF base64 actual POSITION float32 plus instance scale+translation, check screw bottom cap vertices and Keybed/Housing Z bounds.",
+  "model_status_by_id": [
+    {
+      "id": "P15-01",
+      "owner": "C01-15",
+      "producer_pr": 16,
+      "head_commit_sha": "09173a980a21fd00f3e8a364570b8f388996dfae",
+      "immutable_original": {
+        "blend_sha256": "9d467364e439441fe9d5b3f58c1efae3afb1ff85056b5423c93f594313f54fac",
+        "fbx_sha256": "c8a65812910af6e40177f336d4568d71abd0b29cb5816c8a65ca0943ab9b9a2d",
+        "commit": "fa337ef7e942fb21c0ff879c4813ffcfc2526d41"
+      },
+      "previous_independent_real_binary_fbx_sha256": null,
+      "previous_QA_source_class": "NO_HYDRATED_CURRENT_BINARY",
+      "editable_source_after": null,
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "NOT_RUN",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED",
+      "pass10_new_native_blend_saved_sha256": null,
+      "pass10_new_native_fbx_export_sha256": null,
+      "pass10_blender_fbx_roundtrip": "NOT_RUN",
+      "pass10_unity_6": "NOT_RUN",
+      "pass10_release": "BLOCKED",
+      "pass10_git_lfs_pointer_receipts": {
+        "native_blend": {
+          "oid_sha256": "4109a4734a58ef905cebb49229138957a00657b6cddf41249f855eefeec3973a",
+          "git_blob_sha1": "fa5b05a8cba701e3afd4a9c84f1fcc106882588f",
+          "size": 563456
+        },
+        "binary_fbx": {
+          "oid_sha256": "657836b58af85c6bcc3ecfe7fa59d32b4ae4dbd8ceb259fb375c8c3ce4d17274",
+          "git_blob_sha1": "4f38d2d32c775d4726b6be0e69d36661f71481a0",
+          "size": 61180
+        },
+        "checked": true,
+        "hydrated_real_bytes": false,
+        "QA_approval": false
+      },
+      "pass12": {
+        "source_detail_revision": false,
+        "status": "BLOCKED"
+      },
+      "pass13": {
+        "producer_source_head_sha": "09173a980a21fd00f3e8a364570b8f388996dfae",
+        "source_version": null,
+        "kind": null,
+        "topology_source_static": "NOT_RUN",
+        "source_contact": "NOT_RUN",
+        "confirmed_gap_mm": [],
+        "new_native_blender_save": "NOT_RUN",
+        "new_blender_exported_fbx": "NOT_RUN",
+        "independent_final_hydrated_binary_QA": "BLOCKED",
+        "real_Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED"
+      }
+    },
+    {
+      "id": "P15-02",
+      "owner": "C01-15",
+      "producer_pr": 16,
+      "head_commit_sha": "09173a980a21fd00f3e8a364570b8f388996dfae",
+      "immutable_original": {
+        "blend_sha256": "1916c0cbcf20bfdc5f1a4326d35c6021aee4e8ce3ad56818b3c99c7d2258a4f0",
+        "fbx_sha256": "982f41120d2860d6d0ad7815c75850e2af4be61559f864fc0f332b8379a21c66",
+        "commit": "fa337ef7e942fb21c0ff879c4813ffcfc2526d41"
+      },
+      "previous_independent_real_binary_fbx_sha256": null,
+      "previous_QA_source_class": "NO_HYDRATED_CURRENT_BINARY",
+      "editable_source_after": null,
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "NOT_RUN",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED",
+      "pass10_new_native_blend_saved_sha256": null,
+      "pass10_new_native_fbx_export_sha256": null,
+      "pass10_blender_fbx_roundtrip": "NOT_RUN",
+      "pass10_unity_6": "NOT_RUN",
+      "pass10_release": "BLOCKED",
+      "pass10_git_lfs_pointer_receipts": {
+        "native_blend": {
+          "oid_sha256": "ed6d25c498b47a7bc259262cf23f2fe6cf07a10996087197306d56bef54dc116",
+          "git_blob_sha1": "8ee8bfe21bdec50cae5bd4ddab9896640fb60578",
+          "size": 549800
+        },
+        "binary_fbx": {
+          "oid_sha256": "16f099e6821e41cee2c7079f736261caef481456ded2b469fdc01df55592a742",
+          "git_blob_sha1": "4f3d4f9ee6e01d88c5fb58ee1ee9d9b2b50b2e9f",
+          "size": 55948
+        },
+        "checked": true,
+        "hydrated_real_bytes": false,
+        "QA_approval": false
+      },
+      "pass12": {
+        "source_detail_revision": false,
+        "status": "BLOCKED"
+      },
+      "pass13": {
+        "producer_source_head_sha": "09173a980a21fd00f3e8a364570b8f388996dfae",
+        "source_version": null,
+        "kind": null,
+        "topology_source_static": "NOT_RUN",
+        "source_contact": "NOT_RUN",
+        "confirmed_gap_mm": [],
+        "new_native_blender_save": "NOT_RUN",
+        "new_blender_exported_fbx": "NOT_RUN",
+        "independent_final_hydrated_binary_QA": "BLOCKED",
+        "real_Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED"
+      }
+    },
+    {
+      "id": "P15-03",
+      "owner": "C01-15",
+      "producer_pr": 16,
+      "head_commit_sha": "09173a980a21fd00f3e8a364570b8f388996dfae",
+      "immutable_original": {
+        "blend_sha256": "71e06ba27e7c710b0916b0a2d1dba9ae093aa9813ff9e088205cd3d85020ec28",
+        "fbx_sha256": "f693ac90278a216375ca86ff9f204545a462aa414817777695ef37d1a492a657",
+        "commit": "fa337ef7e942fb21c0ff879c4813ffcfc2526d41"
+      },
+      "previous_independent_real_binary_fbx_sha256": null,
+      "previous_QA_source_class": "NO_HYDRATED_CURRENT_BINARY",
+      "editable_source_after": null,
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "NOT_RUN",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED",
+      "pass10_new_native_blend_saved_sha256": null,
+      "pass10_new_native_fbx_export_sha256": null,
+      "pass10_blender_fbx_roundtrip": "NOT_RUN",
+      "pass10_unity_6": "NOT_RUN",
+      "pass10_release": "BLOCKED",
+      "pass10_git_lfs_pointer_receipts": {
+        "native_blend": {
+          "oid_sha256": "c76b4911e885234f18756669c4492a195ab9fde2ea2b3911683f241c5e7b503e",
+          "git_blob_sha1": "ab79788dcfd528adda2193a8aeb8624c866828bd",
+          "size": 592432
+        },
+        "binary_fbx": {
+          "oid_sha256": "95d2730197a7c86bd3a59c1748a1df6df2a276ef9a9554d0df3ad0b769f6f414",
+          "git_blob_sha1": "16fa8ddc79bbf532985b02985bded42acaecf30b",
+          "size": 73708
+        },
+        "checked": true,
+        "hydrated_real_bytes": false,
+        "QA_approval": false
+      },
+      "pass12": {
+        "source_detail_revision": false,
+        "status": "BLOCKED"
+      },
+      "pass13": {
+        "producer_source_head_sha": "09173a980a21fd00f3e8a364570b8f388996dfae",
+        "source_version": null,
+        "kind": null,
+        "topology_source_static": "NOT_RUN",
+        "source_contact": "NOT_RUN",
+        "confirmed_gap_mm": [],
+        "new_native_blender_save": "NOT_RUN",
+        "new_blender_exported_fbx": "NOT_RUN",
+        "independent_final_hydrated_binary_QA": "BLOCKED",
+        "real_Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED",
+        "other_producer_detail": {
+          "kind": "CHANGED_SOURCE_SPEC_HINGE_SIX_PARTS",
+          "producer_git_blob": "198f2e571c3d514c7cca8d09b2718bd8466a4797",
+          "after_parts": 30,
+          "after_tris": 440,
+          "glb_and_obj_offline_candidates_only": true
+        }
+      }
+    },
+    {
+      "id": "P15-04",
+      "owner": "C01-15",
+      "producer_pr": 25,
+      "head_commit_sha": "0f35d273ae564a22f39e73e020b620e300a40778",
+      "immutable_original": {
+        "blend_sha256": "e834db9a60091d70578eef7028ef4becb799d22f07db2eb45c4cd376a360db3c",
+        "fbx_sha256": "aa5194ac645f822b7838331439d6e092fdc3990fe5ff067e0fc3f4446b560e29",
+        "commit": "d8b38194a81fd305caa2ae9c3ecd6d22f46cf011"
+      },
+      "previous_independent_real_binary_fbx_sha256": null,
+      "previous_QA_source_class": "NO_HYDRATED_CURRENT_BINARY",
+      "editable_source_after": null,
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "NOT_RUN",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED",
+      "pass10_new_native_blend_saved_sha256": null,
+      "pass10_new_native_fbx_export_sha256": null,
+      "pass10_blender_fbx_roundtrip": "NOT_RUN",
+      "pass10_unity_6": "NOT_RUN",
+      "pass10_release": "BLOCKED",
+      "pass10_git_lfs_pointer_receipts": {
+        "native_blend": {
+          "oid_sha256": "54a4b2efdfe0cc3766ff1a04ce3bca24f1adcdf2e8d7812058fc000e297393cd",
+          "git_blob_sha1": "04945c8f8883b4aaeb33c2b7a9c9606c6e815591",
+          "size": 684588
+        },
+        "binary_fbx": {
+          "oid_sha256": "58252505554c65354f9ebce7e3264868d3ff7a57c850d16323e71e6356c5ce04",
+          "git_blob_sha1": "8cc2f344fecb935b4f2db34db22efe22eef21388",
+          "size": 89596
+        },
+        "checked": true,
+        "hydrated_real_bytes": false,
+        "QA_approval": false
+      },
+      "pass12": {
+        "source_detail_revision": false,
+        "status": "BLOCKED"
+      },
+      "pass13": {
+        "producer_source_head_sha": "0f35d273ae564a22f39e73e020b620e300a40778",
+        "source_version": null,
+        "kind": null,
+        "topology_source_static": "NOT_RUN",
+        "source_contact": "NOT_RUN",
+        "confirmed_gap_mm": [],
+        "new_native_blender_save": "NOT_RUN",
+        "new_blender_exported_fbx": "NOT_RUN",
+        "independent_final_hydrated_binary_QA": "BLOCKED",
+        "real_Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED"
+      }
+    },
+    {
+      "id": "P15-05",
+      "owner": "C01-15",
+      "producer_pr": 25,
+      "head_commit_sha": "0f35d273ae564a22f39e73e020b620e300a40778",
+      "immutable_original": {
+        "blend_sha256": "478534dce23d194e278a2a43805270bc1d4b39da58cbe99a488f5d39d72aba0b",
+        "fbx_sha256": "20788839b7deeef62312c03a90e3ff518ad9a8cc2fa7ac1318c7844fb6e79777",
+        "commit": "d8b38194a81fd305caa2ae9c3ecd6d22f46cf011"
+      },
+      "previous_independent_real_binary_fbx_sha256": null,
+      "previous_QA_source_class": "NO_HYDRATED_CURRENT_BINARY",
+      "editable_source_after": null,
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "NOT_RUN",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED",
+      "pass10_new_native_blend_saved_sha256": null,
+      "pass10_new_native_fbx_export_sha256": null,
+      "pass10_blender_fbx_roundtrip": "NOT_RUN",
+      "pass10_unity_6": "NOT_RUN",
+      "pass10_release": "BLOCKED",
+      "pass10_git_lfs_pointer_receipts": {
+        "native_blend": {
+          "oid_sha256": "4f30880643a17d97c9f7cfca4cd0a219e12fff6f8868fa1ba31017e9083f2c01",
+          "git_blob_sha1": "317e2388a7da8b8ab7791a6d2004273bd1f770c5",
+          "size": 728540
+        },
+        "binary_fbx": {
+          "oid_sha256": "5d254249234c100ca2e7c0b4d65fe8ed8bc366f275d4718b4d90bac416d3da5e",
+          "git_blob_sha1": "1fbcc210f93d4cff1ab8b53ab61e0a95fd2b8fe5",
+          "size": 124684
+        },
+        "checked": true,
+        "hydrated_real_bytes": false,
+        "QA_approval": false
+      },
+      "pass12": {
+        "source_detail_revision": false,
+        "status": "BLOCKED"
+      },
+      "pass13": {
+        "producer_source_head_sha": "0f35d273ae564a22f39e73e020b620e300a40778",
+        "source_version": null,
+        "kind": null,
+        "topology_source_static": "NOT_RUN",
+        "source_contact": "NOT_RUN",
+        "confirmed_gap_mm": [],
+        "new_native_blender_save": "NOT_RUN",
+        "new_blender_exported_fbx": "NOT_RUN",
+        "independent_final_hydrated_binary_QA": "BLOCKED",
+        "real_Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED"
+      }
+    },
+    {
+      "id": "P15-06",
+      "owner": "C01-15",
+      "producer_pr": 25,
+      "head_commit_sha": "0f35d273ae564a22f39e73e020b620e300a40778",
+      "immutable_original": {
+        "blend_sha256": "39ecc494434d3064247844ffa08c44d3f59378b4081f3822ccab36f2b6abfc94",
+        "fbx_sha256": "32d7f7bd1b6173f85d5bb6e993151737b3dc4fb62c8418cb933f5fd2a6d6f77c",
+        "commit": "d8b38194a81fd305caa2ae9c3ecd6d22f46cf011"
+      },
+      "previous_independent_real_binary_fbx_sha256": null,
+      "previous_QA_source_class": "NO_HYDRATED_CURRENT_BINARY",
+      "editable_source_after": null,
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "NOT_RUN",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED",
+      "pass10_new_native_blend_saved_sha256": null,
+      "pass10_new_native_fbx_export_sha256": null,
+      "pass10_blender_fbx_roundtrip": "NOT_RUN",
+      "pass10_unity_6": "NOT_RUN",
+      "pass10_release": "BLOCKED",
+      "pass10_git_lfs_pointer_receipts": {
+        "native_blend": {
+          "oid_sha256": "644b1fab278bf1694fc6eb61b6a1cfe0f4bcfce204ecfd25a6b4cb13221a82aa",
+          "git_blob_sha1": "56eb55cfa4bd61250d273c8767f2945ae2ef6794",
+          "size": 1011612
+        },
+        "binary_fbx": {
+          "oid_sha256": "e48b943e7926a3d62e3f956f1b1bc59218dbe310837d179dfbbfee435001f448",
+          "git_blob_sha1": "49e39d259232fd439ecb78294996429eb5e9f173",
+          "size": 260908
+        },
+        "checked": true,
+        "hydrated_real_bytes": false,
+        "QA_approval": false
+      },
+      "pass12": {
+        "source_detail_revision": false,
+        "status": "BLOCKED"
+      },
+      "pass13": {
+        "producer_source_head_sha": "0f35d273ae564a22f39e73e020b620e300a40778",
+        "source_version": null,
+        "kind": null,
+        "topology_source_static": "NOT_RUN",
+        "source_contact": "NOT_RUN",
+        "confirmed_gap_mm": [],
+        "new_native_blender_save": "NOT_RUN",
+        "new_blender_exported_fbx": "NOT_RUN",
+        "independent_final_hydrated_binary_QA": "BLOCKED",
+        "real_Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED"
+      }
+    },
+    {
+      "id": "P15-07",
+      "owner": "C01-15",
+      "producer_pr": 25,
+      "head_commit_sha": "0f35d273ae564a22f39e73e020b620e300a40778",
+      "immutable_original": {
+        "blend_sha256": "d5d9234a298b54c74a247c629f7296a58ba1e4ec6486b77edaed10905f7f4a62",
+        "fbx_sha256": "9a814967043aedf487c24d1ded75faf3230328997f70bb320cae90b2388e5ee8",
+        "commit": "d8b38194a81fd305caa2ae9c3ecd6d22f46cf011"
+      },
+      "previous_independent_real_binary_fbx_sha256": null,
+      "previous_QA_source_class": "NO_HYDRATED_CURRENT_BINARY",
+      "editable_source_after": null,
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "NOT_RUN",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED",
+      "pass10_new_native_blend_saved_sha256": null,
+      "pass10_new_native_fbx_export_sha256": null,
+      "pass10_blender_fbx_roundtrip": "NOT_RUN",
+      "pass10_unity_6": "NOT_RUN",
+      "pass10_release": "BLOCKED",
+      "pass10_git_lfs_pointer_receipts": {
+        "native_blend": {
+          "oid_sha256": "00a456375c5fd731f811d61d1ae171330a5291d5669ae9fdcc752b174b72aa6e",
+          "git_blob_sha1": "c5d282c74b920b6b1cd3743d46b92abd09141375",
+          "size": 853560
+        },
+        "binary_fbx": {
+          "oid_sha256": "ffc0211cc73a2056b815f3a494c24ab97d3c808d7ad9eb5b472472c555fb47f2",
+          "git_blob_sha1": "0ab814c1e48eeb89fb7c8069ca9d69ac0739659b",
+          "size": 148828
+        },
+        "checked": true,
+        "hydrated_real_bytes": false,
+        "QA_approval": false
+      },
+      "pass12": {
+        "source_detail_revision": false,
+        "status": "BLOCKED"
+      },
+      "pass13": {
+        "producer_source_head_sha": "0f35d273ae564a22f39e73e020b620e300a40778",
+        "source_version": null,
+        "kind": null,
+        "topology_source_static": "NOT_RUN",
+        "source_contact": "NOT_RUN",
+        "confirmed_gap_mm": [],
+        "new_native_blender_save": "NOT_RUN",
+        "new_blender_exported_fbx": "NOT_RUN",
+        "independent_final_hydrated_binary_QA": "BLOCKED",
+        "real_Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED"
+      }
+    },
+    {
+      "id": "P16-01",
+      "owner": "C01-16",
+      "producer_pr": 12,
+      "head_commit_sha": "06afbd660c4d5fe9ab2f522cbae3b42bb59926f2",
+      "immutable_original": {
+        "blend_sha256": null,
+        "fbx_sha256": "8a3453701d7e1d9c0739f8dc0190e33e206a34bdcac76e6d3d33c4e5d9bb5158",
+        "commit": "054d84731737698fbdbdee2d387c4fff1b2a6673"
+      },
+      "previous_independent_real_binary_fbx_sha256": null,
+      "previous_QA_source_class": "NO_HYDRATED_CURRENT_BINARY",
+      "editable_source_after": null,
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "NOT_RUN",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED",
+      "pass10_new_native_blend_saved_sha256": null,
+      "pass10_new_native_fbx_export_sha256": null,
+      "pass10_blender_fbx_roundtrip": "NOT_RUN",
+      "pass10_unity_6": "NOT_RUN",
+      "pass10_release": "BLOCKED",
+      "pass10_producer_reported_fbx_candidate": {
+        "sha256": "2600b37c0b61fe3c9e6d12e4f814ddceead9fd91e1d55d5bc5b37ca3187893f3",
+        "reported_bytes": 21248,
+        "components": 5,
+        "triangles": 60,
+        "format": "FBX_7400_DIRECT_EMITTER_NOT_BLENDER",
+        "bytes_in_github": false,
+        "sha256_independently_recomputed_by_C01_03": false,
+        "producer_static_selfcheck": "PASS_PRODUCER_REPORTED",
+        "real_native_blend": "MISSING",
+        "blender_roundtrip": "NOT_RUN",
+        "independent_QA": "BLOCKED",
+        "release": "QUARANTINED"
+      },
+      "pass12": {
+        "kind": "OBJ_ADDITIVE_FUNCTIONAL_DETAIL",
+        "path": "C01Source/Lighting/DetailsPASS12/P16-01_detail.obj",
+        "producer_commit": "13955e8723d8930ff744d167359a53620f9bb6a1",
+        "sha256_actual_authored_source": "b28d52e6ea6237129f14be70720d8bb7de65d9bf8d1d847b71ed743d9e3e299c",
+        "blob_sha1": "d32eab80d6a3ebdf9c3dd7fe81cc516754a64509",
+        "AFTER": {
+          "V": 94,
+          "UV": 480,
+          "N": 480,
+          "F": 160,
+          "T": 160,
+          "parts": 7
+        },
+        "new_parts": [
+          "P16-01_STATIC_DarkPanel_DETAIL_RearAnchorLeft",
+          "P16-01_STATIC_DarkPanel_DETAIL_RearAnchorRight",
+          "P16-01_STATIC_Steel_DETAIL_RearMountBolt_L_B",
+          "P16-01_STATIC_Steel_DETAIL_RearMountBolt_L_T",
+          "P16-01_STATIC_Steel_DETAIL_RearMountBolt_R_B",
+          "P16-01_STATIC_Steel_DETAIL_RearMountBolt_R_T",
+          "P16-01_STATIC_DarkPanel_DETAIL_RearCableGland"
+        ],
+        "source_static_C01_03": "PASS",
+        "source_independent_C01_02": "NOT_RUN",
+        "independent_severe_disputed_for_unscaled_bounds": false,
+        "new_actual_blender_saved_sha256": null,
+        "new_blender_binary_FBX_export_sha256": null,
+        "blender_roundtrip": "NOT_RUN",
+        "unity6": "NOT_RUN",
+        "status": "BLOCKED"
+      },
+      "pass13": {
+        "producer_source_head_sha": "06afbd660c4d5fe9ab2f522cbae3b42bb59926f2",
+        "source_version": "b28d52e6ea6237129f14be70720d8bb7de65d9bf8d1d847b71ed743d9e3e299c",
+        "kind": "OBJ_ADDITIVE_FUNCTIONAL_DETAIL",
+        "topology_source_static": "PASS",
+        "source_contact": "NOT_RUN",
+        "confirmed_gap_mm": [],
+        "new_native_blender_save": "NOT_RUN",
+        "new_blender_exported_fbx": "NOT_RUN",
+        "independent_final_hydrated_binary_QA": "BLOCKED",
+        "real_Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED"
+      }
+    },
+    {
+      "id": "P16-02",
+      "owner": "C01-16",
+      "producer_pr": 12,
+      "head_commit_sha": "06afbd660c4d5fe9ab2f522cbae3b42bb59926f2",
+      "immutable_original": {
+        "blend_sha256": null,
+        "fbx_sha256": "30dd6bb3ac4a5333b271efa16f83c27a124ce2ea5cbd5d52d14a203cd022b80f",
+        "commit": "054d84731737698fbdbdee2d387c4fff1b2a6673"
+      },
+      "previous_independent_real_binary_fbx_sha256": null,
+      "previous_QA_source_class": "NO_HYDRATED_CURRENT_BINARY",
+      "editable_source_after": null,
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "NOT_RUN",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED",
+      "pass10_new_native_blend_saved_sha256": null,
+      "pass10_new_native_fbx_export_sha256": null,
+      "pass10_blender_fbx_roundtrip": "NOT_RUN",
+      "pass10_unity_6": "NOT_RUN",
+      "pass10_release": "BLOCKED",
+      "pass10_producer_reported_fbx_candidate": {
+        "sha256": "58db4dd2b131042c5c5b3aec5aa710e8d6afe50246ee41471abb9c4058d18ef8",
+        "reported_bytes": 21232,
+        "components": 5,
+        "triangles": 60,
+        "format": "FBX_7400_DIRECT_EMITTER_NOT_BLENDER",
+        "bytes_in_github": false,
+        "sha256_independently_recomputed_by_C01_03": false,
+        "producer_static_selfcheck": "PASS_PRODUCER_REPORTED",
+        "real_native_blend": "MISSING",
+        "blender_roundtrip": "NOT_RUN",
+        "independent_QA": "BLOCKED",
+        "release": "QUARANTINED"
+      },
+      "pass12": {
+        "kind": "OBJ_ADDITIVE_FUNCTIONAL_DETAIL",
+        "path": "C01Source/Lighting/DetailsPASS12/P16-02_detail.obj",
+        "producer_commit": "13955e8723d8930ff744d167359a53620f9bb6a1",
+        "sha256_actual_authored_source": "9d3b434b44388c1214702528de4f8a94245d309c6ffbd62b42f2012df13e1a1a",
+        "blob_sha1": "c7d73e53395720a5d6a13d4d2151032d34770053",
+        "AFTER": {
+          "V": 94,
+          "UV": 480,
+          "N": 480,
+          "F": 160,
+          "T": 160,
+          "parts": 7
+        },
+        "new_parts": [
+          "P16-02_STATIC_DarkPanel_DETAIL_BackFlange_0",
+          "P16-02_STATIC_DarkPanel_DETAIL_BackFlange_1",
+          "P16-02_STATIC_Steel_DETAIL_RailScrew_L_B",
+          "P16-02_STATIC_Steel_DETAIL_RailScrew_L_T",
+          "P16-02_STATIC_Steel_DETAIL_RailScrew_R_B",
+          "P16-02_STATIC_Steel_DETAIL_RailScrew_R_T",
+          "P16-02_STATIC_Steel_DETAIL_RearCableGland"
+        ],
+        "source_static_C01_03": "PASS",
+        "source_independent_C01_02": "NOT_RUN",
+        "independent_severe_disputed_for_unscaled_bounds": false,
+        "new_actual_blender_saved_sha256": null,
+        "new_blender_binary_FBX_export_sha256": null,
+        "blender_roundtrip": "NOT_RUN",
+        "unity6": "NOT_RUN",
+        "status": "BLOCKED"
+      },
+      "pass13": {
+        "producer_source_head_sha": "06afbd660c4d5fe9ab2f522cbae3b42bb59926f2",
+        "source_version": "9d3b434b44388c1214702528de4f8a94245d309c6ffbd62b42f2012df13e1a1a",
+        "kind": "OBJ_ADDITIVE_FUNCTIONAL_DETAIL",
+        "topology_source_static": "PASS",
+        "source_contact": "NOT_RUN",
+        "confirmed_gap_mm": [],
+        "new_native_blender_save": "NOT_RUN",
+        "new_blender_exported_fbx": "NOT_RUN",
+        "independent_final_hydrated_binary_QA": "BLOCKED",
+        "real_Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED"
+      }
+    },
+    {
+      "id": "P16-03",
+      "owner": "C01-16",
+      "producer_pr": 12,
+      "head_commit_sha": "06afbd660c4d5fe9ab2f522cbae3b42bb59926f2",
+      "immutable_original": {
+        "blend_sha256": null,
+        "fbx_sha256": "f9e6866a94f1b6097da0a8fb4051f92580213df620554f781c5b5660bfa2f6e0",
+        "commit": "054d84731737698fbdbdee2d387c4fff1b2a6673"
+      },
+      "previous_independent_real_binary_fbx_sha256": null,
+      "previous_QA_source_class": "NO_HYDRATED_CURRENT_BINARY",
+      "editable_source_after": null,
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "NOT_RUN",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED",
+      "pass10_new_native_blend_saved_sha256": null,
+      "pass10_new_native_fbx_export_sha256": null,
+      "pass10_blender_fbx_roundtrip": "NOT_RUN",
+      "pass10_unity_6": "NOT_RUN",
+      "pass10_release": "BLOCKED",
+      "pass10_producer_reported_fbx_candidate": {
+        "sha256": "8fc550747186fdeea594de022012c96d5e3ff69d91277b905008becaa95b1b56",
+        "reported_bytes": 21248,
+        "components": 5,
+        "triangles": 60,
+        "format": "FBX_7400_DIRECT_EMITTER_NOT_BLENDER",
+        "bytes_in_github": false,
+        "sha256_independently_recomputed_by_C01_03": false,
+        "producer_static_selfcheck": "PASS_PRODUCER_REPORTED",
+        "real_native_blend": "MISSING",
+        "blender_roundtrip": "NOT_RUN",
+        "independent_QA": "BLOCKED",
+        "release": "QUARANTINED"
+      },
+      "pass12": {
+        "kind": "OBJ_ADDITIVE_FUNCTIONAL_DETAIL",
+        "path": "C01Source/Lighting/DetailsPASS12/P16-03_detail.obj",
+        "producer_commit": "13955e8723d8930ff744d167359a53620f9bb6a1",
+        "sha256_actual_authored_source": "493d8cf699acd50e3705c83d8dd716210c2fac6f15bd90d407a2818e3a7161d8",
+        "blob_sha1": "0a3b454b1c053fe52b949be113705b5dc0846e79",
+        "AFTER": {
+          "V": 94,
+          "UV": 480,
+          "N": 480,
+          "F": 160,
+          "T": 160,
+          "parts": 7
+        },
+        "new_parts": [
+          "P16-03_STATIC_Steel_DETAIL_GuideRailScrew_L_B",
+          "P16-03_STATIC_Steel_DETAIL_GuideRailScrew_L_T",
+          "P16-03_STATIC_Steel_DETAIL_GuideRailScrew_R_B",
+          "P16-03_STATIC_Steel_DETAIL_GuideRailScrew_R_T",
+          "P16-03_STATIC_DarkPanel_DETAIL_RearHanger_0",
+          "P16-03_STATIC_DarkPanel_DETAIL_RearHanger_1",
+          "P16-03_STATIC_Steel_DETAIL_CableEntryGland"
+        ],
+        "source_static_C01_03": "PASS",
+        "source_independent_C01_02": "NOT_RUN",
+        "independent_severe_disputed_for_unscaled_bounds": false,
+        "new_actual_blender_saved_sha256": null,
+        "new_blender_binary_FBX_export_sha256": null,
+        "blender_roundtrip": "NOT_RUN",
+        "unity6": "NOT_RUN",
+        "status": "BLOCKED"
+      },
+      "pass13": {
+        "producer_source_head_sha": "06afbd660c4d5fe9ab2f522cbae3b42bb59926f2",
+        "source_version": "493d8cf699acd50e3705c83d8dd716210c2fac6f15bd90d407a2818e3a7161d8",
+        "kind": "OBJ_ADDITIVE_FUNCTIONAL_DETAIL",
+        "topology_source_static": "PASS",
+        "source_contact": "NOT_RUN",
+        "confirmed_gap_mm": [],
+        "new_native_blender_save": "NOT_RUN",
+        "new_blender_exported_fbx": "NOT_RUN",
+        "independent_final_hydrated_binary_QA": "BLOCKED",
+        "real_Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED"
+      }
+    },
+    {
+      "id": "P16-04",
+      "owner": "C01-16",
+      "producer_pr": 28,
+      "head_commit_sha": "7dbd44f37e702ab0eccd128968bcf8a19af2d7b2",
+      "immutable_original": {
+        "blend_sha256": null,
+        "fbx_sha256": "6961a40396d4417b78498b49070ea9864903744bcf69f30037aba00c13a9bdb1",
+        "commit": "78f9bd55af8c16dbe72d01b9b2a13279499eaacb"
+      },
+      "previous_independent_real_binary_fbx_sha256": null,
+      "previous_QA_source_class": "NO_HYDRATED_CURRENT_BINARY",
+      "editable_source_after": null,
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "NOT_RUN",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED",
+      "pass10_new_native_blend_saved_sha256": null,
+      "pass10_new_native_fbx_export_sha256": null,
+      "pass10_blender_fbx_roundtrip": "NOT_RUN",
+      "pass10_unity_6": "NOT_RUN",
+      "pass10_release": "BLOCKED",
+      "pass10_producer_reported_fbx_candidate": {
+        "sha256": "66b745d11e732d3c0d7d5fd2b22c4af53bea0536f785ed34890f726452c66317",
+        "reported_bytes": 28528,
+        "components": 7,
+        "triangles": 84,
+        "format": "FBX_7400_DIRECT_EMITTER_NOT_BLENDER",
+        "bytes_in_github": false,
+        "sha256_independently_recomputed_by_C01_03": false,
+        "producer_static_selfcheck": "PASS_PRODUCER_REPORTED",
+        "real_native_blend": "MISSING",
+        "blender_roundtrip": "NOT_RUN",
+        "independent_QA": "BLOCKED",
+        "release": "QUARANTINED"
+      },
+      "pass12": {
+        "kind": "OBJ_ADDITIVE_FUNCTIONAL_DETAIL",
+        "path": "C01Source/LightingW02/DetailsPASS12/P16-04_detail.obj",
+        "producer_commit": "951794e15aae73edda3539df6384cbb45e23d2d5",
+        "sha256_actual_authored_source": "23e5d8cc90006181abc05c62aa058fe4f1c225aefe5419555a1869d638b3de5d",
+        "blob_sha1": "aa2ab0ff5b4ba17de696433a2f1aa3c95b6f5ab2",
+        "AFTER": {
+          "V": 144,
+          "UV": 720,
+          "N": 720,
+          "F": 240,
+          "T": 240,
+          "parts": 12
+        },
+        "new_parts": [
+          "P16-04_STATIC_DarkPanel_DETAIL_PerimeterBolt_L_-0.29",
+          "P16-04_STATIC_DarkPanel_DETAIL_PerimeterBolt_L_-0.12",
+          "P16-04_STATIC_DarkPanel_DETAIL_PerimeterBolt_L_0.12",
+          "P16-04_STATIC_DarkPanel_DETAIL_PerimeterBolt_L_0.29",
+          "P16-04_STATIC_DarkPanel_DETAIL_PerimeterBolt_R_-0.29",
+          "P16-04_STATIC_DarkPanel_DETAIL_PerimeterBolt_R_-0.12",
+          "P16-04_STATIC_DarkPanel_DETAIL_PerimeterBolt_R_0.12",
+          "P16-04_STATIC_DarkPanel_DETAIL_PerimeterBolt_R_0.29",
+          "P16-04_STATIC_Steel_DETAIL_CornerGusset_L_N",
+          "P16-04_STATIC_Steel_DETAIL_CornerGusset_L_P",
+          "P16-04_STATIC_Steel_DETAIL_CornerGusset_R_N",
+          "P16-04_STATIC_Steel_DETAIL_CornerGusset_R_P"
+        ],
+        "source_static_C01_03": "PASS",
+        "source_independent_C01_02": "NOT_RUN",
+        "independent_severe_disputed_for_unscaled_bounds": false,
+        "new_actual_blender_saved_sha256": null,
+        "new_blender_binary_FBX_export_sha256": null,
+        "blender_roundtrip": "NOT_RUN",
+        "unity6": "NOT_RUN",
+        "status": "BLOCKED"
+      },
+      "pass13": {
+        "producer_source_head_sha": "7dbd44f37e702ab0eccd128968bcf8a19af2d7b2",
+        "source_version": "23e5d8cc90006181abc05c62aa058fe4f1c225aefe5419555a1869d638b3de5d",
+        "kind": "OBJ_ADDITIVE_FUNCTIONAL_DETAIL",
+        "topology_source_static": "PASS",
+        "source_contact": "NOT_RUN",
+        "confirmed_gap_mm": [],
+        "new_native_blender_save": "NOT_RUN",
+        "new_blender_exported_fbx": "NOT_RUN",
+        "independent_final_hydrated_binary_QA": "BLOCKED",
+        "real_Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED"
+      }
+    },
+    {
+      "id": "P16-05",
+      "owner": "C01-16",
+      "producer_pr": 28,
+      "head_commit_sha": "7dbd44f37e702ab0eccd128968bcf8a19af2d7b2",
+      "immutable_original": {
+        "blend_sha256": null,
+        "fbx_sha256": "a173ef91b8376768ddb8d45505018af60e30fef6f1e5a7ffca976b2a2df2fe95",
+        "commit": "78f9bd55af8c16dbe72d01b9b2a13279499eaacb"
+      },
+      "previous_independent_real_binary_fbx_sha256": null,
+      "previous_QA_source_class": "NO_HYDRATED_CURRENT_BINARY",
+      "editable_source_after": null,
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "NOT_RUN",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED",
+      "pass10_new_native_blend_saved_sha256": null,
+      "pass10_new_native_fbx_export_sha256": null,
+      "pass10_blender_fbx_roundtrip": "NOT_RUN",
+      "pass10_unity_6": "NOT_RUN",
+      "pass10_release": "BLOCKED",
+      "pass10_producer_reported_fbx_candidate": {
+        "sha256": "cae1c7204fa880642c4873704f7cec2c06f707560a834ce49eca9725417b00a7",
+        "reported_bytes": 28560,
+        "components": 7,
+        "triangles": 84,
+        "format": "FBX_7400_DIRECT_EMITTER_NOT_BLENDER",
+        "bytes_in_github": false,
+        "sha256_independently_recomputed_by_C01_03": false,
+        "producer_static_selfcheck": "PASS_PRODUCER_REPORTED",
+        "real_native_blend": "MISSING",
+        "blender_roundtrip": "NOT_RUN",
+        "independent_QA": "BLOCKED",
+        "release": "QUARANTINED"
+      },
+      "pass12": {
+        "kind": "OBJ_ADDITIVE_FUNCTIONAL_DETAIL",
+        "path": "C01Source/LightingW02/DetailsPASS12/P16-05_detail.obj",
+        "producer_commit": "951794e15aae73edda3539df6384cbb45e23d2d5",
+        "sha256_actual_authored_source": "6f264242aa2f5ca9403e84e2ce4f7cae8f37dfbf417f35adbeee73edcf71e90a",
+        "blob_sha1": "773df8e46f44595c605f2688b1582f5afb787bbe",
+        "AFTER": {
+          "V": 114,
+          "UV": 588,
+          "N": 588,
+          "F": 196,
+          "T": 196,
+          "parts": 8
+        },
+        "new_parts": [
+          "P16-05_STATIC_DarkPanel_DETAIL_FaceFrameBolt_L_B",
+          "P16-05_STATIC_DarkPanel_DETAIL_FaceFrameBolt_L_T",
+          "P16-05_STATIC_DarkPanel_DETAIL_FaceFrameBolt_R_B",
+          "P16-05_STATIC_DarkPanel_DETAIL_FaceFrameBolt_R_T",
+          "P16-05_STATIC_DarkPanel_DETAIL_RearServiceCover",
+          "P16-05_STATIC_Steel_DETAIL_ServiceCoverScrew_0",
+          "P16-05_STATIC_Steel_DETAIL_ServiceCoverScrew_1",
+          "P16-05_STATIC_Steel_DETAIL_CablePassThrough"
+        ],
+        "source_static_C01_03": "PASS",
+        "source_independent_C01_02": "NOT_RUN",
+        "independent_severe_disputed_for_unscaled_bounds": false,
+        "new_actual_blender_saved_sha256": null,
+        "new_blender_binary_FBX_export_sha256": null,
+        "blender_roundtrip": "NOT_RUN",
+        "unity6": "NOT_RUN",
+        "status": "BLOCKED"
+      },
+      "pass13": {
+        "producer_source_head_sha": "7dbd44f37e702ab0eccd128968bcf8a19af2d7b2",
+        "source_version": "6f264242aa2f5ca9403e84e2ce4f7cae8f37dfbf417f35adbeee73edcf71e90a",
+        "kind": "OBJ_ADDITIVE_FUNCTIONAL_DETAIL",
+        "topology_source_static": "PASS",
+        "source_contact": "NOT_RUN",
+        "confirmed_gap_mm": [],
+        "new_native_blender_save": "NOT_RUN",
+        "new_blender_exported_fbx": "NOT_RUN",
+        "independent_final_hydrated_binary_QA": "BLOCKED",
+        "real_Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED"
+      }
+    },
+    {
+      "id": "P16-06",
+      "owner": "C01-16",
+      "producer_pr": 28,
+      "head_commit_sha": "7dbd44f37e702ab0eccd128968bcf8a19af2d7b2",
+      "immutable_original": {
+        "blend_sha256": null,
+        "fbx_sha256": "15ee8ed8576e31433c6342ff587b1eaa7878c56af13143ebfdf06ac4a8772f19",
+        "commit": "78f9bd55af8c16dbe72d01b9b2a13279499eaacb"
+      },
+      "previous_independent_real_binary_fbx_sha256": null,
+      "previous_QA_source_class": "NO_HYDRATED_CURRENT_BINARY",
+      "editable_source_after": null,
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "NOT_RUN",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED",
+      "pass10_new_native_blend_saved_sha256": null,
+      "pass10_new_native_fbx_export_sha256": null,
+      "pass10_blender_fbx_roundtrip": "NOT_RUN",
+      "pass10_unity_6": "NOT_RUN",
+      "pass10_release": "BLOCKED",
+      "pass10_producer_reported_fbx_candidate": {
+        "sha256": "df166ae1a236f27ace0056f9e74efb8b9817bf6ba0da8bed1e2bc02fc56dd349",
+        "reported_bytes": 36304,
+        "components": 9,
+        "triangles": 108,
+        "format": "FBX_7400_DIRECT_EMITTER_NOT_BLENDER",
+        "bytes_in_github": false,
+        "sha256_independently_recomputed_by_C01_03": false,
+        "producer_static_selfcheck": "PASS_PRODUCER_REPORTED",
+        "real_native_blend": "MISSING",
+        "blender_roundtrip": "NOT_RUN",
+        "independent_QA": "BLOCKED",
+        "release": "QUARANTINED"
+      },
+      "pass12": {
+        "kind": "OBJ_ADDITIVE_FUNCTIONAL_DETAIL",
+        "path": "C01Source/LightingW02/DetailsPASS12/P16-06_detail.obj",
+        "producer_commit": "951794e15aae73edda3539df6384cbb45e23d2d5",
+        "sha256_actual_authored_source": "0e0d466c52fbe432bee9c756f07e5a3db69ed1445de67852b95c8de824f05742",
+        "blob_sha1": "b6ba4fcffd7e262de758aebbd33326ea55b500a3",
+        "AFTER": {
+          "V": 128,
+          "UV": 648,
+          "N": 648,
+          "F": 216,
+          "T": 216,
+          "parts": 10
+        },
+        "new_parts": [
+          "P16-06_STATIC_DarkPanel_DETAIL_CeilingPlateBolt_L_B",
+          "P16-06_STATIC_DarkPanel_DETAIL_CeilingPlateBolt_L_F",
+          "P16-06_STATIC_DarkPanel_DETAIL_CeilingPlateBolt_R_B",
+          "P16-06_STATIC_DarkPanel_DETAIL_CeilingPlateBolt_R_F",
+          "P16-06_STATIC_Steel_DETAIL_StaticSideTie_0",
+          "P16-06_STATIC_Steel_DETAIL_StaticSideTie_1",
+          "P16-06_ROTOR_Steel_DETAIL_RotorHubBolt_L_B",
+          "P16-06_ROTOR_Steel_DETAIL_RotorHubBolt_L_F",
+          "P16-06_ROTOR_Steel_DETAIL_RotorHubBolt_R_B",
+          "P16-06_ROTOR_Steel_DETAIL_RotorHubBolt_R_F"
+        ],
+        "source_static_C01_03": "PASS",
+        "source_independent_C01_02": "NOT_RUN",
+        "independent_severe_disputed_for_unscaled_bounds": false,
+        "new_actual_blender_saved_sha256": null,
+        "new_blender_binary_FBX_export_sha256": null,
+        "blender_roundtrip": "NOT_RUN",
+        "unity6": "NOT_RUN",
+        "status": "BLOCKED"
+      },
+      "pass13": {
+        "producer_source_head_sha": "7dbd44f37e702ab0eccd128968bcf8a19af2d7b2",
+        "source_version": "0e0d466c52fbe432bee9c756f07e5a3db69ed1445de67852b95c8de824f05742",
+        "kind": "OBJ_ADDITIVE_FUNCTIONAL_DETAIL",
+        "topology_source_static": "PASS",
+        "source_contact": "NOT_RUN",
+        "confirmed_gap_mm": [],
+        "new_native_blender_save": "NOT_RUN",
+        "new_blender_exported_fbx": "NOT_RUN",
+        "independent_final_hydrated_binary_QA": "BLOCKED",
+        "real_Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED"
+      }
+    },
+    {
+      "id": "P16-07",
+      "owner": "C01-16",
+      "producer_pr": 28,
+      "head_commit_sha": "7dbd44f37e702ab0eccd128968bcf8a19af2d7b2",
+      "immutable_original": {
+        "blend_sha256": null,
+        "fbx_sha256": "2ee60ac814b270b174d6b8941fdff4b4a83157653d896bde5ecbbe4f97af6fe9",
+        "commit": "78f9bd55af8c16dbe72d01b9b2a13279499eaacb"
+      },
+      "previous_independent_real_binary_fbx_sha256": null,
+      "previous_QA_source_class": "NO_HYDRATED_CURRENT_BINARY",
+      "editable_source_after": null,
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "NOT_RUN",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED",
+      "pass10_new_native_blend_saved_sha256": null,
+      "pass10_new_native_fbx_export_sha256": null,
+      "pass10_blender_fbx_roundtrip": "NOT_RUN",
+      "pass10_unity_6": "NOT_RUN",
+      "pass10_release": "BLOCKED",
+      "pass10_producer_reported_fbx_candidate": {
+        "sha256": "fe076d1c3c81f4875a498e2769d4dae81dbde3ae927f6e2cc7f26ec77e904bdd",
+        "reported_bytes": 21248,
+        "components": 5,
+        "triangles": 60,
+        "format": "FBX_7400_DIRECT_EMITTER_NOT_BLENDER",
+        "bytes_in_github": false,
+        "sha256_independently_recomputed_by_C01_03": false,
+        "producer_static_selfcheck": "PASS_PRODUCER_REPORTED",
+        "real_native_blend": "MISSING",
+        "blender_roundtrip": "NOT_RUN",
+        "independent_QA": "BLOCKED",
+        "release": "QUARANTINED"
+      },
+      "pass12": {
+        "kind": "OBJ_ADDITIVE_FUNCTIONAL_DETAIL",
+        "path": "C01Source/LightingW02/DetailsPASS12/P16-07_detail.obj",
+        "producer_commit": "951794e15aae73edda3539df6384cbb45e23d2d5",
+        "sha256_actual_authored_source": "6c8fce6858aeb95cc902a38c5e4e2b4a45b0e999cbdc7a7ff8b1e311217fd766",
+        "blob_sha1": "e21758b78fce32b1d9872bc6297406756fec8da5",
+        "AFTER": {
+          "V": 86,
+          "UV": 444,
+          "N": 444,
+          "F": 148,
+          "T": 148,
+          "parts": 6
+        },
+        "new_parts": [
+          "P16-07_STATIC_Steel_DETAIL_FrameBolt_L_B",
+          "P16-07_STATIC_Steel_DETAIL_FrameBolt_L_T",
+          "P16-07_STATIC_Steel_DETAIL_FrameBolt_R_B",
+          "P16-07_STATIC_Steel_DETAIL_FrameBolt_R_T",
+          "P16-07_STATIC_DarkPanel_DETAIL_RearCableCover",
+          "P16-07_STATIC_Steel_DETAIL_BackCableGland"
+        ],
+        "source_static_C01_03": "PASS",
+        "source_independent_C01_02": "NOT_RUN",
+        "independent_severe_disputed_for_unscaled_bounds": false,
+        "new_actual_blender_saved_sha256": null,
+        "new_blender_binary_FBX_export_sha256": null,
+        "blender_roundtrip": "NOT_RUN",
+        "unity6": "NOT_RUN",
+        "status": "BLOCKED"
+      },
+      "pass13": {
+        "producer_source_head_sha": "7dbd44f37e702ab0eccd128968bcf8a19af2d7b2",
+        "source_version": "6c8fce6858aeb95cc902a38c5e4e2b4a45b0e999cbdc7a7ff8b1e311217fd766",
+        "kind": "OBJ_ADDITIVE_FUNCTIONAL_DETAIL",
+        "topology_source_static": "PASS",
+        "source_contact": "NOT_RUN",
+        "confirmed_gap_mm": [],
+        "new_native_blender_save": "NOT_RUN",
+        "new_blender_exported_fbx": "NOT_RUN",
+        "independent_final_hydrated_binary_QA": "BLOCKED",
+        "real_Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED"
+      }
+    },
+    {
+      "id": "P17-01",
+      "owner": "C01-17",
+      "producer_pr": 17,
+      "head_commit_sha": "cf405ed6636c9788cfd4c9d4d35e99a8683902dc",
+      "immutable_original": {
+        "blend_sha256": "24e488fb85fbb70ba8b14c5144a5bf8d95ab9da1b4dc193b1e47d6ccb8ff19f4",
+        "fbx_sha256": "6d4f9646a5711b97fb6f601ca0e57f7e222bb0231aaaa483ee5896a89f67c933",
+        "commit": "e3b7f2fac2be98f3b450aeb2ec2ac9f050e4e206"
+      },
+      "previous_independent_real_binary_fbx_sha256": "fca67dad3e35e7070575c7d7d141fab3e6756eecb0d618d325ec36266eca2772",
+      "previous_QA_source_class": "PINNED_PASS03_ACTIONS_ARTIFACT",
+      "editable_source_after": null,
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "PASS",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED",
+      "pass10_new_native_blend_saved_sha256": null,
+      "pass10_new_native_fbx_export_sha256": null,
+      "pass10_blender_fbx_roundtrip": "NOT_RUN",
+      "pass10_unity_6": "NOT_RUN",
+      "pass10_release": "BLOCKED",
+      "pass12": {
+        "source_detail_revision": false,
+        "status": "BLOCKED"
+      },
+      "pass13": {
+        "producer_source_head_sha": "cf405ed6636c9788cfd4c9d4d35e99a8683902dc",
+        "source_version": null,
+        "kind": null,
+        "topology_source_static": "NOT_RUN",
+        "source_contact": "NOT_RUN",
+        "confirmed_gap_mm": [],
+        "new_native_blender_save": "NOT_RUN",
+        "new_blender_exported_fbx": "NOT_RUN",
+        "independent_final_hydrated_binary_QA": "BLOCKED",
+        "real_Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED"
+      }
+    },
+    {
+      "id": "P17-02",
+      "owner": "C01-17",
+      "producer_pr": 17,
+      "head_commit_sha": "cf405ed6636c9788cfd4c9d4d35e99a8683902dc",
+      "immutable_original": {
+        "blend_sha256": "f1522097191dc4af727fcef9da0208547f106e34fd4843d9437f46f144d9983e",
+        "fbx_sha256": "b6c3d875baf025b3a51dfdcbe0ebb89b1376b81f5da25f0d402cb84e7480bced",
+        "commit": "e3b7f2fac2be98f3b450aeb2ec2ac9f050e4e206"
+      },
+      "previous_independent_real_binary_fbx_sha256": "af858385a0abae9c623ee4002bcf22bcbc401b5687024acd8df142eb1b848147",
+      "previous_QA_source_class": "PINNED_PASS03_ACTIONS_ARTIFACT",
+      "editable_source_after": null,
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "PASS",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED",
+      "pass10_new_native_blend_saved_sha256": null,
+      "pass10_new_native_fbx_export_sha256": null,
+      "pass10_blender_fbx_roundtrip": "NOT_RUN",
+      "pass10_unity_6": "NOT_RUN",
+      "pass10_release": "BLOCKED",
+      "pass12": {
+        "kind": "GLTF_FUNCTIONAL_DETAIL",
+        "path": "Assets/C01InteriorProps/Models/P17-02.gltf",
+        "producer_commit": "ec1362b88e90ebd0a0e5acc6015f5dea933d2a0b",
+        "sha256_actual_authored_source": "3fba39e0e5813e6abc486c8ca5685247b59b0614a4186a545dd57903ed51e077",
+        "blob_sha1": "7f183922dab2b5e416af7a8dc30a46c1b6990286",
+        "BEFORE": [
+          20,
+          240
+        ],
+        "AFTER": {
+          "instances": 38,
+          "unique_meshes": 21,
+          "triangles_instanced": 536
+        },
+        "source_static_C01_03": "PASS",
+        "source_independent_C01_02": "FAIL_SOURCE_GEOMETRY_SEVERE",
+        "independent_severe_disputed_for_unscaled_bounds": true,
+        "new_actual_blender_saved_sha256": null,
+        "new_blender_binary_FBX_export_sha256": null,
+        "blender_roundtrip": "NOT_RUN",
+        "unity6": "NOT_RUN",
+        "status": "BLOCKED"
+      },
+      "pass13": {
+        "producer_source_head_sha": "cf405ed6636c9788cfd4c9d4d35e99a8683902dc",
+        "source_version": "3fba39e0e5813e6abc486c8ca5685247b59b0614a4186a545dd57903ed51e077",
+        "kind": "GLTF_FUNCTIONAL_DETAIL",
+        "topology_source_static": "PASS",
+        "source_contact": "FAIL_KEYBED_TO_HOUSING_GAP_0_5MM",
+        "confirmed_gap_mm": [
+          {
+            "part": "Keybed",
+            "nearest": "Housing",
+            "gap_mm": 0.5,
+            "axis": "Z"
+          }
+        ],
+        "new_native_blender_save": "NOT_RUN",
+        "new_blender_exported_fbx": "NOT_RUN",
+        "independent_final_hydrated_binary_QA": "BLOCKED",
+        "real_Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED",
+        "corrected_screw_contact_evidence": {
+          "screws": 4,
+          "each_actual_dimensions_mm": [
+            9,
+            9,
+            3
+          ],
+          "each_back_ring_vertices_inside_backing": 9,
+          "each_embed_depth_mm": 0.5
+        },
+        "source_byte_sha256": "3fba39e0e5813e6abc486c8ca5685247b59b0614a4186a545dd57903ed51e077",
+        "source_blob": "7f183922dab2b5e416af7a8dc30a46c1b6990286"
+      }
+    },
+    {
+      "id": "P17-03",
+      "owner": "C01-17",
+      "producer_pr": 17,
+      "head_commit_sha": "cf405ed6636c9788cfd4c9d4d35e99a8683902dc",
+      "immutable_original": {
+        "blend_sha256": "e9166617f6b194afbab01a59f4c2f13eccd1d62c2b9f058bfe989132a98667a3",
+        "fbx_sha256": "d307c04dd37792d1c69404124eb532617dfd86540dd029696edfbd5159180f3f",
+        "commit": "e3b7f2fac2be98f3b450aeb2ec2ac9f050e4e206"
+      },
+      "previous_independent_real_binary_fbx_sha256": "749c0a6e3df59e927fc448e01ae233504b46d0caed1d6ecd1768be8c926a412c",
+      "previous_QA_source_class": "PINNED_PASS03_ACTIONS_ARTIFACT",
+      "editable_source_after": null,
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "PASS",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED",
+      "pass10_new_native_blend_saved_sha256": null,
+      "pass10_new_native_fbx_export_sha256": null,
+      "pass10_blender_fbx_roundtrip": "NOT_RUN",
+      "pass10_unity_6": "NOT_RUN",
+      "pass10_release": "BLOCKED",
+      "pass12": {
+        "source_detail_revision": false,
+        "status": "BLOCKED"
+      },
+      "pass13": {
+        "producer_source_head_sha": "cf405ed6636c9788cfd4c9d4d35e99a8683902dc",
+        "source_version": null,
+        "kind": null,
+        "topology_source_static": "NOT_RUN",
+        "source_contact": "NOT_RUN",
+        "confirmed_gap_mm": [],
+        "new_native_blender_save": "NOT_RUN",
+        "new_blender_exported_fbx": "NOT_RUN",
+        "independent_final_hydrated_binary_QA": "BLOCKED",
+        "real_Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED"
+      }
+    },
+    {
+      "id": "P17-04",
+      "owner": "C01-17",
+      "producer_pr": 23,
+      "head_commit_sha": "95acf91c5ce32df1e02ad118b7663a356a913f10",
+      "immutable_original": {
+        "blend_sha256": "deec97aa786e3f2e6ce4f1f1eaaeb034da52bb9c3b8d8163e9836e50304f96f3",
+        "fbx_sha256": "0b58f14caa2f6a4151430fd4457607061f6e5ad3a31978073f87e2301cb264c8",
+        "commit": "f7bf7dd93bc6dc60189b7a652cb375e962e61328"
+      },
+      "previous_independent_real_binary_fbx_sha256": "093be5df6e600764528c68368441e5c83a2cc020def2f5e4b03c99cbc659b968",
+      "previous_QA_source_class": "PINNED_PASS03_ACTIONS_ARTIFACT",
+      "editable_source_after": null,
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "PASS",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED",
+      "pass10_new_native_blend_saved_sha256": null,
+      "pass10_new_native_fbx_export_sha256": null,
+      "pass10_blender_fbx_roundtrip": "NOT_RUN",
+      "pass10_unity_6": "NOT_RUN",
+      "pass10_release": "BLOCKED",
+      "pass12": {
+        "source_detail_revision": false,
+        "status": "BLOCKED"
+      },
+      "pass13": {
+        "producer_source_head_sha": "95acf91c5ce32df1e02ad118b7663a356a913f10",
+        "source_version": null,
+        "kind": null,
+        "topology_source_static": "NOT_RUN",
+        "source_contact": "NOT_RUN",
+        "confirmed_gap_mm": [],
+        "new_native_blender_save": "NOT_RUN",
+        "new_blender_exported_fbx": "NOT_RUN",
+        "independent_final_hydrated_binary_QA": "BLOCKED",
+        "real_Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED"
+      }
+    },
+    {
+      "id": "P17-05",
+      "owner": "C01-17",
+      "producer_pr": 23,
+      "head_commit_sha": "95acf91c5ce32df1e02ad118b7663a356a913f10",
+      "immutable_original": {
+        "blend_sha256": "6b85a1e6b81b0aaf790cce83560658f4970062f853ed59337749c29993b427a3",
+        "fbx_sha256": "b2ff6601d45e936ede795696e53aaf88c4805e4519222f59ecef86f720df73ac",
+        "commit": "f7bf7dd93bc6dc60189b7a652cb375e962e61328"
+      },
+      "previous_independent_real_binary_fbx_sha256": "3fa314481f87d66f9a878936028b809cd78440d781146a058594e28f3f4e1740",
+      "previous_QA_source_class": "PINNED_PASS03_ACTIONS_ARTIFACT",
+      "editable_source_after": {
+        "type": "GLTF_EDIT",
+        "path": "Assets/C01InteriorProps/W02/Models/P17-05.gltf",
+        "sha256": "cc4b0e9a7b7a78c461baca467f0ca433b81c0c60d14895531af9ddf556371378",
+        "git_blob": "abb88f40afa5502130fad4bb2f1f9abb46fe3ac8",
+        "producer_commit": "fe94a5ad2deda25c25b6c3e6794bd402ed2a948f",
+        "edit": "LowerDisplayRail Z 0.120→0.121m; actual JSON source changed; not reexported"
+      },
+      "offline_candidate": {
+        "kind": "OFFLINE_BINARY_FIELD_PATCH_NOT_BLENDER_SAVED",
+        "blend_sha256": "16ad0dffa17f5918e64b009086d16efc7c998703b14f2d43f6fa258bb084d440",
+        "fbx_sha256": "c2b8f049de4e84697980e53d0f443a77b19ce930ea6b159a10fb5b3df8695c71",
+        "source_report_blob_sha1": "cde06b898ac6e491914f8ab43133a3cd0836f523",
+        "can_promote": false
+      },
+      "qa": {
+        "real_fbx_static": "PASS",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED",
+      "pass10_new_native_blend_saved_sha256": null,
+      "pass10_new_native_fbx_export_sha256": null,
+      "pass10_blender_fbx_roundtrip": "NOT_RUN",
+      "pass10_unity_6": "NOT_RUN",
+      "pass10_release": "BLOCKED",
+      "pass10_producer_binary_evidence": {
+        "zip_reported_sha256": "d5ea004504f1793e37fea78476005653da3f1ca5ec7b0dcfba58dafeab3d0b56",
+        "source_blend_candidate_sha256": "16ad0dffa17f5918e64b009086d16efc7c998703b14f2d43f6fa258bb084d440",
+        "fbx_candidate_sha256": "c2b8f049de4e84697980e53d0f443a77b19ce930ea6b159a10fb5b3df8695c71",
+        "producer_report_blob_sha1": "6592b05054805899b9917773c2d374caa03835ee",
+        "blender_reopen": "NOT_RUN",
+        "blender_export": "NOT_RUN",
+        "geometry_parser_status": "PRODUCER_REPORTED_PASS",
+        "artifact_not_pushed_to_repo": true,
+        "release": "QUARANTINED"
+      },
+      "pass12": {
+        "source_detail_revision": false,
+        "status": "BLOCKED"
+      },
+      "pass13": {
+        "producer_source_head_sha": "95acf91c5ce32df1e02ad118b7663a356a913f10",
+        "source_version": null,
+        "kind": null,
+        "topology_source_static": "NOT_RUN",
+        "source_contact": "NOT_RUN",
+        "confirmed_gap_mm": [],
+        "new_native_blender_save": "NOT_RUN",
+        "new_blender_exported_fbx": "NOT_RUN",
+        "independent_final_hydrated_binary_QA": "BLOCKED",
+        "real_Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED"
+      }
+    },
+    {
+      "id": "P17-06",
+      "owner": "C01-17",
+      "producer_pr": 23,
+      "head_commit_sha": "95acf91c5ce32df1e02ad118b7663a356a913f10",
+      "immutable_original": {
+        "blend_sha256": "38f62e537827182911285e70d3906ee907c105cb8313b6fb6e87713d7e00780e",
+        "fbx_sha256": "13c0922b4d2999a5e980aa31c74f27921061a3795c256e840222f5ac5028b472",
+        "commit": "f7bf7dd93bc6dc60189b7a652cb375e962e61328"
+      },
+      "previous_independent_real_binary_fbx_sha256": "d9fcaf1a5b0f77ef375b96bdbf17d9a4731156c13880a26647aa481ee59723fb",
+      "previous_QA_source_class": "PINNED_PASS03_ACTIONS_ARTIFACT",
+      "editable_source_after": null,
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "PASS",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED",
+      "pass10_new_native_blend_saved_sha256": null,
+      "pass10_new_native_fbx_export_sha256": null,
+      "pass10_blender_fbx_roundtrip": "NOT_RUN",
+      "pass10_unity_6": "NOT_RUN",
+      "pass10_release": "BLOCKED",
+      "pass12": {
+        "source_detail_revision": false,
+        "status": "BLOCKED"
+      },
+      "pass13": {
+        "producer_source_head_sha": "95acf91c5ce32df1e02ad118b7663a356a913f10",
+        "source_version": null,
+        "kind": null,
+        "topology_source_static": "NOT_RUN",
+        "source_contact": "NOT_RUN",
+        "confirmed_gap_mm": [],
+        "new_native_blender_save": "NOT_RUN",
+        "new_blender_exported_fbx": "NOT_RUN",
+        "independent_final_hydrated_binary_QA": "BLOCKED",
+        "real_Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED"
+      }
+    },
+    {
+      "id": "P17-07",
+      "owner": "C01-17",
+      "producer_pr": 23,
+      "head_commit_sha": "95acf91c5ce32df1e02ad118b7663a356a913f10",
+      "immutable_original": {
+        "blend_sha256": "d46758573f8bcd0dad8f267d62475516bcbbe9c9ee30bbc86756050b24ee668e",
+        "fbx_sha256": "12dc7c6cdde19792feaf6bfd8d9ef2f6aa80bb9848df424dccf0ab6f67ed46ea",
+        "commit": "f7bf7dd93bc6dc60189b7a652cb375e962e61328"
+      },
+      "previous_independent_real_binary_fbx_sha256": "c9e4b221c96ddb9ecd137946ec6043a6c11af21934ad21699c5dedfa1b750285",
+      "previous_QA_source_class": "PINNED_PASS03_ACTIONS_ARTIFACT",
+      "editable_source_after": null,
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "PASS",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED",
+      "pass10_new_native_blend_saved_sha256": null,
+      "pass10_new_native_fbx_export_sha256": null,
+      "pass10_blender_fbx_roundtrip": "NOT_RUN",
+      "pass10_unity_6": "NOT_RUN",
+      "pass10_release": "BLOCKED",
+      "pass12": {
+        "source_detail_revision": false,
+        "status": "BLOCKED"
+      },
+      "pass13": {
+        "producer_source_head_sha": "95acf91c5ce32df1e02ad118b7663a356a913f10",
+        "source_version": null,
+        "kind": null,
+        "topology_source_static": "NOT_RUN",
+        "source_contact": "NOT_RUN",
+        "confirmed_gap_mm": [],
+        "new_native_blender_save": "NOT_RUN",
+        "new_blender_exported_fbx": "NOT_RUN",
+        "independent_final_hydrated_binary_QA": "BLOCKED",
+        "real_Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED"
+      }
+    },
+    {
+      "id": "P18-01",
+      "owner": "C01-18",
+      "producer_pr": 18,
+      "head_commit_sha": "24b03911ee423240d03a5de5b39a1655b257b131",
+      "immutable_original": {
+        "blend_sha256": "d9e3037b754edd952473170ec0924b4849eec1aa2afc193c2151c9bf079b3a42",
+        "fbx_sha256": "0cb6d656008cbdedbc30ef0dca3fe5003136035b87a54b9668b49c35b19b974b",
+        "commit": "bfe7d5d8a6aac11b563a9c2b84c9fcf4d67bdcd5"
+      },
+      "previous_independent_real_binary_fbx_sha256": "84851387b58aeadc7f2ace49201077d847cfd294f82acfb2d0a7dce3e471a939",
+      "previous_QA_source_class": "PINNED_PASS03_ACTIONS_ARTIFACT",
+      "editable_source_after": {
+        "type": "OBJ_QUAD_PLUS_PART_GAP_FIX",
+        "path": "Assets/C01InteriorProps/C01-18/Models/P18-01.obj",
+        "sha256": "e7eae0ca915d265d8f41676b3e6d390de5396e4eaa9ef72ded0d5ad8d92a0283",
+        "git_blob": "c6178ec0fe38d582eacddab4c342085f2a88afe1",
+        "producer_commit": "ecfac25934a98985eca8222060e190f8d5cecd5c",
+        "version_history": [
+          {
+            "sha256": "b7fa124373546348de4bf4aa6b147c0157970a585fa75fb8142ff3c6d70c5f38",
+            "stage": "ORIGINAL_TRIANGLES"
+          },
+          {
+            "sha256": "4d11ae70dfa0fb7ae0e2084e86d684d49fa6921f694db1db9eff8a9b7225fe8b",
+            "stage": "PLANAR_QUADS"
+          },
+          {
+            "sha256": "e7eae0ca915d265d8f41676b3e6d390de5396e4eaa9ef72ded0d5ad8d92a0283",
+            "stage": "TARGETED_VERTEX_SOURCE_FIX"
+          }
+        ],
+        "metrics": {
+          "vertices": 120,
+          "faces": 90,
+          "triangles": 180,
+          "changed_vertices": 32
+        },
+        "edit": "Existing corner/lip geometry selectively offset; actual UV and face indices preserved; native BLEND/FBX not re-exported"
+      },
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "PASS",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED",
+      "pass10_new_native_blend_saved_sha256": null,
+      "pass10_new_native_fbx_export_sha256": null,
+      "pass10_blender_fbx_roundtrip": "NOT_RUN",
+      "pass10_unity_6": "NOT_RUN",
+      "pass10_release": "BLOCKED",
+      "pass12": {
+        "kind": "OBJ_FUNCTIONAL_DETAIL",
+        "path": "Assets/C01InteriorProps/C01-18/Models/P18-01.obj",
+        "producer_commit": "4a0e58d422335af9c7f79fdcf6a80feb7c9c6435",
+        "sha256_actual_authored_source": "7e353b62210df2cdefc03e85a11c109dcf4ca5d51b776c2ab45452ae8239be79",
+        "blob_sha1": "3147fbc11da4ad2c4cac9f4c8a520d921d1cd6b7",
+        "BEFORE": [
+          120,
+          90,
+          180,
+          15
+        ],
+        "AFTER": {
+          "vertices": 416,
+          "faces": 426,
+          "triangles": 684,
+          "parts": 37,
+          "new_parts": 22
+        },
+        "source_static_C01_03": "PASS",
+        "source_independent_C01_02": "SOURCE_INDEXED_PREFLIGHT_PASS_NATIVE_STALE",
+        "independent_severe_disputed_for_unscaled_bounds": false,
+        "new_actual_blender_saved_sha256": null,
+        "new_blender_binary_FBX_export_sha256": null,
+        "blender_roundtrip": "NOT_RUN",
+        "unity6": "NOT_RUN",
+        "status": "BLOCKED"
+      },
+      "pass13": {
+        "producer_source_head_sha": "24b03911ee423240d03a5de5b39a1655b257b131",
+        "source_version": "7e353b62210df2cdefc03e85a11c109dcf4ca5d51b776c2ab45452ae8239be79",
+        "kind": "OBJ_FUNCTIONAL_DETAIL",
+        "topology_source_static": "PASS",
+        "source_contact": "FAIL_REAL_OBJ_AABB_DISJOINT",
+        "confirmed_gap_mm": [
+          {
+            "part": "Lower_Rim",
+            "gap_mm": 10,
+            "axis": "Y",
+            "nearest": "Crate_Shell"
+          }
+        ],
+        "new_native_blender_save": "NOT_RUN",
+        "new_blender_exported_fbx": "NOT_RUN",
+        "independent_final_hydrated_binary_QA": "BLOCKED",
+        "real_Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED",
+        "source_byte_sha256": "7e353b62210df2cdefc03e85a11c109dcf4ca5d51b776c2ab45452ae8239be79",
+        "source_blob": "3147fbc11da4ad2c4cac9f4c8a520d921d1cd6b7"
+      }
+    },
+    {
+      "id": "P18-02",
+      "owner": "C01-18",
+      "producer_pr": 18,
+      "head_commit_sha": "24b03911ee423240d03a5de5b39a1655b257b131",
+      "immutable_original": {
+        "blend_sha256": "2e84ca8c96b1cd1b9e1a93bf8600e556ca2b772b38d5bc94bc68614c4f1ffdb3",
+        "fbx_sha256": "45d40d65356808212812e10084d2f0df232e6922e9117e381baa9f4010875894",
+        "commit": "bfe7d5d8a6aac11b563a9c2b84c9fcf4d67bdcd5"
+      },
+      "previous_independent_real_binary_fbx_sha256": "5ba3faf85a3ea57f755eeb51d0db832c1ce37aa64721d710a22db509f2c6d03f",
+      "previous_QA_source_class": "PINNED_PASS03_ACTIONS_ARTIFACT",
+      "editable_source_after": {
+        "type": "OBJ_QUAD_PLUS_PART_GAP_FIX",
+        "path": "Assets/C01InteriorProps/C01-18/Models/P18-02.obj",
+        "sha256": "d8623bb0fe51388fe25ead63703b0868dac2549c32b14cb20f1757aa41e541a2",
+        "git_blob": "ec17212a2d60d1b39216c869b0a9706defa76c4d",
+        "producer_commit": "ecfac25934a98985eca8222060e190f8d5cecd5c",
+        "version_history": [
+          {
+            "sha256": "d58bd4b7f80e3a1c90c004d5727b82f955734b4b0d7cbd2521c2e3689370d8c6",
+            "stage": "ORIGINAL_TRIANGLES"
+          },
+          {
+            "sha256": "12f1e8150104c4ce89fecfa1af349933a44ac1e8bef833e9a1a30b4284c51559",
+            "stage": "PLANAR_QUADS"
+          },
+          {
+            "sha256": "d8623bb0fe51388fe25ead63703b0868dac2549c32b14cb20f1757aa41e541a2",
+            "stage": "TARGETED_VERTEX_SOURCE_FIX"
+          }
+        ],
+        "metrics": {
+          "vertices": 136,
+          "faces": 102,
+          "triangles": 204,
+          "changed_vertices": 48
+        },
+        "edit": "Existing corner/lip geometry selectively offset; actual UV and face indices preserved; native BLEND/FBX not re-exported"
+      },
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "PASS",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED",
+      "pass10_new_native_blend_saved_sha256": null,
+      "pass10_new_native_fbx_export_sha256": null,
+      "pass10_blender_fbx_roundtrip": "NOT_RUN",
+      "pass10_unity_6": "NOT_RUN",
+      "pass10_release": "BLOCKED",
+      "pass12": {
+        "kind": "OBJ_FUNCTIONAL_DETAIL",
+        "path": "Assets/C01InteriorProps/C01-18/Models/P18-02.obj",
+        "producer_commit": "4a0e58d422335af9c7f79fdcf6a80feb7c9c6435",
+        "sha256_actual_authored_source": "d37f3347dabf84bf315b27b1d24bc517dda77265bb60da2c086d28bdcf3e3472",
+        "blob_sha1": "2878f4c20a5dc8a51fe31659662f9835b5e451f2",
+        "BEFORE": [
+          136,
+          102,
+          204,
+          17
+        ],
+        "AFTER": {
+          "vertices": 600,
+          "faces": 666,
+          "triangles": 1012,
+          "parts": 47,
+          "new_parts": 30
+        },
+        "source_static_C01_03": "PASS",
+        "source_independent_C01_02": "SOURCE_INDEXED_PREFLIGHT_PASS_NATIVE_STALE",
+        "independent_severe_disputed_for_unscaled_bounds": false,
+        "new_actual_blender_saved_sha256": null,
+        "new_blender_binary_FBX_export_sha256": null,
+        "blender_roundtrip": "NOT_RUN",
+        "unity6": "NOT_RUN",
+        "status": "BLOCKED"
+      },
+      "pass13": {
+        "producer_source_head_sha": "24b03911ee423240d03a5de5b39a1655b257b131",
+        "source_version": "d37f3347dabf84bf315b27b1d24bc517dda77265bb60da2c086d28bdcf3e3472",
+        "kind": "OBJ_FUNCTIONAL_DETAIL",
+        "topology_source_static": "PASS",
+        "source_contact": "FAIL_REAL_OBJ_AABB_DISJOINT",
+        "confirmed_gap_mm": [
+          {
+            "part": "Back_Support_0.6",
+            "gap_mm": 30,
+            "axis": "X",
+            "nearest": "Rack_Post_-1.015_-0.365"
+          },
+          {
+            "part": "Back_Support_1.48",
+            "gap_mm": 30,
+            "axis": "X",
+            "nearest": "Rack_Post_-1.015_-0.365"
+          }
+        ],
+        "new_native_blender_save": "NOT_RUN",
+        "new_blender_exported_fbx": "NOT_RUN",
+        "independent_final_hydrated_binary_QA": "BLOCKED",
+        "real_Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED",
+        "source_byte_sha256": "d37f3347dabf84bf315b27b1d24bc517dda77265bb60da2c086d28bdcf3e3472",
+        "source_blob": "2878f4c20a5dc8a51fe31659662f9835b5e451f2"
+      }
+    },
+    {
+      "id": "P18-03",
+      "owner": "C01-18",
+      "producer_pr": 18,
+      "head_commit_sha": "24b03911ee423240d03a5de5b39a1655b257b131",
+      "immutable_original": {
+        "blend_sha256": "a33b23ad173f56a545aa57ae2d81e24afa27928f497835596350e06772e343fc",
+        "fbx_sha256": "8957641fd68260852f29fc2aaf8019682e07dd99470f1c441db57837347d7619",
+        "commit": "bfe7d5d8a6aac11b563a9c2b84c9fcf4d67bdcd5"
+      },
+      "previous_independent_real_binary_fbx_sha256": "639fc09c39b804b9bf83de75a4096cdefe1229f58549662ee777537c19c5e165",
+      "previous_QA_source_class": "PINNED_PASS03_ACTIONS_ARTIFACT",
+      "editable_source_after": {
+        "type": "OBJ_QUAD_CLEANUP",
+        "path": "Assets/C01InteriorProps/C01-18/Models/P18-03.obj",
+        "sha256": "4565e7f3c38c154a28b8494c163619bbfa0883371dfe66515b6ee36d66743ef8",
+        "git_blob": "901959fa24658c9beb1439fc06805f3feb8aa069",
+        "producer_commit": "ecfac25934a98985eca8222060e190f8d5cecd5c",
+        "version_history": [
+          {
+            "sha256": "bbea81996da5eec81dcef72ac9b38a4df1d40c46c80d04f0570aac5aa8d97c50",
+            "stage": "ORIGINAL_TRIANGLES"
+          },
+          {
+            "sha256": "4565e7f3c38c154a28b8494c163619bbfa0883371dfe66515b6ee36d66743ef8",
+            "stage": "PLANAR_QUADS"
+          }
+        ],
+        "metrics": {
+          "vertices": 208,
+          "faces": 270,
+          "triangles": 348,
+          "quads": 78
+        },
+        "edit": "Exact triangulation-equivalent quad authored source, native BLEND/FBX not re-exported"
+      },
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "PASS",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED",
+      "pass10_new_native_blend_saved_sha256": null,
+      "pass10_new_native_fbx_export_sha256": null,
+      "pass10_blender_fbx_roundtrip": "NOT_RUN",
+      "pass10_unity_6": "NOT_RUN",
+      "pass10_release": "BLOCKED",
+      "pass12": {
+        "kind": "OBJ_FUNCTIONAL_DETAIL",
+        "path": "Assets/C01InteriorProps/C01-18/Models/P18-03.obj",
+        "producer_commit": "4a0e58d422335af9c7f79fdcf6a80feb7c9c6435",
+        "sha256_actual_authored_source": "3996be33105a17163d4c8a753012aca891c1b19b156abf32ddab02d8fbca50e0",
+        "blob_sha1": "df5a68c87fd49597c79bbb6f70735f32543489bf",
+        "BEFORE": [
+          208,
+          270,
+          348,
+          17
+        ],
+        "AFTER": {
+          "vertices": 872,
+          "faces": 1110,
+          "triangles": 1532,
+          "parts": 53,
+          "new_parts": 36
+        },
+        "source_static_C01_03": "PASS",
+        "source_independent_C01_02": "SOURCE_INDEXED_PREFLIGHT_PASS_NATIVE_STALE",
+        "independent_severe_disputed_for_unscaled_bounds": false,
+        "new_actual_blender_saved_sha256": null,
+        "new_blender_binary_FBX_export_sha256": null,
+        "blender_roundtrip": "NOT_RUN",
+        "unity6": "NOT_RUN",
+        "status": "BLOCKED"
+      },
+      "pass13": {
+        "producer_source_head_sha": "24b03911ee423240d03a5de5b39a1655b257b131",
+        "source_version": "3996be33105a17163d4c8a753012aca891c1b19b156abf32ddab02d8fbca50e0",
+        "kind": "OBJ_FUNCTIONAL_DETAIL",
+        "topology_source_static": "PASS",
+        "source_contact": "FAIL_REAL_OBJ_AABB_DISJOINT",
+        "confirmed_gap_mm": [
+          {
+            "part": "Cart_Shelf_Lip_0_-0.48",
+            "gap_mm": 5,
+            "axis": "Y",
+            "nearest": "Cart_Shelf_0"
+          },
+          {
+            "part": "Cart_Shelf_Lip_0_0.48",
+            "gap_mm": 5,
+            "axis": "Y",
+            "nearest": "Cart_Shelf_0"
+          },
+          {
+            "part": "Cart_Shelf_Lip_1_-0.48",
+            "gap_mm": 5,
+            "axis": "Y",
+            "nearest": "Cart_Shelf_1"
+          },
+          {
+            "part": "Cart_Shelf_Lip_1_0.48",
+            "gap_mm": 5,
+            "axis": "Y",
+            "nearest": "Cart_Shelf_1"
+          }
+        ],
+        "new_native_blender_save": "NOT_RUN",
+        "new_blender_exported_fbx": "NOT_RUN",
+        "independent_final_hydrated_binary_QA": "BLOCKED",
+        "real_Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED",
+        "source_byte_sha256": "3996be33105a17163d4c8a753012aca891c1b19b156abf32ddab02d8fbca50e0",
+        "source_blob": "df5a68c87fd49597c79bbb6f70735f32543489bf"
+      }
+    },
+    {
+      "id": "P18-04",
+      "owner": "C01-18",
+      "producer_pr": 26,
+      "head_commit_sha": "2a716f81394538b07f1dd83d7d94932d080ecaca",
+      "immutable_original": {
+        "blend_sha256": "4a0531a877df0cbbcc2078b02297efccd966611e736bf70480a7572c6602ec52",
+        "fbx_sha256": "97298f0b49058f84eb2b746f8ac50af73f056f8bea43f11dde24fe9e550d1742",
+        "commit": "e2fdde1c213ecb65b3ca1800c635e41e939e90e2"
+      },
+      "previous_independent_real_binary_fbx_sha256": "233253cea4a872052ef87c33f79c08794885dacac4caadf276e95701d0a70803",
+      "previous_QA_source_class": "PINNED_PASS03_ACTIONS_ARTIFACT",
+      "editable_source_after": null,
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "PASS_WITH_NGONS",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED",
+      "pass10_new_native_blend_saved_sha256": null,
+      "pass10_new_native_fbx_export_sha256": null,
+      "pass10_blender_fbx_roundtrip": "NOT_RUN",
+      "pass10_unity_6": "NOT_RUN",
+      "pass10_release": "BLOCKED",
+      "pass12": {
+        "source_detail_revision": false,
+        "status": "BLOCKED"
+      },
+      "pass13": {
+        "producer_source_head_sha": "2a716f81394538b07f1dd83d7d94932d080ecaca",
+        "source_version": null,
+        "kind": null,
+        "topology_source_static": "NOT_RUN",
+        "source_contact": "NOT_RUN",
+        "confirmed_gap_mm": [],
+        "new_native_blender_save": "NOT_RUN",
+        "new_blender_exported_fbx": "NOT_RUN",
+        "independent_final_hydrated_binary_QA": "BLOCKED",
+        "real_Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED"
+      }
+    },
+    {
+      "id": "P18-05",
+      "owner": "C01-18",
+      "producer_pr": 26,
+      "head_commit_sha": "2a716f81394538b07f1dd83d7d94932d080ecaca",
+      "immutable_original": {
+        "blend_sha256": "495260c299fa9afea63516549d50bcf3a581e1f3735409602e56859b41d23c5e",
+        "fbx_sha256": "2f4dbc8e7077e15b12f37f9fca64a0bc08e3ebde05776e602542e6efb648295e",
+        "commit": "e2fdde1c213ecb65b3ca1800c635e41e939e90e2"
+      },
+      "previous_independent_real_binary_fbx_sha256": "58e33516ead13e35e8a48228045c67bd53d6caf8de01883a11625fa2961957e5",
+      "previous_QA_source_class": "PINNED_PASS03_ACTIONS_ARTIFACT",
+      "editable_source_after": {
+        "type": "BLENDER_PYTHON_PRODUCER_SOURCE",
+        "path": "Assets/C01InteriorProps/C01-18-Wave02/Sources/build_wave02.py",
+        "sha256": "430766db66a207034e2997fb29834d6947056ed1f7b43dfa6aefd6135d83b564",
+        "git_blob": "e78c6021a6b753c6d506176190ddcf0ac7adfc04",
+        "producer_commit": "bf288192f917d0fbeb0cac8d318b1a4c299cb029",
+        "edit": "Producer box bounds synchronised to old actual native FBX reference; NOT new .blend/FBX export",
+        "source_sync_to_old_binary": true
+      },
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "PASS_WITH_NGONS",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED",
+      "pass10_new_native_blend_saved_sha256": null,
+      "pass10_new_native_fbx_export_sha256": null,
+      "pass10_blender_fbx_roundtrip": "NOT_RUN",
+      "pass10_unity_6": "NOT_RUN",
+      "pass10_release": "BLOCKED",
+      "pass12": {
+        "source_detail_revision": false,
+        "status": "BLOCKED"
+      },
+      "pass13": {
+        "producer_source_head_sha": "2a716f81394538b07f1dd83d7d94932d080ecaca",
+        "source_version": null,
+        "kind": null,
+        "topology_source_static": "NOT_RUN",
+        "source_contact": "NOT_RUN",
+        "confirmed_gap_mm": [],
+        "new_native_blender_save": "NOT_RUN",
+        "new_blender_exported_fbx": "NOT_RUN",
+        "independent_final_hydrated_binary_QA": "BLOCKED",
+        "real_Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED"
+      }
+    },
+    {
+      "id": "P18-06",
+      "owner": "C01-18",
+      "producer_pr": 26,
+      "head_commit_sha": "2a716f81394538b07f1dd83d7d94932d080ecaca",
+      "immutable_original": {
+        "blend_sha256": "b6819748f8ae88c21e0c93bee4dfdb00badb4ec78898b65e52eec4e9cce9aef8",
+        "fbx_sha256": "3bb79ebca800dd175aba71e02a9628db328da009abcd0414c43e4040dbc6d36f",
+        "commit": "e2fdde1c213ecb65b3ca1800c635e41e939e90e2"
+      },
+      "previous_independent_real_binary_fbx_sha256": "e83be5fac79ba0d4baf57f9a4c6050a978383da4f3bd95d046b38462fbabb220",
+      "previous_QA_source_class": "PINNED_PASS03_ACTIONS_ARTIFACT",
+      "editable_source_after": {
+        "type": "BLENDER_PYTHON_PRODUCER_SOURCE",
+        "path": "Assets/C01InteriorProps/C01-18-Wave02/Sources/build_wave02.py",
+        "sha256": "430766db66a207034e2997fb29834d6947056ed1f7b43dfa6aefd6135d83b564",
+        "git_blob": "e78c6021a6b753c6d506176190ddcf0ac7adfc04",
+        "producer_commit": "bf288192f917d0fbeb0cac8d318b1a4c299cb029",
+        "edit": "Producer box bounds synchronised to old actual native FBX reference; NOT new .blend/FBX export",
+        "source_sync_to_old_binary": true
+      },
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "PASS_WITH_NGONS",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED",
+      "pass10_new_native_blend_saved_sha256": null,
+      "pass10_new_native_fbx_export_sha256": null,
+      "pass10_blender_fbx_roundtrip": "NOT_RUN",
+      "pass10_unity_6": "NOT_RUN",
+      "pass10_release": "BLOCKED",
+      "pass12": {
+        "source_detail_revision": false,
+        "status": "BLOCKED"
+      },
+      "pass13": {
+        "producer_source_head_sha": "2a716f81394538b07f1dd83d7d94932d080ecaca",
+        "source_version": null,
+        "kind": null,
+        "topology_source_static": "NOT_RUN",
+        "source_contact": "NOT_RUN",
+        "confirmed_gap_mm": [],
+        "new_native_blender_save": "NOT_RUN",
+        "new_blender_exported_fbx": "NOT_RUN",
+        "independent_final_hydrated_binary_QA": "BLOCKED",
+        "real_Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED"
+      }
+    },
+    {
+      "id": "P18-07",
+      "owner": "C01-18",
+      "producer_pr": 26,
+      "head_commit_sha": "2a716f81394538b07f1dd83d7d94932d080ecaca",
+      "immutable_original": {
+        "blend_sha256": "f0fabddd21df84c49eba175522bbe17eeba389555dde7ffef39a7726cbd985c5",
+        "fbx_sha256": "68fb04e6572cfa54866a0a9bd7fb6da11d44408d7a946b26cb4cc78b9bc96873",
+        "commit": "e2fdde1c213ecb65b3ca1800c635e41e939e90e2"
+      },
+      "previous_independent_real_binary_fbx_sha256": "56c19c7ea12fe2713ae30b72ecf8771613f794d4a2e8c4da18c41cb9dd825e08",
+      "previous_QA_source_class": "PINNED_PASS03_ACTIONS_ARTIFACT",
+      "editable_source_after": {
+        "type": "BLENDER_PYTHON_PRODUCER_SOURCE",
+        "path": "Assets/C01InteriorProps/C01-18-Wave02/Sources/build_wave02.py",
+        "sha256": "430766db66a207034e2997fb29834d6947056ed1f7b43dfa6aefd6135d83b564",
+        "git_blob": "e78c6021a6b753c6d506176190ddcf0ac7adfc04",
+        "producer_commit": "bf288192f917d0fbeb0cac8d318b1a4c299cb029",
+        "edit": "Front_Lock moved +1mm from 0.164 to 0.165m, overlapping visible planes separated",
+        "source_sync_to_old_binary": false
+      },
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "PASS_WITH_NGONS",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED",
+      "pass10_new_native_blend_saved_sha256": null,
+      "pass10_new_native_fbx_export_sha256": null,
+      "pass10_blender_fbx_roundtrip": "NOT_RUN",
+      "pass10_unity_6": "NOT_RUN",
+      "pass10_release": "BLOCKED",
+      "pass12": {
+        "source_detail_revision": false,
+        "status": "BLOCKED"
+      },
+      "pass13": {
+        "producer_source_head_sha": "2a716f81394538b07f1dd83d7d94932d080ecaca",
+        "source_version": null,
+        "kind": null,
+        "topology_source_static": "NOT_RUN",
+        "source_contact": "NOT_RUN",
+        "confirmed_gap_mm": [],
+        "new_native_blender_save": "NOT_RUN",
+        "new_blender_exported_fbx": "NOT_RUN",
+        "independent_final_hydrated_binary_QA": "BLOCKED",
+        "real_Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED"
+      }
+    },
+    {
+      "id": "P19-01",
+      "owner": "C01-19",
+      "producer_pr": 15,
+      "head_commit_sha": "7bd4bf809932514bd25b49e5a9bb3855aa5f1997",
+      "immutable_original": {
+        "blend_sha256": "a504773f8348e5f2b9619cf4fc3d0664d4e354b237dd0159dce8486bdc35bd22",
+        "fbx_sha256": "1670b2c7566539de49d70d4222bdc4c04ef947607d1abe05ac70f783a82f0581",
+        "commit": "9ae76a717eb5edeb5edcd3f5e27d8696f5d715ed"
+      },
+      "previous_independent_real_binary_fbx_sha256": "47b4d6f2017626b6084584fbf0bad907505eb9e194703032d83af5315c1a4009",
+      "previous_QA_source_class": "PINNED_PASS03_ACTIONS_ARTIFACT",
+      "editable_source_after": null,
+      "offline_candidate": {
+        "kind": "OFFLINE_FBX_POLYGON_REPAIR_NOT_BLENDER_SAVED",
+        "blend_sha256": null,
+        "fbx_sha256": "9dc4d6b724c4a5a4b45a04412dc5a61fe732fa1b4423a9f0c27889053960163b",
+        "source_report_blob_sha1": "620dc24861909a9e1b11d70863c969ecbe64e710",
+        "can_promote": false
+      },
+      "qa": {
+        "real_fbx_static": "FAIL_EXPORT_PREFLIGHT",
+        "independent_final": "FAIL_PREFLIGHT",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED",
+      "pass10_new_native_blend_saved_sha256": null,
+      "pass10_new_native_fbx_export_sha256": null,
+      "pass10_blender_fbx_roundtrip": "NOT_RUN",
+      "pass10_unity_6": "NOT_RUN",
+      "pass10_release": "BLOCKED",
+      "pass12": {
+        "source_detail_revision": false,
+        "status": "BLOCKED"
+      },
+      "pass13": {
+        "producer_source_head_sha": "7bd4bf809932514bd25b49e5a9bb3855aa5f1997",
+        "source_version": null,
+        "kind": null,
+        "topology_source_static": "NOT_RUN",
+        "source_contact": "NOT_RUN",
+        "confirmed_gap_mm": [],
+        "new_native_blender_save": "NOT_RUN",
+        "new_blender_exported_fbx": "NOT_RUN",
+        "independent_final_hydrated_binary_QA": "BLOCKED",
+        "real_Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED"
+      }
+    },
+    {
+      "id": "P19-02",
+      "owner": "C01-19",
+      "producer_pr": 15,
+      "head_commit_sha": "7bd4bf809932514bd25b49e5a9bb3855aa5f1997",
+      "immutable_original": {
+        "blend_sha256": "3c3ef13129b7fbf598f4ece35a76ee3068fa26fee464937baffbefb66fb19b80",
+        "fbx_sha256": "9612c4488ed147ad7359f9809009739ea317e22959c3871856757fe88dacc6d5",
+        "commit": "9ae76a717eb5edeb5edcd3f5e27d8696f5d715ed"
+      },
+      "previous_independent_real_binary_fbx_sha256": "a42a57d168164cea335de3c9ee175a3074edca4a48b707a14beadbea16a8b6d8",
+      "previous_QA_source_class": "PINNED_PASS03_ACTIONS_ARTIFACT",
+      "editable_source_after": null,
+      "offline_candidate": {
+        "kind": "PASS05_OFFLINE_TRIANGULATED_FBX_NOT_BLENDER_SAVED",
+        "blend_sha256": null,
+        "fbx_sha256": "8371d9bacedb1dec4ed9edb038e14b76f62dc1fe4eadba801d318ccbbce11837",
+        "can_promote": false
+      },
+      "qa": {
+        "real_fbx_static": "FAIL_EXPORT_PREFLIGHT",
+        "independent_final": "FAIL_PREFLIGHT",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED",
+      "pass10_new_native_blend_saved_sha256": null,
+      "pass10_new_native_fbx_export_sha256": null,
+      "pass10_blender_fbx_roundtrip": "NOT_RUN",
+      "pass10_unity_6": "NOT_RUN",
+      "pass10_release": "BLOCKED",
+      "pass12": {
+        "source_detail_revision": false,
+        "status": "BLOCKED"
+      },
+      "pass13": {
+        "producer_source_head_sha": "7bd4bf809932514bd25b49e5a9bb3855aa5f1997",
+        "source_version": null,
+        "kind": null,
+        "topology_source_static": "NOT_RUN",
+        "source_contact": "NOT_RUN",
+        "confirmed_gap_mm": [],
+        "new_native_blender_save": "NOT_RUN",
+        "new_blender_exported_fbx": "NOT_RUN",
+        "independent_final_hydrated_binary_QA": "BLOCKED",
+        "real_Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED",
+        "other_producer_detail": {
+          "kind": "OFFLINE_NATIVE_FORMAT_BINARY_DETAIL_CANDIDATES_NOT_IN_GIT_LFS",
+          "producer_reported_modified_blend_sha256": "6479553d44b5c9671b5a49fad926318d1f5c2bf347856b21ceb15c0769968150",
+          "source_original_blend_sha256": "d461ca95c70ac9ff30c6aac23beddbe19d9495ea7c70e2cc4bf28762f2c75b0e",
+          "producer_reported_archive_sha256": "21447a1649b36a60771b1cd79f94557b92cea92edd06aa1c589136eeed2d533f",
+          "after_triangles": 292,
+          "Blender_application": "NOT_RUN",
+          "new_FBX_readback_by_C01_03": "NOT_RUN"
+        }
+      }
+    },
+    {
+      "id": "P19-03",
+      "owner": "C01-19",
+      "producer_pr": 15,
+      "head_commit_sha": "7bd4bf809932514bd25b49e5a9bb3855aa5f1997",
+      "immutable_original": {
+        "blend_sha256": "5c3422e71ee66f0260a3ea986d74ada6267ed7ee7f0cac446c31dc7586dd6455",
+        "fbx_sha256": "ee6f0d38e281d534af62902bc47fd89267e0c39b9e49b4ef6f35af71a6f2abb8",
+        "commit": "9ae76a717eb5edeb5edcd3f5e27d8696f5d715ed"
+      },
+      "previous_independent_real_binary_fbx_sha256": "872688775a1f373090867a466b21be441d8962b16b2a47703cc50c12220f1891",
+      "previous_QA_source_class": "PINNED_PASS03_ACTIONS_ARTIFACT",
+      "editable_source_after": null,
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "PASS_WITH_NGONS",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED",
+      "pass10_new_native_blend_saved_sha256": null,
+      "pass10_new_native_fbx_export_sha256": null,
+      "pass10_blender_fbx_roundtrip": "NOT_RUN",
+      "pass10_unity_6": "NOT_RUN",
+      "pass10_release": "BLOCKED",
+      "pass12": {
+        "source_detail_revision": false,
+        "status": "BLOCKED"
+      },
+      "pass13": {
+        "producer_source_head_sha": "7bd4bf809932514bd25b49e5a9bb3855aa5f1997",
+        "source_version": null,
+        "kind": null,
+        "topology_source_static": "NOT_RUN",
+        "source_contact": "NOT_RUN",
+        "confirmed_gap_mm": [],
+        "new_native_blender_save": "NOT_RUN",
+        "new_blender_exported_fbx": "NOT_RUN",
+        "independent_final_hydrated_binary_QA": "BLOCKED",
+        "real_Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED"
+      }
+    },
+    {
+      "id": "P19-04",
+      "owner": "C01-19",
+      "producer_pr": 15,
+      "head_commit_sha": "7bd4bf809932514bd25b49e5a9bb3855aa5f1997",
+      "immutable_original": {
+        "blend_sha256": "d58dc1905055b6d25888e0ccaeaa3e61b1b6a4757ba58976f31ab10665c2287d",
+        "fbx_sha256": "74ee2044132b47e995f537b2850e150711e8cb8ee47fcbbde38f42ed16808592",
+        "commit": "9ae76a717eb5edeb5edcd3f5e27d8696f5d715ed"
+      },
+      "previous_independent_real_binary_fbx_sha256": "529c1886bf8d727699db72578f01da9f6226981e02738a1b9fcd24ade489bc9b",
+      "previous_QA_source_class": "PINNED_PASS03_ACTIONS_ARTIFACT",
+      "editable_source_after": null,
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "PASS_WITH_NGONS",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED",
+      "pass10_new_native_blend_saved_sha256": null,
+      "pass10_new_native_fbx_export_sha256": null,
+      "pass10_blender_fbx_roundtrip": "NOT_RUN",
+      "pass10_unity_6": "NOT_RUN",
+      "pass10_release": "BLOCKED",
+      "pass12": {
+        "source_detail_revision": false,
+        "status": "BLOCKED"
+      },
+      "pass13": {
+        "producer_source_head_sha": "7bd4bf809932514bd25b49e5a9bb3855aa5f1997",
+        "source_version": null,
+        "kind": null,
+        "topology_source_static": "NOT_RUN",
+        "source_contact": "NOT_RUN",
+        "confirmed_gap_mm": [],
+        "new_native_blender_save": "NOT_RUN",
+        "new_blender_exported_fbx": "NOT_RUN",
+        "independent_final_hydrated_binary_QA": "BLOCKED",
+        "real_Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED"
+      }
+    },
+    {
+      "id": "P19-05",
+      "owner": "C01-19",
+      "producer_pr": 29,
+      "head_commit_sha": "7cef36d2a6818ee06a2db902f18b88b2f4d54454",
+      "immutable_original": {
+        "blend_sha256": "a7c50a8ea1f41a7e590b1af7bf1dae83a49e0d049dcd7270cbe02690a88b3d8c",
+        "fbx_sha256": "e591b1d228ab2224109cc2bd79db411428c2b2d38846b45f595db4af8d377ba2",
+        "commit": "cae85cce223418d77a0334a48e5fbdc7984a688b"
+      },
+      "previous_independent_real_binary_fbx_sha256": "64156363cb5007831c243aeea50d5e59c862cc98b27cb12dd2f8af5b3c019892",
+      "previous_QA_source_class": "PINNED_PASS03_ACTIONS_ARTIFACT",
+      "editable_source_after": null,
+      "offline_candidate": {
+        "kind": "PASS05_OFFLINE_TRIANGULATED_FBX_NOT_BLENDER_SAVED",
+        "blend_sha256": null,
+        "fbx_sha256": "7b04a8b2f9fb7306b1e169f18bba25a322dd4ba726decbe1ecb69d5994f6f1b1",
+        "can_promote": false
+      },
+      "qa": {
+        "real_fbx_static": "FAIL_EXPORT_PREFLIGHT",
+        "independent_final": "FAIL_PREFLIGHT",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED",
+      "pass10_new_native_blend_saved_sha256": null,
+      "pass10_new_native_fbx_export_sha256": null,
+      "pass10_blender_fbx_roundtrip": "NOT_RUN",
+      "pass10_unity_6": "NOT_RUN",
+      "pass10_release": "BLOCKED",
+      "pass12": {
+        "source_detail_revision": false,
+        "status": "BLOCKED"
+      },
+      "pass13": {
+        "producer_source_head_sha": "7cef36d2a6818ee06a2db902f18b88b2f4d54454",
+        "source_version": null,
+        "kind": null,
+        "topology_source_static": "NOT_RUN",
+        "source_contact": "NOT_RUN",
+        "confirmed_gap_mm": [],
+        "new_native_blender_save": "NOT_RUN",
+        "new_blender_exported_fbx": "NOT_RUN",
+        "independent_final_hydrated_binary_QA": "BLOCKED",
+        "real_Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED",
+        "other_producer_detail": {
+          "kind": "OFFLINE_NATIVE_FORMAT_BINARY_DETAIL_CANDIDATES_NOT_IN_GIT_LFS",
+          "producer_reported_modified_blend_sha256": "6bc9278809ab77265f8c9fe59e492ca054790a45c5bc4a9eb7a9b0d3147ff1d1",
+          "source_original_blend_sha256": "3180b9c32472bfb0127e2c9e443d625ba73e9b6771c1d02e89425f639d30e2c0",
+          "producer_reported_archive_sha256": "21447a1649b36a60771b1cd79f94557b92cea92edd06aa1c589136eeed2d533f",
+          "after_triangles": 252,
+          "Blender_application": "NOT_RUN",
+          "new_FBX_readback_by_C01_03": "NOT_RUN"
+        }
+      }
+    },
+    {
+      "id": "P19-06",
+      "owner": "C01-19",
+      "producer_pr": 29,
+      "head_commit_sha": "7cef36d2a6818ee06a2db902f18b88b2f4d54454",
+      "immutable_original": {
+        "blend_sha256": "2fe00dd31c76da2fa7f82a3c8107d7802c106026e26d62ded6bef23d4b4d9dab",
+        "fbx_sha256": "9644a9e123696cd271649c62481bbbff150eb0734079a7a62af090d4f490a469",
+        "commit": "cae85cce223418d77a0334a48e5fbdc7984a688b"
+      },
+      "previous_independent_real_binary_fbx_sha256": "d773f2d3c0fe9743a0ad619353766b669386997769eb8a59487b58295c7c3a7d",
+      "previous_QA_source_class": "PINNED_PASS03_ACTIONS_ARTIFACT",
+      "editable_source_after": null,
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "PASS_WITH_NGONS",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED",
+      "pass10_new_native_blend_saved_sha256": null,
+      "pass10_new_native_fbx_export_sha256": null,
+      "pass10_blender_fbx_roundtrip": "NOT_RUN",
+      "pass10_unity_6": "NOT_RUN",
+      "pass10_release": "BLOCKED",
+      "pass12": {
+        "source_detail_revision": false,
+        "status": "BLOCKED"
+      },
+      "pass13": {
+        "producer_source_head_sha": "7cef36d2a6818ee06a2db902f18b88b2f4d54454",
+        "source_version": null,
+        "kind": null,
+        "topology_source_static": "NOT_RUN",
+        "source_contact": "NOT_RUN",
+        "confirmed_gap_mm": [],
+        "new_native_blender_save": "NOT_RUN",
+        "new_blender_exported_fbx": "NOT_RUN",
+        "independent_final_hydrated_binary_QA": "BLOCKED",
+        "real_Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED"
+      }
+    },
+    {
+      "id": "P19-07",
+      "owner": "C01-19",
+      "producer_pr": 29,
+      "head_commit_sha": "7cef36d2a6818ee06a2db902f18b88b2f4d54454",
+      "immutable_original": {
+        "blend_sha256": "8d99c6286c6e28182742e69293eb393dc30c6abe9bb50fa77dee3a77fae9928a",
+        "fbx_sha256": "2c180a3607c49b43c48a14e4cf58f2b825f44b56e2e86cc02b17e6d96d6c8d43",
+        "commit": "cae85cce223418d77a0334a48e5fbdc7984a688b"
+      },
+      "previous_independent_real_binary_fbx_sha256": "88b32fe2f5ddf981eecdc0469088f4e23e07c4c605a1db7bb9689a0b6011d585",
+      "previous_QA_source_class": "PINNED_PASS03_ACTIONS_ARTIFACT",
+      "editable_source_after": null,
+      "offline_candidate": {
+        "kind": "PASS05_OFFLINE_TRIANGULATED_FBX_NOT_BLENDER_SAVED",
+        "blend_sha256": null,
+        "fbx_sha256": "d9e832d4df2623b70842209944c1615d7aba7af6f042e16bf7720b4a95e9a3e1",
+        "can_promote": false
+      },
+      "qa": {
+        "real_fbx_static": "FAIL_EXPORT_PREFLIGHT",
+        "independent_final": "FAIL_PREFLIGHT",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED",
+      "pass10_new_native_blend_saved_sha256": null,
+      "pass10_new_native_fbx_export_sha256": null,
+      "pass10_blender_fbx_roundtrip": "NOT_RUN",
+      "pass10_unity_6": "NOT_RUN",
+      "pass10_release": "BLOCKED",
+      "pass12": {
+        "source_detail_revision": false,
+        "status": "BLOCKED"
+      },
+      "pass13": {
+        "producer_source_head_sha": "7cef36d2a6818ee06a2db902f18b88b2f4d54454",
+        "source_version": null,
+        "kind": null,
+        "topology_source_static": "NOT_RUN",
+        "source_contact": "NOT_RUN",
+        "confirmed_gap_mm": [],
+        "new_native_blender_save": "NOT_RUN",
+        "new_blender_exported_fbx": "NOT_RUN",
+        "independent_final_hydrated_binary_QA": "BLOCKED",
+        "real_Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED"
+      }
+    },
+    {
+      "id": "P19-08",
+      "owner": "C01-19",
+      "producer_pr": 29,
+      "head_commit_sha": "7cef36d2a6818ee06a2db902f18b88b2f4d54454",
+      "immutable_original": {
+        "blend_sha256": "5b00c434831ef27f87e03b7716916b31893f8eb4f8733b7c95cc543510a27ce9",
+        "fbx_sha256": "65bc32a8f280941b24e8070a706e5733b30fde25d042f4cdd4398022e2edaf44",
+        "commit": "cae85cce223418d77a0334a48e5fbdc7984a688b"
+      },
+      "previous_independent_real_binary_fbx_sha256": "cbbea5435f8326e06fb5f43237986594df044c0e3ff94100fc44f856dce35ae2",
+      "previous_QA_source_class": "PINNED_PASS03_ACTIONS_ARTIFACT",
+      "editable_source_after": null,
+      "offline_candidate": {
+        "kind": "PASS05_OFFLINE_TRIANGULATED_FBX_NOT_BLENDER_SAVED",
+        "blend_sha256": null,
+        "fbx_sha256": "c740c5de71443f2b01f20cb48f76f37e61fda53ddfd5c5a9d7d263d511772e11",
+        "can_promote": false
+      },
+      "qa": {
+        "real_fbx_static": "FAIL_EXPORT_PREFLIGHT",
+        "independent_final": "FAIL_PREFLIGHT",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED",
+      "pass10_new_native_blend_saved_sha256": null,
+      "pass10_new_native_fbx_export_sha256": null,
+      "pass10_blender_fbx_roundtrip": "NOT_RUN",
+      "pass10_unity_6": "NOT_RUN",
+      "pass10_release": "BLOCKED",
+      "pass12": {
+        "source_detail_revision": false,
+        "status": "BLOCKED"
+      },
+      "pass13": {
+        "producer_source_head_sha": "7cef36d2a6818ee06a2db902f18b88b2f4d54454",
+        "source_version": null,
+        "kind": null,
+        "topology_source_static": "NOT_RUN",
+        "source_contact": "NOT_RUN",
+        "confirmed_gap_mm": [],
+        "new_native_blender_save": "NOT_RUN",
+        "new_blender_exported_fbx": "NOT_RUN",
+        "independent_final_hydrated_binary_QA": "BLOCKED",
+        "real_Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED"
+      }
+    }
+  ],
+  "summary": {
+    "assets_in_scope": 36,
+    "real_new_asset_ids": 0,
+    "source_detail_committed_models_from_pass12": 11,
+    "additional_P15_03_detail_source_spec_model": 1,
+    "P19_02_05_offline_native_format_candidate_models": 2,
+    "confirmed_P18_source_spatially_disconnected_part_count": 7,
+    "confirmed_P17_keybed_to_housing_separation_mm": 0.5,
+    "confirmed_source_contact_FAIL_models": 4,
+    "confirmed_source_contact_FAIL_part_instances": 8,
+    "confirmed_P17_screw_contact_grounded": 4,
+    "P18_old_source_topology_QA_prior_pass_count": 3,
+    "latest_Blender_application_saved_new_native_blend": 0,
+    "latest_real_Blender_application_FBX_export_reimport_PASS": 0,
+    "latest_independent_C01_02_final_binary_PASS": 0,
+    "latest_Unity6_PASS": 0,
+    "all_release_blocked": 36,
+    "runner": "C01 Actions latest checked run 41119479370 failed runner_id 0 steps zero; admin root cause unknown",
+    "owner_required_action": "NEEDS_OWNER_ACTION"
+  },
+  "QA_contract": "No native Blender 4.x save, no genuine Blender exported FBX/reimport or Unity QA: never promote source-only/candidate evidence to release PASS."
+}

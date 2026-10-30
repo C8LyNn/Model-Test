@@ -15,7 +15,7 @@ namespace C01.Ship.V5
         public bool walking;
         public int selectedDeck = 1;
         public float walkSpeed = 5, overviewSpeed = 20;
-        bool roofs, labels = true;
+        bool roofs, labels = true, mouseCaptured;
         int lastDeck = 1;
         float pitch, verticalSpeed;
         [SerializeField, HideInInspector] bool overviewProjectionSaved, overviewOrthographic;
@@ -70,8 +70,19 @@ namespace C01.Ship.V5
             }
             RefreshVisibility();
             if (!walking) ResetView();
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+            SetMouseCapture(walking && Application.isPlaying);
+        }
+
+        void SetMouseCapture(bool value)
+        {
+            mouseCaptured = value;
+            Cursor.lockState = value ? CursorLockMode.Locked : CursorLockMode.None;
+            Cursor.visible = !value;
+        }
+
+        void OnDisable()
+        {
+            if (Application.isPlaying && mouseCaptured) SetMouseCapture(false);
         }
 
         public void SetDeck(int deck)
@@ -162,6 +173,12 @@ namespace C01.Ship.V5
             return true;
         }
 
+        public bool TryPressScreen(Vector2 screen)
+        {
+            if (!walking && screen.x < 460 && screen.y > Screen.height - 120) return false;
+            return TryPressRay(walking ? view.ViewportPointToRay(new Vector3(.5f, .5f)) : view.ScreenPointToRay(screen));
+        }
+
         public bool TryBeginClimb()
         {
             if (!walking || player == null || !player.enabled) return false;
@@ -213,14 +230,18 @@ namespace C01.Ship.V5
                 if (keyboard.digit2Key.wasPressedThisFrame) SetWalking(true);
                 if (keyboard.rKey.wasPressedThisFrame) { roofs = !roofs; RefreshVisibility(); }
                 if (keyboard.lKey.wasPressedThisFrame) labels = !labels;
-                if (keyboard.eKey.wasPressedThisFrame && walking) { if (climbing) climbing = false; else TryBeginClimb(); }
+                if (keyboard.escapeKey.wasPressedThisFrame && walking) SetMouseCapture(false);
+                if (keyboard.eKey.wasPressedThisFrame && walking)
+                {
+                    if (climbing) climbing = false;
+                    else if (!TryBeginClimb()) TryPressRay(view.ViewportPointToRay(new Vector3(.5f, .5f)));
+                }
             }
             if (mouse != null && mouse.leftButton.wasPressedThisFrame)
             {
-                // GUI controls occupy this area; they are not world button clicks.
                 var screen = mouse.position.ReadValue();
-                if (!(screen.x < 460 && screen.y > Screen.height - 120))
-                    TryPressRay(walking ? view.ViewportPointToRay(new Vector3(.5f, .5f)) : view.ScreenPointToRay(screen));
+                if (walking && !mouseCaptured) SetMouseCapture(true);
+                else TryPressScreen(screen);
             }
             // Device availability gates input only. Gravity must still run in batch mode
             // and when a keyboard is disconnected during a walking session.
@@ -228,7 +249,7 @@ namespace C01.Ship.V5
                 (keyboard.dKey.isPressed ? 1 : 0) - (keyboard.aKey.isPressed ? 1 : 0),
                 (keyboard.wKey.isPressed ? 1 : 0) - (keyboard.sKey.isPressed ? 1 : 0));
             axes = Vector2.ClampMagnitude(axes, 1);
-            if (mouse != null && mouse.rightButton.isPressed)
+            if (mouse != null && ((walking && mouseCaptured) || (!walking && mouse.rightButton.isPressed)))
             {
                 var delta = mouse.delta.ReadValue() * .12f;
                 if (walking && player != null)
@@ -265,8 +286,8 @@ namespace C01.Ship.V5
         void OnGUI()
         {
             GUILayout.BeginArea(new Rect(12, 12, 440, 108), GUI.skin.box);
-            GUILayout.Label("1: podgląd | 2: spacer | WASD: ruch | PPM: obrót");
-            GUILayout.Label("Spacja: skok | Shift: bieg | E: drabina | LPM: przycisk");
+            GUILayout.Label("1: podgląd | 2: spacer | WASD: ruch | mysz: obrót");
+            GUILayout.Label("Spacja: skok | Shift: bieg | E: drabina/przycisk | LPM: przycisk | Esc: kursor");
             GUILayout.BeginHorizontal();
             for (int deck = 0; deck < 3; deck++)
                 if (GUILayout.Button((selectedDeck == deck ? "● " : "") + "Deck " + deck)) SetDeck(deck);

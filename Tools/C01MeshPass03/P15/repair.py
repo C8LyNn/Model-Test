@@ -166,6 +166,14 @@ def gauge_ring_fix(o,log):
    px,py,pz=new_vertices[idx]
    uv.data[lid].uv=(px*.5+(-py)*.7,pz*.65+(-py)*.35)
  for m in matlist:mesh.materials.append(m)
+ # Verify orientation by physical signed volume of the closed ring; fix inward normals.
+ test=bmesh.new();test.from_mesh(mesh)
+ signed=test.calc_volume(signed=True)
+ if signed < -1e-11:
+  bmesh.ops.reverse_faces(test,faces=list(test.faces))
+  test.to_mesh(mesh);mesh.update()
+  log.append({"mesh":o.name,"type":"inward_tube_after_seam_repair","volume_before":signed,"action":"reverse ring face winding"})
+ test.free()
  old=o.data;o.data=mesh
  if old.users==0:bpy.data.meshes.remove(old)
  log.append({"mesh":o.name,"type":"unwelded_closed_loop_and_180_frame_flip",

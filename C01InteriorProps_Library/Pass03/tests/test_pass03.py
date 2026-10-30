@@ -19,10 +19,16 @@ class LedgerTests(unittest.TestCase):
             self.assertIsNone(a["repair"]["fbx_sha256"])
             self.assertEqual(a["qa"]["status"], "NOT_RUN")
             self.assertEqual(a["release_status"], "BLOCKED")
-    def test_no_fake_before_digest(self):
+    def test_before_digests_have_real_ci_provenance(self):
         for a in p.validate():
-            self.assertIsNone(a["baseline"]["blend_sha256"])
-            self.assertIsNone(a["baseline"]["fbx_sha256"])
+            b = a["baseline"]
+            for role in ("blend", "fbx"):
+                digest = b[role + "_sha256"]
+                if digest is not None:
+                    self.assertRegex(digest, r"^[0-9a-f]{64}$")
+                    self.assertIn("byte_evidence", b)
+                    self.assertIn("action_run_id", b["byte_evidence"])
+                    self.assertEqual(b[role + "_byte_status"], "BYTE_SHA256_PASS_NOT_MESH_QA")
     def test_qa_cannot_be_skipped(self):
         a = p.validate()[0]
         a["release_status"] = "APPROVED"

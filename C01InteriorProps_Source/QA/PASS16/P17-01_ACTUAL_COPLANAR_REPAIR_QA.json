@@ -1,0 +1,99 @@
+{
+  "schema": "C01-17-PASS16-actual-source-QA",
+  "model": "P17-01",
+  "issue": 36,
+  "pr": 17,
+  "status": "SOURCE_STATIC_PASS_NATIVE_NOT_RUN",
+  "new_producer_sha256": {
+    "gltf": "77bffeffd7440c40882945e7341f659be2035eb23e67dae6329d108c74c88980",
+    "obj": "98f0e9b85f43711329ce29a923a75fb1faf52f340ff1fe2ca700a95aad68a164",
+    "spec": "c3797f94567019639f2363a98437a11ce07328df78b6ee6ae8900ca620e2af30"
+  },
+  "repairs": [
+    {
+      "names": [
+        "KeyboardGuide_L",
+        "KeyboardGuide_R"
+      ],
+      "source_translation_delta_m": [
+        0,
+        0,
+        0.001
+      ],
+      "changed_original_OBJ_position_records": 48,
+      "old_front_Z_m": -0.065,
+      "new_front_Z_m": -0.064,
+      "Keyboard_front_Z_m": -0.065,
+      "support_positive_AABB_overlap_mm": [
+        10,
+        9.5,
+        209
+      ],
+      "same_facing_triangle_overlap_mm2_each_before": 190.0007900006,
+      "after": 0
+    },
+    {
+      "names": [
+        "Backbone"
+      ],
+      "source_translation_delta_m": [
+        0,
+        0,
+        -0.001
+      ],
+      "changed_original_OBJ_position_records": 24,
+      "old_rear_Z_m": 0.28,
+      "new_rear_Z_m": 0.279,
+      "Plinth_rear_Z_m": 0.28,
+      "support_positive_AABB_overlap_mm": [
+        1230,
+        39,
+        120
+      ],
+      "same_facing_triangle_overlap_mm2_before": 47970.00078,
+      "after": 0
+    }
+  ],
+  "static_QA": {
+    "source_readback": "True GitHub post-edit glTF FLOAT32/POSITION with node transforms and source OBJ faces",
+    "part_count": 25,
+    "triangle_count": 380,
+    "world_geometry_glTF_to_OBJ_parity": "PASS 380/380 @1um",
+    "degenerate_triangles": 0,
+    "glTF_UV0_and_normals": "PASS 25/25 mesh primitives",
+    "bounds_m_XYZ": [
+      1.6,
+      1.1,
+      0.65
+    ],
+    "old_coplanar_mesh_pairs": 3,
+    "old_coplanar_triangle_intersection_pairs": 15,
+    "old_coplanar_same_facing_area_mm2": 48350.00236,
+    "new_coplanar_mesh_pairs": 0,
+    "new_coplanar_triangle_intersection_pairs": 0,
+    "new_coplanar_same_facing_area_mm2": 0,
+    "method": "Physical persisted complete 25-part Blender-derived original FBX triangles + authored details; 3D plane and co-directional normal filter and Shapely 2D clipping for all mesh pairs. Current GitHub glTF/OBJ parity independently verified.",
+    "disclaimer": "Source static PASS only; does not independently establish arbitrary noncoplanar mesh collisions, native Blender or rendered z-fighting."
+  },
+  "other_models_unchanged": {
+    "P17_02_glTF_SHA256": "a9995704a70776b49f2bd6916a50cf222a4ab40b370a0a9e258b63bdc4429786",
+    "P17_03_glTF_SHA256": "f38ed83c806b30deb55854b061492a0d89d278f7a7c20f900b2aeaed7933b23d"
+  },
+  "references_path": "C01InteriorProps_Source/References/PASS16_C01-17_CONSTRUCTION_REFERENCES.md",
+  "artifact": {
+    "filename": "C01-17_PASS16_P17-01_REAL_SOURCE_REPAIR_AND_REFERENCES.zip",
+    "bytes": 1421384,
+    "sha256": "2bf1e7e5e59de20cbfd2c4a8d4c7fc5b23cf52f130d3bc3b966fabd571caa3f6",
+    "zip_integrity": "PASS",
+    "archive_contains": "full updated analytic 380T OBJ, details OBJ, README, scripts, SHA manifest, previous authentic Blender BLEND+FBX explicitly marked old, source-based shaded/wireframe images and manufacturer reference links"
+  },
+  "release": {
+    "after_blend_saved_in_Blender4": "NOT RUN",
+    "after_binary_FBX_exported_by_Blender4": "NOT RUN",
+    "FBX_reimport_Blender": "NOT RUN",
+    "C01_02_signoff": "PENDING",
+    "Unity6_URP": "NOT RUN",
+    "PR_merged": false,
+    "blocker": "NEEDS_OWNER_ACTION: private Actions runners unavailable or authorized Windows Blender4 plus Git-LFS"
+  }
+}

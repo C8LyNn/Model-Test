@@ -2,7 +2,9 @@
 using System;
 using System.IO;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public static class C01WallPrefabBuilder
 {
@@ -110,6 +112,11 @@ public static class C01WallPrefabBuilder
             Directory.CreateDirectory(materialDir);
         }
 
+        // Preview scene prevents the QA utility from dirtying the artist's open
+        // spacecraft scene, even on a failed imported mesh or prefab save.
+        Scene previewScene = EditorSceneManager.NewPreviewScene();
+        try
+        {
         foreach (int index in indices)
         {
             string id = Ids[index];
@@ -118,12 +125,13 @@ public static class C01WallPrefabBuilder
             if (imported == null)
                 throw new FileNotFoundException("Required FBX disappeared: " + assetPath);
             var temp = new GameObject("C01-11_" + id + (qaCandidates ? "_QA_ONLY" : ""));
+            SceneManager.MoveGameObjectToScene(temp, previewScene);
             try
             {
                 temp.transform.position = Vector3.zero;
                 temp.transform.rotation = Quaternion.identity;
                 temp.transform.localScale = Vector3.one;
-                var mesh = (GameObject)PrefabUtility.InstantiatePrefab(imported);
+                var mesh = (GameObject)PrefabUtility.InstantiatePrefab(imported, previewScene);
                 mesh.transform.SetParent(temp.transform, false);
                 mesh.transform.localPosition = Vector3.zero;
                 mesh.transform.localRotation = Quaternion.identity;
@@ -164,6 +172,8 @@ public static class C01WallPrefabBuilder
             }
             finally { UnityEngine.Object.DestroyImmediate(temp); }
         }
+        }
+        finally { EditorSceneManager.ClosePreviewScene(previewScene); }
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
         Debug.Log("C01-11 prefab authoring complete; engine QA and C01-02 approval NOT RUN.");

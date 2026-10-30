@@ -1,6 +1,7 @@
 #if UNITY_EDITOR
 using System;
 using System.IO;
+using System.Security.Cryptography;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
@@ -26,6 +27,45 @@ public static class C01WallPrefabBuilder
         "W03_CORNER_90_1M.fbx", "W04_DOOR_OPENING_2M.fbx"
     };
     private static readonly int[] ExpectedTriangles = { 12, 572, 20, 28 };
+
+    // Byte-for-byte source identity pins. Original r2 hashes were recomputed
+    // from the actual binary FBX files in the PASS13/PASS14 physical archives.
+    // QA-only native candidate hashes come from the exact PR22 Git LFS OIDs,
+    // NOT from the different historical Blender QA artifacts.
+    private static readonly string[] OriginalR2Sha256 =
+    {
+        "7cc73ea116aa82cab5aa4833db2e6d3ce58888b47907402169d13ac2d7a7ff10",
+        "3df87b6e69ca3dffb336356fcc80912854b836b45261311b488af8a38fd9f037",
+        "3f6d37472239fe2ab61be27eaafb928ee9cf0253c9783d465d81ec649a9b2ee2",
+        "c492539f3d33f65c90e0a0ac5279a6feded45d7cb14c3fefc147358dc9d7ecfe"
+    };
+    private static readonly string[] NativeCandidateLfsSha256 =
+    {
+        "4260732720f10688e9ee370d2a254b67c9263e3e8241b4da42f08e12fe99632f",
+        null, // W02 candidate is never authorized.
+        "4c268d554d4e5948ea1927e29b0d32fc581a6f9f14f41fd070bf116a8eb7864c",
+        "b8751c3816ac6745b99ca17cf0489187dda6f1fd3e5fe4f209030aaccef0ddc8"
+    };
+
+    private static void VerifySourceSha256(string path, int index, bool qaCandidates)
+    {
+        string expected = qaCandidates
+            ? NativeCandidateLfsSha256[index] : OriginalR2Sha256[index];
+        if (string.IsNullOrEmpty(expected))
+            throw new InvalidOperationException(Ids[index] + ": no authorized FBX SHA256");
+        if (!File.Exists(path))
+            throw new FileNotFoundException("Physical hydrated binary FBX not found: " + path);
+        string actual;
+        using (var input = File.OpenRead(path))
+        using (var sha = SHA256.Create())
+            actual = BitConverter.ToString(sha.ComputeHash(input))
+                .Replace("-", "").ToLowerInvariant();
+        if (!string.Equals(actual, expected, StringComparison.Ordinal))
+            throw new InvalidOperationException(
+                Ids[index] + ": physical source FBX SHA256 mismatch at " + path +
+                " (expected " + expected + ", actual " + actual +
+                "). Reject stale/replaced/unhydrated LFS source.");
+    }
     private static readonly int[] CandidateIndices = { 0, 2, 3 };
     private static readonly int[] AllIndices = { 0, 1, 2, 3 };
 
@@ -49,6 +89,8 @@ public static class C01WallPrefabBuilder
         foreach (int index in indices)
         {
             string path = GetSourcePath(index, qaCandidates);
+            // Hash must match before any Unity asset is written or staged.
+            VerifySourceSha256(path, index, qaCandidates);
             var source = AssetDatabase.LoadAssetAtPath<GameObject>(path);
             if (source == null)
                 throw new FileNotFoundException("Required hydrated FBX missing: " + path);
@@ -74,6 +116,19 @@ public static class C01WallPrefabBuilder
                     throw new InvalidOperationException(Ids[index] +
                         ": missing material submeshes on " + mesh.name);
             }
+            var sourceRenderers = source.GetComponentsInChildren<MeshRenderer>(true);
+            if (sourceRenderers.Length == 0)
+                throw new InvalidOperationException(Ids[index] + ": source has no mesh renderers");
+            foreach (var renderer in sourceRenderers)
+            {
+                var materials = renderer.sharedMaterials;
+                var filter = renderer.GetComponent<MeshFilter>();
+                if (materials == null || materials.Length == 0 ||
+                    (filter != null && filter.sharedMesh != null &&
+                     materials.Length < filter.sharedMesh.subMeshCount))
+                    throw new InvalidOperationException(
+                        Ids[index] + ": missing/insufficient FBX material slots");
+            }
             if (meshes < 1 || triangles != ExpectedTriangles[index])
                 throw new InvalidOperationException(Ids[index] +
                     ": FBX has " + triangles + " triangles across " + meshes +
@@ -82,7 +137,7 @@ public static class C01WallPrefabBuilder
         }
     }
 
-    [MenuItem("Tools/C01/C01-11/Build W01-W04 Original R2 Prefabs")]
+    [MenuItem("Tools/C01/C01-11/QA Only/Build W01-W04 Original R2 Prefabs")]
     public static void Build()
     {
         // FAIL CLOSED if any original FBX is missing. This currently includes
@@ -101,7 +156,19 @@ public static class C01WallPrefabBuilder
     {
         PreflightMeshes(indices, qaCandidates);
 
-        string prefabDir = Root + (qaCandidates ? "/QA_Candidates/Prefabs" : "/Prefabs");
+        // Neither menu is authorized to touch deployable ship prefabs.
+        string prefabDir = Root + (qaCandidates
+            ? "/QA_Candidates/LegacyNative/Prefabs"
+            : "/QA_Candidates/OriginalR2/Prefabs");
+
+        // Fail closed for ALL destinations before creating ANY prefab.
+        foreach (int index in indices)
+        {
+            string output = prefabDir + "/C01-11_" + Ids[index] + "_QA_ONLY.prefab";
+            if (File.Exists(output) ||
+                AssetDatabase.LoadAssetAtPath<UnityEngine.Object>(output) != null)
+                throw new IOException("Refuse overwrite of existing QA prefab: " + output);
+        }
         // Full original-r2 builds require URP, but must NOT overwrite
         // model-authored material slots with a single synthetic steel material.
         // Source geometry/material preflight happens before any prefab writes.
@@ -130,32 +197,19 @@ public static class C01WallPrefabBuilder
             try
             {
                 temp.name = "C01-11_" + id + (qaCandidates ? "_QA_ONLY" : "");
-                temp.transform.position = Vector3.zero;
-                temp.transform.rotation = Quaternion.identity;
-                temp.transform.localScale = Vector3.one;
+                // Keep root transform/pivot exactly as imported from source FBX.
                 var renderers = temp.GetComponentsInChildren<MeshRenderer>(true);
                 if (renderers.Length == 0)
                     throw new InvalidOperationException(id + ": no imported MeshRenderer");
 
-                // Preserve every imported FBX material slot; changing
-                // sharedMaterial here would collapse multi-material meshes.
-                // This builder does not claim URP shader remapping QA.
-                foreach (var renderer in renderers)
-                {
-                    var assigned = renderer.sharedMaterials;
-                    if (assigned == null || assigned.Length == 0)
-                        throw new InvalidOperationException(
-                            id + ": imported FBX renderer has no material slots");
-                    var filter = renderer.GetComponent<MeshFilter>();
-                    if (filter != null && filter.sharedMesh != null &&
-                        assigned.Length < filter.sharedMesh.subMeshCount)
-                        throw new InvalidOperationException(
-                            id + ": fewer imported material slots than submeshes");
-                }
+                // Renderer slots validated on every source BEFORE any write.
+                // No synthetic steel material assignment or UV pivot mutation.
                 AddColliders(temp, id);
                 string output = prefabDir + "/C01-11_" + id +
-                    (qaCandidates ? "_QA_ONLY.prefab" : ".prefab");
-                PrefabUtility.SaveAsPrefabAsset(temp, output);
+                    "_QA_ONLY.prefab";
+                var saved = PrefabUtility.SaveAsPrefabAsset(temp, output);
+                if (saved == null)
+                    throw new IOException(id + ": prefab save failed: " + output);
                 Debug.Log("C01-11 prefab candidate saved (Unity QA pending): " + output);
             }
             finally { UnityEngine.Object.DestroyImmediate(temp); }

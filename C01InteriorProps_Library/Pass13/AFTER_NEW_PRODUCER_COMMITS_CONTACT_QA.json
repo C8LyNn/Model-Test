@@ -1,0 +1,192 @@
+{
+  "schema": "C01-03-PASS13-REVISION-AFTER-INDEPENDENT-QA-1",
+  "staged_revision": "Most recent producer PR refs read after producer addressed PASS13; no native binary approvals",
+  "source_blobs": {
+    "p17": {
+      "repo_path": "Assets/C01InteriorProps/Models/P17-02.gltf",
+      "git_blob_sha1": "d80a67af140e434b983104aaec0078f9cf5bd66f",
+      "source_commit": "cdcc18428d2fb52c2c60826fc8af9a70f51c82f9"
+    },
+    "p1801": {
+      "repo_path": "Assets/C01InteriorProps/C01-18/Models/P18-01.obj",
+      "git_blob_sha1": "c0f9d6b5131c987e1c484ce4eb83ac2115e1d7f7",
+      "source_commit": "9dc58f654d1799208dda3334b9b9ecf9eae33a76"
+    },
+    "p1802": {
+      "repo_path": "Assets/C01InteriorProps/C01-18/Models/P18-02.obj",
+      "git_blob_sha1": "9a81151c93006cd2a52d0e5541fe1d3c2cbc2011",
+      "source_commit": "9dc58f654d1799208dda3334b9b9ecf9eae33a76"
+    },
+    "p1803": {
+      "repo_path": "Assets/C01InteriorProps/C01-18/Models/P18-03.obj",
+      "git_blob_sha1": "df5a68c87fd49597c79bbb6f70735f32543489bf",
+      "source_commit": "9dc58f654d1799208dda3334b9b9ecf9eae33a76"
+    },
+    "qap18": {
+      "repo_path": "Assets/C01InteriorProps/C01-18/QA/Pass13/DETAIL_PASS13_CONTACT_SOURCE_QA.json",
+      "git_blob_sha1": "c595e417106c235fd04bde5ca54e0e8aba390c0b",
+      "source_commit": "9dc58f654d1799208dda3334b9b9ecf9eae33a76"
+    },
+    "qap17": {
+      "repo_path": "C01InteriorProps_Source/QA/PASS13/P17-02_ACTUAL_TRANSFORM_CONTACT_QA.json",
+      "git_blob_sha1": "f26e5ae6cce6cd6c612fd47afd0d86b4e69d2718",
+      "source_commit": "cdcc18428d2fb52c2c60826fc8af9a70f51c82f9"
+    },
+    "qaind": {
+      "repo_path": "C01InteriorProps_QA/DETAIL_PASS13/INDEPENDENT_GEOMETRY_CONTACTS.json",
+      "git_blob_sha1": "1b9c3e86958df657aecbe4f5a297deb476089dbc",
+      "source_commit": "877f1db668047d41fe5c6b5273d04eb81c24666c"
+    }
+  },
+  "producer_reported_verified_sha256": {
+    "P18_01": "5749f13e30f8e1d853c4488dde2e030fb7b55a59b14b71bedeef61297c8c3adf",
+    "P18_02": "55d652a42ab7c22709814938535445a0814d9c9ff81237b59925a9115521ee98",
+    "P18_03": "3996be33105a17163d4c8a753012aca891c1b19b156abf32ddab02d8fbca50e0",
+    "P17_02": "a9995704a70776b49f2bd6916a50cf222a4ab40b370a0a9e258b63bdc4429786"
+  },
+  "source_fix_P17_02": {
+    "status": "PASS_SOURCE_CONTACT_PER_INDEPENDENT_C01_02",
+    "source_glTF_blob": "d80a67af140e434b983104aaec0078f9cf5bd66f",
+    "Housing_translation_after": [
+      0,
+      0.14,
+      0.0405
+    ],
+    "Housing_scale_after": [
+      1,
+      1,
+      1.0285714285714285
+    ],
+    "Keybed_translation": [
+      0,
+      0.125,
+      0.061
+    ],
+    "Keybed_Housing_overlap_mm": 0.5,
+    "screws_each_dimensions_mm": [
+      9,
+      9,
+      3
+    ],
+    "source_triangle_intersection_independent_QA_verified": true,
+    "blender": "NOT_RUN",
+    "binary_fbx": "NOT_RUN"
+  },
+  "source_P18_latest": {
+    "P18_01": {
+      "id": "p1801",
+      "git_blob_sha1": "c0f9d6b5131c987e1c484ce4eb83ac2115e1d7f7",
+      "total_parts": 37,
+      "disconnected": [
+        {
+          "part": "Lower_Rim",
+          "nearest": {
+            "name": "Crate_Shell",
+            "gaps_mm": [
+              0,
+              10,
+              0
+            ],
+            "distance_mm": 10
+          }
+        }
+      ],
+      "same_facing_coplanar_pairs_independent_QA": 8,
+      "area_m2": 0.002496,
+      "source_gate": "FAIL_1_DISCONNECTED_LOWER_RIM_AND_8_COPLANAR_INTERFACES"
+    },
+    "P18_02": {
+      "id": "p1802",
+      "git_blob_sha1": "9a81151c93006cd2a52d0e5541fe1d3c2cbc2011",
+      "total_parts": 47,
+      "disconnected": [
+        {
+          "part": "Back_Support_0.6",
+          "nearest": {
+            "name": "Rack_Post_-1.015_-0.365",
+            "gaps_mm": [
+              30,
+              0,
+              0
+            ],
+            "distance_mm": 30
+          }
+        },
+        {
+          "part": "Back_Support_1.48",
+          "nearest": {
+            "name": "Rack_Post_-1.015_-0.365",
+            "gaps_mm": [
+              30,
+              0,
+              0
+            ],
+            "distance_mm": 30
+          }
+        }
+      ],
+      "source_gate": "FAIL_2_DISCONNECTED_REAR_SUPPORTS_DESPITE_SAMPLED_CONTACT_PASS"
+    },
+    "P18_03": {
+      "id": "p1803",
+      "git_blob_sha1": "df5a68c87fd49597c79bbb6f70735f32543489bf",
+      "total_parts": 53,
+      "disconnected": [
+        {
+          "part": "Cart_Shelf_Lip_0_-0.48",
+          "nearest": {
+            "name": "Cart_Shelf_0",
+            "gaps_mm": [
+              0,
+              5,
+              0
+            ],
+            "distance_mm": 5
+          }
+        },
+        {
+          "part": "Cart_Shelf_Lip_0_0.48",
+          "nearest": {
+            "name": "Cart_Shelf_0",
+            "gaps_mm": [
+              0,
+              5,
+              0
+            ],
+            "distance_mm": 5
+          }
+        },
+        {
+          "part": "Cart_Shelf_Lip_1_-0.48",
+          "nearest": {
+            "name": "Cart_Shelf_1",
+            "gaps_mm": [
+              0,
+              5,
+              0
+            ],
+            "distance_mm": 5
+          }
+        },
+        {
+          "part": "Cart_Shelf_Lip_1_0.48",
+          "nearest": {
+            "name": "Cart_Shelf_1",
+            "gaps_mm": [
+              0,
+              5,
+              0
+            ],
+            "distance_mm": 5
+          }
+        }
+      ],
+      "source_gate": "FAIL_4_DISCONNECTED_SHELF_LIPS_DESPITE_SAMPLED_WHEEL_CONTACT_PASS"
+    }
+  },
+  "remaining_confirmed_disjoint_source_parts": 7,
+  "current_new_blender_saved_blend": "NOT_RUN",
+  "current_new_Blender_FBX_roundtrip": "NOT_RUN",
+  "current_Unity6": "NOT_RUN",
+  "release": "BLOCKED"
+}

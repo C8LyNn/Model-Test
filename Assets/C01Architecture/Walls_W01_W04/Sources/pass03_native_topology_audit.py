@@ -94,6 +94,9 @@ def capture(obj,mid,tag):
     sc.render.engine="BLENDER_WORKBENCH"
     sc.display.shading.light="STUDIO"
     sc.display.shading.color_type="MATERIAL"
+    # Workbench render uses scene shading settings; obj.show_wire alone was
+    # viewport-only and produced misleading identical "wire/shaded" PNGs.
+    sc.display.shading.show_wireframes=("wire" in tag)
     sc.render.resolution_x=980;sc.render.resolution_y=720
     sc.render.resolution_percentage=100
     sc.render.image_settings.file_format="PNG"

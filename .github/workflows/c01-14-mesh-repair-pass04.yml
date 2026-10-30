@@ -1,0 +1,70 @@
+name: C01-14 PASS04 - exact v002 source and FBX validation
+on:
+  push:
+    branches: [c01/structures-14-prototypes-w02]
+    paths:
+      - Tools/C01Structures14/verify_pass04_exact_sources.py
+      - .github/workflows/c01-14-mesh-repair-pass04.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  native:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - name: Hydrated exact v002 assets, not LFS pointers
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib
+          p=Path('Assets/C01StructuralPrototypes/P14/Pass03')
+          hashes={
+            'Sources/C01_14_RMP-01_v002.blend':'7cba127139253a34b0575b0c55f10112395acb790b9716e1a248a3bcc8812cfa',
+            'Sources/C01_14_RAI-01_v002.blend':'8a2f16205874f8485adb87c5251f6adbba3f51816936c0bf1964ad40a47850a5',
+            'FBX/C01_14_RMP-01_v002.fbx':'97f0b125313057f4ecf601dd60a02b4d3f0d55b87c1713d71a0adbedcc6d1443',
+            'FBX/C01_14_RAI-01_v002.fbx':'b51c3c012f5680de2d02c2deaf5c67c4ae9a12bb7e8347f179ed08d181a7e103'}
+          for rel,expected in hashes.items():
+            data=(p/rel).read_bytes()
+            assert not data.startswith(b'version https://git-lfs'),rel
+            assert hashlib.sha256(data).hexdigest()==expected,rel
+          print('PASS: 4 SHA-pinned hydrated authentic native binaries')
+          PY
+      - name: Install Blender 4 and FBX import dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y blender python3-numpy
+      - name: Real native Blender + original binary FBX import; contacts and winding
+        run: |
+          blender --background --python-exit-code 1 --python Tools/C01Structures14/verify_pass04_exact_sources.py -- --input Assets/C01StructuralPrototypes/P14/Pass03 --out Assets/C01StructuralPrototypes/P14/Pass04/QA
+      - name: Assert exact audit present
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('Assets/C01StructuralPrototypes/P14/Pass04/QA')
+          for id in ('RMP-01','RAI-01'):
+            x=json.loads((p/(id+'_pass04.json')).read_text())
+            assert x['pass04_native_source_fbx_gate']=='PASS'
+            assert x['actual_blender_native_open'] and x['actual_binary_fbx_import']
+            assert x['source_mutations']==0 and x['new_meshes_created']==0
+            assert len(x['unreviewed_contacts'])==0 and len(x['failing_parts'])==0
+            print(id,'original SHA',x['sha256'],'parts',len(x['per_part']))
+          PY
+      - name: Commit reports to existing draft PR branch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add Assets/C01StructuralPrototypes/P14/Pass04/QA
+          if ! git diff --cached --quiet; then
+            git commit -m 'C01-14 PASS04: verified exact v002 binaries, winding and cross-object contacts'
+            git push origin HEAD:refs/heads/c01/structures-14-prototypes-w02
+          fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: C01-14-PASS04-exact-native-mesh-audit
+          path: Assets/C01StructuralPrototypes/P14/Pass04/QA
+          if-no-files-found: error

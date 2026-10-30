@@ -1,0 +1,65 @@
+name: C01-12 PASS03 actual mesh topology and UV repair
+on:
+  push:
+    branches:
+      - c01/floors-12-legacy-repair
+    paths:
+      - .github/workflows/c01-floors12-pass03.yml
+      - Tools/C01Floors12/repair_pass03.py
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  repair-real-meshes:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - name: Install Blender 4.0.2 with FBX dependencies and headless rendering
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends blender python3-numpy xvfb libgl1 libgl1-mesa-dri libopengl0
+          blender --version | head -4
+      - name: Audit ORIGINAL native .blend, repair UV, create actual mesh previews, export FBX, roundtrip
+        run: |
+          set -o pipefail
+          LIBGL_ALWAYS_SOFTWARE=1 xvfb-run -a blender --background --factory-startup --python Tools/C01Floors12/repair_pass03.py 2>&1 | tee /tmp/c01pass03.log
+      - name: Verify expected test counts, preserved topology and generated artifacts
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import json,hashlib
+          root=Path('C01StandaloneKits/FloorCeiling/RepairPass03')
+          data=json.loads((root/'QA/C01_12_PASS03_REPORT.json').read_text())
+          assert set(data)=={'F01','F02','C01'}
+          for key,row in data.items():
+            before=row['mesh_topology_before'];after=row['mesh_topology_after'];reimport=row['fbx_roundtrip_topology']
+            assert len(before['collapsed_uv_faces'])==2, (key,before['collapsed_uv_faces'])
+            assert after['collapsed_uv_faces']==reimport['collapsed_uv_faces']==[],key
+            for count in ('vertices','edges','faces','triangles'):
+              assert before[count]==after[count]==reimport[count],(key,count)
+            for item,signature in [('repaired_blend',b'BLENDER'),('repaired_fbx',b'Kaydara FBX Binary  '+bytes([0,26,0]))]:
+              p=Path(row[item]);assert p.is_file() and p.read_bytes().startswith(signature),p
+              assert hashlib.sha256(p.read_bytes()).hexdigest()==row[item+'_sha256']
+            for p in row['previews'].values():
+              f=root/p;assert f.is_file() and f.read_bytes().startswith(b'\x89PNG\r\n\x1a\n'),f
+            assert row['unity_6_urp']=='NOT_RUN' and row['independent_qa']=='PENDING'
+            print(key,'PASS03: native source, UV fix, topology and Blender FBX roundtrip: PASS')
+          PY
+      - name: Publish Blender-native QA evidence ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-12-PASS03-real-mesh-before-after
+          path: C01StandaloneKits/FloorCeiling/RepairPass03/
+          if-no-files-found: error
+      - name: Commit real repaired binaries and original-mesh preview evidence to SAME PR
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add C01StandaloneKits/FloorCeiling/RepairPass03
+          if ! git diff --cached --quiet; then
+            git commit -m "C01-12 PASS03: actual Blender repaired UV meshes, FBX and mesh-evidence screenshots"
+            git push origin HEAD:c01/floors-12-legacy-repair
+          fi

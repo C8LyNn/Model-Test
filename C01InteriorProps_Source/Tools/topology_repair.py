@@ -115,34 +115,54 @@ def visual(scene,objs,model_id,tag,kind,focus=None):
         bpy.data.curves.remove(curve)
 
 def rebuild_cylinder_endcaps(bm,mesh_name):
-    """Fix malformed legacy 12-side disk fans. Retriangulate identical perimeter, same 10 tris/cap."""
+    """Repair legacy 12-gon disk caps using same 10 triangles per cap, no silhouette change.
+    Blender import can store cylinder axis on X/Y/Z: detect actual cap plane.
+    """
     if not ("LeverShaft" in mesh_name or "LeverGrip" in mesh_name):return 0
     bm.verts.ensure_lookup_table();bm.faces.ensure_lookup_table()
-    layer=bm.loops.layers.uv.active
-    if not layer:raise RuntimeError("UV0 missing before cylinder cap fix "+mesh_name)
-    extrema=[max(v.co.y for v in bm.verts),min(v.co.y for v in bm.verts)]
-    changed=0
-    for sign,y0 in [(+1,extrema[0]),(-1,extrema[1])]:
-        faces=[f for f in bm.faces if all(abs(v.co.y-y0)<1e-6 for v in f.verts)]
-        if not faces:raise RuntimeError("Cylinder cap not found "+mesh_name)
-        rmax=max(math.hypot(v.co.x,v.co.z) for v in bm.verts if abs(v.co.y-y0)<1e-6)
-        ring=[v for v in bm.verts if abs(v.co.y-y0)<1e-6 and math.hypot(v.co.x,v.co.z)>rmax*.9]
-        ring.sort(key=lambda v:math.atan2(v.co.z,v.co.x)%(2*math.pi))
+    uv=bm.loops.layers.uv.active
+    if uv is None:raise RuntimeError("Cylinder missing UV0 "+mesh_name)
+    profile=None
+    for axis in (0,1,2):
+        extrema=(max(v.co[axis] for v in bm.verts),min(v.co[axis] for v in bm.verts))
+        cap_faces=[
+            [f for f in bm.faces if all(abs(v.co[axis]-y)<1e-6 for v in f.verts)]
+            for y in extrema
+        ]
+        if len(cap_faces[0])==10 and len(cap_faces[1])==10:
+            profile=(axis,extrema,cap_faces);break
+    if profile is None:
+        caps={axis:[
+          sum(1 for f in bm.faces if all(abs(v.co[axis]-end)<1e-6 for v in f.verts))
+          for end in (max(v.co[axis] for v in bm.verts),min(v.co[axis] for v in bm.verts))]
+          for axis in (0,1,2)}
+        raise RuntimeError(mesh_name+" no expected legacy caps on any local axis: "+str(caps))
+    axis,extrema,cap_faces=profile
+    ab=[i for i in range(3) if i!=axis]
+    count=0
+    for sign,y0,faces in [(+1,extrema[0],cap_faces[0]),(-1,extrema[1],cap_faces[1])]:
+        rmax=max(math.hypot(v.co[ab[0]],v.co[ab[1]]) for v in bm.verts if abs(v.co[axis]-y0)<1e-6)
+        ring=[v for v in bm.verts
+              if abs(v.co[axis]-y0)<1e-6
+              and math.hypot(v.co[ab[0]],v.co[ab[1]])>rmax*.9]
+        ring.sort(key=lambda v:math.atan2(v.co[ab[1]],v.co[ab[0]])%(2*math.pi))
         if len(ring)!=12 or len(faces)!=10:
-            raise RuntimeError(mesh_name+" unexpected cap profile "+str((len(ring),len(faces))))
-        material_index=faces[0].material_index
+            raise RuntimeError(mesh_name+" cap shape mismatch "+str((axis,len(ring),len(faces))))
+        mat=faces[0].material_index
         bmesh.ops.delete(bm,geom=faces,context='FACES')
-        anchor=ring[0]
+        # For axis Y, (X,Z) is a negatively oriented basis. For X/Z, selected plane is positive.
+        direction= -1 if axis==1 else 1
         for j in range(1,len(ring)-1):
-            verts=(anchor,ring[j+1],ring[j]) if sign>0 else (anchor,ring[j],ring[j+1])
-            f=bm.faces.new(verts)
-            f.material_index=material_index;f.smooth=False
-            for loop in f.loops:
+            ordered=(ring[0],ring[j],ring[j+1]) if sign==direction else (ring[0],ring[j+1],ring[j])
+            face=bm.faces.new(ordered)
+            face.material_index=mat;face.smooth=False
+            for loop in face.loops:
                 v=loop.vert.co
-                loop[layer].uv=((v.x/rmax+1)*.5,(v.z/rmax+1)*.5)
-        changed+=len(faces)
+                loop[uv].uv=((v[ab[0]]/rmax+1)*.5,(v[ab[1]]/rmax+1)*.5)
+        count+=len(faces)
     bm.normal_update()
-    return changed
+    print("CAP FIX",mesh_name,"axis",axis,"retriangulated",count,"triangles; no new faces",flush=True)
+    return count
 
 def repair(ob):
     bm=bmesh.new();bm.from_mesh(ob.data)

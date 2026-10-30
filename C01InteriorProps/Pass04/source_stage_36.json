@@ -1,9 +1,9 @@
 {
-  "schema": "C01-10-PASS04-STAGING-1",
+  "schema": "C01-10-PASS09-STAGING-2",
   "date": "2026-10-30",
   "issue": 33,
   "approval": "NO_PRODUCTION_APPROVAL",
-  "warning": "PASS06 source revision snapshots only. NOT independent SHA-256 approval. P19-01/02/05/07/08 still use original LFS OIDs, and P16 source FBX are ASCII, native .blend missing. Unity may stage only genuine binary FBX once source is actually available. Do not approve or merge based on this manifest.",
+  "warning": "FAIL CLOSED: source commits represent producer snapshots, NOT binary FBX approval. BLOCKED_* sources must not be staged; author a new Blender binary after correcting native source, capture full FBX SHA, then explicitly change state to CANDIDATE_BINARY_FBX_QA_NOT_APPROVED. Never promote without C01-02 QA.",
   "staged_directory": "Assets/C01InteriorProps/Pass04Incoming/<ID>/<ID>.fbx",
   "assets": [
     {
@@ -17,7 +17,9 @@
       "final_fbx_sha256": null,
       "independent_qa": "NOT_APPROVED",
       "expected_source_type": "BINARY_FBX",
-      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval"
+      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval",
+      "native_export_sync": "CANDIDATE_BINARY_FBX_QA_NOT_APPROVED",
+      "native_export_blocker": "Source present; independent final Blender+Unity acceptance still PENDING."
     },
     {
       "id": "P15-02",
@@ -30,7 +32,9 @@
       "final_fbx_sha256": null,
       "independent_qa": "NOT_APPROVED",
       "expected_source_type": "BINARY_FBX",
-      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval"
+      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval",
+      "native_export_sync": "CANDIDATE_BINARY_FBX_QA_NOT_APPROVED",
+      "native_export_blocker": "Source present; independent final Blender+Unity acceptance still PENDING."
     },
     {
       "id": "P15-03",
@@ -43,7 +47,9 @@
       "final_fbx_sha256": null,
       "independent_qa": "NOT_APPROVED",
       "expected_source_type": "BINARY_FBX",
-      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval"
+      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval",
+      "native_export_sync": "CANDIDATE_BINARY_FBX_QA_NOT_APPROVED",
+      "native_export_blocker": "Source present; independent final Blender+Unity acceptance still PENDING."
     },
     {
       "id": "P15-04",
@@ -56,7 +62,9 @@
       "final_fbx_sha256": null,
       "independent_qa": "NOT_APPROVED",
       "expected_source_type": "BINARY_FBX",
-      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval"
+      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval",
+      "native_export_sync": "CANDIDATE_BINARY_FBX_QA_NOT_APPROVED",
+      "native_export_blocker": "Source present; independent final Blender+Unity acceptance still PENDING."
     },
     {
       "id": "P15-05",
@@ -69,7 +77,9 @@
       "final_fbx_sha256": null,
       "independent_qa": "NOT_APPROVED",
       "expected_source_type": "BINARY_FBX",
-      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval"
+      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval",
+      "native_export_sync": "CANDIDATE_BINARY_FBX_QA_NOT_APPROVED",
+      "native_export_blocker": "Source present; independent final Blender+Unity acceptance still PENDING."
     },
     {
       "id": "P15-06",
@@ -82,7 +92,9 @@
       "final_fbx_sha256": null,
       "independent_qa": "NOT_APPROVED",
       "expected_source_type": "BINARY_FBX",
-      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval"
+      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval",
+      "native_export_sync": "CANDIDATE_BINARY_FBX_QA_NOT_APPROVED",
+      "native_export_blocker": "Source present; independent final Blender+Unity acceptance still PENDING."
     },
     {
       "id": "P15-07",
@@ -95,7 +107,9 @@
       "final_fbx_sha256": null,
       "independent_qa": "NOT_APPROVED",
       "expected_source_type": "BINARY_FBX",
-      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval"
+      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval",
+      "native_export_sync": "CANDIDATE_BINARY_FBX_QA_NOT_APPROVED",
+      "native_export_blocker": "Source present; independent final Blender+Unity acceptance still PENDING."
     },
     {
       "id": "P16-01",
@@ -108,7 +122,9 @@
       "final_fbx_sha256": null,
       "independent_qa": "NOT_APPROVED",
       "expected_source_type": "BINARY_FBX",
-      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval"
+      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval",
+      "native_export_sync": "BLOCKED_NO_NATIVE_BINARY_FBX",
+      "native_export_blocker": "C01-16 current FBX ASCII; native .blend and Blender-produced binary FBX missing."
     },
     {
       "id": "P16-02",
@@ -121,7 +137,9 @@
       "final_fbx_sha256": null,
       "independent_qa": "NOT_APPROVED",
       "expected_source_type": "BINARY_FBX",
-      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval"
+      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval",
+      "native_export_sync": "BLOCKED_NO_NATIVE_BINARY_FBX",
+      "native_export_blocker": "C01-16 current FBX ASCII; native .blend and Blender-produced binary FBX missing."
     },
     {
       "id": "P16-03",
@@ -134,7 +152,9 @@
       "final_fbx_sha256": null,
       "independent_qa": "NOT_APPROVED",
       "expected_source_type": "BINARY_FBX",
-      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval"
+      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval",
+      "native_export_sync": "BLOCKED_NO_NATIVE_BINARY_FBX",
+      "native_export_blocker": "C01-16 current FBX ASCII; native .blend and Blender-produced binary FBX missing."
     },
     {
       "id": "P16-04",
@@ -147,7 +167,9 @@
       "final_fbx_sha256": null,
       "independent_qa": "NOT_APPROVED",
       "expected_source_type": "BINARY_FBX",
-      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval"
+      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval",
+      "native_export_sync": "BLOCKED_NO_NATIVE_BINARY_FBX",
+      "native_export_blocker": "C01-16 current FBX ASCII; native .blend and Blender-produced binary FBX missing."
     },
     {
       "id": "P16-05",
@@ -160,7 +182,9 @@
       "final_fbx_sha256": null,
       "independent_qa": "NOT_APPROVED",
       "expected_source_type": "BINARY_FBX",
-      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval"
+      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval",
+      "native_export_sync": "BLOCKED_NO_NATIVE_BINARY_FBX",
+      "native_export_blocker": "C01-16 current FBX ASCII; native .blend and Blender-produced binary FBX missing."
     },
     {
       "id": "P16-06",
@@ -173,7 +197,9 @@
       "final_fbx_sha256": null,
       "independent_qa": "NOT_APPROVED",
       "expected_source_type": "BINARY_FBX",
-      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval"
+      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval",
+      "native_export_sync": "BLOCKED_NO_NATIVE_BINARY_FBX",
+      "native_export_blocker": "C01-16 current FBX ASCII; native .blend and Blender-produced binary FBX missing."
     },
     {
       "id": "P16-07",
@@ -186,7 +212,9 @@
       "final_fbx_sha256": null,
       "independent_qa": "NOT_APPROVED",
       "expected_source_type": "BINARY_FBX",
-      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval"
+      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval",
+      "native_export_sync": "BLOCKED_NO_NATIVE_BINARY_FBX",
+      "native_export_blocker": "C01-16 current FBX ASCII; native .blend and Blender-produced binary FBX missing."
     },
     {
       "id": "P17-01",
@@ -199,7 +227,9 @@
       "final_fbx_sha256": null,
       "independent_qa": "NOT_APPROVED",
       "expected_source_type": "BINARY_FBX",
-      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval"
+      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval",
+      "native_export_sync": "CANDIDATE_BINARY_FBX_QA_NOT_APPROVED",
+      "native_export_blocker": "Source present; independent final Blender+Unity acceptance still PENDING."
     },
     {
       "id": "P17-02",
@@ -212,7 +242,9 @@
       "final_fbx_sha256": null,
       "independent_qa": "NOT_APPROVED",
       "expected_source_type": "BINARY_FBX",
-      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval"
+      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval",
+      "native_export_sync": "CANDIDATE_BINARY_FBX_QA_NOT_APPROVED",
+      "native_export_blocker": "Source present; independent final Blender+Unity acceptance still PENDING."
     },
     {
       "id": "P17-03",
@@ -225,7 +257,9 @@
       "final_fbx_sha256": null,
       "independent_qa": "NOT_APPROVED",
       "expected_source_type": "BINARY_FBX",
-      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval"
+      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval",
+      "native_export_sync": "CANDIDATE_BINARY_FBX_QA_NOT_APPROVED",
+      "native_export_blocker": "Source present; independent final Blender+Unity acceptance still PENDING."
     },
     {
       "id": "P17-04",
@@ -238,7 +272,9 @@
       "final_fbx_sha256": null,
       "independent_qa": "NOT_APPROVED",
       "expected_source_type": "BINARY_FBX",
-      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval"
+      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval",
+      "native_export_sync": "CANDIDATE_BINARY_FBX_QA_NOT_APPROVED",
+      "native_export_blocker": "Source present; independent final Blender+Unity acceptance still PENDING."
     },
     {
       "id": "P17-05",
@@ -251,7 +287,9 @@
       "final_fbx_sha256": null,
       "independent_qa": "NOT_APPROVED",
       "expected_source_type": "BINARY_FBX",
-      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval"
+      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval",
+      "native_export_sync": "BLOCKED_SOURCE_NEWER_THAN_FBX",
+      "native_export_blocker": "Actual producer source changed since previous binary FBX; Blender re-export/roundtrip and new exact SHA required."
     },
     {
       "id": "P17-06",
@@ -264,7 +302,9 @@
       "final_fbx_sha256": null,
       "independent_qa": "NOT_APPROVED",
       "expected_source_type": "BINARY_FBX",
-      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval"
+      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval",
+      "native_export_sync": "CANDIDATE_BINARY_FBX_QA_NOT_APPROVED",
+      "native_export_blocker": "Source present; independent final Blender+Unity acceptance still PENDING."
     },
     {
       "id": "P17-07",
@@ -277,7 +317,9 @@
       "final_fbx_sha256": null,
       "independent_qa": "NOT_APPROVED",
       "expected_source_type": "BINARY_FBX",
-      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval"
+      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval",
+      "native_export_sync": "CANDIDATE_BINARY_FBX_QA_NOT_APPROVED",
+      "native_export_blocker": "Source present; independent final Blender+Unity acceptance still PENDING."
     },
     {
       "id": "P18-01",
@@ -290,7 +332,9 @@
       "final_fbx_sha256": null,
       "independent_qa": "NOT_APPROVED",
       "expected_source_type": "BINARY_FBX",
-      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval"
+      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval",
+      "native_export_sync": "BLOCKED_SOURCE_NEWER_THAN_FBX",
+      "native_export_blocker": "Actual producer source changed since previous binary FBX; Blender re-export/roundtrip and new exact SHA required."
     },
     {
       "id": "P18-02",
@@ -303,7 +347,9 @@
       "final_fbx_sha256": null,
       "independent_qa": "NOT_APPROVED",
       "expected_source_type": "BINARY_FBX",
-      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval"
+      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval",
+      "native_export_sync": "BLOCKED_SOURCE_NEWER_THAN_FBX",
+      "native_export_blocker": "Actual producer source changed since previous binary FBX; Blender re-export/roundtrip and new exact SHA required."
     },
     {
       "id": "P18-03",
@@ -316,7 +362,9 @@
       "final_fbx_sha256": null,
       "independent_qa": "NOT_APPROVED",
       "expected_source_type": "BINARY_FBX",
-      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval"
+      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval",
+      "native_export_sync": "BLOCKED_SOURCE_NEWER_THAN_FBX",
+      "native_export_blocker": "Actual producer source changed since previous binary FBX; Blender re-export/roundtrip and new exact SHA required."
     },
     {
       "id": "P18-04",
@@ -329,7 +377,9 @@
       "final_fbx_sha256": null,
       "independent_qa": "NOT_APPROVED",
       "expected_source_type": "BINARY_FBX",
-      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval"
+      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval",
+      "native_export_sync": "CANDIDATE_BINARY_FBX_QA_NOT_APPROVED",
+      "native_export_blocker": "Source present; independent final Blender+Unity acceptance still PENDING."
     },
     {
       "id": "P18-05",
@@ -342,7 +392,9 @@
       "final_fbx_sha256": null,
       "independent_qa": "NOT_APPROVED",
       "expected_source_type": "BINARY_FBX",
-      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval"
+      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval",
+      "native_export_sync": "CANDIDATE_BINARY_FBX_QA_NOT_APPROVED",
+      "native_export_blocker": "Source present; independent final Blender+Unity acceptance still PENDING."
     },
     {
       "id": "P18-06",
@@ -355,7 +407,9 @@
       "final_fbx_sha256": null,
       "independent_qa": "NOT_APPROVED",
       "expected_source_type": "BINARY_FBX",
-      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval"
+      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval",
+      "native_export_sync": "CANDIDATE_BINARY_FBX_QA_NOT_APPROVED",
+      "native_export_blocker": "Source present; independent final Blender+Unity acceptance still PENDING."
     },
     {
       "id": "P18-07",
@@ -368,7 +422,9 @@
       "final_fbx_sha256": null,
       "independent_qa": "NOT_APPROVED",
       "expected_source_type": "BINARY_FBX",
-      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval"
+      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval",
+      "native_export_sync": "BLOCKED_SOURCE_NEWER_THAN_FBX",
+      "native_export_blocker": "Actual producer source changed since previous binary FBX; Blender re-export/roundtrip and new exact SHA required."
     },
     {
       "id": "P19-01",
@@ -381,7 +437,9 @@
       "final_fbx_sha256": null,
       "independent_qa": "NOT_APPROVED",
       "expected_source_type": "BINARY_FBX",
-      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval"
+      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval",
+      "native_export_sync": "BLOCKED_P19_EXPORT_TOPOLOGY",
+      "native_export_blocker": "P19 needs native .blend triangulation and fresh binary FBX/independent QA."
     },
     {
       "id": "P19-02",
@@ -394,7 +452,9 @@
       "final_fbx_sha256": null,
       "independent_qa": "NOT_APPROVED",
       "expected_source_type": "BINARY_FBX",
-      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval"
+      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval",
+      "native_export_sync": "BLOCKED_P19_EXPORT_TOPOLOGY",
+      "native_export_blocker": "P19 needs native .blend triangulation and fresh binary FBX/independent QA."
     },
     {
       "id": "P19-03",
@@ -407,7 +467,9 @@
       "final_fbx_sha256": null,
       "independent_qa": "NOT_APPROVED",
       "expected_source_type": "BINARY_FBX",
-      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval"
+      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval",
+      "native_export_sync": "CANDIDATE_BINARY_FBX_QA_NOT_APPROVED",
+      "native_export_blocker": "Source present; independent final Blender+Unity acceptance still PENDING."
     },
     {
       "id": "P19-04",
@@ -420,7 +482,9 @@
       "final_fbx_sha256": null,
       "independent_qa": "NOT_APPROVED",
       "expected_source_type": "BINARY_FBX",
-      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval"
+      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval",
+      "native_export_sync": "CANDIDATE_BINARY_FBX_QA_NOT_APPROVED",
+      "native_export_blocker": "Source present; independent final Blender+Unity acceptance still PENDING."
     },
     {
       "id": "P19-05",
@@ -433,7 +497,9 @@
       "final_fbx_sha256": null,
       "independent_qa": "NOT_APPROVED",
       "expected_source_type": "BINARY_FBX",
-      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval"
+      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval",
+      "native_export_sync": "BLOCKED_P19_EXPORT_TOPOLOGY",
+      "native_export_blocker": "P19 needs native .blend triangulation and fresh binary FBX/independent QA."
     },
     {
       "id": "P19-06",
@@ -446,7 +512,9 @@
       "final_fbx_sha256": null,
       "independent_qa": "NOT_APPROVED",
       "expected_source_type": "BINARY_FBX",
-      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval"
+      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval",
+      "native_export_sync": "CANDIDATE_BINARY_FBX_QA_NOT_APPROVED",
+      "native_export_blocker": "Source present; independent final Blender+Unity acceptance still PENDING."
     },
     {
       "id": "P19-07",
@@ -459,7 +527,9 @@
       "final_fbx_sha256": null,
       "independent_qa": "NOT_APPROVED",
       "expected_source_type": "BINARY_FBX",
-      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval"
+      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval",
+      "native_export_sync": "BLOCKED_P19_EXPORT_TOPOLOGY",
+      "native_export_blocker": "P19 needs native .blend triangulation and fresh binary FBX/independent QA."
     },
     {
       "id": "P19-08",
@@ -472,7 +542,9 @@
       "final_fbx_sha256": null,
       "independent_qa": "NOT_APPROVED",
       "expected_source_type": "BINARY_FBX",
-      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval"
+      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval",
+      "native_export_sync": "BLOCKED_P19_EXPORT_TOPOLOGY",
+      "native_export_blocker": "P19 needs native .blend triangulation and fresh binary FBX/independent QA."
     }
   ]
 }

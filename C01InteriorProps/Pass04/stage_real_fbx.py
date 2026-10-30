@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""C01-10 PASS04: hydrate exact producer FBX snapshots into a disposable Unity QA staging area.
+"""C01-10 PASS09: hydrate eligible real producer FBX snapshots into a disposable Unity QA staging area.
 
 No geometry rewrite, merge or source branch change. This script fetches detached
 producer revisions and copies only real, binary FBX files. It does not approve QA.
@@ -53,6 +53,16 @@ def validate_entry(entry: dict) -> None:
         raise ValueError(f"Source is a moving subpart rather than canonical root FBX: {ident}")
     if entry["independent_qa"] == "APPROVED":
         raise ValueError("The staging manifest cannot assert independent QA approval")
+    valid_states = {
+        "CANDIDATE_BINARY_FBX_QA_NOT_APPROVED",
+        "BLOCKED_P19_EXPORT_TOPOLOGY",
+        "BLOCKED_NO_NATIVE_BINARY_FBX",
+        "BLOCKED_SOURCE_NEWER_THAN_FBX",
+    }
+    if entry.get("native_export_sync") not in valid_states:
+        raise ValueError(f"Unreviewed export-sync state for {ident}")
+    if not entry.get("native_export_blocker"):
+        raise ValueError(f"Missing export-sync reason for {ident}")
 
 
 def validate_real_fbx(file: Path) -> tuple[str, int]:
@@ -70,7 +80,7 @@ def validate_real_fbx(file: Path) -> tuple[str, int]:
 
 def stage(manifest: Path, project: Path, apply: bool, selected_ids: set[str]) -> list[dict]:
     root = json.loads(manifest.read_text(encoding="utf-8"))
-    if root.get("schema") != "C01-10-PASS04-STAGING-1":
+    if root.get("schema") != "C01-10-PASS09-STAGING-2":
         raise ValueError("Unsupported staging manifest")
     entries = root.get("assets", [])
     if len(entries) != 36 or len({e["id"] for e in entries}) != 36:
@@ -87,17 +97,29 @@ def stage(manifest: Path, project: Path, apply: bool, selected_ids: set[str]) ->
             raise ValueError("Unknown selected IDs: " + ",".join(sorted(unknown)))
         entries = [e for e in entries if e["id"] in selected_ids]
     rows = []
-    by_commit: dict[tuple[str, str], list[dict]] = {}
+    eligible = []
     for entry in entries:
+        state = entry["native_export_sync"]
+        if state != "CANDIDATE_BINARY_FBX_QA_NOT_APPROVED":
+            rows.append(dict(
+                id=entry["id"], state=state, source_commit=entry["source_commit"],
+                fbx_sha256="", size_bytes="", detail=entry["native_export_blocker"]
+            ))
+        else:
+            eligible.append(entry)
+    by_commit: dict[tuple[str, str], list[dict]] = {}
+    for entry in eligible:
         by_commit.setdefault((entry["source_branch"], entry["source_commit"]), []).append(entry)
 
     if not apply:
-        for entry in entries:
+        for entry in eligible:
             rows.append(dict(id=entry["id"], state="NOT_RUN_DRY_RUN", source_commit=entry["source_commit"],
                              fbx_sha256="", size_bytes="", detail="Will fetch hydrated producer binary on --apply"))
         return rows
 
-    with tempfile.TemporaryDirectory(prefix="c01-pass04-fbx-") as folder:
+    # A blocked ID cannot be copied into Unity staging merely because its OLD
+    # binary FBX and Git LFS pointer still exist in the producer revision.
+    with tempfile.TemporaryDirectory(prefix="c01-pass09-fbx-") as folder:
         work_root = Path(folder)
         for group_index, ((source_branch, commit), group) in enumerate(sorted(by_commit.items())):
             worktree = work_root / f"producer_{group_index:02d}"

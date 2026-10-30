@@ -1,0 +1,224 @@
+// C01-13 / access-to-gate sweep preflight. Read-only Editor utility.
+// Checks Unity world-space AABB swept by translation; a hit is POSSIBLE, not a physics collision.
+// Does not modify existing doors, scenes, prefabs or runtime scripts.
+#if UNITY_EDITOR
+using System;
+using System.IO;
+using System.Collections.Generic;
+using UnityEditor;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using C01.Ship.V4;
+
+namespace C01.Doors.Access
+{
+    public static class DoorAccessSweepAudit
+    {
+        const float ClearanceM = 0.02f;
+
+        [Serializable]
+        class Finding
+        {
+            public string status;
+            public string gate;
+            public string accessory;
+            public string detail;
+        }
+
+        [Serializable]
+        class Evidence
+        {
+            public string tool = "C01-13 DoorAccessSweepAudit";
+            public string scope;
+            public string utc;
+            public string contract = "C01-SHIP-V4 SLIDING GATES (NOT LEGACY D01/D02)";
+            public string method = "World-space Collider.bounds AABB translational sweep; conservative broadphase only";
+            public float safetyMarginMetres = ClearanceM;
+            public int gatesFound;
+            public int accessoriesFound;
+            public int movingLeavesChecked;
+            public int possibleIntersections;
+            public int incompleteChecks;
+            public List<Finding> findings = new List<Finding>();
+        }
+
+        [MenuItem("Tools/C01/Doors & Access/Audit Gate-Accessory Clearance")]
+        static void Audit()
+        {
+            var report = new Evidence { utc = DateTime.UtcNow.ToString("o") };
+            var roots = new List<GameObject>();
+            if (Selection.activeTransform != null)
+            {
+                roots.Add(Selection.activeTransform.gameObject);
+                report.scope = "Selected root: " + Selection.activeTransform.name;
+            }
+            else
+            {
+                Scene scene = SceneManager.GetActiveScene();
+                if (scene.IsValid()) roots.AddRange(scene.GetRootGameObjects());
+                report.scope = "Active scene: " + scene.name;
+            }
+
+            var gates = new HashSet<ShipGateV4>();
+            var accessories = new HashSet<Transform>();
+            foreach (var root in roots)
+            {
+                if (root == null) continue;
+                foreach (var gate in root.GetComponentsInChildren<ShipGateV4>(true))
+                    if (gate.gameObject.activeInHierarchy) gates.Add(gate);
+                foreach (var t in root.GetComponentsInChildren<Transform>(true))
+                    if (t.gameObject.activeInHierarchy && IsAccessory(t.name))
+                        accessories.Add(t);
+            }
+
+            report.gatesFound = gates.Count;
+            report.accessoriesFound = accessories.Count;
+            if (gates.Count == 0) Incomplete(report, "NO_GATE", "", "No active ShipGateV4 in selected scope");
+            if (accessories.Count == 0) Incomplete(report, "NO_ACCESSORY", "",
+                "No active P17-02 / P16-07 / P_Button in scope; supplier showcase cannot be assessed");
+
+            foreach (var accessory in accessories)
+            {
+                Bounds accessoryBounds;
+                bool accessoryCollider;
+                if (!TryBounds(accessory.gameObject, out accessoryBounds, out accessoryCollider))
+                {
+                    Incomplete(report, "NO_ACCESSORY_GEOMETRY", accessory.name,
+                        "No enabled collider or renderer; mount dimensions cannot be checked");
+                    continue;
+                }
+                if (!accessoryCollider)
+                    Incomplete(report, "ACCESSORY_RENDERER_ONLY", accessory.name,
+                        "Geometry bounds used; accessory has no enabled collision volume");
+
+                bool boundToController = accessory.GetComponent<ShipButtonV4>() != null ||
+                    accessory.GetComponentInParent<ShipButtonV4>() != null ||
+                    accessory.GetComponentInChildren<ShipButtonV4>(true) != null;
+                if (!boundToController)
+                    Add(report, "INFO_UNVERIFIED_BINDING", "", accessory.name,
+                        "No ShipButtonV4 in hierarchy; external wiring may be intentional and needs integration review");
+
+                foreach (var gate in gates)
+                {
+                    if (gate.leaves == null || gate.leaves.Length == 0)
+                    {
+                        Incomplete(report, "EMPTY_GATE", gate.name, "Gate has no configured moving leaves");
+                        continue;
+                    }
+                    for (int i = 0; i < gate.leaves.Length; i++)
+                    {
+                        var leaf = gate.leaves[i];
+                        if (leaf == null)
+                        {
+                            Incomplete(report, "NULL_LEAF", gate.name, "Missing leaf index " + i);
+                            continue;
+                        }
+                        if (accessory.IsChildOf(leaf) || accessory == leaf)
+                        {
+                            Add(report, "ERROR_MOVING_MOUNT", gate.name, accessory.name,
+                                "Accessory belongs to a moving gate leaf; mount to non-moving structure");
+                            report.possibleIntersections++;
+                            continue;
+                        }
+                        if (gate.travel == null || i >= gate.travel.Length)
+                        {
+                            Incomplete(report, "MISSING_TRAVEL", gate.name, "Missing world-space travel for leaf " + i);
+                            continue;
+                        }
+                        Bounds leafBounds;
+                        bool leafCollider;
+                        if (!TryBounds(leaf.gameObject, out leafBounds, out leafCollider))
+                        {
+                            Incomplete(report, "NO_LEAF_GEOMETRY", gate.name,
+                                "No enabled collider or renderer for leaf " + i);
+                            continue;
+                        }
+                        if (!leafCollider)
+                            Incomplete(report, "LEAF_RENDERER_ONLY", gate.name,
+                                "Leaf " + i + " has no enabled collision volume");
+
+                        report.movingLeavesChecked++;
+                        Vector3 delta = gate.travel[i];
+                        Bounds swept = Translate(leafBounds, -Mathf.Clamp01(gate.openness) * delta);
+                        swept.Encapsulate(Translate(leafBounds, (1f - Mathf.Clamp01(gate.openness)) * delta));
+                        swept.Expand(2f * ClearanceM);
+                        if (swept.Intersects(accessoryBounds))
+                        {
+                            report.possibleIntersections++;
+                            Add(report, "POSSIBLE_SWEEP_INTERSECTION", gate.name, accessory.name,
+                                "Leaf " + i + " broadphase sweep overlaps accessory AABB (includes 20 mm safety margin). " +
+                                "Check actual mesh/colliders and PlayMode; this is NOT definitive collision");
+                        }
+                    }
+                }
+            }
+
+            if (report.possibleIntersections == 0 && report.incompleteChecks == 0)
+                Add(report, "STATIC_BROADPHASE_CLEAR", "", "",
+                    "No potential AABB conflicts in inspected scope; NOT Unity PlayMode or independent QA");
+            else
+                Add(report, "REVIEW_REQUIRED", "", "",
+                    "Any positive/incomplete result needs C01-10 integration review and C01-02 independent QA");
+
+            string directory = Path.Combine("Library", "C01Doors13");
+            Directory.CreateDirectory(directory);
+            string path = Path.Combine(directory, "access_sweep_audit.json");
+            File.WriteAllText(path, JsonUtility.ToJson(report, true));
+            Debug.Log("[C01-13] gates=" + report.gatesFound + " props=" + report.accessoriesFound +
+                " leavesChecked=" + report.movingLeavesChecked + " possible=" +
+                report.possibleIntersections + " incomplete=" + report.incompleteChecks +
+                "; report=" + path);
+            EditorUtility.DisplayDialog("C01-13 Gate Access Audit",
+                "Possible AABB conflicts: " + report.possibleIntersections +
+                "\nIncomplete checks: " + report.incompleteChecks +
+                "\nReport: " + path + "\nNo formal QA or PlayMode verdict.", "OK");
+        }
+
+        static bool IsAccessory(string name)
+        {
+            return name.IndexOf("P17-02", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                   name.IndexOf("P16-07", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                   name.IndexOf("P_Button", StringComparison.OrdinalIgnoreCase) >= 0;
+        }
+
+        static Bounds Translate(Bounds source, Vector3 offset)
+        {
+            return new Bounds(source.center + offset, source.size);
+        }
+
+        static bool TryBounds(GameObject go, out Bounds result, out bool usedCollider)
+        {
+            result = new Bounds();
+            bool found = false;
+            usedCollider = false;
+            foreach (var c in go.GetComponentsInChildren<Collider>(true))
+            {
+                if (!c.enabled || !c.gameObject.activeInHierarchy) continue;
+                if (!found) { result = c.bounds; found = true; }
+                else result.Encapsulate(c.bounds);
+                usedCollider = true;
+            }
+            if (found) return true;
+            foreach (var renderer in go.GetComponentsInChildren<Renderer>(true))
+            {
+                if (!renderer.enabled || !renderer.gameObject.activeInHierarchy) continue;
+                if (!found) { result = renderer.bounds; found = true; }
+                else result.Encapsulate(renderer.bounds);
+            }
+            return found;
+        }
+
+        static void Incomplete(Evidence report, string code, string name, string reason)
+        {
+            report.incompleteChecks++;
+            Add(report, "INCOMPLETE_" + code, name, "", reason);
+        }
+
+        static void Add(Evidence report, string status, string gate, string accessory, string detail)
+        {
+            report.findings.Add(new Finding { status = status, gate = gate,
+                accessory = accessory, detail = detail });
+        }
+    }
+}
+#endif

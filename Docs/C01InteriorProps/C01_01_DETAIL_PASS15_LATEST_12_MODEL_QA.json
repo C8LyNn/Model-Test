@@ -1,0 +1,254 @@
+{
+  "schema": "C01-01-DETAIL-PASS15-LIVE-REVISIONS-v2",
+  "date": "2026-10-30",
+  "classification": "INDEPENDENT_SOURCE_TOPOLOGY_QA_AND_NEW_DETAIL_BROADPHASE_ONLY",
+  "replaces_headline_counts_from": "Docs/C01InteriorProps/C01_01_DETAIL_PASS15_TEN_MODEL_ACTUAL_SOURCE_QA.json",
+  "provenance": {
+    "P18": {
+      "producer_pr": 18,
+      "pinned_commit": "91659e272ef1fe49fdaf7a906b4b6b2769ce50c8",
+      "baseline_commit": "681fc52d2159ac774abf1f48efd7b89965d1afe8"
+    },
+    "P17": {
+      "producer_pr": 17,
+      "pinned_commit": "28824c2fa48e8523f9a8715df71c57379fa7634a",
+      "baseline_commit": "beef826a2ab1e2bdd1b14cdf8a4d898324231c4d"
+    },
+    "P16_W02": {
+      "producer_pr": 28,
+      "pinned_commit": "604b6b9afb41ff9988cc2eea05c1d02034b2070e",
+      "base_detail_source_receipt": "Docs/C01InteriorProps/C01_01_DETAIL_PASS15_TEN_MODEL_ACTUAL_SOURCE_QA.json"
+    }
+  },
+  "independent_method": [
+    "Fetched real GitHub exact full UTF-8 OBJ and glTF file bodies, computed physical SHA256 via locally implemented SHA256 with ABC known vector PASS, retain Git blob SHA1 separately",
+    "For P18 and PASS15 P16 details parsed real OBJ part names, vertex/UV/normal indices, triangulation, zero-area, duplicate indexed faces, boundary and nonmanifold edges, same-edge winding and vertex-normal consistency",
+    "For P17 actual embedded base64 glTF bufferView and POSITION+NORMAL+TEXCOORD_0+indices were read via DataView; node translations and nonuniform scales applied once, triangle area and oriented face-normal sign checked",
+    "Compared prior and updated P18 original per-object OBJ sections, accounting for trailing newline differences, and prior P17 original per-node/mesh/buffer/accessor/material data; original shape unchanged",
+    "Measured only BROADPHASE AABB contact for added named parts against existing support components; zero AABB gap is not true triangle contact or a Blender native confirmation"
+  ],
+  "latest_models": {
+    "P18-01": {
+      "file": "Assets/C01InteriorProps/C01-18/Models/P18-01.obj",
+      "source_sha256": "5fb7ee496d6ed0d2e9f439629b9d9ed4774ca862290f04e13dc70239e44ec39d",
+      "git_blob_sha1": "732a23a5c1c18fc39fb2e257e4de8c0a558c5e5f",
+      "prior_parts": 37,
+      "new_parts": 41,
+      "prior_tris": 684,
+      "new_tris": 844,
+      "added_details": [
+        "RearHinge_L_Retainer_L",
+        "RearHinge_L_Retainer_R",
+        "RearHinge_R_Retainer_L",
+        "RearHinge_R_Retainer_R"
+      ],
+      "all_four_AABB_supported_by_original_hinge_or_lid": true,
+      "original_part_geometry": "37/37 unchanged (trailing newline differences only)",
+      "source_indexed_topology": "PASS"
+    },
+    "P18-02": {
+      "file": "Assets/C01InteriorProps/C01-18/Models/P18-02.obj",
+      "source_sha256": "37f81ce82235689980e86febdc4ea0f8bbfd5f9296e4462d156295f2c2297699",
+      "git_blob_sha1": "26894eb7c5fbbd1c25239905fc3ba228f9925a15",
+      "prior_parts": 47,
+      "new_parts": 51,
+      "prior_tris": 1012,
+      "new_tris": 1044,
+      "added_details": [
+        "BackSupport_0.60_Gusset_L",
+        "BackSupport_0.60_Gusset_R",
+        "BackSupport_1.48_Gusset_L",
+        "BackSupport_1.48_Gusset_R"
+      ],
+      "all_four_AABB_supported_by_original_bar_and_post": true,
+      "original_part_geometry": "47/47 unchanged (trailing newline differences only)",
+      "source_indexed_topology": "PASS"
+    },
+    "P18-03": {
+      "file": "Assets/C01InteriorProps/C01-18/Models/P18-03.obj",
+      "source_sha256": "39aba96fa20eb28f698b68b7daf435e96cabe15c0af2bb70e9db6392e2cd1aa2",
+      "git_blob_sha1": "e1e1b3444d00ff5ba0ba205ad1291e5968688f6e",
+      "prior_parts": 53,
+      "new_parts": 57,
+      "prior_tris": 1532,
+      "new_tris": 1628,
+      "added_details": [
+        "Wheel_LB_CrownBolt",
+        "Wheel_LF_CrownBolt",
+        "Wheel_RB_CrownBolt",
+        "Wheel_RF_CrownBolt"
+      ],
+      "all_four_AABB_supported_by_original_fork_and_crown": true,
+      "original_part_geometry": "53/53 unchanged (trailing newline differences only)",
+      "wheel_motion": "NOT_RUN",
+      "source_indexed_topology": "PASS"
+    },
+    "P16-04": {
+      "new_file": "C01Source/LightingW02/DetailsPASS15/P16-04_detail15.obj",
+      "detail_sha256": "e939e95ebec16e9922e9aac6c4063d765cf7dcd3930e4d9ac54e81d4a29e45d3",
+      "git_blob_sha1": "f1e3a83176b717563e13955121f1bd2c67f7f097",
+      "prior_parts": 19,
+      "new_parts": 23,
+      "prior_tris": 324,
+      "new_tris": 372,
+      "added_details": [
+        "DiffuserRetainer_L_N",
+        "DiffuserRetainer_L_P",
+        "DiffuserRetainer_R_N",
+        "DiffuserRetainer_R_P"
+      ],
+      "added_detail_AABB_support_4_of_4": true,
+      "new_detail_indexed_topology": "PASS"
+    },
+    "P16-05": {
+      "new_file": "C01Source/LightingW02/DetailsPASS15/P16-05_detail15.obj",
+      "detail_sha256": "aaf082f77f9794f5b4395e66cf88e35a37f55381e731ca51a7db0743eb586ae5",
+      "git_blob_sha1": "477cf125bcd850734f77fa177d80482388465fa3",
+      "prior_parts": 15,
+      "new_parts": 17,
+      "prior_tris": 280,
+      "new_tris": 304,
+      "added_details": [
+        "ServiceCoverLip_N",
+        "ServiceCoverLip_P"
+      ],
+      "added_detail_AABB_support_2_of_2": true,
+      "new_detail_indexed_topology": "PASS"
+    },
+    "P16-06": {
+      "new_file": "C01Source/LightingW02/DetailsPASS15/P16-06_detail15.obj",
+      "detail_sha256": "12438d9684ac0e03e68982d5fe3a11d19e795245532f46d4c737f6a562c68557",
+      "git_blob_sha1": "9a3f77ebd170cacac2c21673e9dfa509dd09d8b3",
+      "prior_parts": 19,
+      "new_parts": 21,
+      "prior_tris": 324,
+      "new_tris": 348,
+      "added_details": [
+        "SuspensionRodSeat_L",
+        "SuspensionRodSeat_R"
+      ],
+      "added_detail_AABB_support_2_of_2": true,
+      "these_new_parts": "STATIC; separate original 4 rotor meshes and 4 PASS12 ROTOR fasteners unchanged",
+      "new_detail_indexed_topology": "PASS"
+    },
+    "P17-01": {
+      "file": "Assets/C01InteriorProps/Models/P17-01.gltf",
+      "source_sha256": "6dbb6933acdcbb3ee5ef9d1480bd786ad2da4ec5368046e8e579084af57c65b0",
+      "git_blob_sha1": "c604553c874b590cfd5fcae135f4c892561eba96",
+      "prior_parts": 17,
+      "new_parts": 25,
+      "prior_triangles": 204,
+      "new_triangles": 380,
+      "added_parts": [
+        "ScreenMountBolt_LB",
+        "ScreenMountBolt_LT",
+        "ScreenMountBolt_RB",
+        "ScreenMountBolt_RT",
+        "KeyboardGuide_L",
+        "KeyboardGuide_R",
+        "RearServiceLatch_L",
+        "RearServiceLatch_R"
+      ],
+      "new_AABB_supported_8_of_8": true,
+      "old_binary_buffer_identical": true,
+      "original_mesh_geometry_materials_accessors_identical": true,
+      "original_part_node_properties_identical": true,
+      "world_bounds_m": [
+        1.6,
+        1.1,
+        0.65
+      ],
+      "actual_gltf_indexed_topology": "PASS_ZERO_DEGEN_UV0_NORMALS"
+    },
+    "P17-03": {
+      "file": "Assets/C01InteriorProps/Models/P17-03.gltf",
+      "source_sha256": "f38ed83c806b30deb55854b061492a0d89d278f7a7c20f900b2aeaed7933b23d",
+      "git_blob_sha1": "e882a5dafe3f9f5e600d6443ebf44b1aba519f30",
+      "prior_parts": 12,
+      "new_parts": 20,
+      "prior_triangles": 208,
+      "new_triangles": 424,
+      "added_parts": [
+        "PanelBolt_LB",
+        "PanelBolt_LT",
+        "PanelBolt_RB",
+        "PanelBolt_RT",
+        "SocketRetainer_L",
+        "SocketRetainer_R",
+        "CoverBolt_L",
+        "CoverBolt_R"
+      ],
+      "new_AABB_supported_8_of_8": true,
+      "old_binary_buffer_identical": true,
+      "original_mesh_geometry_materials_accessors_identical": true,
+      "original_part_node_properties_identical": true,
+      "world_bounds_m": [
+        0.4,
+        0.4,
+        0.3
+      ],
+      "actual_gltf_indexed_topology": "PASS_ZERO_DEGEN_UV0_NORMALS"
+    }
+  },
+  "latest_new_source_qc": {
+    "examined_latest_changed_source_files": 8,
+    "all_new_OBJ_parts_indexed_and_manifold": "PASS",
+    "all_new_glTF_triangles_positive_area_and_UV0_normals": "PASS",
+    "new_added_parts_broadphase_with_named_original_support": {
+      "P18": 12,
+      "P16": 8,
+      "P17": 16,
+      "total": 36,
+      "zero_nearest_gap": 36
+    },
+    "source_attachments_are_not_full_surface_contact": true,
+    "current_source_sizes": {
+      "P16_seven": {
+        "parts": 108,
+        "tris": 1892
+      },
+      "P18_three": {
+        "parts": 149,
+        "tris": 3516
+      },
+      "P17_two": {
+        "parts": 45,
+        "tris": 804
+      },
+      "12_IDs_TOTAL": {
+        "parts": 302,
+        "tris": 6212
+      },
+      "12_IDs_BEFORE_PASS15_WAVE": {
+        "parts": 266,
+        "tris": 5436
+      },
+      "PASS15_NEW_PARTS": 36,
+      "PASS15_ADDITIONAL_TRIANGLES": 776
+    },
+    "unchanged_original_topology": {
+      "P18_existing_parts": 137,
+      "P17_existing_parts": 29,
+      "P16_original_and_PASS12_parts": 100,
+      "original_pivots_and_material_parenting_source_contract": "preserved by authored source unchanged; Blender+Unity must independently verify"
+    },
+    "warnings": [
+      "Potential Unity source-object renderer count 302 for twelve simultaneously instantiated assets is an upper-bound model of object count only, not a measured draw-call budget",
+      "P18 P19 source targets still require current Blender-native save, true binary FBX export and independent acceptance; no real 3D engine dynamic test",
+      "P17 new details are source glTF-only; native FBX not updated to the new geometry; do not promote offline FBX candidates",
+      "P16 PASS15 new details must be included in real Blender binary export and retain independent rotor/static hierarchy",
+      "Unrelated previously sourced P19-07 has geometric vertex-on-edge candidates requiring Blender scene visual diagnosis"
+    ]
+  },
+  "source_only_gate": "PASS_STATIC_INDEXED_TOPOLOGY_WITH_BROADPHASE_ATTACHMENT_SCREEN_AND_NO_FINISH_CLAIM",
+  "release_gate": {
+    "actual_blender4_native_blend_after": "NOT_RUN",
+    "blender_binary_fbx_after": "NOT_RUN",
+    "actual_blender_export_import_roundtrip": "NOT_RUN",
+    "new_blender_shaded_wireframe": "NOT_RUN",
+    "independent_C01_02_exact_final_36_binary_fbx": "PENDING_0_FULL_APPROVED",
+    "unity6_URP": "NOT_RUN",
+    "merge": "NOT_PERFORMED",
+    "blocker": "NEEDS_OWNER_ACTION: GitHub Actions private repo runner preassignment failure or authorized Windows Blender4 + GitLFS"
+  }
+}

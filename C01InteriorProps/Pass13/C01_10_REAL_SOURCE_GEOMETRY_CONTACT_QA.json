@@ -1,0 +1,195 @@
+{
+  "schema": "C01_10_DETAIL_PASS13_REAL_SOURCE_CONTACT_V1",
+  "date": "2026-10-30",
+  "owner": "C01-10 Unity integration; READ_ONLY independent authored source tests, not foreign producer mesh change",
+  "sourcePin": {
+    "P17_02": {
+      "producer_pr": 17,
+      "producer_commit": "cdcc18428d2fb52c2c60826fc8af9a70f51c82f9",
+      "file": "Assets/C01InteriorProps/Models/P17-02.gltf",
+      "git_blob_sha1": "d80a67af140e434b983104aaec0078f9cf5bd66f",
+      "full_source_sha256": "a9995704a70776b49f2bd6916a50cf222a4ab40b370a0a9e258b63bdc4429786"
+    },
+    "P18": {
+      "producer_pr": 18,
+      "source_commit": "543b65db40387ec4d2ac0d8e689e522c69457c46",
+      "obj_file_blobs_git_sha1": {
+        "P18-01": "c0f9d6b5131c987e1c484ce4eb83ac2115e1d7f7",
+        "P18-02": "9a81151c93006cd2a52d0e5541fe1d3c2cbc2011",
+        "P18-03": "df5a68c87fd49597c79bbb6f70735f32543489bf"
+      },
+      "exact_source_sha256_previous_producer_verified": {
+        "P18-01": "7e353b62210df2cdefc03e85a11c109dcf4ca5d51b776c2ab45452ae8239be79",
+        "P18-02": "d37f3347dabf84bf315b27b1d24bc517dda77265bb60da2c086d28bdcf3e3472",
+        "P18-03": "3996be33105a17163d4c8a753012aca891c1b19b156abf32ddab02d8fbca50e0"
+      }
+    }
+  },
+  "p17_02_real_glTF_source_test": {
+    "result": "SOURCE_CONTACT_TRIANGLE_INTERSECTIONS_PASS_NOT_FBX_OR_UNITY",
+    "real_geometry_instanced_meshes": 38,
+    "triangle_count": 536,
+    "missing_uv0_instances": 0,
+    "method": "Read data:application/octet-stream base64 bufferViews from actual producer glTF; decode POSITION + indexed faces; apply current glTF node translation and scale to each mesh instance; compute segment-triangle intersections between distinct component surfaces. Findings pinned to Git blob and SHA256, not inferred from authored spec or local accessor min/max.",
+    "verified_pairs": [
+      {
+        "a": "LeftBottomMountScrew",
+        "b": "MountBacking",
+        "surface_intersection": true,
+        "example_intersection_point_m": [
+          -0.083,
+          0.0145,
+          0.016
+        ],
+        "surface_z_m": 0.016
+      },
+      {
+        "a": "LeftTopMountScrew",
+        "b": "MountBacking",
+        "surface_intersection": true,
+        "example_intersection_point_m": [
+          -0.083,
+          0.2745,
+          0.016
+        ],
+        "surface_z_m": 0.016
+      },
+      {
+        "a": "RightBottomMountScrew",
+        "b": "MountBacking",
+        "surface_intersection": true,
+        "example_intersection_point_m": [
+          0.083,
+          0.0145,
+          0.016
+        ],
+        "surface_z_m": 0.016
+      },
+      {
+        "a": "RightTopMountScrew",
+        "b": "MountBacking",
+        "surface_intersection": true,
+        "example_intersection_point_m": [
+          0.083,
+          0.2745,
+          0.016
+        ],
+        "surface_z_m": 0.016
+      },
+      {
+        "a": "Keybed",
+        "b": "Housing",
+        "surface_intersection": true,
+        "surface_z_m": 0.0585
+      },
+      {
+        "a": "LeftClampReinforcement",
+        "b": "LeftClamp",
+        "surface_intersection": true,
+        "surface_z_m": 0.064
+      },
+      {
+        "a": "KeyGuide_01",
+        "b": "Keybed",
+        "surface_intersection": true,
+        "surface_z_m": 0.064
+      }
+    ],
+    "screws_node_scale": [
+      0.0045,
+      0.0045,
+      0.003
+    ],
+    "screw_world_dimensions_m": [
+      0.009,
+      0.009,
+      0.003
+    ],
+    "screw_to_MountBacking_z_broadphase_penetration_m": 0.00050000038,
+    "keybed_to_Housing_z_broadphase_penetration_m": 0.0005000001,
+    "caveats": "Proves local triangle crossings/source contact for this exact glTF version. Does not prove deep support design, global self-intersection freedom, absence of coplanar z-fighting, correct Unity prefab transforms, or that historical binary FBX was regenerated. Original authoritative .blend and FBX are stale."
+  },
+  "p18_original_obj_source_test": {
+    "result": "SOURCE_COMPONENT_ISOLATION_FAIL_SEVEN_REAL_POSITIVE_AABB_SEPARATIONS",
+    "method": "Parse every actual OBJ v and f index, partition by original o object group, compute local model-world component AABBs, compare each component to ALL other parts, record nearest definite positive separation. AABB positive separation is sufficient to prove surfaces cannot meet; other AABB overlaps alone do not prove triangle contact.",
+    "before_producer_native_fbx_changes_confirmed": false,
+    "counts": {
+      "P18-01": {
+        "parts": 37,
+        "triangles": 684
+      },
+      "P18-02": {
+        "parts": 47,
+        "triangles": 1012
+      },
+      "P18-03": {
+        "parts": 53,
+        "triangles": 1532
+      }
+    },
+    "definitely_disconnected": [
+      {
+        "id": "P18-01",
+        "part": "Lower_Rim",
+        "nearest": "Crate_Shell",
+        "gap_mm": 10
+      },
+      {
+        "id": "P18-02",
+        "part": "Back_Support_0.6",
+        "nearest": "Rack_Post_-1.015_-0.365",
+        "gap_mm": 30
+      },
+      {
+        "id": "P18-02",
+        "part": "Back_Support_1.48",
+        "nearest": "Rack_Post_-1.015_-0.365",
+        "gap_mm": 30
+      },
+      {
+        "id": "P18-03",
+        "part": "Cart_Shelf_Lip_0_-0.48",
+        "nearest": "Cart_Shelf_0",
+        "gap_mm": 5
+      },
+      {
+        "id": "P18-03",
+        "part": "Cart_Shelf_Lip_0_0.48",
+        "nearest": "Cart_Shelf_0",
+        "gap_mm": 5
+      },
+      {
+        "id": "P18-03",
+        "part": "Cart_Shelf_Lip_1_-0.48",
+        "nearest": "Cart_Shelf_1",
+        "gap_mm": 5
+      },
+      {
+        "id": "P18-03",
+        "part": "Cart_Shelf_Lip_1_0.48",
+        "nearest": "Cart_Shelf_1",
+        "gap_mm": 5
+      }
+    ],
+    "remediationOwner": "C01-18 producer #18. Correct only supported source defects, preserve original object IDs and moving wheel pivots, do not introduce arbitrary weld or extra decorative parts. Re-export real native .blend and Blender binary FBX and then independently test C01-02.",
+    "note": "Could be intended construction air gaps in nonfunctional trim; producer should verify intended attachment and provide visual evidence, not automatically weld based only on broadphase."
+  },
+  "binary_export_release_gate": {
+    "historical_before_FBX_sha256": {
+      "P17-02": "af858385a0abae9c623ee4002bcf22bcbc401b5687024acd8df142eb1b848147",
+      "P18-01": "84851387b58aeadc7f2ace49201077d847cfd294f82acfb2d0a7dce3e471a939",
+      "P18-02": "5ba3faf85a3ea57f755eeb51d0db832c1ce37aa64721d710a22db509f2c6d03f",
+      "P18-03": "639fc09c39b804b9bf83de75a4096cdefe1229f58549662ee777537c19c5e165",
+      "P15-03": "95d2730197a7c86bd3a59c1748a1df6df2a276ef9a9554d0df3ad0b769f6f414"
+    },
+    "source_change_not_propagated_to_genuine_blender_fbx": true,
+    "actual_current_blender_4x": "NOT_RUN",
+    "actual_current_binary_fbx_export": "NOT_RUN",
+    "current_unity6_urp_editor_import": "NOT_RUN",
+    "actual_current_unity_prefabs": "NOT_RUN",
+    "independent_release_QA_36": "0/36 FINAL_APPROVED",
+    "blender_or_actions_blocker": "NEEDS_OWNER_ACTION: accessible runtime has no Blender, git-lfs, Unity; recent C01 Actions jobs failed before runner allocation; cause unknown. Only actual source static checks performed.",
+    "no_merge": true,
+    "no_ship_edits": true
+  }
+}

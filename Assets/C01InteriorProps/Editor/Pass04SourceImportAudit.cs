@@ -49,6 +49,7 @@ namespace C01.InteriorProps.Editor
         {
             public string id;
             public string source_commit;
+            public string native_export_sync;
         }
 
         sealed class Source
@@ -146,6 +147,13 @@ namespace C01.InteriorProps.Editor
             if(expected.Length!=1 || String.IsNullOrEmpty(expected[0].source_commit) ||
                !Regex.IsMatch(expected[0].source_commit,@"\A[0-9a-f]{40}\z"))
                 return "AMBIGUOUS_OR_INVALID_CURRENT_SOURCE_COMMIT";
+            // Protect against a copied old FBX and a matching old receipt when
+            // the *current* producer authoring source still needs a DETAIL
+            // PASS12 native Blender save/export roundtrip. Exact Git commit or
+            // byte SHA by itself cannot certify authoring/export parity.
+            if(!String.Equals(expected[0].native_export_sync,
+                "CANDIDATE_BINARY_FBX_QA_NOT_APPROVED",StringComparison.Ordinal))
+                return "SOURCE_NATIVE_EXPORT_BLOCKED_BY_MANIFEST";
             if(!String.Equals(expected[0].source_commit,fields[2],StringComparison.Ordinal))
                 return "STAGING_RECEIPT_PRODUCER_COMMIT_STALE";
             if(!String.Equals(fields[5].Replace('\\','/'),

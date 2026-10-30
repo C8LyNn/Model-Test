@@ -13,12 +13,41 @@ public static class C01WallPrefabBuilder
         "FULL_WALL_1M", "PANEL_WALL_1M", "CORNER_90_1M", "DOOR_OPENING_2M"
     };
 
+
+    // PASS04: fail closed before writing any prefab or material.
+    // Archived detailed r2 W02 contains 572 actual triangles; the 12-triangle
+    // replacement candidate is NOT an authorized topology repair.
+    private static void PreflightOriginalMeshIntegrity()
+    {
+        int[] expectedTriangles = { 12, 572, 20, 28 };
+        for (int i = 0; i < Ids.Length; i++)
+        {
+            string path = Root + "/FBX/" + Ids[i] + "_" + Names[i] + ".fbx";
+            var source = AssetDatabase.LoadAssetAtPath<GameObject>(path);
+            if (source == null)
+                throw new FileNotFoundException("Original imported FBX missing: " + path);
+            int count = 0;
+            foreach (var filter in source.GetComponentsInChildren<MeshFilter>(true))
+            {
+                if (filter.sharedMesh == null) continue;
+                count += (int)filter.sharedMesh.triangles.Length / 3;
+            }
+            if (count != expectedTriangles[i])
+                throw new InvalidOperationException(
+                    Ids[i] + ": source mismatch (" + count + " triangles, required " +
+                    expectedTriangles[i] + "). Refuse to replace original r2 geometry.");
+        }
+        // This is only a source identity triangle gate, not independent QA or
+        // approval for replacing any existing ship prefab.
+    }
+
     [MenuItem("Tools/C01/C01-11/Build W01-W04 Prefabs")]
     public static void Build()
     {
         var shader = Shader.Find("Universal Render Pipeline/Lit");
         if (shader == null)
             throw new InvalidOperationException("Unity 6 URP/Lit shader missing.");
+        PreflightOriginalMeshIntegrity();
         Directory.CreateDirectory(Root + "/Materials");
         Directory.CreateDirectory(Root + "/Prefabs");
         for (int index = 0; index < Ids.Length; index++)

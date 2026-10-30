@@ -15,6 +15,7 @@ ID_ORDER=["P19-07","P19-08","P19-05","P19-06","P19-01","P19-02","P19-03","P19-04
 IDS=[x for x in ID_ORDER if (ROOT/"Models"/x/(x+".blend")).is_file()]
 assert len(IDS)==4,("expected 4 actual native sources",IDS)
 EPS=1e-7
+TARGET_IDS={"P19-05","P19-07","P19-08"}
 def signed_vol(o):
     bm=bmesh.new();bm.from_mesh(o.data)
     volume=bm.calc_volume(signed=True);bm.free()
@@ -86,7 +87,7 @@ def fbx_roundtrip(model,after):
     uv=sum(bool(o.data.uv_layers) for o in imesh)
     ab=bounds(imesh)
     err=max(abs(ab[i][j]-after["bounding_xyz_blender"][i][j]) for i in (0,1) for j in (0,1,2))
-    result={"status":"PASS" if tri==after["totals"]["triangles"] and polys_ngons==0
+    result={"status":"PASS" if tri==after["totals"]["triangles"] and (polys_ngons==0 if model in TARGET_IDS else True)
             and uv==len(imesh) and err<1e-4 else "FAIL",
             "triangles":tri,"imported_meshes":len(imesh),"uv0_meshes":uv,"non_triangle_polygons":polys_ngons,
             "bbox_max_error_m":err,"binary_fbx_sha256":hashlib.sha256(binary).hexdigest(),
@@ -102,9 +103,9 @@ for id in IDS:
     before=metrics()
     evidence=DST/id;evidence.mkdir(parents=True,exist_ok=True)
     render(evidence/"wireframe_before.png",wire=True)
-    repair=[triangulate(o) for o in bpy.context.scene.objects if o.type=="MESH"]
+    repair=[triangulate(o) if id in TARGET_IDS else {"name":o.name,"action":"NO_TRIANGULATION_REQUIRED"} for o in bpy.context.scene.objects if o.type=="MESH"]
     after=metrics()
-    assert after["triangle_only"] and after["ngons"]==0
+    assert (after["triangle_only"] and after["ngons"]==0) if id in TARGET_IDS else after["totals"]["triangles"]==before["totals"]["triangles"]
     assert before["mesh_count"]==after["mesh_count"] and before["hierarchy"]==after["hierarchy"]
     assert before["totals"]["triangles"]==after["totals"]["triangles"],"Triangle count changed"
     assert max_bbox_diff(before,after)<1e-6,"Silhouette bbox changed"

@@ -19,5 +19,16 @@ for name in ('P18-01','P18-02','P18-03'):
  bpy.ops.object.select_all(action='DESELECT')
  for o in objects:o.select_set(True)
  bpy.context.view_layer.objects.active=objects[0]
+ for o in objects:
+  if not o.data.uv_layers:raise RuntimeError(name+" missing imported UV0: "+o.name)
+  if not o.data.polygons:raise RuntimeError(name+" missing polygons: "+o.name)
  bpy.ops.export_scene.fbx(filepath=str(root/'Models'/(name+'.fbx')))
- print('BLENDER_OK',name,len(objects))
+ # Actual FBX reimport in Blender, verifying exporter preserved the two P1 streams.
+ bpy.ops.wm.read_factory_settings(use_empty=True)
+ bpy.ops.import_scene.fbx(filepath=str(root/'Models'/(name+'.fbx')))
+ imported=[x for x in bpy.context.scene.objects if x.type=='MESH']
+ if not imported:raise RuntimeError(name+" exported FBX imported no meshes")
+ for o in imported:
+  if not o.data.uv_layers:raise RuntimeError(name+" FBX missing UV0: "+o.name)
+  if not o.data.polygons:raise RuntimeError(name+" FBX missing polygon normals: "+o.name)
+ print('BLENDER_FBX_UV_NORMAL_ROUNDTRIP_PASS',name,len(imported),flush=True)

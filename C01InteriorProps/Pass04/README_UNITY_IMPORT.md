@@ -51,3 +51,18 @@ $UNITY = 'C:/Program Files/Unity/Hub/Editor/6000.3.14f1/Editor/Unity.exe'
 - P19-05/07/08: C01-02 PASS03 reported importer-dependent n-gon triangulation P1 FAIL; C01-19 must repair on its existing PR #29 and request SHA-pinned independent retest. Do not self-approve based on local preview.
 - Unity source importer, native prefab generation, rendering, physics and PlayMode **NOT RUN in this chat runtime** (no Unity/Blender executables); no generated Unity prefabs/scenes claimed.
 - No ship geometry, layout, architecture or producer mesh changes. No merge, no new models, no Wave03.
+
+## PASS09 — hard export-sync gate (2026-10-30)
+
+**This section supersedes earlier unconditional `--apply` expectations.** The script reads manifest schema `C01-10-PASS09-STAGING-2`, explicitly excludes 17 known obsolete/invalid binary exports from staging, and lists those IDs with a BLOCKED reason in `staged_sources.csv`.
+
+- `BLOCKED_NO_NATIVE_BINARY_FBX`: P16-01/02/03/04/05/06/07 — actual native `.blend` and Blender-origin binary FBX not produced; current exporter files ASCII.
+- `BLOCKED_P19_EXPORT_TOPOLOGY`: P19-01/02/05/07/08 — serious exporter triangulation preflight risks and no matching fixed native Blender/FBX source at latest inspected SHA.
+- `BLOCKED_SOURCE_NEWER_THAN_FBX`: P17-05 (source glTF rail offset +1mm), P18-01/02/03 (authored OBJ quads), P18-07 (lock +1mm). Latest authored geometry differs from old binary FBX. Do not stage old binary as AFTER.
+- Remaining 19 assets have `CANDIDATE_BINARY_FBX_QA_NOT_APPROVED`, not C01-02 approval. These may be hydrated for isolated Unity diagnostic inspection **only when** the owner environment actually has Git LFS, Unity 6 and valid source receipts.
+
+**Fail-closed consequence:** `stage_real_fbx.py --repo . --apply` returns nonzero while any 17 IDs remain blocked. This is intentional. It may still stage up to 19 eligible source binaries, and it always writes one status per source ID. To test a short eligible subset and obtain exit code 0, pass explicit `--ids` for those eligible models, e.g. `--ids P17-01 P17-02`.
+
+**Unblock rules:** change each `native_export_sync` to `CANDIDATE_BINARY_FBX_QA_NOT_APPROVED` ONLY after the owner has made a real native Blender export and fresh binary FBX source at pinned Git SHA, with SHA-256 and Blender reimport evidence. This allows *quarantine preflight*, not production. Final promotion additionally requires independent C01-02 approval and actual Unity checks. Never bypass by copying the previous FBX into `Pass04Incoming` or relabeling it without new bytes.
+
+**ENV01–ENV05 cross-project lessons:** RoboRougelike v002 reports successful original Blender `.blend` reopen, reproducible GLB builds, real PNG wireframes, per-file SHA-256, geometry/UV/material/pivot checks and separately pending independent B01-60 / Unity QA. C01 can adopt the **method**, not their assets or GLB format: C01 continues to require Blender-produced **binary FBX**, matching native `.blend`, importer roundtrip, SHA, independent C01-02 and Unity URP verification. B01 files and permissions stay entirely isolated.

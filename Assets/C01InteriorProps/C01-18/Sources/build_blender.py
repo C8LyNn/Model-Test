@@ -30,7 +30,14 @@ for name in ('P18-01','P18-02','P18-03'):
     world=hub.matrix_world.copy()
     hub.parent=wheel
     hub.matrix_world=world
-   if abs(wheel.location.y-0.105)>0.001:raise RuntimeError(name+' wheel axle pivot not at y=.105: '+wid)
+   # OBJ source is Y-up; after Blender OBJ import the ground/axle height is world Z.
+   # Blender local Y is the original longitudinal axis, never the vertical axle height.
+   world_center=wheel.matrix_world.translation
+   if abs(world_center.z-0.105)>0.001:
+    raise RuntimeError(name+f' wheel axle pivot height !=0.105m: {wid} Z={world_center.z}')
+   min_ground=min((wheel.matrix_world@v.co).z for v in wheel.data.vertices)
+   if abs(min_ground)>0.001:
+    raise RuntimeError(name+f' wheel not grounded: {wid} minZ={min_ground}')
  expected={'P18-01':(37,684),'P18-02':(47,1012),'P18-03':(53,1532)}
  assert len(objects)==expected[name][0], f'{name} expected {expected[name][0]} authored mesh parts, got {len(objects)}'
  tri=lambda arr:sum(max(0,len(p.vertices)-2) for o in arr for p in o.data.polygons)

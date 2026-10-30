@@ -1,0 +1,70 @@
+name: C01-15 PASS03 real native mesh repair / before after QA
+on:
+  push:
+    branches:
+      - c01/props-15-installations
+      - c01/props-15-installations-wave02
+    paths:
+      - .github/workflows/c01-p15-pass03.yml
+      - Tools/C01MeshPass03/P15/repair.py
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: c01-p15-pass03-${{ github.ref_name }}
+  cancel-in-progress: true
+jobs:
+  native-topology:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - name: Install Blender and headless viewport dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends blender python3-numpy xvfb libegl1 libgl1 libgl1-mesa-dri libopengl0
+          git config lfs.https://github.com/C8LyNn/Model-Test.git/info/lfs.locksverify false
+          git lfs pull
+          blender --version | head -3
+      - name: Audit original native meshes, repair proven defects, render before/after, actual FBX roundtrip
+        env:
+          C01_P15_WAVE: ${{ github.ref_name == 'c01/props-15-installations-wave02' && 'W02' || 'W01' }}
+        run: LIBGL_ALWAYS_SOFTWARE=1 xvfb-run -a blender --background --python Tools/C01MeshPass03/P15/repair.py
+      - name: Validate JSON and preserve artifact hashes for QA
+        env:
+          C01_P15_WAVE: ${{ github.ref_name == 'c01/props-15-installations-wave02' && 'W02' || 'W01' }}
+        run: |
+          python3 - <<'PY'
+          import json,os,pathlib,hashlib
+          p=pathlib.Path("Assets/C01InteriorProps")/("P15Wave02" if os.environ["C01_P15_WAVE"]=="W02" else "P15")/"QA/Pass03"
+          r=json.loads((p/"PASS03_SUMMARY.json").read_text())
+          assert r["result"]=="PASS"
+          for aid,model in r["models"].items():
+              assert model["producer_status"]=="PASS"
+              assert model["fbx_roundtrip"]["result"]=="PASS"
+              assert all((p/"Previews"/(aid+"_"+phase+".png")).stat().st_size>400 for phase in ("BEFORE_wire","AFTER_wire","AFTER_shaded","AFTER_detail"))
+              print(aid,model["before"]["total"],model["after"]["total"],"repairs",len(model["repairs"]))
+          print("NATIVE_PASS03_CHECKS",len(r["models"]))
+          PY
+      - name: Persist original and repaired sources plus actual evidence without binary rebase conflicts
+        shell: bash
+        env:
+          C01_P15_WAVE: ${{ github.ref_name == 'c01/props-15-installations-wave02' && 'W02' || 'W01' }}
+        run: |
+          set -euo pipefail
+          ROOT="Assets/C01InteriorProps/P15"
+          if [ "$C01_P15_WAVE" = "W02" ]; then ROOT="Assets/C01InteriorProps/P15Wave02"; fi
+          tar -cf "$RUNNER_TEMP/P15_pass03_evidence.tar" "$ROOT/Sources/Blender/" "$ROOT/Models/FBX/" "$ROOT/QA/Pass03/"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config lfs.https://github.com/C8LyNn/Model-Test.git/info/lfs.locksverify false
+          git fetch origin "${GITHUB_REF_NAME}"
+          GIT_LFS_SKIP_SMUDGE=1 git reset --hard FETCH_HEAD
+          tar -xf "$RUNNER_TEMP/P15_pass03_evidence.tar"
+          git add "$ROOT/Sources/Blender/" "$ROOT/Models/FBX/" "$ROOT/QA/Pass03/"
+          if ! git diff --cached --quiet; then
+            git commit -m "C01-15 PASS03: native topology repair FBX roundtrip and real before-after wireframes"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi

@@ -62,9 +62,9 @@ def pair_contact(asset,a,b):
         classification="INTENTIONAL_COLLIDER_PROXY_IDENTICAL_SURFACE"
     elif asset=="RAI-01" and any(n.startswith("Post_") for n in names) and any(n.endswith("Rail") for n in names):
         classification="INTENTIONAL_POST_RAIL_ASSEMBLY_INTERSECTION"
-    elif volume==0 and not hits:classification="DISJOINT"
-    elif hits or volume>1e-9:classification="UNREVIEWED_CROSS_PART_CONTACT"
-    else:classification="AABB_ONLY_NEARBY"
+    elif hits:classification="UNREVIEWED_CROSS_PART_TRIANGLE_CONTACT"
+    elif volume>1e-9:classification="AABB_OVERLAP_ONLY_NO_TRIANGLE_CONTACT"
+    else:classification="DISJOINT"
     return {"a":a.name,"b":b.name,"triangle_contact_candidates":len(hits),
             "aabb_positive_intersection_m3":volume,"aabb_overlap_depth_m":depth,
             "classification":classification}

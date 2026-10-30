@@ -1,0 +1,258 @@
+{
+  "schema": "C01-01-DETAIL-PASS13-ACTUAL-SOURCE-CONTACT-RECHECK-v1",
+  "date": "2026-10-30",
+  "scope": "Read-only independent geometric checks of real existing producer glTF/OBJ byte contents; no Blender or Unity runtime.",
+  "revisionLocks": {
+    "P17_02": {
+      "producer_pr": 17,
+      "commit": "97f6d77eab77dbdd171c2321a922980517efefed",
+      "before_commit": "cf405ed6636c9788cfd4c9d4d35e99a8683902dc",
+      "before_gltf_blob": "7f183922dab2b5e416af7a8dc30a46c1b6990286",
+      "after_gltf_blob": "d80a67af140e434b983104aaec0078f9cf5bd66f",
+      "after_gltf_sha256": "a9995704a70776b49f2bd6916a50cf222a4ab40b370a0a9e258b63bdc4429786",
+      "after_spec_git_blob": "9955af9a99b181fd5b24b049294b188bc5f55fab",
+      "after_spec_sha256": "a25a7aa74efe8cb59ccb659243c62daee6429d86e3f95578144f9777efba5b44"
+    },
+    "P18": {
+      "producer_pr": 18,
+      "latest_reviewed_head": "4d0b45d99054667456217a1e42fb6b48fff3bdb0",
+      "source_only": true
+    }
+  },
+  "methods": {
+    "source_sha256": "Computed on fetched UTF-8 source file bytes with independently checked SHA-256 function (known-vector abc PASS).",
+    "gltf": "Decode embedded base64 buffers and actual float32 POSITION/uint16 or uint32 indices; apply current node translation and nonuniform scale once, not twice. Inspect source triangles crossing actual support planes.",
+    "obj": "Read actual per-object OBJ v/face indices and face-corner membership. Check part extents, 8-corner axis-aligned solid box identity and volumetric overlap. AABB alone does not certify curved or arbitrary nonconvex solids."
+  },
+  "models": {
+    "P17-02": {
+      "path": "Assets/C01InteriorProps/Models/P17-02.gltf",
+      "parts": 38,
+      "triangles": 536,
+      "source_attachments": "PASS_SOURCE_TRANSFORM_AND_PLANE_TEST",
+      "four_screw_heads": {
+        "names": [
+          "LeftBottomMountScrew",
+          "LeftTopMountScrew",
+          "RightBottomMountScrew",
+          "RightTopMountScrew"
+        ],
+        "size_mm": [
+          9,
+          9,
+          3
+        ],
+        "backing_world_z_mm": [
+          0,
+          16
+        ],
+        "head_world_z_mm": [
+          15.5,
+          18.5
+        ],
+        "penetration_mm": 0.5,
+        "triangles_crossing_support_plane_per_head": 16,
+        "crossing_plane_z_mm": 16,
+        "all_triangle_crossings_within_backing_xy": true,
+        "verdict": "NO_FLOATING_SCREW_DEFECT_AT_REVIEWED_SHA"
+      },
+      "housing_keybed": {
+        "old_housing_z_mm": [
+          22.5,
+          57.5
+        ],
+        "new_housing_z_mm": [
+          22.5,
+          58.5
+        ],
+        "keybed_z_mm": [
+          58,
+          64
+        ],
+        "previous_air_gap_mm": 0.5,
+        "after_overlap_mm": 0.5,
+        "raw_source_mesh_preserved": true,
+        "only_changed_node": "Housing",
+        "unchanged_parts": true,
+        "verdict": "AUTHORING_SOURCE_GAP_CORRECTED"
+      },
+      "native_blend": "NOT_RUN",
+      "native_fbx_after": "NOT_RUN",
+      "unity": "NOT_RUN"
+    },
+    "P18-01": {
+      "path": "Assets/C01InteriorProps/C01-18/Models/P18-01.obj",
+      "git_blob_sha": "c0f9d6b5131c987e1c484ce4eb83ac2115e1d7f7",
+      "sha256": "5749f13e30f8e1d853c4488dde2e030fb7b55a59b14b71bedeef61297c8c3adf",
+      "vertices": 416,
+      "polygons": 426,
+      "triangles": 684,
+      "parts": 37,
+      "zero_first_fan_triangles": 0,
+      "solid_box_evidence": [
+        {
+          "components": [
+            "Front_Trim_-0.444_0.28",
+            "TrimBacker_B_0.28"
+          ],
+          "volume_overlap_xyz_mm": [
+            670,
+            26,
+            6
+          ]
+        },
+        {
+          "components": [
+            "TrimBacker_B_0.28",
+            "Crate_Shell"
+          ],
+          "volume_overlap_xyz_mm": [
+            670,
+            26,
+            4
+          ]
+        },
+        {
+          "components": [
+            "Side_Trim_0.444_0.63",
+            "TrimBacker_R_0.63"
+          ],
+          "volume_overlap_xyz_mm": [
+            6,
+            26,
+            670
+          ]
+        },
+        {
+          "components": [
+            "TrimBacker_R_0.63",
+            "Crate_Shell"
+          ],
+          "volume_overlap_xyz_mm": [
+            4,
+            26,
+            670
+          ]
+        }
+      ],
+      "structural_contact": "PASS_REVIEWED_AXIS_ALIGNED_SOLID_BOX_PAIRS; NOT_GENERAL_MESH_COLLISION_QA",
+      "native_blend": "NOT_RUN",
+      "native_fbx_after": "NOT_RUN",
+      "unity": "NOT_RUN"
+    },
+    "P18-02": {
+      "path": "Assets/C01InteriorProps/C01-18/Models/P18-02.obj",
+      "git_blob_sha": "9a81151c93006cd2a52d0e5541fe1d3c2cbc2011",
+      "sha256": "55d652a42ab7c22709814938535445a0814d9c9ff81237b59925a9115521ee98",
+      "vertices": 600,
+      "polygons": 666,
+      "triangles": 1012,
+      "parts": 47,
+      "zero_first_fan_triangles": 0,
+      "solid_box_evidence": [
+        {
+          "components": [
+            "Top_Label_-0.5",
+            "Top_Label_L_MountingBackplate"
+          ],
+          "volume_overlap_xyz_mm": [
+            205,
+            47,
+            3
+          ]
+        },
+        {
+          "components": [
+            "Top_Label_L_MountingBackplate",
+            "Shelf_2_Deck"
+          ],
+          "volume_overlap_xyz_mm": [
+            205,
+            15,
+            29
+          ]
+        },
+        {
+          "components": [
+            "Top_Label_0.5",
+            "Top_Label_R_MountingBackplate"
+          ],
+          "volume_overlap_xyz_mm": [
+            205,
+            47,
+            3
+          ]
+        },
+        {
+          "components": [
+            "Top_Label_R_MountingBackplate",
+            "Shelf_2_Deck"
+          ],
+          "volume_overlap_xyz_mm": [
+            205,
+            15,
+            29
+          ]
+        }
+      ],
+      "structural_contact": "PASS_REVIEWED_2_LABEL_TO_PLATE_TO_DECK_SOLID_BOX_PATHS",
+      "native_blend": "NOT_RUN",
+      "native_fbx_after": "NOT_RUN",
+      "unity": "NOT_RUN"
+    },
+    "P18-03": {
+      "path": "Assets/C01InteriorProps/C01-18/Models/P18-03.obj",
+      "git_blob_sha": "df5a68c87fd49597c79bbb6f70735f32543489bf",
+      "sha256": "3996be33105a17163d4c8a753012aca891c1b19b156abf32ddab02d8fbca50e0",
+      "vertices": 872,
+      "polygons": 1110,
+      "triangles": 1532,
+      "parts": 53,
+      "zero_first_fan_triangles": 0,
+      "wheels": [
+        "Wheel_LB",
+        "Wheel_LF",
+        "Wheel_RB",
+        "Wheel_RF"
+      ],
+      "wheel_bottom_world_y_mm": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "assembly_aabb_per_wheel": {
+        "wheel_hub_axial_overlap_mm": 3,
+        "axle_fork_overlap_xyz_mm": [
+          16,
+          22,
+          24
+        ],
+        "fork_anchor_box_overlap_xyz_mm": [
+          16,
+          4.5,
+          46.5
+        ],
+        "anchor_gusset_aabb_overlap_xyz_mm": [
+          20,
+          27,
+          63.41
+        ]
+      },
+      "mechanical_contact": "PASS_FOUR_GROUND_CONTACTS_AND_BOX_FORK_ANCHOR_INTERSECTIONS; CURVED_PART_TRIANGLE_BVH_AND_PIVOT_MOTION_NOT_RUN",
+      "native_blend": "NOT_RUN",
+      "native_fbx_after": "NOT_RUN",
+      "unity": "NOT_RUN"
+    }
+  },
+  "release": {
+    "source_geometry_scope": "PASS_WITH_EXPLICIT_LIMITATIONS",
+    "runtime_blender": "NOT_RUN",
+    "final_binary_fbx_SHA256": "NOT_AVAILABLE_FOR_REVISED_SOURCES",
+    "independent_C01_02_final": "PENDING",
+    "unity6_urp": "NOT_RUN",
+    "merge": "NOT_PERFORMED",
+    "environment": "NEEDS_OWNER_ACTION",
+    "important": "This is independent source geometry QA and SHA. No new native .blend or binary FBX was produced by C01-01."
+  }
+}

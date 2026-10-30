@@ -59,8 +59,7 @@ jobs:
           git add Assets/C01InteriorProps/C01-18-Wave02/Models/*.fbx
           git add Assets/C01InteriorProps/C01-18-Wave02/Previews/*.png
           git add Assets/C01InteriorProps/C01-18-Wave02/QA/*.json
-          git commit -m "C01-18 Wave02: commit four native models and verified renders [skip ci]"
-          git push origin HEAD:c01/props-18-cargo-wave02
+          if git diff --cached --quiet; then echo 'Existing native files unchanged'; else git commit -m "C01-18 Wave02: commit four native models and verified renders [skip ci]"; git push origin HEAD:c01/props-18-cargo-wave02; fi
       - uses: actions/upload-artifact@v4
         with:
           name: C01-18-Wave02-Real-Blend-FBX-Previews
@@ -69,5 +68,11 @@ jobs:
             Assets/C01InteriorProps/C01-18-Wave02/Models/*.fbx
             Assets/C01InteriorProps/C01-18-Wave02/Previews/*.png
             Assets/C01InteriorProps/C01-18-Wave02/QA/*.json
+            Assets/C01InteriorProps/C01-18-Wave02/Sources/*.py
+            Assets/C01InteriorProps/C01-18-Wave02/Editor/*.cs
+            Assets/C01InteriorProps/C01-18-Wave02/Editor/*.meta
+            Assets/C01InteriorProps/C01-18-Wave02/Models/*.meta
+            Assets/C01InteriorProps/C01-18-Wave02/Manifests/*.json
+            Assets/C01InteriorProps/C01-18-Wave02/README.md
           if-no-files-found: error
           retention-days: 21

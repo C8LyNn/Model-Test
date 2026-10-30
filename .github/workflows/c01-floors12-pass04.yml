@@ -1,0 +1,54 @@
+name: C01-12 PASS04 read-only Blender FBX mesh validation
+on:
+  push:
+    branches:
+      - c01/floors-12-legacy-repair
+    paths:
+      - .github/workflows/c01-floors12-pass04.yml
+      - Tools/C01Floors12/validate_pass04.py
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  real-blender-fbx-audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - name: Install Blender and FBX dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends blender python3-numpy xvfb libgl1 libgl1-mesa-dri libopengl0
+          blender --version | head -3
+      - name: Audit genuine v003 Blender files and genuine FBX reimport
+        run: |
+          set -o pipefail
+          LIBGL_ALWAYS_SOFTWARE=1 xvfb-run -a blender --background --factory-startup --python Tools/C01Floors12/validate_pass04.py 2>&1 | tee /tmp/c01_12_pass04.log
+          grep -q 'C01-12 PASS04 READONLY REAL BLENDER/FBX TESTS PASSED' /tmp/c01_12_pass04.log
+          ! grep -q 'Traceback (most recent call last)' /tmp/c01_12_pass04.log
+      - name: Validate report and explicit unavailable gates
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import json
+          p=Path('C01StandaloneKits/FloorCeiling/QA/Pass04_readonly_validation.json')
+          d=json.loads(p.read_text())
+          assert set(d['models']) == {'F01','F02','C01'}
+          assert d['F01_F02_same_geometry'] is True and d['no_mesh_changes'] is True
+          for row in d['models'].values():
+              assert row['blend_native_real_test']=='PASS'
+              assert row['fbx_binary_real_import_test']=='PASS'
+              assert row['unity6_urp']=='NOT_RUN' and row['independent_C01_02_qa']=='PENDING'
+              assert row['source']['degenerate_triangles']==row['fbx_roundtrip']['degenerate_triangles']==0
+              assert row['source']['uv0_zero_area_triangles']==row['fbx_roundtrip']['uv0_zero_area_triangles']==0
+              assert row['source']['components']==row['fbx_roundtrip']['components']==1
+          print('C01-12 PASS04 QA JSON validated')
+          PY
+      - name: Upload immutable pass04 read-only report
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-12-PASS04-readonly-native-FBX-topology
+          path: C01StandaloneKits/FloorCeiling/QA/Pass04_readonly_validation.json
+          if-no-files-found: error

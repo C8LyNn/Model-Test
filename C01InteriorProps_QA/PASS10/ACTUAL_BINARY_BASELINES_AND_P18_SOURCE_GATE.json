@@ -1,0 +1,193 @@
+{
+  "version": "C01-02_PASS10_INDEPENDENT_SOURCE_AND_REAL_BINARY_GATE_v1",
+  "date": "2026-10-30",
+  "scope": "36 P15-P19 original models",
+  "status": "NEEDS_OWNER_ACTION",
+  "qa_pr": 13,
+  "actual_recovered_binary_package": {
+    "local_name": "C01_PASS10_GENUINE_22_BASELINE_BLEND_FBX.zip",
+    "sha256": "009fb4c6861a349c6c24f0c1496f97cdb66ecf8aa844dc5590ab091882a8f134",
+    "bytes": 2339947,
+    "actual_native_blend_files": 22,
+    "actual_blender_origin_binary_fbx_files": 22,
+    "header_validated": "44/44",
+    "fbx_expected_sha256_recomputed": "22/22",
+    "crc": "PASS",
+    "historical_originals_only": true,
+    "after_source_fix": false,
+    "not_committed_to_github": true,
+    "source_artifacts": "Seven previous successful PASS03 Actions archive ZIPs, of which appropriate 6 unique model groups selected, P19-01/02 from later cleanup archival evidence",
+    "originals_without_after_fixes": [
+      "P17-05",
+      "P18-01",
+      "P18-02",
+      "P18-03",
+      "P18-07",
+      "P19-01",
+      "P19-02",
+      "P19-05",
+      "P19-07",
+      "P19-08"
+    ]
+  },
+  "new_independent_source_geom_qa": [
+    {
+      "id": "P18-01",
+      "producer_pr": 18,
+      "old_commit": "41d5f6a46bf9c4f6fb9a86f331a6214ec590387a",
+      "new_commit": "ecfac25934a98985eca8222060e190f8d5cecd5c",
+      "old_OBJ_git_blob": "665b940dd9ba1ab9c7a1339a8a395bdc35fe72b9",
+      "new_OBJ_git_blob": "c6178ec0fe38d582eacddab4c342085f2a88afe1",
+      "changed_vertices": 32,
+      "coordinate_displacements_y_m": [
+        -0.001,
+        0.001
+      ],
+      "V": 120,
+      "F": 90,
+      "quads": 90,
+      "T": 180,
+      "parts": 15,
+      "AABB_m": {
+        "min": [
+          -0.45,
+          0,
+          -0.45
+        ],
+        "max": [
+          0.45,
+          0.9,
+          0.45
+        ]
+      },
+      "before_after_AABB_identical": true,
+      "all_uv_and_normal_and_face_material_indices_identical": true,
+      "invalid_vertex_uv_normal_refs": 0,
+      "fan_zero_area_triangles": 0,
+      "flipped_face_normal_candidates": 0,
+      "source_preflight": "PASS",
+      "re_exported_native": "NOT_RUN"
+    },
+    {
+      "id": "P18-02",
+      "producer_pr": 18,
+      "old_commit": "41d5f6a46bf9c4f6fb9a86f331a6214ec590387a",
+      "new_commit": "ecfac25934a98985eca8222060e190f8d5cecd5c",
+      "old_OBJ_git_blob": "6200a15fdf29a23d4e2106359fdaed347b1656fd",
+      "new_OBJ_git_blob": "ec17212a2d60d1b39216c869b0a9706defa76c4d",
+      "changed_vertices": 48,
+      "coordinate_displacements_z_m": [
+        -0.003,
+        0.003
+      ],
+      "V": 136,
+      "F": 102,
+      "quads": 102,
+      "T": 204,
+      "parts": 17,
+      "AABB_m": {
+        "min": [
+          -1.05,
+          0,
+          -0.4
+        ],
+        "max": [
+          1.05,
+          2.1,
+          0.4
+        ]
+      },
+      "before_after_AABB_identical": true,
+      "all_uv_and_normal_and_face_material_indices_identical": true,
+      "invalid_vertex_uv_normal_refs": 0,
+      "fan_zero_area_triangles": 0,
+      "flipped_face_normal_candidates": 0,
+      "source_preflight": "PASS",
+      "re_exported_native": "NOT_RUN"
+    },
+    {
+      "id": "P18-03",
+      "producer_pr": 18,
+      "new_OBJ_git_blob": "901959fa24658c9beb1439fc06805f3feb8aa069",
+      "V": 208,
+      "F": 270,
+      "T": 348,
+      "parts": 17,
+      "degenerates": 0,
+      "source_unchanged_since_pass09": true,
+      "source_preflight": "PASS"
+    }
+  ],
+  "independently_read_p18_w02_native_generator_sync": {
+    "producer_pr": 26,
+    "old_commit": "ce5f80db7121f435b09e3bed17d7daa93b4147c8",
+    "new_commit": "bf288192f917d0fbeb0cac8d318b1a4c299cb029",
+    "old_blob": "8b6690d1274534f2ef358329a2d0c90cea82c0b8",
+    "new_blob": "e78c6021a6b753c6d506176190ddcf0ac7adfc04",
+    "changed_source_lines": 5,
+    "components": [
+      "P18-05 Case_Bottom",
+      "P18-06 Safety_Lid",
+      "P18-07 Bin_Chassis",
+      "P18-07 Handle_Post_L",
+      "P18-07 Handle_Post_R"
+    ],
+    "already_existing_P18_07_front_lock_1mm_source_fix": true,
+    "changes_are_producer_source_sync_not_native_blender_fix": true,
+    "source_rebuild": "NOT_RUN"
+  },
+  "native_runtime": {
+    "blender_executable": "UNAVAILABLE",
+    "git_lfs": "UNAVAILABLE",
+    "unity6": "UNAVAILABLE",
+    "network_download_blender": "DNS_FAILURE",
+    "latest_C01_actions_jobs": [
+      {
+        "run": 41112264623,
+        "runner_id": 0,
+        "executed_steps": 0,
+        "conclusion": "failure"
+      },
+      {
+        "run": 41111446940,
+        "runner_id": 0,
+        "executed_steps": 0,
+        "conclusion": "failure"
+      },
+      {
+        "run": 41110256127,
+        "runner_id": 0,
+        "executed_steps": 0,
+        "conclusion": "failure"
+      }
+    ],
+    "root_reason": "UNKNOWN_PRIVATE_REPO_RUNNER_NOT_ASSIGNED",
+    "no_billing_or_permissions_changes": true
+  },
+  "independent_acceptance": {
+    "real_fbx_hydrated_recomputed": 22,
+    "required_fbx_total": 36,
+    "p15_01_to_07": "NOT_HYDRATED",
+    "p16_01_to_07": "NATIVE_BLENDER_AND_BINARY_FBX_MISSING",
+    "five_p19_stale_export_risk": "FAIL_PREFLIGHT_NOT_UNITY_FAILURE",
+    "other_unexported_after_authoring": [
+      "P17-05",
+      "P18-01",
+      "P18-02",
+      "P18-03",
+      "P18-07"
+    ],
+    "new_native_source_repairs": 0,
+    "new_actual_Blender_roundtrips": 0,
+    "real_Unity_imports": 0,
+    "FULL_QA_APPROVED": 0,
+    "required_full": 36
+  },
+  "cross_project": {
+    "ENV01_05_v002": "QA_METHOD_ONLY",
+    "source_repo": "C8LyNn/RoboRougelike",
+    "coordination_issue": 407,
+    "bytes_permissions_shared": false
+  },
+  "owner_unblock": "Diagnose C01 private GitHub Actions General/Runners + failing job annotations/account usage READ ONLY, or run native producer Blender 4.x Windows repair/export, save NEW actual native .blend and Blender-origin binary FBX, pin SHA for independent C01-02 retest. Do not promote baseline ZIP or quarantined offline FBX candidates as final."
+}

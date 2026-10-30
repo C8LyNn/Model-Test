@@ -1,6 +1,6 @@
 {
   "contract": "C01-15-W01-PROPS",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "coordinate_system": "Unity Y-up X-right Z-front, meter=1, localScale=1",
   "materials": {
     "STEEL": [
@@ -1015,7 +1015,7 @@
       "asset": "P15-03",
       "component": "Door",
       "name": "DoorSkin",
-      "shape": "box",
+      "shape": "notched_box",
       "material": "STEEL",
       "center": [
         0.35,
@@ -1026,6 +1026,18 @@
         0.7,
         1.59,
         0.04
+      ],
+      "notches": [
+        {
+          "center_y": 0.32,
+          "height": 0.09,
+          "depth_x": 0.0115
+        },
+        {
+          "center_y": 1.49,
+          "height": 0.09,
+          "depth_x": 0.0115
+        }
       ]
     },
     {
@@ -1205,14 +1217,14 @@
       "shape": "box",
       "material": "DARK",
       "center": [
-        -0.363,
+        -0.385,
         0.32,
         0.123
       ],
       "size": [
-        0.04,
+        0.026,
         0.09,
-        0.038
+        0.025
       ]
     },
     {
@@ -1228,24 +1240,25 @@
       ],
       "axis": "Y",
       "radius": 0.006,
-      "depth": 0.074,
-      "sides": 8
+      "depth": 0.088,
+      "sides": 12
     },
     {
       "asset": "P15-03",
       "component": "Door",
       "name": "Hinge_Lower_Sleeve",
-      "shape": "cylinder",
+      "shape": "hollow_cylinder",
       "material": "STEEL",
       "center": [
-        0.004,
-        0.332,
+        0,
+        0.32,
         0
       ],
       "axis": "Y",
       "radius": 0.013,
-      "depth": 0.038,
-      "sides": 8
+      "depth": 0.034,
+      "sides": 12,
+      "inner_radius": 0.0075
     },
     {
       "asset": "P15-03",
@@ -1254,14 +1267,14 @@
       "shape": "box",
       "material": "DARK",
       "center": [
-        -0.363,
+        -0.385,
         1.49,
         0.123
       ],
       "size": [
-        0.04,
+        0.026,
         0.09,
-        0.038
+        0.025
       ]
     },
     {
@@ -1277,24 +1290,93 @@
       ],
       "axis": "Y",
       "radius": 0.006,
-      "depth": 0.074,
-      "sides": 8
+      "depth": 0.088,
+      "sides": 12
     },
     {
       "asset": "P15-03",
       "component": "Door",
       "name": "Hinge_Upper_Sleeve",
-      "shape": "cylinder",
+      "shape": "hollow_cylinder",
       "material": "STEEL",
       "center": [
-        0.004,
-        1.502,
+        0,
+        1.49,
         0
       ],
       "axis": "Y",
       "radius": 0.013,
-      "depth": 0.038,
-      "sides": 8
+      "depth": 0.034,
+      "sides": 12,
+      "inner_radius": 0.0075
+    },
+    {
+      "asset": "P15-03",
+      "component": "Body",
+      "name": "Hinge_Lower_LowerEar",
+      "shape": "box",
+      "material": "DARK",
+      "center": [
+        -0.367,
+        0.291,
+        0.137
+      ],
+      "size": [
+        0.038,
+        0.018,
+        0.022
+      ]
+    },
+    {
+      "asset": "P15-03",
+      "component": "Body",
+      "name": "Hinge_Lower_UpperEar",
+      "shape": "box",
+      "material": "DARK",
+      "center": [
+        -0.367,
+        0.34900000000000003,
+        0.137
+      ],
+      "size": [
+        0.038,
+        0.018,
+        0.022
+      ]
+    },
+    {
+      "asset": "P15-03",
+      "component": "Body",
+      "name": "Hinge_Upper_LowerEar",
+      "shape": "box",
+      "material": "DARK",
+      "center": [
+        -0.367,
+        1.461,
+        0.137
+      ],
+      "size": [
+        0.038,
+        0.018,
+        0.022
+      ]
+    },
+    {
+      "asset": "P15-03",
+      "component": "Body",
+      "name": "Hinge_Upper_UpperEar",
+      "shape": "box",
+      "material": "DARK",
+      "center": [
+        -0.367,
+        1.519,
+        0.137
+      ],
+      "size": [
+        0.038,
+        0.018,
+        0.022
+      ]
     }
   ]
 }

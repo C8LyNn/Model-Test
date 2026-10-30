@@ -1,0 +1,68 @@
+{
+  "title": "C01-15 WAVE02 — Three-segment ceiling-tray joint sample (not a ship scene)",
+  "contract": "CELL_1M_ORTHO / props surface placement only",
+  "units": "meters",
+  "layout": "free-space example; NOT approved placement in existing ship",
+  "placements": [
+    {
+      "id": "straight_A",
+      "asset": "P15-04",
+      "local_root_m": [
+        0,
+        3,
+        0
+      ],
+      "yaw_deg": 0,
+      "outgoing_port_center_m": [
+        3,
+        3,
+        0
+      ]
+    },
+    {
+      "id": "elbow",
+      "asset": "P15-05",
+      "local_root_m": [
+        3,
+        3,
+        0
+      ],
+      "yaw_deg": 0,
+      "incoming_port_center_m": [
+        3,
+        3,
+        0
+      ],
+      "outgoing_port_center_m": [
+        3.55,
+        3,
+        0.55
+      ]
+    },
+    {
+      "id": "straight_B",
+      "asset": "P15-04",
+      "local_root_m": [
+        3.55,
+        3,
+        0.55
+      ],
+      "yaw_deg": 270,
+      "incoming_port_center_m": [
+        3.55,
+        3,
+        0.55
+      ]
+    }
+  ],
+  "anchor_m": {
+    "ceiling_underside_y": 3,
+    "lowest_tray_y": 2.82
+  },
+  "note": "Sample snap only. Check actual in-game geometry, corridor/head clearance and collision in Unity 6 URP. Rotating the final straight by -90° / 270° about Y turns its +X run to world +Z.",
+  "test_status": {
+    "mesh_port_geometry": "PASS IN BLENDER SOURCE",
+    "unity_prefab_import": "NOT RUN",
+    "ship_clearance": "NOT RUN"
+  }
+}

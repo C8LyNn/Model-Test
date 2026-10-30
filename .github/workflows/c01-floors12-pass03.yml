@@ -26,6 +26,8 @@ jobs:
         run: |
           set -o pipefail
           LIBGL_ALWAYS_SOFTWARE=1 xvfb-run -a blender --background --factory-startup --python Tools/C01Floors12/repair_pass03.py 2>&1 | tee /tmp/c01pass03.log
+          grep -q 'C01-12 PASS03 COMPLETED' /tmp/c01pass03.log
+          ! grep -q 'Traceback (most recent call last)' /tmp/c01pass03.log
       - name: Verify expected test counts, preserved topology and generated artifacts
         run: |
           python3 - <<'PY'

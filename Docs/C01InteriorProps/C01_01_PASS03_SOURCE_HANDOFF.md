@@ -31,3 +31,26 @@ Neither no-op clean audit nor synthetic tests amount to completed repair. Any in
 **Handoff:** C01-17 inspect current P17-04/05 AFTER and its actual FBX, keep 29/20 independent parts. C01-19 validate P19-07/08 changed part counts and 8+2 T-junction candidates. C01-18 provide real FBX QA for P18-04/05; source topology is free of audited basic defects. C01-02 inspect actual source & native import independent of this audit; C01-10 only real GLB/FBX viewer. C01-03 store both source-revision SHAs and per-model evidence; C01-00 controls release.
 
 **Status:** C01-01 standard PASS / six real source BEFORE audits EXECUTED / historical repair-copy validation and six FBX imports tracked by CI / Unity NOT RUN / independent C01-02 NOT RUN / whole 36-asset completion BLOCKED.
+
+
+## Final actual Blender / FBX evidence (2026-10-30, same PASS03 execution)
+
+- **FULL GREEN GitHub Actions:** https://github.com/C8LyNn/Model-Test/actions/runs/41091176065 ; native Blender 4.0.2, system numpy dependency installed, `--python-exit-code 13` fail-closed. Blender fixture tests **5/5 PASS**, report comparison Python tests **10/10 PASS**.
+- **Current producer exported binary FBX directly imported back into Blender:** all six assets returned **static import PASS** for mesh count, triangle count, UV0 and world bounds (not Unity). Artifact name `C01-01-PASS03-SIX-FBX-NATIVE-BLENDER-REIMPORT`, ID `12993199406`.
+- **Exact native source branch heads of that run:** source17 `1cc9eb8aaf9f44cb7c63741ad60ffd7d21b768c3`, source18 `95b8ef34b6ec61931473e390e9d351f1d46943fa`, source19 `e804786b94a1badb84f261f76f450f1e9500e43a`.
+
+| ID | Actual Blender source triangle count | Actual imported FBX triangle count | Mesh objects source/import | UV0 on every imported render mesh | World AABB delta |
+|---|---:|---:|---:|---|---:|
+| P17-04 | 348 | 348 | 29 / 29 | YES | 0.0m |
+| P17-05 | 240 | 240 | 20 / 20 | YES | 0.0m |
+| P18-04 | 348 | 348 | 9 / 9 | YES | 0.0m |
+| P18-05 | 120 | 120 | 10 / 10 | YES | 0.0m |
+| P19-07 | 252 | 252 | 6 / 6 | YES | 0.0000001m |
+| P19-08 | 282 | 282 | 6 / 6 | YES | 0.0m |
+
+- **Historical real source repair** on immutable bad source17 SHA `fbef546fe446fe6845be4eb76a75b0e6916723eb` executed by Blender on separate COPIES. `P17-04`: V696→232, E870→522, boundary696→0, triangle348→348, mesh objects29→29. `P17-05`: V480→160, E600→360, boundary480→0, triangle240→240, mesh objects20→20. Exact UV loop coordinates, area, per-face normals and material indices were checked before/after; zero topology candidates in AFTER. Blender exporter produced genuine FBX **binary v7400**, native Blender reimport **PASS** triangle count and mesh objects/UV0. Artifact `C01-01-PASS03-P17-04-05-HISTORICAL-REPAIR-PROOF`, ID `12993468427`; contains 2 real repaired .blend, 2 binary .fbx, per-model before/after JSON, changes and verification reports. These are reference copies, **not** edits to producer PR #23, whose own newer source already passed the basic topology checks.
+- Updated source-only six audit archive `C01-01-PASS03-SIX-ORIGINAL-BLEND-AUDITS`, ID `12994022362`.
+
+**Not tested:** true shaded/wireframe BEFORE/AFTER screenshots of the reference repairs (the audited producer source may have its own preview), Unity 6 URP import/PlayMode/collision/clearance, independent QA C01-02 and 36-model completion. Normal direction and smoothing for all 36 still require scrutiny; self-BVH/T-junction candidates in P19-07/P19-08 need manual evaluation. Producer changed assets concurrently: all results bind exact inspected file SHA and PR source head.
+
+**Final C01-01 status:** normative topological standard PASS, automated Blender source audit PASS (execution), six native FBX geometry import preflights PASS (bounded scope), two historical reference repairs PASS (geometry + FBX), C01-02 approval **PENDING**, Unity **NOT RUN**, global issue #30 **OPEN**. No auto-merge.

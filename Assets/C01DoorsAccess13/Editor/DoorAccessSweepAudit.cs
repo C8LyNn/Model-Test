@@ -39,6 +39,7 @@ namespace C01.Doors.Access
             public int movingLeavesChecked;
             public int possibleIntersections;
             public int visualColliderMismatches;
+            public int readerAttachmentGapCandidates;
             public int incompleteChecks;
             public List<Finding> findings = new List<Finding>();
         }
@@ -110,6 +111,27 @@ namespace C01.Doors.Access
                             "verify imported FBX actual mesh (oversized fasteners, misbound guide mesh, pivot), " +
                             "do NOT accept based only on root box collider.");
                     }
+
+                    // Direct QA for P17-02 support contact: separate named mesh renderers,
+                    // NOT the entire reader bounds or a root collider. AABB separation is
+                    // conservative: a positive gap proves separation, zero does NOT prove contact.
+                    Bounds keybed, housing;
+                    if (!TryNamedRendererBounds(accessory, "Keybed", out keybed) ||
+                        !TryNamedRendererBounds(accessory, "Housing", out housing))
+                        Incomplete(report, "READER_KEYBED_OR_HOUSING_MISSING", accessory.name,
+                            "Cannot inspect Keybed/Housing rendered meshes in imported P17-02 prefab");
+                    else
+                    {
+                        float gap = AabbSeparation(keybed, housing);
+                        if (gap > 0.00025f)
+                        {
+                            report.readerAttachmentGapCandidates++;
+                            Add(report, "POSSIBLE_READER_KEYBED_HOUSING_GAP", "", accessory.name,
+                                "Keybed and Housing renderer AABBs have a positive world-space gap " +
+                                (gap * 1000f).ToString("F3") + " mm (threshold 0.250 mm). " +
+                                "Check exact FBX triangles and mechanical mounting; no auto-weld.");
+                        }
+                    }
                 }
 
                 bool boundToController = accessory.GetComponent<ShipButtonV4>() != null ||
@@ -174,7 +196,8 @@ namespace C01.Doors.Access
                 }
             }
 
-            if (report.possibleIntersections == 0 && report.visualColliderMismatches == 0 && report.incompleteChecks == 0)
+            if (report.possibleIntersections == 0 && report.visualColliderMismatches == 0 &&
+                report.readerAttachmentGapCandidates == 0 && report.incompleteChecks == 0)
                 Add(report, "STATIC_BROADPHASE_CLEAR", "", "",
                     "No potential AABB conflicts in inspected scope; NOT Unity PlayMode or independent QA");
             else
@@ -188,11 +211,13 @@ namespace C01.Doors.Access
             Debug.Log("[C01-13] gates=" + report.gatesFound + " props=" + report.accessoriesFound +
                 " leavesChecked=" + report.movingLeavesChecked + " possible=" +
                 report.possibleIntersections + " visualMismatch=" + report.visualColliderMismatches +
+                " readerAttachmentGaps=" + report.readerAttachmentGapCandidates +
                 " incomplete=" + report.incompleteChecks +
                 "; report=" + path);
             EditorUtility.DisplayDialog("C01-13 Gate Access Audit",
                 "Possible AABB conflicts: " + report.possibleIntersections +
                 "\nVisual/Collider mismatches: " + report.visualColliderMismatches +
+                "\nReader attachment gaps: " + report.readerAttachmentGapCandidates +
                 "\nIncomplete checks: " + report.incompleteChecks +
                 "\nReport: " + path + "\nNo formal QA or PlayMode verdict.", "OK");
         }
@@ -256,6 +281,29 @@ namespace C01.Doors.Access
                 else bounds.Encapsulate(collider.bounds);
             }
             return found;
+        }
+
+        static bool TryNamedRendererBounds(Transform root, string exactName, out Bounds bounds)
+        {
+            bounds = new Bounds();
+            foreach (var child in root.GetComponentsInChildren<Transform>(true))
+            {
+                if (!child.gameObject.activeInHierarchy ||
+                    !string.Equals(child.name, exactName, StringComparison.OrdinalIgnoreCase))
+                    continue;
+                return TryRendererBounds(child.gameObject, out bounds);
+            }
+            return false;
+        }
+
+        // For disjoint AABBs the magnitude is a lower bound on true mesh separation.
+        // Rotated meshes can yield 0 even when actual triangles are disconnected.
+        static float AabbSeparation(Bounds a, Bounds b)
+        {
+            float dx = Mathf.Max(0f, Mathf.Max(a.min.x - b.max.x, b.min.x - a.max.x));
+            float dy = Mathf.Max(0f, Mathf.Max(a.min.y - b.max.y, b.min.y - a.max.y));
+            float dz = Mathf.Max(0f, Mathf.Max(a.min.z - b.max.z, b.min.z - a.max.z));
+            return new Vector3(dx, dy, dz).magnitude;
         }
 
         static bool ExtendsOutside(Bounds visual, Bounds collider, float tolerance)

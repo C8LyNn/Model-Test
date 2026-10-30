@@ -299,43 +299,12 @@ namespace C01.InteriorProps.Editor
                 throw new IOException("Unable to save "+filename);
         }
 
-        [MenuItem("C01/Interior Props/Build Showcase + Cabin + Technical")]
+        [MenuItem("C01/Interior Props/Legacy Generator (DISABLED; use Wave 02 QA-only)")]
         public static void Build()
         {
-            if (EditorApplication.isPlayingOrWillChangePlaymode)
-                throw new InvalidOperationException("Stop Play Mode first");
-            var blocked = Preflight(true).Where(x => !string.IsNullOrEmpty(x.Value.Error))
-                .Select(x => x.Key + ": " + x.Value.Error).ToArray();
-            if (blocked.Length != 0)
-                throw new InvalidOperationException("C01-10 integration BLOCKED; missing/invalid real assets:\n"+
-                                                    string.Join("\n",blocked));
-            if (Enumerable.Range(0,SceneManager.sceneCount).Any(i=>SceneManager.GetSceneAt(i).isDirty))
-                throw new InvalidOperationException("Save existing edited scenes before generating new scenes");
-            EnsureFolder(Prefabs); EnsureFolder(Scenes);
-            AssetDatabase.Refresh();
-            var inputs = Preflight(true);
-            var prefabs = new Dictionary<string,GameObject>();
-            foreach (var s in Specs) prefabs.Add(s.Id, MakeIndividual(s,inputs[s.Id]));
-            var root = new GameObject(Master);
-            GameObject masterAsset;
-            try
-            {
-                foreach (var s in Specs) Add(root,s,prefabs[s.Id],s.Position);
-                if (root.GetComponentsInChildren<MeshFilter>(true).Length == 0)
-                    throw new InvalidOperationException("No meshes in master");
-                masterAsset = PrefabUtility.SaveAsPrefabAsset(root,MasterPath);
-                if (masterAsset == null) throw new IOException("Unable to save master prefab");
-            }
-            finally { UnityEngine.Object.DestroyImmediate(root); }
-            SaveNewScene("C01_InteriorProps_Showcase",masterAsset);
-            SaveRoom("C01_InteriorProps_Cabin",prefabs,
-                new[]{"P19-01","P19-02","P19-03","P19-04"},
-                new[]{new Vector3(0,0,0),new Vector3(3.0f,0,0),new Vector3(2.2f,0,3.0f),new Vector3(1.2f,0,2.0f)});
-            SaveRoom("C01_InteriorProps_TechnicalRoom",prefabs,
-                new[]{"P15-01","P15-02","P15-03","P16-01","P17-03"},
-                new[]{new Vector3(0,2,0),new Vector3(3,2,0),new Vector3(0,0,3),new Vector3(2,3,3),new Vector3(3,0,3)});
-            AssetDatabase.SaveAssets();
-            Debug.Log("[C01-10] Created 16 real-source individual prefabs, master prefab, and 3 standalone scenes. Manual clearance and independent C01-02 QA still NOT RUN.");
+            throw new InvalidOperationException(
+                "LEGACY GENERATOR DISABLED: it does not enforce C01-02 approvals and used " +
+                "a 0.20m geometry tolerance. Use C01 > Interior Props > Wave 02 > Build Approved Showcase.");
         }
     }
 }

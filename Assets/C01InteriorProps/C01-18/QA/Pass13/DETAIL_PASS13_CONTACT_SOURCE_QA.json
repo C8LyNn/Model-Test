@@ -1,0 +1,111 @@
+{
+  "pass": "C01 DETAIL PASS 13",
+  "role": "C01-18 CARGO & MOVABLE OBJECTS",
+  "issue": 36,
+  "timestamp": "2026-10-30",
+  "source_branch": "c01/props-18-cargo",
+  "baseline_head": "24b03911ee423240d03a5de5b39a1655b257b131",
+  "state": "REAL AUTHORING OBJ SURGICAL CORRECTIONS + ACTUAL STATIC INDEXED QA PASS; NATIVE BLENDER/FBX RELEASE BLOCKED",
+  "geometry": {
+    "P18-01": {
+      "source_path": "Assets/C01InteriorProps/C01-18/Models/P18-01.obj",
+      "sha256": "5749f13e30f8e1d853c4488dde2e030fb7b55a59b14b71bedeef61297c8c3adf",
+      "git_blob_sha": "c0f9d6b5131c987e1c484ce4eb83ac2115e1d7f7",
+      "changed_original_vertices": 64,
+      "changed_parts": 8,
+      "change": "Translate original 8 TrimBacker solids 2mm toward original Crate_Shell along either X or Z only. No other OBJ line changed.",
+      "before_min_support_shell_penetration_m": 0.002,
+      "after_min_support_shell_penetration_m": 0.004,
+      "before_min_trim_penetration_m": 0.008,
+      "after_min_trim_penetration_m": 0.006,
+      "parts": 37,
+      "V": 416,
+      "E": 768,
+      "F": 426,
+      "T": 684
+    },
+    "P18-02": {
+      "source_path": "Assets/C01InteriorProps/C01-18/Models/P18-02.obj",
+      "sha256": "55d652a42ab7c22709814938535445a0814d9c9ff81237b59925a9115521ee98",
+      "git_blob_sha": "9a81151c93006cd2a52d0e5541fe1d3c2cbc2011",
+      "changed_original_vertices": 16,
+      "changed_parts": 2,
+      "change": "Translate two original Top_Label_*_MountingBackplate boxes 2mm toward front labels, preserving shelf intersection and all original fasteners.",
+      "label_embed_before_m": 0.001,
+      "label_embed_after_m": 0.003,
+      "deck_embed_before_y_m": 0.015,
+      "deck_embed_after_y_m": 0.015,
+      "deck_embed_after_z_m": 0.029,
+      "parts": 47,
+      "V": 600,
+      "E": 1172,
+      "F": 666,
+      "T": 1012
+    },
+    "P18-03": {
+      "source_path": "Assets/C01InteriorProps/C01-18/Models/P18-03.obj",
+      "sha256": "3996be33105a17163d4c8a753012aca891c1b19b156abf32ddab02d8fbca50e0",
+      "git_blob_sha": "df5a68c87fd49597c79bbb6f70735f32543489bf",
+      "changed_original_vertices": 0,
+      "change": "Four existing caster assemblies passed support AABB contact and floor contact 4/4, so no unsubstantiated wheel/mesh shifts. Fixed incorrect Blender importer height assertion in original build_blender.py: verify actual world Z after OBJ Y-up→Blender Z-up and per-wheel world geometry minimum Z=0.",
+      "parts": 53,
+      "V": 872,
+      "E": 1876,
+      "F": 1110,
+      "T": 1532
+    }
+  },
+  "builder": {
+    "path": "Assets/C01InteriorProps/C01-18/Sources/build_blender.py",
+    "git_blob_sha": "a7bd0b2bfd0cf27008c8df45db7c9a7d9d9a72bf",
+    "change": "Wheel pivot validation changed from Blender local Y to post-import world Z; four ground-contact checks added. Existing hub children parenting and roundtrip counts remain.",
+    "syntax_runtime": "NOT_RUN IN BLENDER"
+  },
+  "static_indexed_QA": {
+    "source": "Direct connector fetch of latest actual GitHub OBJ bytes after commits and independent JS OBJ parser",
+    "models_checked": 3,
+    "results": "PASS 3/3",
+    "mesh_parts_total": 137,
+    "triangles_total": 3228,
+    "errors": {
+      "invalid_vertex_indices": 0,
+      "invalid_uv0": 0,
+      "invalid_normals": 0,
+      "zero_area_triangle_fans": 0,
+      "duplicate_faces": 0,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_shared_edge_winding": 0,
+      "face_normal_mismatches": 0
+    },
+    "contact_method": "Axis-aligned bounds intersection on actual OBJ indexed component vertex positions, plus explicit wheel-ground minima; confirms positive-volume AABB bridges only, NOT triangle-to-triangle clearance or absence of z-fighting",
+    "contact_checks": {
+      "P1801_trim_chain": "8/8 backing→trim and backing→shell AABB positive on all XYZ",
+      "P1802_top_labels": "2/2 label→backplate→deck AABB positive on all XYZ",
+      "P1802_brackets": "12/12 shelf bracket→deck and →post AABB positive",
+      "P1803_casters": "4/4 wheel mesh minimum Y = 0.000m; 4/4 crown/fork/anchor/post/deck and hub/wheel/axle AABB bridge checks positive"
+    }
+  },
+  "native_status": {
+    "old_source_blend_and_fbx": "STALE PASS03: no detail 12/13 source propagation",
+    "new_blend": "NOT RUN",
+    "new_binary_fbx": "NOT RUN",
+    "blender_4x_export_reimport": "NOT RUN",
+    "independent_C01_02": "PENDING; no new binary SHA to approve",
+    "unity6_urp": "NOT RUN",
+    "runner_evidence": {
+      "id": 41123338333,
+      "status": "FAILURE BEFORE RUNNER",
+      "runner_id": 0,
+      "steps": 0
+    },
+    "owner_action": "Restore eligible Model-Test private Actions runner OR run producer source OBJ using real Blender 4.x and Git LFS on authorized Windows. Save/FBX export/reimport exact new versions; C01-02 independent QA, Unity6 integration and SHA manifest gate; no merge."
+  },
+  "scope_guards": [
+    "No new IDs",
+    "No vessel edits",
+    "No fabricated Blender outputs",
+    "No auto-weld",
+    "No changes to P18-04..07 existing draft PR #26"
+  ]
+}

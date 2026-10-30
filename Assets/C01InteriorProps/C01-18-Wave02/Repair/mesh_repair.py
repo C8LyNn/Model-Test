@@ -157,7 +157,9 @@ def repair_verified_coplanar_contacts(pid,o):
    world.z=goal
    v.co=inv@world
    count+=1
- if count==0:raise RuntimeError('Expected original contact face not found '+pid+' '+o.name)
+ if count==0:
+  if any(abs((o.matrix_world@v.co).z-goal)<0.0001 for v in o.data.vertices):return []
+  raise RuntimeError('Expected original contact face not found '+pid+' '+o.name)
  o.data.update()
  after=mesh_measure(o)
  if after['degenerate_faces'] or after['boundary_edges'] or after['nonmanifold_edges'] or after['inconsistent_winding_edges']:

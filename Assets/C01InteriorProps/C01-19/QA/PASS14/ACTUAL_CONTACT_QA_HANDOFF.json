@@ -1,0 +1,73 @@
+{
+  "issue": "https://github.com/C8LyNn/Model-Test/issues/36",
+  "owner": "C01-19",
+  "pass": "DETAIL_PASS14",
+  "delivery_zip": "C01-19_DETAIL_PASS14_FINAL_CONTACT_QA_CANDIDATES.zip",
+  "delivery_zip_sha256": "ccc4b4c97c882b8702906f4338a036394da151ae0b39b5ae01383c0d224eb3b3",
+  "scope": "Existing assets only; unchanged binary candidate bytes from PASS10 and PASS13; in user ZIP, not promoted to PR Git LFS Models",
+  "engine_gates": {
+    "actual_blender_4_load_save": "NOT_RUN",
+    "blender_fbx_export_reimport": "NOT_RUN",
+    "independent_c01_02": "PENDING",
+    "unity_6_urp": "NOT_RUN"
+  },
+  "release_approved": false,
+  "PR": 15,
+  "verification": {
+    "source_format": "Blender 4.0 binary, direct decoded DNA mesh topology",
+    "export_format": "Kaydara Binary FBX 7400, independent indexed triangles positions and UV0",
+    "manifold_winding_zero_degenerate_all_in_scope": "PASS",
+    "triangles_and_uv0_source_export_parity": "PASS",
+    "mechanical_contact_support_P19_02_P19_05": "PASS",
+    "P19_07_visual_classification": "HOLD"
+  },
+  "models": [
+    {
+      "id": "P19-01",
+      "blend_sha256": "3d761f394d40f234c9aa4a1bc90eae90d43b47bdc22942015cd904bc05c34541",
+      "fbx_sha256": "9dc4d6b724c4a5a4b45a04412dc5a61fe732fa1b4423a9f0c27889053960163b",
+      "triangles": 254,
+      "vertices": 133,
+      "vertex_on_edge_candidates": 0
+    },
+    {
+      "id": "P19-02",
+      "blend_sha256": "5d2090c073b0071bfaebd4a7a9b2bae59f988535680594122b8a70fdd815c4f2",
+      "fbx_sha256": "19a387f2dac9c528ff6f3ca363db741103add8b6f3dcf1402f01a105fc95f37a",
+      "triangles": 292,
+      "vertices": 166,
+      "vertex_on_edge_candidates": 0,
+      "source_host_attachment": {
+        "part_count": 5,
+        "connected_via_triangle_crossings": 5,
+        "edges": [
+          [
+            "lower_hinge_plate",
+            "ORIGINAL_FRAME",
+            12
+          ],
+          [
+            "upper_hinge_plate",
+            "ORIGINAL_FRAME",
+            12
+          ],
+          [
+            "latch",
+            "ORIGINAL_FRAME",
+            10
+          ],
+          [
+            "lower_screw",
+            "lower_hinge_plate",
+            14
+          ],
+          [
+            "upper_screw",
+            "upper_hinge_plate",
+            14
+          ]
+        ]
+      }
+    }
+  ]
+}

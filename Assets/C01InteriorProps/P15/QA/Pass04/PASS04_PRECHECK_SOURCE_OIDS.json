@@ -1,0 +1,125 @@
+{
+  "schema": "C01_P15_PASS04_SOURCE_SHA_BASELINE_V1",
+  "scope": "existing producer native source and source LFS blob receipts",
+  "branch": "c01/props-15-installations",
+  "pr": 16,
+  "latest_ci_run": "https://github.com/C8LyNn/Model-Test/actions/runs/41094609379",
+  "ci_status": "BLOCKED_BEFORE_RUNNER_START_NO_STEPS",
+  "this_validation": "PASS_LFS_POINTER_RECEIPT_AND_HISTORIC_JSON_CONSISTENCY_ONLY",
+  "files_actual_bytes_loaded": "NO_CURRENT_TURN_LFS_HYDRATION",
+  "blender_real_pass04": "NOT_RUN",
+  "fbx_real_pass04": "NOT_RUN",
+  "unity": "NOT_RUN",
+  "all_source_SHA_match_PASS03": true,
+  "total_parts": 57,
+  "full_part_Tjunction_scan_historically_completed": 57,
+  "t_junction_scans_unfinished": [],
+  "model_records": [
+    {
+      "id": "P15-01",
+      "source_blend": {
+        "sha256": "4109a4734a58ef905cebb49229138957a00657b6cddf41249f855eefeec3973a",
+        "size": 563456,
+        "git_blob_sha": "fa5b05a8cba701e3afd4a9c84f1fcc106882588f",
+        "path": "Assets/C01InteriorProps/P15/Sources/Blender/P15-01.blend"
+      },
+      "binary_fbx": {
+        "sha256": "657836b58af85c6bcc3ecfe7fa59d32b4ae4dbd8ceb259fb375c8c3ce4d17274",
+        "size": 61180,
+        "git_blob_sha": "4f38d2d32c775d4726b6be0e69d36661f71481a0",
+        "path": "Assets/C01InteriorProps/P15/Models/FBX/P15-01.fbx"
+      },
+      "pass03_source_SHA_verified": true,
+      "pass03_blender_fbx_roundtrip": "PASS",
+      "native_source_before": {
+        "vertices": 288,
+        "edges": 432,
+        "faces": 178,
+        "triangles": 508
+      },
+      "native_source_after": {
+        "vertices": 288,
+        "edges": 432,
+        "faces": 178,
+        "triangles": 508
+      },
+      "historic_pass03_verified_Tjunction_parts": 17,
+      "missing_exact_Tjunction_parts": [],
+      "source_boundary_edges": 0,
+      "pass04_native_blender": "NOT_RUN_RUNNER_PRESTEP_FAILURE",
+      "pass04_unity": "NOT_RUN",
+      "independentQA": "NOT_RUN"
+    },
+    {
+      "id": "P15-02",
+      "source_blend": {
+        "sha256": "ed6d25c498b47a7bc259262cf23f2fe6cf07a10996087197306d56bef54dc116",
+        "size": 549800,
+        "git_blob_sha": "8ee8bfe21bdec50cae5bd4ddab9896640fb60578",
+        "path": "Assets/C01InteriorProps/P15/Sources/Blender/P15-02.blend"
+      },
+      "binary_fbx": {
+        "sha256": "16f099e6821e41cee2c7079f736261caef481456ded2b469fdc01df55592a742",
+        "size": 55948,
+        "git_blob_sha": "4f3d4f9ee6e01d88c5fb58ee1ee9d9b2b50b2e9f",
+        "path": "Assets/C01InteriorProps/P15/Models/FBX/P15-02.fbx"
+      },
+      "pass03_source_SHA_verified": true,
+      "pass03_blender_fbx_roundtrip": "PASS",
+      "native_source_before": {
+        "vertices": 176,
+        "edges": 264,
+        "faces": 120,
+        "triangles": 288
+      },
+      "native_source_after": {
+        "vertices": 176,
+        "edges": 264,
+        "faces": 120,
+        "triangles": 288
+      },
+      "historic_pass03_verified_Tjunction_parts": 16,
+      "missing_exact_Tjunction_parts": [],
+      "source_boundary_edges": 0,
+      "pass04_native_blender": "NOT_RUN_RUNNER_PRESTEP_FAILURE",
+      "pass04_unity": "NOT_RUN",
+      "independentQA": "NOT_RUN"
+    },
+    {
+      "id": "P15-03",
+      "source_blend": {
+        "sha256": "c76b4911e885234f18756669c4492a195ab9fde2ea2b3911683f241c5e7b503e",
+        "size": 592432,
+        "git_blob_sha": "ab79788dcfd528adda2193a8aeb8624c866828bd",
+        "path": "Assets/C01InteriorProps/P15/Sources/Blender/P15-03.blend"
+      },
+      "binary_fbx": {
+        "sha256": "95d2730197a7c86bd3a59c1748a1df6df2a276ef9a9554d0df3ad0b769f6f414",
+        "size": 73708,
+        "git_blob_sha": "16fa8ddc79bbf532985b02985bded42acaecf30b",
+        "path": "Assets/C01InteriorProps/P15/Models/FBX/P15-03.fbx"
+      },
+      "pass03_source_SHA_verified": true,
+      "pass03_blender_fbx_roundtrip": "PASS",
+      "native_source_before": {
+        "vertices": 192,
+        "edges": 288,
+        "faces": 144,
+        "triangles": 288
+      },
+      "native_source_after": {
+        "vertices": 192,
+        "edges": 288,
+        "faces": 144,
+        "triangles": 288
+      },
+      "historic_pass03_verified_Tjunction_parts": 24,
+      "missing_exact_Tjunction_parts": [],
+      "source_boundary_edges": 0,
+      "pass04_native_blender": "NOT_RUN_RUNNER_PRESTEP_FAILURE",
+      "pass04_unity": "NOT_RUN",
+      "independentQA": "NOT_RUN"
+    }
+  ],
+  "notes": "Previous PASS03 Blender FBX roundtrip PASS remains valid only for hydrated source SHAs. PASS04 native recheck added but not executed: all GitHub Actions jobs report failure before runner and before any test step; no source mesh changed. Report exact SHA to independent QA only after real Blender runner executes."
+}

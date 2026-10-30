@@ -124,12 +124,12 @@ for ob in objects:
             emitter.default_value = rgba
             strength.default_value = 1.9
 
-pre = inspect(objects)
-if sum(x["vertices"] for x in pre) != expected_parts * 8:
+base_pre = inspect(objects)
+if sum(x["vertices"] for x in base_pre) != expected_parts * 8:
     raise RuntimeError("PASS03 weld was lost on OBJ import")
-if sum(x["triangles"] for x in pre) != expected_parts * 12:
+if sum(x["triangles"] for x in base_pre) != expected_parts * 12:
     raise RuntimeError("Original triangles changed on import")
-if any(x["uv0_loops"] != x["triangles"] * 3 for x in pre):
+if any(x["uv0_loops"] != x["triangles"] * 3 for x in base_pre):
     raise RuntimeError("UV loop count changed on import")
 
 # DETAIL PASS12 — merge real authored OBJ detail submeshes into the SAME asset scene.
@@ -170,6 +170,59 @@ for ob in detail_objects:
         bsdf.inputs["Base Color"].default_value = rgba
         if bsdf.inputs.get("Metallic"): bsdf.inputs["Metallic"].default_value = 0.4
         if bsdf.inputs.get("Roughness"): bsdf.inputs["Roughness"].default_value = 0.56
+
+# DETAIL PASS15: existing-model functional fasteners and support brackets.
+# Source meshes are versioned separately to preserve PASS12 immutable evidence.
+extra_file = SOURCE / "DetailsPASS15" / (ASSET + "_detail15.obj")
+extra_counts = {"P16-01":0, "P16-02":0, "P16-03":0,
+                "P16-04":4, "P16-05":2, "P16-06":2, "P16-07":0}
+extra_triangles = {"P16-01":0, "P16-02":0, "P16-03":0,
+                   "P16-04":48, "P16-05":24, "P16-06":24, "P16-07":0}
+if extra_counts[ASSET]:
+    if not extra_file.is_file():
+        raise RuntimeError("Missing actual PASS15 detail mesh: " + str(extra_file))
+    bpy.ops.object.select_all(action="DESELECT")
+    bpy.ops.wm.obj_import(filepath=str(extra_file), forward_axis="NEGATIVE_Z", up_axis="Y",
+                          use_split_objects=True, use_split_groups=False)
+    objects = mesh_objects()
+    extra_objects = [o for o in objects if "_DETAIL15_" in o.name]
+    if len(extra_objects) != extra_counts[ASSET]:
+        raise RuntimeError("DETAIL15 object count changed: %s" % ASSET)
+    if sum(len(o.data.polygons) for o in extra_objects) != extra_triangles[ASSET]:
+        raise RuntimeError("DETAIL15 triangle budget changed: %s" % ASSET)
+    if any("_ROTOR_" in o.name for o in extra_objects):
+        raise RuntimeError("Static mounting detail incorrectly parented to rotor")
+    for ob in extra_objects:
+        for poly in ob.data.polygons:
+            poly.use_smooth = False
+        for mat in ob.data.materials:
+            if mat is None:
+                raise RuntimeError("Missing DETAIL15 material: " + ob.name)
+            name = mat.name.split(".")[0]
+            rgba = SOURCE_PALETTE.get(name)
+            if rgba is None:
+                raise RuntimeError("Unexpected DETAIL15 material: " + mat.name)
+            mat.diffuse_color = rgba
+            mat.use_nodes = True
+            bsdf = mat.node_tree.nodes.get("Principled BSDF")
+            if bsdf is None:
+                raise RuntimeError("No Principled BSDF for " + mat.name)
+            bsdf.inputs["Base Color"].default_value = rgba
+            if bsdf.inputs.get("Metallic"): bsdf.inputs["Metallic"].default_value = 0.4
+            if bsdf.inputs.get("Roughness"): bsdf.inputs["Roughness"].default_value = 0.56
+else:
+    if extra_file.exists():
+        raise RuntimeError("Unexpected PASS15 source in unmodified asset: " + ASSET)
+
+if len(objects) != expected_parts + detail_counts[ASSET] + extra_counts[ASSET]:
+    raise RuntimeError("PASS15 merged source object count mismatch")
+# FIX: baseline 'pre' MUST represent all authored meshes, not only original
+# PASS03 base. Old PASS12 code compared after-FBX details to base-only triangles.
+pre = inspect(objects)
+if sum(x["triangles"] for x in pre) != expected_parts * 12 + detail_triangles[ASSET] + extra_triangles[ASSET]:
+    raise RuntimeError("PASS15 merged source triangle mismatch")
+if any(x["uv0_loops"] != x["triangles"] * 3 for x in pre):
+    raise RuntimeError("PASS15 source loop UV0 missing")
 
 if ASSET == "P16-06":
     # Unity local Y=-0.20 maps to Blender local Z=-0.20 after Y-up OBJ import.
@@ -216,7 +269,7 @@ if ASSET == "P16-06":
     if any(o.parent != pivot_after[0] for o in moving_after):
         raise RuntimeError("FBX imported rotor solids without their parent pivot")
 
-if len(imported) != expected_parts + detail_counts[ASSET]:
+if len(imported) != expected_parts + detail_counts[ASSET] + extra_counts[ASSET]:
     raise RuntimeError("Binary FBX roundtrip changed mesh part count")
 if sum(x["triangles"] for x in post) != sum(x["triangles"] for x in pre):
     raise RuntimeError("FBX roundtrip changed triangle count")
@@ -232,7 +285,10 @@ report = {
     "asset": ASSET, "gate": "REAL_BLENDER_BINARY_FBX_ROUNDTRIP",
     "result": "PASS", "blender_version": bpy.app.version_string,
     "original_obj_sha256": sha256(obj_file), "detail_obj_sha256": sha256(detail_file),
-    "detail_parts": detail_counts[ASSET], "detail_triangles": detail_triangles[ASSET], "blend_sha256": sha256(blend_file),
+    "detail_parts": detail_counts[ASSET], "detail_triangles": detail_triangles[ASSET],
+    "detail15_sha256": sha256(extra_file) if extra_counts[ASSET] else None,
+    "detail15_parts": extra_counts[ASSET], "detail15_triangles": extra_triangles[ASSET],
+    "blend_sha256": sha256(blend_file),
     "binary_fbx_sha256": sha256(fbx_file), "fbx_bytes": pre_fbx_bytes,
     "parts_before": pre, "parts_after": post,
     "bounds_blender_before_xyz": original_bounds,

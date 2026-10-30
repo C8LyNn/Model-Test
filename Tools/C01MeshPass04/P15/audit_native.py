@@ -152,7 +152,7 @@ def inspect_fbx(aid,origin,bounds):
 allreports={}
 for aid in IDS:
  src=BASE/"Sources/Blender"/(aid+".blend")
- if src.open("rb").read(7)!=b"BLENDER":raise RuntimeError("Native .blend missing or Git LFS pointer: "+str(src))
+ if src.open("rb").read(8)!=b"BLENDER-":raise RuntimeError("Native .blend missing or Git LFS pointer: "+str(src))
  bpy.ops.wm.open_mainfile(filepath=str(src))
  objs=mesh_objs()
  bounds=aabb_world(objs)

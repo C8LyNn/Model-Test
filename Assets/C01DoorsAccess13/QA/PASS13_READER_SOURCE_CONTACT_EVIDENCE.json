@@ -1,0 +1,117 @@
+{
+  "schema": "C01-13-SOURCE-CONTACT-PASS13-1",
+  "asset": "P17-02",
+  "ownership": "C01-17 producer; C01-13 read-only source contact audit + gate clearance tool only",
+  "sources": {
+    "prior": {
+      "producer_commit": "cf405ed6636c9788cfd4c9d4d35e99a8683902dc",
+      "gltf_git_blob_sha1": "7f183922dab2b5e416af7a8dc30a46c1b6990286"
+    },
+    "after": {
+      "producer_commit": "cdcc18428d2fb52c2c60826fc8af9a70f51c82f9",
+      "gltf_git_blob_sha1": "d80a67af140e434b983104aaec0078f9cf5bd66f"
+    }
+  },
+  "method": "Decoded real embedded glTF FLOAT32 POSITION and triangle indices; full per-node scale + translation; world-space triangle segment intersection. Mesh attachment QA only, not Blender importer or Unity.",
+  "bbox_metres": {
+    "reader_size_xyz": [
+      0.18,
+      0.28,
+      0.07
+    ],
+    "size_unchanged": true
+  },
+  "keybed_to_housing": {
+    "BEFORE": {
+      "housing_front_z_m": 0.05750000007450581,
+      "keybed_back_z_m": 0.05799999997392297,
+      "triangle_distance_m": 0.0004999998994171598,
+      "triangle_intersections": 0
+    },
+    "AFTER": {
+      "housing_front_z_m": 0.05850000007663454,
+      "keybed_back_z_m": 0.05799999997392297,
+      "nominal_solid_penetration_m": 0.00050000010271157,
+      "edge_triangle_intersections": 20,
+      "source_contact": "PASS"
+    },
+    "design_change": "C01-17 moved Housing center Z .040 -> .0405m and adjusted local Z scale 1.0 -> 1.0285714285714285; Keybed unchanged.",
+    "writer": "C01-17 producer, NOT C01-13"
+  },
+  "mounting_screws": {
+    "screw_count": 4,
+    "nominal_physical_dimensions_m": [
+      0.009,
+      0.009,
+      0.003
+    ],
+    "scale": [
+      0.0045,
+      0.0045,
+      0.003
+    ],
+    "node_positions_m": [
+      [
+        -0.083,
+        0.01,
+        0.017
+      ],
+      [
+        -0.083,
+        0.27,
+        0.017
+      ],
+      [
+        0.083,
+        0.01,
+        0.017
+      ],
+      [
+        0.083,
+        0.27,
+        0.017
+      ]
+    ],
+    "mounting_backing_front_z_m": 0.01600000037997961,
+    "screw_back_z_m": 0.0155,
+    "nominal_screw_seating_m": 0.00050000037997961,
+    "edge_triangle_intersections": [
+      16,
+      18,
+      18,
+      16
+    ],
+    "contact": "PASS",
+    "note": "Before source report of metre-size screws was caused by omission of glTF node.scale. No uncontrolled weld needed."
+  },
+  "other_repeated_details": {
+    "keyguide_01_to_Keybed": {
+      "edge_triangle_intersections": 10,
+      "contact": "PASS"
+    },
+    "LeftClampReinforcement_to_LeftClamp": {
+      "edge_triangle_intersections": 10,
+      "contact": "PASS"
+    },
+    "note": "Other 11 guides and right-hand clamp were not individually triangle-tested in this audit; do not claim 18/18 independent full QA."
+  },
+  "c01_13_patch": {
+    "existing_draft_pr": 19,
+    "tool": "Assets/C01DoorsAccess13/Editor/DoorAccessSweepAudit.cs",
+    "check": "Separately measures actual Housing and Keybed Renderer.bounds positive AABB gaps; keeps missing parts as INCOMPLETE; does not modify scene or prefab",
+    "python_mirror_math_tests": "21/21 executed locally PASS (including historical gap and after fix), not direct Unity or Blender tests"
+  },
+  "physical_after_exports": {
+    "native_blend": "NOT_RUN",
+    "binary_blender_fbx": "NOT_RUN",
+    "blender_fbx_roundtrip": "NOT_RUN",
+    "unity6_urp": "NOT_RUN",
+    "independent_C01_02": "PENDING"
+  },
+  "limitations": [
+    "World source geometry proof does not establish genuine Blender FBX exported bytes at the after SHA",
+    "Renderer AABB preflight is conservative and may miss disconnections if AABBs overlap",
+    "C01-13 has not edited P17-02 source geometry nor 36 producer files",
+    "No merge or ship changes"
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "schema": "C01-10-PASS15-ARCHIVED-BINARY-DETAIL-LOSS-V1",
+  "verification": "EXECUTED locally on original BYTES of successful prior C01-17 and C01-18 Blender CI ZIP archives, ZIP CRC PASS, BLENDER- native header PASS, Kaydara FBX Binary 7400 header PASS, FBX Geometry+PolygonVertexIndex read as actual indexed polygon arrays; all FBX physical SHA-256 exact matching the current historical Git LFS OIDs",
+  "local_full_evidence_sha256": "9304fcbb7526a6109829772fb0564165366e6ec636163f3b63affd1a52407b26",
+  "do_not_promote": "All source BLEND/FBX archives are BEFORE detail. This is real old-FBX QA, NOT new Blender 4.x exporter, NOT Unity6 import and NOT final C01-02 approval.",
+  "models": {
+    "P17-02": {
+      "before": {
+        "native_blend_sha256": "183d4ebbcc9e13ad220aaa869db80949fb315d58666f79c2e1c7ae85f6e69649",
+        "real_binary_fbx_sha256": "af858385a0abae9c623ee4002bcf22bcbc401b5687024acd8df142eb1b848147",
+        "parts": 20,
+        "triangles": 240,
+        "fbx_bytes": 63004
+      },
+      "pass15_actual_source": {
+        "sha256": "a9995704a70776b49f2bd6916a50cf222a4ab40b370a0a9e258b63bdc4429786",
+        "parts": 38,
+        "triangles": 536
+      },
+      "missing_parts": 18,
+      "missing_triangles": 296
+    },
+    "P18-01": {
+      "before": {
+        "native_blend_sha256": "d9e3037b754edd952473170ec0924b4849eec1aa2afc193c2151c9bf079b3a42",
+        "real_binary_fbx_sha256": "84851387b58aeadc7f2ace49201077d847cfd294f82acfb2d0a7dce3e471a939",
+        "parts": 15,
+        "triangles": 180,
+        "fbx_bytes": 52924
+      },
+      "pass15_actual_source": {
+        "sha256": "5fb7ee496d6ed0d2e9f439629b9d9ed4774ca862290f04e13dc70239e44ec39d",
+        "parts": 41,
+        "triangles": 844
+      },
+      "missing_parts": 26,
+      "missing_triangles": 664
+    },
+    "P18-02": {
+      "before": {
+        "native_blend_sha256": "5b4cc6a8a73624ddc6521842146cdbc6cc4e7a579522e5122ce669e93c585b09",
+        "real_binary_fbx_sha256": "5ba3faf85a3ea57f755eeb51d0db832c1ce37aa64721d710a22db509f2c6d03f",
+        "parts": 17,
+        "triangles": 204,
+        "fbx_bytes": 58572
+      },
+      "pass15_actual_source": {
+        "sha256": "37f81ce82235689980e86febdc4ea0f8bbfd5f9296e4462d156295f2c2297699",
+        "parts": 51,
+        "triangles": 1044
+      },
+      "missing_parts": 34,
+      "missing_triangles": 840
+    },
+    "P18-03": {
+      "before": {
+        "native_blend_sha256": "a33b23ad173f56a545aa57ae2d81e24afa27928f497835596350e06772e343fc",
+        "real_binary_fbx_sha256": "639fc09c39b804b9bf83de75a4096cdefe1229f58549662ee777537c19c5e165",
+        "parts": 17,
+        "triangles": 348,
+        "fbx_bytes": 62972
+      },
+      "pass15_actual_source": {
+        "sha256": "39aba96fa20eb28f698b68b7daf435e96cabe15c0af2bb70e9db6392e2cd1aa2",
+        "parts": 57,
+        "triangles": 1628
+      },
+      "missing_parts": 40,
+      "missing_triangles": 1280
+    }
+  },
+  "runtime": {
+    "blender4_new_export": "NOT_RUN",
+    "native_blend_after": "NOT_RUN",
+    "native_binary_fbx_after": "NOT_RUN",
+    "unity6_urp": "NOT_RUN",
+    "independent_final_c01_02": "NOT_APPROVED"
+  },
+  "scope": {
+    "new_model_ids": 0,
+    "ship_edits": false,
+    "merge": false
+  }
+}

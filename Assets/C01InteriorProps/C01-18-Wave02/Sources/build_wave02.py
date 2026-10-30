@@ -85,8 +85,8 @@ def build(pid,root,parts):
     box("Cage_Post_%s_%s"%(x,z),[x,.395,z],[.055,.59,.055],"DARK")
   box("Safety_Lid",[0,.74,0],[.66,.08,.58],"DARK",True)
   box("Hazard_Emblem",[0,.46,.226],[.24,.19,.008],"CAUTION")
-  box("Latch_Left",[-.23,.72,.296],[.08,.09,.012],"CAUTION")
-  box("Latch_Right",[.23,.72,.296],[.08,.09,.012],"CAUTION")
+  box("Latch_Left",[-.23,.72,.282],[.08,.09,.012],"CAUTION")
+  box("Latch_Right",[.23,.72,.282],[.08,.09,.012],"CAUTION")
   box("Carry_Rail",[0,.775,0],[.22,.01,.095],"GASKET")
  elif pid=="P18-07":
   box("Bin_Chassis",[0,.115,0],[.54,.23,.31],"STEEL",True)
@@ -97,7 +97,7 @@ def build(pid,root,parts):
   box("Handle_Post_L",[-.13,.325,0],[.038,.09,.04],"GASKET")
   box("Handle_Post_R",[.13,.325,0],[.038,.09,.04],"GASKET")
   box("Handle_Grip",[0,.367,0],[.30,.026,.04],"GASKET")
-  box("Front_Lock",[0,.225,.176],[.08,.075,.012],"CAUTION")
+  box("Front_Lock",[0,.225,.164],[.08,.075,.012],"CAUTION")
   for x in [-.23,.23]:box("Grip_Rail_"+str(x),[x,.12,.164],[.027,.15,.01],"DARK")
  else:raise ValueError(pid)
 def metrics(root):

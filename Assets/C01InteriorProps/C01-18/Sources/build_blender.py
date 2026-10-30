@@ -31,6 +31,11 @@ for name in ('P18-01','P18-02','P18-03'):
     hub.parent=wheel
     hub.matrix_world=world
    if abs(wheel.location.y-0.105)>0.001:raise RuntimeError(name+' wheel axle pivot not at y=.105: '+wid)
+ expected={'P18-01':(37,684),'P18-02':(47,1012),'P18-03':(53,1532)}
+ assert len(objects)==expected[name][0], f'{name} expected {expected[name][0]} authored mesh parts, got {len(objects)}'
+ tri=lambda arr:sum(max(0,len(p.vertices)-2) for o in arr for p in o.data.polygons)
+ assert tri(objects)==expected[name][1], f'{name} authored triangles changed: {tri(objects)}'
+ assert len({o.name for o in objects})==len(objects), f'{name} duplicate part names'
  bpy.ops.wm.save_as_mainfile(filepath=str(root/'Sources'/(name+'.blend')))
  bpy.ops.object.select_all(action='DESELECT')
  for o in objects:o.select_set(True)
@@ -44,6 +49,7 @@ for name in ('P18-01','P18-02','P18-03'):
  bpy.ops.import_scene.fbx(filepath=str(root/'Models'/(name+'.fbx')))
  imported=[x for x in bpy.context.scene.objects if x.type=='MESH']
  if not imported:raise RuntimeError(name+" exported FBX imported no meshes")
+ if len(imported)!=expected[name][0] or tri(imported)!=expected[name][1]:raise RuntimeError(name+f' FBX roundtrip part/tri mismatch: {len(imported)}/{tri(imported)}')
  for o in imported:
   if not o.data.uv_layers:raise RuntimeError(name+" FBX missing UV0: "+o.name)
   if not o.data.polygons:raise RuntimeError(name+" FBX missing polygon normals: "+o.name)

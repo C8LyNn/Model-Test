@@ -94,9 +94,13 @@ def capture(obj,mid,tag):
     sc.render.engine="BLENDER_WORKBENCH"
     sc.display.shading.light="STUDIO"
     sc.display.shading.color_type="MATERIAL"
-    # Workbench render uses scene shading settings; obj.show_wire alone was
-    # viewport-only and produced misleading identical "wire/shaded" PNGs.
-    sc.display.shading.show_wireframes=("wire" in tag)
+    # Temporary Blender wireframe modifier renders exact existing source edges.
+    # It is NOT applied to data or saved into .blend/FBX: evidence only.
+    preview_modifier=None
+    if "wire" in tag:
+        preview_modifier=obj.modifiers.new("PASS03_PREVIEW_ONLY_REAL_EDGES","WIREFRAME")
+        preview_modifier.thickness=0.006
+        preview_modifier.use_replace=True
     sc.render.resolution_x=980;sc.render.resolution_y=720
     sc.render.resolution_percentage=100
     sc.render.image_settings.file_format="PNG"
@@ -104,6 +108,8 @@ def capture(obj,mid,tag):
     obj.show_all_edges=("wire" in tag)
     sc.render.filepath=str(PRE/(mid+"_PASS03_"+tag+".png"))
     bpy.ops.render.render(write_still=True)
+    if preview_modifier is not None:
+        obj.modifiers.remove(preview_modifier)
     obj.show_wire=False;obj.show_all_edges=False
     bpy.data.objects.remove(camera,do_unlink=True)
     bpy.data.cameras.remove(camera_data)

@@ -30,3 +30,11 @@
 - Refer issues #2, #4 (P16-07), #5 (P17-02), #8 (C01-02 QA), #9 (C01-10 integrator).
 
 **Result classification:** `SOURCE_DELIVERED / UNITY_NOT_RUN / QA_PENDING`.
+
+## DETAIL PASS12 — real P17-02 mesh envelope guard
+
+- **Implemented in existing Editor audit**: the gate/access sweep now combines actual **enabled Collider.bounds AND Renderer.bounds**, not just nominal root BoxCollider bounds. For a P17-02 it also separately compares renderer against collider and reports `ERROR_READER_VISUAL_COLLIDER_MISMATCH` if any world-AABB edge exceeds the collision envelope by more than 30 mm. `STATIC_BROADPHASE_CLEAR` is suppressed when a mismatch exists; the report includes `visualColliderMismatches`. This is a conservative screen (rotated meshes can make AABBs too large); never interpret it as exact physical collision or Blender topology PASS.
+- **Why**: at historical P17-02 source Git SHA `79d8dcd3c7a4e39a7a3bcb3c88551642bf52d191`, source glTF expanded detail had four enormous visual screws (decoded POSITION ±1 m) while a nominal reader box collider remained 0.18×0.28×0.07 m. That historical defect was subsequently reduced by producer edits. Always pin the exact glTF SHA.
+- Current later P17-02 glTF blob `7f183922dab2b5e416af7a8dc30a46c1b6990286`: reader full AABB is back to 0.180×0.280×0.070m. Separate source check finds each screw ~0.81×1.26×0.048mm and **0.976mm off the mount backing**, while Keybed is **0.5mm off the Housing**. These remaining tiny-gap issues are **not** detectable by the oversized-envelope check; C01-17 must seat the actual nodes and re-export native files. No fake Unity PASS.
+- Legacy 9 broadphase fixtures + 4 new P17-02 source-snapshot envelope regression fixtures are included in the existing Python reference suite. **13/13 local math-mirror checks PASS** as of PASS12; Unity Editor compilation and real 3D mesh inspection remain **NOT RUN** here.
+- C01-13 did not edit C01-17 producer meshes and did not modify any ship geometry. These are producer findings and a fail-closed integration guard, not formal independent C01-02 acceptance. The P17-02 producer handoff is in [PR #17](https://github.com/C8LyNn/Model-Test/pull/17#issuecomment-6532042326) and [detail issue #36](https://github.com/C8LyNn/Model-Test/issues/36#issuecomment-6532043776).

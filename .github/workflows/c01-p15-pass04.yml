@@ -11,7 +11,7 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: c01-p15-pass04-\${{ github.ref_name }}
+  group: c01-p15-pass04-${{ github.ref_name }}
   cancel-in-progress: true
 jobs:
   audit-signed-source:
@@ -30,12 +30,12 @@ jobs:
           blender --version | head -3
       - name: Inspect current native source, enumerate T junctions and BVH candidates, import true binary FBX
         env:
-          C01_P15_WAVE: \${{ github.ref_name == 'c01/props-15-installations-wave02' && 'W02' || 'W01' }}
+          C01_P15_WAVE: ${{ github.ref_name == 'c01/props-15-installations-wave02' && 'W02' || 'W01' }}
         run: LIBGL_ALWAYS_SOFTWARE=1 xvfb-run -a blender --background --python Tools/C01MeshPass04/P15/audit_native.py
       - name: Ensure source and FBX unchanged by read-only audit
         shell: bash
         env:
-          C01_P15_WAVE: \${{ github.ref_name == 'c01/props-15-installations-wave02' && 'W02' || 'W01' }}
+          C01_P15_WAVE: ${{ github.ref_name == 'c01/props-15-installations-wave02' && 'W02' || 'W01' }}
         run: |
           set -euo pipefail
           ROOT=Assets/C01InteriorProps/P15
@@ -57,7 +57,7 @@ jobs:
       - name: Write SHA-pinned reports into producer PR
         shell: bash
         env:
-          C01_P15_WAVE: \${{ github.ref_name == 'c01/props-15-installations-wave02' && 'W02' || 'W01' }}
+          C01_P15_WAVE: ${{ github.ref_name == 'c01/props-15-installations-wave02' && 'W02' || 'W01' }}
         run: |
           set -euo pipefail
           ROOT=Assets/C01InteriorProps/P15

@@ -92,19 +92,36 @@ namespace C01.InteriorProps.Editor
         }
         static Dictionary<string,List<string>> Discover()
         {
+            // Never scan the whole Assets folder: it can contain historical BEFORE
+            // exports, producer source and duplicates of the exact same asset ID.
+            // Only the explicitly staged, hydrated binary FBX is eligible.
             var result=Ids.ToDictionary(s=>s,s=>new List<string>(),StringComparer.OrdinalIgnoreCase);
-            var physical=Path.Combine(Application.dataPath,"C01InteriorProps");
-            if(!Directory.Exists(physical))return result;
-            foreach(var file in Directory.GetFiles(physical,"*.fbx",SearchOption.AllDirectories))
+            foreach(string id in Ids)
             {
-                var asset=ToAssetPath(file);
-                if(asset.StartsWith(QuarantineRoot+"/",StringComparison.OrdinalIgnoreCase))continue;
-                var baseName=Path.GetFileNameWithoutExtension(file);
-                var match=IdPrefix.Match(baseName);
-                if(match.Success && result.ContainsKey(match.Groups[1].Value.ToUpperInvariant()))
-                    result[match.Groups[1].Value.ToUpperInvariant()].Add(asset);
+                string expected=AssetRoot+"/Pass04Incoming/"+id+"/"+id+".fbx";
+                if(File.Exists(Absolute(expected)))result[id].Add(expected);
             }
             return result;
+        }
+        static string ValidateStagingReceipt(string id,string sha)
+        {
+            // This is source provenance, NOT independent C01-02 approval.
+            string report=Path.Combine(ProjectRoot,"C01InteriorProps_QA","PASS04","staged_sources.csv");
+            if(!File.Exists(report))return "MISSING_STAGING_SHA_RECEIPT";
+            string[] rows=File.ReadAllLines(report);
+            if(rows.Length==0 || rows[0].Trim()!="id,state,source_commit,fbx_sha256,size_bytes,detail")
+                return "STAGING_RECEIPT_SCHEMA_INVALID";
+            string[] matched=rows.Skip(1).Where(line=>line.StartsWith(id+",",StringComparison.Ordinal)).ToArray();
+            if(matched.Length!=1)return "STAGING_RECEIPT_ID_MISSING_OR_DUPLICATE";
+            string[] fields=matched[0].Split(new[]{','},6);
+            if(fields.Length<6 || fields[1]!="STAGED_SOURCE_NOT_QA_APPROVED")
+                return "STAGING_RECEIPT_STATUS_NOT_STAGED";
+            if(!String.Equals(fields[3],sha,StringComparison.OrdinalIgnoreCase))
+                return "STAGING_RECEIPT_SHA_MISMATCH";
+            if(!String.Equals(fields[5].Replace('\\','/'),
+                AssetRoot+"/Pass04Incoming/"+id+"/"+id+".fbx",StringComparison.Ordinal))
+                return "STAGING_RECEIPT_PATH_MISMATCH";
+            return "";
         }
         // Certain models intentionally export multiple FBX subparts. Only the exact
         // Pxx-yy.fbx is assumed to be the canonical source; never conflate parts.
@@ -135,6 +152,8 @@ namespace C01.InteriorProps.Editor
             var absolute=Absolute(path);
             r.Bytes=(int)Math.Min(int.MaxValue,new FileInfo(absolute).Length);
             r.Sha256=Sha(absolute);
+            string receiptError=ValidateStagingReceipt(id,r.Sha256);
+            if(receiptError!="")defects.Add(receiptError);
             if(!HasBinaryFbxMagic(absolute)){
                 r.Status="FAIL";r.Diagnostics="NOT_REAL_BINARY_FBX_OR_LFS_POINTER";return r;
             }

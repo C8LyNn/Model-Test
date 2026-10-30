@@ -120,6 +120,7 @@ def render_preview(pid,root,view):
  bpy.context.scene.render.engine="CYCLES"
  bpy.context.scene.cycles.device='CPU'
  bpy.context.scene.cycles.samples=12
+ bpy.context.view_layer.cycles.use_denoising=False
  bpy.context.scene.render.resolution_x=512
  bpy.context.scene.render.resolution_y=512
  if bpy.context.scene.world is None:bpy.context.scene.world=bpy.data.worlds.new('C01_PreviewWorld')

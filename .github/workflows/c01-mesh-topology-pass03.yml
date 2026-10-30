@@ -28,7 +28,7 @@ jobs:
       - name: Compare report safety tests (10/10)
         run: python3 -m unittest discover -s Tests/c01_mesh_repair -p test_compare_reports.py -v
       - name: Execute five REAL Blender runtime fixture tests
-        run: blender --background --factory-startup --python Tests/c01_mesh_repair/test_topology_blender.py
+        run: blender --background --factory-startup --python-exit-code 13 --python Tests/c01_mesh_repair/test_topology_blender.py
 
   six-producer-sources:
     needs: native-fixture-tests
@@ -91,14 +91,34 @@ jobs:
               exit 3
             fi
             mkdir -p "reports/$asset"
-            blender --background "$file" --python standards/Tools/c01_mesh_repair/topology_audit.py -- --asset-id "$asset" --stage BEFORE --out "reports/$asset/mesh_topology_before.json"
+            blender --background "$file" --python-exit-code 13 --python standards/Tools/c01_mesh_repair/topology_audit.py -- --asset-id "$asset" --stage BEFORE --out "reports/$asset/mesh_topology_before.json"
           done
-      - name: Repair copies of exact detached-box meshes ONLY (P17-04, P17-05)
+      - name: Guarded repair candidates only when source still has detected split surfaces
         shell: bash
         run: |
           set -euo pipefail
-          blender --background source17/C01InteriorProps_W02/Blender/P17-04.blend --python standards/Tools/c01_mesh_repair/safe_box_weld_candidate.py -- --asset-id P17-04 --output-dir repaired/P17-04
-          blender --background source17/C01InteriorProps_W02/Blender/P17-05.blend --python standards/Tools/c01_mesh_repair/safe_box_weld_candidate.py -- --asset-id P17-05 --output-dir repaired/P17-05
+          for id in P17-04 P17-05; do
+            if [[ "$id" == "P17-04" ]]; then
+              file=source17/C01InteriorProps_W02/Blender/P17-04.blend
+            else
+              file=source17/C01InteriorProps_W02/Blender/P17-05.blend
+            fi
+            if python3 - "$id" <<'PY'
+          import json,sys
+          aid=sys.argv[1]
+          d=json.load(open(f"reports/{aid}/mesh_topology_before.json"))
+          issues=d["totals"]
+          if issues.get("boundary_edges",0) or issues.get("colocated_vertex_candidates",0):
+              print("ORIGINAL_SOURCE_NEEDS_SAFE_REPAIR",aid)
+              sys.exit(0)
+          print("SOURCE_ALREADY_CLEAN_NO_REPAIR_CREATED",aid)
+          sys.exit(1)
+          PY
+            then
+              blender --background "$file" --python-exit-code 13 --python standards/Tools/c01_mesh_repair/safe_box_weld_candidate.py -- --asset-id "$id" --output-dir "repaired/$id"
+              test -s "repaired/$id/REPAIR_AND_FBX_ROUNDTRIP.json"
+            fi
+          done
       - name: Upload repaired COPIES + native FBX reimport evidence (pending owner/QA)
         if: always()
         uses: actions/upload-artifact@v4

@@ -57,8 +57,6 @@ def ensure_box_candidate(bm, obj, mod):
     """Accept only 6 independent planar faces of same rectangular prism."""
     if (len(bm.verts),len(bm.edges),len(bm.faces))!=(24,30,12):
         raise RuntimeError(obj.name+": expected 24V/30E/12F detached triangulated box")
-    if [len(c) for c in []]:  # no implicit generic merge permission
-        raise RuntimeError("unreachable")
     if mod._components(bm)!=[4]*6:
         raise RuntimeError(obj.name+": expected exactly six disjoint quad islands")
     if not obj.data.uv_layers.active:

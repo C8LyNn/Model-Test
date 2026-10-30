@@ -32,6 +32,11 @@ class BlenderHeaderRegression(unittest.TestCase):
     def test_reject_ascii_fbx_and_empty(self):
         self.assertFalse(is_blender_header(b"; FBX 7.4.0 project file"))
         self.assertFalse(is_blender_header(b""))
+    def test_windows_fallback_reads_all_eight_magic_bytes(self):
+        ps=pathlib.Path(__file__).with_name("run_pass04_windows.ps1").read_text(encoding="utf-8")
+        self.assertIn("[Math]::Min(8,$BlendBytes.Length)",ps)
+        self.assertNotIn("[Math]::Min(7,$BlendBytes.Length)",ps)
+        self.assertIn("if ($BlendMagic -ne 'BLENDER-')",ps)
     def test_actual_runtime_source_uses_eight_byte_startswith(self):
         source=SCRIPT.read_text(encoding="utf-8")
         self.assertIn('blend_file.read_bytes().startswith(b"BLENDER-")',source)

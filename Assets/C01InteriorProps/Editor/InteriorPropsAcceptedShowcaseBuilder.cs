@@ -194,6 +194,15 @@ namespace C01.InteriorProps.Editor
                         if(!UnitScale(go.transform.localScale))errs.Add("root scale !=1");
                         if(!IdentityRotation(go.transform.localRotation))errs.Add("root rotation not identity");
                         if(go.GetComponentsInChildren<Collider>(true).Length==0)errs.Add("no colliders");
+                        var meshFilters=go.GetComponentsInChildren<MeshFilter>(true)
+                            .Where(f=>f.sharedMesh!=null).ToArray();
+                        var sourcePaths=meshFilters.Select(f=>
+                            AssetDatabase.GetAssetPath(f.sharedMesh).Replace('\\','/')).ToArray();
+                        if(!sourcePaths.Any(p=>p.Equals(r.FbxPath,StringComparison.OrdinalIgnoreCase)))
+                            errs.Add("prefab meshes are not linked to QA-approved FBX (possible built-in primitives)");
+                        if(sourcePaths.Any(p=>p.Contains("unity_builtin_extra")||
+                                              p.Contains("unity default resources")))
+                            errs.Add("prefab uses built-in primitive mesh instead of authored asset");
                         r.Measured=ImportedBounds(go);
                         var b=r.Measured;var s=r.Slot;
                         if(!Near(b.size.x,s.W,DimensionTolerance)||!Near(b.size.z,s.D,DimensionTolerance)||

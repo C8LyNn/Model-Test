@@ -124,7 +124,7 @@ def fail_hard(part_metrics,aid):
   if m["boundary_edges"] and not (aid=="P15-07" and n in ("Gauge_Face_0","Gauge_Face_1") and m["boundary_edges"]==24):
    issues.append(n+":unexpected_open_boundary")
  return issues
-def inspect_fbx(aid,origin):
+def inspect_fbx(aid,origin,bounds):
  path=BASE/"Models/FBX"/(aid+".fbx")
  signature=path.open("rb").read(24).startswith(b"Kaydara FBX Binary")
  if not signature:return {"result":"FAIL","error":"not binary FBX"}
@@ -144,7 +144,7 @@ def inspect_fbx(aid,origin):
  "materials_all":all(m["material_slots"]>0 for m in imported_metrics.values()),
  "degenerate_triangles":sum(m["triangulation_degenerate"] for m in imported_metrics.values()),
  "unexpected_boundaries":sum(m["boundary_edges"] for n,m in imported_metrics.items() if not(aid=="P15-07" and n in ("Gauge_Face_0","Gauge_Face_1"))),
- "source_bounding_box":origin.get("_bounds"),
+ "source_bounding_box":bounds,
  "import_bounding_box":aabb_world(imported)}
  comparable["bbox_delta_max_m"]=max(abs(comparable["source_bounding_box"][k][i]-comparable["import_bounding_box"][k][i]) for k in range(3) for i in range(2)) if comparable["import_bounding_box"] and comparable["source_bounding_box"] else None
  result="PASS" if (signature and comparable["triangle_count_per_mesh_equal"] and comparable["UV0_all"] and comparable["materials_all"] and comparable["degenerate_triangles"]==0 and comparable["unexpected_boundaries"]==0 and (comparable["bbox_delta_max_m"] is not None and comparable["bbox_delta_max_m"]<.005)) else "FAIL"
@@ -166,8 +166,7 @@ for aid in IDS:
  base=EXPECTED[aid]["after"]["total"]
  for k in ("vertices","edges","faces","triangles"):
   if base[k]!=totals[k]:checks.append("PASS03_approved_source_mismatch:"+k)
- origin={"_bounds":bounds,**byname}
- import_result=inspect_fbx(aid,origin)
+ import_result=inspect_fbx(aid,byname,bounds)
  if import_result["result"]!="PASS":checks.append("FBX_roundtrip_mismatch")
  doc={"id":aid,"scope":"C01-15 PASS04 native BLEND source and genuine binary FBX reimport; no surrogate geometry",
   "blender":bpy.app.version_string,"source_sha256":sha(src),

@@ -84,6 +84,43 @@ for obj in objects:
     for poly in obj.data.polygons:
         poly.use_smooth = False
 
+# Recreate original PBR/emissive material values from the existing asset palette.
+# OBJ MTL stores diffuse Kd only; without this step FBX would silently lose
+# emitter intensity. This changes MATERIALS ONLY, never source geometry.
+SOURCE_PALETTE = {
+    "Steel": (0.32, 0.39, 0.44, 1.0),
+    "DarkPanel": (0.075, 0.105, 0.14, 1.0),
+    "EmissionWhite": (0.67, 0.91, 1.0, 1.0),
+    "EmissionRed": (1.0, 0.12, 0.08, 1.0),
+    "EmissionAmber": (1.0, 0.62, 0.08, 1.0),
+    "EmissionGreen": (0.14, 1.0, 0.44, 1.0),
+}
+for ob in objects:
+    for mat in ob.data.materials:
+        if mat is None:
+            raise RuntimeError("Missing original material on " + ob.name)
+        base_name = mat.name.split(".")[0]
+        rgba = SOURCE_PALETTE.get(base_name)
+        if rgba is None:
+            raise RuntimeError("Unknown material, refusing implicit replacement: " + mat.name)
+        mat.diffuse_color = rgba
+        mat.use_nodes = True
+        bsdf = mat.node_tree.nodes.get("Principled BSDF")
+        if bsdf is None:
+            raise RuntimeError("Missing Principled BSDF: " + mat.name)
+        bsdf.inputs["Base Color"].default_value = rgba
+        metallic = bsdf.inputs.get("Metallic")
+        roughness = bsdf.inputs.get("Roughness")
+        if metallic: metallic.default_value = 0.4
+        if roughness: roughness.default_value = 0.56
+        if base_name.startswith("Emission"):
+            emitter = bsdf.inputs.get("Emission Color")
+            strength = bsdf.inputs.get("Emission Strength")
+            if emitter is None or strength is None:
+                raise RuntimeError("Blender does not expose expected emission sockets: " + mat.name)
+            emitter.default_value = rgba
+            strength.default_value = 1.9
+
 pre = inspect(objects)
 if sum(x["vertices"] for x in pre) != expected_parts * 8:
     raise RuntimeError("PASS03 weld was lost on OBJ import")
@@ -127,6 +164,16 @@ bpy.ops.object.delete(use_global=False)
 bpy.ops.import_scene.fbx(filepath=str(fbx_file), automatic_bone_orientation=False)
 imported = mesh_objects()
 post = inspect(imported)
+# Verify the moving-rotor hierarchy AFTER genuine binary FBX re-import.
+# A 360-degree animation is still a separate engine/editor test (NOT RUN).
+if ASSET == "P16-06":
+    pivot_after = [o for o in bpy.context.scene.objects if o.name.startswith("ROTOR_Y_ANIMATABLE")]
+    moving_after = [o for o in imported if "_ROTOR_" in o.name]
+    if len(pivot_after) != 1 or len(moving_after) != 4:
+        raise RuntimeError("FBX lost the one rotor pivot or four moving solids")
+    if any(o.parent != pivot_after[0] for o in moving_after):
+        raise RuntimeError("FBX imported rotor solids without their parent pivot")
+
 if len(imported) != expected_parts:
     raise RuntimeError("Binary FBX roundtrip changed mesh part count")
 if sum(x["triangles"] for x in post) != sum(x["triangles"] for x in pre):

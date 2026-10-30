@@ -133,6 +133,36 @@ def fix_object(o):
  if after['loose_vertices'] or after['loose_edges'] or after['zero_edges'] or after['degenerate_faces'] or after['duplicate_faces'] or after['inconsistent_winding_edges']:
   raise RuntimeError('Unresolved hard topology defect: '+o.name+' '+str(after))
  return fix
+def repair_verified_coplanar_contacts(pid,o):
+ # Explicitly scoped: these faces were physically detected in real mesh
+ # overlap QA, not inferred from parametric viewer reconstructions.
+ # Displacement only affects existing vertices, no vertices/faces created
+ # or merged. Envelope bounds, pivots, hinge object hierarchy unchanged.
+ rules={
+  ('P18-05','Case_Bottom'):(0.0,0.028,'lift case underside to rest on separate rubber feet'),
+  ('P18-06','Safety_Lid'):(0.78,0.77,'lower lid top to meet raised carry rail without visible coplanar face'),
+  ('P18-07','Bin_Chassis'):(0.0,0.07,'remove overlapped base floor from body; retain external reinforcing foot'),
+  ('P18-07','Handle_Post_L'):(0.37,0.354,'trim grip support to underside of separate handle'),
+  ('P18-07','Handle_Post_R'):(0.37,0.354,'trim grip support to underside of separate handle')
+ }
+ rule=rules.get((pid,o.name))
+ if not rule:return []
+ target,goal,reason=rule
+ bpy.context.view_layer.update()
+ inv=o.matrix_world.inverted()
+ count=0
+ for v in o.data.vertices:
+  world=o.matrix_world@v.co
+  if abs(world.z-target)<0.0001:
+   world.z=goal
+   v.co=inv@world
+   count+=1
+ if count==0:raise RuntimeError('Expected original contact face not found '+pid+' '+o.name)
+ o.data.update()
+ after=mesh_measure(o)
+ if after['degenerate_faces'] or after['boundary_edges'] or after['nonmanifold_edges'] or after['inconsistent_winding_edges']:
+  raise RuntimeError('Local coplanar repair damaged topology '+pid+' '+o.name)
+ return ['local_face_plane_repair: '+reason+' ('+str(count)+' original vertices)']
 def camera_and_render(pid,folder,stage,wire=False,close=False):
  scene=bpy.context.scene
  scene.render.engine="CYCLES";scene.cycles.device='CPU';scene.cycles.samples=6
@@ -207,6 +237,7 @@ for pid in IDS:
  fixes={};before_bounds=actual_bounds()
  for o in objects():
   fixes[o.name]=fix_object(o)
+  fixes[o.name]+=repair_verified_coplanar_contacts(pid,o)
  after=audit(pid,'AFTER')
  if any(abs(x-y)>1e-5 for a,b in zip(before_bounds,after['bounds_blender_xyz']) for x,y in zip(a,b)):
   raise RuntimeError(pid+' silhouette/bounds changed unexpectedly')

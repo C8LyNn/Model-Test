@@ -290,11 +290,13 @@ namespace C01.InteriorProps.Editor
             switch(id)
             {
                 case "P15-03":
-                    minimumMeshes=30; minimumTriangles=440;
+                    minimumMeshes=34; minimumTriangles=488;
                     mandatory=new[]{
                         "DoorSkin","DoorSafetyStripe","Hinge_Lower_Mount",
                         "Hinge_Lower_AxlePin","Hinge_Lower_Sleeve",
-                        "Hinge_Upper_Mount","Hinge_Upper_AxlePin","Hinge_Upper_Sleeve"};
+                        "Hinge_Upper_Mount","Hinge_Upper_AxlePin","Hinge_Upper_Sleeve",
+                        "Hinge_Lower_LowerEar","Hinge_Lower_UpperEar",
+                        "Hinge_Upper_LowerEar","Hinge_Upper_UpperEar"};
                     break;
                 case "P17-02":
                     minimumMeshes=38; minimumTriangles=536;
@@ -306,7 +308,7 @@ namespace C01.InteriorProps.Editor
                         "RightBottomMountScrew","RightTopMountScrew"};
                     break;
                 case "P18-01":
-                    minimumMeshes=37; minimumTriangles=684;
+                    minimumMeshes=41; minimumTriangles=844;
                     mandatory=new[]{
                         "Crate_Shell","Lower_Rim","Upper_Lid",
                         "TrimBacker_B_0.28","TrimBacker_F_0.63",
@@ -314,10 +316,12 @@ namespace C01.InteriorProps.Editor
                         "RearHinge_L_Leaf","RearHinge_L_Pin",
                         "RearHinge_R_Leaf","RearHinge_R_Pin",
                         "FrontLatch_L_Lever","FrontLatch_R_Lever",
-                        "LidCornerBolt_LB","LidCornerBolt_RF"};
+                        "LidCornerBolt_LB","LidCornerBolt_RF",
+                        "RearHinge_L_Retainer_L","RearHinge_L_Retainer_R",
+                        "RearHinge_R_Retainer_L","RearHinge_R_Retainer_R"};
                     break;
                 case "P18-02":
-                    minimumMeshes=47; minimumTriangles=1012;
+                    minimumMeshes=51; minimumTriangles=1044;
                     mandatory=new[]{
                         "Back_Support_0.6","Back_Support_1.48",
                         "Top_Label_-0.5","Top_Label_0.5",
@@ -325,10 +329,12 @@ namespace C01.InteriorProps.Editor
                         "Top_Label_R_MountingBackplate",
                         "Top_Label_L_Bolt_L","Top_Label_R_Bolt_R",
                         "Shelf0_Bracket_LB","Shelf2_Bracket_RF",
-                        "Shelf0_LipBolt_LB","Shelf2_LipBolt_RF"};
+                        "Shelf0_LipBolt_LB","Shelf2_LipBolt_RF",
+                        "BackSupport_0.60_Gusset_L","BackSupport_0.60_Gusset_R",
+                        "BackSupport_1.48_Gusset_L","BackSupport_1.48_Gusset_R"};
                     break;
                 case "P18-03":
-                    minimumMeshes=53; minimumTriangles=1532;
+                    minimumMeshes=57; minimumTriangles=1628;
                     mandatory=new[]{
                         "Wheel_LB","Wheel_LF","Wheel_RB","Wheel_RF",
                         "Cart_Shelf_0","Cart_Shelf_1",
@@ -337,7 +343,9 @@ namespace C01.InteriorProps.Editor
                         "Wheel_LB_ForkCrown","Wheel_LB_Anchor",
                         "Wheel_LB_Gusset","Wheel_LB_Axle",
                         "Wheel_LB_Hub_In","Wheel_LB_Hub_Out",
-                        "Wheel_LB_AxleFastener","Wheel_RF_AxleFastener"};
+                        "Wheel_LB_AxleFastener","Wheel_RF_AxleFastener",
+                        "Wheel_LB_CrownBolt","Wheel_LF_CrownBolt",
+                        "Wheel_RB_CrownBolt","Wheel_RF_CrownBolt"};
                     break;
                 default: return;
             }
@@ -379,7 +387,7 @@ namespace C01.InteriorProps.Editor
                             defects.Add("DETAIL15_WHEEL_HUB_NOT_PARENTED_TO_MOVING_WHEEL:"+name);
                     }
                     foreach(var stationarySuffix in new[]{"ForkInner","ForkOuter",
-                                                          "ForkCrown","Anchor","Gusset","Axle"})
+                                                          "ForkCrown","Anchor","Gusset","Axle","CrownBolt"})
                     {
                         string name="Wheel_"+suffix+"_"+stationarySuffix;
                         var fixedPart=filters.FirstOrDefault(f=>f.name==name);

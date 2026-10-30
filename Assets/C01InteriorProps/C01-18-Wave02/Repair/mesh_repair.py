@@ -17,7 +17,7 @@ def objects():return sorted([o for o in bpy.context.scene.objects if o.type=="ME
 def mesh_measure(o):
  m=o.data
  bm=bmesh.new();bm.from_mesh(m)
- bm.verts.ensure_lookup_table();bm.edges.ensure_lookup_table();bm.faces.ensure_lookup_table()
+ bm.verts.ensure_lookup_table();bm.edges.ensure_lookup_table();bm.faces.ensure_lookup_table();bm.verts.index_update();bm.edges.index_update();bm.faces.index_update()
  coords=collections.defaultdict(list)
  for v in bm.verts: coords[tuple(round(float(v.co[i]),7) for i in range(3))].append(v)
  dup=sum(len(v)-1 for v in coords.values() if len(v)>1)
@@ -110,7 +110,7 @@ def fix_object(o):
  bm.to_mesh(m);m.update();bm.free()
  mid=mesh_measure(o)
  if mid['coincident_vertex_candidates'] and (mid['boundary_edges'] or mid['nonmanifold_edges']):
-  snapshot=[(tuple(x.co),tuple(x.normal)) for x in m.vertices]
+  backup=m.copy()
   uv0=uv_signature(m)
   tmp=bmesh.new();tmp.from_mesh(m)
   bmesh.ops.remove_doubles(tmp,verts=list(tmp.verts),dist=EPS)
@@ -121,12 +121,14 @@ def fix_object(o):
    candidate['nonmanifold_edges']<=mid['nonmanifold_edges'] and
    candidate['boundary_edges']<mid['boundary_edges'] and
    uv_signature(m)==uv0 and abs(candidate['area']-mid['area'])<1e-6)
-  if safe:fix.append('validated_coincident_vertex_weld')
+  if safe:
+   fix.append('validated_coincident_vertex_weld')
+   bpy.data.meshes.remove(backup)
   else:
    # Undo by restoring entire mesh datablock (not by attempting to reverse weld).
+   o.data=backup
    bpy.data.meshes.remove(m)
-   raise RuntimeError('Weld validation rejected candidate on '+o.name+
-    '; conservative fallback required; original mesh preserved in source .blend')
+   fix.append('unsafe_weld_rejected_original_geometry_restored')
  after=mesh_measure(o)
  if after['loose_vertices'] or after['loose_edges'] or after['zero_edges'] or after['degenerate_faces'] or after['duplicate_faces'] or after['inconsistent_winding_edges']:
   raise RuntimeError('Unresolved hard topology defect: '+o.name+' '+str(after))

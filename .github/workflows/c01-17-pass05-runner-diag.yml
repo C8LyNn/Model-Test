@@ -1,0 +1,29 @@
+name: C01-17 PASS05 Runner Allocation Diagnostic
+on:
+  push:
+    branches:
+      - c01/props-17-wave02
+    paths:
+      - '.github/workflows/c01-17-pass05-runner-diag.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  ubuntu-latest-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - name: Prove runner allocated
+        run: |
+          echo "runner=${RUNNER_NAME} os=${RUNNER_OS} arch=${RUNNER_ARCH}"
+          date -u
+          uname -a
+          python3 -V
+  ubuntu-22-smoke:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 4
+    steps:
+      - name: Prove alternate runner allocated
+        run: |
+          echo "runner=${RUNNER_NAME} os=${RUNNER_OS}"
+          python3 -V

@@ -2,7 +2,7 @@
 
 **Existing optional model RAI-01, outside 36 P15–P19. No merge or native overwrite.**
 
-Physical OBJ+MTL candidate produced and delivered in the user's ChatGPT artifact `C01_14_DETAIL_PASS15_SOURCE_QA.zip` (26 entries, CRC PASS, SHA-256 `18d1c90f55b4b7c3b91ecd67656d0eb8500b0ff77121b75230f559648770493f`). The actual changed OBJ bytes are **in the user ZIP, not committed into GitHub**, so do not mistake this receipt for a ready-for-Unity model.
+Physical OBJ+MTL candidate produced and delivered in the user's ChatGPT artifact `C01_14_DETAIL_PASS15_SOURCE_QA.zip` (27 entries, CRC PASS, SHA-256 `73854a9f356c4b01123e44829b4cefb15bfc674f2bb8466171e20d1833574b5c`). The actual changed OBJ bytes are **in the user ZIP, not committed into GitHub**, so do not mistake this receipt for a ready-for-Unity model.
 
 **Actual geometry:** Original four source meshes and 48 triangles preserved at 1µm; 2 functional base footplates, 4 eight-sided anchor fastener heads, 4 middle-rail post mounting collars; **4→14 watertight mesh objects, 48→248 triangles**. Original X 0–2m, Z 0–1.1m unchanged; local footplate Y extends ±0.07m from original ±0.05m. No forced weld, no altered pivot or rail/post. Two original FBX material names preserved in OBJ MTL: `M_C01_STEEL`, `M_C01_DARK`.
 

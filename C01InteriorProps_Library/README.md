@@ -6,7 +6,7 @@ This repository folder is a **registry, not an asset fabrication package**. Prod
 
 ## Asset population
 
-16 canonical IDs, registered as PLANNED and **undelivered** until verified binary files are present:
+16 canonical Wave01 IDs with producer PR candidates marked **IN PRODUCTION**. SHA-256 was verified for 115 candidate files from pinned producer commits in GitHub Actions, but no version is **APPROVED** or imported to the integration branch:
 - P15-01–03 technical installations — [#3](https://github.com/C8LyNn/Model-Test/issues/3)
 - P16-01–03 lighting/signals — [#4](https://github.com/C8LyNn/Model-Test/issues/4)
 - P17-01–03 controls/puzzles — [#5](https://github.com/C8LyNn/Model-Test/issues/5)
@@ -14,6 +14,8 @@ This repository folder is a **registry, not an asset fabrication package**. Prod
 - P19-01–04 furniture — [#7](https://github.com/C8LyNn/Model-Test/issues/7)
 
 Suggested dimensions are recorded in **meters, W×D×H** exactly as described in the issues. These are not measured dimensions. No missing FBX, .blend or prefab file is represented by a fake path or a fake hash.
+
+**Evidence:** [115-file SHA256 audit](WAVE01_HASH_AUDIT_2026-10-30.md), [GitHub Actions run](https://github.com/C8LyNn/Model-Test/actions/runs/41071526841). Hashes are held under `supplier_evidence.paths`, separate from the release-only local `files` list. Zero model packages are currently complete.
 
 ## Workflow and versioning
 
@@ -35,10 +37,13 @@ Suggested dimensions are recorded in **meters, W×D×H** exactly as described in
 
 ## Files
 
-- `catalog.json`: 16 honest catalog records, not invented exports.
+- `catalog.json`: 16 asset records with actual producer branch/commit provenance and 115 byte-hashed candidate file references; no manufactured approval.
+- `WAVE01_HASH_AUDIT_2026-10-30.md`: producer file inventory and independent QA blockers.
+- `tools/audit_supplier_candidates.py`: Git LFS checkout byte verification and hash receipts.
+- `.github/workflows/c01-03-producer-intake.yml`: 5 pinned supplier branches, SHA256 intake artifacts.
 - `tools/registry.py`: audit, registration, release gates, SHA-256.
 - `tests/test_registry.py`: regression tests for metadata, missing files, approval and overwrite safety.
 - `HANDOFF_C01-02_C01-10.md`: explicit QA and integration handoff.
 - `.github/workflows/c01-interior-props-registry.yml`: optional GitHub Actions validation.
 
-Status now: **REGISTRY READY / PRODUCER DELIVERABLES MISSING / INDEPENDENT QA NOT RUN / UNITY IMPORT NOT RUN**.
+Status now: **REGISTRY & PRODUCER BYTE INTEGRITY PASS / SOURCE SETS PARTIAL / INDEPENDENT QA 0/16 APPROVED / UNITY INTEGRATION NOT RUN BY C01-03**. Wave02 has a separate stacked PR for its 20 planned model IDs.

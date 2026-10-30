@@ -148,7 +148,7 @@ if ASSET == "P16-06":
 
 original_bounds = bounds(objects)
 bpy.ops.wm.save_as_mainfile(filepath=str(blend_file))
-if not blend_file.exists() or blend_file.read_bytes()[:7] != b"BLENDER-":
+if not blend_file.exists() or not blend_file.read_bytes().startswith(b"BLENDER-"):
     raise RuntimeError("Did not generate real native .blend file")
 
 bpy.ops.object.select_all(action="SELECT")

@@ -1,0 +1,239 @@
+{
+  "version": "C01-02_DETAIL_PASS12_SOURCE_AND_BINARY_GATE_v1",
+  "date": "2026-10-30",
+  "scope": "Independent QA four existing pilot assets; whole 36 release remains blocked",
+  "producer_pins": {
+    "P18_PR": 18,
+    "P18_commit": "4a0e58d422335af9c7f79fdcf6a80feb7c9c6435",
+    "P17_PR": 17,
+    "P17_commit": "7b47651add1d3ea55e46d9ab71eb0e48c01cec41"
+  },
+  "source_test_method": "Independently fetched actual current GitHub authoring OBJ and embedded glTF. For OBJ parsed all v/vt/vn/f, checked per-corner indices, triangulated polygon area and normal dot, duplicate face indices, per-part indexed edge incidence. True original binary FBX geometry independently re-parsed from exact SHA. These are not Blender execution or full cross-mesh BVH.",
+  "source_pilot_tests": [
+    {
+      "id": "P18-01",
+      "source_git_blob": "3147fbc11da4ad2c4cac9f4c8a520d921d1cd6b7",
+      "before": {
+        "V": 120,
+        "F": 90,
+        "T": 180,
+        "mesh_parts": 15,
+        "AABB_min": [
+          -0.45,
+          0,
+          -0.45
+        ],
+        "AABB_max": [
+          0.45,
+          0.9,
+          0.45
+        ]
+      },
+      "after": {
+        "V": 416,
+        "F": 426,
+        "T": 684,
+        "mesh_parts": 37,
+        "AABB_min": [
+          -0.45,
+          0,
+          -0.465
+        ],
+        "AABB_max": [
+          0.45,
+          0.907,
+          0.45
+        ]
+      },
+      "new_pieces": 22,
+      "added_hinges": 4,
+      "added_latch_components": 6,
+      "extra_screws_and_trim_backers": 12,
+      "invalid_indices": 0,
+      "zero_area_fan_triangles": 0,
+      "flipped_face_normal_candidates": 0,
+      "duplicate_faces": 0,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "gate": "SOURCE_INDEXED_PREFLIGHT_PASS_NATIVE_STALE",
+      "observations": "New structural hinges and latches are real indexed OBJ geometry. Historical authentic FBX has four corner/shell coplanar contact pairs, total 0.010082 sqm, but current authored source separately changed corner caps by 1 mm before this detail pass. Do not confuse old FBX warning with current source geometry defect. AFTER current mesh has 15mm front protrusion and 7mm height increase; C01-01 tolerance review necessary."
+    },
+    {
+      "id": "P18-02",
+      "source_git_blob": "2878f4c20a5dc8a51fe31659662f9835b5e451f2",
+      "before": {
+        "V": 136,
+        "F": 102,
+        "T": 204,
+        "mesh_parts": 17,
+        "AABB_min": [
+          -1.05,
+          0,
+          -0.4
+        ],
+        "AABB_max": [
+          1.05,
+          2.1,
+          0.4
+        ]
+      },
+      "after": {
+        "V": 600,
+        "F": 666,
+        "T": 1012,
+        "mesh_parts": 47,
+        "AABB_min": [
+          -1.0525,
+          0,
+          -0.411
+        ],
+        "AABB_max": [
+          1.0525,
+          2.1,
+          0.411
+        ]
+      },
+      "new_pieces": 30,
+      "new_shelf_brackets": 12,
+      "new_lip_bolts": 12,
+      "backplates_for_two_labels": 2,
+      "top_label_bolts": 4,
+      "invalid_indices": 0,
+      "zero_area_fan_triangles": 0,
+      "flipped_face_normal_candidates": 0,
+      "duplicate_faces": 0,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "gate": "SOURCE_INDEXED_PREFLIGHT_PASS_NATIVE_STALE",
+      "observations": "Two new backplates each Y1.96..2.072 overlap actual old label lower region at Y2.025..2.095 and upper shelf lip Y1.975..2.015, filling historic 50mm floating label support gap. Source AABB widened ~2.5mm X each side and ~11mm Z each side; review approved dimensional tolerances and exact contact/visibility before shipping."
+    },
+    {
+      "id": "P18-03",
+      "source_git_blob": "df5a68c87fd49597c79bbb6f70735f32543489bf",
+      "before": {
+        "V": 208,
+        "F": 270,
+        "T": 348,
+        "mesh_parts": 17,
+        "AABB_min": [
+          -0.5,
+          0,
+          -0.35
+        ],
+        "AABB_max": [
+          0.5,
+          1.2,
+          0.35
+        ]
+      },
+      "after": {
+        "V": 872,
+        "F": 1110,
+        "T": 1532,
+        "mesh_parts": 53,
+        "AABB_min": [
+          -0.5,
+          0,
+          -0.35
+        ],
+        "AABB_max": [
+          0.5,
+          1.2,
+          0.35
+        ]
+      },
+      "new_pieces": 36,
+      "per_wheel_added_parts": 9,
+      "new_wheel_pieces_total": 36,
+      "invalid_indices": 0,
+      "zero_area_fan_triangles": 0,
+      "flipped_face_normal_candidates": 0,
+      "duplicate_faces": 0,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "gate": "SOURCE_INDEXED_PREFLIGHT_PASS_NATIVE_STALE",
+      "observations": "All four original 105mm radius wheels still bottom at Y0m; 50mm X and 45mm Z offset from uprights unchanged. New fork inner/outer/crown, anchor, gusset, axle, two hubs and fastener each wheel. AABB demonstrates geometrical bridging axle↔forks and crown↔anchors, but this is NOT a full triangle intersection or kinematic/pivot Unity validation. AABB envelope unchanged; substantial +1184 triangles needs C01-01 LOD/performance review."
+    },
+    {
+      "id": "P17-02",
+      "source_gltf_git_blob": "7f183922dab2b5e416af7a8dc30a46c1b6990286",
+      "before": {
+        "mesh_parts": 20,
+        "triangles": 240,
+        "fbx_sha": "af858385a0abae9c623ee4002bcf22bcbc401b5687024acd8df142eb1b848147"
+      },
+      "current": {
+        "mesh_count": 21,
+        "scene_nodes": 39,
+        "rendered_mesh_instances": 38,
+        "clone_keybed_instances": 14,
+        "screw_instances": 4,
+        "screw_shared_mesh": 20,
+        "screw_accessor_position": 80,
+        "actual_screw_mesh_min_m": [
+          -1,
+          -1,
+          -0.5
+        ],
+        "actual_screw_mesh_max_m": [
+          1,
+          1,
+          0.5
+        ],
+        "combined_screws_AABB_m": [
+          2.166,
+          2.26,
+          1
+        ]
+      },
+      "gate": "FAIL_SOURCE_GEOMETRY_SEVERE",
+      "observations": "All 14 KeyGuide+ClampReinforcement nodes reference mesh index4=existing Keybed, not small guides. Four screws have massive actual FLOAT32 buffer coordinates, despite intended reader 0.18×0.28×0.07m. 2026-10-30 current producer commit references same corrupt git blob. Source must be repaired before any final export."
+    }
+  ],
+  "actual_original_binary_fbx_sha256": {
+    "P17-02": "af858385a0abae9c623ee4002bcf22bcbc401b5687024acd8df142eb1b848147",
+    "P18-01": "84851387b58aeadc7f2ace49201077d847cfd294f82acfb2d0a7dce3e471a939",
+    "P18-02": "5ba3faf85a3ea57f755eeb51d0db832c1ce37aa64721d710a22db509f2c6d03f",
+    "P18-03": "639fc09c39b804b9bf83de75a4096cdefe1229f58549662ee777537c19c5e165"
+  },
+  "current_producer_fbx_LFS_pointers": "ALL_FOUR_STALE_OLD_ORIGINALS_NOT_AFTER_PASS12",
+  "historic_original_binary_QA": {
+    "tests_run": 6,
+    "tests_pass": 6,
+    "real_old_binary_models": [
+      "P17-02",
+      "P18-01",
+      "P18-02",
+      "P18-03"
+    ],
+    "all_indexed_clean": true,
+    "old_p18_02_top_labels_gap_deck_mm": 50,
+    "old_p18_02_top_labels_gap_lip_mm": 10,
+    "old_p18_03_wheel_contact_floor_count": 4,
+    "old_p18_03_wheel_upright_X_AABB_overlap_mm": 2.5,
+    "old_p18_01_samefacing_coplanar_corner_contacts": 4,
+    "old_p18_01_total_area_m2": 0.010082,
+    "old_p17_02_samefacing_coplanar_contacts": 0,
+    "old_binary_not_current_after_detail": true
+  },
+  "evidence": {
+    "qa_zip": "C01_DETAIL_PASS12_INDEPENDENT_QA.zip",
+    "qa_zip_sha256": "50ad4df9cd2cb8d90380a4990bc0646682d86ad58a8d9c4f655403193d306777",
+    "bytes": 508197,
+    "drive_url": "https://drive.google.com/file/d/1MuXswXnNjzEvkJe3D_mRfhVWME3-6mZV/view?usp=drivesdk",
+    "contains_original_fbx_diagnostic_pngs": 2,
+    "source_after_pngs": 0,
+    "blender_render_pngs": 0
+  },
+  "runtime": {
+    "blender4": "NOT_AVAILABLE",
+    "unity6": "NOT_AVAILABLE",
+    "new_actual_blender_save": "NOT_RUN",
+    "new_binary_blender_export_reimport": "NOT_RUN",
+    "real_Unity6_URP_import": "NOT_RUN",
+    "full_independent_final_QA": "0/36"
+  },
+  "qa_pr": 13,
+  "producer_no_merge": true,
+  "necessary_next": "Fix P17 severe source errors; export P18 3 updated OBJ sources to genuine updated .blend and Blender-origin FBX with UV/pivots, before/after actual Blender screenshots, double-sided same-facing overlap and true mechanical support checks; then C01-02 sign new bytes; C01-10 Unity6 test."
+}

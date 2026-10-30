@@ -1,0 +1,752 @@
+{
+  "models": [
+    {
+      "id": "P19-05",
+      "label": "Two-person crew bench",
+      "mount": "floor",
+      "dims_xyz": [
+        1.4,
+        0.94,
+        0.55
+      ],
+      "hinge": null,
+      "parts": [
+        {
+          "name": "Foot_-0.62_-0.21",
+          "material": "steel",
+          "center": [
+            -0.62,
+            0.23,
+            -0.21
+          ],
+          "size": [
+            0.07,
+            0.46,
+            0.07
+          ],
+          "moving": false,
+          "collider": true
+        },
+        {
+          "name": "Foot_-0.62_0.21",
+          "material": "steel",
+          "center": [
+            -0.62,
+            0.23,
+            0.21
+          ],
+          "size": [
+            0.07,
+            0.46,
+            0.07
+          ],
+          "moving": false,
+          "collider": true
+        },
+        {
+          "name": "Foot_0.62_-0.21",
+          "material": "steel",
+          "center": [
+            0.62,
+            0.23,
+            -0.21
+          ],
+          "size": [
+            0.07,
+            0.46,
+            0.07
+          ],
+          "moving": false,
+          "collider": true
+        },
+        {
+          "name": "Foot_0.62_0.21",
+          "material": "steel",
+          "center": [
+            0.62,
+            0.23,
+            0.21
+          ],
+          "size": [
+            0.07,
+            0.46,
+            0.07
+          ],
+          "moving": false,
+          "collider": true
+        },
+        {
+          "name": "Seat_Frame",
+          "material": "steel",
+          "center": [
+            0,
+            0.485,
+            0
+          ],
+          "size": [
+            1.4,
+            0.055,
+            0.55
+          ],
+          "moving": false,
+          "collider": true
+        },
+        {
+          "name": "Left_Cushion",
+          "material": "fabric",
+          "center": [
+            -0.345,
+            0.531,
+            -0.01
+          ],
+          "size": [
+            0.65,
+            0.037,
+            0.49
+          ],
+          "moving": false,
+          "collider": true
+        },
+        {
+          "name": "Right_Cushion",
+          "material": "fabric",
+          "center": [
+            0.345,
+            0.531,
+            -0.01
+          ],
+          "size": [
+            0.65,
+            0.037,
+            0.49
+          ],
+          "moving": false,
+          "collider": true
+        },
+        {
+          "name": "Back_Strut_-0.62",
+          "material": "steel",
+          "center": [
+            -0.62,
+            0.725,
+            0.235
+          ],
+          "size": [
+            0.065,
+            0.4,
+            0.065
+          ],
+          "moving": false,
+          "collider": true
+        },
+        {
+          "name": "Back_Strut_0.62",
+          "material": "steel",
+          "center": [
+            0.62,
+            0.725,
+            0.235
+          ],
+          "size": [
+            0.065,
+            0.4,
+            0.065
+          ],
+          "moving": false,
+          "collider": true
+        },
+        {
+          "name": "Backrest",
+          "material": "dark",
+          "center": [
+            0,
+            0.75,
+            0.245
+          ],
+          "size": [
+            1.4,
+            0.38,
+            0.06
+          ],
+          "moving": false,
+          "collider": true
+        },
+        {
+          "name": "Seat_Edge",
+          "material": "accent",
+          "center": [
+            0,
+            0.486,
+            -0.273
+          ],
+          "size": [
+            1.38,
+            0.015,
+            0.004
+          ],
+          "moving": false,
+          "collider": false
+        }
+      ]
+    },
+    {
+      "id": "P19-06",
+      "label": "Folding wall-mounted table",
+      "mount": "wall",
+      "dims_xyz": [
+        1.1,
+        0.78,
+        0.65
+      ],
+      "hinge": [
+        0,
+        0.065,
+        -0.052
+      ],
+      "parts": [
+        {
+          "name": "Wall_Mount_Plate",
+          "material": "steel",
+          "center": [
+            0,
+            0,
+            -0.016
+          ],
+          "size": [
+            1.1,
+            0.78,
+            0.032
+          ],
+          "moving": false,
+          "collider": true
+        },
+        {
+          "name": "Hinge_Bar",
+          "material": "accent",
+          "center": [
+            0,
+            0.065,
+            -0.052
+          ],
+          "size": [
+            1.04,
+            0.048,
+            0.056
+          ],
+          "moving": false,
+          "collider": false
+        },
+        {
+          "name": "Tabletop_Fold",
+          "material": "dark",
+          "center": [
+            0,
+            0.04,
+            -0.345
+          ],
+          "size": [
+            1.1,
+            0.06,
+            0.61
+          ],
+          "moving": true,
+          "collider": true
+        },
+        {
+          "name": "Edge_Trim",
+          "material": "accent",
+          "center": [
+            0,
+            0.049,
+            -0.645
+          ],
+          "size": [
+            1.1,
+            0.02,
+            0.01
+          ],
+          "moving": true,
+          "collider": false
+        },
+        {
+          "name": "Fold_Support_-0.48",
+          "material": "steel",
+          "center": [
+            -0.48,
+            -0.17,
+            -0.26
+          ],
+          "size": [
+            0.04,
+            0.36,
+            0.38
+          ],
+          "moving": false,
+          "collider": false
+        },
+        {
+          "name": "Fold_Support_0.48",
+          "material": "steel",
+          "center": [
+            0.48,
+            -0.17,
+            -0.26
+          ],
+          "size": [
+            0.04,
+            0.36,
+            0.38
+          ],
+          "moving": false,
+          "collider": false
+        },
+        {
+          "name": "Wall_Latch",
+          "material": "accent",
+          "center": [
+            0,
+            0.35,
+            -0.042
+          ],
+          "size": [
+            0.2,
+            0.075,
+            0.03
+          ],
+          "moving": false,
+          "collider": false
+        }
+      ]
+    },
+    {
+      "id": "P19-07",
+      "label": "Medical diagnostic bed",
+      "mount": "floor",
+      "dims_xyz": [
+        0.95,
+        0.9,
+        2.2
+      ],
+      "hinge": [
+        0,
+        0.75,
+        0.45
+      ],
+      "parts": [
+        {
+          "name": "Exam_Leg_-0.4_-0.98",
+          "material": "steel",
+          "center": [
+            -0.4,
+            0.335,
+            -0.98
+          ],
+          "size": [
+            0.07,
+            0.67,
+            0.09
+          ],
+          "moving": false,
+          "collider": true
+        },
+        {
+          "name": "Exam_Leg_-0.4_0.98",
+          "material": "steel",
+          "center": [
+            -0.4,
+            0.335,
+            0.98
+          ],
+          "size": [
+            0.07,
+            0.67,
+            0.09
+          ],
+          "moving": false,
+          "collider": true
+        },
+        {
+          "name": "Exam_Leg_0.4_-0.98",
+          "material": "steel",
+          "center": [
+            0.4,
+            0.335,
+            -0.98
+          ],
+          "size": [
+            0.07,
+            0.67,
+            0.09
+          ],
+          "moving": false,
+          "collider": true
+        },
+        {
+          "name": "Exam_Leg_0.4_0.98",
+          "material": "steel",
+          "center": [
+            0.4,
+            0.335,
+            0.98
+          ],
+          "size": [
+            0.07,
+            0.67,
+            0.09
+          ],
+          "moving": false,
+          "collider": true
+        },
+        {
+          "name": "Exam_Rail_-0.435",
+          "material": "steel",
+          "center": [
+            -0.435,
+            0.667,
+            0
+          ],
+          "size": [
+            0.08,
+            0.11,
+            2.2
+          ],
+          "moving": false,
+          "collider": true
+        },
+        {
+          "name": "Exam_Rail_0.435",
+          "material": "steel",
+          "center": [
+            0.435,
+            0.667,
+            0
+          ],
+          "size": [
+            0.08,
+            0.11,
+            2.2
+          ],
+          "moving": false,
+          "collider": true
+        },
+        {
+          "name": "Exam_Crossbar_-1.06",
+          "material": "steel",
+          "center": [
+            0,
+            0.66,
+            -1.06
+          ],
+          "size": [
+            0.95,
+            0.12,
+            0.06
+          ],
+          "moving": false,
+          "collider": true
+        },
+        {
+          "name": "Exam_Crossbar_1.06",
+          "material": "steel",
+          "center": [
+            0,
+            0.66,
+            1.06
+          ],
+          "size": [
+            0.95,
+            0.12,
+            0.06
+          ],
+          "moving": false,
+          "collider": true
+        },
+        {
+          "name": "Mattress_Main",
+          "material": "fabric",
+          "center": [
+            0,
+            0.755,
+            -0.3
+          ],
+          "size": [
+            0.83,
+            0.14,
+            1.52
+          ],
+          "moving": false,
+          "collider": true
+        },
+        {
+          "name": "Back_Section",
+          "material": "fabric",
+          "center": [
+            0,
+            0.755,
+            0.75
+          ],
+          "size": [
+            0.83,
+            0.14,
+            0.58
+          ],
+          "moving": true,
+          "collider": true
+        },
+        {
+          "name": "Headboard",
+          "material": "dark",
+          "center": [
+            0,
+            0.79,
+            1.069
+          ],
+          "size": [
+            0.95,
+            0.22,
+            0.062
+          ],
+          "moving": false,
+          "collider": true
+        },
+        {
+          "name": "Footboard",
+          "material": "dark",
+          "center": [
+            0,
+            0.75,
+            -1.069
+          ],
+          "size": [
+            0.95,
+            0.16,
+            0.062
+          ],
+          "moving": false,
+          "collider": true
+        },
+        {
+          "name": "Medical_Side_Stripe",
+          "material": "accent",
+          "center": [
+            -0.471,
+            0.65,
+            0
+          ],
+          "size": [
+            0.008,
+            0.022,
+            1.9
+          ],
+          "moving": false,
+          "collider": false
+        }
+      ]
+    },
+    {
+      "id": "P19-08",
+      "label": "Wall mounted sanitation sink",
+      "mount": "wall",
+      "dims_xyz": [
+        0.8,
+        1.15,
+        0.57
+      ],
+      "hinge": null,
+      "parts": [
+        {
+          "name": "Mounting_Backplate",
+          "material": "steel",
+          "center": [
+            0,
+            0,
+            -0.027
+          ],
+          "size": [
+            0.8,
+            1.15,
+            0.054
+          ],
+          "moving": false,
+          "collider": true
+        },
+        {
+          "name": "Basin_Left_Wall",
+          "material": "steel",
+          "center": [
+            -0.375,
+            -0.115,
+            -0.305
+          ],
+          "size": [
+            0.05,
+            0.23,
+            0.53
+          ],
+          "moving": false,
+          "collider": true
+        },
+        {
+          "name": "Basin_Right_Wall",
+          "material": "steel",
+          "center": [
+            0.375,
+            -0.115,
+            -0.305
+          ],
+          "size": [
+            0.05,
+            0.23,
+            0.53
+          ],
+          "moving": false,
+          "collider": true
+        },
+        {
+          "name": "Basin_Front_Wall",
+          "material": "steel",
+          "center": [
+            0,
+            -0.115,
+            -0.545
+          ],
+          "size": [
+            0.8,
+            0.23,
+            0.05
+          ],
+          "moving": false,
+          "collider": true
+        },
+        {
+          "name": "Basin_Rear_Wall",
+          "material": "steel",
+          "center": [
+            0,
+            -0.115,
+            -0.085
+          ],
+          "size": [
+            0.8,
+            0.23,
+            0.05
+          ],
+          "moving": false,
+          "collider": true
+        },
+        {
+          "name": "Basin_Bottom",
+          "material": "dark",
+          "center": [
+            0,
+            -0.235,
+            -0.315
+          ],
+          "size": [
+            0.75,
+            0.018,
+            0.48
+          ],
+          "moving": false,
+          "collider": true
+        },
+        {
+          "name": "Basin_Lip",
+          "material": "accent",
+          "center": [
+            0,
+            0.008,
+            -0.543
+          ],
+          "size": [
+            0.77,
+            0.017,
+            0.04
+          ],
+          "moving": false,
+          "collider": false
+        },
+        {
+          "name": "Mixer_Stem",
+          "material": "steel",
+          "center": [
+            0,
+            0.22,
+            -0.13
+          ],
+          "size": [
+            0.055,
+            0.45,
+            0.05
+          ],
+          "moving": false,
+          "collider": false
+        },
+        {
+          "name": "Mixer_Spout",
+          "material": "steel",
+          "center": [
+            0,
+            0.44,
+            -0.25
+          ],
+          "size": [
+            0.05,
+            0.045,
+            0.27
+          ],
+          "moving": false,
+          "collider": false
+        },
+        {
+          "name": "Faucet_Tip",
+          "material": "dark",
+          "center": [
+            0,
+            0.39,
+            -0.38
+          ],
+          "size": [
+            0.075,
+            0.065,
+            0.06
+          ],
+          "moving": false,
+          "collider": false
+        },
+        {
+          "name": "Sanitary_Cabinet",
+          "material": "dark",
+          "center": [
+            0,
+            -0.4,
+            -0.22
+          ],
+          "size": [
+            0.67,
+            0.27,
+            0.24
+          ],
+          "moving": false,
+          "collider": true
+        },
+        {
+          "name": "Access_Handle",
+          "material": "accent",
+          "center": [
+            0.23,
+            -0.4,
+            -0.352
+          ],
+          "size": [
+            0.1,
+            0.025,
+            0.03
+          ],
+          "moving": false,
+          "collider": false
+        }
+      ]
+    }
+  ]
+}

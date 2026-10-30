@@ -1,0 +1,57 @@
+name: C01-19 PASS03 Wave01 Local Topology Cleanup
+on:
+  push:
+    branches: [c01/props-19-furniture]
+    paths:
+      - 'Assets/C01InteriorProps/C01-19/Source/pass03_cleanup.py'
+      - '.github/workflows/c01-19-pass03-cleanup.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  cleanup:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - name: Install actual Blender
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y blender python3-numpy git-lfs xvfb xauth libegl1 libgl1 libopengl0
+          git lfs install --local
+          git lfs pull
+      - name: Fix only evidenced zero-length edges and degenerate faces
+        run: xvfb-run -a blender -b --factory-startup --python-exit-code 1 --python Assets/C01InteriorProps/C01-19/Source/pass03_cleanup.py
+      - name: Validate two cleaned models
+        run: |
+          python3 - <<'PY'
+          import json,pathlib
+          p=pathlib.Path('Assets/C01InteriorProps/C01-19/QA/PASS03')
+          r=json.loads((p/'FOLLOWUP_CLEANUP.json').read_text())
+          assert {x['id'] for x in r['results']}=={'P19-01','P19-02'}
+          for x in r['results']:
+            assert x['after']['degenerate_faces']==0 and x['after']['zero_edges']==0
+            assert x['fbx_roundtrip']['result']=='PASS'
+          PY
+      - name: Upload actual repaired binaries and wireframes
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-19-PASS03-W01-Cleanup
+          if-no-files-found: warn
+          path: |
+            Assets/C01InteriorProps/C01-19/Models/P19-01/P19-01.blend
+            Assets/C01InteriorProps/C01-19/Models/P19-01/P19-01.fbx
+            Assets/C01InteriorProps/C01-19/Models/P19-02/P19-02.blend
+            Assets/C01InteriorProps/C01-19/Models/P19-02/P19-02.fbx
+            Assets/C01InteriorProps/C01-19/QA/PASS03/**
+      - name: Commit repaired exact source meshes to existing PR
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Assets/C01InteriorProps/C01-19/Models Assets/C01InteriorProps/C01-19/QA/PASS03
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "fix(C01-19 PASS03): remove verified degenerate Boolean remnants"
+          git push origin HEAD:c01/props-19-furniture

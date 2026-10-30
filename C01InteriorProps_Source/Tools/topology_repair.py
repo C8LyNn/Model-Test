@@ -113,6 +113,37 @@ def visual(scene,objs,model_id,tag,kind,focus=None):
         curve=overlay.data
         bpy.data.objects.remove(overlay,do_unlink=True)
         bpy.data.curves.remove(curve)
+
+def rebuild_cylinder_endcaps(bm,mesh_name):
+    """Fix malformed legacy 12-side disk fans. Retriangulate identical perimeter, same 10 tris/cap."""
+    if not ("LeverShaft" in mesh_name or "LeverGrip" in mesh_name):return 0
+    bm.verts.ensure_lookup_table();bm.faces.ensure_lookup_table()
+    layer=bm.loops.layers.uv.active
+    if not layer:raise RuntimeError("UV0 missing before cylinder cap fix "+mesh_name)
+    extrema=[max(v.co.y for v in bm.verts),min(v.co.y for v in bm.verts)]
+    changed=0
+    for sign,y0 in [(+1,extrema[0]),(-1,extrema[1])]:
+        faces=[f for f in bm.faces if all(abs(v.co.y-y0)<1e-6 for v in f.verts)]
+        if not faces:raise RuntimeError("Cylinder cap not found "+mesh_name)
+        rmax=max(math.hypot(v.co.x,v.co.z) for v in bm.verts if abs(v.co.y-y0)<1e-6)
+        ring=[v for v in bm.verts if abs(v.co.y-y0)<1e-6 and math.hypot(v.co.x,v.co.z)>rmax*.9]
+        ring.sort(key=lambda v:math.atan2(v.co.z,v.co.x)%(2*math.pi))
+        if len(ring)!=12 or len(faces)!=10:
+            raise RuntimeError(mesh_name+" unexpected cap profile "+str((len(ring),len(faces))))
+        material_index=faces[0].material_index
+        bmesh.ops.delete(bm,geom=faces,context='FACES')
+        anchor=ring[0]
+        for j in range(1,len(ring)-1):
+            verts=(anchor,ring[j+1],ring[j]) if sign>0 else (anchor,ring[j],ring[j+1])
+            f=bm.faces.new(verts)
+            f.material_index=material_index;f.smooth=False
+            for loop in f.loops:
+                v=loop.vert.co
+                loop[layer].uv=((v.x/rmax+1)*.5,(v.z/rmax+1)*.5)
+        changed+=len(faces)
+    bm.normal_update()
+    return changed
+
 def repair(ob):
     bm=bmesh.new();bm.from_mesh(ob.data)
     existing_faces=len(bm.faces)
@@ -122,6 +153,7 @@ def repair(ob):
     pre_vertices=len(bm.verts)
     bmesh.ops.remove_doubles(bm,verts=list(bm.verts),dist=TOL)
     post_vertices=len(bm.verts)
+    repaired_caps=rebuild_cylinder_endcaps(bm,ob.name)
     bm.normal_update()
     if len(bm.faces)!=existing_faces:raise RuntimeError("Face count changed unexpectedly for "+ob.name)
     bm.to_mesh(ob.data);bm.free();ob.data.update()
@@ -157,6 +189,7 @@ for model_id in IDS:
         raise RuntimeError(model_id+" polygons/triangles unexpectedly changed")
     if totals_after["degenerate_faces"] or totals_after["duplicate_faces"] or totals_after["zero_length_edges"]:
         raise RuntimeError(model_id+" remaining local topology defect")
+    print("PASS03 TOPOLOGY",model_id,"BEFORE",totals_before,"AFTER",totals_after,flush=True)
     if totals_after["coincident_vertices"] or totals_after["boundary_edges"] or totals_after["non_manifold_edges"]:
         # Any intentional open surfaces must be explicitly documented; these props use closed primitive shells.
         raise RuntimeError(model_id+" mesh is still non-manifold or has split coincident vertices")

@@ -124,18 +124,17 @@ public static class C01WallPrefabBuilder
             var imported = AssetDatabase.LoadAssetAtPath<GameObject>(assetPath);
             if (imported == null)
                 throw new FileNotFoundException("Required FBX disappeared: " + assetPath);
-            var temp = new GameObject("C01-11_" + id + (qaCandidates ? "_QA_ONLY" : ""));
-            SceneManager.MoveGameObjectToScene(temp, previewScene);
+            // Instantiate directly in previewScene. Creating an intermediate
+            // GameObject in the active ship scene would risk dirtying that scene.
+            var temp = (GameObject)PrefabUtility.InstantiatePrefab(imported, previewScene);
+            if (temp == null)
+                throw new InvalidOperationException(id + ": FBX prefab could not instantiate");
             try
             {
+                temp.name = "C01-11_" + id + (qaCandidates ? "_QA_ONLY" : "");
                 temp.transform.position = Vector3.zero;
                 temp.transform.rotation = Quaternion.identity;
                 temp.transform.localScale = Vector3.one;
-                var mesh = (GameObject)PrefabUtility.InstantiatePrefab(imported, previewScene);
-                mesh.transform.SetParent(temp.transform, false);
-                mesh.transform.localPosition = Vector3.zero;
-                mesh.transform.localRotation = Quaternion.identity;
-                mesh.transform.localScale = Vector3.one;
                 var renderers = mesh.GetComponentsInChildren<MeshRenderer>(true);
                 if (renderers.Length == 0)
                     throw new InvalidOperationException(id + ": no imported MeshRenderer");

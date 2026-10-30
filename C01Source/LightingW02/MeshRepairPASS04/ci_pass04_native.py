@@ -15,6 +15,7 @@ if ASSET is None or ASSET not in {"P16-01", "P16-02", "P16-03", "P16-04", "P16-0
     raise SystemExit("Use -- P16-01 ... P16-07")
 SOURCE = pathlib.Path(__file__).resolve().parents[1]
 obj_file = SOURCE / "OBJ" / (ASSET + ".obj")
+detail_file = SOURCE / "DetailsPASS12" / (ASSET + "_detail.obj")
 blend_file = SOURCE / "Blender" / (ASSET + ".blend")
 fbx_file = SOURCE / "FBX" / (ASSET + ".fbx")
 report_dir = SOURCE / "MeshRepairPASS04" / ASSET
@@ -78,6 +79,8 @@ objects = mesh_objects()
 if not objects:
     raise RuntimeError("Source OBJ has no meshes")
 expected_parts = {"P16-01": 5, "P16-02": 5, "P16-03": 5, "P16-04": 7, "P16-05": 7, "P16-06": 9, "P16-07": 5}[ASSET]
+# Inspect original, untouched PASS03 mesh BEFORE loading extra functional details.
+base_objects = list(objects)
 if len(objects) != expected_parts:
     raise RuntimeError("Expected %d independent meshes, got %d" % (expected_parts, len(objects)))
 for obj in objects:
@@ -129,6 +132,45 @@ if sum(x["triangles"] for x in pre) != expected_parts * 12:
 if any(x["uv0_loops"] != x["triangles"] * 3 for x in pre):
     raise RuntimeError("UV loop count changed on import")
 
+# DETAIL PASS12 — merge real authored OBJ detail submeshes into the SAME asset scene.
+# The original 43 PASS03 solids are untouched; this is not a replacement model.
+if not detail_file.is_file():
+    raise RuntimeError("Missing actual detail geometry: " + str(detail_file))
+detail_counts = {"P16-01": 7, "P16-02": 7, "P16-03": 7,
+                 "P16-04": 12, "P16-05": 8, "P16-06": 10, "P16-07": 6}
+bpy.ops.object.select_all(action="DESELECT")
+bpy.ops.wm.obj_import(filepath=str(detail_file), forward_axis="NEGATIVE_Z", up_axis="Y",
+                      use_split_objects=True, use_split_groups=False)
+objects = mesh_objects()
+detail_objects = [o for o in objects if "_DETAIL_" in o.name]
+if len(detail_objects) != detail_counts[ASSET]:
+    raise RuntimeError("Expected %d detail parts, imported %d" % (detail_counts[ASSET], len(detail_objects)))
+if len(objects) != expected_parts + detail_counts[ASSET]:
+    raise RuntimeError("Some original parts vanished or duplicate detail parts were created")
+for ob in detail_objects:
+    for poly in ob.data.polygons:
+        poly.use_smooth = False
+detail_triangles = {"P16-01":160,"P16-02":160,"P16-03":160,
+                    "P16-04":240,"P16-05":196,"P16-06":216,"P16-07":148}
+if sum(len(ob.data.polygons) for ob in detail_objects) != detail_triangles[ASSET]:
+    raise RuntimeError("Actual detail source triangulation changed")
+# The FBX exporter MUST see the enriched geometry (and original base geometry).
+for ob in detail_objects:
+    for mat in ob.data.materials:
+        if mat is None:
+            raise RuntimeError("Missing authored material on " + ob.name)
+        rgba = SOURCE_PALETTE.get(mat.name.split(".")[0])
+        if rgba is None:
+            raise RuntimeError("Unknown detail material " + mat.name)
+        mat.diffuse_color = rgba
+        mat.use_nodes = True
+        bsdf = mat.node_tree.nodes.get("Principled BSDF")
+        if bsdf is None:
+            raise RuntimeError("Missing Principled BSDF on " + mat.name)
+        bsdf.inputs["Base Color"].default_value = rgba
+        if bsdf.inputs.get("Metallic"): bsdf.inputs["Metallic"].default_value = 0.4
+        if bsdf.inputs.get("Roughness"): bsdf.inputs["Roughness"].default_value = 0.56
+
 if ASSET == "P16-06":
     # Unity local Y=-0.20 maps to Blender local Z=-0.20 after Y-up OBJ import.
     pivot = bpy.data.objects.new("ROTOR_Y_ANIMATABLE", None)
@@ -136,8 +178,8 @@ if ASSET == "P16-06":
     pivot.location = (0, 0, -0.20)
     bpy.context.view_layer.update()
     rotors = [ob for ob in objects if "_ROTOR_" in ob.name]
-    if len(rotors) != 4:
-        raise RuntimeError("P16-06: expected 4 separate moving rotor solids, got %d" % len(rotors))
+    if len(rotors) != 8:
+        raise RuntimeError("P16-06: expected original 4 rotor solids plus 4 moving hub bolts, got %d" % len(rotors))
     for ob in rotors:
         old_world = ob.matrix_world.copy()
         ob.parent = pivot
@@ -169,12 +211,12 @@ post = inspect(imported)
 if ASSET == "P16-06":
     pivot_after = [o for o in bpy.context.scene.objects if o.name.startswith("ROTOR_Y_ANIMATABLE")]
     moving_after = [o for o in imported if "_ROTOR_" in o.name]
-    if len(pivot_after) != 1 or len(moving_after) != 4:
-        raise RuntimeError("FBX lost the one rotor pivot or four moving solids")
+    if len(pivot_after) != 1 or len(moving_after) != 8:
+        raise RuntimeError("FBX lost the one rotor pivot or four rotor solids plus four attached rotating fasteners")
     if any(o.parent != pivot_after[0] for o in moving_after):
         raise RuntimeError("FBX imported rotor solids without their parent pivot")
 
-if len(imported) != expected_parts:
+if len(imported) != expected_parts + detail_counts[ASSET]:
     raise RuntimeError("Binary FBX roundtrip changed mesh part count")
 if sum(x["triangles"] for x in post) != sum(x["triangles"] for x in pre):
     raise RuntimeError("FBX roundtrip changed triangle count")
@@ -189,7 +231,8 @@ if max_error > 0.001:
 report = {
     "asset": ASSET, "gate": "REAL_BLENDER_BINARY_FBX_ROUNDTRIP",
     "result": "PASS", "blender_version": bpy.app.version_string,
-    "original_obj_sha256": sha256(obj_file), "blend_sha256": sha256(blend_file),
+    "original_obj_sha256": sha256(obj_file), "detail_obj_sha256": sha256(detail_file),
+    "detail_parts": detail_counts[ASSET], "detail_triangles": detail_triangles[ASSET], "blend_sha256": sha256(blend_file),
     "binary_fbx_sha256": sha256(fbx_file), "fbx_bytes": pre_fbx_bytes,
     "parts_before": pre, "parts_after": post,
     "bounds_blender_before_xyz": original_bounds,

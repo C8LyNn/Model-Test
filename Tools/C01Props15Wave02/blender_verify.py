@@ -12,6 +12,34 @@ for aid in ids:
  meshes=[o for o in bpy.data.objects if o.type=="MESH"]
  roots=[o for o in bpy.data.objects if o.name==aid+"_ROOT"]
  add(aid,"source_geometry",len(meshes)>0,len(meshes))
+ # Verify the ACTUAL source mesh vertices, not only math formulas and string manifest values.
+ def uvcoords(ob):
+  return [(float((ob.matrix_world@v.co).x),float((ob.matrix_world@v.co).z),float(-(ob.matrix_world@v.co).y)) for v in ob.data.vertices]
+ def must_contain(name,desired):
+  obj=next((o for o in meshes if o.name==name),None)
+  if obj is None:return False
+  coords=uvcoords(obj)
+  return all(any(sum((q[i]-p[i])**2 for i in range(3))<1e-8 for q in coords) for p in desired)
+ if aid=="P15-04":
+  for side,x in (("input",0),("output",3)):
+   expected=[(x,y,z) for y in (-.18,-.16) for z in (-.19,.19)]
+   add(aid,"actual_mesh_"+side+"_cross_section",must_contain("Tray_Bottom",expected))
+ if aid=="P15-05":
+  expected_in=[(0,y,z) for y in (-.18,-.16) for z in (-.19,.19)]
+  expected_out=[(x,y,.55) for y in (-.18,-.16) for x in (.36,.74)]
+  add(aid,"actual_mesh_elbow_input_port",must_contain("Elbow_Base",expected_in))
+  add(aid,"actual_mesh_elbow_output_port",must_contain("Elbow_Base",expected_out))
+  # Catches the previous P15-05 defect where bundle tubes continued around 180 degrees.
+  geometry=[p for obj in meshes for p in uvcoords(obj)]
+  add(aid,"actual_mesh_90_degree_arc_clearance",min(p[2] for p in geometry)>=-.195 and max(p[2] for p in geometry)<=.56,
+      {"z_min":min(p[2] for p in geometry),"z_max":max(p[2] for p in geometry)})
+ if aid=="P15-06":
+  geometry=[p for obj in meshes for p in uvcoords(obj)]
+  add(aid,"actual_mesh_wall_plane",min(p[2] for p in geometry)>=-.005)
+ if aid=="P15-07":
+  geometry=[p for obj in meshes for p in uvcoords(obj)]
+  add(aid,"actual_mesh_ground_and_wall",min(p[1] for p in geometry)>=-.005 and min(p[2] for p in geometry)>=-.005)
+
  add(aid,"source_root_pivot",len(roots)==1 and all(abs(p)<1e-8 for p in roots[0].location))
  add(aid,"source_scale",all(all(abs(v-1)<1e-6 for v in o.scale) for o in meshes))
  add(aid,"source_uv0",all(len(o.data.uv_layers)>0 for o in meshes))

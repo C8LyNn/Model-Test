@@ -1,0 +1,2324 @@
+{
+  "schema": "C01-PASS05-LIBRARY-REPAIR-1.0",
+  "owner": "C01-03",
+  "issue": "https://github.com/C8LyNn/Model-Test/issues/33",
+  "parent_issue": "https://github.com/C8LyNn/Model-Test/issues/30",
+  "snapshot": "2026-10-30",
+  "release_policy": "C01-02 exact final FBX signed hash + real native Blender roundtrip + real Unity import + C01-00 authorization",
+  "qa_sha_source": {
+    "file": "C01InteriorProps_QA/PASS04/36_MODELS_GATE.csv",
+    "blob_sha": "2c0c8fbd5a2c896661fdf1cbdf8a99c668173e68"
+  },
+  "release_blocking_fails": [
+    "P19-01",
+    "P19-02",
+    "P19-05",
+    "P19-07",
+    "P19-08"
+  ],
+  "statuses": {
+    "total": 36,
+    "source_producer_v_e_f_t": 36,
+    "source_current_qa_fbx_sha_locked": 22,
+    "source_lfs_pointer_only": 7,
+    "lighting_ascii_only_no_blend": 7,
+    "independent_qa_static_fbx_indexed_pass": 22,
+    "independent_qa_static_triangulation_fail": 5,
+    "independent_fully_approved": 0,
+    "unity_6_urp": "NOT_RUN",
+    "blender_independent": "NOT_RUN",
+    "github_actions_retry": "FAILED_ZERO_RUNNERS_ZERO_STEPS"
+  },
+  "records": [
+    {
+      "asset_id": "C01-P15-01",
+      "code": "P15-01",
+      "owner": "C01-15",
+      "wave": 1,
+      "before": {
+        "producer_commit": "fa337ef7e942fb21c0ff879c4813ffcfc2526d41",
+        "blend_sha256": "9d467364e439441fe9d5b3f58c1efae3afb1ff85056b5423c93f594313f54fac",
+        "fbx_sha256": "c8a65812910af6e40177f336d4568d71abd0b29cb5816c8a65ca0943ab9b9a2d",
+        "source": "PASS03_IMMUTABLE_BASELINE_VERIFIED_THEN"
+      },
+      "candidate_after": {
+        "source_pr": 16,
+        "source_commit": "0910ebeb02a2b33cd3d647107fbeb6de124060f8",
+        "version": "PASS05_CANDIDATE_UNRELEASED",
+        "blend_path": "Assets/C01InteriorProps/P15/Sources/Blender/P15-01.blend",
+        "fbx_path": "Assets/C01InteriorProps/P15/Models/FBX/P15-01.fbx",
+        "provenance": {
+          "class": "LFS_POINTER_ONLY_NO_HYDRATED_QA",
+          "blend_lfs_expected_sha256": "4109a4734a58ef905cebb49229138957a00657b6cddf41249f855eefeec3973a",
+          "fbx_lfs_expected_sha256": "657836b58af85c6bcc3ecfe7fa59d32b4ae4dbd8ceb259fb375c8c3ce4d17274",
+          "blend_pointer_git_blob_sha": "fa5b05a8cba701e3afd4a9c84f1fcc106882588f",
+          "fbx_pointer_git_blob_sha": "4f38d2d32c775d4726b6be0e69d36661f71481a0",
+          "qa_verified_hydrated_fbx_sha256": null,
+          "qa_ci_run": null,
+          "current_pointer_matches_QA_hydrated_binary_sha": false,
+          "blend_hydrated_in_pass05": false
+        },
+        "source_blend_open": "NOT_RUN_BY_C01_03",
+        "unity": "NOT_RUN"
+      },
+      "measurements": {
+        "source": "PRODUCER_METRICS_UNVERIFIED_INDEPENDENTLY",
+        "report_path": "Assets/C01InteriorProps/P15/QA/Pass03/PASS03_SUMMARY.json",
+        "source_type": "PRODUCER_REAL_BLENDER_NOT_INDEPENDENT_QA",
+        "v_e_f_t_before": [
+          288,
+          432,
+          178,
+          508
+        ],
+        "v_e_f_t_after": [
+          288,
+          432,
+          178,
+          508
+        ],
+        "local_error_count_before": 0,
+        "local_error_count_after": 0,
+        "producer_reported_roundtrip": "PASS"
+      },
+      "independent_qa": {
+        "owner": "C01-02",
+        "fbx_indexed": "BLOCKED",
+        "fbx_triangulation": "NOT_RUN",
+        "full_approval": "BLOCKED",
+        "qa_source_sha_prefix": "NOT_AVAILABLE",
+        "fan_degenerate_candidates": 0,
+        "fan_nonmanifold_edge_candidates": 0,
+        "complex_ngons": 0,
+        "signed_final_fbx_sha256": null
+      },
+      "release_state": "BLOCKED_PENDING_QA_AND_ENGINE"
+    },
+    {
+      "asset_id": "C01-P15-02",
+      "code": "P15-02",
+      "owner": "C01-15",
+      "wave": 1,
+      "before": {
+        "producer_commit": "fa337ef7e942fb21c0ff879c4813ffcfc2526d41",
+        "blend_sha256": "1916c0cbcf20bfdc5f1a4326d35c6021aee4e8ce3ad56818b3c99c7d2258a4f0",
+        "fbx_sha256": "982f41120d2860d6d0ad7815c75850e2af4be61559f864fc0f332b8379a21c66",
+        "source": "PASS03_IMMUTABLE_BASELINE_VERIFIED_THEN"
+      },
+      "candidate_after": {
+        "source_pr": 16,
+        "source_commit": "0910ebeb02a2b33cd3d647107fbeb6de124060f8",
+        "version": "PASS05_CANDIDATE_UNRELEASED",
+        "blend_path": "Assets/C01InteriorProps/P15/Sources/Blender/P15-02.blend",
+        "fbx_path": "Assets/C01InteriorProps/P15/Models/FBX/P15-02.fbx",
+        "provenance": {
+          "class": "LFS_POINTER_ONLY_NO_HYDRATED_QA",
+          "blend_lfs_expected_sha256": "ed6d25c498b47a7bc259262cf23f2fe6cf07a10996087197306d56bef54dc116",
+          "fbx_lfs_expected_sha256": "16f099e6821e41cee2c7079f736261caef481456ded2b469fdc01df55592a742",
+          "blend_pointer_git_blob_sha": "8ee8bfe21bdec50cae5bd4ddab9896640fb60578",
+          "fbx_pointer_git_blob_sha": "4f3d4f9ee6e01d88c5fb58ee1ee9d9b2b50b2e9f",
+          "qa_verified_hydrated_fbx_sha256": null,
+          "qa_ci_run": null,
+          "current_pointer_matches_QA_hydrated_binary_sha": false,
+          "blend_hydrated_in_pass05": false
+        },
+        "source_blend_open": "NOT_RUN_BY_C01_03",
+        "unity": "NOT_RUN"
+      },
+      "measurements": {
+        "source": "PRODUCER_METRICS_UNVERIFIED_INDEPENDENTLY",
+        "report_path": "Assets/C01InteriorProps/P15/QA/Pass03/PASS03_SUMMARY.json",
+        "source_type": "PRODUCER_REAL_BLENDER_NOT_INDEPENDENT_QA",
+        "v_e_f_t_before": [
+          176,
+          264,
+          120,
+          288
+        ],
+        "v_e_f_t_after": [
+          176,
+          264,
+          120,
+          288
+        ],
+        "local_error_count_before": 0,
+        "local_error_count_after": 0,
+        "producer_reported_roundtrip": "PASS"
+      },
+      "independent_qa": {
+        "owner": "C01-02",
+        "fbx_indexed": "BLOCKED",
+        "fbx_triangulation": "NOT_RUN",
+        "full_approval": "BLOCKED",
+        "qa_source_sha_prefix": "NOT_AVAILABLE",
+        "fan_degenerate_candidates": 0,
+        "fan_nonmanifold_edge_candidates": 0,
+        "complex_ngons": 0,
+        "signed_final_fbx_sha256": null
+      },
+      "release_state": "BLOCKED_PENDING_QA_AND_ENGINE"
+    },
+    {
+      "asset_id": "C01-P15-03",
+      "code": "P15-03",
+      "owner": "C01-15",
+      "wave": 1,
+      "before": {
+        "producer_commit": "fa337ef7e942fb21c0ff879c4813ffcfc2526d41",
+        "blend_sha256": "71e06ba27e7c710b0916b0a2d1dba9ae093aa9813ff9e088205cd3d85020ec28",
+        "fbx_sha256": "f693ac90278a216375ca86ff9f204545a462aa414817777695ef37d1a492a657",
+        "source": "PASS03_IMMUTABLE_BASELINE_VERIFIED_THEN"
+      },
+      "candidate_after": {
+        "source_pr": 16,
+        "source_commit": "0910ebeb02a2b33cd3d647107fbeb6de124060f8",
+        "version": "PASS05_CANDIDATE_UNRELEASED",
+        "blend_path": "Assets/C01InteriorProps/P15/Sources/Blender/P15-03.blend",
+        "fbx_path": "Assets/C01InteriorProps/P15/Models/FBX/P15-03.fbx",
+        "provenance": {
+          "class": "LFS_POINTER_ONLY_NO_HYDRATED_QA",
+          "blend_lfs_expected_sha256": "c76b4911e885234f18756669c4492a195ab9fde2ea2b3911683f241c5e7b503e",
+          "fbx_lfs_expected_sha256": "95d2730197a7c86bd3a59c1748a1df6df2a276ef9a9554d0df3ad0b769f6f414",
+          "blend_pointer_git_blob_sha": "ab79788dcfd528adda2193a8aeb8624c866828bd",
+          "fbx_pointer_git_blob_sha": "16fa8ddc79bbf532985b02985bded42acaecf30b",
+          "qa_verified_hydrated_fbx_sha256": null,
+          "qa_ci_run": null,
+          "current_pointer_matches_QA_hydrated_binary_sha": false,
+          "blend_hydrated_in_pass05": false
+        },
+        "source_blend_open": "NOT_RUN_BY_C01_03",
+        "unity": "NOT_RUN"
+      },
+      "measurements": {
+        "source": "PRODUCER_METRICS_UNVERIFIED_INDEPENDENTLY",
+        "report_path": "Assets/C01InteriorProps/P15/QA/Pass03/PASS03_SUMMARY.json",
+        "source_type": "PRODUCER_REAL_BLENDER_NOT_INDEPENDENT_QA",
+        "v_e_f_t_before": [
+          192,
+          288,
+          144,
+          288
+        ],
+        "v_e_f_t_after": [
+          192,
+          288,
+          144,
+          288
+        ],
+        "local_error_count_before": 0,
+        "local_error_count_after": 0,
+        "producer_reported_roundtrip": "PASS"
+      },
+      "independent_qa": {
+        "owner": "C01-02",
+        "fbx_indexed": "BLOCKED",
+        "fbx_triangulation": "NOT_RUN",
+        "full_approval": "BLOCKED",
+        "qa_source_sha_prefix": "NOT_AVAILABLE",
+        "fan_degenerate_candidates": 0,
+        "fan_nonmanifold_edge_candidates": 0,
+        "complex_ngons": 0,
+        "signed_final_fbx_sha256": null
+      },
+      "release_state": "BLOCKED_PENDING_QA_AND_ENGINE"
+    },
+    {
+      "asset_id": "C01-P15-04",
+      "code": "P15-04",
+      "owner": "C01-15",
+      "wave": 2,
+      "before": {
+        "producer_commit": "d8b38194a81fd305caa2ae9c3ecd6d22f46cf011",
+        "blend_sha256": "e834db9a60091d70578eef7028ef4becb799d22f07db2eb45c4cd376a360db3c",
+        "fbx_sha256": "aa5194ac645f822b7838331439d6e092fdc3990fe5ff067e0fc3f4446b560e29",
+        "source": "PASS03_IMMUTABLE_BASELINE_VERIFIED_THEN"
+      },
+      "candidate_after": {
+        "source_pr": 25,
+        "source_commit": "383400981cc9602acc2ed2f4700926c245e2a9da",
+        "version": "PASS05_CANDIDATE_UNRELEASED",
+        "blend_path": "Assets/C01InteriorProps/P15Wave02/Sources/Blender/P15-04.blend",
+        "fbx_path": "Assets/C01InteriorProps/P15Wave02/Models/FBX/P15-04.fbx",
+        "provenance": {
+          "class": "LFS_POINTER_ONLY_NO_HYDRATED_QA",
+          "blend_lfs_expected_sha256": "54a4b2efdfe0cc3766ff1a04ce3bca24f1adcdf2e8d7812058fc000e297393cd",
+          "fbx_lfs_expected_sha256": "58252505554c65354f9ebce7e3264868d3ff7a57c850d16323e71e6356c5ce04",
+          "blend_pointer_git_blob_sha": "04945c8f8883b4aaeb33c2b7a9c9606c6e815591",
+          "fbx_pointer_git_blob_sha": "8cc2f344fecb935b4f2db34db22efe22eef21388",
+          "qa_verified_hydrated_fbx_sha256": null,
+          "qa_ci_run": null,
+          "current_pointer_matches_QA_hydrated_binary_sha": false,
+          "blend_hydrated_in_pass05": false
+        },
+        "source_blend_open": "NOT_RUN_BY_C01_03",
+        "unity": "NOT_RUN"
+      },
+      "measurements": {
+        "source": "PRODUCER_METRICS_UNVERIFIED_INDEPENDENTLY",
+        "report_path": "Assets/C01InteriorProps/P15Wave02/QA/Pass03/PASS03_SUMMARY.json",
+        "source_type": "PRODUCER_REAL_BLENDER_NOT_INDEPENDENT_QA",
+        "v_e_f_t_before": [
+          918,
+          1722,
+          852,
+          1740
+        ],
+        "v_e_f_t_after": [
+          918,
+          1722,
+          852,
+          1740
+        ],
+        "local_error_count_before": 0,
+        "local_error_count_after": 0,
+        "producer_reported_roundtrip": "PASS"
+      },
+      "independent_qa": {
+        "owner": "C01-02",
+        "fbx_indexed": "BLOCKED",
+        "fbx_triangulation": "NOT_RUN",
+        "full_approval": "BLOCKED",
+        "qa_source_sha_prefix": "NOT_AVAILABLE",
+        "fan_degenerate_candidates": 0,
+        "fan_nonmanifold_edge_candidates": 0,
+        "complex_ngons": 0,
+        "signed_final_fbx_sha256": null
+      },
+      "release_state": "BLOCKED_PENDING_QA_AND_ENGINE"
+    },
+    {
+      "asset_id": "C01-P15-05",
+      "code": "P15-05",
+      "owner": "C01-15",
+      "wave": 2,
+      "before": {
+        "producer_commit": "d8b38194a81fd305caa2ae9c3ecd6d22f46cf011",
+        "blend_sha256": "478534dce23d194e278a2a43805270bc1d4b39da58cbe99a488f5d39d72aba0b",
+        "fbx_sha256": "20788839b7deeef62312c03a90e3ff518ad9a8cc2fa7ac1318c7844fb6e79777",
+        "source": "PASS03_IMMUTABLE_BASELINE_VERIFIED_THEN"
+      },
+      "candidate_after": {
+        "source_pr": 25,
+        "source_commit": "383400981cc9602acc2ed2f4700926c245e2a9da",
+        "version": "PASS05_CANDIDATE_UNRELEASED",
+        "blend_path": "Assets/C01InteriorProps/P15Wave02/Sources/Blender/P15-05.blend",
+        "fbx_path": "Assets/C01InteriorProps/P15Wave02/Models/FBX/P15-05.fbx",
+        "provenance": {
+          "class": "LFS_POINTER_ONLY_NO_HYDRATED_QA",
+          "blend_lfs_expected_sha256": "4f30880643a17d97c9f7cfca4cd0a219e12fff6f8868fa1ba31017e9083f2c01",
+          "fbx_lfs_expected_sha256": "5d254249234c100ca2e7c0b4d65fe8ed8bc366f275d4718b4d90bac416d3da5e",
+          "blend_pointer_git_blob_sha": "317e2388a7da8b8ab7791a6d2004273bd1f770c5",
+          "fbx_pointer_git_blob_sha": "1fbcc210f93d4cff1ab8b53ab61e0a95fd2b8fe5",
+          "qa_verified_hydrated_fbx_sha256": null,
+          "qa_ci_run": null,
+          "current_pointer_matches_QA_hydrated_binary_sha": false,
+          "blend_hydrated_in_pass05": false
+        },
+        "source_blend_open": "NOT_RUN_BY_C01_03",
+        "unity": "NOT_RUN"
+      },
+      "measurements": {
+        "source": "PRODUCER_METRICS_UNVERIFIED_INDEPENDENTLY",
+        "report_path": "Assets/C01InteriorProps/P15Wave02/QA/Pass03/PASS03_SUMMARY.json",
+        "source_type": "PRODUCER_REAL_BLENDER_NOT_INDEPENDENT_QA",
+        "v_e_f_t_before": [
+          2274,
+          4494,
+          2238,
+          4512
+        ],
+        "v_e_f_t_after": [
+          2274,
+          4494,
+          2238,
+          4512
+        ],
+        "local_error_count_before": 0,
+        "local_error_count_after": 0,
+        "producer_reported_roundtrip": "PASS"
+      },
+      "independent_qa": {
+        "owner": "C01-02",
+        "fbx_indexed": "BLOCKED",
+        "fbx_triangulation": "NOT_RUN",
+        "full_approval": "BLOCKED",
+        "qa_source_sha_prefix": "NOT_AVAILABLE",
+        "fan_degenerate_candidates": 0,
+        "fan_nonmanifold_edge_candidates": 0,
+        "complex_ngons": 0,
+        "signed_final_fbx_sha256": null
+      },
+      "release_state": "BLOCKED_PENDING_QA_AND_ENGINE"
+    },
+    {
+      "asset_id": "C01-P15-06",
+      "code": "P15-06",
+      "owner": "C01-15",
+      "wave": 2,
+      "before": {
+        "producer_commit": "d8b38194a81fd305caa2ae9c3ecd6d22f46cf011",
+        "blend_sha256": "39ecc494434d3064247844ffa08c44d3f59378b4081f3822ccab36f2b6abfc94",
+        "fbx_sha256": "32d7f7bd1b6173f85d5bb6e993151737b3dc4fb62c8418cb933f5fd2a6d6f77c",
+        "source": "PASS03_IMMUTABLE_BASELINE_VERIFIED_THEN"
+      },
+      "candidate_after": {
+        "source_pr": 25,
+        "source_commit": "383400981cc9602acc2ed2f4700926c245e2a9da",
+        "version": "PASS05_CANDIDATE_UNRELEASED",
+        "blend_path": "Assets/C01InteriorProps/P15Wave02/Sources/Blender/P15-06.blend",
+        "fbx_path": "Assets/C01InteriorProps/P15Wave02/Models/FBX/P15-06.fbx",
+        "provenance": {
+          "class": "LFS_POINTER_ONLY_NO_HYDRATED_QA",
+          "blend_lfs_expected_sha256": "644b1fab278bf1694fc6eb61b6a1cfe0f4bcfce204ecfd25a6b4cb13221a82aa",
+          "fbx_lfs_expected_sha256": "e48b943e7926a3d62e3f956f1b1bc59218dbe310837d179dfbbfee435001f448",
+          "blend_pointer_git_blob_sha": "56eb55cfa4bd61250d273c8767f2945ae2ef6794",
+          "fbx_pointer_git_blob_sha": "49e39d259232fd439ecb78294996429eb5e9f173",
+          "qa_verified_hydrated_fbx_sha256": null,
+          "qa_ci_run": null,
+          "current_pointer_matches_QA_hydrated_binary_sha": false,
+          "blend_hydrated_in_pass05": false
+        },
+        "source_blend_open": "NOT_RUN_BY_C01_03",
+        "unity": "NOT_RUN"
+      },
+      "measurements": {
+        "source": "PRODUCER_METRICS_UNVERIFIED_INDEPENDENTLY",
+        "report_path": "Assets/C01InteriorProps/P15Wave02/QA/Pass03/PASS03_SUMMARY.json",
+        "source_type": "PRODUCER_REAL_BLENDER_NOT_INDEPENDENT_QA",
+        "v_e_f_t_before": [
+          3744,
+          7308,
+          3630,
+          7356
+        ],
+        "v_e_f_t_after": [
+          3744,
+          7308,
+          3630,
+          7356
+        ],
+        "local_error_count_before": 0,
+        "local_error_count_after": 0,
+        "producer_reported_roundtrip": "PASS"
+      },
+      "independent_qa": {
+        "owner": "C01-02",
+        "fbx_indexed": "BLOCKED",
+        "fbx_triangulation": "NOT_RUN",
+        "full_approval": "BLOCKED",
+        "qa_source_sha_prefix": "NOT_AVAILABLE",
+        "fan_degenerate_candidates": 0,
+        "fan_nonmanifold_edge_candidates": 0,
+        "complex_ngons": 0,
+        "signed_final_fbx_sha256": null
+      },
+      "release_state": "BLOCKED_PENDING_QA_AND_ENGINE"
+    },
+    {
+      "asset_id": "C01-P15-07",
+      "code": "P15-07",
+      "owner": "C01-15",
+      "wave": 2,
+      "before": {
+        "producer_commit": "d8b38194a81fd305caa2ae9c3ecd6d22f46cf011",
+        "blend_sha256": "d5d9234a298b54c74a247c629f7296a58ba1e4ec6486b77edaed10905f7f4a62",
+        "fbx_sha256": "9a814967043aedf487c24d1ded75faf3230328997f70bb320cae90b2388e5ee8",
+        "source": "PASS03_IMMUTABLE_BASELINE_VERIFIED_THEN"
+      },
+      "candidate_after": {
+        "source_pr": 25,
+        "source_commit": "383400981cc9602acc2ed2f4700926c245e2a9da",
+        "version": "PASS05_CANDIDATE_UNRELEASED",
+        "blend_path": "Assets/C01InteriorProps/P15Wave02/Sources/Blender/P15-07.blend",
+        "fbx_path": "Assets/C01InteriorProps/P15Wave02/Models/FBX/P15-07.fbx",
+        "provenance": {
+          "class": "LFS_POINTER_ONLY_NO_HYDRATED_QA",
+          "blend_lfs_expected_sha256": "00a456375c5fd731f811d61d1ae171330a5291d5669ae9fdcc752b174b72aa6e",
+          "fbx_lfs_expected_sha256": "ffc0211cc73a2056b815f3a494c24ab97d3c808d7ad9eb5b472472c555fb47f2",
+          "blend_pointer_git_blob_sha": "c5d282c74b920b6b1cd3743d46b92abd09141375",
+          "fbx_pointer_git_blob_sha": "0ab814c1e48eeb89fb7c8069ca9d69ac0739659b",
+          "qa_verified_hydrated_fbx_sha256": null,
+          "qa_ci_run": null,
+          "current_pointer_matches_QA_hydrated_binary_sha": false,
+          "blend_hydrated_in_pass05": false
+        },
+        "source_blend_open": "NOT_RUN_BY_C01_03",
+        "unity": "NOT_RUN"
+      },
+      "measurements": {
+        "source": "PRODUCER_METRICS_UNVERIFIED_INDEPENDENTLY",
+        "report_path": "Assets/C01InteriorProps/P15Wave02/QA/Pass03/PASS03_SUMMARY.json",
+        "source_type": "PRODUCER_REAL_BLENDER_NOT_INDEPENDENT_QA",
+        "v_e_f_t_before": [
+          2794,
+          5400,
+          2646,
+          5460
+        ],
+        "v_e_f_t_after": [
+          2770,
+          5376,
+          2642,
+          5420
+        ],
+        "local_error_count_before": 0,
+        "local_error_count_after": 0,
+        "producer_reported_roundtrip": "PASS"
+      },
+      "independent_qa": {
+        "owner": "C01-02",
+        "fbx_indexed": "BLOCKED",
+        "fbx_triangulation": "NOT_RUN",
+        "full_approval": "BLOCKED",
+        "qa_source_sha_prefix": "NOT_AVAILABLE",
+        "fan_degenerate_candidates": 0,
+        "fan_nonmanifold_edge_candidates": 0,
+        "complex_ngons": 0,
+        "signed_final_fbx_sha256": null
+      },
+      "release_state": "BLOCKED_PENDING_QA_AND_ENGINE"
+    },
+    {
+      "asset_id": "C01-P16-01",
+      "code": "P16-01",
+      "owner": "C01-16",
+      "wave": 1,
+      "before": {
+        "producer_commit": "054d84731737698fbdbdee2d387c4fff1b2a6673",
+        "blend_sha256": null,
+        "fbx_sha256": "8a3453701d7e1d9c0739f8dc0190e33e206a34bdcac76e6d3d33c4e5d9bb5158",
+        "source": "PASS03_IMMUTABLE_BASELINE_VERIFIED_THEN"
+      },
+      "candidate_after": {
+        "source_pr": 12,
+        "source_commit": "6f9bb4bf43103e83e720b72f7b1f8061b5176373",
+        "version": "PASS05_CANDIDATE_UNRELEASED",
+        "blend_path": null,
+        "fbx_path": "C01Source/Lighting/FBX/P16-01.fbx",
+        "provenance": {
+          "class": "PRODUCER_STATIC_ASCII_ONLY",
+          "native_blend": "MISSING",
+          "binary_fbx": "MISSING",
+          "obj_sha256_producer_inventory": "3835b48c5e4ecd665de671b2543fedecc8f8c4ba18bc42d2306d1ae1bdc10393",
+          "ascii_fbx_sha256_producer_inventory": "26624ec5c88768a99768f7a720095e0620f2d68d71cc34d27de68a6ef418c207",
+          "obj_blob_sha": "208d7f543d51f89266e4e59000b272906c068207",
+          "ascii_fbx_blob_sha": "776b9de39845314e3dd6d98e01e12a5ada3197a0"
+        },
+        "source_blend_open": "NOT_RUN_BY_C01_03",
+        "unity": "NOT_RUN"
+      },
+      "measurements": {
+        "source": "PRODUCER_METRICS_UNVERIFIED_INDEPENDENTLY",
+        "report_path": "C01Source/Lighting/MeshRepairPASS03/P16-01/mesh_topology_after.json",
+        "source_type": "PRODUCER_STATIC_OBJ_ASCII_FBX_NOT_NATIVE_BLENDER",
+        "v_e_f_t_before": [
+          120,
+          150,
+          60,
+          60
+        ],
+        "v_e_f_t_after": [
+          40,
+          90,
+          60,
+          60
+        ],
+        "local_error_count_before": 0,
+        "local_error_count_after": 0,
+        "producer_reported_roundtrip": "NOT_RUN"
+      },
+      "independent_qa": {
+        "owner": "C01-02",
+        "fbx_indexed": "BLOCKED",
+        "fbx_triangulation": "NOT_RUN",
+        "full_approval": "BLOCKED",
+        "qa_source_sha_prefix": "NOT_AVAILABLE",
+        "fan_degenerate_candidates": 0,
+        "fan_nonmanifold_edge_candidates": 0,
+        "complex_ngons": 0,
+        "signed_final_fbx_sha256": null
+      },
+      "release_state": "BLOCKED_PENDING_QA_AND_ENGINE"
+    },
+    {
+      "asset_id": "C01-P16-02",
+      "code": "P16-02",
+      "owner": "C01-16",
+      "wave": 1,
+      "before": {
+        "producer_commit": "054d84731737698fbdbdee2d387c4fff1b2a6673",
+        "blend_sha256": null,
+        "fbx_sha256": "30dd6bb3ac4a5333b271efa16f83c27a124ce2ea5cbd5d52d14a203cd022b80f",
+        "source": "PASS03_IMMUTABLE_BASELINE_VERIFIED_THEN"
+      },
+      "candidate_after": {
+        "source_pr": 12,
+        "source_commit": "6f9bb4bf43103e83e720b72f7b1f8061b5176373",
+        "version": "PASS05_CANDIDATE_UNRELEASED",
+        "blend_path": null,
+        "fbx_path": "C01Source/Lighting/FBX/P16-02.fbx",
+        "provenance": {
+          "class": "PRODUCER_STATIC_ASCII_ONLY",
+          "native_blend": "MISSING",
+          "binary_fbx": "MISSING",
+          "obj_sha256_producer_inventory": "b85b153acdff94c5eeb01c464730750951983e03fd221ee930088650c1d4ca96",
+          "ascii_fbx_sha256_producer_inventory": "f6a9ef28c18bf25966ecd353202c1d90c7931484c253b0aaf44a0493c405fc52",
+          "obj_blob_sha": "6c985d8e55cdc3c97fd941c9c972c7c8730e63a0",
+          "ascii_fbx_blob_sha": "5dddff4230e5dcaab136733907bb97d76209237c"
+        },
+        "source_blend_open": "NOT_RUN_BY_C01_03",
+        "unity": "NOT_RUN"
+      },
+      "measurements": {
+        "source": "PRODUCER_METRICS_UNVERIFIED_INDEPENDENTLY",
+        "report_path": "C01Source/Lighting/MeshRepairPASS03/P16-02/mesh_topology_after.json",
+        "source_type": "PRODUCER_STATIC_OBJ_ASCII_FBX_NOT_NATIVE_BLENDER",
+        "v_e_f_t_before": [
+          120,
+          150,
+          60,
+          60
+        ],
+        "v_e_f_t_after": [
+          40,
+          90,
+          60,
+          60
+        ],
+        "local_error_count_before": 0,
+        "local_error_count_after": 0,
+        "producer_reported_roundtrip": "NOT_RUN"
+      },
+      "independent_qa": {
+        "owner": "C01-02",
+        "fbx_indexed": "BLOCKED",
+        "fbx_triangulation": "NOT_RUN",
+        "full_approval": "BLOCKED",
+        "qa_source_sha_prefix": "NOT_AVAILABLE",
+        "fan_degenerate_candidates": 0,
+        "fan_nonmanifold_edge_candidates": 0,
+        "complex_ngons": 0,
+        "signed_final_fbx_sha256": null
+      },
+      "release_state": "BLOCKED_PENDING_QA_AND_ENGINE"
+    },
+    {
+      "asset_id": "C01-P16-03",
+      "code": "P16-03",
+      "owner": "C01-16",
+      "wave": 1,
+      "before": {
+        "producer_commit": "054d84731737698fbdbdee2d387c4fff1b2a6673",
+        "blend_sha256": null,
+        "fbx_sha256": "f9e6866a94f1b6097da0a8fb4051f92580213df620554f781c5b5660bfa2f6e0",
+        "source": "PASS03_IMMUTABLE_BASELINE_VERIFIED_THEN"
+      },
+      "candidate_after": {
+        "source_pr": 12,
+        "source_commit": "6f9bb4bf43103e83e720b72f7b1f8061b5176373",
+        "version": "PASS05_CANDIDATE_UNRELEASED",
+        "blend_path": null,
+        "fbx_path": "C01Source/Lighting/FBX/P16-03.fbx",
+        "provenance": {
+          "class": "PRODUCER_STATIC_ASCII_ONLY",
+          "native_blend": "MISSING",
+          "binary_fbx": "MISSING",
+          "obj_sha256_producer_inventory": "20d8e41f04870df111633a878564c394f581e9f9022ab78329a977bb542d8db2",
+          "ascii_fbx_sha256_producer_inventory": "ed8905c3f694b7814ee0a2623f75e45dcba662e0f20f15dcb459a17df3d5b486",
+          "obj_blob_sha": "3a18d7354e0351496eececa7c1455192cfdf5f6a",
+          "ascii_fbx_blob_sha": "cfd1ba9e7b659f124b5ba40fe49e29db14d1c093"
+        },
+        "source_blend_open": "NOT_RUN_BY_C01_03",
+        "unity": "NOT_RUN"
+      },
+      "measurements": {
+        "source": "PRODUCER_METRICS_UNVERIFIED_INDEPENDENTLY",
+        "report_path": "C01Source/Lighting/MeshRepairPASS03/P16-03/mesh_topology_after.json",
+        "source_type": "PRODUCER_STATIC_OBJ_ASCII_FBX_NOT_NATIVE_BLENDER",
+        "v_e_f_t_before": [
+          120,
+          150,
+          60,
+          60
+        ],
+        "v_e_f_t_after": [
+          40,
+          90,
+          60,
+          60
+        ],
+        "local_error_count_before": 0,
+        "local_error_count_after": 0,
+        "producer_reported_roundtrip": "NOT_RUN"
+      },
+      "independent_qa": {
+        "owner": "C01-02",
+        "fbx_indexed": "BLOCKED",
+        "fbx_triangulation": "NOT_RUN",
+        "full_approval": "BLOCKED",
+        "qa_source_sha_prefix": "NOT_AVAILABLE",
+        "fan_degenerate_candidates": 0,
+        "fan_nonmanifold_edge_candidates": 0,
+        "complex_ngons": 0,
+        "signed_final_fbx_sha256": null
+      },
+      "release_state": "BLOCKED_PENDING_QA_AND_ENGINE"
+    },
+    {
+      "asset_id": "C01-P16-04",
+      "code": "P16-04",
+      "owner": "C01-16",
+      "wave": 2,
+      "before": {
+        "producer_commit": "78f9bd55af8c16dbe72d01b9b2a13279499eaacb",
+        "blend_sha256": null,
+        "fbx_sha256": "6961a40396d4417b78498b49070ea9864903744bcf69f30037aba00c13a9bdb1",
+        "source": "PASS03_IMMUTABLE_BASELINE_VERIFIED_THEN"
+      },
+      "candidate_after": {
+        "source_pr": 28,
+        "source_commit": "e6370761f2b1d31eeb21fad723421afa16c8761e",
+        "version": "PASS05_CANDIDATE_UNRELEASED",
+        "blend_path": null,
+        "fbx_path": "C01Source/LightingW02/FBX/P16-04.fbx",
+        "provenance": {
+          "class": "PRODUCER_STATIC_ASCII_ONLY",
+          "native_blend": "MISSING",
+          "binary_fbx": "MISSING",
+          "obj_sha256_producer_inventory": "65bd3cfb4acd7a256199479d8ac7aa1a29e4c143ffbd50af653af39bc7b93983",
+          "ascii_fbx_sha256_producer_inventory": "fa274b4e737a867eb34c4ffd550e6365137f4c2d1cb960a30bacd8112562eb74",
+          "obj_blob_sha": "53c1e3883b62bce322db2c8b81d11f1f8186bfd1",
+          "ascii_fbx_blob_sha": "b8d1c545984ddc1dd7790ae763d4e16f702d985a"
+        },
+        "source_blend_open": "NOT_RUN_BY_C01_03",
+        "unity": "NOT_RUN"
+      },
+      "measurements": {
+        "source": "PRODUCER_METRICS_UNVERIFIED_INDEPENDENTLY",
+        "report_path": "C01Source/LightingW02/MeshRepairPASS03/P16-04/mesh_topology_after.json",
+        "source_type": "PRODUCER_STATIC_OBJ_ASCII_FBX_NOT_NATIVE_BLENDER",
+        "v_e_f_t_before": [
+          168,
+          210,
+          84,
+          84
+        ],
+        "v_e_f_t_after": [
+          56,
+          126,
+          84,
+          84
+        ],
+        "local_error_count_before": 0,
+        "local_error_count_after": 0,
+        "producer_reported_roundtrip": "NOT_RUN"
+      },
+      "independent_qa": {
+        "owner": "C01-02",
+        "fbx_indexed": "BLOCKED",
+        "fbx_triangulation": "NOT_RUN",
+        "full_approval": "BLOCKED",
+        "qa_source_sha_prefix": "NOT_AVAILABLE",
+        "fan_degenerate_candidates": 0,
+        "fan_nonmanifold_edge_candidates": 0,
+        "complex_ngons": 0,
+        "signed_final_fbx_sha256": null
+      },
+      "release_state": "BLOCKED_PENDING_QA_AND_ENGINE"
+    },
+    {
+      "asset_id": "C01-P16-05",
+      "code": "P16-05",
+      "owner": "C01-16",
+      "wave": 2,
+      "before": {
+        "producer_commit": "78f9bd55af8c16dbe72d01b9b2a13279499eaacb",
+        "blend_sha256": null,
+        "fbx_sha256": "a173ef91b8376768ddb8d45505018af60e30fef6f1e5a7ffca976b2a2df2fe95",
+        "source": "PASS03_IMMUTABLE_BASELINE_VERIFIED_THEN"
+      },
+      "candidate_after": {
+        "source_pr": 28,
+        "source_commit": "e6370761f2b1d31eeb21fad723421afa16c8761e",
+        "version": "PASS05_CANDIDATE_UNRELEASED",
+        "blend_path": null,
+        "fbx_path": "C01Source/LightingW02/FBX/P16-05.fbx",
+        "provenance": {
+          "class": "PRODUCER_STATIC_ASCII_ONLY",
+          "native_blend": "MISSING",
+          "binary_fbx": "MISSING",
+          "obj_sha256_producer_inventory": "dcd06dacc80ce8c3eb496b316a088ec7d080570e6e2f951dc782f401d3da350f",
+          "ascii_fbx_sha256_producer_inventory": "e9059e822adac7fb538102815e73f825bde15999df7c06303d0390fb9e10c452",
+          "obj_blob_sha": "c4edc40713df445e0c37ae5f7c159288b34b5957",
+          "ascii_fbx_blob_sha": "078576421c3c728486ac6d0e218c31953f421856"
+        },
+        "source_blend_open": "NOT_RUN_BY_C01_03",
+        "unity": "NOT_RUN"
+      },
+      "measurements": {
+        "source": "PRODUCER_METRICS_UNVERIFIED_INDEPENDENTLY",
+        "report_path": "C01Source/LightingW02/MeshRepairPASS03/P16-05/mesh_topology_after.json",
+        "source_type": "PRODUCER_STATIC_OBJ_ASCII_FBX_NOT_NATIVE_BLENDER",
+        "v_e_f_t_before": [
+          168,
+          210,
+          84,
+          84
+        ],
+        "v_e_f_t_after": [
+          56,
+          126,
+          84,
+          84
+        ],
+        "local_error_count_before": 0,
+        "local_error_count_after": 0,
+        "producer_reported_roundtrip": "NOT_RUN"
+      },
+      "independent_qa": {
+        "owner": "C01-02",
+        "fbx_indexed": "BLOCKED",
+        "fbx_triangulation": "NOT_RUN",
+        "full_approval": "BLOCKED",
+        "qa_source_sha_prefix": "NOT_AVAILABLE",
+        "fan_degenerate_candidates": 0,
+        "fan_nonmanifold_edge_candidates": 0,
+        "complex_ngons": 0,
+        "signed_final_fbx_sha256": null
+      },
+      "release_state": "BLOCKED_PENDING_QA_AND_ENGINE"
+    },
+    {
+      "asset_id": "C01-P16-06",
+      "code": "P16-06",
+      "owner": "C01-16",
+      "wave": 2,
+      "before": {
+        "producer_commit": "78f9bd55af8c16dbe72d01b9b2a13279499eaacb",
+        "blend_sha256": null,
+        "fbx_sha256": "15ee8ed8576e31433c6342ff587b1eaa7878c56af13143ebfdf06ac4a8772f19",
+        "source": "PASS03_IMMUTABLE_BASELINE_VERIFIED_THEN"
+      },
+      "candidate_after": {
+        "source_pr": 28,
+        "source_commit": "e6370761f2b1d31eeb21fad723421afa16c8761e",
+        "version": "PASS05_CANDIDATE_UNRELEASED",
+        "blend_path": null,
+        "fbx_path": "C01Source/LightingW02/FBX/P16-06.fbx",
+        "provenance": {
+          "class": "PRODUCER_STATIC_ASCII_ONLY",
+          "native_blend": "MISSING",
+          "binary_fbx": "MISSING",
+          "obj_sha256_producer_inventory": "5b293d090e2c2a6151312ace0a15b33f1abe11796e5e4be332566233e348baec",
+          "ascii_fbx_sha256_producer_inventory": "d0a6b9e51f2bc73f3b172d1d3a28a3aec454386be3efd9ff8552f6b8d1da1e35",
+          "obj_blob_sha": "991272b113fd65d40cd620a0dbafa58a227976a2",
+          "ascii_fbx_blob_sha": "a2dd22339411a61a66ddb60b233ecd0c2f54cd1f"
+        },
+        "source_blend_open": "NOT_RUN_BY_C01_03",
+        "unity": "NOT_RUN"
+      },
+      "measurements": {
+        "source": "PRODUCER_METRICS_UNVERIFIED_INDEPENDENTLY",
+        "report_path": "C01Source/LightingW02/MeshRepairPASS03/P16-06/mesh_topology_after.json",
+        "source_type": "PRODUCER_STATIC_OBJ_ASCII_FBX_NOT_NATIVE_BLENDER",
+        "v_e_f_t_before": [
+          216,
+          270,
+          108,
+          108
+        ],
+        "v_e_f_t_after": [
+          72,
+          162,
+          108,
+          108
+        ],
+        "local_error_count_before": 0,
+        "local_error_count_after": 0,
+        "producer_reported_roundtrip": "NOT_RUN"
+      },
+      "independent_qa": {
+        "owner": "C01-02",
+        "fbx_indexed": "BLOCKED",
+        "fbx_triangulation": "NOT_RUN",
+        "full_approval": "BLOCKED",
+        "qa_source_sha_prefix": "NOT_AVAILABLE",
+        "fan_degenerate_candidates": 0,
+        "fan_nonmanifold_edge_candidates": 0,
+        "complex_ngons": 0,
+        "signed_final_fbx_sha256": null
+      },
+      "release_state": "BLOCKED_PENDING_QA_AND_ENGINE"
+    },
+    {
+      "asset_id": "C01-P16-07",
+      "code": "P16-07",
+      "owner": "C01-16",
+      "wave": 2,
+      "before": {
+        "producer_commit": "78f9bd55af8c16dbe72d01b9b2a13279499eaacb",
+        "blend_sha256": null,
+        "fbx_sha256": "2ee60ac814b270b174d6b8941fdff4b4a83157653d896bde5ecbbe4f97af6fe9",
+        "source": "PASS03_IMMUTABLE_BASELINE_VERIFIED_THEN"
+      },
+      "candidate_after": {
+        "source_pr": 28,
+        "source_commit": "e6370761f2b1d31eeb21fad723421afa16c8761e",
+        "version": "PASS05_CANDIDATE_UNRELEASED",
+        "blend_path": null,
+        "fbx_path": "C01Source/LightingW02/FBX/P16-07.fbx",
+        "provenance": {
+          "class": "PRODUCER_STATIC_ASCII_ONLY",
+          "native_blend": "MISSING",
+          "binary_fbx": "MISSING",
+          "obj_sha256_producer_inventory": "8ce8d349aae4dbd56d283bfeeec01d198df07153bb5639932717d87139a83252",
+          "ascii_fbx_sha256_producer_inventory": "0b074433c19ce091ce939f5778deb71c14d1200736daf35bb13ffc1ba0dbdb38",
+          "obj_blob_sha": "83b8cb80ded21017e915cf709c94f76ac29fc9f3",
+          "ascii_fbx_blob_sha": "2fec2e3c47684ee7f99f5d46904b2c52da26c126"
+        },
+        "source_blend_open": "NOT_RUN_BY_C01_03",
+        "unity": "NOT_RUN"
+      },
+      "measurements": {
+        "source": "PRODUCER_METRICS_UNVERIFIED_INDEPENDENTLY",
+        "report_path": "C01Source/LightingW02/MeshRepairPASS03/P16-07/mesh_topology_after.json",
+        "source_type": "PRODUCER_STATIC_OBJ_ASCII_FBX_NOT_NATIVE_BLENDER",
+        "v_e_f_t_before": [
+          120,
+          150,
+          60,
+          60
+        ],
+        "v_e_f_t_after": [
+          40,
+          90,
+          60,
+          60
+        ],
+        "local_error_count_before": 0,
+        "local_error_count_after": 0,
+        "producer_reported_roundtrip": "NOT_RUN"
+      },
+      "independent_qa": {
+        "owner": "C01-02",
+        "fbx_indexed": "BLOCKED",
+        "fbx_triangulation": "NOT_RUN",
+        "full_approval": "BLOCKED",
+        "qa_source_sha_prefix": "NOT_AVAILABLE",
+        "fan_degenerate_candidates": 0,
+        "fan_nonmanifold_edge_candidates": 0,
+        "complex_ngons": 0,
+        "signed_final_fbx_sha256": null
+      },
+      "release_state": "BLOCKED_PENDING_QA_AND_ENGINE"
+    },
+    {
+      "asset_id": "C01-P17-01",
+      "code": "P17-01",
+      "owner": "C01-17",
+      "wave": 1,
+      "before": {
+        "producer_commit": "e3b7f2fac2be98f3b450aeb2ec2ac9f050e4e206",
+        "blend_sha256": "24e488fb85fbb70ba8b14c5144a5bf8d95ab9da1b4dc193b1e47d6ccb8ff19f4",
+        "fbx_sha256": "6d4f9646a5711b97fb6f601ca0e57f7e222bb0231aaaa483ee5896a89f67c933",
+        "source": "PASS03_IMMUTABLE_BASELINE_VERIFIED_THEN"
+      },
+      "candidate_after": {
+        "source_pr": 17,
+        "source_commit": "1df3c6f6d40e1a896b6b5b55831a9ce3f991350c",
+        "version": "PASS05_CANDIDATE_UNRELEASED",
+        "blend_path": "C01InteriorProps_Source/Blender/P17-01.blend",
+        "fbx_path": "Assets/C01InteriorProps/Models/P17-01.fbx",
+        "provenance": {
+          "class": "C01_02_EARLIER_HYDRATED_FBX_EQUAL_TO_CURRENT_LFS_OID",
+          "blend_lfs_expected_sha256": "daf6f0daadb391ce5ccc667e50f05386845cb2e998cf694449c4667094f40daf",
+          "fbx_lfs_expected_sha256": "fca67dad3e35e7070575c7d7d141fab3e6756eecb0d618d325ec36266eca2772",
+          "blend_pointer_git_blob_sha": "634835979b24e4cf5809c5ed8735e9838d4a45d4",
+          "fbx_pointer_git_blob_sha": "4e50ce3d35ebd7411d2179b9f0ceb11db9795064",
+          "qa_verified_hydrated_fbx_sha256": "fca67dad3e35e7070575c7d7d141fab3e6756eecb0d618d325ec36266eca2772",
+          "qa_ci_run": 41089779966,
+          "current_pointer_matches_QA_hydrated_binary_sha": true,
+          "blend_hydrated_in_pass05": false
+        },
+        "source_blend_open": "NOT_RUN_BY_C01_03",
+        "unity": "NOT_RUN"
+      },
+      "measurements": {
+        "source": "PRODUCER_METRICS_UNVERIFIED_INDEPENDENTLY",
+        "report_path": "C01InteriorProps_Source/QA/PASS03/P17-01_REPAIR_EVIDENCE.json",
+        "source_type": "PRODUCER_REAL_BLENDER_NOT_INDEPENDENT_QA",
+        "v_e_f_t_before": [
+          408,
+          510,
+          204,
+          204
+        ],
+        "v_e_f_t_after": [
+          136,
+          306,
+          204,
+          204
+        ],
+        "local_error_count_before": 0,
+        "local_error_count_after": 0,
+        "producer_reported_roundtrip": "NOT_RUN"
+      },
+      "independent_qa": {
+        "owner": "C01-02",
+        "fbx_indexed": "PASS",
+        "fbx_triangulation": "PASS",
+        "full_approval": "BLOCKED",
+        "qa_source_sha_prefix": "fca67dad3e35e70",
+        "fan_degenerate_candidates": 0,
+        "fan_nonmanifold_edge_candidates": 0,
+        "complex_ngons": 0,
+        "signed_final_fbx_sha256": null
+      },
+      "release_state": "BLOCKED_PENDING_QA_AND_ENGINE"
+    },
+    {
+      "asset_id": "C01-P17-02",
+      "code": "P17-02",
+      "owner": "C01-17",
+      "wave": 1,
+      "before": {
+        "producer_commit": "e3b7f2fac2be98f3b450aeb2ec2ac9f050e4e206",
+        "blend_sha256": "f1522097191dc4af727fcef9da0208547f106e34fd4843d9437f46f144d9983e",
+        "fbx_sha256": "b6c3d875baf025b3a51dfdcbe0ebb89b1376b81f5da25f0d402cb84e7480bced",
+        "source": "PASS03_IMMUTABLE_BASELINE_VERIFIED_THEN"
+      },
+      "candidate_after": {
+        "source_pr": 17,
+        "source_commit": "1df3c6f6d40e1a896b6b5b55831a9ce3f991350c",
+        "version": "PASS05_CANDIDATE_UNRELEASED",
+        "blend_path": "C01InteriorProps_Source/Blender/P17-02.blend",
+        "fbx_path": "Assets/C01InteriorProps/Models/P17-02.fbx",
+        "provenance": {
+          "class": "C01_02_EARLIER_HYDRATED_FBX_EQUAL_TO_CURRENT_LFS_OID",
+          "blend_lfs_expected_sha256": "183d4ebbcc9e13ad220aaa869db80949fb315d58666f79c2e1c7ae85f6e69649",
+          "fbx_lfs_expected_sha256": "af858385a0abae9c623ee4002bcf22bcbc401b5687024acd8df142eb1b848147",
+          "blend_pointer_git_blob_sha": "20b7b994b583b6003852f980e194c8009f2ea94b",
+          "fbx_pointer_git_blob_sha": "45d6beaea5b3cb16f66d94258e0c64c52d91f9a4",
+          "qa_verified_hydrated_fbx_sha256": "af858385a0abae9c623ee4002bcf22bcbc401b5687024acd8df142eb1b848147",
+          "qa_ci_run": 41089779966,
+          "current_pointer_matches_QA_hydrated_binary_sha": true,
+          "blend_hydrated_in_pass05": false
+        },
+        "source_blend_open": "NOT_RUN_BY_C01_03",
+        "unity": "NOT_RUN"
+      },
+      "measurements": {
+        "source": "PRODUCER_METRICS_UNVERIFIED_INDEPENDENTLY",
+        "report_path": "C01InteriorProps_Source/QA/PASS03/P17-02_REPAIR_EVIDENCE.json",
+        "source_type": "PRODUCER_REAL_BLENDER_NOT_INDEPENDENT_QA",
+        "v_e_f_t_before": [
+          480,
+          600,
+          240,
+          240
+        ],
+        "v_e_f_t_after": [
+          160,
+          360,
+          240,
+          240
+        ],
+        "local_error_count_before": 0,
+        "local_error_count_after": 0,
+        "producer_reported_roundtrip": "NOT_RUN"
+      },
+      "independent_qa": {
+        "owner": "C01-02",
+        "fbx_indexed": "PASS",
+        "fbx_triangulation": "PASS",
+        "full_approval": "BLOCKED",
+        "qa_source_sha_prefix": "af858385a0abae9",
+        "fan_degenerate_candidates": 0,
+        "fan_nonmanifold_edge_candidates": 0,
+        "complex_ngons": 0,
+        "signed_final_fbx_sha256": null
+      },
+      "release_state": "BLOCKED_PENDING_QA_AND_ENGINE"
+    },
+    {
+      "asset_id": "C01-P17-03",
+      "code": "P17-03",
+      "owner": "C01-17",
+      "wave": 1,
+      "before": {
+        "producer_commit": "e3b7f2fac2be98f3b450aeb2ec2ac9f050e4e206",
+        "blend_sha256": "e9166617f6b194afbab01a59f4c2f13eccd1d62c2b9f058bfe989132a98667a3",
+        "fbx_sha256": "d307c04dd37792d1c69404124eb532617dfd86540dd029696edfbd5159180f3f",
+        "source": "PASS03_IMMUTABLE_BASELINE_VERIFIED_THEN"
+      },
+      "candidate_after": {
+        "source_pr": 17,
+        "source_commit": "1df3c6f6d40e1a896b6b5b55831a9ce3f991350c",
+        "version": "PASS05_CANDIDATE_UNRELEASED",
+        "blend_path": "C01InteriorProps_Source/Blender/P17-03.blend",
+        "fbx_path": "Assets/C01InteriorProps/Models/P17-03.fbx",
+        "provenance": {
+          "class": "C01_02_EARLIER_HYDRATED_FBX_EQUAL_TO_CURRENT_LFS_OID",
+          "blend_lfs_expected_sha256": "42d6551d54464809cefbca4ae4ba653fa7352422d78b398c7457446ee73ab62d",
+          "fbx_lfs_expected_sha256": "749c0a6e3df59e927fc448e01ae233504b46d0caed1d6ecd1768be8c926a412c",
+          "blend_pointer_git_blob_sha": "8f5c4045626c2cff6b2004833bc3a7eae2916058",
+          "fbx_pointer_git_blob_sha": "1c1090a0d81fd15abbe444106534337e252bbee3",
+          "qa_verified_hydrated_fbx_sha256": "749c0a6e3df59e927fc448e01ae233504b46d0caed1d6ecd1768be8c926a412c",
+          "qa_ci_run": 41089779966,
+          "current_pointer_matches_QA_hydrated_binary_sha": true,
+          "blend_hydrated_in_pass05": false
+        },
+        "source_blend_open": "NOT_RUN_BY_C01_03",
+        "unity": "NOT_RUN"
+      },
+      "measurements": {
+        "source": "PRODUCER_METRICS_UNVERIFIED_INDEPENDENTLY",
+        "report_path": "C01InteriorProps_Source/QA/PASS03/P17-03_REPAIR_EVIDENCE.json",
+        "source_type": "PRODUCER_REAL_BLENDER_NOT_INDEPENDENT_QA",
+        "v_e_f_t_before": [
+          456,
+          540,
+          208,
+          208
+        ],
+        "v_e_f_t_after": [
+          128,
+          312,
+          208,
+          208
+        ],
+        "local_error_count_before": 0,
+        "local_error_count_after": 0,
+        "producer_reported_roundtrip": "NOT_RUN"
+      },
+      "independent_qa": {
+        "owner": "C01-02",
+        "fbx_indexed": "PASS",
+        "fbx_triangulation": "PASS",
+        "full_approval": "BLOCKED",
+        "qa_source_sha_prefix": "749c0a6e3df59e9",
+        "fan_degenerate_candidates": 0,
+        "fan_nonmanifold_edge_candidates": 0,
+        "complex_ngons": 0,
+        "signed_final_fbx_sha256": null
+      },
+      "release_state": "BLOCKED_PENDING_QA_AND_ENGINE"
+    },
+    {
+      "asset_id": "C01-P17-04",
+      "code": "P17-04",
+      "owner": "C01-17",
+      "wave": 2,
+      "before": {
+        "producer_commit": "f7bf7dd93bc6dc60189b7a652cb375e962e61328",
+        "blend_sha256": "deec97aa786e3f2e6ce4f1f1eaaeb034da52bb9c3b8d8163e9836e50304f96f3",
+        "fbx_sha256": "0b58f14caa2f6a4151430fd4457607061f6e5ad3a31978073f87e2301cb264c8",
+        "source": "PASS03_IMMUTABLE_BASELINE_VERIFIED_THEN"
+      },
+      "candidate_after": {
+        "source_pr": 23,
+        "source_commit": "b917817590e5a4c747599cee33f3f6edd8fd63cc",
+        "version": "PASS05_CANDIDATE_UNRELEASED",
+        "blend_path": "C01InteriorProps_W02/Blender/P17-04.blend",
+        "fbx_path": "Assets/C01InteriorProps/W02/Models/P17-04.fbx",
+        "provenance": {
+          "class": "C01_02_EARLIER_HYDRATED_FBX_EQUAL_TO_CURRENT_LFS_OID",
+          "blend_lfs_expected_sha256": "93cc2be48f7427b9465bb7c73b15125df29937d1e7566c17f34764621922132f",
+          "fbx_lfs_expected_sha256": "093be5df6e600764528c68368441e5c83a2cc020def2f5e4b03c99cbc659b968",
+          "blend_pointer_git_blob_sha": "d3561de2f71090043c4b252c9ba090c9176a7148",
+          "fbx_pointer_git_blob_sha": "7219468b9697859740857acfe0e6a5df3f50b0e3",
+          "qa_verified_hydrated_fbx_sha256": "093be5df6e600764528c68368441e5c83a2cc020def2f5e4b03c99cbc659b968",
+          "qa_ci_run": 41088800979,
+          "current_pointer_matches_QA_hydrated_binary_sha": true,
+          "blend_hydrated_in_pass05": false
+        },
+        "source_blend_open": "NOT_RUN_BY_C01_03",
+        "unity": "NOT_RUN"
+      },
+      "measurements": {
+        "source": "PRODUCER_METRICS_UNVERIFIED_INDEPENDENTLY",
+        "report_path": "C01InteriorProps_W02/QA/PASS03/P17-04_REPAIR_EVIDENCE.json",
+        "source_type": "PRODUCER_REAL_BLENDER_NOT_INDEPENDENT_QA",
+        "v_e_f_t_before": [
+          696,
+          870,
+          348,
+          348
+        ],
+        "v_e_f_t_after": [
+          232,
+          522,
+          348,
+          348
+        ],
+        "local_error_count_before": 0,
+        "local_error_count_after": 0,
+        "producer_reported_roundtrip": "NOT_RUN"
+      },
+      "independent_qa": {
+        "owner": "C01-02",
+        "fbx_indexed": "PASS",
+        "fbx_triangulation": "PASS",
+        "full_approval": "BLOCKED",
+        "qa_source_sha_prefix": "093be5df6e60076",
+        "fan_degenerate_candidates": 0,
+        "fan_nonmanifold_edge_candidates": 0,
+        "complex_ngons": 0,
+        "signed_final_fbx_sha256": null
+      },
+      "release_state": "BLOCKED_PENDING_QA_AND_ENGINE"
+    },
+    {
+      "asset_id": "C01-P17-05",
+      "code": "P17-05",
+      "owner": "C01-17",
+      "wave": 2,
+      "before": {
+        "producer_commit": "f7bf7dd93bc6dc60189b7a652cb375e962e61328",
+        "blend_sha256": "6b85a1e6b81b0aaf790cce83560658f4970062f853ed59337749c29993b427a3",
+        "fbx_sha256": "b2ff6601d45e936ede795696e53aaf88c4805e4519222f59ecef86f720df73ac",
+        "source": "PASS03_IMMUTABLE_BASELINE_VERIFIED_THEN"
+      },
+      "candidate_after": {
+        "source_pr": 23,
+        "source_commit": "b917817590e5a4c747599cee33f3f6edd8fd63cc",
+        "version": "PASS05_CANDIDATE_UNRELEASED",
+        "blend_path": "C01InteriorProps_W02/Blender/P17-05.blend",
+        "fbx_path": "Assets/C01InteriorProps/W02/Models/P17-05.fbx",
+        "provenance": {
+          "class": "C01_02_EARLIER_HYDRATED_FBX_EQUAL_TO_CURRENT_LFS_OID",
+          "blend_lfs_expected_sha256": "07be57396ccab85423745dc71db2e820eacd00f8191cb86809091c4d14a6dbbd",
+          "fbx_lfs_expected_sha256": "3fa314481f87d66f9a878936028b809cd78440d781146a058594e28f3f4e1740",
+          "blend_pointer_git_blob_sha": "c29a4a69da02aaaaa8d164328f9b270b357d0dae",
+          "fbx_pointer_git_blob_sha": "284b567604bfd2549eea68d06adabc683dc05051",
+          "qa_verified_hydrated_fbx_sha256": "3fa314481f87d66f9a878936028b809cd78440d781146a058594e28f3f4e1740",
+          "qa_ci_run": 41088800979,
+          "current_pointer_matches_QA_hydrated_binary_sha": true,
+          "blend_hydrated_in_pass05": false
+        },
+        "source_blend_open": "NOT_RUN_BY_C01_03",
+        "unity": "NOT_RUN"
+      },
+      "measurements": {
+        "source": "PRODUCER_METRICS_UNVERIFIED_INDEPENDENTLY",
+        "report_path": "C01InteriorProps_W02/QA/PASS03/P17-05_REPAIR_EVIDENCE.json",
+        "source_type": "PRODUCER_REAL_BLENDER_NOT_INDEPENDENT_QA",
+        "v_e_f_t_before": [
+          480,
+          600,
+          240,
+          240
+        ],
+        "v_e_f_t_after": [
+          160,
+          360,
+          240,
+          240
+        ],
+        "local_error_count_before": 0,
+        "local_error_count_after": 0,
+        "producer_reported_roundtrip": "NOT_RUN"
+      },
+      "independent_qa": {
+        "owner": "C01-02",
+        "fbx_indexed": "PASS",
+        "fbx_triangulation": "PASS",
+        "full_approval": "BLOCKED",
+        "qa_source_sha_prefix": "3fa314481f87d66",
+        "fan_degenerate_candidates": 0,
+        "fan_nonmanifold_edge_candidates": 0,
+        "complex_ngons": 0,
+        "signed_final_fbx_sha256": null
+      },
+      "release_state": "BLOCKED_PENDING_QA_AND_ENGINE"
+    },
+    {
+      "asset_id": "C01-P17-06",
+      "code": "P17-06",
+      "owner": "C01-17",
+      "wave": 2,
+      "before": {
+        "producer_commit": "f7bf7dd93bc6dc60189b7a652cb375e962e61328",
+        "blend_sha256": "38f62e537827182911285e70d3906ee907c105cb8313b6fb6e87713d7e00780e",
+        "fbx_sha256": "13c0922b4d2999a5e980aa31c74f27921061a3795c256e840222f5ac5028b472",
+        "source": "PASS03_IMMUTABLE_BASELINE_VERIFIED_THEN"
+      },
+      "candidate_after": {
+        "source_pr": 23,
+        "source_commit": "b917817590e5a4c747599cee33f3f6edd8fd63cc",
+        "version": "PASS05_CANDIDATE_UNRELEASED",
+        "blend_path": "C01InteriorProps_W02/Blender/P17-06.blend",
+        "fbx_path": "Assets/C01InteriorProps/W02/Models/P17-06.fbx",
+        "provenance": {
+          "class": "C01_02_EARLIER_HYDRATED_FBX_EQUAL_TO_CURRENT_LFS_OID",
+          "blend_lfs_expected_sha256": "bdae693f5c8ca4e843e0e42d472a10b3caee4e7b82926d3570a36fad4ca21969",
+          "fbx_lfs_expected_sha256": "d9fcaf1a5b0f77ef375b96bdbf17d9a4731156c13880a26647aa481ee59723fb",
+          "blend_pointer_git_blob_sha": "42e9e47dda31f41bdfb4ab8c353794337fbefc34",
+          "fbx_pointer_git_blob_sha": "2cbaf09b518ff7b3dc3a729850e0bb327c54ec51",
+          "qa_verified_hydrated_fbx_sha256": "d9fcaf1a5b0f77ef375b96bdbf17d9a4731156c13880a26647aa481ee59723fb",
+          "qa_ci_run": 41088800979,
+          "current_pointer_matches_QA_hydrated_binary_sha": true,
+          "blend_hydrated_in_pass05": false
+        },
+        "source_blend_open": "NOT_RUN_BY_C01_03",
+        "unity": "NOT_RUN"
+      },
+      "measurements": {
+        "source": "PRODUCER_METRICS_UNVERIFIED_INDEPENDENTLY",
+        "report_path": "C01InteriorProps_W02/QA/PASS03/P17-06_REPAIR_EVIDENCE.json",
+        "source_type": "PRODUCER_REAL_BLENDER_NOT_INDEPENDENT_QA",
+        "v_e_f_t_before": [
+          312,
+          390,
+          156,
+          156
+        ],
+        "v_e_f_t_after": [
+          104,
+          234,
+          156,
+          156
+        ],
+        "local_error_count_before": 0,
+        "local_error_count_after": 0,
+        "producer_reported_roundtrip": "NOT_RUN"
+      },
+      "independent_qa": {
+        "owner": "C01-02",
+        "fbx_indexed": "PASS",
+        "fbx_triangulation": "PASS",
+        "full_approval": "BLOCKED",
+        "qa_source_sha_prefix": "d9fcaf1a5b0f77e",
+        "fan_degenerate_candidates": 0,
+        "fan_nonmanifold_edge_candidates": 0,
+        "complex_ngons": 0,
+        "signed_final_fbx_sha256": null
+      },
+      "release_state": "BLOCKED_PENDING_QA_AND_ENGINE"
+    },
+    {
+      "asset_id": "C01-P17-07",
+      "code": "P17-07",
+      "owner": "C01-17",
+      "wave": 2,
+      "before": {
+        "producer_commit": "f7bf7dd93bc6dc60189b7a652cb375e962e61328",
+        "blend_sha256": "d46758573f8bcd0dad8f267d62475516bcbbe9c9ee30bbc86756050b24ee668e",
+        "fbx_sha256": "12dc7c6cdde19792feaf6bfd8d9ef2f6aa80bb9848df424dccf0ab6f67ed46ea",
+        "source": "PASS03_IMMUTABLE_BASELINE_VERIFIED_THEN"
+      },
+      "candidate_after": {
+        "source_pr": 23,
+        "source_commit": "b917817590e5a4c747599cee33f3f6edd8fd63cc",
+        "version": "PASS05_CANDIDATE_UNRELEASED",
+        "blend_path": "C01InteriorProps_W02/Blender/P17-07.blend",
+        "fbx_path": "Assets/C01InteriorProps/W02/Models/P17-07.fbx",
+        "provenance": {
+          "class": "C01_02_EARLIER_HYDRATED_FBX_EQUAL_TO_CURRENT_LFS_OID",
+          "blend_lfs_expected_sha256": "1b5cb243083e3a4ce8ff75b684a2192e3d4fc91192d35f2279de113835c2ff6b",
+          "fbx_lfs_expected_sha256": "c9e4b221c96ddb9ecd137946ec6043a6c11af21934ad21699c5dedfa1b750285",
+          "blend_pointer_git_blob_sha": "d6f11046bdc2805940fa16b600016cae5467fc34",
+          "fbx_pointer_git_blob_sha": "cfec3743449ed45ccfcd61ee0b94752695184209",
+          "qa_verified_hydrated_fbx_sha256": "c9e4b221c96ddb9ecd137946ec6043a6c11af21934ad21699c5dedfa1b750285",
+          "qa_ci_run": 41088800979,
+          "current_pointer_matches_QA_hydrated_binary_sha": true,
+          "blend_hydrated_in_pass05": false
+        },
+        "source_blend_open": "NOT_RUN_BY_C01_03",
+        "unity": "NOT_RUN"
+      },
+      "measurements": {
+        "source": "PRODUCER_METRICS_UNVERIFIED_INDEPENDENTLY",
+        "report_path": "C01InteriorProps_W02/QA/PASS03/P17-07_REPAIR_EVIDENCE.json",
+        "source_type": "PRODUCER_REAL_BLENDER_NOT_INDEPENDENT_QA",
+        "v_e_f_t_before": [
+          456,
+          570,
+          228,
+          228
+        ],
+        "v_e_f_t_after": [
+          152,
+          342,
+          228,
+          228
+        ],
+        "local_error_count_before": 0,
+        "local_error_count_after": 0,
+        "producer_reported_roundtrip": "NOT_RUN"
+      },
+      "independent_qa": {
+        "owner": "C01-02",
+        "fbx_indexed": "PASS",
+        "fbx_triangulation": "PASS",
+        "full_approval": "BLOCKED",
+        "qa_source_sha_prefix": "c9e4b221c96dd",
+        "fan_degenerate_candidates": 0,
+        "fan_nonmanifold_edge_candidates": 0,
+        "complex_ngons": 0,
+        "signed_final_fbx_sha256": null
+      },
+      "release_state": "BLOCKED_PENDING_QA_AND_ENGINE"
+    },
+    {
+      "asset_id": "C01-P18-01",
+      "code": "P18-01",
+      "owner": "C01-18",
+      "wave": 1,
+      "before": {
+        "producer_commit": "bfe7d5d8a6aac11b563a9c2b84c9fcf4d67bdcd5",
+        "blend_sha256": "d9e3037b754edd952473170ec0924b4849eec1aa2afc193c2151c9bf079b3a42",
+        "fbx_sha256": "0cb6d656008cbdedbc30ef0dca3fe5003136035b87a54b9668b49c35b19b974b",
+        "source": "PASS03_IMMUTABLE_BASELINE_VERIFIED_THEN"
+      },
+      "candidate_after": {
+        "source_pr": 18,
+        "source_commit": "54d20a07d0604da8abba8f44b9ea3f503f2b4d49",
+        "version": "PASS05_CANDIDATE_UNRELEASED",
+        "blend_path": "Assets/C01InteriorProps/C01-18/Sources/P18-01.blend",
+        "fbx_path": "Assets/C01InteriorProps/C01-18/Models/P18-01.fbx",
+        "provenance": {
+          "class": "C01_02_EARLIER_HYDRATED_FBX_EQUAL_TO_CURRENT_LFS_OID",
+          "blend_lfs_expected_sha256": "d9e3037b754edd952473170ec0924b4849eec1aa2afc193c2151c9bf079b3a42",
+          "fbx_lfs_expected_sha256": "84851387b58aeadc7f2ace49201077d847cfd294f82acfb2d0a7dce3e471a939",
+          "blend_pointer_git_blob_sha": "df2be67d3878555a708169acdba051caa22bb1aa",
+          "fbx_pointer_git_blob_sha": "ed27f87f6057ed3059c71365dff6647327863b99",
+          "qa_verified_hydrated_fbx_sha256": "84851387b58aeadc7f2ace49201077d847cfd294f82acfb2d0a7dce3e471a939",
+          "qa_ci_run": 41090212132,
+          "current_pointer_matches_QA_hydrated_binary_sha": true,
+          "blend_hydrated_in_pass05": false
+        },
+        "source_blend_open": "NOT_RUN_BY_C01_03",
+        "unity": "NOT_RUN"
+      },
+      "measurements": {
+        "source": "PRODUCER_METRICS_UNVERIFIED_INDEPENDENTLY",
+        "report_path": "Assets/C01InteriorProps/C01-18/QA/Pass03/P18-01/mesh_topology_after.json",
+        "source_type": "PRODUCER_REAL_BLENDER_NOT_INDEPENDENT_QA",
+        "v_e_f_t_before": [
+          120,
+          270,
+          180,
+          180
+        ],
+        "v_e_f_t_after": [
+          120,
+          270,
+          180,
+          180
+        ],
+        "local_error_count_before": 0,
+        "local_error_count_after": 0,
+        "producer_reported_roundtrip": "SEE_PRODUCER_FBX_ROUNDTRIP_REPORT"
+      },
+      "independent_qa": {
+        "owner": "C01-02",
+        "fbx_indexed": "PASS",
+        "fbx_triangulation": "PASS",
+        "full_approval": "BLOCKED",
+        "qa_source_sha_prefix": "84851387b58aead",
+        "fan_degenerate_candidates": 0,
+        "fan_nonmanifold_edge_candidates": 0,
+        "complex_ngons": 0,
+        "signed_final_fbx_sha256": null
+      },
+      "release_state": "BLOCKED_PENDING_QA_AND_ENGINE"
+    },
+    {
+      "asset_id": "C01-P18-02",
+      "code": "P18-02",
+      "owner": "C01-18",
+      "wave": 1,
+      "before": {
+        "producer_commit": "bfe7d5d8a6aac11b563a9c2b84c9fcf4d67bdcd5",
+        "blend_sha256": "2e84ca8c96b1cd1b9e1a93bf8600e556ca2b772b38d5bc94bc68614c4f1ffdb3",
+        "fbx_sha256": "45d40d65356808212812e10084d2f0df232e6922e9117e381baa9f4010875894",
+        "source": "PASS03_IMMUTABLE_BASELINE_VERIFIED_THEN"
+      },
+      "candidate_after": {
+        "source_pr": 18,
+        "source_commit": "54d20a07d0604da8abba8f44b9ea3f503f2b4d49",
+        "version": "PASS05_CANDIDATE_UNRELEASED",
+        "blend_path": "Assets/C01InteriorProps/C01-18/Sources/P18-02.blend",
+        "fbx_path": "Assets/C01InteriorProps/C01-18/Models/P18-02.fbx",
+        "provenance": {
+          "class": "C01_02_EARLIER_HYDRATED_FBX_EQUAL_TO_CURRENT_LFS_OID",
+          "blend_lfs_expected_sha256": "5b4cc6a8a73624ddc6521842146cdbc6cc4e7a579522e5122ce669e93c585b09",
+          "fbx_lfs_expected_sha256": "5ba3faf85a3ea57f755eeb51d0db832c1ce37aa64721d710a22db509f2c6d03f",
+          "blend_pointer_git_blob_sha": "badf4df8b286e86750e69d0c7c6e30fe6990ca18",
+          "fbx_pointer_git_blob_sha": "e2b8b6b2953f05eb02525993fb1a7ebbe54c4bdf",
+          "qa_verified_hydrated_fbx_sha256": "5ba3faf85a3ea57f755eeb51d0db832c1ce37aa64721d710a22db509f2c6d03f",
+          "qa_ci_run": 41090212132,
+          "current_pointer_matches_QA_hydrated_binary_sha": true,
+          "blend_hydrated_in_pass05": false
+        },
+        "source_blend_open": "NOT_RUN_BY_C01_03",
+        "unity": "NOT_RUN"
+      },
+      "measurements": {
+        "source": "PRODUCER_METRICS_UNVERIFIED_INDEPENDENTLY",
+        "report_path": "Assets/C01InteriorProps/C01-18/QA/Pass03/P18-02/mesh_topology_after.json",
+        "source_type": "PRODUCER_REAL_BLENDER_NOT_INDEPENDENT_QA",
+        "v_e_f_t_before": [
+          136,
+          306,
+          204,
+          204
+        ],
+        "v_e_f_t_after": [
+          136,
+          306,
+          204,
+          204
+        ],
+        "local_error_count_before": 0,
+        "local_error_count_after": 0,
+        "producer_reported_roundtrip": "SEE_PRODUCER_FBX_ROUNDTRIP_REPORT"
+      },
+      "independent_qa": {
+        "owner": "C01-02",
+        "fbx_indexed": "PASS",
+        "fbx_triangulation": "PASS",
+        "full_approval": "BLOCKED",
+        "qa_source_sha_prefix": "5ba3faf85a3ea57",
+        "fan_degenerate_candidates": 0,
+        "fan_nonmanifold_edge_candidates": 0,
+        "complex_ngons": 0,
+        "signed_final_fbx_sha256": null
+      },
+      "release_state": "BLOCKED_PENDING_QA_AND_ENGINE"
+    },
+    {
+      "asset_id": "C01-P18-03",
+      "code": "P18-03",
+      "owner": "C01-18",
+      "wave": 1,
+      "before": {
+        "producer_commit": "bfe7d5d8a6aac11b563a9c2b84c9fcf4d67bdcd5",
+        "blend_sha256": "a33b23ad173f56a545aa57ae2d81e24afa27928f497835596350e06772e343fc",
+        "fbx_sha256": "8957641fd68260852f29fc2aaf8019682e07dd99470f1c441db57837347d7619",
+        "source": "PASS03_IMMUTABLE_BASELINE_VERIFIED_THEN"
+      },
+      "candidate_after": {
+        "source_pr": 18,
+        "source_commit": "54d20a07d0604da8abba8f44b9ea3f503f2b4d49",
+        "version": "PASS05_CANDIDATE_UNRELEASED",
+        "blend_path": "Assets/C01InteriorProps/C01-18/Sources/P18-03.blend",
+        "fbx_path": "Assets/C01InteriorProps/C01-18/Models/P18-03.fbx",
+        "provenance": {
+          "class": "C01_02_EARLIER_HYDRATED_FBX_EQUAL_TO_CURRENT_LFS_OID",
+          "blend_lfs_expected_sha256": "a33b23ad173f56a545aa57ae2d81e24afa27928f497835596350e06772e343fc",
+          "fbx_lfs_expected_sha256": "639fc09c39b804b9bf83de75a4096cdefe1229f58549662ee777537c19c5e165",
+          "blend_pointer_git_blob_sha": "c6a3ca5d148d0d4cc5f47f7d93205251ceed9449",
+          "fbx_pointer_git_blob_sha": "cae872f06e704fc5225961402559af9c4197d295",
+          "qa_verified_hydrated_fbx_sha256": "639fc09c39b804b9bf83de75a4096cdefe1229f58549662ee777537c19c5e165",
+          "qa_ci_run": 41090212132,
+          "current_pointer_matches_QA_hydrated_binary_sha": true,
+          "blend_hydrated_in_pass05": false
+        },
+        "source_blend_open": "NOT_RUN_BY_C01_03",
+        "unity": "NOT_RUN"
+      },
+      "measurements": {
+        "source": "PRODUCER_METRICS_UNVERIFIED_INDEPENDENTLY",
+        "report_path": "Assets/C01InteriorProps/C01-18/QA/Pass03/P18-03/mesh_topology_after.json",
+        "source_type": "PRODUCER_REAL_BLENDER_NOT_INDEPENDENT_QA",
+        "v_e_f_t_before": [
+          208,
+          522,
+          348,
+          348
+        ],
+        "v_e_f_t_after": [
+          208,
+          522,
+          348,
+          348
+        ],
+        "local_error_count_before": 0,
+        "local_error_count_after": 0,
+        "producer_reported_roundtrip": "SEE_PRODUCER_FBX_ROUNDTRIP_REPORT"
+      },
+      "independent_qa": {
+        "owner": "C01-02",
+        "fbx_indexed": "PASS",
+        "fbx_triangulation": "PASS",
+        "full_approval": "BLOCKED",
+        "qa_source_sha_prefix": "639fc09c39b804b",
+        "fan_degenerate_candidates": 0,
+        "fan_nonmanifold_edge_candidates": 0,
+        "complex_ngons": 0,
+        "signed_final_fbx_sha256": null
+      },
+      "release_state": "BLOCKED_PENDING_QA_AND_ENGINE"
+    },
+    {
+      "asset_id": "C01-P18-04",
+      "code": "P18-04",
+      "owner": "C01-18",
+      "wave": 2,
+      "before": {
+        "producer_commit": "e2fdde1c213ecb65b3ca1800c635e41e939e90e2",
+        "blend_sha256": "4a0531a877df0cbbcc2078b02297efccd966611e736bf70480a7572c6602ec52",
+        "fbx_sha256": "97298f0b49058f84eb2b746f8ac50af73f056f8bea43f11dde24fe9e550d1742",
+        "source": "PASS03_IMMUTABLE_BASELINE_VERIFIED_THEN"
+      },
+      "candidate_after": {
+        "source_pr": 26,
+        "source_commit": "a736ff0519a3727b5911679474cf5be085e67e43",
+        "version": "PASS05_CANDIDATE_UNRELEASED",
+        "blend_path": "Assets/C01InteriorProps/C01-18-Wave02/Sources/P18-04.blend",
+        "fbx_path": "Assets/C01InteriorProps/C01-18-Wave02/Models/P18-04.fbx",
+        "provenance": {
+          "class": "C01_02_EARLIER_HYDRATED_FBX_EQUAL_TO_CURRENT_LFS_OID",
+          "blend_lfs_expected_sha256": "4a0531a877df0cbbcc2078b02297efccd966611e736bf70480a7572c6602ec52",
+          "fbx_lfs_expected_sha256": "233253cea4a872052ef87c33f79c08794885dacac4caadf276e95701d0a70803",
+          "blend_pointer_git_blob_sha": "8d4b97ce162efc4c9213dee82e3d704d83f8ea99",
+          "fbx_pointer_git_blob_sha": "0838647f1764e9f03276585a218c483d84d50b64",
+          "qa_verified_hydrated_fbx_sha256": "233253cea4a872052ef87c33f79c08794885dacac4caadf276e95701d0a70803",
+          "qa_ci_run": 41089810123,
+          "current_pointer_matches_QA_hydrated_binary_sha": true,
+          "blend_hydrated_in_pass05": false
+        },
+        "source_blend_open": "NOT_RUN_BY_C01_03",
+        "unity": "NOT_RUN"
+      },
+      "measurements": {
+        "source": "PRODUCER_METRICS_UNVERIFIED_INDEPENDENTLY",
+        "report_path": "Assets/C01InteriorProps/C01-18-Wave02/QA/Pass03/P18-04/mesh_topology_after.json",
+        "source_type": "PRODUCER_REAL_BLENDER_NOT_INDEPENDENT_QA",
+        "v_e_f_t_before": [
+          192,
+          288,
+          114,
+          348
+        ],
+        "v_e_f_t_after": [
+          192,
+          288,
+          114,
+          348
+        ],
+        "local_error_count_before": 0,
+        "local_error_count_after": 0,
+        "producer_reported_roundtrip": "SEE_PRODUCER_FBX_ROUNDTRIP_REPORT"
+      },
+      "independent_qa": {
+        "owner": "C01-02",
+        "fbx_indexed": "PASS",
+        "fbx_triangulation": "PASS",
+        "full_approval": "BLOCKED",
+        "qa_source_sha_prefix": "233253cea4a8720",
+        "fan_degenerate_candidates": 0,
+        "fan_nonmanifold_edge_candidates": 0,
+        "complex_ngons": 10,
+        "signed_final_fbx_sha256": null
+      },
+      "release_state": "BLOCKED_PENDING_QA_AND_ENGINE"
+    },
+    {
+      "asset_id": "C01-P18-05",
+      "code": "P18-05",
+      "owner": "C01-18",
+      "wave": 2,
+      "before": {
+        "producer_commit": "e2fdde1c213ecb65b3ca1800c635e41e939e90e2",
+        "blend_sha256": "495260c299fa9afea63516549d50bcf3a581e1f3735409602e56859b41d23c5e",
+        "fbx_sha256": "2f4dbc8e7077e15b12f37f9fca64a0bc08e3ebde05776e602542e6efb648295e",
+        "source": "PASS03_IMMUTABLE_BASELINE_VERIFIED_THEN"
+      },
+      "candidate_after": {
+        "source_pr": 26,
+        "source_commit": "a736ff0519a3727b5911679474cf5be085e67e43",
+        "version": "PASS05_CANDIDATE_UNRELEASED",
+        "blend_path": "Assets/C01InteriorProps/C01-18-Wave02/Sources/P18-05.blend",
+        "fbx_path": "Assets/C01InteriorProps/C01-18-Wave02/Models/P18-05.fbx",
+        "provenance": {
+          "class": "C01_02_EARLIER_HYDRATED_FBX_EQUAL_TO_CURRENT_LFS_OID",
+          "blend_lfs_expected_sha256": "5f98b9e34f346df3ef133e30243aee5b26dc45032c415d643490d00dbdd22f21",
+          "fbx_lfs_expected_sha256": "58e33516ead13e35e8a48228045c67bd53d6caf8de01883a11625fa2961957e5",
+          "blend_pointer_git_blob_sha": "c96edbe5079f331dcca0062bd6baa771710d6e56",
+          "fbx_pointer_git_blob_sha": "55c45733c0943aebb6ad5f2b94a99464c1036750",
+          "qa_verified_hydrated_fbx_sha256": "58e33516ead13e35e8a48228045c67bd53d6caf8de01883a11625fa2961957e5",
+          "qa_ci_run": 41089810123,
+          "current_pointer_matches_QA_hydrated_binary_sha": true,
+          "blend_hydrated_in_pass05": false
+        },
+        "source_blend_open": "NOT_RUN_BY_C01_03",
+        "unity": "NOT_RUN"
+      },
+      "measurements": {
+        "source": "PRODUCER_METRICS_UNVERIFIED_INDEPENDENTLY",
+        "report_path": "Assets/C01InteriorProps/C01-18-Wave02/QA/Pass03/P18-05/mesh_topology_after.json",
+        "source_type": "PRODUCER_REAL_BLENDER_NOT_INDEPENDENT_QA",
+        "v_e_f_t_before": [
+          80,
+          120,
+          60,
+          120
+        ],
+        "v_e_f_t_after": [
+          80,
+          120,
+          60,
+          120
+        ],
+        "local_error_count_before": 0,
+        "local_error_count_after": 0,
+        "producer_reported_roundtrip": "SEE_PRODUCER_FBX_ROUNDTRIP_REPORT"
+      },
+      "independent_qa": {
+        "owner": "C01-02",
+        "fbx_indexed": "PASS",
+        "fbx_triangulation": "PASS",
+        "full_approval": "BLOCKED",
+        "qa_source_sha_prefix": "58e33516ead13e3",
+        "fan_degenerate_candidates": 0,
+        "fan_nonmanifold_edge_candidates": 0,
+        "complex_ngons": 0,
+        "signed_final_fbx_sha256": null
+      },
+      "release_state": "BLOCKED_PENDING_QA_AND_ENGINE"
+    },
+    {
+      "asset_id": "C01-P18-06",
+      "code": "P18-06",
+      "owner": "C01-18",
+      "wave": 2,
+      "before": {
+        "producer_commit": "e2fdde1c213ecb65b3ca1800c635e41e939e90e2",
+        "blend_sha256": "b6819748f8ae88c21e0c93bee4dfdb00badb4ec78898b65e52eec4e9cce9aef8",
+        "fbx_sha256": "3bb79ebca800dd175aba71e02a9628db328da009abcd0414c43e4040dbc6d36f",
+        "source": "PASS03_IMMUTABLE_BASELINE_VERIFIED_THEN"
+      },
+      "candidate_after": {
+        "source_pr": 26,
+        "source_commit": "a736ff0519a3727b5911679474cf5be085e67e43",
+        "version": "PASS05_CANDIDATE_UNRELEASED",
+        "blend_path": "Assets/C01InteriorProps/C01-18-Wave02/Sources/P18-06.blend",
+        "fbx_path": "Assets/C01InteriorProps/C01-18-Wave02/Models/P18-06.fbx",
+        "provenance": {
+          "class": "C01_02_EARLIER_HYDRATED_FBX_EQUAL_TO_CURRENT_LFS_OID",
+          "blend_lfs_expected_sha256": "b78b0975b222419af184ea88ed9f2d54e766d11f34ddaed319bd16723c225e3f",
+          "fbx_lfs_expected_sha256": "e83be5fac79ba0d4baf57f9a4c6050a978383da4f3bd95d046b38462fbabb220",
+          "blend_pointer_git_blob_sha": "263db262a2676dde7b9fff98f275d5e4f5eeca8a",
+          "fbx_pointer_git_blob_sha": "f17b5448efcb51a38a67af60ad053e2a8e3ef038",
+          "qa_verified_hydrated_fbx_sha256": "e83be5fac79ba0d4baf57f9a4c6050a978383da4f3bd95d046b38462fbabb220",
+          "qa_ci_run": 41089810123,
+          "current_pointer_matches_QA_hydrated_binary_sha": true,
+          "blend_hydrated_in_pass05": false
+        },
+        "source_blend_open": "NOT_RUN_BY_C01_03",
+        "unity": "NOT_RUN"
+      },
+      "measurements": {
+        "source": "PRODUCER_METRICS_UNVERIFIED_INDEPENDENTLY",
+        "report_path": "Assets/C01InteriorProps/C01-18-Wave02/QA/Pass03/P18-06/mesh_topology_after.json",
+        "source_type": "PRODUCER_REAL_BLENDER_NOT_INDEPENDENT_QA",
+        "v_e_f_t_before": [
+          88,
+          132,
+          66,
+          132
+        ],
+        "v_e_f_t_after": [
+          88,
+          132,
+          66,
+          132
+        ],
+        "local_error_count_before": 0,
+        "local_error_count_after": 0,
+        "producer_reported_roundtrip": "SEE_PRODUCER_FBX_ROUNDTRIP_REPORT"
+      },
+      "independent_qa": {
+        "owner": "C01-02",
+        "fbx_indexed": "PASS",
+        "fbx_triangulation": "PASS",
+        "full_approval": "BLOCKED",
+        "qa_source_sha_prefix": "e83be5fac79ba0d",
+        "fan_degenerate_candidates": 0,
+        "fan_nonmanifold_edge_candidates": 0,
+        "complex_ngons": 0,
+        "signed_final_fbx_sha256": null
+      },
+      "release_state": "BLOCKED_PENDING_QA_AND_ENGINE"
+    },
+    {
+      "asset_id": "C01-P18-07",
+      "code": "P18-07",
+      "owner": "C01-18",
+      "wave": 2,
+      "before": {
+        "producer_commit": "e2fdde1c213ecb65b3ca1800c635e41e939e90e2",
+        "blend_sha256": "f0fabddd21df84c49eba175522bbe17eeba389555dde7ffef39a7726cbd985c5",
+        "fbx_sha256": "68fb04e6572cfa54866a0a9bd7fb6da11d44408d7a946b26cb4cc78b9bc96873",
+        "source": "PASS03_IMMUTABLE_BASELINE_VERIFIED_THEN"
+      },
+      "candidate_after": {
+        "source_pr": 26,
+        "source_commit": "a736ff0519a3727b5911679474cf5be085e67e43",
+        "version": "PASS05_CANDIDATE_UNRELEASED",
+        "blend_path": "Assets/C01InteriorProps/C01-18-Wave02/Sources/P18-07.blend",
+        "fbx_path": "Assets/C01InteriorProps/C01-18-Wave02/Models/P18-07.fbx",
+        "provenance": {
+          "class": "C01_02_EARLIER_HYDRATED_FBX_EQUAL_TO_CURRENT_LFS_OID",
+          "blend_lfs_expected_sha256": "302a6832594702c7eff11a486d9e581c159993ff7b7f5c5abe124bf29edbc8d8",
+          "fbx_lfs_expected_sha256": "56c19c7ea12fe2713ae30b72ecf8771613f794d4a2e8c4da18c41cb9dd825e08",
+          "blend_pointer_git_blob_sha": "447a3f0a81de8fbec7824665e4f05e17714e682f",
+          "fbx_pointer_git_blob_sha": "67b6376629ac2edde597d555f1f001093c94ac4f",
+          "qa_verified_hydrated_fbx_sha256": "56c19c7ea12fe2713ae30b72ecf8771613f794d4a2e8c4da18c41cb9dd825e08",
+          "qa_ci_run": 41089810123,
+          "current_pointer_matches_QA_hydrated_binary_sha": true,
+          "blend_hydrated_in_pass05": false
+        },
+        "source_blend_open": "NOT_RUN_BY_C01_03",
+        "unity": "NOT_RUN"
+      },
+      "measurements": {
+        "source": "PRODUCER_METRICS_UNVERIFIED_INDEPENDENTLY",
+        "report_path": "Assets/C01InteriorProps/C01-18-Wave02/QA/Pass03/P18-07/mesh_topology_after.json",
+        "source_type": "PRODUCER_REAL_BLENDER_NOT_INDEPENDENT_QA",
+        "v_e_f_t_before": [
+          80,
+          120,
+          60,
+          120
+        ],
+        "v_e_f_t_after": [
+          80,
+          120,
+          60,
+          120
+        ],
+        "local_error_count_before": 0,
+        "local_error_count_after": 0,
+        "producer_reported_roundtrip": "SEE_PRODUCER_FBX_ROUNDTRIP_REPORT"
+      },
+      "independent_qa": {
+        "owner": "C01-02",
+        "fbx_indexed": "PASS",
+        "fbx_triangulation": "PASS",
+        "full_approval": "BLOCKED",
+        "qa_source_sha_prefix": "56c19c7ea12fe27",
+        "fan_degenerate_candidates": 0,
+        "fan_nonmanifold_edge_candidates": 0,
+        "complex_ngons": 0,
+        "signed_final_fbx_sha256": null
+      },
+      "release_state": "BLOCKED_PENDING_QA_AND_ENGINE"
+    },
+    {
+      "asset_id": "C01-P19-01",
+      "code": "P19-01",
+      "owner": "C01-19",
+      "wave": 1,
+      "before": {
+        "producer_commit": "9ae76a717eb5edeb5edcd3f5e27d8696f5d715ed",
+        "blend_sha256": "a504773f8348e5f2b9619cf4fc3d0664d4e354b237dd0159dce8486bdc35bd22",
+        "fbx_sha256": "1670b2c7566539de49d70d4222bdc4c04ef947607d1abe05ac70f783a82f0581",
+        "source": "PASS03_IMMUTABLE_BASELINE_VERIFIED_THEN"
+      },
+      "candidate_after": {
+        "source_pr": 15,
+        "source_commit": "2f4f14ce1b8732f599fcaf729449674b7d097303",
+        "version": "PASS05_CANDIDATE_UNRELEASED",
+        "blend_path": "Assets/C01InteriorProps/C01-19/Models/P19-01/P19-01.blend",
+        "fbx_path": "Assets/C01InteriorProps/C01-19/Models/P19-01/P19-01.fbx",
+        "provenance": {
+          "class": "C01_02_EARLIER_HYDRATED_FBX_EQUAL_TO_CURRENT_LFS_OID",
+          "blend_lfs_expected_sha256": "8327069f58c9991a560234091ca5536b5946dc5b907e8b36bc4f5f6ec245c60f",
+          "fbx_lfs_expected_sha256": "47b4d6f2017626b6084584fbf0bad907505eb9e194703032d83af5315c1a4009",
+          "blend_pointer_git_blob_sha": "c996c2366120b2d463b4483be1a923fb57f0e51e",
+          "fbx_pointer_git_blob_sha": "ce9cc037604e2102df95ae807f3aa42ab3e76d33",
+          "qa_verified_hydrated_fbx_sha256": "47b4d6f2017626b6084584fbf0bad907505eb9e194703032d83af5315c1a4009",
+          "qa_ci_run": 41090102018,
+          "current_pointer_matches_QA_hydrated_binary_sha": true,
+          "blend_hydrated_in_pass05": false
+        },
+        "source_blend_open": "NOT_RUN_BY_C01_03",
+        "unity": "NOT_RUN"
+      },
+      "measurements": {
+        "source": "PRODUCER_METRICS_UNVERIFIED_INDEPENDENTLY",
+        "report_path": "Assets/C01InteriorProps/C01-19/QA/PASS03/P19-01/report.json",
+        "source_type": "PRODUCER_REAL_BLENDER_NOT_INDEPENDENT_QA",
+        "v_e_f_t_before": [
+          88,
+          132,
+          66,
+          132
+        ],
+        "v_e_f_t_after": [
+          133,
+          205,
+          78,
+          254
+        ],
+        "local_error_count_before": 0,
+        "local_error_count_after": 0,
+        "producer_reported_roundtrip": "PASS"
+      },
+      "independent_qa": {
+        "owner": "C01-02",
+        "fbx_indexed": "PASS",
+        "fbx_triangulation": "FAIL",
+        "full_approval": "BLOCKED",
+        "qa_source_sha_prefix": "47b4d6f2017626b",
+        "fan_degenerate_candidates": 13,
+        "fan_nonmanifold_edge_candidates": 0,
+        "complex_ngons": 38,
+        "signed_final_fbx_sha256": null
+      },
+      "release_state": "FAIL_TRIANGULATION_STATIC"
+    },
+    {
+      "asset_id": "C01-P19-02",
+      "code": "P19-02",
+      "owner": "C01-19",
+      "wave": 1,
+      "before": {
+        "producer_commit": "9ae76a717eb5edeb5edcd3f5e27d8696f5d715ed",
+        "blend_sha256": "3c3ef13129b7fbf598f4ece35a76ee3068fa26fee464937baffbefb66fb19b80",
+        "fbx_sha256": "9612c4488ed147ad7359f9809009739ea317e22959c3871856757fe88dacc6d5",
+        "source": "PASS03_IMMUTABLE_BASELINE_VERIFIED_THEN"
+      },
+      "candidate_after": {
+        "source_pr": 15,
+        "source_commit": "2f4f14ce1b8732f599fcaf729449674b7d097303",
+        "version": "PASS05_CANDIDATE_UNRELEASED",
+        "blend_path": "Assets/C01InteriorProps/C01-19/Models/P19-02/P19-02.blend",
+        "fbx_path": "Assets/C01InteriorProps/C01-19/Models/P19-02/P19-02.fbx",
+        "provenance": {
+          "class": "C01_02_EARLIER_HYDRATED_FBX_EQUAL_TO_CURRENT_LFS_OID",
+          "blend_lfs_expected_sha256": "a449e0c7f2327171f9c05f277d16e391dfc82e434908766428a43c8da5dbaaa7",
+          "fbx_lfs_expected_sha256": "a42a57d168164cea335de3c9ee175a3074edca4a48b707a14beadbea16a8b6d8",
+          "blend_pointer_git_blob_sha": "69ee210b7c08de8cd983a134299e88ea4d504ba4",
+          "fbx_pointer_git_blob_sha": "4dc6040409512d3ddd1efb11f2b68aae3d3e82d5",
+          "qa_verified_hydrated_fbx_sha256": "a42a57d168164cea335de3c9ee175a3074edca4a48b707a14beadbea16a8b6d8",
+          "qa_ci_run": 41090102018,
+          "current_pointer_matches_QA_hydrated_binary_sha": true,
+          "blend_hydrated_in_pass05": false
+        },
+        "source_blend_open": "NOT_RUN_BY_C01_03",
+        "unity": "NOT_RUN"
+      },
+      "measurements": {
+        "source": "PRODUCER_METRICS_UNVERIFIED_INDEPENDENTLY",
+        "report_path": "Assets/C01InteriorProps/C01-19/QA/PASS03/P19-02/report.json",
+        "source_type": "PRODUCER_REAL_BLENDER_NOT_INDEPENDENT_QA",
+        "v_e_f_t_before": [
+          72,
+          108,
+          54,
+          108
+        ],
+        "v_e_f_t_after": [
+          118,
+          194,
+          86,
+          216
+        ],
+        "local_error_count_before": 0,
+        "local_error_count_after": 0,
+        "producer_reported_roundtrip": "PASS"
+      },
+      "independent_qa": {
+        "owner": "C01-02",
+        "fbx_indexed": "PASS",
+        "fbx_triangulation": "FAIL",
+        "full_approval": "BLOCKED",
+        "qa_source_sha_prefix": "a42a57d168164ce",
+        "fan_degenerate_candidates": 11,
+        "fan_nonmanifold_edge_candidates": 5,
+        "complex_ngons": 31,
+        "signed_final_fbx_sha256": null
+      },
+      "release_state": "FAIL_TRIANGULATION_STATIC"
+    },
+    {
+      "asset_id": "C01-P19-03",
+      "code": "P19-03",
+      "owner": "C01-19",
+      "wave": 1,
+      "before": {
+        "producer_commit": "9ae76a717eb5edeb5edcd3f5e27d8696f5d715ed",
+        "blend_sha256": "5c3422e71ee66f0260a3ea986d74ada6267ed7ee7f0cac446c31dc7586dd6455",
+        "fbx_sha256": "ee6f0d38e281d534af62902bc47fd89267e0c39b9e49b4ef6f35af71a6f2abb8",
+        "source": "PASS03_IMMUTABLE_BASELINE_VERIFIED_THEN"
+      },
+      "candidate_after": {
+        "source_pr": 15,
+        "source_commit": "2f4f14ce1b8732f599fcaf729449674b7d097303",
+        "version": "PASS05_CANDIDATE_UNRELEASED",
+        "blend_path": "Assets/C01InteriorProps/C01-19/Models/P19-03/P19-03.blend",
+        "fbx_path": "Assets/C01InteriorProps/C01-19/Models/P19-03/P19-03.fbx",
+        "provenance": {
+          "class": "C01_02_EARLIER_HYDRATED_FBX_EQUAL_TO_CURRENT_LFS_OID",
+          "blend_lfs_expected_sha256": "fd90fde2e1c42c044ab1f1701a8cef1418b387c2140460ec17799aee8dc36b1b",
+          "fbx_lfs_expected_sha256": "872688775a1f373090867a466b21be441d8962b16b2a47703cc50c12220f1891",
+          "blend_pointer_git_blob_sha": "b3b89f9d7fc617ef53bb8b7bcb14e9afa5f41ea5",
+          "fbx_pointer_git_blob_sha": "f40767e2baf6ae3b399a4beb27c1356a1a5164ff",
+          "qa_verified_hydrated_fbx_sha256": "872688775a1f373090867a466b21be441d8962b16b2a47703cc50c12220f1891",
+          "qa_ci_run": 41088789078,
+          "current_pointer_matches_QA_hydrated_binary_sha": true,
+          "blend_hydrated_in_pass05": false
+        },
+        "source_blend_open": "NOT_RUN_BY_C01_03",
+        "unity": "NOT_RUN"
+      },
+      "measurements": {
+        "source": "PRODUCER_METRICS_UNVERIFIED_INDEPENDENTLY",
+        "report_path": "Assets/C01InteriorProps/C01-19/QA/PASS03/P19-03/report.json",
+        "source_type": "PRODUCER_REAL_BLENDER_NOT_INDEPENDENT_QA",
+        "v_e_f_t_before": [
+          64,
+          96,
+          48,
+          96
+        ],
+        "v_e_f_t_after": [
+          72,
+          112,
+          48,
+          128
+        ],
+        "local_error_count_before": 0,
+        "local_error_count_after": 0,
+        "producer_reported_roundtrip": "PASS"
+      },
+      "independent_qa": {
+        "owner": "C01-02",
+        "fbx_indexed": "PASS",
+        "fbx_triangulation": "PASS",
+        "full_approval": "BLOCKED",
+        "qa_source_sha_prefix": "872688775a1f373",
+        "fan_degenerate_candidates": 0,
+        "fan_nonmanifold_edge_candidates": 0,
+        "complex_ngons": 10,
+        "signed_final_fbx_sha256": null
+      },
+      "release_state": "BLOCKED_PENDING_QA_AND_ENGINE"
+    },
+    {
+      "asset_id": "C01-P19-04",
+      "code": "P19-04",
+      "owner": "C01-19",
+      "wave": 1,
+      "before": {
+        "producer_commit": "9ae76a717eb5edeb5edcd3f5e27d8696f5d715ed",
+        "blend_sha256": "d58dc1905055b6d25888e0ccaeaa3e61b1b6a4757ba58976f31ab10665c2287d",
+        "fbx_sha256": "74ee2044132b47e995f537b2850e150711e8cb8ee47fcbbde38f42ed16808592",
+        "source": "PASS03_IMMUTABLE_BASELINE_VERIFIED_THEN"
+      },
+      "candidate_after": {
+        "source_pr": 15,
+        "source_commit": "2f4f14ce1b8732f599fcaf729449674b7d097303",
+        "version": "PASS05_CANDIDATE_UNRELEASED",
+        "blend_path": "Assets/C01InteriorProps/C01-19/Models/P19-04/P19-04.blend",
+        "fbx_path": "Assets/C01InteriorProps/C01-19/Models/P19-04/P19-04.fbx",
+        "provenance": {
+          "class": "C01_02_EARLIER_HYDRATED_FBX_EQUAL_TO_CURRENT_LFS_OID",
+          "blend_lfs_expected_sha256": "405df332511b8e7aa2ec1b21275028eaab9b14ec62495397e616dc9868365b15",
+          "fbx_lfs_expected_sha256": "529c1886bf8d727699db72578f01da9f6226981e02738a1b9fcd24ade489bc9b",
+          "blend_pointer_git_blob_sha": "1e386731b5f7a1a1690a22e9d55a61058c4dda6f",
+          "fbx_pointer_git_blob_sha": "e90c928ee98a1da59592d6d6e65cbbbf6c7fbe33",
+          "qa_verified_hydrated_fbx_sha256": "529c1886bf8d727699db72578f01da9f6226981e02738a1b9fcd24ade489bc9b",
+          "qa_ci_run": 41088789078,
+          "current_pointer_matches_QA_hydrated_binary_sha": true,
+          "blend_hydrated_in_pass05": false
+        },
+        "source_blend_open": "NOT_RUN_BY_C01_03",
+        "unity": "NOT_RUN"
+      },
+      "measurements": {
+        "source": "PRODUCER_METRICS_UNVERIFIED_INDEPENDENTLY",
+        "report_path": "Assets/C01InteriorProps/C01-19/QA/PASS03/P19-04/report.json",
+        "source_type": "PRODUCER_REAL_BLENDER_NOT_INDEPENDENT_QA",
+        "v_e_f_t_before": [
+          72,
+          108,
+          54,
+          108
+        ],
+        "v_e_f_t_after": [
+          72,
+          108,
+          54,
+          108
+        ],
+        "local_error_count_before": 0,
+        "local_error_count_after": 0,
+        "producer_reported_roundtrip": "PASS"
+      },
+      "independent_qa": {
+        "owner": "C01-02",
+        "fbx_indexed": "PASS",
+        "fbx_triangulation": "PASS",
+        "full_approval": "BLOCKED",
+        "qa_source_sha_prefix": "529c1886bf8d727",
+        "fan_degenerate_candidates": 0,
+        "fan_nonmanifold_edge_candidates": 0,
+        "complex_ngons": 0,
+        "signed_final_fbx_sha256": null
+      },
+      "release_state": "BLOCKED_PENDING_QA_AND_ENGINE"
+    },
+    {
+      "asset_id": "C01-P19-05",
+      "code": "P19-05",
+      "owner": "C01-19",
+      "wave": 2,
+      "before": {
+        "producer_commit": "cae85cce223418d77a0334a48e5fbdc7984a688b",
+        "blend_sha256": "a7c50a8ea1f41a7e590b1af7bf1dae83a49e0d049dcd7270cbe02690a88b3d8c",
+        "fbx_sha256": "e591b1d228ab2224109cc2bd79db411428c2b2d38846b45f595db4af8d377ba2",
+        "source": "PASS03_IMMUTABLE_BASELINE_VERIFIED_THEN"
+      },
+      "candidate_after": {
+        "source_pr": 29,
+        "source_commit": "2521b7dbf2f1fab65cc63c0040963a6aea3a2655",
+        "version": "PASS05_CANDIDATE_UNRELEASED",
+        "blend_path": "Assets/C01InteriorProps/C01-19-W02/Models/P19-05/P19-05.blend",
+        "fbx_path": "Assets/C01InteriorProps/C01-19-W02/Models/P19-05/P19-05.fbx",
+        "provenance": {
+          "class": "C01_02_EARLIER_HYDRATED_FBX_EQUAL_TO_CURRENT_LFS_OID",
+          "blend_lfs_expected_sha256": "a308fe19455a68d7452060a33d6a8f5e807e648468d7ddc148913b731dffc86b",
+          "fbx_lfs_expected_sha256": "64156363cb5007831c243aeea50d5e59c862cc98b27cb12dd2f8af5b3c019892",
+          "blend_pointer_git_blob_sha": "286271b38f585ed41790088ff73b1f77a543f822",
+          "fbx_pointer_git_blob_sha": "b5efb6469f947b9f8c829117afeaf4656483f594",
+          "qa_verified_hydrated_fbx_sha256": "64156363cb5007831c243aeea50d5e59c862cc98b27cb12dd2f8af5b3c019892",
+          "qa_ci_run": 41088782744,
+          "current_pointer_matches_QA_hydrated_binary_sha": true,
+          "blend_hydrated_in_pass05": false
+        },
+        "source_blend_open": "NOT_RUN_BY_C01_03",
+        "unity": "NOT_RUN"
+      },
+      "measurements": {
+        "source": "PRODUCER_METRICS_UNVERIFIED_INDEPENDENTLY",
+        "report_path": "Assets/C01InteriorProps/C01-19-W02/QA/PASS03/P19-05/report.json",
+        "source_type": "PRODUCER_REAL_BLENDER_NOT_INDEPENDENT_QA",
+        "v_e_f_t_before": [
+          88,
+          132,
+          66,
+          132
+        ],
+        "v_e_f_t_after": [
+          88,
+          140,
+          66,
+          148
+        ],
+        "local_error_count_before": 0,
+        "local_error_count_after": 0,
+        "producer_reported_roundtrip": "PASS"
+      },
+      "independent_qa": {
+        "owner": "C01-02",
+        "fbx_indexed": "PASS",
+        "fbx_triangulation": "FAIL",
+        "full_approval": "BLOCKED",
+        "qa_source_sha_prefix": "64156363cb50078",
+        "fan_degenerate_candidates": 1,
+        "fan_nonmanifold_edge_candidates": 1,
+        "complex_ngons": 3,
+        "signed_final_fbx_sha256": null
+      },
+      "release_state": "FAIL_TRIANGULATION_STATIC"
+    },
+    {
+      "asset_id": "C01-P19-06",
+      "code": "P19-06",
+      "owner": "C01-19",
+      "wave": 2,
+      "before": {
+        "producer_commit": "cae85cce223418d77a0334a48e5fbdc7984a688b",
+        "blend_sha256": "2fe00dd31c76da2fa7f82a3c8107d7802c106026e26d62ded6bef23d4b4d9dab",
+        "fbx_sha256": "9644a9e123696cd271649c62481bbbff150eb0734079a7a62af090d4f490a469",
+        "source": "PASS03_IMMUTABLE_BASELINE_VERIFIED_THEN"
+      },
+      "candidate_after": {
+        "source_pr": 29,
+        "source_commit": "2521b7dbf2f1fab65cc63c0040963a6aea3a2655",
+        "version": "PASS05_CANDIDATE_UNRELEASED",
+        "blend_path": "Assets/C01InteriorProps/C01-19-W02/Models/P19-06/P19-06.blend",
+        "fbx_path": "Assets/C01InteriorProps/C01-19-W02/Models/P19-06/P19-06.fbx",
+        "provenance": {
+          "class": "C01_02_EARLIER_HYDRATED_FBX_EQUAL_TO_CURRENT_LFS_OID",
+          "blend_lfs_expected_sha256": "34a692bce9337d7a530df5e9d088e7c8f34a6ecb159ea9e8c0d4b1cc3dc96453",
+          "fbx_lfs_expected_sha256": "d773f2d3c0fe9743a0ad619353766b669386997769eb8a59487b58295c7c3a7d",
+          "blend_pointer_git_blob_sha": "635d077b1959d48fc678ec11c043916f34bdf776",
+          "fbx_pointer_git_blob_sha": "8d213b39641314f500cf7effba1d99796f1e60a4",
+          "qa_verified_hydrated_fbx_sha256": "d773f2d3c0fe9743a0ad619353766b669386997769eb8a59487b58295c7c3a7d",
+          "qa_ci_run": 41088782744,
+          "current_pointer_matches_QA_hydrated_binary_sha": true,
+          "blend_hydrated_in_pass05": false
+        },
+        "source_blend_open": "NOT_RUN_BY_C01_03",
+        "unity": "NOT_RUN"
+      },
+      "measurements": {
+        "source": "PRODUCER_METRICS_UNVERIFIED_INDEPENDENTLY",
+        "report_path": "Assets/C01InteriorProps/C01-19-W02/QA/PASS03/P19-06/report.json",
+        "source_type": "PRODUCER_REAL_BLENDER_NOT_INDEPENDENT_QA",
+        "v_e_f_t_before": [
+          56,
+          84,
+          42,
+          84
+        ],
+        "v_e_f_t_after": [
+          56,
+          84,
+          42,
+          84
+        ],
+        "local_error_count_before": 0,
+        "local_error_count_after": 0,
+        "producer_reported_roundtrip": "PASS"
+      },
+      "independent_qa": {
+        "owner": "C01-02",
+        "fbx_indexed": "PASS",
+        "fbx_triangulation": "PASS",
+        "full_approval": "BLOCKED",
+        "qa_source_sha_prefix": "d773f2d3c0fe974",
+        "fan_degenerate_candidates": 0,
+        "fan_nonmanifold_edge_candidates": 0,
+        "complex_ngons": 0,
+        "signed_final_fbx_sha256": null
+      },
+      "release_state": "BLOCKED_PENDING_QA_AND_ENGINE"
+    },
+    {
+      "asset_id": "C01-P19-07",
+      "code": "P19-07",
+      "owner": "C01-19",
+      "wave": 2,
+      "before": {
+        "producer_commit": "cae85cce223418d77a0334a48e5fbdc7984a688b",
+        "blend_sha256": "8d99c6286c6e28182742e69293eb393dc30c6abe9bb50fa77dee3a77fae9928a",
+        "fbx_sha256": "2c180a3607c49b43c48a14e4cf58f2b825f44b56e2e86cc02b17e6d96d6c8d43",
+        "source": "PASS03_IMMUTABLE_BASELINE_VERIFIED_THEN"
+      },
+      "candidate_after": {
+        "source_pr": 29,
+        "source_commit": "2521b7dbf2f1fab65cc63c0040963a6aea3a2655",
+        "version": "PASS05_CANDIDATE_UNRELEASED",
+        "blend_path": "Assets/C01InteriorProps/C01-19-W02/Models/P19-07/P19-07.blend",
+        "fbx_path": "Assets/C01InteriorProps/C01-19-W02/Models/P19-07/P19-07.fbx",
+        "provenance": {
+          "class": "C01_02_EARLIER_HYDRATED_FBX_EQUAL_TO_CURRENT_LFS_OID",
+          "blend_lfs_expected_sha256": "d850c158fcb121a43e1885a56f1d07fdc396a0bea63ebef3b4d64086bde2aca7",
+          "fbx_lfs_expected_sha256": "88b32fe2f5ddf981eecdc0469088f4e23e07c4c605a1db7bb9689a0b6011d585",
+          "blend_pointer_git_blob_sha": "84e9281ca83da8a153a384e10bbf2fdaf098d764",
+          "fbx_pointer_git_blob_sha": "e1994a68e6b291da6aec8ded279cc061a30d0237",
+          "qa_verified_hydrated_fbx_sha256": "88b32fe2f5ddf981eecdc0469088f4e23e07c4c605a1db7bb9689a0b6011d585",
+          "qa_ci_run": 41088782744,
+          "current_pointer_matches_QA_hydrated_binary_sha": true,
+          "blend_hydrated_in_pass05": false
+        },
+        "source_blend_open": "NOT_RUN_BY_C01_03",
+        "unity": "NOT_RUN"
+      },
+      "measurements": {
+        "source": "PRODUCER_METRICS_UNVERIFIED_INDEPENDENTLY",
+        "report_path": "Assets/C01InteriorProps/C01-19-W02/QA/PASS03/P19-07/report.json",
+        "source_type": "PRODUCER_REAL_BLENDER_NOT_INDEPENDENT_QA",
+        "v_e_f_t_before": [
+          104,
+          156,
+          78,
+          156
+        ],
+        "v_e_f_t_after": [
+          136,
+          204,
+          78,
+          252
+        ],
+        "local_error_count_before": 0,
+        "local_error_count_after": 0,
+        "producer_reported_roundtrip": "PASS"
+      },
+      "independent_qa": {
+        "owner": "C01-02",
+        "fbx_indexed": "PASS",
+        "fbx_triangulation": "FAIL",
+        "full_approval": "BLOCKED",
+        "qa_source_sha_prefix": "88b32fe2f5ddf98",
+        "fan_degenerate_candidates": 19,
+        "fan_nonmanifold_edge_candidates": 2,
+        "complex_ngons": 16,
+        "signed_final_fbx_sha256": null
+      },
+      "release_state": "FAIL_TRIANGULATION_STATIC"
+    },
+    {
+      "asset_id": "C01-P19-08",
+      "code": "P19-08",
+      "owner": "C01-19",
+      "wave": 2,
+      "before": {
+        "producer_commit": "cae85cce223418d77a0334a48e5fbdc7984a688b",
+        "blend_sha256": "5b00c434831ef27f87e03b7716916b31893f8eb4f8733b7c95cc543510a27ce9",
+        "fbx_sha256": "65bc32a8f280941b24e8070a706e5733b30fde25d042f4cdd4398022e2edaf44",
+        "source": "PASS03_IMMUTABLE_BASELINE_VERIFIED_THEN"
+      },
+      "candidate_after": {
+        "source_pr": 29,
+        "source_commit": "2521b7dbf2f1fab65cc63c0040963a6aea3a2655",
+        "version": "PASS05_CANDIDATE_UNRELEASED",
+        "blend_path": "Assets/C01InteriorProps/C01-19-W02/Models/P19-08/P19-08.blend",
+        "fbx_path": "Assets/C01InteriorProps/C01-19-W02/Models/P19-08/P19-08.fbx",
+        "provenance": {
+          "class": "C01_02_EARLIER_HYDRATED_FBX_EQUAL_TO_CURRENT_LFS_OID",
+          "blend_lfs_expected_sha256": "cb1d0e75f6b1d1a4d8e8936aee0c5fee190a7d3a6ac97e1539b25add4ecb81ff",
+          "fbx_lfs_expected_sha256": "cbbea5435f8326e06fb5f43237986594df044c0e3ff94100fc44f856dce35ae2",
+          "blend_pointer_git_blob_sha": "a9409682c26cde244cd13bc4f0a3f16ee74257a8",
+          "fbx_pointer_git_blob_sha": "8b73397e88bb41df8d51b0d13dd7dd4fbd6dea42",
+          "qa_verified_hydrated_fbx_sha256": "cbbea5435f8326e06fb5f43237986594df044c0e3ff94100fc44f856dce35ae2",
+          "qa_ci_run": 41088782744,
+          "current_pointer_matches_QA_hydrated_binary_sha": true,
+          "blend_hydrated_in_pass05": false
+        },
+        "source_blend_open": "NOT_RUN_BY_C01_03",
+        "unity": "NOT_RUN"
+      },
+      "measurements": {
+        "source": "PRODUCER_METRICS_UNVERIFIED_INDEPENDENTLY",
+        "report_path": "Assets/C01InteriorProps/C01-19-W02/QA/PASS03/P19-08/report.json",
+        "source_type": "PRODUCER_REAL_BLENDER_NOT_INDEPENDENT_QA",
+        "v_e_f_t_before": [
+          96,
+          144,
+          72,
+          144
+        ],
+        "v_e_f_t_after": [
+          149,
+          241,
+          100,
+          282
+        ],
+        "local_error_count_before": 0,
+        "local_error_count_after": 0,
+        "producer_reported_roundtrip": "PASS"
+      },
+      "independent_qa": {
+        "owner": "C01-02",
+        "fbx_indexed": "PASS",
+        "fbx_triangulation": "FAIL",
+        "full_approval": "BLOCKED",
+        "qa_source_sha_prefix": "cbbea5435f8326e",
+        "fan_degenerate_candidates": 7,
+        "fan_nonmanifold_edge_candidates": 3,
+        "complex_ngons": 35,
+        "signed_final_fbx_sha256": null
+      },
+      "release_state": "FAIL_TRIANGULATION_STATIC"
+    }
+  ]
+}

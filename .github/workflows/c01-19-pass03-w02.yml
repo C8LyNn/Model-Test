@@ -1,0 +1,62 @@
+name: C01-19 PASS03 Mesh Integrity W02
+on:
+  push:
+    branches: [c01/props-19-furniture-wave02]
+    paths:
+      - 'Assets/C01InteriorProps/C01-19-W02/Source/pass03_repair.py'
+      - '.github/workflows/c01-19-pass03-w02.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  real-source-repair:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - name: Install Blender + numpy + display
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y blender python3-numpy git-lfs xvfb xauth libegl1 libgl1 libopengl0
+          git lfs install --local
+          git lfs pull
+      - name: Audit original native geometry, repair, render before-after, FBX roundtrip
+        run: xvfb-run -a blender -b --factory-startup --python-exit-code 1 --python Assets/C01InteriorProps/C01-19-W02/Source/pass03_repair.py
+      - name: Verify repaired assets and reports exist
+        run: |
+          python3 - <<'PY'
+          import pathlib,json
+          root=pathlib.Path('Assets/C01InteriorProps/C01-19-W02')
+          items=json.loads((root/'QA/PASS03/SUMMARY.json').read_text())['models']
+          assert len(items)==4, f'Expected four native assets, got {len(items)}'
+          for it in items:
+            mid=it['id'];e=root/'QA/PASS03'/mid
+            for name in ('mesh_topology_before.json','mesh_topology_after.json','wireframe_before.png','wireframe_after.png','shaded_after.png','closeup_actual_mesh.png'):
+              f=e/name
+              assert f.exists() and f.stat().st_size>500,(mid,name)
+              if name.endswith('.png'):assert f.read_bytes().startswith(b'\x89PNG\r\n\x1a\n')
+            assert it['fbx_roundtrip']['result']=='PASS',mid
+            for ext,magic in [('.blend',b'BLENDER'),('.fbx',b'Kaydara FBX Binary  \x00\x1a\x00')]:
+              assert (root/'Models'/mid/(mid+ext)).read_bytes().startswith(magic),mid+ext
+          print('C01-19 PASS03 four native assets: reports, 16 real renders, FBX roundtrips PASS')
+          PY
+      - name: Upload independent-inspectable repair outputs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-19-PASS03-W02-Real-Mesh-Repair-Evidence
+          if-no-files-found: warn
+          path: |
+            Assets/C01InteriorProps/C01-19-W02/QA/PASS03/**
+            Assets/C01InteriorProps/C01-19-W02/Models/*/*.blend
+            Assets/C01InteriorProps/C01-19-W02/Models/*/*.fbx
+      - name: Commit native repaired sources and evidence (no merge)
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Assets/C01InteriorProps/C01-19-W02/Models Assets/C01InteriorProps/C01-19-W02/QA/PASS03
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "fix(C01-19 W02): repair real source mesh intersections and FBX validate PASS03"
+          git push origin HEAD:c01/props-19-furniture-wave02

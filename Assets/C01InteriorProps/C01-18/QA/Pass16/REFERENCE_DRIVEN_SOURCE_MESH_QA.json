@@ -1,0 +1,196 @@
+{
+  "name": "C01-18 DETAIL PASS16 REFERENCE-DRIVEN SOURCE AUTHORING QA",
+  "date": "2026-10-30",
+  "owner": "C01-18 — Cargo & Movable Objects",
+  "issue": 36,
+  "scope": "Existing model IDs P18-01/P18-02/P18-03 only, no ship geometry, no new model ID, original source prefix preserved, branch draft not merged",
+  "starting_immutable_commit": "a36b22669526daba76ae0a4147f0a4d2a48e33fc",
+  "reference_notes": "Assets/C01InteriorProps/C01-18/References/DETAIL_PASS16_CARGO_REFERENCES.md",
+  "reference_count": 5,
+  "reference_urls": [
+    "https://www.blickle.com/guide/basic-information-definitions",
+    "https://www.blickle.com/guide/fitting-types",
+    "https://www.uline.com/BL_3944/Industrial-Steel-Shelving",
+    "https://southco.com/en_in_int/f6-904",
+    "https://southco.com/en_us_int/a1-99-711"
+  ],
+  "reference_license_and_origin": "Proprietary manufacturer source images/CAD/text remain third-party; only URL and own mechanical abstraction/short analysis stored; NO downloaded copyrighted image or product geometry copied into model",
+  "models": {
+    "P18-01": {
+      "source": "Assets/C01InteriorProps/C01-18/Models/P18-01.obj",
+      "sha256": "a3f05396b78419f39e30f78eabecb1e39eb0403b171be945621329a311df0858",
+      "git_blob": "dc1ad53e6651a091f9bb193b9baed568a3a7aa60",
+      "part_count_before": 41,
+      "part_count_after": 43,
+      "V": 520,
+      "E": 992,
+      "F": 558,
+      "T_before": 844,
+      "T_after": 868,
+      "added": [
+        "FrontLatch_L_UpperKeeper",
+        "FrontLatch_R_UpperKeeper"
+      ],
+      "why": "Independent upper keeper tabs on movable lid engage original two front lever latches; Southco A1 drawn-latch concept (not its shape/dimensions)",
+      "checked_supports": {
+        "lid_edge_face_triangle_intersections_per_keeper": [
+          8,
+          8
+        ],
+        "lever_edge_face_triangle_intersections": [
+          16,
+          16
+        ]
+      },
+      "parenting": "Both keeper meshes follow Upper_Lid (builder updated, not executed)"
+    },
+    "P18-02": {
+      "source": "Assets/C01InteriorProps/C01-18/Models/P18-02.obj",
+      "sha256": "edceacf8b3494da686186632b27c6a0885f95f401e9598830c7be33927eeff0b",
+      "git_blob": "f6ba1600294380416b567b443e328adccc29c270",
+      "part_count_before": 51,
+      "part_count_after": 55,
+      "V": 696,
+      "E": 1368,
+      "F": 782,
+      "T_before": 1044,
+      "T_after": 1172,
+      "added": [
+        "BackSupport_0.60_GussetFastener_L",
+        "BackSupport_0.60_GussetFastener_R",
+        "BackSupport_1.48_GussetFastener_L",
+        "BackSupport_1.48_GussetFastener_R"
+      ],
+      "why": "Visible 8-segment steel mounting fasteners through the prior genuine triangular reinforcement into rear structural post. Uline rack bracing principle.",
+      "checked_supports": {
+        "gusset_edge_face_triangle_intersections": [
+          32,
+          32,
+          32,
+          32
+        ],
+        "post_edge_face_triangle_intersections": [
+          13,
+          13,
+          15,
+          15
+        ]
+      },
+      "parenting": "Each fastener static child of its matching rear gusset (not executed in Blender)"
+    },
+    "P18-03": {
+      "source": "Assets/C01InteriorProps/C01-18/Models/P18-03.obj",
+      "sha256": "a67e5d708538f738bc6363ffe14a177217b506bfbbab8224f420b063ef09f1aa",
+      "git_blob": "259d3687a7968172f275410cf49e9d66d479c8ca",
+      "part_count_before": 57,
+      "part_count_after": 61,
+      "V": 984,
+      "E": 2116,
+      "F": 1254,
+      "T_before": 1628,
+      "T_after": 1724,
+      "added": [
+        "Wheel_LB_AnchorRetainer",
+        "Wheel_LF_AnchorRetainer",
+        "Wheel_RB_AnchorRetainer",
+        "Wheel_RF_AnchorRetainer"
+      ],
+      "why": "Six-flat retainer bolts seated in original caster/frame anchor plates, distinguished from wheel hub/axle; inspired by Blickle plate mounting principles.",
+      "checked_supports": {
+        "anchor_edge_face_triangle_intersections": [
+          14,
+          12,
+          12,
+          14
+        ],
+        "upright_direct_edge_face_triangle_intersections": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "note": "Bolt secures original anchor plate, not directly to frame upright; absence of direct upright crossing is intentional."
+      },
+      "parenting": "Each bolt child of original stationary wheel Anchor (not moving wheel); wheel/hub/crown pivot logic preserved, not runtime-tested"
+    }
+  },
+  "aggregate": {
+    "source_mesh_count_before": 149,
+    "source_mesh_count_after": 159,
+    "triangle_count_before": 3516,
+    "triangle_count_after": 3764,
+    "added_parts": 10,
+    "added_triangles": 248,
+    "triangle_increase_percent": 7.05
+  },
+  "source_QA": {
+    "verified_actual_source_files": "GitHub connector fetch of exact branch after writes, each indexed OBJ v/vt/vn/f fully decoded",
+    "models_tested": 3,
+    "result": "PRODUCER_SOURCE_QA_PASS 3/3",
+    "unchanged_old_groups": "3/3 entire PASS15 OBJ file prefixes exactly preserved, all new objects appended",
+    "missing_vertex": 0,
+    "missing_uv0": 0,
+    "missing_normals": 0,
+    "zero_area_triangle": 0,
+    "duplicate_indexed_face": 0,
+    "boundary_edge": 0,
+    "nonmanifold_edge": 0,
+    "inconsistent_shared_winding": 0,
+    "face_vertex_normal_orientation": 0,
+    "all_cross_part_same_facing_coplanar_overlap_area_m2": {
+      "P18-01": 0,
+      "P18-02": 0,
+      "P18-03": 0
+    },
+    "cross_part_same_facing_planar_pairs_checked": {
+      "P18-01": 2384,
+      "P18-02": 11932,
+      "P18-03": 6128
+    },
+    "new_detail_true_triangle_contact_with_named_primary_support": "10/10 positive",
+    "new_lid_keeper_with_original_lever": "2/2 actual edge-triangle crossing",
+    "cart_bolt_to_upright_direct_triangle_contact": "0/4, intended only to anchor plate",
+    "limitations": "Producer static source QA, not independent C01-02 QA; no swept moving lid, wheel movement, all-body oblique intersection audit or Unity runtime test"
+  },
+  "blender_builder": {
+    "path": "Assets/C01InteriorProps/C01-18/Sources/build_blender.py",
+    "sha256": "a7b17a722d541c59bfbe655a19c5be6fc1e4f23dc3cb302a752544c3e6cb8b01",
+    "git_blob": "8e17d795354013994f6e26ec3779e19c51ed8cd7",
+    "expected_parts_triangles": {
+      "P18-01": [
+        43,
+        868
+      ],
+      "P18-02": [
+        55,
+        1172
+      ],
+      "P18-03": [
+        61,
+        1724
+      ]
+    },
+    "changes": "Add source-attached lid keeper, gusset and stationary caster anchor retainer hierarchy parent links with world transform preservation; old wheel hubs and hinge pin parenting remain.",
+    "runtime": "NOT RUN"
+  },
+  "offline_previews": {
+    "archive": "C01-18_DETAIL_PASS16_REFERENCE_VIEWS.zip",
+    "zip_sha256": "d0200270783f458b8f517b6e454753056b1c3bf0e3fb24219f93218b0183564b",
+    "zip_crc": "PASS",
+    "png_count": 9,
+    "provenance": "OFFLINE simplified construction schematics derived from historical layout and exact authored new-part positions. NOT Blender shaded/wireframe, NOT fully faithful source-mesh screenshots, do NOT treat as release QA"
+  },
+  "native_export": {
+    "status": "NOT RUN",
+    "reason": "No local Blender 4.x nor bpy, authorized Windows host unconnected, private Github Actions pre-runner failure",
+    "latest_actions_run_id": 41137690882,
+    "runner_id": 0,
+    "steps": 0,
+    "old_blend_fbx_lfs": "STILL STALE PASS03; no new native BLEND/FBX committed",
+    "independent_C01_02": "PENDING",
+    "unity6_urp": "NOT RUN",
+    "release_approval": "BLOCKED 0/36",
+    "owner_action": "Restore eligible runner or provide authorized Windows Blender 4.x+Git LFS; new native save, FBX binary export/re-import, SHA, independent C01-02 and Unity6 QA required before merge"
+  },
+  "no_merge": true
+}

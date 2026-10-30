@@ -7,6 +7,9 @@ on:
       - 'Assets/C01Architecture/Walls_W01_W04/Sources/**'
       - '.github/workflows/c01-11-native-walls.yml'
   workflow_dispatch:
+concurrency:
+  group: c01-11-native-walls
+  cancel-in-progress: true
 permissions:
   contents: write
 jobs:

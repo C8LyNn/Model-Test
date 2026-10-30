@@ -29,8 +29,8 @@ try {
     $f=Join-Path $root "Models/$($m.id)/$($m.id).fbx"
     $b=Join-Path $root "Models/$($m.id)/$($m.id).blend"
     $magic=[Text.Encoding]::ASCII.GetString([IO.File]::ReadAllBytes($f),0,21)
-    $bmagic=[Text.Encoding]::ASCII.GetString([IO.File]::ReadAllBytes($b),0,7)
-    if(-not $magic.StartsWith('Kaydara FBX Binary') -or $bmagic -ne 'BLENDER'){throw "Invalid native binaries $($m.id)"}
+    $bmagic=[Text.Encoding]::ASCII.GetString([IO.File]::ReadAllBytes($b),0,8)
+    if(-not $magic.StartsWith('Kaydara FBX Binary') -or $bmagic -ne 'BLENDER-'){throw "Invalid native binaries $($m.id)"}
     Write-Host "VALIDATED $($m.id) FBX SHA256=$((Get-FileHash $f -Algorithm SHA256).Hash)"
   }
   if($Push){

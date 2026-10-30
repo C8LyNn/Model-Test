@@ -22,7 +22,7 @@ public static class C01WallPrefabBuilder
         int[] expectedTriangles = { 12, 572, 20, 28 };
         for (int i = 0; i < Ids.Length; i++)
         {
-            string path = Root + "/FBX/" + Ids[i] + "_" + Names[i] + ".fbx";
+            string path = GetOriginalSourcePath(i);
             var source = AssetDatabase.LoadAssetAtPath<GameObject>(path);
             if (source == null)
                 throw new FileNotFoundException("Original imported FBX missing: " + path);
@@ -41,6 +41,19 @@ public static class C01WallPrefabBuilder
         // approval for replacing any existing ship prefab.
     }
 
+
+    // PASS05: load ONLY authentic archived r2 FBX; never the simplified
+    // 12-triangle candidate W02 from the earlier authoring prototype.
+    private static readonly string[] OriginalR2Names =
+    {
+        "W01_FULL_WALL_1M.fbx", "W02_TECH_PANEL_WALL_1M.fbx",
+        "W03_CORNER_90_1M.fbx", "W04_DOOR_OPENING_2M.fbx"
+    };
+    private static string GetOriginalSourcePath(int index)
+    {
+        return Root + "/OriginalR2/FBX/" + OriginalR2Names[index];
+    }
+
     [MenuItem("Tools/C01/C01-11/Build W01-W04 Prefabs")]
     public static void Build()
     {
@@ -53,7 +66,7 @@ public static class C01WallPrefabBuilder
         for (int index = 0; index < Ids.Length; index++)
         {
             var id = Ids[index];
-            var assetPath = Root + "/FBX/" + id + "_" + Names[index] + ".fbx";
+            var assetPath = GetOriginalSourcePath(index);
             var imported = AssetDatabase.LoadAssetAtPath<GameObject>(assetPath);
             if (imported == null)
                 throw new FileNotFoundException("Required imported FBX missing: " + assetPath);

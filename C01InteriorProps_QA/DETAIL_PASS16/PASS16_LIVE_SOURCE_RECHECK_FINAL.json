@@ -1,0 +1,222 @@
+{
+  "project": "C01",
+  "role": "C01-02",
+  "wave": "DETAIL_PASS16",
+  "type": "LIVE_SOURCE_RECHECK_SUPERSEDES_INITIAL_PASS16_RECEIPT",
+  "date": "2026-10-30",
+  "supersedes": "C01InteriorProps_QA/DETAIL_PASS16/PASS16_INDEPENDENT_MESH_REFERENCE_QA.json",
+  "NOTE": "Earlier file correctly describes a pin at the moment of its audit, but producer committed new geometry afterward. This file is the CURRENT verified after-source decision. Do not promote as Blender/Unity native acceptance.",
+  "source_git_commits": {
+    "P17_01": "e544dd2ae88df4b85f9ee5df4405e13a510c80d8",
+    "P18": "f0edf20df4fc760ad6ca8f6edd38268b9a408165"
+  },
+  "P17_01": {
+    "model": "P17-01",
+    "Git_blob": "e0df06d260a955fe926f7e0279068bf2a2e6a6b5",
+    "SHA256_source_glTF": "77bffeffd7440c40882945e7341f659be2035eb23e67dae6329d108c74c88980",
+    "producer_real_source_change": "KeyboardGuide_L and KeyboardGuide_R both node translation world Z -0.170→-0.169m, +1.0mm. Matching authoring OBJ/spec also changed; independently verified actual glTF.",
+    "geometry": {
+      "instances": 25,
+      "tris": 380,
+      "uv0_missing": 0,
+      "zero_triangles": 0,
+      "flipped_normals": 0
+    },
+    "same_facing_KeyboardGuide_L_to_Keyboard": {
+      "old_overlap_area_mm2": 190,
+      "new_area_mm2": 0,
+      "new_triangle_contact_pairs": 15
+    },
+    "same_facing_KeyboardGuide_R_to_Keyboard": {
+      "old_overlap_area_mm2": 190,
+      "new_area_mm2": 0,
+      "new_triangle_contact_pairs": 13
+    },
+    "status": "PASS_SCOPED_SOURCE_FIX",
+    "native": "NOT_RUN",
+    "other_preexisting_coplanar_hidden": [
+      "Backbone↔Plinth (~47970mm2), requires visual material review"
+    ],
+    "final_approval": false
+  },
+  "P18": {
+    "new_real_source_parts": 10,
+    "tri_increase": 248,
+    "previous_source_totals": {
+      "parts": 149,
+      "tris": 3516
+    },
+    "after_source_totals": {
+      "parts": 159,
+      "tris": 3764
+    },
+    "models": [
+      {
+        "id": "P18-01",
+        "git_blob": "dc1ad53e6651a091f9bb193b9baed568a3a7aa60",
+        "sha256_source_OBJ": "a3f05396b78419f39e30f78eabecb1e39eb0403b171be945621329a311df0858",
+        "after": {
+          "parts": 43,
+          "triangles": 868,
+          "vertices": 520,
+          "uv0": 2164,
+          "normals": 2164
+        },
+        "added": [
+          "FrontLatch_L_UpperKeeper",
+          "FrontLatch_R_UpperKeeper"
+        ],
+        "tri_added": 24,
+        "real_3d_triangle_contacts": [
+          {
+            "name": "FrontLatch_L_UpperKeeper",
+            "with_Lever": 16,
+            "with_Lid": 8
+          },
+          {
+            "name": "FrontLatch_R_UpperKeeper",
+            "with_Lever": 16,
+            "with_Lid": 8
+          }
+        ]
+      },
+      {
+        "id": "P18-02",
+        "git_blob": "f6ba1600294380416b567b443e328adccc29c270",
+        "sha256_source_OBJ": "edceacf8b3494da686186632b27c6a0885f95f401e9598830c7be33927eeff0b",
+        "after": {
+          "parts": 55,
+          "triangles": 1172,
+          "vertices": 696,
+          "uv0": 2940,
+          "normals": 2940
+        },
+        "added": [
+          "BackSupport_0.60_GussetFastener_L",
+          "BackSupport_0.60_GussetFastener_R",
+          "BackSupport_1.48_GussetFastener_L",
+          "BackSupport_1.48_GussetFastener_R"
+        ],
+        "tri_added": 128,
+        "real_3d_triangle_contacts": [
+          {
+            "name": "BackSupport_0.60_GussetFastener_L",
+            "with_Gusset": 32,
+            "with_Rail": 15,
+            "with_Post": 13
+          },
+          {
+            "name": "BackSupport_0.60_GussetFastener_R",
+            "with_Gusset": 32,
+            "with_Rail": 19,
+            "with_Post": 13
+          },
+          {
+            "name": "BackSupport_1.48_GussetFastener_L",
+            "with_Gusset": 32,
+            "with_Rail": 15,
+            "with_Post": 15
+          },
+          {
+            "name": "BackSupport_1.48_GussetFastener_R",
+            "with_Gusset": 32,
+            "with_Rail": 19,
+            "with_Post": 15
+          }
+        ]
+      },
+      {
+        "id": "P18-03",
+        "git_blob": "259d3687a7968172f275410cf49e9d66d479c8ca",
+        "sha256_source_OBJ": "a67e5d708538f738bc6363ffe14a177217b506bfbbab8224f420b063ef09f1aa",
+        "after": {
+          "parts": 61,
+          "triangles": 1724,
+          "vertices": 984,
+          "uv0": 4388,
+          "normals": 4388
+        },
+        "added": [
+          "Wheel_LB_AnchorRetainer",
+          "Wheel_LF_AnchorRetainer",
+          "Wheel_RB_AnchorRetainer",
+          "Wheel_RF_AnchorRetainer"
+        ],
+        "tri_added": 96,
+        "real_3d_triangle_contacts": [
+          {
+            "name": "Wheel_LB_AnchorRetainer",
+            "anchor": 14
+          },
+          {
+            "name": "Wheel_LF_AnchorRetainer",
+            "anchor": 12
+          },
+          {
+            "name": "Wheel_RB_AnchorRetainer",
+            "anchor": 12
+          },
+          {
+            "name": "Wheel_RF_AnchorRetainer",
+            "anchor": 14
+          }
+        ]
+      }
+    ],
+    "source_topology": {
+      "invalid_v_vt_vn": 0,
+      "zero_area": 0,
+      "flipped_normal_candidate": 0,
+      "duplicate_polygon": 0,
+      "boundaries": 0,
+      "nonmanifold": 0,
+      "UV0_present": true
+    },
+    "original_pass15_meshes_identical": "YES 149/149 existing per-object vertex and authored face records untouched",
+    "new_strict_3d_support": "10/10 PASS",
+    "coplanar_source_total": {
+      "same_facing_pairs": 0,
+      "same_facing_area_m2": 0,
+      "opposite_facing_existing_only": {
+        "P18_02": {
+          "pairs": 18,
+          "area_m2": 0.27876
+        },
+        "P18_03": {
+          "pairs": 40,
+          "area_m2": 0.002128896
+        }
+      },
+      "risk": "REVIEW_CULLING_NATIVE_NOT_AUTOMATIC_FAIL"
+    },
+    "release": "PASS_SCOPED_SOURCE_ONLY"
+  },
+  "P17_03": {
+    "source_blob": "e882a5dafe3f9f5e600d6443ebf44b1aba519f30",
+    "sha256_source_glTF": "f38ed83c806b30deb55854b061492a0d89d278f7a7c20f900b2aeaed7933b23d",
+    "parts": 20,
+    "tris": 424,
+    "contacts_new_eight": "8/8 PASS",
+    "LeverPivot_children": [
+      "LeverShaft",
+      "LeverGrip",
+      "PivotAnchorVisual"
+    ],
+    "real_physics": "NOT_RUN"
+  },
+  "references": {
+    "catalog": "References/VERIFIED_CONSTRUCTION_SOURCES.md",
+    "verified_external_sources": 12,
+    "copyright": "External rights retained. No downloaded product photos/CAD redistributed.",
+    "producer_source_mappings": "R01-R12"
+  },
+  "native_gates": {
+    "real_new_Blender_4x_BLEND": "NOT_RUN",
+    "real_new_Blender_4x_binary_FBX": "NOT_RUN",
+    "Blender_reimport_and_shaded_wireframe": "NOT_RUN",
+    "Unity6_URP_prefab": "NOT_RUN",
+    "all_36_final_independent_approval": "0/36",
+    "merge": "NO"
+  },
+  "remarks": "Actual producer file SHA256 independently computed over GitHub fetched exact ASCII text; abc standard SHA-256 self-test PASS. Native binary SHA remains old original LFS pointers. No merge or model source writes by C01-02."
+}

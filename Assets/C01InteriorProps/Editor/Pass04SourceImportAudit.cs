@@ -378,7 +378,7 @@ namespace C01.InteriorProps.Editor
                 defects.Add("DETAIL15_TRIANGLE_COUNT_LOSS:"+importedTriangles+"/"+minimumTriangles);
             // Four times the source baseline is review-only for purpose-built details,
             // but NOT an automatic reduction; a producer may justify higher density.
-            if(importedTriangles>(long)minimumTriangles*4L)
+            if(minimumTriangles>0 && importedTriangles>(long)minimumTriangles*4L)
                 defects.Add("DETAIL15_TRIANGLE_BUDGET_REVIEW:"+importedTriangles);
             var names=filters.Where(f=>f!=null && f.sharedMesh!=null)
                              .GroupBy(f=>f.name,StringComparer.Ordinal)

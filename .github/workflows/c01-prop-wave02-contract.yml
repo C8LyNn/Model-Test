@@ -1,0 +1,33 @@
+name: C01-01 Wave02 Contract & Manifest QA
+on:
+  push:
+    branches:
+      - 'c01/standards-interior-props-wave02'
+  pull_request:
+    paths:
+      - 'Docs/C01InteriorProps/prop_contract_wave02.json'
+      - 'Docs/C01InteriorProps/C01_PROP_INTERFACE_STANDARD_v0.2.2_WAVE02.md'
+      - 'Tools/c01_props/validate_wave02.py'
+      - 'Tests/c01_props/test_wave02.py'
+  workflow_dispatch:
+
+jobs:
+  validate-wave02-contract:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile Wave02 Python source
+        run: python -m py_compile Tools/c01_props/validate_wave02.py Tests/c01_props/test_wave02.py
+      - name: Run 18 Wave02 synthetic unit tests
+        run: python -m unittest discover -s Tests/c01_props -p 'test_wave02.py' -v
+      - name: Check actual 20-slot Wave02 contract against immutable Wave01
+        run: python Tools/c01_props/validate_wave02.py --output /tmp/c01_wave02_contract_report.json
+      - name: Upload static QA report
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-01-WAVE02-CONTRACT-STATIC-QA
+          path: /tmp/c01_wave02_contract_report.json
+          if-no-files-found: error

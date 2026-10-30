@@ -122,6 +122,7 @@ def render_preview(pid,root,view):
  bpy.context.scene.cycles.samples=12
  bpy.context.scene.render.resolution_x=512
  bpy.context.scene.render.resolution_y=512
+ if bpy.context.scene.world is None:bpy.context.scene.world=bpy.data.worlds.new('C01_PreviewWorld')
  bpy.context.scene.world.color=(.24,.24,.24)
  light_data=bpy.data.lights.new("PreviewArea","AREA")
  light=bpy.data.objects.new("PreviewArea",light_data);bpy.context.collection.objects.link(light)

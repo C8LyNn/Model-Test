@@ -154,3 +154,14 @@ C01-17 authoring P17-02 current spec commit **bff1886e09ec04d21bab84a2f15e52c1cf
 5. **UNITY C01-10:** Real Unity 6 URP prefab/import, wheel clearance and rotation, reader states, colliders/scale; if editor unavailable, NOT RUN. No merge without formal authorization.
 
 **C01-01 status here:** REAL authoring source verification executed and producer details measured; no native Blender roundtrip or Unity run by C01-01. Related #33/#30 source export blockers remain unresolved.
+
+
+## DETAIL PASS13 — A5 / world-space source contact acceptance
+
+**Supersedes the P17-02 unresolved screw-gap claim in PASS12.** At C01-17 producer commit `97f6d77eab77dbdd171c2321a922980517efefed`, glTF blob `d80a67af140e434b983104aaec0078f9cf5bd66f`, independently decoding actual POSITION indices and applying node TRS exactly once yields four 9×9×3 mm mount screw heads. Each head penetrates original MountBacking by 0.5 mm and **16 real screw-mesh triangles per head cross the backing front plane within backing XY bounds**. Earlier 0.81 mm screw-size / 0.976 mm detached-gap report is not a valid verdict for these source bytes; do not alter correct screws or force-weld them.
+
+The only confirmed former reader clearance issue was **Keybed back 58.0 mm versus old Housing front 57.5 mm** (+0.5 mm separation). The latest source revision changes only Housing node translation/scale and its spec: back stays 22.5 mm, front advances to 58.5 mm, creating **0.5 mm positive seating against the Keybed**, preserving the 38-part, 536-triangle source and silhouette. **Source contact geometry PASS at pinned SHA**, BUT native Blender source save, genuine binary FBX re-export/reimport, hard-normal/pivot/material and Unity importer are separately **NOT RUN**. Do not conflate authored glTF source with approved final binary.
+
+**Independent latest P18 source readback** on exact existing producer OBJ bytes (P18-01 SHA256 `5749f13e30f8e1d853c4488dde2e030fb7b55a59b14b71bedeef61297c8c3adf`; P18-02 `55d652a42ab7c22709814938535445a0814d9c9ff81237b59925a9115521ee98`; P18-03 `3996be33105a17163d4c8a753012aca891c1b19b156abf32ddab02d8fbca50e0`): axis-aligned **closed eight-corner boxes** permit unambiguous solid-overlap contact acceptance for inspected P18-01 trim/backer/shell pairs and P18-02 both label/backplate/shelf pairs. They overlap by positive thickness, not merely touching AABB corners. Four P18-03 wheels have minimum Y=0 and fork-outer/anchor are both closed boxes with 16×4.5×46.5 mm solid overlap. **Do not extrapolate axis-aligned-box evidence to cylinder/caster meshes**: wheel motion/axle rotating pivots require Blender/Unity narrow-phase and animation checks, 0 blind weld.
+
+Full SHA-locked numerical source evidence: `Docs/C01InteriorProps/C01_01_DETAIL_PASS13_SOURCE_CONTACT_RECHECK.json`. Previous P0 export/Unity blocks remain open; source preflight is not C01-02 release PASS. Keep producer PRs Draft.

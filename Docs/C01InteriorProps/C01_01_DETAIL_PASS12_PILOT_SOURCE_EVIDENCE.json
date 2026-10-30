@@ -24,7 +24,9 @@
       "wiring": "8 trim mount bridges + 2 rear hinges + 2 front latches + 4 lid corner bolts",
       "native_blend_reexport": "NOT_RUN",
       "binary_fbx_after": "NOT_RUN",
-      "Unity": "NOT_RUN"
+      "Unity": "NOT_RUN",
+      "before_source_sha256": "e7eae0ca915d265d8f41676b3e6d390de5396e4eaa9ef72ded0d5ad8d92a0283",
+      "after_source_sha256": "7e353b62210df2cdefc03e85a11c109dcf4ca5d51b776c2ab45452ae8239be79"
     },
     "P18-02": {
       "before_obj_git_blob": "ec17212a2d60d1b39216c869b0a9706defa76c4d",
@@ -42,7 +44,9 @@
       "before_label_to_deck_depth_gap_mm": 22,
       "native_blend_reexport": "NOT_RUN",
       "binary_fbx_after": "NOT_RUN",
-      "Unity": "NOT_RUN"
+      "Unity": "NOT_RUN",
+      "before_source_sha256": "d8623bb0fe51388fe25ead63703b0868dac2549c32b14cb20f1757aa41e541a2",
+      "after_source_sha256": "d37f3347dabf84bf315b27b1d24bc517dda77265bb60da2c086d28bdcf3e3472"
     },
     "P18-03": {
       "before_obj_git_blob": "901959fa24658c9beb1439fc06805f3feb8aa069",
@@ -70,7 +74,9 @@
       ],
       "native_blend_reexport": "NOT_RUN",
       "binary_fbx_after": "NOT_RUN",
-      "Unity": "NOT_RUN"
+      "Unity": "NOT_RUN",
+      "before_source_sha256": "4565e7f3c38c154a28b8494c163619bbfa0883371dfe66515b6ee36d66743ef8",
+      "after_source_sha256": "3996be33105a17163d4c8a753012aca891c1b19b156abf32ddab02d8fbca50e0"
     },
     "P17-02": {
       "before_spec_git_blob": "50c739482381e6d9345bffea56555e7ba216fcb5",
@@ -83,7 +89,9 @@
       "actual_mesh_rebuild": "NOT_RUN",
       "native_blend_reexport": "NOT_RUN",
       "binary_fbx_after": "NOT_RUN",
-      "Unity": "NOT_RUN"
+      "Unity": "NOT_RUN",
+      "before_source_sha256": "62b556475acb478e039bf1a0395427984c82cc31a580d1cad251e1c5eae8021d",
+      "after_source_sha256": "715c018b12134a9ce47fb6bf18d0036dee9288a194c2199be798ff28b7bcb472"
     }
   },
   "summary": {
@@ -96,7 +104,7 @@
     "models_with_new_binary_FBX_verified": 0,
     "full_C01_02_accepted": 0
   },
-  "sha_note": "These are Git blob SHA identifiers (Git objects), NOT native source or FBX SHA-256. Fresh post-export SHA-256 still missing.",
+  "sha_note": "Full 64-digit SHA-256 values are SHA of actual producer authoring OBJ / JSON spec GitHub file CONTENT. Git blob SHA values are Git object IDs, different identifiers. No SHA-256 for newly exported native .blend/FBX exists yet.",
   "required_final_gates": [
     "Blender 4.x real updated .blend saved and reopened",
     "Blender-exported binary FBX imported back, exact SHA-256",
@@ -104,5 +112,6 @@
     "Old silhouette, UV0, normals, material slots, pivot, moving parts preserved",
     "C01-02 independently signs per final exact FBX SHA",
     "Unity 6 URP importer and mesh/prefab validation or NOT RUN"
-  ]
+  ],
+  "sha256_computation": "SHA-256 of fetched complete UTF-8 authoring file bodies, independently checked SHA256('abc') test vector ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad; binary native source not generated or measured."
 }

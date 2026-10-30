@@ -223,8 +223,8 @@ def check_manifest(m, spec, root):
             all_present=False
     static = "FAIL" if errors else "PASS"
     return dict(asset_id=aid,static=static,
-                delivery="READY_FOR_INDEPENDENT_QA" if static=="PASS" and all_present and all(qa.get(x)=="PASS" for x in spec["qa_fields"] if x!="independent") else "BLOCKED",
-                approval="C01-02_APPROVED" if qa.get("independent")=="PASS" and all_present and static=="PASS" and isinstance(m.get("independent_review"),dict) and m["independent_review"].get("owner")=="C01-02" and m["independent_review"].get("report_url") and m["independent_review"].get("source_commit_sha") else "NOT_APPROVED",
+                delivery="READY_FOR_INDEPENDENT_QA" if static=="PASS" and all_present and (not ref.get("moving_parts_policy") or bool(m.get("swept_volume_evidence"))) and all(qa.get(x)=="PASS" for x in spec["qa_fields"] if x!="independent") else "BLOCKED",
+                approval="QA_REFERENCE_PRESENT_UNVERIFIED" if qa.get("independent")=="PASS" and all_present and static=="PASS" and isinstance(m.get("independent_review"),dict) and m["independent_review"].get("owner")=="C01-02" and m["independent_review"].get("report_url") and m["independent_review"].get("source_commit_sha") else "NOT_APPROVED",
                 errors=errors,warnings=warnings)
 
 

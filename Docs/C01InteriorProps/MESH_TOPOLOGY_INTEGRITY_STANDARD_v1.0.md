@@ -67,3 +67,31 @@ The code `Tools/c01_mesh_repair/topology_audit.py` is *read-only*, and never aut
 P0 six actual models: `P17-04`, `P17-05`, `P18-04`, `P18-05`, `P19-07`, `P19-08`. Then the remaining 30, after the P0 six actually undergo independent retest. Model production **STOP**. Every producer repairs their own PR only. C01-01 does not mutate their `.blend` or create replacement models.
 
 **Exit gate:** 36 per-SHA BEFORE/AFTER verified, real FBX roundtrip, independent C01-02 topological PASS, exact montage in Unity when possible. No blanket approval from static code.
+
+
+## PASS 04 — AMENDMENT A1 / binding triangle-export safety (2026-10-30)
+
+Source of truth: #33 (three independent C01-02 export-geometry FAIL), #30 (topology). Extends this standard, without changing the dimensional, mounting or material contracts.
+
+### P0 explicit triangulation: P19-05, P19-07, P19-08 ONLY
+
+Independent C01-02 found complex polygons in real binary FBX with unsafe naive-fan triangulation: P19-05 has 3 polygons with >4 vertices, P19-07 has 16, P19-08 has 35. This is **triangulation ambiguity**, NOT proof of Unity importer failure. C01-19 must triangulate the REAL Blender source in existing PR #29 before re-exporting. For these three specific final render meshes, all source Blender polygons AND all FBX reimported Blender polygons must be **exactly three vertices each**. This stricter rule is NOT imposed on other 33 assets.
+
+**No-loss mandatory invariants:**
+1. Before original native .blend remains available. After is an actually saved native .blend at a changed file SHA. Real binary FBX must start with the Kaydara FBX Binary header. Keep object identity, parenting, moving pivots/sockets, root scale, UV0 seams, hard edges, visible silhouette and material slot identities.
+2. Blender loop-triangle count and total area must match the explicit source triangles; zero degenerate triangles and reversed winding relative to polygon normals. FBX reimport must preserve geometric triangle-position multisets in world space within <=0.00001m, triangle counts, UV0 and material semantics. Equal AABBs alone do NOT prove equivalent surface.
+3. Re-evaluate accidental boundary/non-manifold edges, loose verts/edges, duplicate faces, T-junctions, self- and inter-object intersections. Never automatically merge deliberately separate animated components.
+4. P19-07 previously had 8, P19-08 had 2 source T-junction candidates. Each needs a named-object inspection distinguishing genuinely unstitched surface from intentional separate shell. Candidate alone is NOT FAIL.
+5. Each report carries original producer commit SHA, source and FBX byte SHA256, actual Blender and FBX importer logs, source BEFORE/AFTER wireframes and shaded after, and independent C01-02 verdict. No missing stage can inherit PASS.
+
+**Native enforcement**: Tools/c01_mesh_repair/triangulation_gate.py opens actual producer .blend and reimports hydrated binary .fbx in real Blender. The --require-explicit-triangles switch enforces triangles-only source and imported FBX for precisely P19-05/07/08; checks missing UV0, degenerates, winding, area and world triangle coordinates. Failure denotes source/FBX technical gate FAIL, not a tested Unity failure. Success does NOT grant independent QA approval.
+
+### P1 documented exceptions and provenance — ALL 36
+
+- **Intentional openings**: for example the 48 currently reported P15-07 gauge boundaries can be accepted only per named submesh, exact affected SHA, coordinates/count, explicit rationale, and independent C01-02 review; otherwise mark REVIEW_REQUIRED.
+- **Separate parts**: P16-06 rotor, P17 levers/covers/fuses, P18 lids and handles, P19 folding table and other movable children must remain separately animated; co-located coordinates across objects are NOT a global weld instruction.
+- **P16-01..07**: initial PASS04 baseline shows seven native .blend and Blender-produced binary FBX missing. OBJ or ASCII FBX static repair does not satisfy the native gate. Mark Blender/native FBX stage NOT_RUN until actual bytes, hashes and importer logs are verified.
+- **SHA policy**: every producer push changes the inspected revision. QA attaches per-ID verdict to exact producer commit SHA and file digests, then re-runs affected checks. Six sample models never imply 36/36 acceptance.
+- **Ownership**: C01-01 standard and metrology; C01-19 source repairs; C01-02 independent topological QA; C01-10 Unity prefab/collider clearance; C01-03 source/version ledger; C01-00 release GO/NO-GO.
+
+PASS04 remains OPEN until all 36 original geometry exports have independent SHA-pinned QA, three P19 failures cleared, Unity acceptance actually measured or explicitly blocked, and no unauthorized merges or redesigns.

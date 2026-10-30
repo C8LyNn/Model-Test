@@ -70,7 +70,7 @@ def build(pid,root,parts):
   box("Front_Warning",[0,.51,.231],[.18,.17,.007],"CAUTION")
   box("Transport_Socket",[0,.06,.22],[.26,.05,.10],"DARK")
  elif pid=="P18-05":
-  box("Case_Bottom",[0,.10,0],[.68,.20,.40],"STEEL",True)
+  box("Case_Bottom",[0,.114,0],[.68,.172,.40],"STEEL",True)  # PASS03 native: bottom +0.028m, top retained at 0.200m
   box("Rubber_Foot_L",[-.24,.014,-.15],[.13,.028,.1],"GASKET")
   box("Rubber_Foot_R",[.24,.014,-.15],[.13,.028,.1],"GASKET")
   lid=box("Case_Lid",[0,.239,0],[.68,.078,.40],"DARK",True)
@@ -87,19 +87,19 @@ def build(pid,root,parts):
   for x in (-.29,.29):
    for z in (-.25,.25):
     box("Cage_Post_%s_%s"%(x,z),[x,.395,z],[.055,.59,.055],"DARK")
-  box("Safety_Lid",[0,.74,0],[.66,.08,.58],"DARK",True)
+  box("Safety_Lid",[0,.735,0],[.66,.07,.58],"DARK",True)  # PASS03 native: top 0.770m, bottom unchanged 0.700m
   box("Hazard_Emblem",[0,.46,.226],[.24,.19,.008],"CAUTION")
   box("Latch_Left",[-.23,.72,.282],[.08,.09,.012],"CAUTION")
   box("Latch_Right",[.23,.72,.282],[.08,.09,.012],"CAUTION")
   box("Carry_Rail",[0,.775,0],[.22,.01,.095],"GASKET")
  elif pid=="P18-07":
-  box("Bin_Chassis",[0,.115,0],[.54,.23,.31],"STEEL",True)
+  box("Bin_Chassis",[0,.15,0],[.54,.16,.31],"STEEL",True)  # PASS03 native: lower face 0.070m, upper 0.230m
   box("Base_Stiffener",[0,.035,0],[.56,.07,.34],"DARK")
   lid=box("Bin_Lid",[0,.265,0],[.56,.07,.34],"DARK",True)
   trim=box("Lid_Label",[0,.305,.08],[.24,.008,.10],"CAUTION")
   h=hinge("Toolbox_LidHinge",[0,.23,-.17],root,parts);attach_preserve(lid,h);attach_preserve(trim,h)
-  box("Handle_Post_L",[-.13,.325,0],[.038,.09,.04],"GASKET")
-  box("Handle_Post_R",[.13,.325,0],[.038,.09,.04],"GASKET")
+  box("Handle_Post_L",[-.13,.317,0],[.038,.074,.04],"GASKET")  # PASS03 native: upper face 0.354m
+  box("Handle_Post_R",[.13,.317,0],[.038,.074,.04],"GASKET")  # PASS03 native: upper face 0.354m
   box("Handle_Grip",[0,.367,0],[.30,.026,.04],"GASKET")
   box("Front_Lock",[0,.225,.165],[.08,.075,.012],"CAUTION")  # PASS08: 1mm outward; avoid coplanar visible front face with Bin_Lid
   for x in [-.23,.23]:box("Grip_Rail_"+str(x),[x,.12,.164],[.027,.15,.01],"DARK")

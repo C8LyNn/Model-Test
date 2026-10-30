@@ -1,0 +1,37 @@
+{
+  "schema": "C01-03-DETAIL-PASS15-VALIDATION_RESULT",
+  "date": "2026-10-30",
+  "registry": "C01InteriorProps_Library/Pass15/asset_registry_36.json",
+  "scope": "GitHub source integrity + registry state; NOT Blender, FBX, preview rendering or Unity 6 execution",
+  "method": "Fetched 12 current authored OBJ/GLTF/spec GitHub files and 7 P16 detail OBJ at actual producer PR head SHA. Verified each returned Git blob SHA1 equals PASS14 stored Git blob SHA1, then performed 14 in-memory JS registry invariants before committing.",
+  "tests": {
+    "36_existing_unique_asset_IDs": "PASS",
+    "family_counts_P15_7_P16_7_P17_7_P18_7_P19_8": "PASS",
+    "12_main_authored_source_Git_SHA1_matches_live_producer_HEAD": "PASS",
+    "7_P16_additive_detail_Git_SHA1_matches_live_producer_HEAD": "PASS",
+    "19_total_readback_source_matches": "PASS",
+    "source_SHA256_reused_only_when_exact_Git_blob_unchanged": "PASS",
+    "all_36_no_new_Blend_export_SHA_promoted": "PASS",
+    "all_36_no_new_FBX_export_SHA_promoted": "PASS",
+    "all_36_final_independent_QA_BLOCKED": "PASS",
+    "all_36_Unity6_NOT_RUN": "PASS",
+    "P19_07_visual_hold_kept": "PASS",
+    "all_36_release_BLOCKED": "PASS",
+    "no_new_model_ID_or_ship_scope": "PASS",
+    "PR_isolation_no_merge": "PASS"
+  },
+  "passed": 14,
+  "failed": 0,
+  "note": "These checks validate registry metadata and unchanged source blobs only; full source geometry QA referenced from PASS14, not rerun in PASS15. Git SHA1 is not a binary FBX SHA256.",
+  "false_positive_guards": {
+    "current_native_Blend_SHA256": null,
+    "current_native_FBX_SHA256": null,
+    "Blender4_save": "NOT_RUN",
+    "Blender4_export_reimport": "NOT_RUN",
+    "new_shaded_wireframe_renders": "NOT_RUN",
+    "independent_C01_02_final": "BLOCKED",
+    "Unity6_URP": "NOT_RUN",
+    "global_release": "BLOCKED"
+  },
+  "needs_owner_action": "Produce actual updated Blender4 .blend+binary FBX with renders and SHA256, run independent exact FBX QA and Unity6 URP test, then update registry; no merge."
+}

@@ -1,0 +1,75 @@
+name: C01-14 PASS03 native topology audit
+on:
+  push:
+    branches: [c01/structures-14-prototypes-w02]
+    paths:
+      - Tools/C01Structures14/mesh_integrity_pass03.py
+      - .github/workflows/c01-14-mesh-repair-pass03.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: C01-14-reference-native-blend-fbx
+          run-id: 41072902015
+          github-token: ${{ github.token }}
+          path: /tmp/c01-14-v001
+      - name: Verify original source hashes
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib,json
+          root=Path('/tmp/c01-14-v001')
+          manifest=json.loads((root/'QA/native_binary_manifest.json').read_text())
+          for entry in manifest['files']:
+            path=root/entry['path']
+            assert path.exists() and hashlib.sha256(path.read_bytes()).hexdigest()==entry['sha256']
+          print('PASS original native source SHA-256')
+          PY
+      - name: Install Blender and NumPy
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y blender python3-numpy
+      - name: Native source audit and FBX roundtrip
+        run: |
+          blender --background --python-exit-code 1 --python Tools/C01Structures14/mesh_integrity_pass03.py -- --input /tmp/c01-14-v001 --output Assets/C01StructuralPrototypes/P14/Pass03
+      - name: Fail closed when reports or binaries are missing
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          base=Path('Assets/C01StructuralPrototypes/P14/Pass03')
+          for asset in ('RMP-01','RAI-01'):
+            p=base/'QA'/asset
+            before=json.loads((p/'mesh_topology_before.json').read_text())
+            after=json.loads((p/'mesh_topology_after.json').read_text())
+            test=json.loads((p/'fbx_roundtrip.json').read_text())
+            assert after['visual_surface_unchanged']
+            assert test['roundtrip_pass'] and not test['geometry_still_suspect']
+            assert test['after_defect_count']<=test['before_defect_count']
+            assert len(list((base/'Previews'/asset).glob('*.png')))==4
+            assert (base/'Sources'/('C01_14_'+asset+'_v002.blend')).read_bytes().startswith(b'BLENDER')
+            assert (base/'FBX'/('C01_14_'+asset+'_v002.fbx')).read_bytes().startswith(b'Kaydara FBX Binary')
+            print(asset, 'PASS',test['before_defect_count'],'->',test['after_defect_count'])
+          PY
+      - name: Commit binaries and evidence to same draft branch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add Assets/C01StructuralPrototypes/P14/Pass03
+          if ! git diff --cached --quiet; then
+            git commit -m 'C01-14 PASS03: actual Blender topology and FBX evidence'
+            git push origin HEAD:refs/heads/c01/structures-14-prototypes-w02
+          fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: C01-14-PASS03-native-before-after
+          path: Assets/C01StructuralPrototypes/P14/Pass03
+          if-no-files-found: error

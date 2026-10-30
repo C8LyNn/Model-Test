@@ -31,6 +31,8 @@ jobs:
         run: xvfb-run -a blender -b --factory-startup --python-exit-code 1 --python C01InteriorProps_Source/Tools/topology_repair.py -- .
       - name: PASS03 FBX roundtrip on welded sources
         run: xvfb-run -a blender -b --factory-startup --python-exit-code 1 --python C01InteriorProps_Source/Tools/fbx_roundtrip.py -- .
+      - name: PASS04 strict Blender-source versus real FBX audit
+        run: xvfb-run -a blender -b --factory-startup --python-exit-code 1 --python C01InteriorProps_Source/Tools/pass04_strict_fbx.py -- .
       - name: Upload actual FBX Blender and rendered PNG artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -42,11 +44,12 @@ jobs:
             C01InteriorProps_Source/Previews/*.png
             C01InteriorProps_Source/QA/BLENDER_FBX_ROUNDTRIP.json
             C01InteriorProps_Source/QA/PASS03/**
+            C01InteriorProps_Source/QA/PASS04/**
       - name: Push binary outputs through Git LFS
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add C01InteriorProps_Source/Blender C01InteriorProps_Source/Previews Assets/C01InteriorProps/Models/*.fbx C01InteriorProps_Source/QA/BLENDER_FBX_ROUNDTRIP.json C01InteriorProps_Source/QA/PASS03
+          git add C01InteriorProps_Source/Blender C01InteriorProps_Source/Previews Assets/C01InteriorProps/Models/*.fbx C01InteriorProps_Source/QA/BLENDER_FBX_ROUNDTRIP.json C01InteriorProps_Source/QA/PASS03 C01InteriorProps_Source/QA/PASS04
           if git diff --cached --quiet; then echo "No generated changes"; exit 0; fi
           git commit -m "build(C01-17): real Blender FBX renders (LFS)"
           git push origin HEAD:c01/props-17-controls

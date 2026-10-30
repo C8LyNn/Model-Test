@@ -1,0 +1,84 @@
+{
+  "pass": "C01-19_PASS09",
+  "classification": "REAL_BINARY_FBX_SURGICAL_SURFACE_TOPOLOGY_CANDIDATE",
+  "important": "This FBX repair WAS EXECUTED OFFLINE on real binary source; source BLEND still unmodified. Not a production pass or native Blender roundtrip.",
+  "original": {
+    "asset": "P19-01",
+    "source_blend_sha256": "8327069f58c9991a560234091ca5536b5946dc5b907e8b36bc4f5f6ec245c60f",
+    "fbx_sha256": "47b4d6f2017626b6084584fbf0bad907505eb9e194703032d83af5315c1a4009",
+    "vertices": 133,
+    "edges": 205,
+    "faces": 78,
+    "triangles": 254,
+    "naive_fan_zero_area": 12,
+    "ngons_gt4": 38
+  },
+  "candidate": {
+    "fbx_sha256": "9dc4d6b724c4a5a4b45a04412dc5a61fe732fa1b4423a9f0c27889053960163b",
+    "vertices": 133,
+    "edges": 381,
+    "faces": 254,
+    "triangles": 254,
+    "naive_fan_zero_area": 0,
+    "ngons_gt4": 0,
+    "boundary_edges": 0,
+    "nonmanifold_edges": 0,
+    "indexed_duplicate_faces": 0
+  },
+  "detailed_patch": {
+    "mesh": "Cube.001",
+    "invalid_polygon_59_original": [
+      76,
+      5,
+      24,
+      46,
+      64,
+      65
+    ],
+    "polygon_59_cleaned": [
+      76,
+      5,
+      46,
+      64,
+      65
+    ],
+    "neighbor_polygon_23_original": [
+      35,
+      24,
+      5,
+      14,
+      13,
+      47,
+      45
+    ],
+    "neighbor_polygon_23_segmented": [
+      35,
+      24,
+      46,
+      5,
+      14,
+      13,
+      47,
+      45
+    ],
+    "moved_vertices": 0,
+    "added_vertices": 0,
+    "deleted_vertices": 0,
+    "nominal_tris_delta": 0,
+    "face_area_delta_m2": 0,
+    "source_uv_corner_interpolation": "on original vertex24-to-vertex5 edge at existing vertex46",
+    "material_hierarchy_transforms": "byte equivalent to original FBX",
+    "vertex_coordinate_buffer": "byte equivalent to original"
+  },
+  "execution": {
+    "static_binary_parser": "PASS",
+    "real_fbx_bytes_reparsed": "PASS",
+    "blender_actual_save": "NOT_RUN",
+    "blender_fbx_roundtrip": "NOT_RUN",
+    "unity6_urp": "NOT_RUN",
+    "independent_qa": "NOT_RUN",
+    "do_not_promote_without_native_blend": true
+  },
+  "source_code": "Assets/C01InteriorProps/C01-19/Source/pass04_triangulate.py",
+  "delivery": "User-visible ChatGPT ZIP C01-19_PASS09_FBX_CANDIDATES_NOT_FINAL.zip. Candidate FBX not committed to production Models."
+}

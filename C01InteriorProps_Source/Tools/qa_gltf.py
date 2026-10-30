@@ -23,6 +23,14 @@ for asset in ["P17-01","P17-02","P17-03"]:
         icount,istart=acc(prim["indices"])
         vertices=[struct.unpack_from("<fff",data,vstart+12*i) for i in range(vcount)]
         normals=[struct.unpack_from("<fff",data,nstart+12*i) for i in range(vcount)]
+        uv_ix=prim["attributes"].get("TEXCOORD_0")
+        assert uv_ix is not None,(asset,p["name"],"UV0 missing")
+        uvcount,uvstart=acc(uv_ix)
+        assert uvcount==vcount,(asset,p["name"],"UV0 count")
+        for i in range(uvcount):
+            u,t=struct.unpack_from("<ff",data,uvstart+8*i)
+            assert math.isfinite(u) and math.isfinite(t)
+            assert -.001<=u<=1.001 and -.001<=t<=1.001
         indices=struct.unpack_from("<"+"H"*icount,data,istart)
         assert icount%3==0
         parent=spec.get("lever",{}).get("pos",[0,0,0]) if p["parent"]=="LeverPivot" else [0,0,0]

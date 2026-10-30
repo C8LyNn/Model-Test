@@ -9,7 +9,7 @@ on:
       - 'Assets/C01InteriorProps/C01-18/Sources/**'
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 jobs:
   blender-bake:
     runs-on: ubuntu-24.04
@@ -37,6 +37,15 @@ jobs:
             head -c 7 "$blend" | grep -aFx "BLENDER"
             head -c 18 "$fbx" | grep -a "Kaydara FBX Binary"
           done
+      - name: Commit genuine .blend and Blender FBX via Git LFS to this isolated branch
+        run: |
+          set -euo pipefail
+          git lfs install --local
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Assets/C01InteriorProps/C01-18/Sources/*.blend Assets/C01InteriorProps/C01-18/Models/*.fbx
+          git commit -m "C01-18 Wave01: commit native Blender and binary FBX with UV0 [skip ci]"
+          git push origin HEAD:c01/props-18-cargo
       - uses: actions/upload-artifact@v4
         with:
           name: C01-18-native-blender-fbx

@@ -119,12 +119,14 @@ def repair(ob):
     first_uv_layers=len(ob.data.uv_layers)
     # Weld ONLY coincident vertices within one Mesh Object. UV coordinates stay in per-loop UV layers.
     # Never join different Blender Objects, never touch child/hinge hierarchy.
-    result=bmesh.ops.remove_doubles(bm,verts=list(bm.verts),dist=TOL)
+    pre_vertices=len(bm.verts)
+    bmesh.ops.remove_doubles(bm,verts=list(bm.verts),dist=TOL)
+    post_vertices=len(bm.verts)
     bm.normal_update()
     if len(bm.faces)!=existing_faces:raise RuntimeError("Face count changed unexpectedly for "+ob.name)
     bm.to_mesh(ob.data);bm.free();ob.data.update()
     if len(ob.data.uv_layers)!=first_uv_layers:raise RuntimeError("UV0 lost in "+ob.name)
-    return len(result.get("targetmap",{}))
+    return pre_vertices-post_vertices
 for model_id in IDS:
     blend=SRC/"Blender"/(model_id+".blend")
     if not blend.exists(): raise RuntimeError("SOURCE MISSING: "+str(blend))

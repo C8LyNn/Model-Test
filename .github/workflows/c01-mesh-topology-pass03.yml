@@ -161,3 +161,38 @@ jobs:
           name: C01-01-PASS03-SIX-ORIGINAL-BLEND-AUDITS
           path: reports/
           if-no-files-found: warn
+
+  historical-repair-proof:
+    needs: native-fixture-tests
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: standards
+          lfs: false
+      - uses: actions/checkout@v4
+        with:
+          ref: fbef546fe446fe6845be4eb76a75b0e6916723eb
+          path: damaged-original17
+          lfs: true
+      - name: Install actual Blender
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y blender
+      - name: Repair ONLY exact detached-face boxes in historical production .blend
+        shell: bash
+        run: |
+          set -euo pipefail
+          for asset in P17-04 P17-05; do
+            blender --background "damaged-original17/C01InteriorProps_W02/Blender/$asset.blend" --python-exit-code 13 --python standards/Tools/c01_mesh_repair/safe_box_weld_candidate.py -- --asset-id "$asset" --output-dir "historical_repaired/$asset"
+            test -s "historical_repaired/$asset/REPAIR_AND_FBX_ROUNDTRIP.json"
+            python3 standards/Tools/c01_mesh_repair/compare_topology_reports.py "historical_repaired/$asset/mesh_topology_before.json" "historical_repaired/$asset/mesh_topology_after.json" --repair-claimed --output "historical_repaired/$asset/TOPOLOGY_CHANGE_REVIEW.json"
+          done
+      - name: Publish real historical repaired native BLEND + FBX + before-after proof
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-01-PASS03-P17-04-05-HISTORICAL-REPAIR-PROOF
+          path: historical_repaired/
+          if-no-files-found: warn

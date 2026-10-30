@@ -14,7 +14,7 @@
   },
   "blender_runtime": "NOT_RUN — Blender/bpy unavailable in accessible container and C01 GitHub Actions jobs fail before runner allocation",
   "bundle_name": "C01-16_DETAIL_PASS13_DELIVERY.zip",
-  "bundle_sha256": "a1cf8421757b818ae56988e7fb03b916ed92185721407a61e9b102d1b3750d36",
+  "bundle_sha256": "ea556a30f2f7ed34819b7b326f6900e2381128ba1b7ffc7ec8ae26b04024acb0",
   "bundle_binary_caveat": "contains local genuine binary FBX 7400 candidates, NOT generated/reimported in Blender; no .blend",
   "independent_qa_required": true,
   "models": [
@@ -49,8 +49,8 @@
     },
     {
       "id": "P16-05",
-      "source_obj_sha256_after": "faac95ee1262ed7811a8e30b269aa16d9b078a9caa4b7eea8674b7e5b6cb9a20",
-      "source_obj_git_blob_sha1": "b32a266b718459ff737bd58fd7c0657895708e88",
+      "source_obj_sha256_after": "9ab9b1876679cc253c049e6399265cf87d32997eb457c627cb74f2c0fc39a54d",
+      "source_obj_git_blob_sha1": "0153e1823ac2ff94f605a026975391162cf7f8b7",
       "detail_obj_sha256_unchanged": "6f264242aa2f5ca9403e84e2ce4f7cae8f37dfbf417f35adbeee73edcf71e90a",
       "moved_existing_source_vertex_coordinates": 20,
       "total_mesh_parts": 15,
@@ -70,11 +70,12 @@
         "samefacing_coplanar_pairs": 0,
         "manifold_status": "PASS"
       },
-      "local_direct_binary_fbx_candidate_sha256": "3f755c3ddeccc927f3009fa492aff3f6c3b35b6e6322ebbe9e204148d85ecf9f",
+      "local_direct_binary_fbx_candidate_sha256": "c8285e4747367dff608d109db75f7cab98ec2a5171ec59dbb77499bf05347008",
       "blender_native_blend": "MISSING",
       "blender_fbx_export_and_reimport": "NOT_RUN",
       "unity_6_urp": "NOT_RUN",
-      "independent_C01_02": "PENDING"
+      "independent_C01_02": "PENDING",
+      "correction_note": "DarkPanel front z=.08->.079; EmissionWhite_5/6 BOTH front and rear z translated -0.001m (.09->.089, .078->.077) leaving source silhouette exactly unchanged"
     },
     {
       "id": "P16-06",
@@ -134,5 +135,8 @@
       "unity_6_urp": "NOT_RUN",
       "independent_C01_02": "PENDING"
     }
-  ]
+  ],
+  "bundle_bytes": 385466,
+  "global_dimensions_and_AABB": "PASS: exact full-model min/max XYZ preserved for all 7 models after final 1mm planar offset direction choice, local before/after OBJ",
+  "release_gate": "BLOCKED: no Blender executable/bpy, no native .blend or Blender FBX roundtrip, Unity NOT RUN, C01-02 independent final acceptance PENDING"
 }

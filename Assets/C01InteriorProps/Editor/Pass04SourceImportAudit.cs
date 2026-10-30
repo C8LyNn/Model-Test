@@ -50,6 +50,7 @@ namespace C01.InteriorProps.Editor
             public string id;
             public string source_commit;
             public string native_export_sync;
+            public string final_fbx_sha256;
         }
 
         sealed class Source
@@ -156,6 +157,16 @@ namespace C01.InteriorProps.Editor
                 return "SOURCE_NATIVE_EXPORT_BLOCKED_BY_MANIFEST";
             if(!String.Equals(expected[0].source_commit,fields[2],StringComparison.Ordinal))
                 return "STAGING_RECEIPT_PRODUCER_COMMIT_STALE";
+            // If an exact full-byte FBX hash has been independently captured,
+            // reject an old file+old receipt even when the source commit matches.
+            string exportSha=expected[0].final_fbx_sha256;
+            if(!String.IsNullOrWhiteSpace(exportSha))
+            {
+                if(!Regex.IsMatch(exportSha,@"\A[0-9a-f]{64}\z"))
+                    return "MANIFEST_FINAL_FBX_SHA_INVALID";
+                if(!String.Equals(exportSha,sha,StringComparison.OrdinalIgnoreCase))
+                    return "STAGED_BINARY_DIFFERS_FROM_EXACT_MANIFEST_SHA";
+            }
             if(!String.Equals(fields[5].Replace('\\','/'),
                 AssetRoot+"/Pass04Incoming/"+id+"/"+id+".fbx",StringComparison.Ordinal))
                 return "STAGING_RECEIPT_PATH_MISMATCH";
@@ -182,6 +193,89 @@ namespace C01.InteriorProps.Editor
             return !(float.IsNaN(p.x)||float.IsNaN(p.y)||float.IsNaN(p.z)||
                      float.IsInfinity(p.x)||float.IsInfinity(p.y)||float.IsInfinity(p.z));
         }
+
+        // World-to-imported-root conversion makes this work for FBX node rotations,
+        // negative scale, nested mechanical pivots and Blender axes remapping.
+        // Bounds separation > epsilon mathematically proves NO source part contact;
+        // zero separation is only a broadphase candidate, not a mesh collision PASS.
+        static bool TryRootBounds(Transform root,MeshFilter filter,out Bounds box)
+        {
+            box=new Bounds();
+            if(filter==null || filter.sharedMesh==null)return false;
+            var local=filter.sharedMesh.bounds;
+            var m=root.worldToLocalMatrix*filter.transform.localToWorldMatrix;
+            var ex=local.extents;
+            var x=m.MultiplyVector(new Vector3(ex.x,0,0));
+            var y=m.MultiplyVector(new Vector3(0,ex.y,0));
+            var z=m.MultiplyVector(new Vector3(0,0,ex.z));
+            var worldEx=new Vector3(
+                Mathf.Abs(x.x)+Mathf.Abs(y.x)+Mathf.Abs(z.x),
+                Mathf.Abs(x.y)+Mathf.Abs(y.y)+Mathf.Abs(z.y),
+                Mathf.Abs(x.z)+Mathf.Abs(y.z)+Mathf.Abs(z.z));
+            box=new Bounds(m.MultiplyPoint3x4(local.center),worldEx*2f);
+            return Finite(box.center)&&Finite(worldEx);
+        }
+        static float PositiveGap(Bounds a,Bounds b)
+        {
+            float x=Mathf.Max(0f,Mathf.Max(a.min.x-b.max.x,b.min.x-a.max.x));
+            float y=Mathf.Max(0f,Mathf.Max(a.min.y-b.max.y,b.min.y-a.max.y));
+            float z=Mathf.Max(0f,Mathf.Max(a.min.z-b.max.z,b.min.z-a.max.z));
+            return Mathf.Sqrt(x*x+y*y+z*z);
+        }
+        static void CheckKnownMechanicalGaps(string id,Transform root,MeshFilter[] filters,
+                                              List<string> defects)
+        {
+            string[] required;
+            switch(id)
+            {
+                case "P18-01": required=new[]{"Lower_Rim"};break;
+                case "P18-02": required=new[]{"Back_Support_0.6","Back_Support_1.48"};break;
+                case "P18-03": required=new[]{
+                    "Cart_Shelf_Lip_0_-0.48","Cart_Shelf_Lip_0_0.48",
+                    "Cart_Shelf_Lip_1_-0.48","Cart_Shelf_Lip_1_0.48"};break;
+                default: return;
+            }
+            // Matching an imported FBX MeshFilter *name*, not a recreated proxy.
+            var resolved=new List<KeyValuePair<string,Bounds>>();
+            foreach(var filter in filters)
+            {
+                Bounds box;
+                if(!TryRootBounds(root,filter,out box))continue;
+                resolved.Add(new KeyValuePair<string,Bounds>(filter.name,box));
+            }
+            foreach(var part in required)
+            {
+                var matches=resolved.Where(x=>String.Equals(x.Key,part,StringComparison.Ordinal)).ToArray();
+                if(matches.Length!=1)
+                {
+                    defects.Add("P18_MECH_PART_MISSING_OR_DUPLICATE:"+part);
+                    continue;
+                }
+                float gap=resolved.Where(x=>!String.Equals(x.Key,part,StringComparison.Ordinal))
+                                  .Select(x=>PositiveGap(matches[0].Value,x.Value))
+                                  .DefaultIfEmpty(float.PositiveInfinity).Min();
+                if(gap>0.0005f)
+                    defects.Add("P18_MECH_FLOATING:"+part+":gap_mm="+
+                        (gap*1000f).ToString("F3",System.Globalization.CultureInfo.InvariantCulture));
+            }
+            if(id=="P18-03")
+            {
+                foreach(var wheel in new[]{"Wheel_LB","Wheel_LF","Wheel_RB","Wheel_RF"})
+                {
+                    var matches=resolved.Where(x=>String.Equals(x.Key,wheel,StringComparison.Ordinal)).ToArray();
+                    if(matches.Length!=1)
+                    {
+                        defects.Add("P18_WHEEL_MISSING_OR_DUPLICATE:"+wheel);
+                        continue;
+                    }
+                    if(Mathf.Abs(matches[0].Value.min.y)>0.002f)
+                        defects.Add("P18_WHEEL_GROUND_CONTACT:"+wheel);
+                }
+                // Triangle-level moving-wheel vs upright checks remain pending
+                // real Unity scene/collider animation. AABB overlap != collision.
+            }
+        }
+
         static Source Inspect(string id,string path)
         {
             var r=new Source{Id=id,Path=path,Status="SOURCE_PRECHECK_NOT_RUN",Diagnostics=""};
@@ -212,6 +306,7 @@ namespace C01.InteriorProps.Editor
                     defects.Add("ROOT_SCALE_NOT_ONE");
                 var filters=inst.GetComponentsInChildren<MeshFilter>(true);
                 if(filters.Length==0)defects.Add("NO_MESHFILTERS");
+                CheckKnownMechanicalGaps(id,inst.transform,filters,defects);
                 r.SourceColliders=inst.GetComponentsInChildren<Collider>(true).Length;
                 foreach(var filter in filters)
                 {

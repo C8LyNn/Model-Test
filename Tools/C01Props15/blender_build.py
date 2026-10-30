@@ -21,12 +21,84 @@ def material(name,color):
     bs=m.node_tree.nodes.get('Principled BSDF')
     if bs:bs.inputs['Base Color'].default_value=tuple(color);bs.inputs['Metallic'].default_value=.55;bs.inputs['Roughness'].default_value=.42
     return m
+# DETAIL PASS 13: true closed hollow hinge barrels and notched original door leaf.
+# Uses the existing P15-03 root/part hierarchy; no new asset ID.
+def c01_detail13_earclip(poly):
+    def cross(a,b,c):
+        return (b[0]-a[0])*(c[1]-a[1])-(b[1]-a[1])*(c[0]-a[0])
+    def inside(p,a,b,c):
+        return all(cross(v,w,p)>=-1e-12 for v,w in ((a,b),(b,c),(c,a)))
+    indices=list(range(len(poly)))
+    area=sum(poly[i][0]*poly[(i+1)%len(poly)][1]-poly[(i+1)%len(poly)][0]*poly[i][1] for i in range(len(poly)))
+    if area<=0:raise RuntimeError("P15-03 notched door polygon winding invalid")
+    tris=[]
+    while len(indices)>3:
+        found=False
+        for k in range(len(indices)):
+            a,b,c=[indices[(k+q)%len(indices)] for q in (-1,0,1)]
+            if cross(poly[a],poly[b],poly[c])<1e-10:continue
+            if any(inside(poly[q],poly[a],poly[b],poly[c]) for q in indices if q not in (a,b,c)):continue
+            tris.append((a,b,c));indices.pop(k);found=True;break
+        if not found:raise RuntimeError("P15-03 door edge relief cannot triangulate")
+    tris.append(tuple(indices))
+    return tris
+
+def c01_detail13_custom_primitive(p):
+    shape=p["shape"]
+    if shape=="hollow_cylinder":
+        if p.get("axis")!="Y":raise RuntimeError("Only existing Y-axis hinge barrels supported")
+        n=p.get("sides",12);r=p["inner_radius"];R=p["radius"];depth=p["depth"]
+        if not (n>=8 and 0<r<R and depth>0):raise RuntimeError("Invalid hinge bore")
+        verts=[]
+        for rad,z in ((R,-depth/2),(R,depth/2),(r,-depth/2),(r,depth/2)):
+            verts.extend([(rad*math.cos(2*math.pi*i/n),rad*math.sin(2*math.pi*i/n),z) for i in range(n)])
+        faces=[]
+        for i in range(n):
+            j=(i+1)%n
+            faces.extend(((i,j,n+j,n+i),(2*n+i,3*n+i,3*n+j,2*n+j),
+                          (i,2*n+i,2*n+j,j),(n+i,n+j,3*n+j,3*n+i)))
+    elif shape=="notched_box":
+        dx,dy,dz=p["size"]
+        x0,x1=-dx/2,dx/2
+        y0,y1=-dy/2,dy/2
+        ring=[(x0,y0),(x1,y0),(x1,y1),(x0,y1)]
+        for notch in sorted(p["notches"],key=lambda n:n["center_y"],reverse=True):
+            yc=notch["center_y"]-p["center"][1];h=notch["height"]/2;xx=x0+notch["depth_x"]
+            if not (x0<xx<x1 and y0<yc-h<yc+h<y1):raise RuntimeError("Invalid door relief dimensions")
+            ring.extend(((x0,yc+h),(xx,yc+h),(xx,yc-h),(x0,yc-h)))
+        n=len(ring)
+        verts=[to_b((x,y,-dz/2)) for x,y in ring]+[to_b((x,y,dz/2)) for x,y in ring]
+        cap=c01_detail13_earclip(ring)
+        faces=[]
+        for a,b,c in cap:faces.extend(((c,b,a),(n+a,n+b,n+c)))
+        for i in range(n):
+            j=(i+1)%n
+            faces.append((i,j,n+j,n+i))
+    else:
+        raise RuntimeError("Unexpected custom primitive "+shape)
+    data=bpy.data.meshes.new(p["name"]+"_MESH")
+    data.from_pydata(verts,[],faces)
+    data.update()
+    uv=data.uv_layers.new(name="UVMap")
+    for face in data.polygons:
+        for lid in face.loop_indices:
+            v=data.vertices[data.loops[lid].vertex_index].co
+            if shape=="hollow_cylinder":
+                uv.data[lid].uv=((math.atan2(v.y,v.x)/(2*math.pi))%1.0,(v.z/p["depth"])+.5)
+            else:
+                uv.data[lid].uv=(v.x/max(p["size"][0],1e-8)+.5,v.z/max(p["size"][1],1e-8)+.5)
+    o=bpy.data.objects.new(p["name"],data)
+    bpy.context.collection.objects.link(o)
+    return o
+
 def primitive(p,m):
-    if p['shape']=='box':
+    if p['shape'] in ('notched_box','hollow_cylinder'):
+        o=c01_detail13_custom_primitive(p)
+    elif p['shape']=='box':
         bpy.ops.mesh.primitive_cube_add(size=1)
         o=bpy.context.object;o.dimensions=(p['size'][0],p['size'][2],p['size'][1])
         bpy.ops.object.transform_apply(location=False,rotation=False,scale=True)
-    else:
+    elif p['shape']=='cylinder':
         bpy.ops.mesh.primitive_cylinder_add(vertices=p.get('sides',16),radius=p['radius'],depth=p['depth'])
         o=bpy.context.object
         if p['axis']=='X':o.rotation_euler[1]=math.pi/2

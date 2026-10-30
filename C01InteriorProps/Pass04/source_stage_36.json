@@ -3,7 +3,7 @@
   "date": "2026-10-30",
   "issue": 33,
   "approval": "NO_PRODUCTION_APPROVAL",
-  "warning": "DETAIL PASS14 SOURCE geometry fixes verified on P18-01/02/03 by actual OBJ, but real current native .blend and Blender-origin FBX AFTER do not yet exist in linked producer Git LFS. The five edited detail sources P15-03/P17-02/P18-01/02/03 remain blocked until C01-02 independent exact new SHA and Unity 6 actual import are completed.",
+  "warning": "DETAIL PASS15 actual source geometry was inspected and current immutable source refs+SHA256 pinned for P15-03/P17-02/P18-01/02/03. The staged release candidate requires a newly Blender-saved .blend, true Blender binary FBX and C01-02 independent exact final FBX SHA; offline FBX editing is NOT a native export, and historical FBX SHA is not final. All five remain blocked. Source fidelity C# gate adds P18 12 new functional parts with count/triangle/parent checks. 19 BLOCKED / 17 QA-only.",
   "staged_directory": "Assets/C01InteriorProps/Pass04Incoming/<ID>/<ID>.fbx",
   "assets": [
     {
@@ -42,14 +42,15 @@
       "owner": "C01-15",
       "producer_pr": 16,
       "source_branch": "c01/props-15-installations",
-      "source_commit": "7cd60fcd210a555363661dbeb2f38ea146607068",
+      "source_commit": "67b6d6f800b417e9d2300bcfdef71c266eb5f23c",
       "fbx_path": "Assets/C01InteriorProps/P15/Models/FBX/P15-03.fbx",
       "final_fbx_sha256": null,
       "independent_qa": "NOT_APPROVED",
       "expected_source_type": "BINARY_FBX",
       "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval",
       "native_export_sync": "BLOCKED_DETAIL_PASS12_NATIVE_EXPORT",
-      "native_export_blocker": "P15-03 original authoring source now has +6 functional hinge meshes (24->30 parts; 288->440 triangles), but current canonical FBX is historical LFS sha256:95d2730197a7c86bd3a59c1748a1df6df2a276ef9a9554d0df3ad0b769f6f414 (73708 bytes), not a Blender-exported AFTER; native Blender source save+FBX roundtrip NOT RUN. Never import as final DETAIL."
+      "native_export_blocker": "PASS15 current authored electrical cabinet has 34 parts including four hinge support ears; new authoritative native Blender .blend and matching Blender-generated binary FBX NOT RUN.",
+      "pass15_verified_source_sha256": "7f3d602af1040431134aa4cca236fb36c9613d77160b383f175ec6c02d144703"
     },
     {
       "id": "P15-04",
@@ -237,14 +238,17 @@
       "owner": "C01-17",
       "producer_pr": 17,
       "source_branch": "c01/props-17-controls",
-      "source_commit": "cdcc18428d2fb52c2c60826fc8af9a70f51c82f9",
+      "source_commit": "28824c2fa48e8523f9a8715df71c57379fa7634a",
       "fbx_path": "Assets/C01InteriorProps/Models/P17-02.fbx",
-      "final_fbx_sha256": "af858385a0abae9c623ee4002bcf22bcbc401b5687024acd8df142eb1b848147",
+      "final_fbx_sha256": null,
       "independent_qa": "NOT_APPROVED",
       "expected_source_type": "BINARY_FBX",
       "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval | DETAIL PASS12: historical FBX SHA still recorded, not approved as after-version.",
       "native_export_sync": "BLOCKED_DETAIL_PASS12_NATIVE_EXPORT",
-      "native_export_blocker": "DETAIL PASS12 original native Blender .blend and genuine binary FBX with functional detail revisions NOT delivered or Blender/Unity roundtripped; previous source FBX full SHA is a PRE-DETAIL historical baseline only."
+      "native_export_blocker": "PASS15 38-part/536T source; producer reported offline edited binary FBX candidate, NOT Blender-generated and NOT independently approved; new native 38-part .blend and Blender export NOT RUN.",
+      "pass15_verified_source_sha256": "a9995704a70776b49f2bd6916a50cf222a4ab40b370a0a9e258b63bdc4429786",
+      "archived_before_detail_fbx_sha256": "af858385a0abae9c623ee4002bcf22bcbc401b5687024acd8df142eb1b848147",
+      "reported_offline_non_blender_candidate_fbx_sha256": "028aac19cfe3bb7ff873a08c948a95cfa31344cee2e87347f636030620e1ebe1"
     },
     {
       "id": "P17-03",
@@ -327,14 +331,15 @@
       "owner": "C01-18",
       "producer_pr": 18,
       "source_branch": "c01/props-18-cargo",
-      "source_commit": "681fc52d2159ac774abf1f48efd7b89965d1afe8",
+      "source_commit": "91659e272ef1fe49fdaf7a906b4b6b2769ce50c8",
       "fbx_path": "Assets/C01InteriorProps/C01-18/Models/P18-01.fbx",
       "final_fbx_sha256": null,
       "independent_qa": "NOT_APPROVED",
       "expected_source_type": "BINARY_FBX",
       "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval",
       "native_export_sync": "BLOCKED_DETAIL_PASS12_NATIVE_EXPORT",
-      "native_export_blocker": "DETAIL PASS12 original native Blender .blend and genuine binary FBX with functional detail revisions NOT delivered or Blender/Unity roundtripped; previous source FBX full SHA is a PRE-DETAIL historical baseline only."
+      "native_export_blocker": "PASS15 actual source 41 parts/844T, four hinge retainers; actual new native Blender .blend and binary FBX NOT RUN.",
+      "pass15_verified_source_sha256": "5fb7ee496d6ed0d2e9f439629b9d9ed4774ca862290f04e13dc70239e44ec39d"
     },
     {
       "id": "P18-02",
@@ -342,14 +347,15 @@
       "owner": "C01-18",
       "producer_pr": 18,
       "source_branch": "c01/props-18-cargo",
-      "source_commit": "681fc52d2159ac774abf1f48efd7b89965d1afe8",
+      "source_commit": "91659e272ef1fe49fdaf7a906b4b6b2769ce50c8",
       "fbx_path": "Assets/C01InteriorProps/C01-18/Models/P18-02.fbx",
       "final_fbx_sha256": null,
       "independent_qa": "NOT_APPROVED",
       "expected_source_type": "BINARY_FBX",
       "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval",
       "native_export_sync": "BLOCKED_DETAIL_PASS12_NATIVE_EXPORT",
-      "native_export_blocker": "DETAIL PASS12 original native Blender .blend and genuine binary FBX with functional detail revisions NOT delivered or Blender/Unity roundtripped; previous source FBX full SHA is a PRE-DETAIL historical baseline only."
+      "native_export_blocker": "PASS15 actual source 51 parts/1044T, four backing support gussets; actual new native Blender .blend and binary FBX NOT RUN.",
+      "pass15_verified_source_sha256": "37f81ce82235689980e86febdc4ea0f8bbfd5f9296e4462d156295f2c2297699"
     },
     {
       "id": "P18-03",
@@ -357,14 +363,15 @@
       "owner": "C01-18",
       "producer_pr": 18,
       "source_branch": "c01/props-18-cargo",
-      "source_commit": "681fc52d2159ac774abf1f48efd7b89965d1afe8",
+      "source_commit": "91659e272ef1fe49fdaf7a906b4b6b2769ce50c8",
       "fbx_path": "Assets/C01InteriorProps/C01-18/Models/P18-03.fbx",
       "final_fbx_sha256": null,
       "independent_qa": "NOT_APPROVED",
       "expected_source_type": "BINARY_FBX",
       "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval",
       "native_export_sync": "BLOCKED_DETAIL_PASS12_NATIVE_EXPORT",
-      "native_export_blocker": "DETAIL PASS12 original native Blender .blend and genuine binary FBX with functional detail revisions NOT delivered or Blender/Unity roundtripped; previous source FBX full SHA is a PRE-DETAIL historical baseline only."
+      "native_export_blocker": "PASS15 actual source 57 parts/1628T, four crown bolts; actual new native Blender .blend and binary FBX NOT RUN.",
+      "pass15_verified_source_sha256": "39aba96fa20eb28f698b68b7daf435e96cabe15c0af2bb70e9db6392e2cd1aa2"
     },
     {
       "id": "P18-04",

@@ -63,6 +63,8 @@ jobs:
           git add C01StandaloneKits/FloorCeiling/RepairPass03
           if ! git diff --cached --quiet; then
             git commit -m "C01-12 PASS03: actual Blender repaired UV meshes, FBX and mesh-evidence screenshots"
+            git status --short
+            git stash push --include-untracked -m 'C01-12 temporary Blender checkout changes'
             git fetch origin c01/floors-12-legacy-repair
             git rebase origin/c01/floors-12-legacy-repair
             git push origin HEAD:c01/floors-12-legacy-repair

@@ -252,6 +252,31 @@ namespace C01.InteriorProps.Editor
                 }));
             File.WriteAllLines(Path.Combine(dir,"36_FBX_UNITY_IMPORT_AUDIT.csv"),lines);
         }
+        // Explicit opt-in: modifies importer settings ONLY on copied QA staging FBX.
+        // The producer branch and authored FBX bytes remain untouched.
+        [MenuItem("C01/Mesh Repair PASS04/00 — Enable Readable on Staged Copies")]
+        public static void PrepareReadableStagedCopies()
+        {
+            string root=AssetRoot+"/Pass04Incoming/";
+            string absolute=Absolute(root+".");
+            if(!Directory.Exists(absolute))
+                throw new DirectoryNotFoundException("No staged QA FBX copies: "+root);
+            int adjusted=0;
+            foreach(var fbx in Directory.GetFiles(absolute,"*.fbx",SearchOption.AllDirectories))
+            {
+                var assetPath=ToAssetPath(fbx);
+                var importer=AssetImporter.GetAtPath(assetPath) as ModelImporter;
+                if(importer==null)continue;
+                if(!importer.isReadable)
+                {
+                    importer.isReadable=true;
+                    importer.SaveAndReimport(); // staging .meta only
+                    adjusted++;
+                }
+            }
+            Debug.Log("[C01-10] Set Read/Write for "+adjusted+
+                " STAGED source copies only. Production owner FBX source unchanged.");
+        }
         [MenuItem("C01/Mesh Repair PASS04/01 — Audit 36 Source FBX")]
         public static void Audit()
         {

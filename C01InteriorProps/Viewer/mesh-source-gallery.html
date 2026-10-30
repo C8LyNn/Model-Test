@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>C01-10 — Source Mesh Viewer · PASS 03</title>
+<style>
+:root{color-scheme:dark;font:15px/1.45 system-ui,Segoe UI,sans-serif;background:#0d1119;color:#e6edf6}
+*{box-sizing:border-box}body{margin:0}main{max-width:1480px;margin:auto;padding:22px}
+h1{font-size:23px;margin:0 0 4px}h2{font-size:16px;margin:0 0 12px}
+p{margin:6px 0 12px;color:#bbc5d6}code{color:#96dbec}a{color:#89c6ff}
+section{background:#161d28;border:1px solid #344253;border-radius:10px;padding:15px;margin:12px 0}
+.controls{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+label{display:flex;gap:7px;align-items:center}
+select,button,.picker{background:#243146;color:#f2f6ff;border:1px solid #53677f;border-radius:7px;padding:8px 12px;cursor:pointer;font:inherit}
+button:hover,.picker:hover{background:#31445e}button[aria-pressed="true"]{background:#245879;border-color:#64aaca}
+input[type=file]{max-width:270px;font:inherit}input[type=file]::file-selector-button{background:#243146;color:#fff;border:1px solid #53677f;padding:7px;border-radius:5px}
+.panels{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.viewport{height:min(52vw,480px);min-height:320px;background:#0d1420;border:1px solid #334b60;border-radius:8px;position:relative;overflow:hidden}
+.viewport canvas{width:100%!important;height:100%!important;display:block}
+.viewport .empty{position:absolute;left:12px;top:12px;max-width:95%;padding:8px;background:#132031bb;font-size:13px}
+.metadata{font:12px/1.55 ui-monospace,Consolas,monospace;overflow-wrap:anywhere;white-space:pre-wrap;background:#101722;padding:10px;min-height:120px}
+.tag{font-weight:700;font-size:12px;color:#ffc979}.ok{color:#76dbac}.warning{color:#ffc979}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.small{font-size:12px;color:#aebccc}
+@media(max-width:850px){.panels,.grid{grid-template-columns:1fr}.viewport{height:370px}}
+</style>
+<script type="importmap">
+{"imports":{"three":"https://esm.sh/three@0.164.1","three/addons/":"https://esm.sh/three@0.164.1/examples/jsm/"}}
+</script>
+</head>
+<body><main>
+<header>
+<h1>C01-10 — Source Mesh Gallery / PASS 03</h1>
+<p>Porównanie <strong>oryginalnych eksportów</strong> z naprawionymi. Model jest wczytywany bezpośrednio z pliku FBX/GLB/glTF: bez tworzenia zastępczych kostek, cylindrów i bez zmian siatki.</p>
+<p class="tag">NIE JEST TO TEST BLENDERA ANI UNITY · screenshots to materiał podglądowy, nie niezależny certyfikat topologii.</p>
+</header>
+<section>
+<div class="controls">
+<label>Asset <select id="asset"><option>P17-04</option><option>P17-05</option><option>P18-04</option><option>P18-05</option><option>P19-07</option><option>P19-08</option></select></label>
+<label>Widok <select id="mode"><option value="shaded">Shaded</option><option value="wire">Wireframe (triangles)</option><option value="both">Shaded + Wireframe</option></select></label>
+<button id="reset">Kadruj</button>
+<button id="snap">Zapisz obrazy z galerii</button>
+</div>
+<p class="small">Obróć model myszą na lewym panelu; zoom kółkiem. Ten sam kadr zostanie zastosowany w obu panelach. Ładuj <strong>rzeczywiste pliki</strong> z istniejących gałęzi producentów.</p>
+<div class="controls">
+<label>BEFORE (źródło) <input id="before" type="file" accept=".fbx,.glb,.gltf"></label>
+<label>AFTER (naprawa) <input id="after" type="file" accept=".fbx,.glb,.gltf"></label>
+<label>Folder eksportów (opcjonalnie) <input id="folder" type="file" multiple webkitdirectory directory></label>
+</div>
+<p class="small" id="source">Sprawdzanie pochodzenia źródeł…</p>
+</section>
+<div class="panels">
+<section>
+<h2>BEFORE — oryginalny eksport</h2>
+<div class="viewport" id="left"><div class="empty" id="emptyBefore">Brak oryginalnego pliku. Wybierz rzeczywisty eksport BEFORE.</div></div>
+<div class="metadata" id="infoBefore">NOT LOADED</div>
+</section>
+<section>
+<h2>AFTER — ten sam model po naprawie</h2>
+<div class="viewport" id="right"><div class="empty" id="emptyAfter">Brak pliku po naprawie. Wybierz rzeczywisty eksport AFTER.</div></div>
+<div class="metadata" id="infoAfter">NOT LOADED</div>
+</section>
+</div>
+<section>
+<h2>Interpretacja i integralność</h2>
+<div id="status">Brak wczytanych siatek. Wszystkie kontrole topologii / Blender / FBX roundtrip / Unity: NOT RUN.</div>
+<p class="small">Statystyki z galerii odnoszą się do <strong>siatek po eksporcie</strong>, a nie edytowalnej topologii źródła Blender. Split vertices na UV seams/hard edges jest dozwolony. Liczba wyświetlanych wierzchołków ani nakładka trójkątów nie potwierdzają manifoldness lub poprawnego weld. Do audytu źródłowego użyj per-mesh raportów C01-02.</p>
+<p class="small">Pliki pozostają lokalnie w Twojej przeglądarce; CDN służy wyłącznie do pobrania bibliotek Three.js. Galeria nie przesyła zawartości modeli na serwer.</p>
+</section>
+</main>
+<script type="module">
+import * as THREE from "three";
+import {OrbitControls} from "three/addons/controls/OrbitControls.js";
+import {FBXLoader} from "three/addons/loaders/FBXLoader.js";
+import {GLTFLoader} from "three/addons/loaders/GLTFLoader.js";
+
+const $=id=>document.getElementById(id);
+const sourceCatalog={
+"P17-04":{pr:23,branch:"c01/props-17-wave02",path:"Assets/C01InteriorProps/W02/Models/P17-04.gltf"},
+"P17-05":{pr:23,branch:"c01/props-17-wave02",path:"Assets/C01InteriorProps/W02/Models/P17-05.gltf"},
+"P18-04":{pr:26,branch:"c01/props-18-cargo-wave02",path:"Assets/C01InteriorProps/C01-18-Wave02/Models/P18-04.fbx"},
+"P18-05":{pr:26,branch:"c01/props-18-cargo-wave02",path:"Assets/C01InteriorProps/C01-18-Wave02/Models/P18-05.fbx"},
+"P19-07":{pr:29,branch:"c01/props-19-furniture-wave02",path:"Assets/C01InteriorProps/C01-19-W02/Models/P19-07/P19-07.fbx"},
+"P19-08":{pr:29,branch:"c01/props-19-furniture-wave02",path:"Assets/C01InteriorProps/C01-19-W02/Models/P19-08/P19-08.fbx"}
+};
+const sides={before:{container:"left",empty:"emptyBefore",info:"infoBefore"},after:{container:"right",empty:"emptyAfter",info:"infoAfter"}};
+const saved=new Map();
+let viewMode="shaded";
+function panel(id){
+const host=$(sides[id].container);
+const scene=new THREE.Scene();scene.background=new THREE.Color(0x0d1420);
+scene.add(new THREE.HemisphereLight(0xcadffc,0x313d50,2));
+const sun=new THREE.DirectionalLight(0xffffff,2.1);sun.position.set(3,5,4);scene.add(sun);
+const camera=new THREE.PerspectiveCamera(50,1,.01,1500);camera.position.set(3,2.6,4);
+const renderer=new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer:true});
+renderer.outputColorSpace=THREE.SRGBColorSpace;
+renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
+host.prepend(renderer.domElement);
+return {scene,camera,renderer,host,root:null,meshes:[],wire:[],bounds:null,stats:null};
+}
+const panels={before:panel("before"),after:panel("after")};
+const controls=new OrbitControls(panels.before.camera,panels.before.renderer.domElement);
+controls.enableDamping=true;controls.dampingFactor=.09;controls.target.set(0,0,0);
+function resize(){
+for(const p of Object.values(panels)){
+const w=Math.max(200,p.host.clientWidth),h=Math.max(200,p.host.clientHeight);
+if(p.renderer.domElement.width!==Math.round(w*p.renderer.getPixelRatio())||
+   p.renderer.domElement.height!==Math.round(h*p.renderer.getPixelRatio())){
+ p.renderer.setSize(w,h,false);p.camera.aspect=w/h;p.camera.updateProjectionMatrix();
+}
+}}
+function render(){
+requestAnimationFrame(render);resize();controls.update();
+panels.after.camera.position.copy(panels.before.camera.position);
+panels.after.camera.quaternion.copy(panels.before.camera.quaternion);
+panels.after.camera.zoom=panels.before.camera.zoom;
+panels.after.camera.updateProjectionMatrix();
+panels.before.renderer.render(panels.before.scene,panels.before.camera);
+panels.after.renderer.render(panels.after.scene,panels.after.camera);
+}
+render();
+function resetCamera(){
+let radius=.6;
+for(const p of Object.values(panels)) if(p.bounds)radius=Math.max(radius,p.bounds.getBoundingSphere(new THREE.Sphere()).radius);
+const distance=radius/Math.sin(THREE.MathUtils.degToRad(25))*1.6;
+panels.before.camera.position.set(distance*.82,distance*.56,distance*.9);
+panels.before.camera.near=Math.max(.0001,distance/2000);
+panels.before.camera.far=distance*40;
+panels.before.camera.updateProjectionMatrix();
+panels.after.camera.near=panels.before.camera.near;panels.after.camera.far=panels.before.camera.far;
+controls.target.set(0,0,0);controls.update();
+}
+$("reset").onclick=resetCamera;
+$("mode").onchange=e=>{viewMode=e.target.value;for(const p of Object.values(panels))applyMode(p);};
+function applyMode(p){
+for(const entry of p.meshes){
+ const m=entry.mesh;
+ if(viewMode==="wire"){m.material=entry.wireMaterial;entry.overlay.visible=false;}
+ else{m.material=entry.original;entry.overlay.visible=viewMode==="both";}
+}}
+function clearPanel(p){
+if(p.root){p.scene.remove(p.root);p.root=null;}
+for(const e of p.meshes){e.overlay.geometry.dispose();e.wireMaterial.dispose();}
+p.meshes=[];p.wire=[];p.bounds=null;p.stats=null;
+}
+function geometryStats(root){
+let meshCount=0,vertices=0,tris=0,nonIndexed=0,uv0=0,normals=0,materials=new Set(),names=[];
+root.traverse(o=>{
+ if(!o.isMesh||!o.geometry||!o.geometry.getAttribute("position"))return;
+ meshCount++;const g=o.geometry,pos=g.getAttribute("position");
+ vertices+=pos.count;
+ const n=g.index?g.index.count:pos.count;
+ tris+=Math.floor(n/3);
+ if(!g.index)nonIndexed++;
+ if(g.getAttribute("uv"))uv0++;
+ if(g.getAttribute("normal"))normals++;
+ const mats=Array.isArray(o.material)?o.material:[o.material];
+ for(const mat of mats)if(mat)materials.add(mat.name||mat.uuid);
+ names.push(o.name||"unnamed");
+});
+return {meshCount,vertices,tris,nonIndexed,uv0,normals,materials:materials.size,names};
+}
+function addModel(id,modelRoot,file,hash,signature){
+const p=panels[id];clearPanel(p);
+const bounds=new THREE.Box3().setFromObject(modelRoot);
+if(bounds.isEmpty())throw new Error("Eksport nie zawiera widocznej geometrii.");
+const center=bounds.getCenter(new THREE.Vector3());
+const wrapper=new THREE.Group();
+wrapper.add(modelRoot);
+modelRoot.position.sub(center); // VIEW-ONLY offset, model geometry and local pivots unchanged.
+p.scene.add(wrapper);p.root=wrapper;p.bounds=new THREE.Box3().setFromObject(wrapper);
+const stats=geometryStats(modelRoot);if(stats.meshCount===0)throw new Error("Brak rzeczywistych MeshFilter/mesh data");
+modelRoot.traverse(mesh=>{
+if(!mesh.isMesh||!mesh.geometry||!mesh.geometry.getAttribute("position"))return;
+const wireMat=new THREE.MeshBasicMaterial({color:0x91e3f6,wireframe:true,side:THREE.DoubleSide});
+const edges=new THREE.WireframeGeometry(mesh.geometry);
+const overlay=new THREE.LineSegments(edges,new THREE.LineBasicMaterial({color:0xa6f1ff,depthTest:true,transparent:true,opacity:.72}));
+overlay.visible=false;overlay.name="VIEW_ONLY_WIREFRAME";
+mesh.add(overlay);
+p.meshes.push({mesh,original:mesh.material,wireMaterial:wireMat,overlay});
+});
+p.stats={...stats,hash,file:file.name,bytes:file.size,signature};
+applyMode(p);$(sides[id].empty).style.display="none";
+$(sides[id].info).textContent=
+ "SOURCE "+file.name+"\nTYPE "+signature+" | "+file.size+" B\nSHA-256 "+hash+
+ "\nMESH PARTS "+stats.meshCount+" | EXPORTED VERTEX ENTRIES "+stats.vertices+
+ "\nTRIANGLES "+stats.tris+" | MATERIALS "+stats.materials+
+ "\nPARTS WITH UV0 "+stats.uv0+"/"+stats.meshCount+
+ " | NORMALS "+stats.normals+"/"+stats.meshCount+
+ "\nUNINDEXED PARTS "+stats.nonIndexed+"\n"+
+ "MESHES "+stats.names.slice(0,16).join(", ")+(stats.names.length>16?" …":"")+
+ "\nTOPOLOGY QA: NOT RUN / NOT APPROVED";
+resetCamera();setStatus();
+}
+function setStatus(){
+const loaded=Object.values(panels).filter(p=>p.stats);
+$("status").textContent=loaded.length===0?
+ "Brak wczytanych siatek. Topologia / Blender roundtrip / Unity: NOT RUN.":
+ loaded.map(p=>p.stats.file+" — sha256:"+p.stats.hash.slice(0,16)+"… — "+p.stats.tris+" tri").join(" | ")+
+ " · Dostępne statystyki eksportów; źródłowy topology gate i Unity: NOT RUN.";
+}
+async function sha256(arrayBuffer){
+if(!crypto?.subtle)return "UNAVAILABLE_IN_INSECURE_CONTEXT";
+const digest=await crypto.subtle.digest("SHA-256",arrayBuffer);
+return Array.from(new Uint8Array(digest),x=>x.toString(16).padStart(2,"0")).join("");
+}
+function validate(array,file){
+const ext=file.name.toLowerCase().split(".").pop(),u=new Uint8Array(array);
+const str=new TextDecoder().decode(u.subarray(0,160));
+if(str.startsWith("version https://git-lfs.github.com/spec/v1"))
+ throw new Error("To jest wskaźnik Git LFS, nie model. Pobierz pełny oryginalny plik (Git LFS / Actions artifact).");
+if(ext==="fbx"){
+ if(!str.startsWith("Kaydara FBX Binary"))throw new Error("Oczekiwany prawdziwy BINARNY FBX, a nie ASCII/placeholder/LFS.");
+ return "Binary FBX";
+}
+if(ext==="glb"){
+ if(u[0]!==0x67||u[1]!==0x6c||u[2]!==0x54||u[3]!==0x46)
+ throw new Error("Nieprawidłowy nagłówek GLB (glTF).");
+ return "GLB 2.0";
+}
+if(ext==="gltf"){
+ let data;
+ try{data=JSON.parse(new TextDecoder().decode(u));}catch(e){throw new Error("Nieprawidłowy glTF JSON.");}
+ if(data.asset?.version?.split(".")[0]!=="2")throw new Error("Wymagany glTF 2.0");
+ if((data.buffers||[]).some(b=>b.uri&&!b.uri.startsWith("data:")))
+ throw new Error("Ten glTF ma pliki towarzyszące BIN; wymagany GLB lub wersja z embedded data.");
+ return "glTF 2.0 embedded";
+}
+throw new Error("Użyj rzeczywistego pliku .fbx / .glb / .gltf.");
+}
+async function load(file,side){
+if(!file)return;
+const p=panels[side];
+$(sides[side].info).textContent="Ładowanie rzeczywistego eksportu: "+file.name;
+try{
+const buffer=await file.arrayBuffer(),signature=validate(buffer,file),hash=await sha256(buffer);
+const extension=file.name.toLowerCase().split(".").pop();
+let obj;
+if(extension==="fbx")obj=new FBXLoader().parse(buffer,"");
+else{
+ const gltf=await new Promise((resolve,reject)=>{
+   new GLTFLoader().parse(extension==="gltf"?new TextDecoder().decode(buffer):buffer,"",resolve,reject);
+ });
+ obj=gltf.scene;
+}
+addModel(side,obj,file,hash,signature);
+}catch(e){
+clearPanel(p);$(sides[side].empty).style.display="block";
+$(sides[side].info).textContent="LOAD FAIL: "+String(e.message||e);
+setStatus();
+}}
+function remember(asset,side,file){
+if(!saved.has(asset))saved.set(asset,{before:null,after:null});
+saved.get(asset)[side]=file;
+if(asset===$("asset").value)load(file,side);
+}
+$("before").onchange=e=>remember($("asset").value,"before",e.target.files?.[0]);
+$("after").onchange=e=>remember($("asset").value,"after",e.target.files?.[0]);
+$("folder").onchange=e=>{
+const files=[...e.target.files||[]];
+for(const file of files){
+const id=(file.webkitRelativePath||file.name).match(/P(?:17-0[45]|18-0[45]|19-0[78])/i)?.[0]?.toUpperCase();
+if(!id||!/\.(fbx|glb|gltf)$/i.test(file.name))continue;
+const hint=(file.webkitRelativePath||file.name).toLowerCase();
+const side=/before|original|_old|_v000/.test(hint)?"before":"after";
+remember(id,side,file);
+}
+};
+$("asset").onchange=()=>{
+const asset=$("asset").value,src=sourceCatalog[asset];
+$("source").replaceChildren();
+const a=document.createElement("a");
+a.href="https://github.com/C8LyNn/Model-Test/blob/"+src.branch+"/"+src.path;
+a.target="_blank";a.rel="noopener noreferrer";a.textContent="Oryginalny plik w PR #"+src.pr+": "+src.path;
+$("source").append(a,document.createTextNode(" · GitHub LFS wymaga pełnego pobrania, nie pliku wskaźnika."));
+for(const side of ["before","after"]){
+ clearPanel(panels[side]);$(sides[side].info).textContent="NOT LOADED";
+ $(sides[side].empty).style.display="block";
+ const f=saved.get(asset)?.[side];if(f)load(f,side);
+}
+setStatus();
+};
+$("asset").onchange();
+$("snap").onclick=()=>{
+const asset=$("asset").value,mode=viewMode;
+for(const side of ["before","after"]){
+if(!panels[side].stats)continue;
+const a=document.createElement("a");
+a.href=panels[side].renderer.domElement.toDataURL("image/png");
+a.download=asset+"_"+side+"_"+mode+"_VIEWER_NOT_QA.png";
+document.body.append(a);a.click();a.remove();
+}
+};
+</script></main></body></html>

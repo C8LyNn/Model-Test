@@ -1,0 +1,45 @@
+name: C01-15 WAVE02 Blender FBX real assets
+on:
+  push:
+    branches: [c01/props-15-installations-wave02]
+    paths:
+      - .github/workflows/c01-props15-wave02.yml
+      - Tools/C01Props15Wave02/**
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  blender-native:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+      - name: Install Blender headless + FBX dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends blender python3-numpy xvfb libegl1 libgl1 libgl1-mesa-dri libopengl0
+      - name: Create four actual .blend .fbx and twelve previews
+        run: LIBGL_ALWAYS_SOFTWARE=1 xvfb-run -a blender --background --python Tools/C01Props15Wave02/blender_build.py
+      - name: Actual Blender reimport audit UV/normal/material and 90-degree port geometry
+        run: LIBGL_ALWAYS_SOFTWARE=1 xvfb-run -a blender --background --python Tools/C01Props15Wave02/blender_verify.py
+      - name: File signatures and SHA256 report
+        run: python3 Tools/C01Props15Wave02/validate_files.py
+      - name: Commit real generated assets to isolated branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config lfs.https://github.com/C8LyNn/Model-Test.git/info/lfs.locksverify false
+          git add Assets/C01InteriorProps/P15Wave02/Sources/Blender/
+          git add Assets/C01InteriorProps/P15Wave02/Models/FBX/
+          git add Assets/C01InteriorProps/P15Wave02/Previews/Blender/
+          git add Assets/C01InteriorProps/P15Wave02/Manifests/
+          git add Assets/C01InteriorProps/P15Wave02/QA/
+          if ! git diff --cached --quiet; then
+            git commit -m "C01-15 W02: real Blender FBX preview binaries, manifests and QA evidence"
+            git fetch origin c01/props-15-installations-wave02
+            git update-index --assume-unchanged Assets/TutorialInfo/Icons/URP.png || true
+            git rebase --autostash origin/c01/props-15-installations-wave02
+            git push origin HEAD:c01/props-15-installations-wave02
+          fi

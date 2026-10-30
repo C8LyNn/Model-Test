@@ -133,6 +133,29 @@ def fix_object(o):
  if after['loose_vertices'] or after['loose_edges'] or after['zero_edges'] or after['degenerate_faces'] or after['duplicate_faces'] or after['inconsistent_winding_edges']:
   raise RuntimeError('Unresolved hard topology defect: '+o.name+' '+str(after))
  return fix
+def repair_verified_coplanar_contacts(pid,o):
+ # P18-02 rack: each metal shelf lip had its front face precisely
+ # on the front plane of the rack post (verified 32 coplanar pairs).
+ # Recess the six LIP meshes by only 3mm towards the rack center.
+ # Modify existing mesh vertices, NOT object pivot or part hierarchy;
+ # overall rack dimensions are dominated by structural posts unchanged.
+ if pid!='P18-02' or not (o.name.startswith('Shelf_') and '_Lip_' in o.name):return []
+ bpy.context.view_layer.update()
+ mw=o.matrix_world.copy();inv=mw.inverted()
+ allp=[mw@v.co for v in o.data.vertices]
+ center_y=sum(p.y for p in allp)/len(allp)
+ if abs(abs(center_y)-0.375)>0.002:
+  # Already recessed (idempotent) or source changed; no unsafe rewrite.
+  if abs(abs(center_y)-0.372)<0.002:return []
+  raise RuntimeError('Unexpected original rack lip surface position '+o.name+' '+str(center_y))
+ shift=-0.003 if center_y>0 else 0.003
+ for v in o.data.vertices:
+  p=mw@v.co;p.y+=shift;v.co=inv@p
+ o.data.update()
+ result=mesh_measure(o)
+ if result['degenerate_faces'] or result['boundary_edges'] or result['nonmanifold_edges']:
+  raise RuntimeError('Rack lip local repair introduced invalid geometry')
+ return ['shift original lip vertices 3mm inward to remove coplanar z-fighting with rack post']
 def camera_and_render(pid,folder,stage,wire=False,close=False):
  scene=bpy.context.scene
  scene.render.engine="CYCLES";scene.cycles.device='CPU';scene.cycles.samples=6
@@ -207,6 +230,7 @@ for pid in IDS:
  fixes={};before_bounds=actual_bounds()
  for o in objects():
   fixes[o.name]=fix_object(o)
+  fixes[o.name]+=repair_verified_coplanar_contacts(pid,o)
  after=audit(pid,'AFTER')
  if any(abs(x-y)>1e-5 for a,b in zip(before_bounds,after['bounds_blender_xyz']) for x,y in zip(a,b)):
   raise RuntimeError(pid+' silhouette/bounds changed unexpectedly')

@@ -1,0 +1,165 @@
+{
+  "project": "C01-16",
+  "pass": "05",
+  "issue": 33,
+  "wave": "W01",
+  "run_utc": "2026-10-30",
+  "source": "Direct actual GitHub OBJ/FBX file reads, NOT a geometry reconstruction",
+  "ci_smoke_run": "https://github.com/C8LyNn/Model-Test/actions/runs/41098768804",
+  "ci_blender_run": "https://github.com/C8LyNn/Model-Test/actions/runs/41099217798",
+  "ci_diagnostic": {
+    "runner_id": 0,
+    "runner_name": "",
+    "steps_executed": 0,
+    "result": "FAIL_BEFORE_RUNNER_ALLOCATED",
+    "root_cause": "Unknown; cannot infer billing or account configuration from runner metadata"
+  },
+  "blender_installed_in_chat_container": false,
+  "models": [
+    {
+      "id": "P16-01",
+      "obj_blob_sha": "208d7f543d51f89266e4e59000b272906c068207",
+      "existing_fbx_blob_sha": "776b9de39845314e3dd6d98e01e12a5ada3197a0",
+      "fbx_is_binary": false,
+      "fbx_is_ascii": true,
+      "metrics": {
+        "vertices": 40,
+        "edges": 90,
+        "faces": 60,
+        "triangles": 60,
+        "parts": 5,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "degenerate_faces": 0,
+        "duplicate_faces": 0,
+        "invalid_normal_loops": 0,
+        "invalid_uv_loops": 0,
+        "coincident_position_indices": 0,
+        "cross_part_AABB_overlap_candidates": 4
+      },
+      "candidates": [
+        {
+          "part_a": "P16-01_STATIC_Steel_00",
+          "part_b": "P16-01_STATIC_Steel_01",
+          "overlap_xyz_m": [
+            0.06,
+            0.0005,
+            0.15
+          ]
+        },
+        {
+          "part_a": "P16-01_STATIC_Steel_00",
+          "part_b": "P16-01_STATIC_Steel_02",
+          "overlap_xyz_m": [
+            0.06,
+            0.0005,
+            0.15
+          ]
+        },
+        {
+          "part_a": "P16-01_STATIC_Steel_01",
+          "part_b": "P16-01_STATIC_DarkPanel_03",
+          "overlap_xyz_m": [
+            0.03,
+            0.02,
+            0.125
+          ]
+        },
+        {
+          "part_a": "P16-01_STATIC_Steel_02",
+          "part_b": "P16-01_STATIC_DarkPanel_03",
+          "overlap_xyz_m": [
+            0.03,
+            0.02,
+            0.125
+          ]
+        }
+      ],
+      "rotor_parts": 0,
+      "pass03_static_geometry_gate": "PASS",
+      "pass05_real_blender": "NOT_RUN",
+      "pass05_fbX_roundtrip": "NOT_RUN",
+      "unity": "NOT_RUN",
+      "independent_qa": "BLOCKED"
+    },
+    {
+      "id": "P16-02",
+      "obj_blob_sha": "6c985d8e55cdc3c97fd941c9c972c7c8730e63a0",
+      "existing_fbx_blob_sha": "5dddff4230e5dcaab136733907bb97d76209237c",
+      "fbx_is_binary": false,
+      "fbx_is_ascii": true,
+      "metrics": {
+        "vertices": 40,
+        "edges": 90,
+        "faces": 60,
+        "triangles": 60,
+        "parts": 5,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "degenerate_faces": 0,
+        "duplicate_faces": 0,
+        "invalid_normal_loops": 0,
+        "invalid_uv_loops": 0,
+        "coincident_position_indices": 0,
+        "cross_part_AABB_overlap_candidates": 2
+      },
+      "candidates": [
+        {
+          "part_a": "P16-02_STATIC_Steel_01",
+          "part_b": "P16-02_STATIC_DarkPanel_03",
+          "overlap_xyz_m": [
+            0.004,
+            0.17,
+            0.055
+          ]
+        },
+        {
+          "part_a": "P16-02_STATIC_Steel_02",
+          "part_b": "P16-02_STATIC_DarkPanel_03",
+          "overlap_xyz_m": [
+            0.004,
+            0.17,
+            0.055
+          ]
+        }
+      ],
+      "rotor_parts": 0,
+      "pass03_static_geometry_gate": "PASS",
+      "pass05_real_blender": "NOT_RUN",
+      "pass05_fbX_roundtrip": "NOT_RUN",
+      "unity": "NOT_RUN",
+      "independent_qa": "BLOCKED"
+    },
+    {
+      "id": "P16-03",
+      "obj_blob_sha": "3a18d7354e0351496eececa7c1455192cfdf5f6a",
+      "existing_fbx_blob_sha": "cfd1ba9e7b659f124b5ba40fe49e29db14d1c093",
+      "fbx_is_binary": false,
+      "fbx_is_ascii": true,
+      "metrics": {
+        "vertices": 40,
+        "edges": 90,
+        "faces": 60,
+        "triangles": 60,
+        "parts": 5,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "degenerate_faces": 0,
+        "duplicate_faces": 0,
+        "invalid_normal_loops": 0,
+        "invalid_uv_loops": 0,
+        "coincident_position_indices": 0,
+        "cross_part_AABB_overlap_candidates": 0
+      },
+      "candidates": [],
+      "rotor_parts": 0,
+      "pass03_static_geometry_gate": "PASS",
+      "pass05_real_blender": "NOT_RUN",
+      "pass05_fbX_roundtrip": "NOT_RUN",
+      "unity": "NOT_RUN",
+      "independent_qa": "BLOCKED"
+    }
+  ],
+  "acceptance": "BLOCKED",
+  "comments": "AABB overlaps are only assembly/contact candidates, not proof of z-fighting or topology defects. No edits to the seven source meshes were required after PASS03."
+}

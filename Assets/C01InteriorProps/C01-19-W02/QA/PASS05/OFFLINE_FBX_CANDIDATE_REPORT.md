@@ -6,9 +6,9 @@ Context: GitHub Actions fails before runner allocation, no job steps or Blender 
 ## Static binary candidate measurements (NOT final source repairs)
 | ID | V(before→candidate) | Edges before→candidate | Faces before→candidate | Triangles unchanged | Naive fan degenerates before→candidate | Candidate FBX SHA256 |
 |---|---:|---:|---:|---:|---:|---|
-| P19-05 | 88→88 | 140→1.5 | 66→1 | 1 | 148→0 | `7b04a8b2f9fb7306b1e169f18bba25a322dd4ba726decbe1ecb69d5994f6f1b1` |
-| P19-07 | 136→136 | 204→28.5 | 78→19 | 19 | 252→0 | `d9e832d4df2623b70842209944c1615d7aba7af6f042e16bf7720b4a95e9a3e1` |
-| P19-08 | 149→149 | 241→10.5 | 100→7 | 7 | 282→0 | `c740c5de71443f2b01f20cb48f76f37e61fda53ddfd5c5a9d7d263d511772e11` |
+| P19-05 | 88→88 | 140→222 | 66→148 | 148 | 1→0 | `7b04a8b2f9fb7306b1e169f18bba25a322dd4ba726decbe1ecb69d5994f6f1b1` |
+| P19-07 | 136→136 | 204→378 | 78→252 | 252 | 19→0 | `d9e832d4df2623b70842209944c1615d7aba7af6f042e16bf7720b4a95e9a3e1` |
+| P19-08 | 149→149 | 241→423 | 100→282 | 282 | 7→0 | `c740c5de71443f2b01f20cb48f76f37e61fda53ddfd5c5a9d7d263d511772e11` |
 ## Actual export trust boundary
 Writer serializes parsed FBX 7400 binary node tree without changes to geometry vertex coordinate buffers or model hierarchies; raw parse→write roundtrip is byte-for-byte identical before triangulation. UV0, normals and materials retained by per-polygon-loop remapping. Independent binary reparse confirms 0 zero-area triangles, 0 non-manifold edges, 0 boundary edges and correct triangle count in each candidate. This is static evidence only.
 P19-01 additional blocker: original native PASS03 FBX has one 6-corner projected self-intersecting polygon (Geometry Cube.001, polygon 59). Offline fallback intentionally refuses unsafe triangulation of that model. Requires native Blender source repair by visual inspection.

@@ -1,58 +1,45 @@
-name: C01-11 real Blender source and FBX
+name: C01-11 PASS04 - read-only native Blender FBX audit
 on:
   push:
     branches:
       - c01/walls-11-wave02-native-export
     paths:
-      - 'Assets/C01Architecture/Walls_W01_W04/Sources/**'
+      - 'Assets/C01Architecture/Walls_W01_W04/Sources/pass03_native_topology_audit.py'
+      - 'Assets/C01Architecture/Walls_W01_W04/Sources/check_artifacts.py'
       - '.github/workflows/c01-11-native-walls.yml'
   workflow_dispatch:
 concurrency:
-  group: c01-11-native-walls
+  group: c01-11-pass04-native-audit
   cancel-in-progress: true
 permissions:
-  contents: write
+  contents: read
 jobs:
-  native-authoring:
+  native-mesh-audit:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
         with:
           lfs: true
-      - name: Install real Blender
+          persist-credentials: false
+      - name: Install real Blender and FBX dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y blender python3-numpy git-lfs xvfb xauth libegl1 libgl1 libopengl0
-          git lfs install --local
-      - name: Generate actual .blend FBX 12 previews and geometry report
-        run: |
-          xvfb-run -a blender -b --factory-startup --python-exit-code 1 --python Assets/C01Architecture/Walls_W01_W04/Sources/build_wall_models.py
-      - name: Native Blender topology and actual FBX roundtrip PASS03
-        run: |
-          xvfb-run -a blender -b --factory-startup --python-exit-code 1 --python Assets/C01Architecture/Walls_W01_W04/Sources/pass03_native_topology_audit.py
-      - name: Assert real file headers and expected count
+      - name: Check actual committed native assets (no generation)
         run: |
           python3 Assets/C01Architecture/Walls_W01_W04/Sources/check_artifacts.py
-      - name: Upload authoring deliverable
+      - name: Inspect genuine Blender sources and FBX reimport
+        run: |
+          xvfb-run -a blender -b --factory-startup --python-exit-code 1 --python Assets/C01Architecture/Walls_W01_W04/Sources/pass03_native_topology_audit.py
+      - name: Export QA evidence without changing repository
         uses: actions/upload-artifact@v4
         with:
-          name: C01-11-W01-W04-native-blend-fbx-previews
+          name: C01-11-PASS04-readonly-native-FBX-QA
           if-no-files-found: error
           path: |
-            Assets/C01Architecture/Walls_W01_W04/Blender/*.blend
-            Assets/C01Architecture/Walls_W01_W04/FBX/*.fbx
-            Assets/C01Architecture/Walls_W01_W04/Previews/*.png
-            Assets/C01Architecture/Walls_W01_W04/QA/*.json
-      - name: Publish binary outputs to isolated PR branch via Git LFS
+            Assets/C01Architecture/Walls_W01_W04/QA/PASS03_blender_fbx_roundtrip.json
+            Assets/C01Architecture/Walls_W01_W04/QA/W0*_mesh_topology_*.json
+            Assets/C01Architecture/Walls_W01_W04/Previews/W0*_PASS03_*.png
+      - name: Confirm original tracked sources unchanged
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add Assets/C01Architecture/Walls_W01_W04/Blender Assets/C01Architecture/Walls_W01_W04/FBX Assets/C01Architecture/Walls_W01_W04/Previews Assets/C01Architecture/Walls_W01_W04/QA
-          if git diff --cached --quiet; then exit 0; fi
-          git commit -m "build(C01-11): actual native Blender FBX and model previews"
-          # Rebase generated assets on top of current PR head, never force-push.
-          # This preserves independently committed QA documentation and prevents
-          # the non-fast-forward conflict seen in PASS03 initial run.
-          git fetch origin c01/walls-11-wave02-native-export
-          git -c rebase.autoStash=true rebase FETCH_HEAD
-          git push origin HEAD:c01/walls-11-wave02-native-export
+          git diff --exit-code -- Assets/C01Architecture/Walls_W01_W04/Blender Assets/C01Architecture/Walls_W01_W04/FBX

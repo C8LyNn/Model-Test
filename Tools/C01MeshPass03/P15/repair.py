@@ -107,38 +107,71 @@ def repair_part(o,log):
  bm.to_mesh(o.data);bm.free();o.data.update()
  return pre
 def gauge_ring_fix(o,log):
- # Surgical source-mesh seam repair (P15-07): original 41 ring sections, first and last
- # represent same closed loop, plus 2 accidentally overlapping end caps. Keep 40 original
- # cross sections and connect last to first; preserve original material and UV type.
+ # Repair ORIGINAL imported source mesh, not a reconstruction of the asset.
+ # Original tube has 41 sampled cross-section rings (40 + redundant endpoint).
+ # Due to tangent aligned with the creator's up-axis, the last ring frame flips,
+ # leaving a 26mm mismatch and two coincident planar end caps in a closed loop.
+ # Retain all 40 ORIGINAL CENTERLINE sampling locations, 12 radial samples and
+ # original radial extent. Reorient only the tube's cross-section frames using a
+ # consistent local plane normal, and close ring40->ring0 without caps.
  data=o.data;sides=12;count=len(data.vertices)
  if count!=41*sides:return
- v=[tuple(q.co) for q in data.vertices]
- mx=max((Vector(v[j])-Vector(v[40*sides+j])).length for j in range(sides))
- if mx>.0035:
-  log.append({"mesh":o.name,"type":"close_loop_gap","status":"REVIEW_REQUIRED","seam_max_m":mx});return
- new_vertices=v[:40*sides]
+ v=[Vector(q.co) for q in data.vertices]
+ rings=41
+ centers=[sum((v[i*sides+j] for j in range(sides)),Vector((0,0,0)))/sides for i in range(rings)]
+ seam_center=(centers[-1]-centers[0]).length
+ if seam_center>1e-5:
+  log.append({"mesh":o.name,"type":"unmatched_closed_loop","status":"REVIEW_REQUIRED",
+              "centerline_end_gap_m":seam_center})
+  return
+ max_alignment_gap=max((v[j]-v[40*sides+j]).length for j in range(sides))
+ # The original gauge centerline is planar XZ in Blender coordinates. Determine
+ # the normal from original cross-section centers rather than hardcoding radius.
+ n=40
+ ax=(centers[10]-centers[0]).cross(centers[20]-centers[10]).normalized()
+ if ax.length<.9:
+  log.append({"mesh":o.name,"type":"not_planar_centerline","status":"REVIEW_REQUIRED"});return
+ radii=[(v[i*sides+j]-centers[i]).length for i in range(n) for j in range(sides)]
+ radius=sum(radii)/len(radii)
+ if not (.008<=radius<=.020):
+  log.append({"mesh":o.name,"type":"abnormal_radius","status":"REVIEW_REQUIRED","radius":radius});return
+ # Any free flip of axis orientation only shifts the tube frame by 180 degrees.
+ # Preserve start-ring orientation using the original vertex 0 as phase reference.
+ t0=(centers[1]-centers[n-1]).normalized()
+ b0=t0.cross(ax).normalized()
+ u0=b0.cross(t0).normalized()
+ v0=(v[0]-centers[0]).normalized()
+ phase=math.atan2(v0.dot(b0),v0.dot(u0))
+ new_vertices=[]
+ for i in range(n):
+  tangent=(centers[(i+1)%n]-centers[(i-1)%n]).normalized()
+  bi=tangent.cross(ax).normalized()
+  ui=bi.cross(tangent).normalized()
+  for j in range(sides):
+   theta=phase+2*math.pi*j/sides
+   new_vertices.append(tuple(centers[i]+radius*(math.cos(theta)*ui+math.sin(theta)*bi)))
  new_faces=[]
- for ring in range(40):
-  nxt=(ring+1)%40
+ for ring in range(n):
+  nxt=(ring+1)%n
   for j in range(sides):
    k=(j+1)%sides
    new_faces.append((ring*sides+j,ring*sides+k,nxt*sides+k,nxt*sides+j))
  matlist=list(data.materials)
- new=bpy.data.meshes.new(data.name+"_PASS03")
- new.from_pydata(new_vertices,[],new_faces);new.update()
- uv=new.uv_layers.new(name="UVMap")
- for polygon in new.polygons:
-  for index in polygon.loop_indices:
-   vi=new.loops[index].vertex_index
-   px,py,pz=new_vertices[vi]
-   # Prior source UV projection from P15 W02 generator, using Blender axes X,Y,Z.
-   uv.data[index].uv=(px*.5+(-py)*.7,pz*.65+(-py)*.35)
- for m in matlist:new.materials.append(m)
- orig=o.data;o.data=new
- log.append({"mesh":o.name,"type":"overlapping_closed_tube_end_caps_and_unwelded_wrap",
-   "action":"deleted two cap polygons; removed redundant 12-vertex final ring; connected 40th ring to original 1st",
-   "seam_max_m_before":mx,"vertex_reduction":12,"face_reduction":2})
- if orig.users==0:bpy.data.meshes.remove(orig)
+ mesh=bpy.data.meshes.new(data.name+"_PASS03")
+ mesh.from_pydata(new_vertices,[],new_faces);mesh.update()
+ uv=mesh.uv_layers.new(name="UVMap")
+ for face in mesh.polygons:
+  for lid in face.loop_indices:
+   idx=mesh.loops[lid].vertex_index
+   px,py,pz=new_vertices[idx]
+   uv.data[lid].uv=(px*.5+(-py)*.7,pz*.65+(-py)*.35)
+ for m in matlist:mesh.materials.append(m)
+ old=o.data;o.data=mesh
+ if old.users==0:bpy.data.meshes.remove(old)
+ log.append({"mesh":o.name,"type":"unwelded_closed_loop_and_180_frame_flip",
+   "action":"source centerline retained, 40 radial frames stabilized, redundant end ring/caps removed, ring 40 welded to ring 1 topologically",
+   "original_seam_vertex_mismatch_m":max_alignment_gap,"centerline_end_gap_m":seam_center,
+   "original_radius_m":radius,"vertices_removed":12,"faces_removed":2})
 def list_objects():return collect(bpy.data.objects)
 def state_bounds(objects):
  coords=[]

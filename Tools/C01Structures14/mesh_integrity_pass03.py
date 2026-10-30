@@ -146,6 +146,8 @@ def setup_camera(bounds,zoom=1):
         l.rotation_euler=(mid-l.location).to_track_quat("-Z","Y").to_euler()
         ld.energy=power;ld.shape="DISK";ld.size=size
     scene=bpy.context.scene;scene.render.engine="CYCLES";scene.cycles.samples=8
+    scene.cycles.use_denoising=False
+    bpy.context.view_layer.cycles.use_denoising=False
     scene.render.resolution_x=600;scene.render.resolution_y=480;scene.render.resolution_percentage=100
     scene.render.image_settings.file_format="PNG"
     if scene.world is None: scene.world=bpy.data.worlds.new("QA_World")

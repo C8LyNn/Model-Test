@@ -83,6 +83,7 @@ def repair_p1901_backtrack():
     o=candidates[0]
     bm=bmesh.new();bm.from_mesh(o.data)
     bm.verts.ensure_lookup_table();bm.faces.ensure_lookup_table()
+    bm.verts.index_update();bm.faces.index_update()
     assert len(bm.verts)>=77 and len(bm.faces)>59, "source topology mismatch"
     old23=bm.faces[23];old59=bm.faces[59]
     f23=[v.index for v in old23.verts];f59=[v.index for v in old59.verts]
@@ -94,14 +95,14 @@ def repair_p1901_backtrack():
     for f in (old23,old59):
         attrs[f.index]={"material":f.material_index,"smooth":f.smooth,
             "uv":{layer.name:{lp.vert.index:tuple(lp[layer].uv)
-                  for lp in f.loops} for layer in bm.loops.layers.uv}}
+                  for lp in f.loops} for layer in bm.loops.layers.uv.values()}}
     assert set(attrs[23]["uv"])==set(attrs[59]["uv"]), "UV layer mismatch"
     for f in (old23,old59):bm.faces.remove(f)
     patch_def=[(23,[35,24,46,5,14,13,47,45]),(59,[76,5,46,64,65])]
     for src,indices in patch_def:
         nf=bm.faces.new([bm.verts[i] for i in indices])
         nf.material_index=attrs[src]["material"];nf.smooth=attrs[src]["smooth"]
-        for layer in bm.loops.layers.uv:
+        for layer in bm.loops.layers.uv.values():
             old=attrs[src]["uv"][layer.name]
             for lp in nf.loops:
                 vid=lp.vert.index

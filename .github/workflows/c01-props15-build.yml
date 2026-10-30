@@ -32,6 +32,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config lfs.https://github.com/C8LyNn/Model-Test.git/info/lfs.locksverify false
           git add Assets/C01InteriorProps/P15/Sources/Blender/
           git add Assets/C01InteriorProps/P15/Models/FBX/
           git add Assets/C01InteriorProps/P15/Previews/Blender/

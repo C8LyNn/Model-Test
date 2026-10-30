@@ -49,7 +49,11 @@ def hinge(name,p,root,parts):
  e.location=xyz(p);e.parent=root;parts.append({"name":name,"pivot_unity_xyz":list(p),"type":"hinge"})
  return e
 def attach_preserve(o,parent):
- mw=o.matrix_world.copy();o.parent=parent;o.matrix_world=mw
+ bpy.context.view_layer.update()
+ mw=o.matrix_world.copy()
+ o.parent=parent
+ o.matrix_world=mw
+ bpy.context.view_layer.update()
 def build(pid,root,parts):
  def box(n,p,s,r="STEEL",col=False):
   o=cube(n,p,s,r,root);parts.append({"name":n,"role":r,"collider":col,"type":"box"});return o

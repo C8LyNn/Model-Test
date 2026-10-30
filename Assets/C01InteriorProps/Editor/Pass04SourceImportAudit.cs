@@ -298,6 +298,29 @@ namespace C01.InteriorProps.Editor
                         "Hinge_Lower_LowerEar","Hinge_Lower_UpperEar",
                         "Hinge_Upper_LowerEar","Hinge_Upper_UpperEar"};
                     break;
+                case "P17-01":
+                    minimumMeshes=25; minimumTriangles=380;
+                    mandatory=new[]{"Keyboard","KeyboardGuide_L","KeyboardGuide_R",
+                        "ScreenGlass","ScreenHousing",
+                        "ScreenMountBolt_LB","ScreenMountBolt_LT",
+                        "ScreenMountBolt_RB","ScreenMountBolt_RT",
+                        "RearServiceLatch_L","RearServiceLatch_R"};
+                    break;
+                case "P17-03":
+                    minimumMeshes=20; minimumTriangles=424;
+                    mandatory=new[]{"LeverShaft","LeverGrip","PivotAnchorVisual",
+                        "LeverSocket","PanelBolt_LB","PanelBolt_LT",
+                        "PanelBolt_RB","PanelBolt_RT",
+                        "SocketRetainer_L","SocketRetainer_R",
+                        "CoverBolt_L","CoverBolt_R"};
+                    break;
+                case "P15-01":
+                    minimumMeshes=25; minimumTriangles=0; // spec geometry not Blender-exported
+                    mandatory=new[]{"PipeCore","MountPlate230","MountPlate770",
+                        "UClipTop230","UClipBottom230","UClipTop770","UClipBottom770",
+                        "ClampTieRear230","ClampTieFront230",
+                        "ClampLockScrewTop230","ClampLockScrewBottom770"};
+                    break;
                 case "P17-02":
                     minimumMeshes=38; minimumTriangles=536;
                     mandatory=new[]{
@@ -403,6 +426,154 @@ namespace C01.InteriorProps.Editor
             }
         }
 
+
+        // PASS16 P17-01 narrowphase for the measured keyboard-guide z-fighting.
+        // Validates genuine imported FBX MeshFilter geometry in asset-root space;
+        // no proxy geometry, no automatic weld and no rotation-state assumptions.
+        static List<Vector3[]> ImportedTriangles(Transform root,MeshFilter part)
+        {
+            var tris=new List<Vector3[]>();
+            if(part==null || part.sharedMesh==null || !part.sharedMesh.isReadable)
+                return tris;
+            var matrix=root.worldToLocalMatrix*part.transform.localToWorldMatrix;
+            var mesh=part.sharedMesh;
+            var xyz=mesh.vertices;
+            for(int sm=0;sm<mesh.subMeshCount;sm++)
+            {
+                if(mesh.GetTopology(sm)!=MeshTopology.Triangles)continue;
+                var indices=mesh.GetTriangles(sm);
+                for(int k=0;k+2<indices.Length;k+=3)
+                {
+                    if(indices[k]<0 || indices[k+1]<0 || indices[k+2]<0 ||
+                       indices[k]>=xyz.Length || indices[k+1]>=xyz.Length ||
+                       indices[k+2]>=xyz.Length)continue;
+                    tris.Add(new[]{
+                        matrix.MultiplyPoint3x4(xyz[indices[k]]),
+                        matrix.MultiplyPoint3x4(xyz[indices[k+1]]),
+                        matrix.MultiplyPoint3x4(xyz[indices[k+2]])});
+                }
+            }
+            return tris;
+        }
+        static float Area2D(IList<Vector2> p)
+        {
+            float sum=0;
+            for(int i=0;i<p.Count;i++)
+            {
+                var n=p[(i+1)%p.Count];
+                sum+=p[i].x*n.y-p[i].y*n.x;
+            }
+            return sum*0.5f;
+        }
+        static float ClipTriangleArea2D(Vector3[] t,Vector3[] q)
+        {
+            // Convex XY polygon clipping, only for already coplanar Z triangles.
+            var result=new List<Vector2>{new Vector2(t[0].x,t[0].y),
+                new Vector2(t[1].x,t[1].y),new Vector2(t[2].x,t[2].y)};
+            var v=new[]{new Vector2(q[0].x,q[0].y),
+                new Vector2(q[1].x,q[1].y),new Vector2(q[2].x,q[2].y)};
+            float sign=Area2D(v)>=0f?1f:-1f;
+            for(int edge=0;edge<3;edge++)
+            {
+                var a=v[edge];var b=v[(edge+1)%3];
+                Func<Vector2,float> side=p=>sign*
+                    ((b.x-a.x)*(p.y-a.y)-(b.y-a.y)*(p.x-a.x));
+                var input=result;
+                result=new List<Vector2>();
+                for(int j=0;j<input.Count;j++)
+                {
+                    var x=input[j];var y=input[(j+1)%input.Count];
+                    float sx=side(x),sy=side(y);
+                    bool inX=sx>=-1e-8f,inY=sy>=-1e-8f;
+                    if(inX)result.Add(x);
+                    if(inX!=inY && Mathf.Abs(sx-sy)>1e-12f)
+                        result.Add(Vector2.LerpUnclamped(x,y,sx/(sx-sy)));
+                }
+                if(result.Count==0)return 0f;
+            }
+            return result.Count<3?0f:Mathf.Abs(Area2D(result));
+        }
+        static float SameFacingCoplanarGuideArea(List<Vector3[]> guide,
+                                                   List<Vector3[]> keyboard)
+        {
+            float total=0;
+            foreach(var a in guide)
+            foreach(var b in keyboard)
+            {
+                var n1=Vector3.Cross(a[1]-a[0],a[2]-a[0]);
+                var n2=Vector3.Cross(b[1]-b[0],b[2]-b[0]);
+                if(Mathf.Abs(n1.z)<1e-12f || Mathf.Abs(n2.z)<1e-12f ||
+                   n1.z*n2.z<=0f)continue;
+                // Only matching XY-aligned faces. Deliberate surface intersection
+                // is distinct from same-facing Z-plane overlap/z-fighting.
+                if(Mathf.Abs(n1.x)>1e-7f || Mathf.Abs(n1.y)>1e-7f ||
+                   Mathf.Abs(n2.x)>1e-7f || Mathf.Abs(n2.y)>1e-7f)continue;
+                if(a.Any(x=>Mathf.Abs(x.z-a[0].z)>1e-5f) ||
+                   b.Any(x=>Mathf.Abs(x.z-a[0].z)>1e-5f))continue;
+                total+=ClipTriangleArea2D(a,b);
+            }
+            return total;
+        }
+        static void CheckPass16KeyboardAndLever(string id,Transform root,
+                                                 MeshFilter[] filters,
+                                                 List<string> defects)
+        {
+            if(id=="P17-01")
+            {
+                var keyboard=filters.FirstOrDefault(x=>x.name=="Keyboard");
+                if(keyboard==null || keyboard.sharedMesh==null ||
+                   !keyboard.sharedMesh.isReadable)
+                {
+                    defects.Add("PASS16_KEYBOARD_TRIANGLE_QA_NOT_RUN");
+                    return;
+                }
+                var original=ImportedTriangles(root,keyboard);
+                foreach(var name in new[]{"KeyboardGuide_L","KeyboardGuide_R"})
+                {
+                    var guide=filters.FirstOrDefault(x=>x.name==name);
+                    if(guide==null || guide.sharedMesh==null ||
+                       !guide.sharedMesh.isReadable)
+                    {
+                        defects.Add("PASS16_GUIDE_TRIANGLE_QA_NOT_RUN:"+name);
+                        continue;
+                    }
+                    float area=SameFacingCoplanarGuideArea(
+                        ImportedTriangles(root,guide),original);
+                    if(area>1e-9f)
+                        defects.Add("PASS16_KEYBOARD_ZFIGHT_COPLANAR:"+name+
+                            ":mm2="+(area*1000000f).ToString("F4",
+                                CultureInfo.InvariantCulture));
+                }
+            }
+            if(id=="P17-03")
+            {
+                var pivot=root.GetComponentsInChildren<Transform>(true)
+                              .FirstOrDefault(t=>t.name=="LeverPivot");
+                if(pivot==null)
+                {
+                    defects.Add("PASS16_MOVABLE_LEVER_PIVOT_MISSING");
+                    return;
+                }
+                foreach(var name in new[]{"LeverShaft","LeverGrip",
+                                           "PivotAnchorVisual"})
+                {
+                    var piece=filters.FirstOrDefault(x=>x.name==name);
+                    if(piece==null || !piece.transform.IsChildOf(pivot))
+                        defects.Add("PASS16_LEVER_MOVING_CHILD_NOT_ON_PIVOT:"+name);
+                }
+                foreach(var name in new[]{"PanelBolt_LB","PanelBolt_LT",
+                                           "PanelBolt_RB","PanelBolt_RT",
+                                           "SocketRetainer_L","SocketRetainer_R",
+                                           "CoverBolt_L","CoverBolt_R"})
+                {
+                    var piece=filters.FirstOrDefault(x=>x.name==name);
+                    if(piece==null || piece.transform.IsChildOf(pivot))
+                        defects.Add("PASS16_STATIC_DETAIL_ON_MOVING_PIVOT:"+name);
+                }
+                // Swept arc and PhysX contacts require genuine Unity scene test.
+            }
+        }
+
         static Source Inspect(string id,string path)
         {
             var r=new Source{Id=id,Path=path,Status="SOURCE_PRECHECK_NOT_RUN",Diagnostics=""};
@@ -499,6 +670,7 @@ namespace C01.InteriorProps.Editor
                 if(r.NormalsMissing>0)defects.Add("NORMALS_MISSING");
                 if(r.DegenerateTriangles>0)defects.Add("DEGENERATE_TRIANGLES");
                 CheckPass15DetailFidelity(id,inst,filters,r.MeshCount,r.TriangleCount,defects);
+                CheckPass16KeyboardAndLever(id,inst.transform,filters,defects);
                 if(r.MaterialsMissing>0)defects.Add("MATERIAL_SLOT_EMPTY");
                 if(r.NonUrpMaterials>0)defects.Add("MATERIAL_NOT_URP_REVIEW");
             }

@@ -20,7 +20,7 @@ jobs:
       - name: Install native Blender
         run: |
           sudo apt-get update
-          sudo apt-get install -y blender git-lfs xvfb xauth libegl1 libgl1 libopengl0
+          sudo apt-get install -y blender git-lfs python3-numpy xvfb xauth libegl1 libgl1 libopengl0
           git lfs install --local
       - name: Generate real .blend and binary FBX
         run: xvfb-run -a blender -b --factory-startup --python-exit-code 1 --python Assets/C01InteriorProps/C01-19/Source/blender_export.py

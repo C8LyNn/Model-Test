@@ -71,7 +71,7 @@ def main():
         for key,p in paths.items():
             if not p.is_file():return fail("Missing actual file "+str(p))
             magic=p.open("rb").read(24)
-            if key=="source_blend" and not magic.startswith(b"BLENDER"):
+            if key=="source_blend" and not magic.startswith(b"BLENDER-"):
                 return fail("Not a native .blend (maybe LFS pointer): "+str(p))
             if key=="binary_fbx" and not magic.startswith(b"Kaydara FBX Binary"):
                 return fail("Not a binary Blender FBX (maybe LFS pointer): "+str(p))

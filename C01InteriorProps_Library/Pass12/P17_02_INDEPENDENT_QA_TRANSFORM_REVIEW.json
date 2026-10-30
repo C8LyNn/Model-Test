@@ -1,0 +1,134 @@
+{
+  "schema": "C01-03-PASS12-P17-02-INDEPENDENT-QA-TRANSFORM-REVIEW",
+  "source_repo": "C8LyNn/Model-Test",
+  "source_glTF_path": "Assets/C01InteriorProps/Models/P17-02.gltf",
+  "producer_current_commit": "cf405ed6636c9788cfd4c9d4d35e99a8683902dc",
+  "glTF_actual_git_blob_sha1": "7f183922dab2b5e416af7a8dc30a46c1b6990286",
+  "actual_source_sha256": "3fba39e0e5813e6abc486c8ca5685247b59b0614a4186a545dd57903ed51e077",
+  "independent_QA_report": "C01InteriorProps_QA/DETAIL_PASS12/FOUR_PILOT_INDEPENDENT_SOURCE_QA.json",
+  "qa_original_gate": "FAIL_SOURCE_GEOMETRY_SEVERE",
+  "qa_original_reason": "Predicted massive screws and huge KeyGuide mesh by interpreting unscaled accessor POSITION bounds and reused original mesh 4.",
+  "actual_glTF_world_transform_contract": "world = node.translation + node.scale * accessor.POSITION, no rotation for these nodes",
+  "rechecked_data": {
+    "total_world_AABB_m": {
+      "min": [
+        -0.09,
+        0,
+        0
+      ],
+      "max": [
+        0.09,
+        0.28,
+        0.07
+      ],
+      "size": [
+        0.18,
+        0.28,
+        0.07
+      ]
+    },
+    "mount_screw_mesh_local_AABB": {
+      "min": [
+        -1,
+        -1,
+        -0.5
+      ],
+      "max": [
+        1,
+        1,
+        0.5
+      ]
+    },
+    "each_screw_node_scale": [
+      0.0045,
+      0.0045,
+      0.003
+    ],
+    "each_screw_actual_size_m": [
+      0.009,
+      0.009,
+      0.003
+    ],
+    "four_screw_world_AABBs": [
+      {
+        "name": "LeftBottomMountScrew",
+        "min": [
+          -0.0875,
+          0.0055,
+          0.0155
+        ],
+        "max": [
+          -0.0785,
+          0.0145,
+          0.0185
+        ]
+      },
+      {
+        "name": "LeftTopMountScrew",
+        "min": [
+          -0.0875,
+          0.2655,
+          0.0155
+        ],
+        "max": [
+          -0.0785,
+          0.2745,
+          0.0185
+        ]
+      },
+      {
+        "name": "RightBottomMountScrew",
+        "min": [
+          0.0785,
+          0.0055,
+          0.0155
+        ],
+        "max": [
+          0.0875,
+          0.0145,
+          0.0185
+        ]
+      },
+      {
+        "name": "RightTopMountScrew",
+        "min": [
+          0.0785,
+          0.2655,
+          0.0155
+        ],
+        "max": [
+          0.0875,
+          0.2745,
+          0.0185
+        ]
+      }
+    ],
+    "keyGuide_mesh_instance": "Existing keybed mesh index4 intentionally reused with nonuniform scale (0.265625,0.2064516129032258,0.5)",
+    "first_guide_actual_world_AABB": {
+      "name": "KeyGuide_01",
+      "min": [
+        -0.058,
+        0.165,
+        0.063
+      ],
+      "max": [
+        -0.024,
+        0.197,
+        0.066
+      ]
+    },
+    "all_14_guide_and_clamp_instances_have_scale": true,
+    "new_part_count": 18,
+    "total_render_instances": 38,
+    "triangles_render_instances": 536,
+    "latest_actual_glTF_source_readback": "PASS",
+    "specific_QA_severe_claim_refuted_by_transform": "YES"
+  },
+  "request": "C01-02 re-evaluate severe source claim USING glTF node.scale and local POSITION; separately inspect any true face overlap after transforms, report precise defects and keep native release BLOCKED until binary Blender FBX QA and Unity.",
+  "qa_disposition": "REVIEW_REQUESTED_DO_NOT_OVERRIDE_INDEPENDENT_QA",
+  "blender4_open_save": "NOT_RUN",
+  "blender_fbx_export_reimport": "NOT_RUN",
+  "unity6_urp": "NOT_RUN",
+  "release": "BLOCKED",
+  "no_unapproved_merge": true
+}

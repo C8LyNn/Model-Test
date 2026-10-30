@@ -34,14 +34,21 @@ class RegistryTests(unittest.TestCase):
             self.assertEqual(a["files"], [])
             self.assertEqual(a["qa"]["status"], "NOT_RUN")
 
-    def test_candidate_paths_are_not_accepted_hashes(self):
+    def test_115_candidate_hashes_are_not_approved_releases(self):
+        import re
+        all_files = [f for asset in self.catalog["assets"]
+                     for f in asset["supplier_evidence"]["paths"]]
+        self.assertEqual(len(all_files), 115)
         for asset in self.catalog["assets"]:
             supplier = asset["supplier_evidence"]
             self.assertEqual(len(supplier["head_sha"]), 40)
             self.assertTrue(supplier["paths"])
-            self.assertFalse(any(rec["byte_verified"] or rec["sha256"] is not None
-                                 for rec in supplier["paths"]))
             self.assertEqual(asset["files"], [])
+            for candidate in supplier["paths"]:
+                self.assertTrue(candidate["byte_verified"])
+                self.assertRegex(candidate["sha256"], r"^[0-9a-f]{64}$")
+                self.assertEqual(candidate["provenance"]["producer_head"], supplier["head_sha"])
+                self.assertEqual(candidate["provenance"]["action_run_id"], 41071526841)
 
     def test_independent_qa_is_not_approved(self):
         self.assertEqual(sum(a["qa_independent"]["overall"] == "FAIL"

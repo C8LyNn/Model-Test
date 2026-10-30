@@ -3,11 +3,17 @@ on:
   push:
     branches:
       - c01/props-18-cargo
+    # Rebuild on actual authoring inputs, not on generated .blend/.fbx output commits.
     paths:
       - '.github/workflows/c01-18-native-blender.yml'
-      - 'Assets/C01InteriorProps/C01-18/Models/**'
-      - 'Assets/C01InteriorProps/C01-18/Sources/**'
+      - 'Assets/C01InteriorProps/C01-18/Models/*.obj'
+      - 'Assets/C01InteriorProps/C01-18/Models/*.mtl'
+      - 'Assets/C01InteriorProps/C01-18/Sources/build_blender.py'
+      - 'Assets/C01InteriorProps/C01-18/Sources/part_spec.json'
   workflow_dispatch:
+concurrency:
+  group: c01-18-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 permissions:
   contents: write
 jobs:

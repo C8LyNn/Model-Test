@@ -54,8 +54,8 @@ def audit(wave01, wave02):
     previous_ids = {item["asset_id"] for item in prior}
     if len(previous_ids) != 16:
         errors.append("Wave01 must have 16 canonical IDs")
-    expected = {f"C01-P{family}-{num:02d}" for family in range(15,20) for num in range(4,9)}
-    expected -= {f"C01-P{family}-08" for family in range(15,19)}
+    expected = ({f"C01-P{family}-{num:02d}" for family in range(15, 19) for num in range(4, 8)}
+                | {f"C01-P19-{num:02d}" for num in range(5, 9)})
     codes = [item.get("asset_id") for item in assets]
     if len(set(codes)) != len(codes) or set(codes) != expected:
         errors.append("Wave02 canonical ID set invalid or duplicated")

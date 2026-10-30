@@ -1,0 +1,253 @@
+{
+  "schema": "C01-01-DETAIL-PASS14-ACTUAL-SOURCE-MESH-NARROWPHASE-QA-v1",
+  "date": "2026-10-30",
+  "owner": "C01-01",
+  "producer": "C01-18",
+  "pinned_after_producer_commit": "996b8e8f8deb86e2a59f1468fb8b318a7815cfa7",
+  "summary": "Independent tests of literal original producer OBJ source bytes. Manufacturer C01-18 authored repairs in existing Draft PR #18; C01-01 did not modify mesh files.",
+  "hash_provenance": "Real SHA256 of exact UTF-8 GitHub source bytes computed independently; standard SHA256('abc') KAT PASS. Git blob SHA1 recorded separately.",
+  "methodology": "Compare immutable BEFORE/AFTER OBJ lines, actual object names/materials/face-corner indices/VT/VN; for physical box pairs verify three-axis volumetric overlap; for wheel/upright curved meshes triangulate real faces and count triangle pairs with noncoplanar strict segment-vs-triangle Moller-Trumbore crossings in both edge directions. This is SOURCE STATIC geometry not native Blender or Unity; cannot establish animated collision clearance or UV/tangent export parity.",
+  "source_only_evidence": {
+    "P18-01": {
+      "original_same_facing_trim_backer_pairs": 8,
+      "after_pairs": 0,
+      "original_same_facing_coplanar_surface_m2": 0.002496,
+      "after_m2": 0,
+      "source_same_plane_method": "8 known trim/backer pairs, exact matching min/min or max/max outward cuboid plane plus positive projected area; 16 original coincident side face patches in 8 pairs",
+      "lower_rim_gap_mm_before": 10,
+      "lower_rim_overlap_mm_after": [
+        820,
+        2,
+        820
+      ],
+      "same_face_problem": "RESOLVED_IN_AUTHORING_OBJ"
+    },
+    "P18-02": {
+      "unsupported_back_supports_before": 2,
+      "unsupported_back_supports_after": 0,
+      "old_x_gap_mm_per_side": 30,
+      "new_box_overlap_xyz_mm_each_post": [
+        5,
+        55,
+        45
+      ],
+      "tested_back_supports": [
+        "Back_Support_0.6",
+        "Back_Support_1.48"
+      ],
+      "label_backplate_supports": "PRESERVED",
+      "source_same_plane_contact": "REQUIRES_FINAL_FULL_NARROW_PHASE"
+    },
+    "P18-03": {
+      "wheels": [
+        "LB",
+        "LF",
+        "RB",
+        "RF"
+      ],
+      "wheel_metal_upright_source_triangle_intersection_pair_counts_before": [
+        11,
+        11,
+        13,
+        13
+      ],
+      "wheel_metal_upright_source_triangle_intersection_pair_counts_after": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "total_pairs_before": 48,
+      "total_pairs_after": 0,
+      "upright_bottom_y_m_before": 0.145,
+      "upright_bottom_y_m_after": 0.212,
+      "wheel_crown_top_y_m": 0.21,
+      "wheel_ground_min_y_m": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "wheel_top_clearance_mm": 2,
+      "floating_cart_shelf_lips_before": 4,
+      "after": 0,
+      "old_lip_to_deck_gap_mm": [
+        5,
+        5,
+        5,
+        5
+      ],
+      "new_lip_to_deck_solid_box_overlap_mm": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "cart_shelf_lips_preserved_height_and_section": true,
+      "independent_wheel_pivots_and_animated_castor_contacts": "NOT_VERIFIED_WITH_BLENDER_OR_UNITY"
+    }
+  },
+  "models": {
+    "P18-01": {
+      "source_path": "Assets/C01InteriorProps/C01-18/Models/P18-01.obj",
+      "before": {
+        "commit": "4d0b45d99054667456217a1e42fb6b48fff3bdb0",
+        "git_blob": "c0f9d6b5131c987e1c484ce4eb83ac2115e1d7f7",
+        "sha256": "5749f13e30f8e1d853c4488dde2e030fb7b55a59b14b71bedeef61297c8c3adf"
+      },
+      "after": {
+        "commit": "996b8e8f8deb86e2a59f1468fb8b318a7815cfa7",
+        "git_blob": "051ab09222a354f1c64f7c682442529b6f4d54ee",
+        "sha256": "6d1cbedba52d975594c4d1c4c1addcf14f752ee7118a521a3e63c880e8044b06"
+      },
+      "parts": 37,
+      "vertices": 416,
+      "polygons": 426,
+      "triangles": 684,
+      "changed_vertex_rows": 68,
+      "changed_components": {
+        "Lower_Rim": {
+          "vertex_rows": 4,
+          "nonvertex_rows": 0
+        },
+        "TrimBacker_B_0.28": {
+          "vertex_rows": 8,
+          "nonvertex_rows": 0
+        },
+        "TrimBacker_B_0.63": {
+          "vertex_rows": 8,
+          "nonvertex_rows": 0
+        },
+        "TrimBacker_F_0.28": {
+          "vertex_rows": 8,
+          "nonvertex_rows": 0
+        },
+        "TrimBacker_F_0.63": {
+          "vertex_rows": 8,
+          "nonvertex_rows": 0
+        },
+        "TrimBacker_L_0.28": {
+          "vertex_rows": 8,
+          "nonvertex_rows": 0
+        },
+        "TrimBacker_L_0.63": {
+          "vertex_rows": 8,
+          "nonvertex_rows": 0
+        },
+        "TrimBacker_R_0.28": {
+          "vertex_rows": 8,
+          "nonvertex_rows": 0
+        },
+        "TrimBacker_R_0.63": {
+          "vertex_rows": 8,
+          "nonvertex_rows": 0
+        }
+      },
+      "part_names_face_indices_uv0_normal_records_and_materials": "BYTE_IDENTICAL_ACROSS_BEFORE_AFTER",
+      "source_qa": "PASS_SPECIFIC_CONTACT_DEFECTS",
+      "blender": "NOT_RUN",
+      "binary_fbx_after": "NOT_CREATED",
+      "unity": "NOT_RUN"
+    },
+    "P18-02": {
+      "source_path": "Assets/C01InteriorProps/C01-18/Models/P18-02.obj",
+      "before": {
+        "commit": "4d0b45d99054667456217a1e42fb6b48fff3bdb0",
+        "git_blob": "9a81151c93006cd2a52d0e5541fe1d3c2cbc2011",
+        "sha256": "55d652a42ab7c22709814938535445a0814d9c9ff81237b59925a9115521ee98"
+      },
+      "after": {
+        "commit": "996b8e8f8deb86e2a59f1468fb8b318a7815cfa7",
+        "git_blob": "349fd2307eca8d2334cb8c8cbeb5f43ff9408d4b",
+        "sha256": "dc9434a32b7de2235d80a374cc04778b657e39c8f98d88b288bdad40fbf6af2c"
+      },
+      "parts": 47,
+      "vertices": 600,
+      "polygons": 666,
+      "triangles": 1012,
+      "changed_vertex_rows": 16,
+      "changed_components": {
+        "Back_Support_0.6": {
+          "vertex_rows": 8,
+          "nonvertex_rows": 0
+        },
+        "Back_Support_1.48": {
+          "vertex_rows": 8,
+          "nonvertex_rows": 0
+        }
+      },
+      "part_names_face_indices_uv0_normal_records_and_materials": "BYTE_IDENTICAL_ACROSS_BEFORE_AFTER",
+      "source_qa": "PASS_SPECIFIC_CONTACT_DEFECTS",
+      "blender": "NOT_RUN",
+      "binary_fbx_after": "NOT_CREATED",
+      "unity": "NOT_RUN"
+    },
+    "P18-03": {
+      "source_path": "Assets/C01InteriorProps/C01-18/Models/P18-03.obj",
+      "before": {
+        "commit": "01419e4afc00bad754a29bc9e0b56c94a597690e",
+        "git_blob": "df5a68c87fd49597c79bbb6f70735f32543489bf",
+        "sha256": "3996be33105a17163d4c8a753012aca891c1b19b156abf32ddab02d8fbca50e0"
+      },
+      "after": {
+        "commit": "996b8e8f8deb86e2a59f1468fb8b318a7815cfa7",
+        "git_blob": "e6440810d917df3c978505ce79f084ba1f98086c",
+        "sha256": "22513002afb38d2d3f4a13ef429a41c9a04928528b3cffef87613d51351c1901"
+      },
+      "parts": 53,
+      "vertices": 872,
+      "polygons": 1110,
+      "triangles": 1532,
+      "changed_vertex_rows": 48,
+      "changed_components": {
+        "Cart_Shelf_Lip_0_-0.48": {
+          "vertex_rows": 8,
+          "nonvertex_rows": 0
+        },
+        "Cart_Shelf_Lip_0_0.48": {
+          "vertex_rows": 8,
+          "nonvertex_rows": 0
+        },
+        "Cart_Shelf_Lip_1_-0.48": {
+          "vertex_rows": 8,
+          "nonvertex_rows": 0
+        },
+        "Cart_Shelf_Lip_1_0.48": {
+          "vertex_rows": 8,
+          "nonvertex_rows": 0
+        },
+        "Cart_Upright_-0.44_-0.29": {
+          "vertex_rows": 4,
+          "nonvertex_rows": 0
+        },
+        "Cart_Upright_-0.44_0.29": {
+          "vertex_rows": 4,
+          "nonvertex_rows": 0
+        },
+        "Cart_Upright_0.44_-0.29": {
+          "vertex_rows": 4,
+          "nonvertex_rows": 0
+        },
+        "Cart_Upright_0.44_0.29": {
+          "vertex_rows": 4,
+          "nonvertex_rows": 0
+        }
+      },
+      "part_names_face_indices_uv0_normal_records_and_materials": "BYTE_IDENTICAL_ACROSS_BEFORE_AFTER",
+      "source_qa": "PASS_SPECIFIC_CONTACT_DEFECTS",
+      "blender": "NOT_RUN",
+      "binary_fbx_after": "NOT_CREATED",
+      "unity": "NOT_RUN"
+    }
+  },
+  "release_gates": {
+    "independent_source_qa_of_these_three": "PASS_TARGETED_NARROW_PHASE_WITH_LIMITS",
+    "native_blender_save_after": "NOT_RUN",
+    "blender_origin_binary_fbx_after": "NOT_RUN",
+    "actual_blender_fbx_reimport": "NOT_RUN",
+    "full_c01_02_36_asset_fbx_acceptance": "0/36_FULL_APPROVED_AT_LAST_VERIFIED_C01_02_STATUS",
+    "unity6_urp": "NOT_RUN",
+    "decision": "NO_MERGE_PRODUCER_DRAFT_ONLY",
+    "blocker": "NEEDS_OWNER_ACTION: C01 GitHub Actions runner allocation fails pre-runner; authorized Blender4+Git LFS Windows host required for true .blend/FBX and independent QA."
+  }
+}

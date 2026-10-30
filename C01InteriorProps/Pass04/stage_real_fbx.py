@@ -58,6 +58,7 @@ def validate_entry(entry: dict) -> None:
         "BLOCKED_P19_EXPORT_TOPOLOGY",
         "BLOCKED_NO_NATIVE_BINARY_FBX",
         "BLOCKED_SOURCE_NEWER_THAN_FBX",
+        "BLOCKED_DETAIL_PASS12_NATIVE_EXPORT",
     }
     if entry.get("native_export_sync") not in valid_states:
         raise ValueError(f"Unreviewed export-sync state for {ident}")

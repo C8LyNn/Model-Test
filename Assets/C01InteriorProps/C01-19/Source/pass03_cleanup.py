@@ -28,6 +28,17 @@ for mid in ("P19-01","P19-02"):
     bm.normal_update()
     bm.to_mesh(o.data);bm.free();o.data.update()
     post=ns["audit"]()
+    # If micro-degenerates remain after the selected zero-edge weld, do one
+    # controlled pass on the same confirmed defective, single-material mesh.
+    # Blender UV data is loop-based; keep all independent moving objects separate.
+    if (post["totals"]["zero_edges"] or post["totals"]["boundary_edges"] or post["totals"]["degenerate_faces"]):
+        bm=bmesh.new();bm.from_mesh(o.data)
+        bm.verts.ensure_lookup_table();bm.edges.ensure_lookup_table()
+        bmesh.ops.remove_doubles(bm,verts=list(bm.verts),dist=1e-6)
+        bm.edges.ensure_lookup_table()
+        bmesh.ops.dissolve_degenerate(bm,dist=1e-6,edges=list(bm.edges))
+        bm.normal_update();bm.to_mesh(o.data);bm.free();o.data.update()
+        post=ns["audit"]()
     defects={k:post["totals"][k] for k in ("loose_vertices","degenerate_faces","duplicate_faces","boundary_edges","nonmanifold_edges","zero_edges")}
     if any(defects.values()):raise RuntimeError(f"{mid} localized cleanup still defective: {defects}")
     if max(abs(pre["bounding_xyz_blender"][a][i]-post["bounding_xyz_blender"][a][i]) for a in range(2) for i in range(3))>1e-5:

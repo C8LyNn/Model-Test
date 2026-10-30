@@ -24,6 +24,9 @@ jobs:
       - name: Generate actual .blend FBX 12 previews and geometry report
         run: |
           xvfb-run -a blender -b --factory-startup --python-exit-code 1 --python Assets/C01Architecture/Walls_W01_W04/Sources/build_wall_models.py
+      - name: Native Blender topology and actual FBX roundtrip PASS03
+        run: |
+          xvfb-run -a blender -b --factory-startup --python-exit-code 1 --python Assets/C01Architecture/Walls_W01_W04/Sources/pass03_native_topology_audit.py
       - name: Assert real file headers and expected count
         run: |
           python3 Assets/C01Architecture/Walls_W01_W04/Sources/check_artifacts.py

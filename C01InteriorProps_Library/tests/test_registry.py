@@ -29,10 +29,25 @@ class RegistryTests(unittest.TestCase):
 
     def test_planned_is_not_delivered(self):
         for a in self.catalog["assets"]:
-            self.assertEqual(a["status"], "PLANNED")
+            self.assertEqual(a["status"], "IN PRODUCTION")
             self.assertIsNone(a["delivered_version"])
             self.assertEqual(a["files"], [])
             self.assertEqual(a["qa"]["status"], "NOT_RUN")
+
+    def test_candidate_paths_are_not_accepted_hashes(self):
+        for asset in self.catalog["assets"]:
+            supplier = asset["supplier_evidence"]
+            self.assertEqual(len(supplier["head_sha"]), 40)
+            self.assertTrue(supplier["paths"])
+            self.assertFalse(any(rec["byte_verified"] or rec["sha256"] is not None
+                                 for rec in supplier["paths"]))
+            self.assertEqual(asset["files"], [])
+
+    def test_independent_qa_is_not_approved(self):
+        self.assertEqual(sum(a["qa_independent"]["overall"] == "FAIL"
+                             for a in self.catalog["assets"]), 2)
+        self.assertEqual(sum(a["qa_independent"]["overall"] == "BLOCKED"
+                             for a in self.catalog["assets"]), 14)
 
     def test_audit_has_no_metadata_errors(self):
         errors, pending = registry.audit(self.catalog)

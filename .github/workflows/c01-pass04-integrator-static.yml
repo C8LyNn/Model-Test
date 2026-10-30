@@ -1,11 +1,5 @@
 name: C01 PASS04 integrator tooling static checks
 on:
-  push:
-    branches: [c01/props-10-showcase-integration]
-    paths:
-      - 'C01InteriorProps/Pass04/**'
-      - 'Assets/C01InteriorProps/Editor/Pass04SourceImportAudit.cs'
-      - '.github/workflows/c01-pass04-integrator-static.yml'
   workflow_dispatch:
 jobs:
   source-tooling:

@@ -33,5 +33,39 @@
     "Unity6_URP": "NOT_RUN",
     "global_release": "BLOCKED"
   },
-  "needs_owner_action": "Produce actual updated Blender4 .blend+binary FBX with renders and SHA256, run independent exact FBX QA and Unity6 URP test, then update registry; no merge."
+  "needs_owner_action": "Produce actual updated Blender4 .blend+binary FBX with renders and SHA256, run independent exact FBX QA and Unity6 URP test, then update registry; no merge.",
+  "subsequent_same_day_source_intake": {
+    "pinned_producer_head_PR16": "4de19533a134203d415f39f07fef449f0b41f4a8",
+    "pinned_producer_head_PR17": "28824c2fa48e8523f9a8715df71c57379fa7634a",
+    "original_19_source_file_snapshot": "MATCH_AT_PREVIOUS_OBSERVED_HEADS",
+    "current_source_paths_total_pinned": 25,
+    "unchanged_original_source_paths": 18,
+    "original_path_updated_as_expected_P15_shared_spec": 1,
+    "newly_attached_P17_source_paths": 6,
+    "affected_existing_models": [
+      "P15-01",
+      "P17-01",
+      "P17-03"
+    ],
+    "SHA256_hasher_nist_vectors": "2_OF_2_PASS",
+    "tested_P17_01_GTLF_structural_source": "18_OF_18_INDEXED_UV0_NORMALS_PRESENT_380_INSTANCE_TRIANGLES",
+    "tested_P17_03_GLTF_structural_source": "13_OF_13_INDEXED_UV0_NORMALS_PRESENT_424_INSTANCE_TRIANGLES",
+    "new_source_mechanical_attachment_QA": "NOT_RUN",
+    "new_native_Blender4_export": "NOT_RUN",
+    "release": "36_OF_36_BLOCKED"
+  },
+  "additional_tests": {
+    "new_P15_spec_0_1_4_sha_pinned": "PASS",
+    "P15_new_parts_only_existing_P15_01": "PASS",
+    "P17_01_three_new_source_sha_pins": "PASS",
+    "P17_03_three_new_source_sha_pins": "PASS",
+    "P17_02_rechecked_unchanged": "PASS",
+    "P17_01_instanced_tris_380_mesh_UV_normal_structure": "PASS",
+    "P17_03_instanced_tris_424_mesh_UV_normal_structure": "PASS",
+    "new_producer_change_did_not_mark_any_native_release_APPROVED": "PASS"
+  },
+  "additional_passed": 8,
+  "total_passed_source_manifest_checks": 22,
+  "total_failed": 0,
+  "method_note": "Initial source recheck 19/19 was immutable at then-current producer heads. Two PR heads moved during the PASS15 execution, yielding one expected modified shared P15 spec and six additional P17 authored sources; these were SHA-pinned at newer immutable commits. Current claims must always cite exact commit refs and not suggest continuous synchronization."
 }

@@ -3,7 +3,9 @@ Run from repo root:
 blender -b -t 2 --python Assets/C01DoorsAccess13/LegacyPass03/blender_validate_export.py
 STATUS: NOT RUN in ChatGPT runtime; do not count as DCC PASS until executed.
 """
-import bpy, json
+import bpy, json, hashlib, math
+import bmesh
+from collections import Counter
 from pathlib import Path
 ROOT=Path(__file__).resolve().parent
 OUT=ROOT/"BlenderValidated";OUT.mkdir(exist_ok=True)
@@ -20,6 +22,36 @@ def bounds():
     assert points,"No imported mesh!"
     return [[min(v[i] for v in points) for i in range(3)],
             [max(v[i] for v in points) for i in range(3)]]
+
+def source_topology(obj):
+    # BMesh mesh connectivity is evaluated on actual Blender data, not GLB/FBX metadata.
+    bm=bmesh.new()
+    bm.from_mesh(obj.data)
+    loose_v=sum(1 for v in bm.verts if not v.link_edges)
+    loose_e=sum(1 for e in bm.edges if not e.link_faces)
+    boundary=sum(1 for e in bm.edges if e.is_boundary)
+    nonmanifold=sum(1 for e in bm.edges if not e.is_manifold)
+    degenerate=sum(1 for f in bm.faces if f.calc_area() < 1e-10)
+    # Exported triangles may have more vertices due to UV/sharp split.
+    obj.data.calc_loop_triangles()
+    out={"vertices":len(bm.verts),"edges":len(bm.edges),"faces":len(bm.faces),
+         "tris":len(obj.data.loop_triangles),"boundary_edges":boundary,
+         "nonmanifold_edges":nonmanifold,"degenerate_faces":degenerate,
+         "loose_vertices":loose_v,"loose_edges":loose_e,
+         "uv_layers":len(obj.data.uv_layers)}
+    bm.free()
+    return out
+
+def triangle_keys(obj):
+    obj.data.calc_loop_triangles()
+    def corner_key(v):
+        p=obj.matrix_world @ obj.data.vertices[v].co
+        return tuple(round(float(c),5) for c in p)
+    return Counter(tuple(sorted(corner_key(i) for i in t.vertices))
+                   for t in obj.data.loop_triangles)
+
+def sha256(path):
+    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 def make(key):
     reset()
@@ -51,6 +83,13 @@ def make(key):
     mesh.materials.append(material)
     assert tuple(ob.scale)==(1,1,1) and tuple(ob.location)==(0,0,0)
     scene=OUT/(key+"_REPAIRED_v003.blend")
+    topology_before=source_topology(ob)
+    assert topology_before['boundary_edges']==0,topology_before
+    assert topology_before['nonmanifold_edges']==0,topology_before
+    assert topology_before['degenerate_faces']==0,topology_before
+    assert topology_before['loose_vertices']==0,topology_before
+    assert topology_before['uv_layers']>0,topology_before
+    triangles_before=triangle_keys(ob)
     bpy.ops.wm.save_as_mainfile(filepath=str(scene))
     ob.select_set(True);bpy.context.view_layer.objects.active=ob
     binary=OUT/(key+"_REPAIRED_v003_BLENDER.fbx")
@@ -67,8 +106,22 @@ def make(key):
     assert len([o for o in bpy.context.scene.objects if o.type=="MESH"])==1
     imported_mesh=next(o for o in bpy.context.scene.objects if o.type=="MESH")
     assert len(imported_mesh.data.uv_layers)>0
+    triangles_after=triangle_keys(imported_mesh)
+    assert triangles_before==triangles_after, (
+      "FBX roundtrip altered world-space triangle topology", 
+      sum((triangles_before-triangles_after).values()),
+      sum((triangles_after-triangles_before).values())
+    )
+    assert all(math.isfinite(c) for p in imported_mesh.data.uv_layers.active.data for c in p.uv)
+    topology_after=source_topology(imported_mesh)
+    assert topology_before["tris"]==topology_after["tris"],topology_after
     return {"blend":str(scene),"fbx":str(binary),"roundtrip":"PASS",
-            "bbox_max_error_m":err,"source_vertices":len(verts),"source_tris":len(faces)}
+            "bbox_max_error_m":err,"source_vertices":len(verts),"source_tris":len(faces),
+            "blender_source_topology":topology_before,
+            "fbx_reimport_topology":topology_after,
+            "source_blend_sha256":sha256(scene),
+            "export_fbx_sha256":sha256(binary),
+            "source_triangle_multiset_exact_5dp":True}
 
 report={key:make(key) for key in ("D01","D02")}
 (OUT/"blender_validation.json").write_text(json.dumps(report,indent=2))

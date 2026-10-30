@@ -89,14 +89,30 @@ def visual(scene,objs,model_id,tag,kind,focus=None):
     scene.display.shading.light="STUDIO"
     scene.display.shading.color_type="MATERIAL"
     scene.display.shading.show_cavity=True
-    scene.display.shading.show_wireframes=(kind=="wire" or kind=="closeup")
-    scene.display.shading.wireframe_threshold=0.0
+    # Blender 4 Workbench render does not expose show_wireframes on View3DShading.
+    # Trace actual existing mesh edges into non-persistent render-only curves, never reconstructing meshes.
+    overlay=None
+    if kind in ("wire","closeup"):
+        c=bpy.data.curves.new("PASS03_SOURCE_EDGE_OVERLAY","CURVE")
+        c.dimensions="3D";c.bevel_depth=max(extent,0.4)*0.0009;c.bevel_resolution=0
+        for obj in objs:
+            for e in obj.data.edges:
+                s=c.splines.new("POLY");s.points.add(1)
+                for i,vid in enumerate(e.vertices):
+                    point=obj.matrix_world@obj.data.vertices[vid].co
+                    s.points[i].co=(point.x,point.y,point.z,1)
+        overlay=bpy.data.objects.new("PASS03_SOURCE_EDGE_OVERLAY",c)
+        scene.collection.objects.link(overlay)
     scene.display.shading.show_shadows=(kind=="shaded")
     scene.render.resolution_x=1100;scene.render.resolution_y=1100;scene.render.resolution_percentage=100
     scene.render.image_settings.file_format="PNG"
     scene.render.filepath=str(PREV/(model_id+"_"+tag+".png"))
     bpy.ops.render.render(write_still=True)
     bpy.data.objects.remove(cam,do_unlink=True)
+    if overlay is not None:
+        curve=overlay.data
+        bpy.data.objects.remove(overlay,do_unlink=True)
+        bpy.data.curves.remove(curve)
 def repair(ob):
     bm=bmesh.new();bm.from_mesh(ob.data)
     existing_faces=len(bm.faces)

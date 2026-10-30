@@ -66,6 +66,60 @@ def triangulate(o):
     bm.free()
     result["triangles_after"]=len(o.data.polygons)
     return result
+def repair_p1901_backtrack():
+    """Surgical repair of ORIGINAL P19-01 Cube.001 two-face T-junction.
+
+    Original material/UV-preserving face boundary had
+       face 23: [35, 24, 5, 14, 13, 47, 45]
+       face 59: [76, 5, 24, 46, 64, 65]
+    with 24->5 spanning the already-existing vertex 46, and face 59
+    backtracking 5->24->46. Split the former edge at 46, and omit
+    backtracking 24 only from face 59. No vertex added/moved/welded,
+    face area and total triangulated count unchanged.
+    """
+    candidates=[o for o in bpy.context.scene.objects
+        if o.type=="MESH" and o.name=="Cube.001"]
+    assert len(candidates)==1,"P19-01 source Cube.001 not uniquely found"
+    o=candidates[0]
+    bm=bmesh.new();bm.from_mesh(o.data)
+    bm.verts.ensure_lookup_table();bm.faces.ensure_lookup_table()
+    assert len(bm.verts)>=77 and len(bm.faces)>59, "source topology mismatch"
+    old23=bm.faces[23];old59=bm.faces[59]
+    f23=[v.index for v in old23.verts];f59=[v.index for v in old59.verts]
+    assert f23==[35,24,5,14,13,47,45] and f59==[76,5,24,46,64,65],(f23,f59)
+    a,c,d=(bm.verts[i].co.copy() for i in (24,5,46))
+    t=(d-a).dot(c-a)/(c-a).length_squared
+    assert 0<t<1 and (d-(a+t*(c-a))).length<1e-5, "vertex 46 not on edge 24-5"
+    attrs={}
+    for f in (old23,old59):
+        attrs[f.index]={"material":f.material_index,"smooth":f.smooth,
+            "uv":{layer.name:{lp.vert.index:tuple(lp[layer].uv)
+                  for lp in f.loops} for layer in bm.loops.layers.uv}}
+    assert set(attrs[23]["uv"])==set(attrs[59]["uv"]), "UV layer mismatch"
+    for f in (old23,old59):bm.faces.remove(f)
+    patch_def=[(23,[35,24,46,5,14,13,47,45]),(59,[76,5,46,64,65])]
+    for src,indices in patch_def:
+        nf=bm.faces.new([bm.verts[i] for i in indices])
+        nf.material_index=attrs[src]["material"];nf.smooth=attrs[src]["smooth"]
+        for layer in bm.loops.layers.uv:
+            old=attrs[src]["uv"][layer.name]
+            for lp in nf.loops:
+                vid=lp.vert.index
+                if vid in old:
+                    lp[layer].uv=old[vid]
+                else:
+                    assert src==23 and vid==46
+                    lp[layer].uv=tuple((1-t)*old[24][i]+t*old[5][i]
+                                       for i in range(2))
+    bm.normal_update()
+    bm.to_mesh(o.data);bm.free();o.data.update()
+    return {"asset":"P19-01","source_part":o.name,
+        "face23_before":f23,"face59_before":f59,
+        "face23_after":patch_def[0][1],"face59_after":patch_def[1][1],
+        "vertices_added":0,"vertices_moved":0,"faces_added":0,
+        "nominal_triangles_delta":0,"uv":"old loops unchanged, one interpolated seam loop",
+        "moving_parts":"unchanged"}
+
 def fbx_roundtrip(model,after):
     bfile=ROOT/"Models"/model/(model+".fbx")
     bpy.ops.object.select_all(action="DESELECT")
@@ -103,6 +157,7 @@ for id in IDS:
     before=metrics()
     evidence=DST/id;evidence.mkdir(parents=True,exist_ok=True)
     render(evidence/"wireframe_before.png",wire=True)
+    seam_repair=repair_p1901_backtrack() if id=="P19-01" else None
     repair=[triangulate(o) if id in TARGET_IDS else {"name":o.name,"action":"NO_TRIANGULATION_REQUIRED"} for o in bpy.context.scene.objects if o.type=="MESH"]
     after=metrics()
     assert (after["triangle_only"] and after["ngons"]==0) if id in TARGET_IDS else after["totals"]["triangles"]==before["totals"]["triangles"]
@@ -124,7 +179,7 @@ for id in IDS:
     after_sha=hashlib.sha256(native.read_bytes()).hexdigest()
     rec={"id":id,"source_before_sha256":before_sha,"source_after_sha256":after_sha,
          "fix":"EXPLICIT_BMESH_EAR_CLIP_TRIANGULATION_NO_GEOMETRIC_REDESIGN",
-         "parts":repair,"before":before,"after":after,"fbx_roundtrip":fbx,
+         "parts":repair,"seam_repair":seam_repair,"before":before,"after":after,"fbx_roundtrip":fbx,
          "tjunction_note":"geometric candidates only, moving separate parts are allowed; no forced welding",
          "unity":"NOT_RUN","independent_C01_02":"PENDING"}
     (evidence/"mesh_topology_before.json").write_text(json.dumps(before,indent=2))

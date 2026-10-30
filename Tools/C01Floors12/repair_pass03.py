@@ -96,7 +96,7 @@ def screenshot(obj,id,mode,wire=False,zoom=False):
  scene=bpy.context.scene;scene.render.engine='BLENDER_WORKBENCH'
  scene.render.resolution_x=960;scene.render.resolution_y=720;scene.render.resolution_percentage=100
  scene.render.image_settings.file_format='PNG'
- scene.display.shading.light='STUDIO';scene.display.shading.color_type='OBJECT'
+ scene.display.shading.light='STUDIO';scene.display.shading.color_type='OBJECT' if wire else 'MATERIAL'
  scene.display.shading.show_shadows=True
  z=3.1 if id=='C01' else -.1
  target=Vector((0,-.5,z)) if zoom else Vector((.5,-.5,z))
@@ -113,6 +113,9 @@ def screenshot(obj,id,mode,wire=False,zoom=False):
   for j,vertex_index in enumerate(e.vertices):
    v=obj.data.vertices[vertex_index].co
    poly.points[j].co=(v.x,v.y,v.z,1)
+ if not wire:
+  ink=bpy.data.materials.new('QA_TEMP_EDGE_INK');ink.diffuse_color=(.035,.035,.035,1)
+  curves.materials.append(ink)
  overlay=bpy.data.objects.new('QA_TRUE_EDGES',curves)
  scene.collection.objects.link(overlay)
  overlay.color=(.96,.55,.12,1) if wire else (.06,.06,.06,1)

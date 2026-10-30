@@ -1,0 +1,69 @@
+{
+  "title": "C01-18 PASS05 real final FBX cross-object contact screen",
+  "date": "2026-10-30",
+  "branch": "c01/props-18-cargo-wave02",
+  "repo": "C8LyNn/Model-Test",
+  "original_source": "Actual post-PASS03 BLEND/FBX model bytes; signed full binary FBX SHA matches current Git LFS pointer",
+  "methods": "Binary FBX 7400 Objects/Geometry+Connections transforms, polygon face normals, 3D face-plane test, polygon clipping and vertex-on-edge test; original meshes only",
+  "units": "area in cm²; FBX exporter uses centimeters",
+  "numeric_contact_cutoff_cm2": 0.01,
+  "overall_status": "PRODUCER_GEOMETRY_CHECK_COMPLETE_WITH_REVIEW_CANDIDATES; INDEPENDENT_QA_BLOCKED",
+  "new_native_blender_run": "NOT_RUN - no Blender executable in local environment; GitHub hosted runners not assigned",
+  "unity": "NOT_RUN",
+  "source_repair_pass05": "NO NEW EDITS - original meshes not modified without validated Blender source change",
+  "historical_blender_fbx_ci": 41089810123,
+  "models": [
+    {
+      "id": "P18-04",
+      "blend_sha256": "4a0531a877df0cbbcc2078b02297efccd966611e736bf70480a7572c6602ec52",
+      "fbx_sha256": "233253cea4a872052ef87c33f79c08794885dacac4caadf276e95701d0a70803",
+      "within_mesh_vertex_on_edge_candidates": 0,
+      "cross_mesh_vertex_on_edge_candidates": 0,
+      "coplanar_face_pairs_unfiltered": 2,
+      "coplanar_face_pairs_filtered": 2,
+      "meaningful_same_facing_pairs": 0,
+      "source_new_repairs": 0,
+      "classification": "REVIEW_REQUIRED",
+      "note": "Two opposed-facing contact pairs: Floor_Foot/Pressure_Shell, Safety_Cap/Top_Grip."
+    },
+    {
+      "id": "P18-05",
+      "blend_sha256": "5f98b9e34f346df3ef133e30243aee5b26dc45032c415d643490d00dbdd22f21",
+      "fbx_sha256": "58e33516ead13e35e8a48228045c67bd53d6caf8de01883a11625fa2961957e5",
+      "within_mesh_vertex_on_edge_candidates": 0,
+      "cross_mesh_vertex_on_edge_candidates": 4,
+      "coplanar_face_pairs_unfiltered": 8,
+      "coplanar_face_pairs_filtered": 4,
+      "meaningful_same_facing_pairs": 0,
+      "source_new_repairs": 0,
+      "classification": "REVIEW_REQUIRED",
+      "note": "Four opposed-facing contacts between shell/lid/feet; four sub-0.01cm² numeric contacts excluded."
+    },
+    {
+      "id": "P18-06",
+      "blend_sha256": "b78b0975b222419af184ea88ed9f2d54e766d11f34ddaed319bd16723c225e3f",
+      "fbx_sha256": "e83be5fac79ba0d4baf57f9a4c6050a978383da4f3bd95d046b38462fbabb220",
+      "within_mesh_vertex_on_edge_candidates": 0,
+      "cross_mesh_vertex_on_edge_candidates": 0,
+      "coplanar_face_pairs_unfiltered": 6,
+      "coplanar_face_pairs_filtered": 6,
+      "meaningful_same_facing_pairs": 0,
+      "source_new_repairs": 0,
+      "classification": "REVIEW_REQUIRED",
+      "note": "Six opposed-facing cage, container and cap contacts; source geometry unchanged PASS05."
+    },
+    {
+      "id": "P18-07",
+      "blend_sha256": "302a6832594702c7eff11a486d9e581c159993ff7b7f5c5abe124bf29edbc8d8",
+      "fbx_sha256": "56c19c7ea12fe2713ae30b72ecf8771613f794d4a2e8c4da18c41cb9dd825e08",
+      "within_mesh_vertex_on_edge_candidates": 0,
+      "cross_mesh_vertex_on_edge_candidates": 8,
+      "coplanar_face_pairs_unfiltered": 5,
+      "coplanar_face_pairs_filtered": 5,
+      "meaningful_same_facing_pairs": 1,
+      "source_new_repairs": 0,
+      "classification": "REVIEW_REQUIRED",
+      "note": "One same-facing contact Bin_Lid/Front_Lock, overlap approx 26.00cm²; likely candidate for visual z-fighting. Other contacts opposed-facing."
+    }
+  ]
+}

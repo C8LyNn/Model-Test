@@ -27,7 +27,7 @@ foreach ($Asset in $Expected) {
     if (-not (Test-Path -LiteralPath $ReportFile)) { throw "Missing Blender roundtrip QA for $Asset" }
     $BlendBytes = [System.IO.File]::ReadAllBytes($Blend)
     $FBXBytes = [System.IO.File]::ReadAllBytes($FBX)
-    $BlendMagic = [System.Text.Encoding]::ASCII.GetString($BlendBytes,0,[Math]::Min(7,$BlendBytes.Length))
+    $BlendMagic = [System.Text.Encoding]::ASCII.GetString($BlendBytes,0,[Math]::Min(8,$BlendBytes.Length))
     $FBXMagic = [System.Text.Encoding]::ASCII.GetString($FBXBytes,0,[Math]::Min(18,$FBXBytes.Length))
     if ($BlendMagic -ne 'BLENDER-') { throw "$Asset source is not a native Blender file" }
     if (-not $FBXMagic.StartsWith('Kaydara FBX Binary')) { throw "$Asset file is not a binary FBX" }

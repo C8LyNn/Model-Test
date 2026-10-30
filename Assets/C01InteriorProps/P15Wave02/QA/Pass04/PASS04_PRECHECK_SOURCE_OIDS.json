@@ -1,0 +1,211 @@
+{
+  "schema": "C01_P15_PASS04_SOURCE_SHA_BASELINE_V1",
+  "branch": "c01/props-15-installations-wave02",
+  "pr": 25,
+  "latest_ci_run": "https://github.com/C8LyNn/Model-Test/actions/runs/41094615625",
+  "ci_status": "BLOCKED_BEFORE_RUNNER_START_NO_STEPS",
+  "this_validation": "PASS_LFS_POINTER_RECEIPT_AND_PASS03_JSON_CONSISTENCY_ONLY",
+  "current_LFS_bytes_hydrated": "NO",
+  "all_source_SHA_match_PASS03": true,
+  "t_junction_scans_unfinished": [
+    "P15-05/Elbow_Cable_0",
+    "P15-05/Elbow_Cable_1",
+    "P15-05/Elbow_Cable_2",
+    "P15-06/Wire_0",
+    "P15-06/Wire_1",
+    "P15-06/Wire_2",
+    "P15-06/Wire_3",
+    "P15-06/Wire_4",
+    "P15-06/Wire_5",
+    "P15-07/Gauge_Ring_0",
+    "P15-07/Gauge_Ring_1",
+    "P15-07/Pressure_Header"
+  ],
+  "records": [
+    {
+      "id": "P15-04",
+      "source_blend": {
+        "sha256": "54a4b2efdfe0cc3766ff1a04ce3bca24f1adcdf2e8d7812058fc000e297393cd",
+        "size": 684588,
+        "git_blob_sha": "04945c8f8883b4aaeb33c2b7a9c9606c6e815591"
+      },
+      "binary_fbx": {
+        "sha256": "58252505554c65354f9ebce7e3264868d3ff7a57c850d16323e71e6356c5ce04",
+        "size": 89596,
+        "git_blob_sha": "8cc2f344fecb935b4f2db34db22efe22eef21388"
+      },
+      "pass03_source_SHA_verified": true,
+      "pass03_FBX_roundtrip": "PASS",
+      "before": {
+        "vertices": 918,
+        "edges": 1722,
+        "faces": 852,
+        "triangles": 1740
+      },
+      "after": {
+        "vertices": 918,
+        "edges": 1722,
+        "faces": 852,
+        "triangles": 1740
+      },
+      "parts": 24,
+      "historical_Tjunction_scanned": 24,
+      "missing_Tjunction": [],
+      "boundary_edges": 0,
+      "source_repairs": [],
+      "pass04_Blender": "NOT_RUN",
+      "pass04_FBX": "NOT_RUN",
+      "pass04_Unity": "NOT_RUN",
+      "independent_QA": "NOT_RUN"
+    },
+    {
+      "id": "P15-05",
+      "source_blend": {
+        "sha256": "4f30880643a17d97c9f7cfca4cd0a219e12fff6f8868fa1ba31017e9083f2c01",
+        "size": 728540,
+        "git_blob_sha": "317e2388a7da8b8ab7791a6d2004273bd1f770c5"
+      },
+      "binary_fbx": {
+        "sha256": "5d254249234c100ca2e7c0b4d65fe8ed8bc366f275d4718b4d90bac416d3da5e",
+        "size": 124684,
+        "git_blob_sha": "1fbcc210f93d4cff1ab8b53ab61e0a95fd2b8fe5"
+      },
+      "pass03_source_SHA_verified": true,
+      "pass03_FBX_roundtrip": "PASS",
+      "before": {
+        "vertices": 2274,
+        "edges": 4494,
+        "faces": 2238,
+        "triangles": 4512
+      },
+      "after": {
+        "vertices": 2274,
+        "edges": 4494,
+        "faces": 2238,
+        "triangles": 4512
+      },
+      "parts": 9,
+      "historical_Tjunction_scanned": 6,
+      "missing_Tjunction": [
+        "Elbow_Cable_0",
+        "Elbow_Cable_1",
+        "Elbow_Cable_2"
+      ],
+      "boundary_edges": 0,
+      "source_repairs": [
+        {
+          "type": "inward_closed_shell",
+          "mesh": "Elbow_Base"
+        },
+        {
+          "type": "inward_closed_shell",
+          "mesh": "Elbow_LeftRail"
+        },
+        {
+          "type": "inward_closed_shell",
+          "mesh": "Elbow_RightRail"
+        }
+      ],
+      "pass04_Blender": "NOT_RUN",
+      "pass04_FBX": "NOT_RUN",
+      "pass04_Unity": "NOT_RUN",
+      "independent_QA": "NOT_RUN"
+    },
+    {
+      "id": "P15-06",
+      "source_blend": {
+        "sha256": "644b1fab278bf1694fc6eb61b6a1cfe0f4bcfce204ecfd25a6b4cb13221a82aa",
+        "size": 1011612,
+        "git_blob_sha": "56eb55cfa4bd61250d273c8767f2945ae2ef6794"
+      },
+      "binary_fbx": {
+        "sha256": "e48b943e7926a3d62e3f956f1b1bc59218dbe310837d179dfbbfee435001f448",
+        "size": 260908,
+        "git_blob_sha": "49e39d259232fd439ecb78294996429eb5e9f173"
+      },
+      "pass03_source_SHA_verified": true,
+      "pass03_FBX_roundtrip": "PASS",
+      "before": {
+        "vertices": 3744,
+        "edges": 7308,
+        "faces": 3630,
+        "triangles": 7356
+      },
+      "after": {
+        "vertices": 3744,
+        "edges": 7308,
+        "faces": 3630,
+        "triangles": 7356
+      },
+      "parts": 33,
+      "historical_Tjunction_scanned": 27,
+      "missing_Tjunction": [
+        "Wire_0",
+        "Wire_1",
+        "Wire_2",
+        "Wire_3",
+        "Wire_4",
+        "Wire_5"
+      ],
+      "boundary_edges": 0,
+      "source_repairs": [],
+      "pass04_Blender": "NOT_RUN",
+      "pass04_FBX": "NOT_RUN",
+      "pass04_Unity": "NOT_RUN",
+      "independent_QA": "NOT_RUN"
+    },
+    {
+      "id": "P15-07",
+      "source_blend": {
+        "sha256": "00a456375c5fd731f811d61d1ae171330a5291d5669ae9fdcc752b174b72aa6e",
+        "size": 853560,
+        "git_blob_sha": "c5d282c74b920b6b1cd3743d46b92abd09141375"
+      },
+      "binary_fbx": {
+        "sha256": "ffc0211cc73a2056b815f3a494c24ab97d3c808d7ad9eb5b472472c555fb47f2",
+        "size": 148828,
+        "git_blob_sha": "0ab814c1e48eeb89fb7c8069ca9d69ac0739659b"
+      },
+      "pass03_source_SHA_verified": true,
+      "pass03_FBX_roundtrip": "PASS",
+      "before": {
+        "vertices": 2794,
+        "edges": 5400,
+        "faces": 2646,
+        "triangles": 5460
+      },
+      "after": {
+        "vertices": 2770,
+        "edges": 5376,
+        "faces": 2642,
+        "triangles": 5420
+      },
+      "parts": 21,
+      "historical_Tjunction_scanned": 18,
+      "missing_Tjunction": [
+        "Gauge_Ring_0",
+        "Gauge_Ring_1",
+        "Pressure_Header"
+      ],
+      "boundary_edges": 48,
+      "source_repairs": [
+        {
+          "type": "unwelded_closed_loop_and_180_frame_flip",
+          "mesh": "Gauge_Ring_0"
+        },
+        {
+          "type": "unwelded_closed_loop_and_180_frame_flip",
+          "mesh": "Gauge_Ring_1"
+        }
+      ],
+      "pass04_Blender": "NOT_RUN",
+      "pass04_FBX": "NOT_RUN",
+      "pass04_Unity": "NOT_RUN",
+      "independent_QA": "NOT_RUN"
+    }
+  ],
+  "scope": "Existing real-source SHA receipts and historic Blender 4.0.2 reports; PASS04 new native test has NOT RUN",
+  "pass04_native": "NOT_RUN",
+  "unity": "NOT_RUN",
+  "independent_qa": "NOT_RUN"
+}

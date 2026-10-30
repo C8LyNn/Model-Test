@@ -94,10 +94,12 @@
     "independent_C01_02": "PENDING; no new binary SHA to approve",
     "unity6_urp": "NOT RUN",
     "runner_evidence": {
-      "id": 41123338333,
+      "id": 41123519054,
       "status": "FAILURE BEFORE RUNNER",
       "runner_id": 0,
-      "steps": 0
+      "steps": 0,
+      "previous_run_41123338333": "also 0 runner/steps",
+      "logs": "No job log blob available (404 BlobNotFound)"
     },
     "owner_action": "Restore eligible Model-Test private Actions runner OR run producer source OBJ using real Blender 4.x and Git LFS on authorized Windows. Save/FBX export/reimport exact new versions; C01-02 independent QA, Unity6 integration and SHA manifest gate; no merge."
   },
@@ -107,5 +109,36 @@
     "No fabricated Blender outputs",
     "No auto-weld",
     "No changes to P18-04..07 existing draft PR #26"
-  ]
+  ],
+  "historical_original_native_blend_real_binary_confirmation": {
+    "source_archive": "C01-18_PASS03_Repair_Delivery.zip (authentic archived PASS03, not current PASS13 native)",
+    "member": "w01/Sources/P18-03.blend",
+    "header": "BLENDER-v400",
+    "sha256": "a33b23ad173f56a545aa57ae2d81e24afa27928f497835596350e06772e343fc",
+    "method": "Parsed actual Blender4.0 native Object SDNA location field float32 triple from 4 wheel Object records; not simulated transform",
+    "wheel_world_local_centers_blender_xyz": [
+      [
+        -0.39,
+        0.245,
+        0.105
+      ],
+      [
+        -0.39,
+        -0.245,
+        0.105
+      ],
+      [
+        0.39,
+        0.245,
+        0.105
+      ],
+      [
+        0.39,
+        -0.245,
+        0.105
+      ]
+    ],
+    "finding": "All 4 original wheel axes are height Blender Z=0.105m; Y is longitudinal ±0.245m. Previous producer check wheel.location.y==.105 was materially wrong; PASS13 changed check to transformed world Z + wheel mesh ground contact.",
+    "not_proof_of_PASS13_native_roundtrip": true
+  }
 }

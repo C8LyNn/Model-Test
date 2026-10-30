@@ -276,6 +276,125 @@ namespace C01.InteriorProps.Editor
             }
         }
 
+
+        // Detail PASS15: producer-source-derived lower bounds, not polycount targets.
+        // A baseline is only a regression gate for a REAL imported binary FBX:
+        // source authoring detail must not disappear on Blender FBX export.
+        static void CheckPass15DetailFidelity(string id,GameObject imported,
+                                              MeshFilter[] filters,
+                                              int importedMeshes,long importedTriangles,
+                                              List<string> defects)
+        {
+            int minimumMeshes=0,minimumTriangles=0;
+            string[] mandatory=null;
+            switch(id)
+            {
+                case "P15-03":
+                    minimumMeshes=30; minimumTriangles=440;
+                    mandatory=new[]{
+                        "DoorSkin","DoorSafetyStripe","Hinge_Lower_Mount",
+                        "Hinge_Lower_AxlePin","Hinge_Lower_Sleeve",
+                        "Hinge_Upper_Mount","Hinge_Upper_AxlePin","Hinge_Upper_Sleeve"};
+                    break;
+                case "P17-02":
+                    minimumMeshes=38; minimumTriangles=536;
+                    mandatory=new[]{
+                        "Housing","Keybed","Key_01","Key_12",
+                        "KeyGuide_01","KeyGuide_12",
+                        "LeftClampReinforcement","RightClampReinforcement",
+                        "LeftBottomMountScrew","LeftTopMountScrew",
+                        "RightBottomMountScrew","RightTopMountScrew"};
+                    break;
+                case "P18-01":
+                    minimumMeshes=37; minimumTriangles=684;
+                    mandatory=new[]{
+                        "Crate_Shell","Lower_Rim","Upper_Lid",
+                        "TrimBacker_B_0.28","TrimBacker_F_0.63",
+                        "TrimBacker_L_0.28","TrimBacker_R_0.63",
+                        "RearHinge_L_Leaf","RearHinge_L_Pin",
+                        "RearHinge_R_Leaf","RearHinge_R_Pin",
+                        "FrontLatch_L_Lever","FrontLatch_R_Lever",
+                        "LidCornerBolt_LB","LidCornerBolt_RF"};
+                    break;
+                case "P18-02":
+                    minimumMeshes=47; minimumTriangles=1012;
+                    mandatory=new[]{
+                        "Back_Support_0.6","Back_Support_1.48",
+                        "Top_Label_-0.5","Top_Label_0.5",
+                        "Top_Label_L_MountingBackplate",
+                        "Top_Label_R_MountingBackplate",
+                        "Top_Label_L_Bolt_L","Top_Label_R_Bolt_R",
+                        "Shelf0_Bracket_LB","Shelf2_Bracket_RF",
+                        "Shelf0_LipBolt_LB","Shelf2_LipBolt_RF"};
+                    break;
+                case "P18-03":
+                    minimumMeshes=53; minimumTriangles=1532;
+                    mandatory=new[]{
+                        "Wheel_LB","Wheel_LF","Wheel_RB","Wheel_RF",
+                        "Cart_Shelf_0","Cart_Shelf_1",
+                        "Cart_Shelf_Lip_0_-0.48","Cart_Shelf_Lip_1_0.48",
+                        "Wheel_LB_ForkInner","Wheel_LB_ForkOuter",
+                        "Wheel_LB_ForkCrown","Wheel_LB_Anchor",
+                        "Wheel_LB_Gusset","Wheel_LB_Axle",
+                        "Wheel_LB_Hub_In","Wheel_LB_Hub_Out",
+                        "Wheel_LB_AxleFastener","Wheel_RF_AxleFastener"};
+                    break;
+                default: return;
+            }
+            if(importedMeshes<minimumMeshes)
+                defects.Add("DETAIL15_MESH_COUNT_LOSS:"+importedMeshes+"/"+minimumMeshes);
+            if(importedTriangles<minimumTriangles)
+                defects.Add("DETAIL15_TRIANGLE_COUNT_LOSS:"+importedTriangles+"/"+minimumTriangles);
+            // Four times the source baseline is review-only for purpose-built details,
+            // but NOT an automatic reduction; a producer may justify higher density.
+            if(importedTriangles>(long)minimumTriangles*4L)
+                defects.Add("DETAIL15_TRIANGLE_BUDGET_REVIEW:"+importedTriangles);
+            var names=filters.Where(f=>f!=null && f.sharedMesh!=null)
+                             .GroupBy(f=>f.name,StringComparer.Ordinal)
+                             .ToDictionary(g=>g.Key,g=>g.Count(),StringComparer.Ordinal);
+            foreach(var part in mandatory)
+            {
+                int count;
+                if(!names.TryGetValue(part,out count) || count!=1)
+                    defects.Add("DETAIL15_REQUIRED_PART_MISSING_OR_DUPLICATE:"+part);
+            }
+            if(id=="P18-03")
+            {
+                // MeshFilter node must preserve wheel motion parenting from Blender:
+                // both hubs rotate with the wheel; fixed fork/axle/anchor do not.
+                foreach(var suffix in new[]{"LB","LF","RB","RF"})
+                {
+                    var wheel=filters.FirstOrDefault(f=>f.name=="Wheel_"+suffix);
+                    if(wheel==null)continue; // missing reported in mandatory parts
+                    foreach(var hubSuffix in new[]{"Hub_In","Hub_Out"})
+                    {
+                        string name="Wheel_"+suffix+"_"+hubSuffix;
+                        var hub=filters.FirstOrDefault(f=>f.name==name);
+                        if(hub==null)
+                        {
+                            defects.Add("DETAIL15_WHEEL_HUB_MISSING:"+name);
+                            continue;
+                        }
+                        if(!hub.transform.IsChildOf(wheel.transform))
+                            defects.Add("DETAIL15_WHEEL_HUB_NOT_PARENTED_TO_MOVING_WHEEL:"+name);
+                    }
+                    foreach(var stationarySuffix in new[]{"ForkInner","ForkOuter",
+                                                          "ForkCrown","Anchor","Gusset","Axle"})
+                    {
+                        string name="Wheel_"+suffix+"_"+stationarySuffix;
+                        var fixedPart=filters.FirstOrDefault(f=>f.name==name);
+                        if(fixedPart==null)
+                        {
+                            defects.Add("DETAIL15_STATIC_MOUNT_MISSING:"+name);
+                            continue;
+                        }
+                        if(fixedPart.transform.IsChildOf(wheel.transform))
+                            defects.Add("DETAIL15_STATIC_MOUNT_PARENTED_TO_MOVING_WHEEL:"+name);
+                    }
+                }
+            }
+        }
+
         static Source Inspect(string id,string path)
         {
             var r=new Source{Id=id,Path=path,Status="SOURCE_PRECHECK_NOT_RUN",Diagnostics=""};
@@ -365,6 +484,7 @@ namespace C01.InteriorProps.Editor
                 if(r.UvMissing>0)defects.Add("UV0_MISSING");
                 if(r.NormalsMissing>0)defects.Add("NORMALS_MISSING");
                 if(r.DegenerateTriangles>0)defects.Add("DEGENERATE_TRIANGLES");
+                CheckPass15DetailFidelity(id,inst,filters,r.MeshCount,r.TriangleCount,defects);
                 if(r.MaterialsMissing>0)defects.Add("MATERIAL_SLOT_EMPTY");
                 if(r.NonUrpMaterials>0)defects.Add("MATERIAL_NOT_URP_REVIEW");
             }

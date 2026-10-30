@@ -238,7 +238,220 @@
       "P17 new details are source glTF-only; native FBX not updated to the new geometry; do not promote offline FBX candidates",
       "P16 PASS15 new details must be included in real Blender binary export and retain independent rotor/static hierarchy",
       "Unrelated previously sourced P19-07 has geometric vertex-on-edge candidates requiring Blender scene visual diagnosis"
-    ]
+    ],
+    "actual_narrowphase": {
+      "method": "On actual source indexed triangles in pinned source files, convert glTF POSITION accessor float32 and node scale/translation once; triangulate OBJ face indices; bidirectional strict segment/triangle noncoplanar intersection testing with Moller-Trumbore (epsilon 1e-10). At least one crossing against named original supporting mesh per new detail. This is static geometry only and not a complete contact or collision audit of all pairs.",
+      "verdict": "36/36 newly introduced PASS15 detail meshes have >=1 true 3D source triangle-to-support intersection, 0 unsupported among these 36.",
+      "totals": {
+        "P16": 8,
+        "P17": 16,
+        "P18": 12,
+        "total": 36
+      },
+      "witnesses": {
+        "P16-04": [
+          {
+            "new_detail": "DiffuserRetainer_L_N",
+            "original_support": "P16-04_STATIC_Steel_3",
+            "noncoplanar_triangle_pair_intersections": 10
+          },
+          {
+            "new_detail": "DiffuserRetainer_L_P",
+            "original_support": "P16-04_STATIC_Steel_4",
+            "noncoplanar_triangle_pair_intersections": 12
+          },
+          {
+            "new_detail": "DiffuserRetainer_R_N",
+            "original_support": "P16-04_STATIC_Steel_3",
+            "noncoplanar_triangle_pair_intersections": 10
+          },
+          {
+            "new_detail": "DiffuserRetainer_R_P",
+            "original_support": "P16-04_STATIC_Steel_4",
+            "noncoplanar_triangle_pair_intersections": 12
+          }
+        ],
+        "P16-05": [
+          {
+            "new_detail": "ServiceCoverLip_N",
+            "original_support": "P16-05_STATIC_DarkPanel_DETAIL_RearServiceCover",
+            "noncoplanar_triangle_pair_intersections": 12
+          },
+          {
+            "new_detail": "ServiceCoverLip_P",
+            "original_support": "P16-05_STATIC_DarkPanel_DETAIL_RearServiceCover",
+            "noncoplanar_triangle_pair_intersections": 14
+          }
+        ],
+        "P16-06": [
+          {
+            "new_detail": "SuspensionRodSeat_L",
+            "original_support": "P16-06_STATIC_Steel_2",
+            "noncoplanar_triangle_pair_intersections": 10
+          },
+          {
+            "new_detail": "SuspensionRodSeat_R",
+            "original_support": "P16-06_STATIC_Steel_3",
+            "noncoplanar_triangle_pair_intersections": 10
+          }
+        ],
+        "P17-01": [
+          {
+            "new_detail": "ScreenMountBolt_LB",
+            "original_support": "ScreenHousing",
+            "noncoplanar_triangle_pair_intersections": 16
+          },
+          {
+            "new_detail": "ScreenMountBolt_LT",
+            "original_support": "ScreenHousing",
+            "noncoplanar_triangle_pair_intersections": 16
+          },
+          {
+            "new_detail": "ScreenMountBolt_RB",
+            "original_support": "ScreenHousing",
+            "noncoplanar_triangle_pair_intersections": 16
+          },
+          {
+            "new_detail": "ScreenMountBolt_RT",
+            "original_support": "ScreenHousing",
+            "noncoplanar_triangle_pair_intersections": 16
+          },
+          {
+            "new_detail": "KeyboardGuide_L",
+            "original_support": "Keyboard",
+            "noncoplanar_triangle_pair_intersections": 15
+          },
+          {
+            "new_detail": "KeyboardGuide_R",
+            "original_support": "Keyboard",
+            "noncoplanar_triangle_pair_intersections": 15
+          },
+          {
+            "new_detail": "RearServiceLatch_L",
+            "original_support": "RearPanel",
+            "noncoplanar_triangle_pair_intersections": 8
+          },
+          {
+            "new_detail": "RearServiceLatch_R",
+            "original_support": "RearPanel",
+            "noncoplanar_triangle_pair_intersections": 8
+          }
+        ],
+        "P17-03": [
+          {
+            "new_detail": "PanelBolt_LB",
+            "original_support": "FrontPanel",
+            "noncoplanar_triangle_pair_intersections": 16
+          },
+          {
+            "new_detail": "PanelBolt_LT",
+            "original_support": "FrontPanel",
+            "noncoplanar_triangle_pair_intersections": 16
+          },
+          {
+            "new_detail": "PanelBolt_RB",
+            "original_support": "FrontPanel",
+            "noncoplanar_triangle_pair_intersections": 16
+          },
+          {
+            "new_detail": "PanelBolt_RT",
+            "original_support": "FrontPanel",
+            "noncoplanar_triangle_pair_intersections": 18
+          },
+          {
+            "new_detail": "SocketRetainer_L",
+            "original_support": "LeverSocket",
+            "noncoplanar_triangle_pair_intersections": 10
+          },
+          {
+            "new_detail": "SocketRetainer_R",
+            "original_support": "LeverSocket",
+            "noncoplanar_triangle_pair_intersections": 10
+          },
+          {
+            "new_detail": "CoverBolt_L",
+            "original_support": "TopCap",
+            "noncoplanar_triangle_pair_intersections": 12
+          },
+          {
+            "new_detail": "CoverBolt_R",
+            "original_support": "TopCap",
+            "noncoplanar_triangle_pair_intersections": 12
+          }
+        ],
+        "P18-01": [
+          {
+            "new_detail": "RearHinge_L_Retainer_L",
+            "original_support": "RearHinge_L_Leaf",
+            "noncoplanar_triangle_pair_intersections": 23
+          },
+          {
+            "new_detail": "RearHinge_L_Retainer_R",
+            "original_support": "RearHinge_L_Leaf",
+            "noncoplanar_triangle_pair_intersections": 23
+          },
+          {
+            "new_detail": "RearHinge_R_Retainer_L",
+            "original_support": "RearHinge_R_Leaf",
+            "noncoplanar_triangle_pair_intersections": 23
+          },
+          {
+            "new_detail": "RearHinge_R_Retainer_R",
+            "original_support": "RearHinge_R_Leaf",
+            "noncoplanar_triangle_pair_intersections": 23
+          }
+        ],
+        "P18-02": [
+          {
+            "new_detail": "BackSupport_0.60_Gusset_L",
+            "original_support": "Back_Support_0.6",
+            "noncoplanar_triangle_pair_intersections": 10
+          },
+          {
+            "new_detail": "BackSupport_0.60_Gusset_R",
+            "original_support": "Back_Support_0.6",
+            "noncoplanar_triangle_pair_intersections": 10
+          },
+          {
+            "new_detail": "BackSupport_1.48_Gusset_L",
+            "original_support": "Back_Support_1.48",
+            "noncoplanar_triangle_pair_intersections": 10
+          },
+          {
+            "new_detail": "BackSupport_1.48_Gusset_R",
+            "original_support": "Back_Support_1.48",
+            "noncoplanar_triangle_pair_intersections": 10
+          }
+        ],
+        "P18-03": [
+          {
+            "new_detail": "Wheel_LB_CrownBolt",
+            "original_support": "Wheel_LB_ForkCrown",
+            "noncoplanar_triangle_pair_intersections": 12
+          },
+          {
+            "new_detail": "Wheel_LF_CrownBolt",
+            "original_support": "Wheel_LF_ForkCrown",
+            "noncoplanar_triangle_pair_intersections": 12
+          },
+          {
+            "new_detail": "Wheel_RB_CrownBolt",
+            "original_support": "Wheel_RB_ForkCrown",
+            "noncoplanar_triangle_pair_intersections": 14
+          },
+          {
+            "new_detail": "Wheel_RF_CrownBolt",
+            "original_support": "Wheel_RF_ForkCrown",
+            "noncoplanar_triangle_pair_intersections": 14
+          }
+        ]
+      },
+      "limitations": [
+        "Intersections prove intended physical embedding only for these specific named pairs; they cannot rule out other collisions or z-fighting.",
+        "Real native Blender .blend/FBX re-export/reimport and Unity6 URP remain NOT_RUN.",
+        "P18-03 rotating wheel pivots and P16-06 rotor hierarchy still need real animated engine inspection; never weld moving parts into fixed assembly."
+      ]
+    }
   },
   "source_only_gate": "PASS_STATIC_INDEXED_TOPOLOGY_WITH_BROADPHASE_ATTACHMENT_SCREEN_AND_NO_FINISH_CLAIM",
   "release_gate": {

@@ -14,7 +14,7 @@
   },
   "blender_runtime": "NOT_RUN — Blender/bpy unavailable in accessible container and C01 GitHub Actions jobs fail before runner allocation",
   "bundle_name": "C01-16_DETAIL_PASS13_DELIVERY.zip",
-  "bundle_sha256": "a1cf8421757b818ae56988e7fb03b916ed92185721407a61e9b102d1b3750d36",
+  "bundle_sha256": "ea556a30f2f7ed34819b7b326f6900e2381128ba1b7ffc7ec8ae26b04024acb0",
   "bundle_binary_caveat": "contains local genuine binary FBX 7400 candidates, NOT generated/reimported in Blender; no .blend",
   "independent_qa_required": true,
   "models": [
@@ -105,5 +105,8 @@
       "unity_6_urp": "NOT_RUN",
       "independent_C01_02": "PENDING"
     }
-  ]
+  ],
+  "bundle_bytes": 385466,
+  "global_dimensions_and_AABB": "PASS: exact full-model min/max XYZ preserved for all 7 models after final 1mm planar offset direction choice, local before/after OBJ",
+  "release_gate": "BLOCKED: no Blender executable/bpy, no native .blend or Blender FBX roundtrip, Unity NOT RUN, C01-02 independent final acceptance PENDING"
 }

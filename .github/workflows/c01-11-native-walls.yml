@@ -19,7 +19,7 @@ jobs:
       - name: Install real Blender
         run: |
           sudo apt-get update
-          sudo apt-get install -y blender git-lfs xvfb xauth libegl1 libgl1 libopengl0
+          sudo apt-get install -y blender python3-numpy git-lfs xvfb xauth libegl1 libgl1 libopengl0
           git lfs install --local
       - name: Generate actual .blend FBX 12 previews and geometry report
         run: |

@@ -15,7 +15,7 @@ ID_ORDER=["P19-01","P19-02","P19-03","P19-04"]
 IDS=[x for x in ID_ORDER if (ROOT/"Models"/x/(x+".blend")).is_file()]
 assert len(IDS)==4,("expected 4 actual native sources",IDS)
 EPS=1e-7
-TARGET_IDS={"P19-01","P19-02","P19-03"}
+TARGET_IDS={"P19-01","P19-02"}
 def signed_vol(o):
     bm=bmesh.new();bm.from_mesh(o.data)
     volume=bm.calc_volume(signed=True);bm.free()

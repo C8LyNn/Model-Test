@@ -20,25 +20,40 @@ for name in ('P18-01','P18-02','P18-03'):
  # movable wheel while caster brackets, axle and gussets remain static frame geometry.
  bpy.context.view_layer.update()
  by_name={o.name:o for o in objects}
- for wid in ('Wheel_LB','Wheel_LF','Wheel_RB','Wheel_RF'):
-  wheel=by_name.get(wid)
-  if wheel is None:raise RuntimeError(name+' missing movable wheel '+wid)
-  if name=='P18-03':
+ if name=='P18-03':
+  for wid in ('Wheel_LB','Wheel_LF','Wheel_RB','Wheel_RF'):
+   wheel=by_name.get(wid)
+   if wheel is None:raise RuntimeError(name+' missing movable wheel '+wid)
    for suffix in ('Hub_In','Hub_Out'):
     hub=by_name.get(wid+'_'+suffix)
     if hub is None:raise RuntimeError(name+' missing authored hub '+wid+'_'+suffix)
     world=hub.matrix_world.copy()
     hub.parent=wheel
     hub.matrix_world=world
-   # OBJ source is Y-up; after Blender OBJ import the ground/axle height is world Z.
-   # Blender local Y is the original longitudinal axis, never the vertical axle height.
+   bolt=by_name.get(wid+'_CrownBolt')
+   crown=by_name.get(wid+'_ForkCrown')
+   if bolt is None or crown is None:raise RuntimeError(name+' missing wheel crown/bolt '+wid)
+   world=bolt.matrix_world.copy()
+   bolt.parent=crown
+   bolt.matrix_world=world
+   # OBJ source Y-up becomes Blender world Z-up: axle height .105m.
    world_center=wheel.matrix_world.translation
    if abs(world_center.z-0.105)>0.001:
-    raise RuntimeError(name+f' wheel axle pivot height !=0.105m: {wid} Z={world_center.z}')
-   min_ground=min((wheel.matrix_world@v.co).z for v in wheel.data.vertices)
-   if abs(min_ground)>0.001:
-    raise RuntimeError(name+f' wheel not grounded: {wid} minZ={min_ground}')
- expected={'P18-01':(37,684),'P18-02':(47,1012),'P18-03':(53,1532)}
+    raise RuntimeError(name+f' wheel axle height differs from .105m: {wid} Z={world_center.z}')
+   wheel_ground=min((wheel.matrix_world@v.co).z for v in wheel.data.vertices)
+   if abs(wheel_ground)>0.001:
+    raise RuntimeError(name+f' wheel not touching ground: {wid} minZ={wheel_ground}')
+ if name=='P18-01':
+  for hinge in ('RearHinge_L','RearHinge_R'):
+   pin=by_name.get(hinge+'_Pin')
+   if pin is None:raise RuntimeError(name+' missing original hinge pin '+hinge)
+   for suffix in ('Retainer_L','Retainer_R'):
+    retainer=by_name.get(hinge+'_'+suffix)
+    if retainer is None:raise RuntimeError(name+' missing authored retainer '+hinge+'_'+suffix)
+    world=retainer.matrix_world.copy()
+    retainer.parent=pin
+    retainer.matrix_world=world
+ expected={'P18-01':(41,844),'P18-02':(51,1044),'P18-03':(57,1628)}
  assert len(objects)==expected[name][0], f'{name} expected {expected[name][0]} authored mesh parts, got {len(objects)}'
  tri=lambda arr:sum(max(0,len(p.vertices)-2) for o in arr for p in o.data.polygons)
  assert tri(objects)==expected[name][1], f'{name} authored triangles changed: {tri(objects)}'

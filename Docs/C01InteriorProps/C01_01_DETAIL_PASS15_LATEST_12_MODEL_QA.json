@@ -23,7 +23,7 @@
   "independent_method": [
     "Fetched real GitHub exact full UTF-8 OBJ and glTF file bodies, computed physical SHA256 via locally implemented SHA256 with ABC known vector PASS, retain Git blob SHA1 separately",
     "For P18 and PASS15 P16 details parsed real OBJ part names, vertex/UV/normal indices, triangulation, zero-area, duplicate indexed faces, boundary and nonmanifold edges, same-edge winding and vertex-normal consistency",
-    "For P17 actual embedded base64 glTF bufferView and POSITION+NORMAL+TEXCOORD_0+indices were read via DataView; node translations and nonuniform scales applied once, triangle area and oriented face-normal sign checked",
+    "For P17 actual embedded base64 glTF bufferView, POSITION/NORMAL/UV0 and indices were read; FULL parent-child chain applied as local S→quaternion R→translation T, from leaf to root. Triangles validated at 1µm against authoring OBJ. Partial local-only TRS is invalid for LeverPivot and rotated CoverBolt.",
     "Compared prior and updated P18 original per-object OBJ sections, accounting for trailing newline differences, and prior P17 original per-node/mesh/buffer/accessor/material data; original shape unchanged",
     "Measured only BROADPHASE AABB contact for added named parts against existing support components; zero AABB gap is not true triangle contact or a Blender native confirmation"
   ],
@@ -158,7 +158,16 @@
         1.1,
         0.65
       ],
-      "actual_gltf_indexed_topology": "PASS_ZERO_DEGEN_UV0_NORMALS"
+      "actual_gltf_indexed_topology": "PASS_ZERO_DEGEN_UV0_NORMALS",
+      "physical_OBJ_geometry_parity": {
+        "OBJ_path": "C01InteriorProps_Source/MeshText/P17-01.obj.txt",
+        "git_blob_sha1": "af649dbcba5a50cb04968cb945c1ecccf83abe04",
+        "triangles_verified": 380,
+        "triangles_missing": 0,
+        "triangles_extra": 0,
+        "coordinate_tolerance_m": 0.000001,
+        "full_parent_quaternion_transform": "PASS"
+      }
     },
     "P17-03": {
       "file": "Assets/C01InteriorProps/Models/P17-03.gltf",
@@ -187,7 +196,18 @@
         0.4,
         0.3
       ],
-      "actual_gltf_indexed_topology": "PASS_ZERO_DEGEN_UV0_NORMALS"
+      "actual_gltf_indexed_topology": "PASS_ZERO_DEGEN_UV0_NORMALS",
+      "physical_OBJ_geometry_parity": {
+        "OBJ_path": "C01InteriorProps_Source/MeshText/P17-03.obj.txt",
+        "git_blob_sha1": "2265c062ef89233edf0dbbfdb71da293018689e2",
+        "triangles_verified": 424,
+        "triangles_missing": 0,
+        "triangles_extra": 0,
+        "coordinate_tolerance_m": 0.000001,
+        "full_parent_quaternion_transform": "PASS",
+        "prior_false_disagreement": "164/424 mismatch from ignoring LeverPivot parent +0.35m Y/-0.015m Z and ±0.7071 quaternion rotations on CoverBolt_L/R; WITHDRAWN, source actually matches 424/424",
+        "old_baseline_parity_false_positive": "100/208 old original lever triangles also seem mismatched when parent ignored; not an actual source defect"
+      }
     }
   },
   "latest_new_source_qc": {
@@ -240,8 +260,8 @@
       "Unrelated previously sourced P19-07 has geometric vertex-on-edge candidates requiring Blender scene visual diagnosis"
     ],
     "actual_narrowphase": {
-      "method": "On actual source indexed triangles in pinned source files, convert glTF POSITION accessor float32 and node scale/translation once; triangulate OBJ face indices; bidirectional strict segment/triangle noncoplanar intersection testing with Moller-Trumbore (epsilon 1e-10). At least one crossing against named original supporting mesh per new detail. This is static geometry only and not a complete contact or collision audit of all pairs.",
-      "verdict": "36/36 newly introduced PASS15 detail meshes have >=1 true 3D source triangle-to-support intersection, 0 unsupported among these 36.",
+      "method": "Actual source indexed triangle pairs and segment-triangle narrowphase. For glTF descendants, use complete hierarchical parent TRS with quaternion rotations and proper local mesh scale exactly once; prior local-node-only readings are INVALID for P17-03 lever/cover bolts.",
+      "verdict": "36/36 new PASS15 meshes each cross its named old-source support by true noncoplanar triangle pairs; P17-01 and P17-03 additionally glTF/OBJ WORLD TRIANGLE PARITY PASS 380/380 and 424/424 at 1e-6m after full parent+quaternion transforms.",
       "totals": {
         "P16": 8,
         "P17": 16,
@@ -371,12 +391,12 @@
           {
             "new_detail": "CoverBolt_L",
             "original_support": "TopCap",
-            "noncoplanar_triangle_pair_intersections": 12
+            "noncoplanar_triangle_pair_intersections": 16
           },
           {
             "new_detail": "CoverBolt_R",
             "original_support": "TopCap",
-            "noncoplanar_triangle_pair_intersections": 12
+            "noncoplanar_triangle_pair_intersections": 16
           }
         ],
         "P18-01": [
@@ -451,6 +471,12 @@
         "Real native Blender .blend/FBX re-export/reimport and Unity6 URP remain NOT_RUN.",
         "P18-03 rotating wheel pivots and P16-06 rotor hierarchy still need real animated engine inspection; never weld moving parts into fixed assembly."
       ]
+    },
+    "source_parity": {
+      "P17_01": "PASS_380_380",
+      "P17_03": "PASS_424_424",
+      "false_alarm_count_with_local_only_transform": 164,
+      "corrected_false_alarm": "P17-03 local-only transforms wrongly ignored LeverPivot parent and CoverBolt quaternions; no source mesh repair warranted."
     }
   },
   "source_only_gate": "PASS_STATIC_INDEXED_TOPOLOGY_WITH_BROADPHASE_ATTACHMENT_SCREEN_AND_NO_FINISH_CLAIM",

@@ -1,3 +1,5 @@
+> **HISTORICAL PIN / SUPERSEDED** (2026-10-30): This handoff is an earlier PASS16 snapshot. P17-01 KeyboardGuide and Backbone geometry was subsequently repaired on real producer source PR #17 and independently rechecked by C01-02. P18-01/02/03 producer source gained 10 functional parts after this snapshot. For current immutable source SHA-256, reference index, QA and release gate use **[CURRENT_SOURCE_AND_NATIVE_QA_HANDOFF.md](./CURRENT_SOURCE_AND_NATIVE_QA_HANDOFF.md)** and **[LIVE_ASSET_REGISTRY_36.json](./LIVE_ASSET_REGISTRY_36.json)**. Original observations below are preserved as history; they are **not current failed P17-01 source status**. Native Blender/FBX/Unity remain NOT_RUN and 36/36 final release BLOCKED.
+
 # C01-03 — DETAIL PASS16 / reference-driven library intake and technical handoff
 
 **Date:** 2026-10-30  

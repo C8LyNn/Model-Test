@@ -99,3 +99,5 @@ for id in ids:
  out=root/'QA'/'Pass03'/id/'mesh_overlap_review.json';out.parent.mkdir(parents=True,exist_ok=True)
  out.write_text(json.dumps(report,indent=2),encoding='utf8')
  print('C01_PASS03_OVERLAP',id,'BVH nonadjacent',report['bvh_nonadjacent_candidate_count'],'coplanar cross-object',report['cross_object_coplanar_candidate_count'],flush=True)
+
+# PASS03 post-repair: compare rack-lip coplanar contacts against archived pre-fix JSON.

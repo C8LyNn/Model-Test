@@ -1,0 +1,108 @@
+{
+  "schema": "C01-01-DETAIL-PASS12-SOURCE-QA-01",
+  "classification": "INDEPENDENT_C01_01_AUTHORING_SOURCE_PREFLIGHT_ONLY",
+  "evidence_note": "ACTUAL original and revised source OBJ file bodies and P17 source spec independently fetched at two exact immutable Git SHAs; face-corner coordinate+UV0+normal multiset compared. AABB connectivity is necessary coarse screen not triangle intersection, Blender roundtrip, Unity or independent C01-02 release acceptance.",
+  "status": "STATIC_SOURCE_INTEGRITY_PASS_WITH_NATIVE_EXPORT_HOLD",
+  "authoritative_before_git_commit": "ecfac25934a98985eca8222060e190f8d5cecd5c",
+  "producer_after_git_commit": "4a0e58d422335af9c7f79fdcf6a80feb7c9c6435",
+  "reader_before_git_commit": "85732482b075bcfab68e5d660d26318dfe9c630d",
+  "reader_after_git_commit": "bff1886e09ec04d21bab84a2f15e52c1cfb4a72b",
+  "models": {
+    "P18-01": {
+      "before_obj_git_blob": "c6178ec0fe38d582eacddab4c342085f2a88afe1",
+      "after_obj_git_blob": "3147fbc11da4ad2c4cac9f4c8a520d921d1cd6b7",
+      "before": {
+        "vertices": 120,
+        "faces": 90,
+        "triangles": 180,
+        "objects": 15
+      },
+      "after": "8/8 TrimBacker objects AABB overlap both original Trim and Crate_Shell (0 mm box clearance each)",
+      "new_objects": 22,
+      "legacy_parts_identical_geometry_uv_normals": "15/15",
+      "before_trim_to_shell_min_gap_mm": 28,
+      "wiring": "8 trim mount bridges + 2 rear hinges + 2 front latches + 4 lid corner bolts",
+      "native_blend_reexport": "NOT_RUN",
+      "binary_fbx_after": "NOT_RUN",
+      "Unity": "NOT_RUN"
+    },
+    "P18-02": {
+      "before_obj_git_blob": "ec17212a2d60d1b39216c869b0a9706defa76c4d",
+      "after_obj_git_blob": "2878f4c20a5dc8a51fe31659662f9835b5e451f2",
+      "before": {
+        "vertices": 136,
+        "faces": 102,
+        "triangles": 204,
+        "objects": 17
+      },
+      "after": "2/2 Top_Label_MountingBackplate meshes AABB overlap BOTH the label and Shelf_2_Deck (0 mm box clearance); 12 brackets, 12 lip bolts, 4 label bolts added",
+      "new_objects": 30,
+      "legacy_parts_identical_geometry_uv_normals": "17/17",
+      "before_label_to_deck_vertical_gap_mm": 50,
+      "before_label_to_deck_depth_gap_mm": 22,
+      "native_blend_reexport": "NOT_RUN",
+      "binary_fbx_after": "NOT_RUN",
+      "Unity": "NOT_RUN"
+    },
+    "P18-03": {
+      "before_obj_git_blob": "901959fa24658c9beb1439fc06805f3feb8aa069",
+      "after_obj_git_blob": "df5a68c87fd49597c79bbb6f70735f32543489bf",
+      "before": {
+        "vertices": 208,
+        "faces": 270,
+        "triangles": 348,
+        "objects": 17
+      },
+      "after": "4/4 AABB support chains Axle→ForkOuter→Anchor connect; 4/4 wheel bodies AABB overlap axle/hub; 4 caster assemblies each 9 new components. Actual mesh triangle contact and Unity wheel rotation STILL UNVERIFIED.",
+      "new_objects": 36,
+      "legacy_parts_identical_geometry_uv_normals": "17/17",
+      "four_wheel_ground_gap_mm": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "wheel_center_to_corresponding_upright_center_plan_mm": [
+        67.268,
+        67.268,
+        67.268,
+        67.268
+      ],
+      "native_blend_reexport": "NOT_RUN",
+      "binary_fbx_after": "NOT_RUN",
+      "Unity": "NOT_RUN"
+    },
+    "P17-02": {
+      "before_spec_git_blob": "50c739482381e6d9345bffea56555e7ba216fcb5",
+      "after_spec_git_blob": "e235a374806ef220b4d7dfad9f3af472f7435654",
+      "before_spec_objects": 20,
+      "after_spec_objects": 38,
+      "added_spec_parts": 18,
+      "old_spec_parts_identical": "20/20",
+      "new_components": "12 KeyGuide retaining plates, 2 clamp reinforcements, 4 genuine mounting screw definitions (cylinder_8)",
+      "actual_mesh_rebuild": "NOT_RUN",
+      "native_blend_reexport": "NOT_RUN",
+      "binary_fbx_after": "NOT_RUN",
+      "Unity": "NOT_RUN"
+    }
+  },
+  "summary": {
+    "original_parts_verified_identical": "49/49 OBJ, 20/20 P17 spec",
+    "new_OBJ_parts": 88,
+    "total_OBJ_triangles_before": 732,
+    "total_OBJ_triangles_after": 3228,
+    "source_mesh_models_with_new_real_OBJ_detail": 3,
+    "models_with_new_native_Blender_source_verified": 0,
+    "models_with_new_binary_FBX_verified": 0,
+    "full_C01_02_accepted": 0
+  },
+  "sha_note": "These are Git blob SHA identifiers (Git objects), NOT native source or FBX SHA-256. Fresh post-export SHA-256 still missing.",
+  "required_final_gates": [
+    "Blender 4.x real updated .blend saved and reopened",
+    "Blender-exported binary FBX imported back, exact SHA-256",
+    "New details actual face-to-face support and no unintended coincident planes",
+    "Old silhouette, UV0, normals, material slots, pivot, moving parts preserved",
+    "C01-02 independently signs per final exact FBX SHA",
+    "Unity 6 URP importer and mesh/prefab validation or NOT RUN"
+  ]
+}

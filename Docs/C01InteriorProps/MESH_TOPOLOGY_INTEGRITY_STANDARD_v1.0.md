@@ -112,3 +112,16 @@ PASS04 remains OPEN until all 36 original geometry exports have independent SHA-
 **CI rule:** runner_id=0, steps=[], and Actions billable 0 ms indicate failure before execution; classify as **INFRA_NOT_RUN**, not Blender FAIL or PASS. Root cause (account billing, runners, plan, quota or GitHub allocation) requires authenticated repository Actions/billing permissions; public GitHub Status is insufficient to prove the account-specific cause. Do not disable release gates to conceal incident.
 
 **C01-01 scope:** this addendum is standards and independently observed binary FBX forensics, NOT a source model repair claim. Existing Draft PR #31; no merge. Wave03 STOP.
+
+
+## PASS 06 — ADDENDUM A3: source repair proof and executable signature gate
+
+**Governing dispatch:** #33 comment 6529370725. Binding C01-01 technical gate, NOT evidence that producer source meshes have been repaired.
+
+- P19-05/07/08 then P19-01/02: native .blend must be actually saved after geometry-preserving triangulation and binary FBX re-export, with file SHA-256 and Blender FBX reimport, UV0/material/hard normals/winding/pivot/hierarchy invariants. Offline FBX candidates without matching revised .blend are NOT final fixes.
+- **P19-01 specific hold:** investigate genuine Cube.001 polygon 59 self-intersection in source Blender before triangulation. Triangle-only files alone do not certify that crossing contours were fixed. Preserve original silhouette and real wireframe BEFORE/AFTER.
+- **P19-07/08:** inspect T-junction candidates before welding. Preserve intentionally separate and animated components.
+- **P16 native file signatures:** correct prefix is exactly the initial 8 bytes BLENDER- (e.g. real 4.x source begins BLENDER-v400); use data.startswith(b"BLENDER-") in Python or read at least 8 bytes in Windows PowerShell. Reject 7-byte truncation and Git LFS pointers. FBX must start Kaydara FBX Binary and be imported in actual Blender. Magic success is NOT an importer/topology PASS.
+- C01-01 corrected Python and Windows signature validators in existing C01-16 PR #12/#28 and added seven regression test methods in each. Independent local real-bytes header regression on two archival .blend source files: 12/12 PASS, but Blender runtime and seven new C01-16 exports NOT RUN.
+- GitHub Actions failures with runner_id=0 and steps=[] classify as INFRA_NOT_RUN. Repo admin metadata does not guarantee app access to Settings/Actions/billing. When no Blender 4.x + Git LFS runner is accessible, status NEEDS_OWNER_ACTION; specify exact owner control and executable commands. No budget, payment, ship, geometry or merge changes without approval.
+- Only actual producer-owned changed Blender source SHA, 36 SHA-pinned binary exports, independent C01-02 QA, and real Unity 6 URP validation can close #30. Keep all production PRs Draft.

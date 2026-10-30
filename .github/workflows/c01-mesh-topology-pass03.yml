@@ -93,6 +93,19 @@ jobs:
             mkdir -p "reports/$asset"
             blender --background "$file" --python standards/Tools/c01_mesh_repair/topology_audit.py -- --asset-id "$asset" --stage BEFORE --out "reports/$asset/mesh_topology_before.json"
           done
+      - name: Repair copies of exact detached-box meshes ONLY (P17-04, P17-05)
+        shell: bash
+        run: |
+          set -euo pipefail
+          blender --background source17/C01InteriorProps_W02/Blender/P17-04.blend --python standards/Tools/c01_mesh_repair/safe_box_weld_candidate.py -- --asset-id P17-04 --output-dir repaired/P17-04
+          blender --background source17/C01InteriorProps_W02/Blender/P17-05.blend --python standards/Tools/c01_mesh_repair/safe_box_weld_candidate.py -- --asset-id P17-05 --output-dir repaired/P17-05
+      - name: Upload repaired COPIES + native FBX reimport evidence (pending owner/QA)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-01-PASS03-P17-04-05-REPAIR-CANDIDATES
+          path: repaired/
+          if-no-files-found: warn
       - name: Publish measured original source audits (not repaired models)
         if: always()
         uses: actions/upload-artifact@v4

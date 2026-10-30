@@ -300,7 +300,10 @@
     "new_Blender_exported_reimported_FBX": 0,
     "independent_final_model_APPROVED": 0,
     "Unity6_URP_run": 0,
-    "release_BLOCKED": 36
+    "release_BLOCKED": 36,
+    "latest_authored_distinct_files_observed": 25,
+    "producer_models_with_new_PASS15_authoring_change": 3,
+    "latest_native_export_gate": "BLOCKED_NOT_RUN"
   },
   "assets": [
     {
@@ -311,7 +314,7 @@
       "authoring_source_sha256_from_PASS14": null,
       "authoring_source_reverified_at_producer_HEAD": false,
       "additive_detail_OBJ_reverified_at_producer_HEAD": false,
-      "source_quality_from_prior_PASS14": "NOT_RETESTED_PASS14",
+      "source_quality_from_prior_PASS14": "P15_01_NEW_SOURCE_NEEDS_RETEST",
       "pending_visual_hold": null,
       "native_blend_current_SHA256": null,
       "native_fbx_current_SHA256": null,
@@ -320,7 +323,9 @@
       "shaded_wireframe_updated_from_Blender": "NOT_RUN",
       "final_independent_C01_02": "BLOCKED",
       "Unity6_URP_actual_import": "NOT_RUN",
-      "release": "BLOCKED"
+      "release": "BLOCKED",
+      "new_PASS15_spec_version": "0.1.4",
+      "new_PASS15_source_SHA256": "7f3d602af1040431134aa4cca236fb36c9613d77160b383f175ec6c02d144703"
     },
     {
       "id": "P15-02",
@@ -358,7 +363,9 @@
       "shaded_wireframe_updated_from_Blender": "NOT_RUN",
       "final_independent_C01_02": "BLOCKED",
       "Unity6_URP_actual_import": "NOT_RUN",
-      "release": "BLOCKED"
+      "release": "BLOCKED",
+      "shared_spec_updated_but_P15_03_part_records_unchanged": true,
+      "new_PASS15_shared_spec_SHA256": "7f3d602af1040431134aa4cca236fb36c9613d77160b383f175ec6c02d144703"
     },
     {
       "id": "P15-04",
@@ -577,7 +584,7 @@
       "authoring_source_sha256_from_PASS14": null,
       "authoring_source_reverified_at_producer_HEAD": false,
       "additive_detail_OBJ_reverified_at_producer_HEAD": false,
-      "source_quality_from_prior_PASS14": "NOT_RETESTED_PASS14",
+      "source_quality_from_prior_PASS14": "P17_01_NEW_SOURCE_NEEDS_CONTACT_QA",
       "pending_visual_hold": null,
       "native_blend_current_SHA256": null,
       "native_fbx_current_SHA256": null,
@@ -586,7 +593,10 @@
       "shaded_wireframe_updated_from_Blender": "NOT_RUN",
       "final_independent_C01_02": "BLOCKED",
       "Unity6_URP_actual_import": "NOT_RUN",
-      "release": "BLOCKED"
+      "release": "BLOCKED",
+      "new_PASS15_source_SHA256": "6dbb6933acdcbb3ee5ef9d1480bd786ad2da4ec5368046e8e579084af57c65b0",
+      "instanced_triangle_count_current_source": 380,
+      "new_detail_parts": 8
     },
     {
       "id": "P17-02",
@@ -615,7 +625,7 @@
       "authoring_source_sha256_from_PASS14": null,
       "authoring_source_reverified_at_producer_HEAD": false,
       "additive_detail_OBJ_reverified_at_producer_HEAD": false,
-      "source_quality_from_prior_PASS14": "NOT_RETESTED_PASS14",
+      "source_quality_from_prior_PASS14": "P17_03_NEW_SOURCE_NEEDS_CONTACT_QA",
       "pending_visual_hold": null,
       "native_blend_current_SHA256": null,
       "native_fbx_current_SHA256": null,
@@ -624,7 +634,10 @@
       "shaded_wireframe_updated_from_Blender": "NOT_RUN",
       "final_independent_C01_02": "BLOCKED",
       "Unity6_URP_actual_import": "NOT_RUN",
-      "release": "BLOCKED"
+      "release": "BLOCKED",
+      "new_PASS15_source_SHA256": "f38ed83c806b30deb55854b061492a0d89d278f7a7c20f900b2aeaed7933b23d",
+      "instanced_triangle_count_current_source": 424,
+      "new_detail_parts": 8
     },
     {
       "id": "P17-04",
@@ -988,5 +1001,124 @@
       "release": "BLOCKED"
     }
   ],
-  "hard_release_rule": "No asset may be marked APPROVED from OBJ/GLTF/spec Git blob SHA or historical/offline binary candidates alone. Require current hydrated .blend/.fbx SHA256, Blender4 save+binary FBX reimport, shaded/wireframe, independent C01-02 exact final FBX QA and real Unity6 URP import by C01-10. No merge."
+  "hard_release_rule": "No asset may be marked APPROVED from OBJ/GLTF/spec Git blob SHA or historical/offline binary candidates alone. Require current hydrated .blend/.fbx SHA256, Blender4 save+binary FBX reimport, shaded/wireframe, independent C01-02 exact final FBX QA and real Unity6 URP import by C01-10. No merge.",
+  "initial_producer_heads_confirmed": {
+    "12": "ece25254360c1e37b5c57bb550418d357c7a2a87",
+    "15": "5e9929288c786877acbed01499052405dcec7aee",
+    "16": "7fe235571e38ea9491d8b8c5b393b5894c3d74c8",
+    "17": "beef826a2ab1e2bdd1b14cdf8a4d898324231c4d",
+    "18": "681fc52d2159ac774abf1f48efd7b89965d1afe8",
+    "23": "95acf91c5ce32df1e02ad118b7663a356a913f10",
+    "25": "0f35d273ae564a22f39e73e020b620e300a40778",
+    "26": "2a716f81394538b07f1dd83d7d94932d080ecaca",
+    "28": "f8a098795e4e5ae234cda121405bed51ca245a52",
+    "29": "28b3875d2e2b04b9f5c1702338755937e2495ad1"
+  },
+  "latest_observed_producer_heads": {
+    "12": "ece25254360c1e37b5c57bb550418d357c7a2a87",
+    "15": "5e9929288c786877acbed01499052405dcec7aee",
+    "16": "4de19533a134203d415f39f07fef449f0b41f4a8",
+    "17": "28824c2fa48e8523f9a8715df71c57379fa7634a",
+    "18": "681fc52d2159ac774abf1f48efd7b89965d1afe8",
+    "23": "95acf91c5ce32df1e02ad118b7663a356a913f10",
+    "25": "0f35d273ae564a22f39e73e020b620e300a40778",
+    "26": "2a716f81394538b07f1dd83d7d94932d080ecaca",
+    "28": "f8a098795e4e5ae234cda121405bed51ca245a52",
+    "29": "28b3875d2e2b04b9f5c1702338755937e2495ad1"
+  },
+  "source_files_rechecked_initial_snapshot_note": "Nineteen initial verified files refer to initial pinned PR HEADs; see below for newer immutable producer commits. PASS15 is NOT a continuously up-to-date remote status.",
+  "subsequent_same_day_producer_intake": {
+    "schema": "C01-03-PASS15-IMMUTABLE-SOURCE-INCREMENT",
+    "observed_on": "2026-10-30",
+    "producer_heads": {
+      "16": "4de19533a134203d415f39f07fef449f0b41f4a8",
+      "17": "28824c2fa48e8523f9a8715df71c57379fa7634a"
+    },
+    "status": "NEW_AUTHORING_SOURCE_ONLY_NO_NATIVE_EXPORT",
+    "P15_01": {
+      "source_file": "Assets/C01InteriorProps/P15/Sources/geometry_spec.json",
+      "spec_version": "0.1.4",
+      "git_blob_sha1": "eb015d7714a5d4179275ead0f8a3af21e767696a",
+      "source_SHA256": "7f3d602af1040431134aa4cca236fb36c9613d77160b383f175ec6c02d144703",
+      "previous_blob_sha1": "e021e5544c5966fe0ae28ea5b3204017c9f14b8d",
+      "previous_spec_version": "0.1.3",
+      "source_parts_added": 8,
+      "existing_parts_modified": 8,
+      "affected_model": "P15-01",
+      "source_parts_total": 75,
+      "source_geometry_QA": "PENDING_NEW_SOURCE_QA",
+      "native_blend": "NOT_RUN",
+      "native_fbx": "NOT_RUN"
+    },
+    "P17_01": {
+      "existing_model_id": "P17-01",
+      "gltf": {
+        "path": "Assets/C01InteriorProps/Models/P17-01.gltf",
+        "git_blob_sha1": "c604553c874b590cfd5fcae135f4c892561eba96",
+        "sha256": "6dbb6933acdcbb3ee5ef9d1480bd786ad2da4ec5368046e8e579084af57c65b0"
+      },
+      "obj_text": {
+        "path": "C01InteriorProps_Source/MeshText/P17-01.obj.txt",
+        "git_blob_sha1": "0cc0a595a02633d3e72600cbb740f74541dcd3e1",
+        "sha256": "10092a9d149e564343950f7b60fe4cb374e2cfb41bf88747b1e323ba0822b8dd"
+      },
+      "spec": {
+        "path": "C01InteriorProps_Source/Specs/P17-01.json",
+        "git_blob_sha1": "23626a0d4929ebe30724abd287f0e627df27a30b",
+        "sha256": "9a064e7ceaf927381269a652faa18fe390cb7fb1370f020533f51a4189fa70a1"
+      },
+      "added_parts": 8,
+      "triangles_original": 204,
+      "triangles_current_mesh_instances": 380,
+      "unique_meshes": 18,
+      "mesh_instances": 25,
+      "indexed_uv0_normals_structural": "PASS_18_MESH_PRIMITIVES",
+      "native_fbx": "NOT_RUN",
+      "source_mechanical_QA": "PENDING"
+    },
+    "P17_03": {
+      "existing_model_id": "P17-03",
+      "gltf": {
+        "path": "Assets/C01InteriorProps/Models/P17-03.gltf",
+        "git_blob_sha1": "e882a5dafe3f9f5e600d6443ebf44b1aba519f30",
+        "sha256": "f38ed83c806b30deb55854b061492a0d89d278f7a7c20f900b2aeaed7933b23d"
+      },
+      "obj_text": {
+        "path": "C01InteriorProps_Source/MeshText/P17-03.obj.txt",
+        "git_blob_sha1": "2265c062ef89233edf0dbbfdb71da293018689e2",
+        "sha256": "764b4cf53343abcf7d85ca1bbc08d7d72d2c2c7d6af3693708c701321a0cb560"
+      },
+      "spec": {
+        "path": "C01InteriorProps_Source/Specs/P17-03.json",
+        "git_blob_sha1": "5fc0a20fb3536b26d3e72978ff88a652908f207e",
+        "sha256": "c954bcb99be72f2f148cffb8695cb1c3e88324b44406417e325346f1670e3959"
+      },
+      "added_parts": 8,
+      "triangles_original": 208,
+      "triangles_current_mesh_instances": 424,
+      "unique_meshes": 13,
+      "mesh_instances": 20,
+      "indexed_uv0_normals_structural": "PASS_13_MESH_PRIMITIVES",
+      "native_fbx": "NOT_RUN",
+      "source_mechanical_QA": "PENDING"
+    },
+    "P17_02_unchanged": {
+      "path": "Assets/C01InteriorProps/Models/P17-02.gltf",
+      "git_blob_sha1": "d80a67af140e434b983104aaec0078f9cf5bd66f",
+      "source_SHA256": "a9995704a70776b49f2bd6916a50cf222a4ab40b370a0a9e258b63bdc4429786"
+    },
+    "checked_source_files_after_increment": 25,
+    "verified_original_snapshot_19_files": "HISTORICAL_PASS15_AT_OBSERVED_HEADS_19_MATCH",
+    "after_latest_P15_spec_updated": 1,
+    "additional_P17_01_P17_03_source_files": 6,
+    "affected_model_ids": [
+      "P15-01",
+      "P17-01",
+      "P17-03"
+    ],
+    "all_new_current_Blend_FBX_SHA": null,
+    "real_Blender_reexport": "NOT_RUN",
+    "independent_release_QA": "BLOCKED",
+    "Unity6": "NOT_RUN"
+  }
 }

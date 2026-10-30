@@ -71,7 +71,7 @@ def bent_strip(name,wrange,yrange,role,segments=24):
  return mesh(name,verts,faces,role)
 def rings_of_cable_bend():
  for i,w in enumerate([-.10,0,.10]):
-  pts=[arc_point(math.pi*j/64,w,-.132) for j in range(65)]
+  pts=[arc_point((math.pi/2)*j/64,w,-.132) for j in range(65)]
   tube("Elbow_Cable_%d"%i,pts,.0115,"COOLANT" if i==1 else "DARK",10)
 def make_straight():
  # Connector ports x=0 and x=3, Y=-.18..-.05, Z=-.19..+.19.

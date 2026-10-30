@@ -18,7 +18,7 @@ jobs:
       - name: Install Blender 4.x CLI
         run: |
           sudo apt-get update
-          sudo apt-get install -y --no-install-recommends blender xvfb libgl1 libgl1-mesa-dri libopengl0
+          sudo apt-get install -y --no-install-recommends blender python3-numpy xvfb libgl1 libgl1-mesa-dri libopengl0
           blender --version | head -4
       - name: Generate native Blender FBX and assert Blender FBX reimport
         run: |

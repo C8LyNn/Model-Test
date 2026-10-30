@@ -81,13 +81,21 @@ def aabb_separation(a, b):
 
 class AccessReaderAttachmentReferenceTests(unittest.TestCase):
     # Source-grounded P17-02 world bounds, not a Blender or Unity execution.
+    # Historical PASS12 housing at cf405ed6: .5mm source gap, now fixed in PASS13.
     housing = ((-.0795, .0175, .0225), (.0795, .2625, .0575))
+    housing_pass13 = ((-.0795, .0175, .0225), (.0795, .2625, .0585))
     keybed = ((-.064, .0475, .058), (.064, .2025, .064))
     backing = ((-.09, 0, 0), (.09, .28, .016))
     screw = ((-.0875, .0055, .0155), (-.0785, .0145, .0185))
 
     def test_source_keybed_housing_positive_half_mm_gap(self):
         self.assertAlmostEqual(aabb_separation(self.keybed, self.housing), .0005, places=8)
+
+    def test_pass13_revised_housing_closes_keybed_gap(self):
+        self.assertEqual(aabb_separation(self.keybed, self.housing_pass13), 0.0)
+
+    def test_pass13_front_plane_half_mm_seating(self):
+        self.assertAlmostEqual(self.housing_pass13[1][2] - self.keybed[0][2], .0005, places=8)
 
     def test_screw_overlaps_backing_after_full_scale(self):
         self.assertEqual(aabb_separation(self.screw, self.backing), 0.0)

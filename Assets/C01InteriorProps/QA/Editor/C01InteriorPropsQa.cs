@@ -13,9 +13,12 @@ namespace C01.InteriorProps.QA.Editor
     {
         private const string Root = "Assets/C01InteriorProps";
         private static readonly string[] Ids = {
-            "P15-01", "P15-02", "P15-03", "P16-01", "P16-02", "P16-03",
-            "P17-01", "P17-02", "P17-03", "P18-01", "P18-02", "P18-03",
-            "P19-01", "P19-02", "P19-03", "P19-04"
+            "P15-01", "P15-02", "P15-03", "P15-04", "P15-05", "P15-06", "P15-07",
+            "P16-01", "P16-02", "P16-03", "P16-04", "P16-05", "P16-06", "P16-07",
+            "P17-01", "P17-02", "P17-03", "P17-04", "P17-05", "P17-06", "P17-07",
+            "P18-01", "P18-02", "P18-03", "P18-04", "P18-05", "P18-06", "P18-07",
+            "P19-01", "P19-02", "P19-03", "P19-04", "P19-05", "P19-06", "P19-07",
+            "P19-08"
         };
         [Serializable] private class AssetResult
         {
@@ -32,7 +35,7 @@ namespace C01.InteriorProps.QA.Editor
             public string utc = DateTime.UtcNow.ToString("o");
             public string unityVersion = Application.unityVersion;
             public AssetResult[] assets;
-            public string warning = "Only inspected actual prefabs; PlayMode, corridor clearance, screenshots and Blender FBX round-trip NOT RUN.";
+            public string warning = "Only inspected actual prefabs, 36 IDs covering W01 and W02; PlayMode, corridor clearance, screenshots and Blender FBX round-trip NOT RUN.";
         }
         [MenuItem("Tools/C01/Interior Props/Audit Prefabs")]
         public static void Run()

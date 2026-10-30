@@ -66,15 +66,15 @@ def build(pid,root,parts):
   box("Front_Warning",[0,.51,.231],[.18,.17,.007],"CAUTION")
   box("Transport_Socket",[0,.06,.22],[.26,.05,.10],"DARK")
  elif pid=="P18-05":
-  box("Case_Bottom",[0,.10,0],[.66,.20,.40],"STEEL",True)
+  box("Case_Bottom",[0,.10,0],[.68,.20,.40],"STEEL",True)
   box("Rubber_Foot_L",[-.24,.014,-.15],[.13,.028,.1],"GASKET")
   box("Rubber_Foot_R",[.24,.014,-.15],[.13,.028,.1],"GASKET")
-  lid=box("Case_Lid",[0,.239,0],[.66,.078,.40],"DARK",True)
+  lid=box("Case_Lid",[0,.239,0],[.68,.078,.40],"DARK",True)
   edge=box("Lid_Accent",[0,.282,0],[.60,.008,.34],"CAUTION")
   h=hinge("Lid_HingePivot",[0,.20,-.20],root,parts);attach_preserve(lid,h);attach_preserve(edge,h)
   box("Front_Latch_L",[-.23,.19,.208],[.065,.10,.025],"CAUTION")
   box("Front_Latch_R",[.23,.19,.208],[.065,.10,.025],"CAUTION")
-  box("Carry_Handle_Rail",[0,.30,.221],[.25,.035,.038],"GASKET")
+  box("Carry_Handle_Rail",[0,.3225,.24],[.25,.035,.038],"GASKET")
   box("Carry_Handle_Stem_L",[-.15,.285,.205],[.035,.07,.032],"DARK")
   box("Carry_Handle_Stem_R",[.15,.285,.205],[.035,.07,.032],"DARK")
  elif pid=="P18-06":

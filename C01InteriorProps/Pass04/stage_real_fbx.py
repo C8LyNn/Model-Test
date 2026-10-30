@@ -58,7 +58,7 @@ def validate_entry(entry: dict) -> None:
 def validate_real_fbx(file: Path) -> tuple[str, int]:
     size = file.stat().st_size
     with file.open("rb") as handle:
-        header = handle.read(max(len(BINARY_FBX_MAGIC), 40))
+        header = handle.read(max(len(BINARY_FBX_MAGIC), 96))
     if header.startswith(b"version https://git-lfs.github.com/spec/v1"):
         raise ValueError("Git LFS pointer; model binary was not hydrated")
     if not header.startswith(BINARY_FBX_MAGIC):

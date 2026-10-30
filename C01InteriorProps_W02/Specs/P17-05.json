@@ -1,0 +1,337 @@
+{
+  "id": "P17-05",
+  "owner": "C01-17",
+  "wave": 2,
+  "title": "Medical and lab diagnostic terminal",
+  "dimensions_WDH_m": [
+    0.85,
+    0.6085,
+    1.5
+  ],
+  "mount": "floor",
+  "pivot": "floor bottom center Y=0",
+  "moving_parts": [],
+  "collider": {
+    "center": [
+      0,
+      0.75,
+      0
+    ],
+    "size": [
+      0.85,
+      1.5,
+      0.6
+    ]
+  },
+  "materials": [
+    "METAL",
+    "DARK",
+    "CAUTION",
+    "GLOW"
+  ],
+  "triangle_count": 240,
+  "mesh_parts": 20,
+  "parts": [
+    {
+      "name": "Foot",
+      "p": [
+        0,
+        0.05,
+        0
+      ],
+      "s": [
+        0.85,
+        0.1,
+        0.6
+      ],
+      "m": "DARK",
+      "parent": "ROOT"
+    },
+    {
+      "name": "Core",
+      "p": [
+        0,
+        0.64,
+        0.12
+      ],
+      "s": [
+        0.4,
+        1.13,
+        0.27
+      ],
+      "m": "METAL",
+      "parent": "ROOT"
+    },
+    {
+      "name": "SupportL",
+      "p": [
+        -0.29,
+        0.54,
+        0.13
+      ],
+      "s": [
+        0.12,
+        0.81,
+        0.18
+      ],
+      "m": "DARK",
+      "parent": "ROOT"
+    },
+    {
+      "name": "SupportR",
+      "p": [
+        0.29,
+        0.54,
+        0.13
+      ],
+      "s": [
+        0.12,
+        0.81,
+        0.18
+      ],
+      "m": "DARK",
+      "parent": "ROOT"
+    },
+    {
+      "name": "Storage",
+      "p": [
+        0,
+        0.57,
+        -0.115
+      ],
+      "s": [
+        0.72,
+        0.42,
+        0.35
+      ],
+      "m": "METAL",
+      "parent": "ROOT"
+    },
+    {
+      "name": "StorageFront",
+      "p": [
+        0,
+        0.56,
+        -0.292
+      ],
+      "s": [
+        0.65,
+        0.34,
+        0.016
+      ],
+      "m": "DARK",
+      "parent": "ROOT"
+    },
+    {
+      "name": "ControlArm",
+      "p": [
+        0,
+        0.83,
+        -0.09
+      ],
+      "s": [
+        0.78,
+        0.09,
+        0.41
+      ],
+      "m": "METAL",
+      "parent": "ROOT"
+    },
+    {
+      "name": "TouchPanel",
+      "p": [
+        0,
+        0.879,
+        -0.1
+      ],
+      "s": [
+        0.64,
+        0.012,
+        0.3
+      ],
+      "m": "GLOW",
+      "parent": "ROOT"
+    },
+    {
+      "name": "DisplayBezel",
+      "p": [
+        0,
+        1.21,
+        0.12
+      ],
+      "s": [
+        0.84,
+        0.54,
+        0.28
+      ],
+      "m": "DARK",
+      "parent": "ROOT"
+    },
+    {
+      "name": "Screen",
+      "p": [
+        0,
+        1.25,
+        -0.028
+      ],
+      "s": [
+        0.72,
+        0.34,
+        0.012
+      ],
+      "m": "GLOW",
+      "parent": "ROOT"
+    },
+    {
+      "name": "TopCap",
+      "p": [
+        0,
+        1.476,
+        0.12
+      ],
+      "s": [
+        0.85,
+        0.048,
+        0.27
+      ],
+      "m": "METAL",
+      "parent": "ROOT"
+    },
+    {
+      "name": "LowerDisplayRail",
+      "p": [
+        0,
+        0.957,
+        0.12
+      ],
+      "s": [
+        0.8,
+        0.04,
+        0.28
+      ],
+      "m": "METAL",
+      "parent": "ROOT"
+    },
+    {
+      "name": "StatusLeft",
+      "p": [
+        -0.29,
+        0.996,
+        -0.025
+      ],
+      "s": [
+        0.085,
+        0.013,
+        0.01
+      ],
+      "m": "CAUTION",
+      "parent": "ROOT"
+    },
+    {
+      "name": "StatusRight",
+      "p": [
+        0.29,
+        0.996,
+        -0.025
+      ],
+      "s": [
+        0.085,
+        0.013,
+        0.01
+      ],
+      "m": "GLOW",
+      "parent": "ROOT"
+    },
+    {
+      "name": "StorageVent_0",
+      "p": [
+        -0.24,
+        0.61,
+        -0.303
+      ],
+      "s": [
+        0.08,
+        0.018,
+        0.008
+      ],
+      "m": "DARK",
+      "parent": "ROOT"
+    },
+    {
+      "name": "StorageVent_1",
+      "p": [
+        -0.12,
+        0.61,
+        -0.303
+      ],
+      "s": [
+        0.08,
+        0.018,
+        0.008
+      ],
+      "m": "DARK",
+      "parent": "ROOT"
+    },
+    {
+      "name": "StorageVent_2",
+      "p": [
+        0,
+        0.61,
+        -0.303
+      ],
+      "s": [
+        0.08,
+        0.018,
+        0.008
+      ],
+      "m": "DARK",
+      "parent": "ROOT"
+    },
+    {
+      "name": "StorageVent_3",
+      "p": [
+        0.12,
+        0.61,
+        -0.303
+      ],
+      "s": [
+        0.08,
+        0.018,
+        0.008
+      ],
+      "m": "DARK",
+      "parent": "ROOT"
+    },
+    {
+      "name": "StorageVent_4",
+      "p": [
+        0.24,
+        0.61,
+        -0.303
+      ],
+      "s": [
+        0.08,
+        0.018,
+        0.008
+      ],
+      "m": "DARK",
+      "parent": "ROOT"
+    },
+    {
+      "name": "FrontCaution",
+      "p": [
+        0,
+        0.34,
+        -0.304
+      ],
+      "s": [
+        0.43,
+        0.03,
+        0.009
+      ],
+      "m": "CAUTION",
+      "parent": "ROOT"
+    }
+  ],
+  "stage": "geometry ready; independent QA pending"
+}

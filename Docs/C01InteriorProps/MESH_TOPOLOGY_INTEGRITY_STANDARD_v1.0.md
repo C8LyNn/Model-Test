@@ -95,3 +95,20 @@ Independent C01-02 found complex polygons in real binary FBX with unsafe naive-f
 - **Ownership**: C01-01 standard and metrology; C01-19 source repairs; C01-02 independent topological QA; C01-10 Unity prefab/collider clearance; C01-03 source/version ledger; C01-00 release GO/NO-GO.
 
 PASS04 remains OPEN until all 36 original geometry exports have independent SHA-pinned QA, three P19 failures cleared, Unity acceptance actually measured or explicitly blocked, and no unauthorized merges or redesigns.
+
+
+## PASS 05 — ADDENDUM A2: five P19 export-risk assets + executable gate
+
+**Authority:** C01-00 #33 PASS05 / C01-02 PR #13. **No new geometry family or global forced triangulation.** PASS04's P19-05/07/08 targeted triangle-only source/export gate is expanded to **P19-01 and P19-02**, for a total of **five** independently flagged P19 n-gon risks. P19-03 has complex faces without currently reproduced fan degenerates and requires evaluation, not automatic source triangulation. P19-06 and P19-04 are not subject to this stricter five-ID gate absent new concrete defects.
+
+**PASS05 independent archived binary FBX readings:** P19-01 38 complex n-gons / 12 degenerate naive-fan triangles; P19-02 31 / 8; P19-05 3 / 1; P19-07 16 / 19; P19-08 35 / 7. P19-06 0 / 0. **Original polygon faces of these six contained zero degenerate source triangles as parsed from their native FBX indices.** The fan numbers are only *exporter-ambiguity stress-test candidates*, not real Blender or Unity mesh failure proof. The archived P19-02 file is **SHA a42a57d168...** from a cleanup artifact, which may differ from other QA's older candidate; conclusions must remain tied to exact SHA. Detailed per-part face indices and 3D coordinates of all zero-area fan triangles were measured from real FBX Geometry/Vertices/PolygonVertexIndex and retained in the handoff.
+
+**Acceptance for each of the five named IDs:**
+- Producer saves real original revised Blender .blend and a real **Blender binary FBX** with changed SHA-256; all final source render polygons and FBX imported polygons are triangles, no zero-area tris, invalid UV0, normal or winding errors. Blender checks triangle local/world position multiset, area, visual silhouette, hierarchy, sockets, material/UV loop attributes and pivot/movable parts before/after. Only source-confirmed flaws are repaired.
+- Specific .blend + binary FBX hashes and producer commit pinned, before/after topology V/E/F/Tris + per-part boundaries, independent C01-02 per-SHA review and actual Blender FBX reimport. No blanket mesh welding and no fan triangulation used as repair algorithm.
+- **P15-07** 48 boundary edges on 2 intentionally open gauge face submeshes must remain exception candidates until C01-02 confirms named object and exact source SHA; separate moving parts remain separate even when co-located.
+- **No automatic QA promotion** from STATIC TRIANGLE_ONLY or CI SUCCESS. Real Unity 6 URP Editor import / prefab / PlayMode and C01-02 signoff are independent required gates.
+
+**CI rule:** runner_id=0, steps=[], and Actions billable 0 ms indicate failure before execution; classify as **INFRA_NOT_RUN**, not Blender FAIL or PASS. Root cause (account billing, runners, plan, quota or GitHub allocation) requires authenticated repository Actions/billing permissions; public GitHub Status is insufficient to prove the account-specific cause. Do not disable release gates to conceal incident.
+
+**C01-01 scope:** this addendum is standards and independently observed binary FBX forensics, NOT a source model repair claim. Existing Draft PR #31; no merge. Wave03 STOP.

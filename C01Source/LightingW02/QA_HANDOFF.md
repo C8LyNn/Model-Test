@@ -12,3 +12,6 @@ Mesh YAML, prefab YAML, 6 URP emission materials, OBJ/MTL, ASCII FBX and mesh-de
 REAL BLEND FILES: MISSING — Blender binary is not installed. Unity runtime: NOT RUN. FBX importer roundtrip: NOT RUN. QA independent: NOT RUN.
 P16-06 rotor child has local pivot Y=-.20 and is separately animatable. P16-07 material variants Green=AVAILABLE, Red=BLOCKED, Amber=FAULT.
 No existing ship layout, corridor, door, engine, elevator or scene files modified. Do not merge until C01-02 validates and C01-10 checks clearance.
+
+## Producer repair (2026-10-30): P16-06 rotor swept-envelope
+Support x-coordinate moved from ±0.116m to ±0.130m; rotor top, lens and drum reduced to fit. Max rotor corner radius around Y (in XZ projection) is 0.113252m; inner support plane is 0.123000m; calculated radial clearance 9.748mm. Local ZIP rebuilt with updated geometry and static GLB checks. This is geometric preflight only; Unity swept animation and actual physics are still NOT RUN.

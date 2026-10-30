@@ -117,11 +117,15 @@ def metrics(root):
  "parts_missing_polygons":[o.name for o in meshes if not o.data.polygons]}
 def render_preview(pid,root,view):
  # Real Blender Workbench screenshots generated from the actual scene.
- bpy.context.scene.render.engine="BLENDER_WORKBENCH"
- bpy.context.scene.display.shading.light="STUDIO"
- bpy.context.scene.display.shading.color_type="MATERIAL"
- bpy.context.scene.render.resolution_x=640
- bpy.context.scene.render.resolution_y=640
+ bpy.context.scene.render.engine="CYCLES"
+ bpy.context.scene.cycles.device='CPU'
+ bpy.context.scene.cycles.samples=12
+ bpy.context.scene.render.resolution_x=512
+ bpy.context.scene.render.resolution_y=512
+ bpy.context.scene.world.color=(.24,.24,.24)
+ light_data=bpy.data.lights.new("PreviewArea","AREA")
+ light=bpy.data.objects.new("PreviewArea",light_data);bpy.context.collection.objects.link(light)
+ light.location=(1,-3,5);light_data.energy=750;light_data.shape='DISK';light_data.size=5
  bpy.context.scene.render.resolution_percentage=100
  if view=="front":loc=(2.5,-4.5,2.25)
  elif view=="side":loc=(4.5,1.8,2.05)
@@ -134,7 +138,7 @@ def render_preview(pid,root,view):
  bpy.context.scene.camera=camera
  bpy.context.scene.render.image_settings.file_format='PNG'
  bpy.context.scene.render.filepath=str(ROOT/"Previews"/(pid+"_"+view+".png"))
- bpy.ops.render.render(write_still=True);bpy.data.objects.remove(camera,do_unlink=True)
+ bpy.ops.render.render(write_still=True);bpy.data.objects.remove(camera,do_unlink=True);bpy.data.objects.remove(light,do_unlink=True)
 def export(pid):
  bpy.ops.wm.read_factory_settings(use_empty=True)
  global MATERIALS

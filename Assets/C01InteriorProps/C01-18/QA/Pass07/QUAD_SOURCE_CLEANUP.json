@@ -1,0 +1,62 @@
+{
+  "stage": "PASS07_QUAD_SOURCE_CLEANUP",
+  "producer": "C01-18",
+  "branch": "c01/props-18-cargo",
+  "source": "Existing true authoring .obj assets P18-01..03, edited in-place through GitHub API; not a Blender source binary edit",
+  "why": "Replace diagonal internal split on each truly planar quad face. This is clean authoring topology, not correction of a non-manifold fault.",
+  "proof": "All triangle pairs are coplanar, same OBJ object/material, matching per-corner UV and normal values, consistent winding, and triangulate back to the exact original oriented triangles. Vertices and vertex positions unchanged. Wheel curved faces retained as triangles.",
+  "geometry": [
+    {
+      "id": "P18-01",
+      "git_commit": "2bfa5a0a8ff9f0e4349a82de79b6a2b1ac1becc3",
+      "old_faces": 180,
+      "new_faces": 90,
+      "quad_merges": 90,
+      "remaining_tri_faces": 0,
+      "triangles_before": 180,
+      "triangles_after": 180,
+      "parts": 15,
+      "unchanged_vertex_coords": 120,
+      "UV_normals_valid": true,
+      "planar_winding_valid": true
+    },
+    {
+      "id": "P18-02",
+      "git_commit": "1af6cf59f6b055e29c4f8f4c7d9a3983a47f8f7e",
+      "old_faces": 204,
+      "new_faces": 102,
+      "quad_merges": 102,
+      "remaining_tri_faces": 0,
+      "triangles_before": 204,
+      "triangles_after": 204,
+      "parts": 17,
+      "unchanged_vertex_coords": 136,
+      "UV_normals_valid": true,
+      "planar_winding_valid": true
+    },
+    {
+      "id": "P18-03",
+      "git_commit": "d60a3cd2629304f6d7acec46a935926e5d4fba65",
+      "old_faces": 348,
+      "new_faces": 270,
+      "quad_merges": 78,
+      "remaining_tri_faces": 192,
+      "triangles_before": 348,
+      "triangles_after": 348,
+      "parts": 13,
+      "unchanged_vertex_coords": 208,
+      "UV_normals_valid": true,
+      "planar_winding_valid": true
+    }
+  ],
+  "status": {
+    "source_obj": "APPLIED_AND_TESTED",
+    "original_blend": "STALE_NEEDS_REBUILD",
+    "original_fbx": "STALE_NEEDS_REBUILD",
+    "blender_runtime": "NOT_RUN",
+    "Unity": "NOT_RUN",
+    "independent_C01_02": "PENDING"
+  },
+  "acceptance": "Do not promote these OBJ edits as repaired native Blender or FBX until rebuild_blender.py consumes quad source, real Blender 4.x export/reimport passes, exact binary SHAs are pinned and independent C01-02 inspects. Do not automatically weld separate assembly parts.",
+  "linked_issue": "https://github.com/C8LyNn/Model-Test/issues/33"
+}

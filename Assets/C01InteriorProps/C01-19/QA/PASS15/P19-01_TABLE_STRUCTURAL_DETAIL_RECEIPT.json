@@ -10,7 +10,7 @@
   "original_binary_fbx_sha256": "9dc4d6b724c4a5a4b45a04412dc5a61fe732fa1b4423a9f0c27889053960163b",
   "new_binary_fbx_candidate_sha256": "ec4b8403559318a89cf729296f5d1b13ed776ae42b8970d80f0332ce43909ff4",
   "downloadable_user_zip": "C01-19_DETAIL_PASS15_P19-01_REAL_NATIVE_FBX_CANDIDATES.zip",
-  "zip_sha256": "43d69b3f876cc1fb0534b5e2aae8d4186099846928e60f0e25411437e9434a09",
+  "zip_sha256": "403bd3f7f83791ba9f9604112ec6bd8605eaa1ce82ff55e1baaf94bf4ed206fe",
   "asset_counts": {
     "vertices_before": 133,
     "vertices_after": 197,
@@ -48,7 +48,10 @@
     "all_closed_watertight_winding": "PASS",
     "degenerate_triangles": 0,
     "duplicate_indexed_triangles": 0,
-    "new_outward_corner_normals": "PASS"
+    "new_outward_corner_normals": "PASS",
+    "new_vs_old_source_coplanar_triangle_overlap_pairs": 0,
+    "new_vs_old_source_projected_coplanar_area_m2": 0,
+    "exact_plane_test_scope": "Only existing source frame Cube.001 vs the six new components; does not prove all scene/Unity z-fighting is absent"
   },
   "runtime_gates": {
     "Blender_4_load_save": "NOT RUN",
@@ -59,5 +62,7 @@
   },
   "other_assets": "P19-02/P19-05 PASS14 attachments kept unchanged; P19-07 has 16 same-component vertex-on-edge geometric candidates: HOLD, do not weld.",
   "release": "CANDIDATE ONLY / NEEDS_OWNER_ACTION; physical binary assets are in downloadable user ZIP, NOT yet pushed to producer Models LFS paths. Do not merge",
-  "notes": "STATIC shaded/wireframe are derived from real Mesh DNA, not Blender application renders."
+  "notes": "STATIC shaded/wireframe are derived from real Mesh DNA, not Blender application renders.",
+  "zip_bytes": 704104,
+  "zip_entries": 16
 }

@@ -101,7 +101,7 @@ def build(pid,root,parts):
   box("Handle_Post_L",[-.13,.325,0],[.038,.09,.04],"GASKET")
   box("Handle_Post_R",[.13,.325,0],[.038,.09,.04],"GASKET")
   box("Handle_Grip",[0,.367,0],[.30,.026,.04],"GASKET")
-  box("Front_Lock",[0,.225,.164],[.08,.075,.012],"CAUTION")
+  box("Front_Lock",[0,.225,.165],[.08,.075,.012],"CAUTION")  # PASS08: 1mm outward; avoid coplanar visible front face with Bin_Lid
   for x in [-.23,.23]:box("Grip_Rail_"+str(x),[x,.12,.164],[.027,.15,.01],"DARK")
  else:raise ValueError(pid)
 def metrics(root):

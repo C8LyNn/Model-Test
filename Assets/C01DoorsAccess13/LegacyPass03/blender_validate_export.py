@@ -65,7 +65,8 @@ def make(key):
     err=max(abs(before[k][i]-after[k][i]) for k in range(2) for i in range(3))
     assert err<0.001,("FBX imported bounds differ by >1mm",err)
     assert len([o for o in bpy.context.scene.objects if o.type=="MESH"])==1
-    assert len(bpy.context.scene.objects[0].data.uv_layers)>0
+    imported_mesh=next(o for o in bpy.context.scene.objects if o.type=="MESH")
+    assert len(imported_mesh.data.uv_layers)>0
     return {"blend":str(scene),"fbx":str(binary),"roundtrip":"PASS",
             "bbox_max_error_m":err,"source_vertices":len(verts),"source_tris":len(faces)}
 

@@ -102,15 +102,13 @@ public static class C01WallPrefabBuilder
         PreflightMeshes(indices, qaCandidates);
 
         string prefabDir = Root + (qaCandidates ? "/QA_Candidates/Prefabs" : "/Prefabs");
-        string materialDir = Root + (qaCandidates ? "/QA_Candidates/Materials" : "/Materials");
-        // Do not use temporary source models or replace any ship prefabs.
+        // Full original-r2 builds require URP, but must NOT overwrite
+        // model-authored material slots with a single synthetic steel material.
+        // Source geometry/material preflight happens before any prefab writes.
+        if (!qaCandidates && Shader.Find("Universal Render Pipeline/Lit") == null)
+            throw new InvalidOperationException("Unity 6 URP/Lit shader missing.");
+        // Do not replace any ship prefab or touch the active spacecraft scene.
         Directory.CreateDirectory(prefabDir);
-        if (!qaCandidates)
-        {
-            if (Shader.Find("Universal Render Pipeline/Lit") == null)
-                throw new InvalidOperationException("Unity 6 URP/Lit shader missing.");
-            Directory.CreateDirectory(materialDir);
-        }
 
         // Preview scene prevents the QA utility from dirtying the artist's open
         // spacecraft scene, even on a failed imported mesh or prefab save.
@@ -135,34 +133,25 @@ public static class C01WallPrefabBuilder
                 temp.transform.position = Vector3.zero;
                 temp.transform.rotation = Quaternion.identity;
                 temp.transform.localScale = Vector3.one;
-                var renderers = mesh.GetComponentsInChildren<MeshRenderer>(true);
+                var renderers = temp.GetComponentsInChildren<MeshRenderer>(true);
                 if (renderers.Length == 0)
                     throw new InvalidOperationException(id + ": no imported MeshRenderer");
 
-                if (!qaCandidates)
+                // Preserve every imported FBX material slot; changing
+                // sharedMaterial here would collapse multi-material meshes.
+                // This builder does not claim URP shader remapping QA.
+                foreach (var renderer in renderers)
                 {
-                    // Historical authored steel palette, original full-r2 workflow.
-                    var shader = Shader.Find("Universal Render Pipeline/Lit");
-                    var matPath = materialDir + "/C01-11_" + id + "_Steel.mat";
-                    var mat = AssetDatabase.LoadAssetAtPath<Material>(matPath);
-                    if (mat == null)
-                    {
-                        mat = new Material(shader);
-                        AssetDatabase.CreateAsset(mat, matPath);
-                    }
-                    var tint = id == "W02" ? new Color(.26f, .38f, .48f) :
-                               id == "W03" ? new Color(.49f, .53f, .57f) :
-                               id == "W04" ? new Color(.40f, .54f, .62f) :
-                                             new Color(.43f, .51f, .58f);
-                    mat.SetColor("_BaseColor", tint);
-                    mat.SetFloat("_Metallic", .45f);
-                    mat.SetFloat("_Smoothness", .32f);
-                    EditorUtility.SetDirty(mat);
-                    foreach (var renderer in renderers)
-                        renderer.sharedMaterial = mat;
+                    var assigned = renderer.sharedMaterials;
+                    if (assigned == null || assigned.Length == 0)
+                        throw new InvalidOperationException(
+                            id + ": imported FBX renderer has no material slots");
+                    var filter = renderer.GetComponent<MeshFilter>();
+                    if (filter != null && filter.sharedMesh != null &&
+                        assigned.Length < filter.sharedMesh.subMeshCount)
+                        throw new InvalidOperationException(
+                            id + ": fewer imported material slots than submeshes");
                 }
-                // QA-only mode intentionally keeps the actual imported FBX
-                // source materials; never pretend it has verified URP shaders.
                 AddColliders(temp, id);
                 string output = prefabDir + "/C01-11_" + id +
                     (qaCandidates ? "_QA_ONLY.prefab" : ".prefab");

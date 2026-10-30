@@ -1,0 +1,135 @@
+{
+  "project": "C01 3D Asset Factory",
+  "specialist": "C01-18 CARGO",
+  "wave": "PASS09",
+  "branch": "c01/props-18-cargo",
+  "scope": [
+    "P18-01",
+    "P18-02",
+    "P18-03"
+  ],
+  "classification": "REAL EXISTING AUTHORING SOURCE FILES EDITED; NATIVE BLENDER/FBX NOT REBUILT",
+  "edited_actual_files": [
+    {
+      "path": "Models/P18-01.obj",
+      "previous_git_blob": "665b940dd9ba1ab9c7a1339a8a395bdc35fe72b9",
+      "new_git_blob": "c6178ec0fe38d582eacddab4c342085f2a88afe1",
+      "vertex_coordinate_edits": 32,
+      "part_names": [
+        "Corner_LB",
+        "Corner_LF",
+        "Corner_RB",
+        "Corner_RF"
+      ],
+      "change": "each lower cap y: 0.090→0.091m and upper cap y: 0.810→0.809m; preserves center, x/z positions, UV/normal indices, original face indices, material slots",
+      "coplanar_corner_vs_shell_cap_faces_before": 8,
+      "coplanar_corner_vs_shell_cap_faces_after": 0
+    },
+    {
+      "path": "Models/P18-02.obj",
+      "previous_git_blob": "6200a15fdf29a23d4e2106359fdaed347b1656fd",
+      "new_git_blob": "ec17212a2d60d1b39216c869b0a9706defa76c4d",
+      "vertex_coordinate_edits": 48,
+      "part_names": [
+        "Shelf_0_Lip_-0.375",
+        "Shelf_0_Lip_0.375",
+        "Shelf_1_Lip_-0.375",
+        "Shelf_1_Lip_0.375",
+        "Shelf_2_Lip_-0.375",
+        "Shelf_2_Lip_0.375"
+      ],
+      "change": "original authored OBJ recedes lip geometry 3mm inward in local Z, matching existing validated PASS03 native BLEND/FBX geometry (new source fix propagation; not a new native export)"
+    },
+    {
+      "path": "Sources/part_spec.json",
+      "new_git_blob": "3222abeca671f4e849823f2098a11c5946ad67c5",
+      "change": "Four P18-01 corner sizes 0.72→0.718m, six P18-02 lip center positions ±0.375→±0.372m; no new parts"
+    }
+  ],
+  "indexed_obj_topology_pass09": {
+    "P18-01": {
+      "V": 120,
+      "E": 180,
+      "F": 90,
+      "T": 180,
+      "parts": 15,
+      "changed_original_vertices": 32,
+      "zero_area_triangle_fans": 0,
+      "duplicate_faces": 0,
+      "boundary_edges": 0,
+      "overused_edges": 0,
+      "invalid_vertex_uv_normal_indices": 0,
+      "inconsistent_winding": 0
+    },
+    "P18-02": {
+      "V": 136,
+      "E": 204,
+      "F": 102,
+      "T": 204,
+      "parts": 17,
+      "changed_original_vertices": 48,
+      "zero_area_triangle_fans": 0,
+      "duplicate_faces": 0,
+      "boundary_edges": 0,
+      "overused_edges": 0,
+      "invalid_vertex_uv_normal_indices": 0,
+      "inconsistent_winding": 0
+    },
+    "P18-03": {
+      "V": 208,
+      "E": 444,
+      "F": 270,
+      "T": 348,
+      "parts": 17,
+      "changed_original_vertices": 0,
+      "zero_area_triangle_fans": 0,
+      "duplicate_faces": 0,
+      "boundary_edges": 0,
+      "overused_edges": 0,
+      "invalid_vertex_uv_normal_indices": 0,
+      "inconsistent_winding": 0,
+      "notes": "Existing authorized Queen revision converted planar triangle pairs to 78 quads; 192 original wheel triangles remain"
+    }
+  },
+  "archive_old_native_binary_fbx_sha256": {
+    "P18-01": "84851387b58aeadc7f2ace49201077d847cfd294f82acfb2d0a7dce3e471a939",
+    "P18-02": "5ba3faf85a3ea57f755eeb51d0db832c1ce37aa64721d710a22db509f2c6d03f",
+    "P18-03": "639fc09c39b804b9bf83de75a4096cdefe1229f58549662ee777537c19c5e165"
+  },
+  "archive_old_native_blend_sha256": {
+    "P18-01": "d9e3037b754edd952473170ec0924b4849eec1aa2afc193c2151c9bf079b3a42",
+    "P18-02": "5b4cc6a8a73624ddc6521842146cdbc6cc4e7a579522e5122ce669e93c585b09",
+    "P18-03": "a33b23ad173f56a545aa57ae2d81e24afa27928f497835596350e06772e343fc"
+  },
+  "per_model_gates": {
+    "P18-01": {
+      "authored_obj": "PATCHED_AND_INDEXED_PASS",
+      "new_blend": "NOT_RUN",
+      "new_fbx": "NOT_RUN",
+      "blender_reimport": "NOT_RUN",
+      "unity": "NOT_RUN",
+      "independent_qa": "BLOCKED"
+    },
+    "P18-02": {
+      "authored_obj": "PATCHED_AND_INDEXED_PASS",
+      "new_blend": "NOT_RUN",
+      "new_fbx": "NOT_RUN",
+      "blender_reimport": "NOT_RUN",
+      "unity": "NOT_RUN",
+      "independent_qa": "BLOCKED"
+    },
+    "P18-03": {
+      "authored_obj": "PRIOR_QUAD_REVISION_INDEXED_PASS",
+      "new_blend": "NOT_RUN",
+      "new_fbx": "NOT_RUN",
+      "blender_reimport": "NOT_RUN",
+      "unity": "NOT_RUN",
+      "independent_qa": "BLOCKED"
+    }
+  },
+  "prohibitions": [
+    "Do not mistake authored OBJ topology for current BLEND/FBX topology",
+    "Do not approve stale old binary FBX as PASS09 new repair",
+    "No additional models, ship modifications, whole-model welding, or unauthorized PR merge"
+  ]
+}

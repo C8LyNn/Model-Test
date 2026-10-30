@@ -7,7 +7,7 @@ on:
       - 'Assets/C01InteriorProps/C01-18-Wave02/Sources/**'
       - '.github/workflows/c01-18-wave02-blender.yml'
 permissions:
-  contents: read
+  contents: write
 jobs:
   actual-model-build:
     runs-on: ubuntu-24.04
@@ -49,6 +49,18 @@ jobs:
             assert v['triangles']>20
             print(k, v['bounds_WDH'],v['triangles'],v['mesh_parts'], 'PASS')
           PY
+      - name: Commit native Blender, binary FBX, previews and QA on isolated branch
+        run: |
+          set -euo pipefail
+          git lfs install --local
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Assets/C01InteriorProps/C01-18-Wave02/Sources/*.blend
+          git add Assets/C01InteriorProps/C01-18-Wave02/Models/*.fbx
+          git add Assets/C01InteriorProps/C01-18-Wave02/Previews/*.png
+          git add Assets/C01InteriorProps/C01-18-Wave02/QA/*.json
+          git commit -m "C01-18 Wave02: commit four native models and verified renders [skip ci]"
+          git push origin HEAD:c01/props-18-cargo-wave02
       - uses: actions/upload-artifact@v4
         with:
           name: C01-18-Wave02-Real-Blend-FBX-Previews

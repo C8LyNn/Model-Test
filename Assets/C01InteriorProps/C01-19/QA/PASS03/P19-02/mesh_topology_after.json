@@ -1,6 +1,6 @@
 {
   "id": "P19-02",
-  "result": "REVIEW",
+  "result": "PASS_STATIC_PARTS_AFTER_LOCAL_CLEANUP",
   "changes": [
     {
       "action": "BOOLEAN_UNION_STATIC_SAME_MATERIAL",
@@ -90,25 +90,25 @@
   "fbx_roundtrip": {
     "result": "PASS",
     "bounds_max_error_m": 1.1920928955078125e-07,
-    "triangles": 272,
+    "triangles": 216,
     "imported_meshes": 5,
     "uv0_meshes": 5
   },
   "parts": [
     {
       "name": "Back",
-      "vertices": 114,
-      "edges": 195,
-      "faces": 83,
-      "triangles": 224,
+      "vertices": 86,
+      "edges": 146,
+      "faces": 62,
+      "triangles": 168,
       "components": 1,
       "loose_vertices": 0,
-      "degenerate_faces": 5,
+      "degenerate_faces": 0,
       "duplicate_faces": 0,
-      "duplicate_coordinate_vertices": 26,
+      "duplicate_coordinate_vertices": 0,
       "boundary_edges": 0,
       "nonmanifold_edges": 0,
-      "zero_edges": 33,
+      "zero_edges": 0,
       "inconsistent_winding_candidates": 0,
       "self_intersection_candidates": 0,
       "uv_layers": 1,
@@ -197,17 +197,17 @@
     }
   ],
   "totals": {
-    "vertices": 146,
-    "edges": 243,
-    "faces": 107,
-    "triangles": 272,
+    "vertices": 118,
+    "edges": 194,
+    "faces": 86,
+    "triangles": 216,
     "loose_vertices": 0,
-    "degenerate_faces": 5,
+    "degenerate_faces": 0,
     "duplicate_faces": 0,
-    "duplicate_coordinate_vertices": 26,
+    "duplicate_coordinate_vertices": 0,
     "boundary_edges": 0,
     "nonmanifold_edges": 0,
-    "zero_edges": 33,
+    "zero_edges": 0,
     "inconsistent_winding_candidates": 0
   },
   "bounding_xyz_blender": [
@@ -235,5 +235,13 @@
         1.0
       ]
     }
-  ]
+  ],
+  "cleanup": {
+    "type": "ZERO_EDGE_ENDPOINT_WELD_AND_DEGENERATE_DISSOLVE",
+    "mesh": "Back",
+    "zero_edges_before": 33,
+    "zero_edges_after": 0,
+    "degenerate_faces_before": 5,
+    "degenerate_faces_after": 0
+  }
 }

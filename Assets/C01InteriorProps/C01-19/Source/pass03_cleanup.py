@@ -39,6 +39,23 @@ for mid in ("P19-01","P19-02"):
         bmesh.ops.dissolve_degenerate(bm,dist=1e-6,edges=list(bm.edges))
         bm.normal_update();bm.to_mesh(o.data);bm.free();o.data.update()
         post=ns["audit"]()
+    if post["totals"]["boundary_edges"]:
+        # BMesh detected explicit new open boundary loops caused by the prior
+        # Boolean; patch only those loops (the original source had 0 boundaries).
+        bm=bmesh.new();bm.from_mesh(o.data);bm.edges.ensure_lookup_table()
+        boundary=[edge for edge in bm.edges if len(edge.link_faces)==1]
+        result=bmesh.ops.holes_fill(bm,edges=boundary,sides=0)
+        uv=bm.loops.layers.uv.verify()
+        for face in result.get("faces",[]):
+            norm=face.normal
+            axes=sorted(range(3),key=lambda i:abs(norm[i]))[:2]
+            for loop in face.loops:
+                loop[uv].uv=(loop.vert.co[axes[0]],loop.vert.co[axes[1]])
+        bm.normal_update()
+        if bm.faces:
+            bmesh.ops.recalc_face_normals(bm,faces=list(bm.faces))
+        bm.to_mesh(o.data);bm.free();o.data.update()
+        post=ns["audit"]()
     defects={k:post["totals"][k] for k in ("loose_vertices","degenerate_faces","duplicate_faces","boundary_edges","nonmanifold_edges","zero_edges")}
     if any(defects.values()):raise RuntimeError(f"{mid} localized cleanup still defective: {defects}")
     if max(abs(pre["bounding_xyz_blender"][a][i]-post["bounding_xyz_blender"][a][i]) for a in range(2) for i in range(3))>1e-5:

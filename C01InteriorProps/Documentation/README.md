@@ -1,62 +1,15 @@
-# C01-10 — Interior Props integration / WAVE 01
+# C01-10 — Interior Props integration
 
-**Scope:** issue #9, parent #2. Base: `codex/c01-ship-integration` (draft PR #1), not `main`.
+**Current entrypoint (Wave 02, 2026-10-30):** [WAVE02_ACCEPTED_SHOWCASE.md](WAVE02_ACCEPTED_SHOWCASE.md) and [WAVE02_HANDOFF_C01-00_C01-02.md](WAVE02_HANDOFF_C01-00_C01-02.md).
 
-## Current status: BLOCKED ON 16 SUPPLIER ASSETS
+**STATUS: BLOCKED**. Producer PRs exist (#12, #15–18) with real/provisional source assets and some Blender/FBX outputs, but the latest independently observed C01-02 report (#13/#8) approves **0 of 16** Wave 01 assets. Supplier updates require fresh per-SHA retests. Wave 02 adds 20 IDs, not new models owned by C01-10.
 
-The integrator is real Unity Editor C# source. As of 2026-10-29, the base branch does **not** contain `Assets/C01InteriorProps` or the 16 P15-01–P19-04 supplier packages. The 16 input meshes, native Blender sources, Unity prefabs, and Unity screenshots have **not** been produced by C01-10. C01-10 must not invent replacement geometry owned by C01-15–19.
+**Live Unity editor tool:** `Assets/C01InteriorProps/Editor/InteriorPropsAcceptedShowcaseBuilder.cs`. It only accepts SHA-pinned rows marked APPROVED in `Assets/C01InteriorProps/QA/approved_assets.csv`. That ledger currently contains only its header. Consequently it **refuses to build a scene**, instead of faking integration.
 
-**Unity Editor / Blender not installed in the present execution environment**. Consequently, no Unity build, prefab compilation, screenshot or PlayMode result has been claimed.
+**Legacy W01 builder:** `InteriorPropsShowcaseBuilder.Build` has deliberately been disabled because it ignored C01-02 acceptance and allowed a 20cm dimensional deviation. Do not use it.
 
-## Input staging (individual supplier PRs first)
+**Deliverables in PR #11:** new SHA and pivot gates, accepted-only prefab instance master, independent Showcase/Cabin/Bridge/Engineering/Cargo scene generation capability, updated QA state, C01-02/C01-00 handoff.
 
-Merge/rebase individually reviewed supplier PRs #3–7 onto this integration branch. Each asset must have a stable unique prefix `P15-01`, `P15-02`, etc., and include:
-- exactly one `Pxx-yy*.fbx` **under Unity Assets**, with imported actual MeshFilter;
-- exactly one `Pxx-yy*.blend`, native Blender source;
-- at least three `Pxx-yy*.png` or JPG previews from distinct angles;
-- supplier manifest with dimensions, Y-up origin, mount, material slots, collision, triangle count, version.
-  
-Recommended paths: FBX in `Assets/C01InteriorProps/Incoming/Pxx-yy/Pxx-yy_export.fbx`; native Blender sources in `C01InteriorProps/Sources/Pxx-yy_source.blend`; preview images in `C01InteriorProps/Previews/Pxx-yy_{front,side,iso}.png` (outside Assets). The builder scans `Assets` and the named external source/preview directories for the unique asset prefix and rejects duplicates. Its own `Generated` folder is excluded.
+**NOT RUN:** Unity compilation, FBX imports, actual .prefab and .unity file generation, PlayMode, Blender, physical clearance and screenshots in the current C01-10 runtime. The output scene names are **targets**, not files that exist.
 
-### Unity 6 URP invocation
-
-1. Open **the project at the branch which contains all 16 supplier assets**, and allow Unity to import FBX models.
-2. Menu: `C01 > Interior Props > Preflight (16 real assets)`. Read `C01InteriorProps_QA/PREFLIGHT.csv` outside Assets.
-3. Fix missing/duplicate FBX and .blend, zero/invalid mesh, unusually-sized geometry, non-unit root scale and missing three-angle previews at their owner. No automatic retopology or mesh recentering is performed.
-4. Run `C01 > Interior Props > Build Showcase + Cabin + Technical`.
-5. Unity creates the following **only after all 16 real inputs pass preflight**:
-   - `Assets/C01InteriorProps/Generated/Prefabs/P15-01.prefab` ... `P19-04.prefab`;
-   - `Assets/C01InteriorProps/Generated/Prefabs/C01_InteriorProps_Showcase_MASTER.prefab`;
-   - `Assets/C01InteriorProps/Generated/Scenes/C01_InteriorProps_Showcase.unity`;
-   - `Assets/C01InteriorProps/Generated/Scenes/C01_InteriorProps_Cabin.unity`;
-   - `Assets/C01InteriorProps/Generated/Scenes/C01_InteriorProps_TechnicalRoom.unity`.
-6. Commit Unity-generated prefabs/scenes and their `.meta` files in a follow-up commit **with real Unity evidence**; do not claim these files exist before building.
-7. Independently validate via C01-02 (#8), then request C01-00 acceptance.
-
-## Implementation guarantees and limitations
-
-- Imported FBX geometry remains unchanged: no vertex edits, no automatic change of pivot/rotation/scale.
-- Every individual generated prefab keeps its FBX as a nested model prefab instance; a conservative BoxCollider is added on the wrapper as a **provisional QA candidate**. Validate final collider clearances in Unity, especially doors and moving components.
-- Real-world dimensions are checked in Unity with provisional 0.20 m max deviation per axis. C01-01/C01-02 may mandate a tighter tolerance. Floor roots require mesh minimum Y within 0.05 m of zero.
-- Showcase is a **standalone inspection scene**, not inserted into the ship. Layout groups are Installations/Lighting/Controls/Cargo/Furniture. Empty x=-1.5..1.5m lane is only a diagnostic 3m reference strip, **not a verification of the actual ship corridor**.
-- Separate Cabin/TechnicalRoom scenes use clearly named `REFERENCE_ONLY_*` greybox floor/wall fixtures. They are not part of the sixteen supplier assets, and nothing overwrites `Assets/C01ShipV4`.
-- Model mount orientation, prefabs' absolute clearances in the real ship, sliding gates and elevators, and Blender sources **require review**. Do not deliver to production without real QA.
-
-## Owner handoff
-
-- C01-15 (#3): P15-01..03 (pipe, grille, cabinet)
-- C01-16 (#4): P16-01..03 (lightbar, emergency lamp, beacon)
-- C01-17 (#5): P17-01..03 (console, keypad, lever)
-- C01-18 (#6): P18-01..03 (crate, rack, cart)
-- C01-19 (#7): P19-01..04 (bunk, locker, desk, chair)
-- C01-02 (#8): independently test model dimension, pivot, normals, URP materials, colliders, door & corridor clearance, source file proof, and all 3 generated Unity scenes.
-
-## Test status
-
-- GitHub repo/PR baseline inspection: PASS (PR #1 is an open draft).
-- Missing input directory in base branch: CONFIRMED.
-- Builder source submitted on isolated branch: PASS.
-- Unity compilation / imports / prefabs / screenshots / PlayMode: **NOT RUN**.
-- Blender source roundtrip / native export: **NOT RUN**.
-- Independent C01-02 QA: **NOT RUN**.
-- Definition of Done: **BLOCKED**, not accepted.
+**Owner boundaries:** C01-15–19 own meshes, source Blend and FBX; C01-01 owns standards, C01-02 independently approves; C01-10 owns integration logic; C01-00 accepts. No ship source geometry, floor plan, gate or elevator is modified by this branch.

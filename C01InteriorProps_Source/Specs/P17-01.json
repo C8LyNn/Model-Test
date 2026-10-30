@@ -76,7 +76,7 @@
       "pos": [
         0,
         0.43,
-        0.22
+        0.219
       ],
       "size": [
         1.23,
@@ -496,6 +496,12 @@
     "originalMeshBuffersUnmodified": true,
     "childrenMovingControlsUnaffected": true,
     "BlenderExport": "NOT RUN",
-    "Unity": "NOT RUN"
+    "Unity": "NOT RUN",
+    "additionalConfirmedLegacyDefect": {
+      "id": "Backbone_vs_Plinth_coincident_rear_planes",
+      "original_overlap_area_mm2": 47970.00078,
+      "final_overlap_area_mm2": 0,
+      "sourceFix": "translate existing Backbone -1mm Z, keeping overlapping volume with Plinth and TopDeck, no mesh data/pivot edits"
+    }
   }
 }

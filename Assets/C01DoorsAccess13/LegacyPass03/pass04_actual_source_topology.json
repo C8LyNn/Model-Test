@@ -1,0 +1,92 @@
+{
+  "name": "C01-13 PASS04 indexed mesh audit",
+  "date": "2026-10-30",
+  "source": "Real actual original/repaired OBJ triangles previously extracted from C01-13 v002 GLB; SHA-pinned",
+  "method": "Exact indexed edge incidence, signed tetrahedral mesh volume, per-triangle area, near-collinear point-on-edge candidates; 1e-7m geometric epsilon",
+  "caveat": "Before D01 T-junctions are geometric candidates around separate contiguous cuboids; they are not independently certified visual cracks. After mesh has 0. No Blender/Unity run, scope outside 36 P15-P19",
+  "models": {
+    "D01": {
+      "before": {
+        "sha256": "404c6596d73ca515edf38e3e67fc28369341cfcf1351a317554d7ce5e56f8656",
+        "vertices": 24,
+        "edges": 54,
+        "faces": 36,
+        "triangles": 36,
+        "components": 3,
+        "duplicate_vertex_coordinates": 4,
+        "t_junction_candidates": 4,
+        "uv_corner_count": 0,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "zero_length_edges": 0,
+        "loose_vertices": 0,
+        "degenerate_faces": 0,
+        "duplicate_faces": 0
+      },
+      "after": {
+        "sha256": "89a4266edcf81485ef0eaac63e71549f956d025ba82e87080da2d69f6d523164",
+        "vertices": 20,
+        "edges": 54,
+        "faces": 36,
+        "triangles": 36,
+        "components": 1,
+        "duplicate_vertex_coordinates": 0,
+        "t_junction_candidates": 0,
+        "uv_corner_count": 108,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "zero_length_edges": 0,
+        "loose_vertices": 0,
+        "degenerate_faces": 0,
+        "duplicate_faces": 0
+      },
+      "bbox_max_error_m": 0,
+      "signed_volume_error_m3": 5.551115123125783e-17
+    },
+    "D02": {
+      "before": {
+        "sha256": "43982185dfedc5d720552b2cdd0cd76e3dabfdbad3aeed1054063311ebdd7d8a",
+        "vertices": 8,
+        "edges": 18,
+        "faces": 12,
+        "triangles": 12,
+        "components": 1,
+        "duplicate_vertex_coordinates": 0,
+        "t_junction_candidates": 0,
+        "uv_corner_count": 0,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "zero_length_edges": 0,
+        "loose_vertices": 0,
+        "degenerate_faces": 0,
+        "duplicate_faces": 0
+      },
+      "after": {
+        "sha256": "9faa05158dfc003f3d3e1ba5ab2a380317d53c2b53c48e6adceaf1b73461a7c7",
+        "vertices": 8,
+        "edges": 18,
+        "faces": 12,
+        "triangles": 12,
+        "components": 1,
+        "duplicate_vertex_coordinates": 0,
+        "t_junction_candidates": 0,
+        "uv_corner_count": 36,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "zero_length_edges": 0,
+        "loose_vertices": 0,
+        "degenerate_faces": 0,
+        "duplicate_faces": 0
+      },
+      "bbox_max_error_m": 0,
+      "signed_volume_error_m3": 0
+    }
+  },
+  "github_ci": {
+    "run_id": 41094190705,
+    "conclusion": "failure",
+    "steps_available": false,
+    "reason": "unknown: GitHub runner did not return executed step logs, NOT_RUN for Blender"
+  },
+  "qa": "PENDING_C01-02"
+}

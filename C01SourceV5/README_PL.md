@@ -6,6 +6,6 @@ Kratka to 3 m. Standardowe panele ścienne mają moduł 3 × 3 m, są osobnymi i
 
 Sektory pokładu 0 i 1 mają małe antresole 6 m nad podłogą, z czterech powtarzanych odcinków schodów i dwóch odcinków drabiny. Krótkie kanały wentylacyjne mają posadzkę, boczne ścianki, dach i kratkę na zamkniętym końcu; można wejść do nich z antresoli. Nie są to jeszcze kanały łączące sektory między sobą. Główne połączenia między pokładami zapewniają obie windy.
 
-Po uruchomieniu Play startuje spacer: WASD ruch, przytrzymany prawy przycisk myszy obraca widok, Shift przyspiesza, Spacja skacze, E rozpoczyna/kończy wspinanie w pobliżu drabiny, W/S wspina w górę/w dół; lewy przycisk uruchamia panel bramy/windy pod celownikiem. `1` wybiera podgląd, `2` wraca do spaceru. `R` przełącza dachy, `L` etykiety.
+Po uruchomieniu Play startuje spacer: WASD ruch, mysz obraca widok bez przytrzymywania przycisku, Shift przyspiesza, Spacja skacze, E obsługuje panel lub rozpoczyna/kończy wspinanie w pobliżu drabiny, W/S wspina w górę/w dół; lewy przycisk uruchamia panel bramy/windy pod celownikiem. Escape zwalnia kursor, kliknięcie przywraca sterowanie. `1` wybiera podgląd, `2` wraca do spaceru. `R` przełącza dachy, `L` etykiety.
 
 Moduły są osobnymi prefabami w `Prefabs/Modules`; rzeczywiste pliki FBX/OBJ znajdują się w `Models`. W paczce źródłowej są generator, testy, plik `.blend` i GLB. Generator sceny w edytorze: `Tools > C01 Ship v5 > Rebuild and verify`. Rzeczywiste wyniki, zrzuty oraz testy niewykonane są w raporcie QA.

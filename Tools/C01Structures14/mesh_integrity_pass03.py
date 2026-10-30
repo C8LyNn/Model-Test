@@ -72,8 +72,8 @@ def statistics(obj):
       signed_volume=signed_volume,uv0_present=uv is not None,invalid_uv=uv_errors,
       invalid_face_normals=invalid_normals,
       triangles_with_invalid_uv=sum(1 for tr in me.loop_triangles if uv is not None and abs(
-        (uv.data[tr.loops[1]].uv-uv.data[tr.loops[0]].uv).cross(
-         uv.data[tr.loops[2]].uv-uv.data[tr.loops[0]].uv))<1e-12),
+        (uv.data[tr.loops[1]].uv-uv.data[tr.loops[0]].uv).x * (uv.data[tr.loops[2]].uv-uv.data[tr.loops[0]].uv).y -
+        (uv.data[tr.loops[1]].uv-uv.data[tr.loops[0]].uv).y * (uv.data[tr.loops[2]].uv-uv.data[tr.loops[0]].uv).x)<1e-12),
       materials=[mat.name if mat else None for mat in me.materials],
       vertex_pair_candidates=colocated[:20],t_junction_samples=junctions[:20])
 def audit(id):

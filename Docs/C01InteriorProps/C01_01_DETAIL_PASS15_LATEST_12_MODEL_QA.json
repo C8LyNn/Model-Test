@@ -470,7 +470,8 @@
         "Intersections prove intended physical embedding only for these specific named pairs; they cannot rule out other collisions or z-fighting.",
         "Real native Blender .blend/FBX re-export/reimport and Unity6 URP remain NOT_RUN.",
         "P18-03 rotating wheel pivots and P16-06 rotor hierarchy still need real animated engine inspection; never weld moving parts into fixed assembly."
-      ]
+      ],
+      "source_contact_release_separation": "36/36 PASS is contact for added source parts only; 0/36 fully accepted Blender/FBX/Unity final assets"
     },
     "source_parity": {
       "P17_01": "PASS_380_380",
@@ -479,7 +480,7 @@
       "corrected_false_alarm": "P17-03 local-only transforms wrongly ignored LeverPivot parent and CoverBolt quaternions; no source mesh repair warranted."
     }
   },
-  "source_only_gate": "PASS_STATIC_INDEXED_TOPOLOGY_WITH_BROADPHASE_ATTACHMENT_SCREEN_AND_NO_FINISH_CLAIM",
+  "source_only_gate": "PASS_STATIC_INDEXED_TOPOLOGY_AND_TRUE_36_OF_36_SOURCE_DETAIL_TRIANGLE_SUPPORT_AND_FULL_GLTF_OBJ_PARITY_WITH_NATIVE_HOLD",
   "release_gate": {
     "actual_blender4_native_blend_after": "NOT_RUN",
     "blender_binary_fbx_after": "NOT_RUN",

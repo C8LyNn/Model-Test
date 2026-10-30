@@ -1,0 +1,367 @@
+{
+  "project": "C01-16",
+  "pass": "05",
+  "issue": 33,
+  "wave": "W02",
+  "run_utc": "2026-10-30",
+  "source": "Direct actual GitHub OBJ/FBX file reads, NOT a geometry reconstruction",
+  "ci_smoke_run": "https://github.com/C8LyNn/Model-Test/actions/runs/41098768804",
+  "ci_blender_run": "https://github.com/C8LyNn/Model-Test/actions/runs/41099226208",
+  "ci_diagnostic": {
+    "runner_id": 0,
+    "runner_name": "",
+    "steps_executed": 0,
+    "result": "FAIL_BEFORE_RUNNER_ALLOCATED",
+    "root_cause": "Unknown; cannot infer billing or account configuration from runner metadata"
+  },
+  "blender_installed_in_chat_container": false,
+  "models": [
+    {
+      "id": "P16-04",
+      "obj_blob_sha": "53c1e3883b62bce322db2c8b81d11f1f8186bfd1",
+      "existing_fbx_blob_sha": "b8d1c545984ddc1dd7790ae763d4e16f702d985a",
+      "fbx_is_binary": false,
+      "fbx_is_ascii": true,
+      "metrics": {
+        "vertices": 56,
+        "edges": 126,
+        "faces": 84,
+        "triangles": 84,
+        "parts": 7,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "degenerate_faces": 0,
+        "duplicate_faces": 0,
+        "invalid_normal_loops": 0,
+        "invalid_uv_loops": 0,
+        "coincident_position_indices": 0,
+        "cross_part_AABB_overlap_candidates": 8
+      },
+      "candidates": [
+        {
+          "part_a": "P16-04_STATIC_Steel_1",
+          "part_b": "P16-04_STATIC_Steel_3",
+          "overlap_xyz_m": [
+            0.025,
+            0.03,
+            0.045
+          ]
+        },
+        {
+          "part_a": "P16-04_STATIC_Steel_1",
+          "part_b": "P16-04_STATIC_Steel_4",
+          "overlap_xyz_m": [
+            0.025,
+            0.03,
+            0.045
+          ]
+        },
+        {
+          "part_a": "P16-04_STATIC_Steel_1",
+          "part_b": "P16-04_STATIC_DarkPanel_5",
+          "overlap_xyz_m": [
+            0.05,
+            0.015,
+            0.75
+          ]
+        },
+        {
+          "part_a": "P16-04_STATIC_Steel_2",
+          "part_b": "P16-04_STATIC_Steel_3",
+          "overlap_xyz_m": [
+            0.025,
+            0.03,
+            0.045
+          ]
+        },
+        {
+          "part_a": "P16-04_STATIC_Steel_2",
+          "part_b": "P16-04_STATIC_Steel_4",
+          "overlap_xyz_m": [
+            0.025,
+            0.03,
+            0.045
+          ]
+        },
+        {
+          "part_a": "P16-04_STATIC_Steel_2",
+          "part_b": "P16-04_STATIC_DarkPanel_5",
+          "overlap_xyz_m": [
+            0.05,
+            0.015,
+            0.75
+          ]
+        },
+        {
+          "part_a": "P16-04_STATIC_Steel_3",
+          "part_b": "P16-04_STATIC_DarkPanel_5",
+          "overlap_xyz_m": [
+            1.64,
+            0.01,
+            0.0275
+          ]
+        },
+        {
+          "part_a": "P16-04_STATIC_Steel_4",
+          "part_b": "P16-04_STATIC_DarkPanel_5",
+          "overlap_xyz_m": [
+            1.64,
+            0.01,
+            0.0275
+          ]
+        }
+      ],
+      "rotor_parts": 0,
+      "pass03_static_geometry_gate": "PASS",
+      "pass05_real_blender": "NOT_RUN",
+      "pass05_fbX_roundtrip": "NOT_RUN",
+      "unity": "NOT_RUN",
+      "independent_qa": "BLOCKED"
+    },
+    {
+      "id": "P16-05",
+      "obj_blob_sha": "c4edc40713df445e0c37ae5f7c159288b34b5957",
+      "existing_fbx_blob_sha": "078576421c3c728486ac6d0e218c31953f421856",
+      "fbx_is_binary": false,
+      "fbx_is_ascii": true,
+      "metrics": {
+        "vertices": 56,
+        "edges": 126,
+        "faces": 84,
+        "triangles": 84,
+        "parts": 7,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "degenerate_faces": 0,
+        "duplicate_faces": 0,
+        "invalid_normal_loops": 0,
+        "invalid_uv_loops": 0,
+        "coincident_position_indices": 0,
+        "cross_part_AABB_overlap_candidates": 7
+      },
+      "candidates": [
+        {
+          "part_a": "P16-05_STATIC_Steel_1",
+          "part_b": "P16-05_STATIC_DarkPanel_3",
+          "overlap_xyz_m": [
+            0.022,
+            0.245,
+            0.03
+          ]
+        },
+        {
+          "part_a": "P16-05_STATIC_Steel_2",
+          "part_b": "P16-05_STATIC_DarkPanel_3",
+          "overlap_xyz_m": [
+            0.022,
+            0.245,
+            0.03
+          ]
+        },
+        {
+          "part_a": "P16-05_STATIC_DarkPanel_3",
+          "part_b": "P16-05_STATIC_EmissionWhite_4",
+          "overlap_xyz_m": [
+            0.36,
+            0.055,
+            0.002
+          ]
+        },
+        {
+          "part_a": "P16-05_STATIC_DarkPanel_3",
+          "part_b": "P16-05_STATIC_EmissionWhite_5",
+          "overlap_xyz_m": [
+            0.15,
+            0.045,
+            0.002
+          ]
+        },
+        {
+          "part_a": "P16-05_STATIC_DarkPanel_3",
+          "part_b": "P16-05_STATIC_EmissionWhite_6",
+          "overlap_xyz_m": [
+            0.15,
+            0.045,
+            0.002
+          ]
+        },
+        {
+          "part_a": "P16-05_STATIC_EmissionWhite_4",
+          "part_b": "P16-05_STATIC_EmissionWhite_5",
+          "overlap_xyz_m": [
+            0.005,
+            0.001,
+            0.012
+          ]
+        },
+        {
+          "part_a": "P16-05_STATIC_EmissionWhite_4",
+          "part_b": "P16-05_STATIC_EmissionWhite_6",
+          "overlap_xyz_m": [
+            0.005,
+            0.001,
+            0.012
+          ]
+        }
+      ],
+      "rotor_parts": 0,
+      "pass03_static_geometry_gate": "PASS",
+      "pass05_real_blender": "NOT_RUN",
+      "pass05_fbX_roundtrip": "NOT_RUN",
+      "unity": "NOT_RUN",
+      "independent_qa": "BLOCKED"
+    },
+    {
+      "id": "P16-06",
+      "obj_blob_sha": "991272b113fd65d40cd620a0dbafa58a227976a2",
+      "existing_fbx_blob_sha": "a2dd22339411a61a66ddb60b233ecd0c2f54cd1f",
+      "fbx_is_binary": false,
+      "fbx_is_ascii": true,
+      "metrics": {
+        "vertices": 72,
+        "edges": 162,
+        "faces": 108,
+        "triangles": 108,
+        "parts": 9,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "degenerate_faces": 0,
+        "duplicate_faces": 0,
+        "invalid_normal_loops": 0,
+        "invalid_uv_loops": 0,
+        "coincident_position_indices": 0,
+        "cross_part_AABB_overlap_candidates": 4
+      },
+      "candidates": [
+        {
+          "part_a": "P16-06_ROTOR_Steel_4",
+          "part_b": "P16-06_ROTOR_DarkPanel_6",
+          "overlap_xyz_m": [
+            0.15,
+            0.018,
+            0.15
+          ]
+        },
+        {
+          "part_a": "P16-06_ROTOR_Steel_4",
+          "part_b": "P16-06_ROTOR_EmissionRed_8",
+          "overlap_xyz_m": [
+            0.014,
+            0.013,
+            0.1
+          ]
+        },
+        {
+          "part_a": "P16-06_ROTOR_DarkPanel_6",
+          "part_b": "P16-06_ROTOR_EmissionRed_7",
+          "overlap_xyz_m": [
+            0.11,
+            0.135,
+            0.004
+          ]
+        },
+        {
+          "part_a": "P16-06_ROTOR_DarkPanel_6",
+          "part_b": "P16-06_ROTOR_EmissionRed_8",
+          "overlap_xyz_m": [
+            0.009,
+            0.14,
+            0.1
+          ]
+        }
+      ],
+      "rotor_parts": 4,
+      "pass03_static_geometry_gate": "PASS",
+      "pass05_real_blender": "NOT_RUN",
+      "pass05_fbX_roundtrip": "NOT_RUN",
+      "unity": "NOT_RUN",
+      "independent_qa": "BLOCKED"
+    },
+    {
+      "id": "P16-07",
+      "obj_blob_sha": "83b8cb80ded21017e915cf709c94f76ac29fc9f3",
+      "existing_fbx_blob_sha": "2fec2e3c47684ee7f99f5d46904b2c52da26c126",
+      "fbx_is_binary": false,
+      "fbx_is_ascii": true,
+      "metrics": {
+        "vertices": 40,
+        "edges": 90,
+        "faces": 60,
+        "triangles": 60,
+        "parts": 5,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "degenerate_faces": 0,
+        "duplicate_faces": 0,
+        "invalid_normal_loops": 0,
+        "invalid_uv_loops": 0,
+        "coincident_position_indices": 0,
+        "cross_part_AABB_overlap_candidates": 6
+      },
+      "candidates": [
+        {
+          "part_a": "P16-07_STATIC_Steel_0",
+          "part_b": "P16-07_STATIC_Steel_1",
+          "overlap_xyz_m": [
+            0.012,
+            0.13,
+            0.01
+          ]
+        },
+        {
+          "part_a": "P16-07_STATIC_Steel_0",
+          "part_b": "P16-07_STATIC_Steel_2",
+          "overlap_xyz_m": [
+            0.012,
+            0.13,
+            0.01
+          ]
+        },
+        {
+          "part_a": "P16-07_STATIC_Steel_0",
+          "part_b": "P16-07_STATIC_DarkPanel_3",
+          "overlap_xyz_m": [
+            0.295,
+            0.13,
+            0.0085
+          ]
+        },
+        {
+          "part_a": "P16-07_STATIC_Steel_1",
+          "part_b": "P16-07_STATIC_DarkPanel_3",
+          "overlap_xyz_m": [
+            0.0085,
+            0.13,
+            0.055
+          ]
+        },
+        {
+          "part_a": "P16-07_STATIC_Steel_2",
+          "part_b": "P16-07_STATIC_DarkPanel_3",
+          "overlap_xyz_m": [
+            0.0085,
+            0.13,
+            0.055
+          ]
+        },
+        {
+          "part_a": "P16-07_STATIC_DarkPanel_3",
+          "part_b": "P16-07_STATIC_EmissionGreen_4",
+          "overlap_xyz_m": [
+            0.235,
+            0.075,
+            0.0065
+          ]
+        }
+      ],
+      "rotor_parts": 0,
+      "pass03_static_geometry_gate": "PASS",
+      "pass05_real_blender": "NOT_RUN",
+      "pass05_fbX_roundtrip": "NOT_RUN",
+      "unity": "NOT_RUN",
+      "independent_qa": "BLOCKED"
+    }
+  ],
+  "acceptance": "BLOCKED",
+  "comments": "AABB overlaps are only assembly/contact candidates, not proof of z-fighting or topology defects. No edits to the seven source meshes were required after PASS03."
+}

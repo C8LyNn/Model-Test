@@ -82,6 +82,8 @@ jobs:
           python-version: '3.11'
       - name: Validate static registry schema
         run: python library/C01InteriorProps_Library/Pass03/validate_pass03.py validate
+      - name: Registry unit tests (not mesh QA)
+        run: python -m unittest discover -s library/C01InteriorProps_Library/Pass03/tests -v
       - name: Capture actual BEFORE file SHA256; never confer QA PASS
         shell: bash
         run: |

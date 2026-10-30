@@ -3,9 +3,13 @@ on:
   workflow_dispatch:
   push:
     branches: [c01/props-18-cargo-wave02]
+    # Only original generator changes should rebuild; generated .blend/.fbx changes are outputs.
     paths:
-      - 'Assets/C01InteriorProps/C01-18-Wave02/Sources/**'
+      - 'Assets/C01InteriorProps/C01-18-Wave02/Sources/build_wave02.py'
       - '.github/workflows/c01-18-wave02-blender.yml'
+concurrency:
+  group: c01-18-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 permissions:
   contents: write
 jobs:

@@ -142,11 +142,12 @@ def merge_confirmed_static_solids():
         mod.operation="UNION";mod.solver="EXACT";mod.object=b
         bpy.ops.object.modifier_apply(modifier=mod.name)
         if len(a.data.polygons)==0:raise RuntimeError("Boolean produced empty mesh")
+        removed_part_name=b.name
         bpy.data.objects.remove(b,do_unlink=True)
         new_bounds=bounds([a])
         if max(abs(previous_bounds[j][k]-new_bounds[j][k]) for j in range(2) for k in range(3))>.0001:
             raise RuntimeError("Silhouette bounds changed by static boolean union")
-        changes.append({"action":"BOOLEAN_UNION_STATIC_SAME_MATERIAL","target":a.name,"removed_part":b.name,
+        changes.append({"action":"BOOLEAN_UNION_STATIC_SAME_MATERIAL","target":a.name,"removed_part":removed_part_name,
                         "overlap_volume_m3":round(volume,9),"location":center})
     else:raise RuntimeError("200 unions exceeded; abort")
     return changes

@@ -1,0 +1,1011 @@
+{
+  "schema": "C01-03-PASS14-36-ASSET-PROVENANCE_AND_RELEASE_GATES",
+  "scope_issue": "https://github.com/C8LyNn/Model-Test/issues/36",
+  "native_blocker": "https://github.com/C8LyNn/Model-Test/issues/33",
+  "source_snapshots_from_exact_producer_commits": "Each model stores source_commit_pin; producer_HEAD_observed may be newer with metadata-only commits",
+  "producer_heads_observed": {
+    "12": "ece25254360c1e37b5c57bb550418d357c7a2a87",
+    "15": "5e9929288c786877acbed01499052405dcec7aee",
+    "16": "7fe235571e38ea9491d8b8c5b393b5894c3d74c8",
+    "17": "beef826a2ab1e2bdd1b14cdf8a4d898324231c4d",
+    "18": "681fc52d2159ac774abf1f48efd7b89965d1afe8",
+    "23": "95acf91c5ce32df1e02ad118b7663a356a913f10",
+    "25": "0f35d273ae564a22f39e73e020b620e300a40778",
+    "26": "2a716f81394538b07f1dd83d7d94932d080ecaca",
+    "28": "f8a098795e4e5ae234cda121405bed51ca245a52",
+    "29": "28b3875d2e2b04b9f5c1702338755937e2495ad1"
+  },
+  "evidence_blob_sha1": {
+    "old": "86c4ed8a466db0a9561368019c3c5097364fb4ab",
+    "source11": "721d90b169c8f3d0aa8cdf2059bb387c3571a4d2",
+    "details": "80f8e2ca1dc5bbfe9f190806e6a8016a80fb53f1",
+    "p15": "2bc30ef0d38b872e5c0fe32e13e73bd9cbff81dc",
+    "qa": "e23c158a0c952dddaa45cf319ae101468b67bb2d",
+    "qaind": "898e23f837c3bf1a6fd77e8cef4d872461a01743"
+  },
+  "summary": {
+    "models_total": 36,
+    "existing_ids_only": true,
+    "models_with_current_verified_authoring_source_SHA256": 12,
+    "models_current_authored_OBJ_or_GLTF_SHA256": 11,
+    "P16_base_and_separate_detail_OBJ_checked": 7,
+    "P18_repaired_source_part_object_gaps": 7,
+    "P18_01_coplanar_source_pairs_remaining": 0,
+    "P18_03_rubber_upright_source_triangle_intersections_remaining": 0,
+    "P17_02_source_attachments_PASS": true,
+    "P15_03_source_spec_updated": true,
+    "P19_offline_native_format_candidate_models": 5,
+    "P19_07_visual_hold": true,
+    "Blender4_real_new_native_sources_saved": 0,
+    "Blender_origin_FBX_new_approved": 0,
+    "independent_final_binary_C01_02_APPROVED": 0,
+    "Unity6_URP_actual_PASSES": 0,
+    "release_blocked": 36,
+    "action": "NEEDS_OWNER_ACTION"
+  },
+  "assets": [
+    {
+      "id": "P15-01",
+      "owner": "C01-15",
+      "producer_pr": 16,
+      "producer_HEAD_observed": "7fe235571e38ea9491d8b8c5b393b5894c3d74c8",
+      "historical_native_binary_SHA256_not_new_export": {
+        "blend_sha256": "9d467364e439441fe9d5b3f58c1efae3afb1ff85056b5423c93f594313f54fac",
+        "fbx_sha256": "c8a65812910af6e40177f336d4568d71abd0b29cb5816c8a65ca0943ab9b9a2d",
+        "commit": "fa337ef7e942fb21c0ff879c4813ffcfc2526d41"
+      },
+      "pass14": {
+        "source_state": "NO_CURRENT_NEW_AUTHORING_SOURCE_SHA_IN_PASS14",
+        "source_QA": "NOT_RETESTED_PASS14",
+        "binary_FBX_sha256_new_Blender_export": null,
+        "BLEND_sha256_new_Blender_save": null,
+        "Blender_fbx_roundtrip": "NOT_RUN",
+        "independent_final_binary_C01_02": "BLOCKED",
+        "Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED"
+      }
+    },
+    {
+      "id": "P15-02",
+      "owner": "C01-15",
+      "producer_pr": 16,
+      "producer_HEAD_observed": "7fe235571e38ea9491d8b8c5b393b5894c3d74c8",
+      "historical_native_binary_SHA256_not_new_export": {
+        "blend_sha256": "1916c0cbcf20bfdc5f1a4326d35c6021aee4e8ce3ad56818b3c99c7d2258a4f0",
+        "fbx_sha256": "982f41120d2860d6d0ad7815c75850e2af4be61559f864fc0f332b8379a21c66",
+        "commit": "fa337ef7e942fb21c0ff879c4813ffcfc2526d41"
+      },
+      "pass14": {
+        "source_state": "NO_CURRENT_NEW_AUTHORING_SOURCE_SHA_IN_PASS14",
+        "source_QA": "NOT_RETESTED_PASS14",
+        "binary_FBX_sha256_new_Blender_export": null,
+        "BLEND_sha256_new_Blender_save": null,
+        "Blender_fbx_roundtrip": "NOT_RUN",
+        "independent_final_binary_C01_02": "BLOCKED",
+        "Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED"
+      }
+    },
+    {
+      "id": "P15-03",
+      "owner": "C01-15",
+      "producer_pr": 16,
+      "producer_HEAD_observed": "7fe235571e38ea9491d8b8c5b393b5894c3d74c8",
+      "historical_native_binary_SHA256_not_new_export": {
+        "blend_sha256": "71e06ba27e7c710b0916b0a2d1dba9ae093aa9813ff9e088205cd3d85020ec28",
+        "fbx_sha256": "f693ac90278a216375ca86ff9f204545a462aa414817777695ef37d1a492a657",
+        "commit": "fa337ef7e942fb21c0ff879c4813ffcfc2526d41"
+      },
+      "pass14": {
+        "source_state": "ACTUAL_AUTHORED_MECHANICAL_SPEC_VERIFIED",
+        "source_QA": "OFFLINE_HINGE_SWEEP_ONLY_361_SAMPLES",
+        "binary_FBX_sha256_new_Blender_export": null,
+        "BLEND_sha256_new_Blender_save": null,
+        "Blender_fbx_roundtrip": "NOT_RUN",
+        "independent_final_binary_C01_02": "BLOCKED",
+        "Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED",
+        "source_path": "Assets/C01InteriorProps/P15/Sources/geometry_spec.json",
+        "source_git_blob_sha1": "e021e5544c5966fe0ae28ea5b3204017c9f14b8d",
+        "source_commit_pin": "7fe235571e38ea9491d8b8c5b393b5894c3d74c8",
+        "source_SHA256": "f7001207c0a281b0a500a79a71264491151a32742091de71dfd64d4901a4de8b",
+        "source_spec_version": "0.1.3",
+        "detail_source_SHA256": null
+      }
+    },
+    {
+      "id": "P15-04",
+      "owner": "C01-15",
+      "producer_pr": 25,
+      "producer_HEAD_observed": "0f35d273ae564a22f39e73e020b620e300a40778",
+      "historical_native_binary_SHA256_not_new_export": {
+        "blend_sha256": "e834db9a60091d70578eef7028ef4becb799d22f07db2eb45c4cd376a360db3c",
+        "fbx_sha256": "aa5194ac645f822b7838331439d6e092fdc3990fe5ff067e0fc3f4446b560e29",
+        "commit": "d8b38194a81fd305caa2ae9c3ecd6d22f46cf011"
+      },
+      "pass14": {
+        "source_state": "NO_CURRENT_NEW_AUTHORING_SOURCE_SHA_IN_PASS14",
+        "source_QA": "NOT_RETESTED_PASS14",
+        "binary_FBX_sha256_new_Blender_export": null,
+        "BLEND_sha256_new_Blender_save": null,
+        "Blender_fbx_roundtrip": "NOT_RUN",
+        "independent_final_binary_C01_02": "BLOCKED",
+        "Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED"
+      }
+    },
+    {
+      "id": "P15-05",
+      "owner": "C01-15",
+      "producer_pr": 25,
+      "producer_HEAD_observed": "0f35d273ae564a22f39e73e020b620e300a40778",
+      "historical_native_binary_SHA256_not_new_export": {
+        "blend_sha256": "478534dce23d194e278a2a43805270bc1d4b39da58cbe99a488f5d39d72aba0b",
+        "fbx_sha256": "20788839b7deeef62312c03a90e3ff518ad9a8cc2fa7ac1318c7844fb6e79777",
+        "commit": "d8b38194a81fd305caa2ae9c3ecd6d22f46cf011"
+      },
+      "pass14": {
+        "source_state": "NO_CURRENT_NEW_AUTHORING_SOURCE_SHA_IN_PASS14",
+        "source_QA": "NOT_RETESTED_PASS14",
+        "binary_FBX_sha256_new_Blender_export": null,
+        "BLEND_sha256_new_Blender_save": null,
+        "Blender_fbx_roundtrip": "NOT_RUN",
+        "independent_final_binary_C01_02": "BLOCKED",
+        "Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED"
+      }
+    },
+    {
+      "id": "P15-06",
+      "owner": "C01-15",
+      "producer_pr": 25,
+      "producer_HEAD_observed": "0f35d273ae564a22f39e73e020b620e300a40778",
+      "historical_native_binary_SHA256_not_new_export": {
+        "blend_sha256": "39ecc494434d3064247844ffa08c44d3f59378b4081f3822ccab36f2b6abfc94",
+        "fbx_sha256": "32d7f7bd1b6173f85d5bb6e993151737b3dc4fb62c8418cb933f5fd2a6d6f77c",
+        "commit": "d8b38194a81fd305caa2ae9c3ecd6d22f46cf011"
+      },
+      "pass14": {
+        "source_state": "NO_CURRENT_NEW_AUTHORING_SOURCE_SHA_IN_PASS14",
+        "source_QA": "NOT_RETESTED_PASS14",
+        "binary_FBX_sha256_new_Blender_export": null,
+        "BLEND_sha256_new_Blender_save": null,
+        "Blender_fbx_roundtrip": "NOT_RUN",
+        "independent_final_binary_C01_02": "BLOCKED",
+        "Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED"
+      }
+    },
+    {
+      "id": "P15-07",
+      "owner": "C01-15",
+      "producer_pr": 25,
+      "producer_HEAD_observed": "0f35d273ae564a22f39e73e020b620e300a40778",
+      "historical_native_binary_SHA256_not_new_export": {
+        "blend_sha256": "d5d9234a298b54c74a247c629f7296a58ba1e4ec6486b77edaed10905f7f4a62",
+        "fbx_sha256": "9a814967043aedf487c24d1ded75faf3230328997f70bb320cae90b2388e5ee8",
+        "commit": "d8b38194a81fd305caa2ae9c3ecd6d22f46cf011"
+      },
+      "pass14": {
+        "source_state": "NO_CURRENT_NEW_AUTHORING_SOURCE_SHA_IN_PASS14",
+        "source_QA": "NOT_RETESTED_PASS14",
+        "binary_FBX_sha256_new_Blender_export": null,
+        "BLEND_sha256_new_Blender_save": null,
+        "Blender_fbx_roundtrip": "NOT_RUN",
+        "independent_final_binary_C01_02": "BLOCKED",
+        "Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED"
+      }
+    },
+    {
+      "id": "P16-01",
+      "owner": "C01-16",
+      "producer_pr": 12,
+      "producer_HEAD_observed": "ece25254360c1e37b5c57bb550418d357c7a2a87",
+      "historical_native_binary_SHA256_not_new_export": {
+        "blend_sha256": null,
+        "fbx_sha256": "8a3453701d7e1d9c0739f8dc0190e33e206a34bdcac76e6d3d33c4e5d9bb5158",
+        "commit": "054d84731737698fbdbdee2d387c4fff1b2a6673"
+      },
+      "pass14": {
+        "source_state": "ACTUAL_PRODUCER_GITHUB_SOURCE_VERIFIED",
+        "source_QA": "PASS_SOURCE_INDEXED_TARGETED_CONTACTS",
+        "binary_FBX_sha256_new_Blender_export": null,
+        "BLEND_sha256_new_Blender_save": null,
+        "Blender_fbx_roundtrip": "NOT_RUN",
+        "independent_final_binary_C01_02": "BLOCKED",
+        "Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED",
+        "source_path": "C01Source/Lighting/OBJ/P16-01.obj",
+        "source_commit_pin": "e9989d0fcc1eba28bc8f491b1fdb175451e013d2",
+        "source_git_blob_sha1": "5b64b4c6e208f72ebb8640b428411206e4c05896",
+        "source_SHA256": "6fea70ce09f16db7ae09e3dde33a4189c83dfa015a07b42b39097842a35c7732",
+        "source_metrics": {
+          "V": 40,
+          "UV": 120,
+          "normal": 120,
+          "F": 60,
+          "T": 60,
+          "parts": 5
+        },
+        "detail_source_SHA256": "b28d52e6ea6237129f14be70720d8bb7de65d9bf8d1d847b71ed743d9e3e299c",
+        "detail_source_git_blob_sha1": "d32eab80d6a3ebdf9c3dd7fe81cc516754a64509"
+      }
+    },
+    {
+      "id": "P16-02",
+      "owner": "C01-16",
+      "producer_pr": 12,
+      "producer_HEAD_observed": "ece25254360c1e37b5c57bb550418d357c7a2a87",
+      "historical_native_binary_SHA256_not_new_export": {
+        "blend_sha256": null,
+        "fbx_sha256": "30dd6bb3ac4a5333b271efa16f83c27a124ce2ea5cbd5d52d14a203cd022b80f",
+        "commit": "054d84731737698fbdbdee2d387c4fff1b2a6673"
+      },
+      "pass14": {
+        "source_state": "ACTUAL_PRODUCER_GITHUB_SOURCE_VERIFIED",
+        "source_QA": "PASS_SOURCE_INDEXED_TARGETED_CONTACTS",
+        "binary_FBX_sha256_new_Blender_export": null,
+        "BLEND_sha256_new_Blender_save": null,
+        "Blender_fbx_roundtrip": "NOT_RUN",
+        "independent_final_binary_C01_02": "BLOCKED",
+        "Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED",
+        "source_path": "C01Source/Lighting/OBJ/P16-02.obj",
+        "source_commit_pin": "e9989d0fcc1eba28bc8f491b1fdb175451e013d2",
+        "source_git_blob_sha1": "87227771c0a356b494fbc5fb0d9311679c6a4c14",
+        "source_SHA256": "bc18ddcaddffd29ebe1bba90ce85e5193b0b6c111daf26fb38e3f8e5eea8386c",
+        "source_metrics": {
+          "V": 40,
+          "UV": 120,
+          "normal": 120,
+          "F": 60,
+          "T": 60,
+          "parts": 5
+        },
+        "detail_source_SHA256": "9d3b434b44388c1214702528de4f8a94245d309c6ffbd62b42f2012df13e1a1a",
+        "detail_source_git_blob_sha1": "c7d73e53395720a5d6a13d4d2151032d34770053"
+      }
+    },
+    {
+      "id": "P16-03",
+      "owner": "C01-16",
+      "producer_pr": 12,
+      "producer_HEAD_observed": "ece25254360c1e37b5c57bb550418d357c7a2a87",
+      "historical_native_binary_SHA256_not_new_export": {
+        "blend_sha256": null,
+        "fbx_sha256": "f9e6866a94f1b6097da0a8fb4051f92580213df620554f781c5b5660bfa2f6e0",
+        "commit": "054d84731737698fbdbdee2d387c4fff1b2a6673"
+      },
+      "pass14": {
+        "source_state": "ACTUAL_PRODUCER_GITHUB_SOURCE_VERIFIED",
+        "source_QA": "PASS_SOURCE_INDEXED_TARGETED_CONTACTS",
+        "binary_FBX_sha256_new_Blender_export": null,
+        "BLEND_sha256_new_Blender_save": null,
+        "Blender_fbx_roundtrip": "NOT_RUN",
+        "independent_final_binary_C01_02": "BLOCKED",
+        "Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED",
+        "source_path": "C01Source/Lighting/OBJ/P16-03.obj",
+        "source_commit_pin": "e9989d0fcc1eba28bc8f491b1fdb175451e013d2",
+        "source_git_blob_sha1": "947f69388cf205dfd20252390c767949ae7b81cb",
+        "source_SHA256": "cd6a5deaadfce8e46dfb9c577c2d3691957fc8a9fde6951aba1ba93c826e5d05",
+        "source_metrics": {
+          "V": 40,
+          "UV": 120,
+          "normal": 120,
+          "F": 60,
+          "T": 60,
+          "parts": 5
+        },
+        "detail_source_SHA256": "493d8cf699acd50e3705c83d8dd716210c2fac6f15bd90d407a2818e3a7161d8",
+        "detail_source_git_blob_sha1": "0a3b454b1c053fe52b949be113705b5dc0846e79"
+      }
+    },
+    {
+      "id": "P16-04",
+      "owner": "C01-16",
+      "producer_pr": 28,
+      "producer_HEAD_observed": "f8a098795e4e5ae234cda121405bed51ca245a52",
+      "historical_native_binary_SHA256_not_new_export": {
+        "blend_sha256": null,
+        "fbx_sha256": "6961a40396d4417b78498b49070ea9864903744bcf69f30037aba00c13a9bdb1",
+        "commit": "78f9bd55af8c16dbe72d01b9b2a13279499eaacb"
+      },
+      "pass14": {
+        "source_state": "ACTUAL_PRODUCER_GITHUB_SOURCE_VERIFIED",
+        "source_QA": "PASS_SOURCE_INDEXED_TARGETED_CONTACTS",
+        "binary_FBX_sha256_new_Blender_export": null,
+        "BLEND_sha256_new_Blender_save": null,
+        "Blender_fbx_roundtrip": "NOT_RUN",
+        "independent_final_binary_C01_02": "BLOCKED",
+        "Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED",
+        "source_path": "C01Source/LightingW02/OBJ/P16-04.obj",
+        "source_commit_pin": "2ea3a97b83d89c0b1fec4b43526705d5fdf29386",
+        "source_git_blob_sha1": "16588a4ecf65fd0b7143bf875e40fd5586c436ef",
+        "source_SHA256": "a17c14a15064322574475d14ee3aa059ecb8a7768bbe369bdfe21558460735df",
+        "source_metrics": {
+          "V": 56,
+          "UV": 168,
+          "normal": 168,
+          "F": 84,
+          "T": 84,
+          "parts": 7
+        },
+        "detail_source_SHA256": "23e5d8cc90006181abc05c62aa058fe4f1c225aefe5419555a1869d638b3de5d",
+        "detail_source_git_blob_sha1": "aa2ab0ff5b4ba17de696433a2f1aa3c95b6f5ab2"
+      }
+    },
+    {
+      "id": "P16-05",
+      "owner": "C01-16",
+      "producer_pr": 28,
+      "producer_HEAD_observed": "f8a098795e4e5ae234cda121405bed51ca245a52",
+      "historical_native_binary_SHA256_not_new_export": {
+        "blend_sha256": null,
+        "fbx_sha256": "a173ef91b8376768ddb8d45505018af60e30fef6f1e5a7ffca976b2a2df2fe95",
+        "commit": "78f9bd55af8c16dbe72d01b9b2a13279499eaacb"
+      },
+      "pass14": {
+        "source_state": "ACTUAL_PRODUCER_GITHUB_SOURCE_VERIFIED",
+        "source_QA": "PASS_SOURCE_INDEXED_TARGETED_CONTACTS",
+        "binary_FBX_sha256_new_Blender_export": null,
+        "BLEND_sha256_new_Blender_save": null,
+        "Blender_fbx_roundtrip": "NOT_RUN",
+        "independent_final_binary_C01_02": "BLOCKED",
+        "Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED",
+        "source_path": "C01Source/LightingW02/OBJ/P16-05.obj",
+        "source_commit_pin": "2ea3a97b83d89c0b1fec4b43526705d5fdf29386",
+        "source_git_blob_sha1": "54dd26d7253008958615ec00e1cf6259e7e9e353",
+        "source_SHA256": "17f941ce500a582022966356ee203db4e0d6dd0951774f765486a28d864c99e8",
+        "source_metrics": {
+          "V": 56,
+          "UV": 168,
+          "normal": 168,
+          "F": 84,
+          "T": 84,
+          "parts": 7
+        },
+        "detail_source_SHA256": "16cf0949eac48b675183d685028ed5035d945f5f63ca937ad479c6e10a0eb0c3",
+        "detail_source_git_blob_sha1": "ab7f9d8587edf110f563766c945dcbffdff89207"
+      }
+    },
+    {
+      "id": "P16-06",
+      "owner": "C01-16",
+      "producer_pr": 28,
+      "producer_HEAD_observed": "f8a098795e4e5ae234cda121405bed51ca245a52",
+      "historical_native_binary_SHA256_not_new_export": {
+        "blend_sha256": null,
+        "fbx_sha256": "15ee8ed8576e31433c6342ff587b1eaa7878c56af13143ebfdf06ac4a8772f19",
+        "commit": "78f9bd55af8c16dbe72d01b9b2a13279499eaacb"
+      },
+      "pass14": {
+        "source_state": "ACTUAL_PRODUCER_GITHUB_SOURCE_VERIFIED",
+        "source_QA": "PASS_SOURCE_INDEXED_TARGETED_CONTACTS",
+        "binary_FBX_sha256_new_Blender_export": null,
+        "BLEND_sha256_new_Blender_save": null,
+        "Blender_fbx_roundtrip": "NOT_RUN",
+        "independent_final_binary_C01_02": "BLOCKED",
+        "Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED",
+        "source_path": "C01Source/LightingW02/OBJ/P16-06.obj",
+        "source_commit_pin": "2ea3a97b83d89c0b1fec4b43526705d5fdf29386",
+        "source_git_blob_sha1": "e0bd4b2f998162293fc660d6c5c5002e3fcf4a07",
+        "source_SHA256": "8a14a45d4a8b777f371bb86a338baf4521d151e594469e3bc260b513919eecca",
+        "source_metrics": {
+          "V": 72,
+          "UV": 216,
+          "normal": 216,
+          "F": 108,
+          "T": 108,
+          "parts": 9
+        },
+        "detail_source_SHA256": "0e0d466c52fbe432bee9c756f07e5a3db69ed1445de67852b95c8de824f05742",
+        "detail_source_git_blob_sha1": "b6ba4fcffd7e262de758aebbd33326ea55b500a3"
+      }
+    },
+    {
+      "id": "P16-07",
+      "owner": "C01-16",
+      "producer_pr": 28,
+      "producer_HEAD_observed": "f8a098795e4e5ae234cda121405bed51ca245a52",
+      "historical_native_binary_SHA256_not_new_export": {
+        "blend_sha256": null,
+        "fbx_sha256": "2ee60ac814b270b174d6b8941fdff4b4a83157653d896bde5ecbbe4f97af6fe9",
+        "commit": "78f9bd55af8c16dbe72d01b9b2a13279499eaacb"
+      },
+      "pass14": {
+        "source_state": "ACTUAL_PRODUCER_GITHUB_SOURCE_VERIFIED",
+        "source_QA": "PASS_SOURCE_INDEXED_TARGETED_CONTACTS",
+        "binary_FBX_sha256_new_Blender_export": null,
+        "BLEND_sha256_new_Blender_save": null,
+        "Blender_fbx_roundtrip": "NOT_RUN",
+        "independent_final_binary_C01_02": "BLOCKED",
+        "Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED",
+        "source_path": "C01Source/LightingW02/OBJ/P16-07.obj",
+        "source_commit_pin": "2ea3a97b83d89c0b1fec4b43526705d5fdf29386",
+        "source_git_blob_sha1": "a028a38a5ee8810a00ed684c3b9bc9d3c7119b4e",
+        "source_SHA256": "880ed34b69e2314249b332033e43b647563e3da298527f061e7178a79ae3f2a4",
+        "source_metrics": {
+          "V": 40,
+          "UV": 120,
+          "normal": 120,
+          "F": 60,
+          "T": 60,
+          "parts": 5
+        },
+        "detail_source_SHA256": "6c8fce6858aeb95cc902a38c5e4e2b4a45b0e999cbdc7a7ff8b1e311217fd766",
+        "detail_source_git_blob_sha1": "e21758b78fce32b1d9872bc6297406756fec8da5"
+      }
+    },
+    {
+      "id": "P17-01",
+      "owner": "C01-17",
+      "producer_pr": 17,
+      "producer_HEAD_observed": "beef826a2ab1e2bdd1b14cdf8a4d898324231c4d",
+      "historical_native_binary_SHA256_not_new_export": {
+        "blend_sha256": "24e488fb85fbb70ba8b14c5144a5bf8d95ab9da1b4dc193b1e47d6ccb8ff19f4",
+        "fbx_sha256": "6d4f9646a5711b97fb6f601ca0e57f7e222bb0231aaaa483ee5896a89f67c933",
+        "commit": "e3b7f2fac2be98f3b450aeb2ec2ac9f050e4e206"
+      },
+      "pass14": {
+        "source_state": "NO_CURRENT_NEW_AUTHORING_SOURCE_SHA_IN_PASS14",
+        "source_QA": "NOT_RETESTED_PASS14",
+        "binary_FBX_sha256_new_Blender_export": null,
+        "BLEND_sha256_new_Blender_save": null,
+        "Blender_fbx_roundtrip": "NOT_RUN",
+        "independent_final_binary_C01_02": "BLOCKED",
+        "Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED"
+      }
+    },
+    {
+      "id": "P17-02",
+      "owner": "C01-17",
+      "producer_pr": 17,
+      "producer_HEAD_observed": "beef826a2ab1e2bdd1b14cdf8a4d898324231c4d",
+      "historical_native_binary_SHA256_not_new_export": {
+        "blend_sha256": "f1522097191dc4af727fcef9da0208547f106e34fd4843d9437f46f144d9983e",
+        "fbx_sha256": "b6c3d875baf025b3a51dfdcbe0ebb89b1376b81f5da25f0d402cb84e7480bced",
+        "commit": "e3b7f2fac2be98f3b450aeb2ec2ac9f050e4e206"
+      },
+      "pass14": {
+        "source_state": "ACTUAL_PRODUCER_GITHUB_SOURCE_VERIFIED",
+        "source_QA": "PASS_TRIANGLE_CONTACT_SOURCE_VERIFIED_C01_02",
+        "binary_FBX_sha256_new_Blender_export": null,
+        "BLEND_sha256_new_Blender_save": null,
+        "Blender_fbx_roundtrip": "NOT_RUN",
+        "independent_final_binary_C01_02": "BLOCKED",
+        "Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED",
+        "source_path": "Assets/C01InteriorProps/Models/P17-02.gltf",
+        "source_commit_pin": "cdcc18428d2fb52c2c60826fc8af9a70f51c82f9",
+        "source_git_blob_sha1": "d80a67af140e434b983104aaec0078f9cf5bd66f",
+        "source_SHA256": "a9995704a70776b49f2bd6916a50cf222a4ab40b370a0a9e258b63bdc4429786",
+        "source_metrics": {
+          "mesh_instances": 38,
+          "triangles": 536
+        },
+        "detail_source_SHA256": null,
+        "detail_source_git_blob_sha1": null,
+        "offline_candidate_only": {
+          "type": "CUSTOM_FBX7400_WRITER_NOT_BLENDER_EXPORTED_NOT_IN_GIT",
+          "producer_reported_SHA256": "028aac19cfe3bb7ff873a08c948a95cfa31344cee2e87347f636030620e1ebe1"
+        }
+      }
+    },
+    {
+      "id": "P17-03",
+      "owner": "C01-17",
+      "producer_pr": 17,
+      "producer_HEAD_observed": "beef826a2ab1e2bdd1b14cdf8a4d898324231c4d",
+      "historical_native_binary_SHA256_not_new_export": {
+        "blend_sha256": "e9166617f6b194afbab01a59f4c2f13eccd1d62c2b9f058bfe989132a98667a3",
+        "fbx_sha256": "d307c04dd37792d1c69404124eb532617dfd86540dd029696edfbd5159180f3f",
+        "commit": "e3b7f2fac2be98f3b450aeb2ec2ac9f050e4e206"
+      },
+      "pass14": {
+        "source_state": "NO_CURRENT_NEW_AUTHORING_SOURCE_SHA_IN_PASS14",
+        "source_QA": "NOT_RETESTED_PASS14",
+        "binary_FBX_sha256_new_Blender_export": null,
+        "BLEND_sha256_new_Blender_save": null,
+        "Blender_fbx_roundtrip": "NOT_RUN",
+        "independent_final_binary_C01_02": "BLOCKED",
+        "Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED"
+      }
+    },
+    {
+      "id": "P17-04",
+      "owner": "C01-17",
+      "producer_pr": 23,
+      "producer_HEAD_observed": "95acf91c5ce32df1e02ad118b7663a356a913f10",
+      "historical_native_binary_SHA256_not_new_export": {
+        "blend_sha256": "deec97aa786e3f2e6ce4f1f1eaaeb034da52bb9c3b8d8163e9836e50304f96f3",
+        "fbx_sha256": "0b58f14caa2f6a4151430fd4457607061f6e5ad3a31978073f87e2301cb264c8",
+        "commit": "f7bf7dd93bc6dc60189b7a652cb375e962e61328"
+      },
+      "pass14": {
+        "source_state": "NO_CURRENT_NEW_AUTHORING_SOURCE_SHA_IN_PASS14",
+        "source_QA": "NOT_RETESTED_PASS14",
+        "binary_FBX_sha256_new_Blender_export": null,
+        "BLEND_sha256_new_Blender_save": null,
+        "Blender_fbx_roundtrip": "NOT_RUN",
+        "independent_final_binary_C01_02": "BLOCKED",
+        "Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED"
+      }
+    },
+    {
+      "id": "P17-05",
+      "owner": "C01-17",
+      "producer_pr": 23,
+      "producer_HEAD_observed": "95acf91c5ce32df1e02ad118b7663a356a913f10",
+      "historical_native_binary_SHA256_not_new_export": {
+        "blend_sha256": "6b85a1e6b81b0aaf790cce83560658f4970062f853ed59337749c29993b427a3",
+        "fbx_sha256": "b2ff6601d45e936ede795696e53aaf88c4805e4519222f59ecef86f720df73ac",
+        "commit": "f7bf7dd93bc6dc60189b7a652cb375e962e61328"
+      },
+      "pass14": {
+        "source_state": "NO_CURRENT_NEW_AUTHORING_SOURCE_SHA_IN_PASS14",
+        "source_QA": "NOT_RETESTED_PASS14",
+        "binary_FBX_sha256_new_Blender_export": null,
+        "BLEND_sha256_new_Blender_save": null,
+        "Blender_fbx_roundtrip": "NOT_RUN",
+        "independent_final_binary_C01_02": "BLOCKED",
+        "Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED"
+      }
+    },
+    {
+      "id": "P17-06",
+      "owner": "C01-17",
+      "producer_pr": 23,
+      "producer_HEAD_observed": "95acf91c5ce32df1e02ad118b7663a356a913f10",
+      "historical_native_binary_SHA256_not_new_export": {
+        "blend_sha256": "38f62e537827182911285e70d3906ee907c105cb8313b6fb6e87713d7e00780e",
+        "fbx_sha256": "13c0922b4d2999a5e980aa31c74f27921061a3795c256e840222f5ac5028b472",
+        "commit": "f7bf7dd93bc6dc60189b7a652cb375e962e61328"
+      },
+      "pass14": {
+        "source_state": "NO_CURRENT_NEW_AUTHORING_SOURCE_SHA_IN_PASS14",
+        "source_QA": "NOT_RETESTED_PASS14",
+        "binary_FBX_sha256_new_Blender_export": null,
+        "BLEND_sha256_new_Blender_save": null,
+        "Blender_fbx_roundtrip": "NOT_RUN",
+        "independent_final_binary_C01_02": "BLOCKED",
+        "Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED"
+      }
+    },
+    {
+      "id": "P17-07",
+      "owner": "C01-17",
+      "producer_pr": 23,
+      "producer_HEAD_observed": "95acf91c5ce32df1e02ad118b7663a356a913f10",
+      "historical_native_binary_SHA256_not_new_export": {
+        "blend_sha256": "d46758573f8bcd0dad8f267d62475516bcbbe9c9ee30bbc86756050b24ee668e",
+        "fbx_sha256": "12dc7c6cdde19792feaf6bfd8d9ef2f6aa80bb9848df424dccf0ab6f67ed46ea",
+        "commit": "f7bf7dd93bc6dc60189b7a652cb375e962e61328"
+      },
+      "pass14": {
+        "source_state": "NO_CURRENT_NEW_AUTHORING_SOURCE_SHA_IN_PASS14",
+        "source_QA": "NOT_RETESTED_PASS14",
+        "binary_FBX_sha256_new_Blender_export": null,
+        "BLEND_sha256_new_Blender_save": null,
+        "Blender_fbx_roundtrip": "NOT_RUN",
+        "independent_final_binary_C01_02": "BLOCKED",
+        "Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED"
+      }
+    },
+    {
+      "id": "P18-01",
+      "owner": "C01-18",
+      "producer_pr": 18,
+      "producer_HEAD_observed": "681fc52d2159ac774abf1f48efd7b89965d1afe8",
+      "historical_native_binary_SHA256_not_new_export": {
+        "blend_sha256": "d9e3037b754edd952473170ec0924b4849eec1aa2afc193c2151c9bf079b3a42",
+        "fbx_sha256": "0cb6d656008cbdedbc30ef0dca3fe5003136035b87a54b9668b49c35b19b974b",
+        "commit": "bfe7d5d8a6aac11b563a9c2b84c9fcf4d67bdcd5"
+      },
+      "pass14": {
+        "source_state": "ACTUAL_PRODUCER_GITHUB_SOURCE_VERIFIED",
+        "source_QA": "PASS_REAL_OBJ_INDEXED_C01_03_PLUS_INDEPENDENT_C01_02_TRIANGLES",
+        "binary_FBX_sha256_new_Blender_export": null,
+        "BLEND_sha256_new_Blender_save": null,
+        "Blender_fbx_roundtrip": "NOT_RUN",
+        "independent_final_binary_C01_02": "BLOCKED",
+        "Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED",
+        "source_path": "Assets/C01InteriorProps/C01-18/Models/P18-01.obj",
+        "source_commit_pin": "996b8e8f8deb86e2a59f1468fb8b318a7815cfa7",
+        "source_git_blob_sha1": "051ab09222a354f1c64f7c682442529b6f4d54ee",
+        "source_SHA256": "6d1cbedba52d975594c4d1c4c1addcf14f752ee7118a521a3e63c880e8044b06",
+        "source_metrics": {
+          "V": 416,
+          "UV": 1716,
+          "normal": 1716,
+          "F": 426,
+          "T": 684,
+          "parts": 37
+        },
+        "detail_source_SHA256": null,
+        "detail_source_git_blob_sha1": null,
+        "previously_disconnected_parts_fixed": 1,
+        "source_contacts_pass": true,
+        "coplanar_pairs_after": 0
+      }
+    },
+    {
+      "id": "P18-02",
+      "owner": "C01-18",
+      "producer_pr": 18,
+      "producer_HEAD_observed": "681fc52d2159ac774abf1f48efd7b89965d1afe8",
+      "historical_native_binary_SHA256_not_new_export": {
+        "blend_sha256": "2e84ca8c96b1cd1b9e1a93bf8600e556ca2b772b38d5bc94bc68614c4f1ffdb3",
+        "fbx_sha256": "45d40d65356808212812e10084d2f0df232e6922e9117e381baa9f4010875894",
+        "commit": "bfe7d5d8a6aac11b563a9c2b84c9fcf4d67bdcd5"
+      },
+      "pass14": {
+        "source_state": "ACTUAL_PRODUCER_GITHUB_SOURCE_VERIFIED",
+        "source_QA": "PASS_REAL_OBJ_INDEXED_C01_03_PLUS_INDEPENDENT_C01_02_TRIANGLES",
+        "binary_FBX_sha256_new_Blender_export": null,
+        "BLEND_sha256_new_Blender_save": null,
+        "Blender_fbx_roundtrip": "NOT_RUN",
+        "independent_final_binary_C01_02": "BLOCKED",
+        "Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED",
+        "source_path": "Assets/C01InteriorProps/C01-18/Models/P18-02.obj",
+        "source_commit_pin": "996b8e8f8deb86e2a59f1468fb8b318a7815cfa7",
+        "source_git_blob_sha1": "349fd2307eca8d2334cb8c8cbeb5f43ff9408d4b",
+        "source_SHA256": "dc9434a32b7de2235d80a374cc04778b657e39c8f98d88b288bdad40fbf6af2c",
+        "source_metrics": {
+          "V": 600,
+          "UV": 2548,
+          "normal": 2548,
+          "F": 666,
+          "T": 1012,
+          "parts": 47
+        },
+        "detail_source_SHA256": null,
+        "detail_source_git_blob_sha1": null,
+        "previously_disconnected_parts_fixed": 2,
+        "source_contacts_pass": true,
+        "coplanar_pairs_after": 0
+      }
+    },
+    {
+      "id": "P18-03",
+      "owner": "C01-18",
+      "producer_pr": 18,
+      "producer_HEAD_observed": "681fc52d2159ac774abf1f48efd7b89965d1afe8",
+      "historical_native_binary_SHA256_not_new_export": {
+        "blend_sha256": "a33b23ad173f56a545aa57ae2d81e24afa27928f497835596350e06772e343fc",
+        "fbx_sha256": "8957641fd68260852f29fc2aaf8019682e07dd99470f1c441db57837347d7619",
+        "commit": "bfe7d5d8a6aac11b563a9c2b84c9fcf4d67bdcd5"
+      },
+      "pass14": {
+        "source_state": "ACTUAL_PRODUCER_GITHUB_SOURCE_VERIFIED",
+        "source_QA": "PASS_REAL_OBJ_INDEXED_C01_03_PLUS_INDEPENDENT_C01_02_TRIANGLES",
+        "binary_FBX_sha256_new_Blender_export": null,
+        "BLEND_sha256_new_Blender_save": null,
+        "Blender_fbx_roundtrip": "NOT_RUN",
+        "independent_final_binary_C01_02": "BLOCKED",
+        "Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED",
+        "source_path": "Assets/C01InteriorProps/C01-18/Models/P18-03.obj",
+        "source_commit_pin": "996b8e8f8deb86e2a59f1468fb8b318a7815cfa7",
+        "source_git_blob_sha1": "e6440810d917df3c978505ce79f084ba1f98086c",
+        "source_SHA256": "22513002afb38d2d3f4a13ef429a41c9a04928528b3cffef87613d51351c1901",
+        "source_metrics": {
+          "V": 872,
+          "UV": 3908,
+          "normal": 3908,
+          "F": 1110,
+          "T": 1532,
+          "parts": 53
+        },
+        "detail_source_SHA256": null,
+        "detail_source_git_blob_sha1": null,
+        "previously_disconnected_parts_fixed": 4,
+        "source_contacts_pass": true,
+        "coplanar_pairs_after": 0,
+        "rubber_wheel_metal_post_crossing_pairs_after": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "ground_contacts": 4
+      }
+    },
+    {
+      "id": "P18-04",
+      "owner": "C01-18",
+      "producer_pr": 26,
+      "producer_HEAD_observed": "2a716f81394538b07f1dd83d7d94932d080ecaca",
+      "historical_native_binary_SHA256_not_new_export": {
+        "blend_sha256": "4a0531a877df0cbbcc2078b02297efccd966611e736bf70480a7572c6602ec52",
+        "fbx_sha256": "97298f0b49058f84eb2b746f8ac50af73f056f8bea43f11dde24fe9e550d1742",
+        "commit": "e2fdde1c213ecb65b3ca1800c635e41e939e90e2"
+      },
+      "pass14": {
+        "source_state": "NO_CURRENT_NEW_AUTHORING_SOURCE_SHA_IN_PASS14",
+        "source_QA": "NOT_RETESTED_PASS14",
+        "binary_FBX_sha256_new_Blender_export": null,
+        "BLEND_sha256_new_Blender_save": null,
+        "Blender_fbx_roundtrip": "NOT_RUN",
+        "independent_final_binary_C01_02": "BLOCKED",
+        "Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED"
+      }
+    },
+    {
+      "id": "P18-05",
+      "owner": "C01-18",
+      "producer_pr": 26,
+      "producer_HEAD_observed": "2a716f81394538b07f1dd83d7d94932d080ecaca",
+      "historical_native_binary_SHA256_not_new_export": {
+        "blend_sha256": "495260c299fa9afea63516549d50bcf3a581e1f3735409602e56859b41d23c5e",
+        "fbx_sha256": "2f4dbc8e7077e15b12f37f9fca64a0bc08e3ebde05776e602542e6efb648295e",
+        "commit": "e2fdde1c213ecb65b3ca1800c635e41e939e90e2"
+      },
+      "pass14": {
+        "source_state": "NO_CURRENT_NEW_AUTHORING_SOURCE_SHA_IN_PASS14",
+        "source_QA": "NOT_RETESTED_PASS14",
+        "binary_FBX_sha256_new_Blender_export": null,
+        "BLEND_sha256_new_Blender_save": null,
+        "Blender_fbx_roundtrip": "NOT_RUN",
+        "independent_final_binary_C01_02": "BLOCKED",
+        "Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED"
+      }
+    },
+    {
+      "id": "P18-06",
+      "owner": "C01-18",
+      "producer_pr": 26,
+      "producer_HEAD_observed": "2a716f81394538b07f1dd83d7d94932d080ecaca",
+      "historical_native_binary_SHA256_not_new_export": {
+        "blend_sha256": "b6819748f8ae88c21e0c93bee4dfdb00badb4ec78898b65e52eec4e9cce9aef8",
+        "fbx_sha256": "3bb79ebca800dd175aba71e02a9628db328da009abcd0414c43e4040dbc6d36f",
+        "commit": "e2fdde1c213ecb65b3ca1800c635e41e939e90e2"
+      },
+      "pass14": {
+        "source_state": "NO_CURRENT_NEW_AUTHORING_SOURCE_SHA_IN_PASS14",
+        "source_QA": "NOT_RETESTED_PASS14",
+        "binary_FBX_sha256_new_Blender_export": null,
+        "BLEND_sha256_new_Blender_save": null,
+        "Blender_fbx_roundtrip": "NOT_RUN",
+        "independent_final_binary_C01_02": "BLOCKED",
+        "Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED"
+      }
+    },
+    {
+      "id": "P18-07",
+      "owner": "C01-18",
+      "producer_pr": 26,
+      "producer_HEAD_observed": "2a716f81394538b07f1dd83d7d94932d080ecaca",
+      "historical_native_binary_SHA256_not_new_export": {
+        "blend_sha256": "f0fabddd21df84c49eba175522bbe17eeba389555dde7ffef39a7726cbd985c5",
+        "fbx_sha256": "68fb04e6572cfa54866a0a9bd7fb6da11d44408d7a946b26cb4cc78b9bc96873",
+        "commit": "e2fdde1c213ecb65b3ca1800c635e41e939e90e2"
+      },
+      "pass14": {
+        "source_state": "NO_CURRENT_NEW_AUTHORING_SOURCE_SHA_IN_PASS14",
+        "source_QA": "NOT_RETESTED_PASS14",
+        "binary_FBX_sha256_new_Blender_export": null,
+        "BLEND_sha256_new_Blender_save": null,
+        "Blender_fbx_roundtrip": "NOT_RUN",
+        "independent_final_binary_C01_02": "BLOCKED",
+        "Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED"
+      }
+    },
+    {
+      "id": "P19-01",
+      "owner": "C01-19",
+      "producer_pr": 15,
+      "producer_HEAD_observed": "5e9929288c786877acbed01499052405dcec7aee",
+      "historical_native_binary_SHA256_not_new_export": {
+        "blend_sha256": "a504773f8348e5f2b9619cf4fc3d0664d4e354b237dd0159dce8486bdc35bd22",
+        "fbx_sha256": "1670b2c7566539de49d70d4222bdc4c04ef947607d1abe05ac70f783a82f0581",
+        "commit": "9ae76a717eb5edeb5edcd3f5e27d8696f5d715ed"
+      },
+      "pass14": {
+        "source_state": "NO_CURRENT_NEW_AUTHORING_SOURCE_SHA_IN_PASS14",
+        "source_QA": "NOT_RETESTED_PASS14",
+        "binary_FBX_sha256_new_Blender_export": null,
+        "BLEND_sha256_new_Blender_save": null,
+        "Blender_fbx_roundtrip": "NOT_RUN",
+        "independent_final_binary_C01_02": "BLOCKED",
+        "Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED",
+        "offline_candidate_only": {
+          "type": "PRODUCER_OFFLINE_NATIVE_FORMAT_BINARY_NOT_IN_PRODUCER_GIT_LFS",
+          "producer_reported_blend_SHA256": "3d761f394d40f234c9aa4a1bc90eae90d43b47bdc22942015cd904bc05c34541",
+          "producer_reported_fbx_SHA256": "9dc4d6b724c4a5a4b45a04412dc5a61fe732fa1b4423a9f0c27889053960163b",
+          "source_qa_class": "SOURCE_CANDIDATE_STATIC_QA_ONLY"
+        }
+      }
+    },
+    {
+      "id": "P19-02",
+      "owner": "C01-19",
+      "producer_pr": 15,
+      "producer_HEAD_observed": "5e9929288c786877acbed01499052405dcec7aee",
+      "historical_native_binary_SHA256_not_new_export": {
+        "blend_sha256": "3c3ef13129b7fbf598f4ece35a76ee3068fa26fee464937baffbefb66fb19b80",
+        "fbx_sha256": "9612c4488ed147ad7359f9809009739ea317e22959c3871856757fe88dacc6d5",
+        "commit": "9ae76a717eb5edeb5edcd3f5e27d8696f5d715ed"
+      },
+      "pass14": {
+        "source_state": "NO_CURRENT_NEW_AUTHORING_SOURCE_SHA_IN_PASS14",
+        "source_QA": "NOT_RETESTED_PASS14",
+        "binary_FBX_sha256_new_Blender_export": null,
+        "BLEND_sha256_new_Blender_save": null,
+        "Blender_fbx_roundtrip": "NOT_RUN",
+        "independent_final_binary_C01_02": "BLOCKED",
+        "Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED",
+        "offline_candidate_only": {
+          "type": "PRODUCER_OFFLINE_NATIVE_FORMAT_BINARY_NOT_IN_PRODUCER_GIT_LFS",
+          "producer_reported_blend_SHA256": "5d2090c073b0071bfaebd4a7a9b2bae59f988535680594122b8a70fdd815c4f2",
+          "producer_reported_fbx_SHA256": "19a387f2dac9c528ff6f3ca363db741103add8b6f3dcf1402f01a105fc95f37a",
+          "source_qa_class": "SOURCE_CANDIDATE_STATIC_QA_ONLY"
+        }
+      }
+    },
+    {
+      "id": "P19-03",
+      "owner": "C01-19",
+      "producer_pr": 15,
+      "producer_HEAD_observed": "5e9929288c786877acbed01499052405dcec7aee",
+      "historical_native_binary_SHA256_not_new_export": {
+        "blend_sha256": "5c3422e71ee66f0260a3ea986d74ada6267ed7ee7f0cac446c31dc7586dd6455",
+        "fbx_sha256": "ee6f0d38e281d534af62902bc47fd89267e0c39b9e49b4ef6f35af71a6f2abb8",
+        "commit": "9ae76a717eb5edeb5edcd3f5e27d8696f5d715ed"
+      },
+      "pass14": {
+        "source_state": "NO_CURRENT_NEW_AUTHORING_SOURCE_SHA_IN_PASS14",
+        "source_QA": "NOT_RETESTED_PASS14",
+        "binary_FBX_sha256_new_Blender_export": null,
+        "BLEND_sha256_new_Blender_save": null,
+        "Blender_fbx_roundtrip": "NOT_RUN",
+        "independent_final_binary_C01_02": "BLOCKED",
+        "Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED"
+      }
+    },
+    {
+      "id": "P19-04",
+      "owner": "C01-19",
+      "producer_pr": 15,
+      "producer_HEAD_observed": "5e9929288c786877acbed01499052405dcec7aee",
+      "historical_native_binary_SHA256_not_new_export": {
+        "blend_sha256": "d58dc1905055b6d25888e0ccaeaa3e61b1b6a4757ba58976f31ab10665c2287d",
+        "fbx_sha256": "74ee2044132b47e995f537b2850e150711e8cb8ee47fcbbde38f42ed16808592",
+        "commit": "9ae76a717eb5edeb5edcd3f5e27d8696f5d715ed"
+      },
+      "pass14": {
+        "source_state": "NO_CURRENT_NEW_AUTHORING_SOURCE_SHA_IN_PASS14",
+        "source_QA": "NOT_RETESTED_PASS14",
+        "binary_FBX_sha256_new_Blender_export": null,
+        "BLEND_sha256_new_Blender_save": null,
+        "Blender_fbx_roundtrip": "NOT_RUN",
+        "independent_final_binary_C01_02": "BLOCKED",
+        "Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED"
+      }
+    },
+    {
+      "id": "P19-05",
+      "owner": "C01-19",
+      "producer_pr": 29,
+      "producer_HEAD_observed": "28b3875d2e2b04b9f5c1702338755937e2495ad1",
+      "historical_native_binary_SHA256_not_new_export": {
+        "blend_sha256": "a7c50a8ea1f41a7e590b1af7bf1dae83a49e0d049dcd7270cbe02690a88b3d8c",
+        "fbx_sha256": "e591b1d228ab2224109cc2bd79db411428c2b2d38846b45f595db4af8d377ba2",
+        "commit": "cae85cce223418d77a0334a48e5fbdc7984a688b"
+      },
+      "pass14": {
+        "source_state": "NO_CURRENT_NEW_AUTHORING_SOURCE_SHA_IN_PASS14",
+        "source_QA": "NOT_RETESTED_PASS14",
+        "binary_FBX_sha256_new_Blender_export": null,
+        "BLEND_sha256_new_Blender_save": null,
+        "Blender_fbx_roundtrip": "NOT_RUN",
+        "independent_final_binary_C01_02": "BLOCKED",
+        "Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED",
+        "offline_candidate_only": {
+          "type": "PRODUCER_OFFLINE_NATIVE_FORMAT_BINARY_NOT_IN_PRODUCER_GIT_LFS",
+          "producer_reported_blend_SHA256": "e658615784e35984297008f8927280998cd8364f7070aa05b31e76cd95dda5bc",
+          "producer_reported_fbx_SHA256": "a8b0d703062bdc8665ef7f8106ff7a5034f476103c41b0edde51f965480653ca",
+          "source_qa_class": "SOURCE_CANDIDATE_STATIC_QA_ONLY"
+        }
+      }
+    },
+    {
+      "id": "P19-06",
+      "owner": "C01-19",
+      "producer_pr": 29,
+      "producer_HEAD_observed": "28b3875d2e2b04b9f5c1702338755937e2495ad1",
+      "historical_native_binary_SHA256_not_new_export": {
+        "blend_sha256": "2fe00dd31c76da2fa7f82a3c8107d7802c106026e26d62ded6bef23d4b4d9dab",
+        "fbx_sha256": "9644a9e123696cd271649c62481bbbff150eb0734079a7a62af090d4f490a469",
+        "commit": "cae85cce223418d77a0334a48e5fbdc7984a688b"
+      },
+      "pass14": {
+        "source_state": "NO_CURRENT_NEW_AUTHORING_SOURCE_SHA_IN_PASS14",
+        "source_QA": "NOT_RETESTED_PASS14",
+        "binary_FBX_sha256_new_Blender_export": null,
+        "BLEND_sha256_new_Blender_save": null,
+        "Blender_fbx_roundtrip": "NOT_RUN",
+        "independent_final_binary_C01_02": "BLOCKED",
+        "Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED"
+      }
+    },
+    {
+      "id": "P19-07",
+      "owner": "C01-19",
+      "producer_pr": 29,
+      "producer_HEAD_observed": "28b3875d2e2b04b9f5c1702338755937e2495ad1",
+      "historical_native_binary_SHA256_not_new_export": {
+        "blend_sha256": "8d99c6286c6e28182742e69293eb393dc30c6abe9bb50fa77dee3a77fae9928a",
+        "fbx_sha256": "2c180a3607c49b43c48a14e4cf58f2b825f44b56e2e86cc02b17e6d96d6c8d43",
+        "commit": "cae85cce223418d77a0334a48e5fbdc7984a688b"
+      },
+      "pass14": {
+        "source_state": "NO_CURRENT_NEW_AUTHORING_SOURCE_SHA_IN_PASS14",
+        "source_QA": "NOT_RETESTED_PASS14",
+        "binary_FBX_sha256_new_Blender_export": null,
+        "BLEND_sha256_new_Blender_save": null,
+        "Blender_fbx_roundtrip": "NOT_RUN",
+        "independent_final_binary_C01_02": "BLOCKED",
+        "Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED",
+        "offline_candidate_only": {
+          "type": "PRODUCER_OFFLINE_NATIVE_FORMAT_BINARY_NOT_IN_PRODUCER_GIT_LFS",
+          "producer_reported_blend_SHA256": "345f9ca60508efed1d8d8b989011c0cc015d85877ec7ca1e01f8c9094d93faae",
+          "producer_reported_fbx_SHA256": "d9e832d4df2623b70842209944c1615d7aba7af6f042e16bf7720b4a95e9a3e1",
+          "source_qa_class": "HOLD_VERTEX_ON_EDGE_VISUAL_INSPECTION"
+        }
+      }
+    },
+    {
+      "id": "P19-08",
+      "owner": "C01-19",
+      "producer_pr": 29,
+      "producer_HEAD_observed": "28b3875d2e2b04b9f5c1702338755937e2495ad1",
+      "historical_native_binary_SHA256_not_new_export": {
+        "blend_sha256": "5b00c434831ef27f87e03b7716916b31893f8eb4f8733b7c95cc543510a27ce9",
+        "fbx_sha256": "65bc32a8f280941b24e8070a706e5733b30fde25d042f4cdd4398022e2edaf44",
+        "commit": "cae85cce223418d77a0334a48e5fbdc7984a688b"
+      },
+      "pass14": {
+        "source_state": "NO_CURRENT_NEW_AUTHORING_SOURCE_SHA_IN_PASS14",
+        "source_QA": "NOT_RETESTED_PASS14",
+        "binary_FBX_sha256_new_Blender_export": null,
+        "BLEND_sha256_new_Blender_save": null,
+        "Blender_fbx_roundtrip": "NOT_RUN",
+        "independent_final_binary_C01_02": "BLOCKED",
+        "Unity6_URP": "NOT_RUN",
+        "release": "BLOCKED",
+        "offline_candidate_only": {
+          "type": "PRODUCER_OFFLINE_NATIVE_FORMAT_BINARY_NOT_IN_PRODUCER_GIT_LFS",
+          "producer_reported_blend_SHA256": "900169ca7b587100fc9d3e1cfade3de6da7209cfef8c6531c5ccdd1bc4115766",
+          "producer_reported_fbx_SHA256": "c740c5de71443f2b01f20cb48f76f37e61fda53ddfd5c5a9d7d263d511772e11",
+          "source_qa_class": "SOURCE_CANDIDATE_STATIC_QA_ONLY"
+        }
+      }
+    }
+  ],
+  "rule": "Source SHA is a SHA256 of actual UTF8 OBJ/glTF/spec; producer-reported offline candidate hashes must never be presented as independently verified binary Blender origin. Release requires real Blender save->FBX export/reimport, independent hydrated binary QA, actual Unity6, and owner signoff."
+}

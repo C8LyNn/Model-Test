@@ -1,0 +1,75 @@
+name: C01-18 PASS03 Actual Blender topology repair P18-01_P18-02_P18-03
+on:
+  workflow_dispatch:
+  push:
+    branches: [c01/props-18-cargo]
+    paths:
+      - 'Assets/C01InteriorProps/C01-18/Repair/**'
+      - '.github/workflows/c01-18-wave01-pass03-repair.yml'
+permissions:
+  contents: write
+jobs:
+  topology-repair:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+          persist-credentials: true
+      - name: Install Blender 4 and Python dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y blender python3-numpy
+          blender --version
+          git lfs pull
+      - name: Audit and surgical repair on ACTUAL committed .blend
+        run: |
+          set -euo pipefail
+          blender -b --python Assets/C01InteriorProps/C01-18/Repair/mesh_repair.py -- "$PWD/Assets/C01InteriorProps/C01-18" P18-01 P18-02 P18-03
+      - name: Verify per-model source and after reports
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import pathlib,json
+          root=pathlib.Path('Assets/C01InteriorProps/C01-18')
+          for id in 'P18-01 P18-02 P18-03'.split():
+              p=root/'QA'/'Pass03'/id
+              before=json.loads((p/'mesh_topology_before.json').read_text())
+              after=json.loads((p/'mesh_topology_after.json').read_text())
+              fb=json.loads((p/'fbx_roundtrip.json').read_text())
+              assert fb['status']=='PASS'
+              assert before['total']['mesh_parts']==after['total']['mesh_parts']
+              assert before['total']['triangles']==after['total']['triangles']
+              for suffix in ('wireframe_before','wireframe_after','shaded_after','mesh_detail_after'):
+                  name=p/(suffix+'.png')
+                  assert name.is_file() and name.stat().st_size>500
+                  assert name.read_bytes()[:8]==b'\x89PNG\r\n\x1a\n'
+              for f in ('Sources/'+id+'.blend','Models/'+id+'.fbx'):
+                  assert (root/f).stat().st_size>500
+              print('C01_PASS03_VERIFIED',id,'before',before['total'],'after',after['total'])
+          PY
+      - name: Commit source repairs and exact before-after evidence to existing PR branch
+        run: |
+          set -euo pipefail
+          git lfs install --local
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Assets/C01InteriorProps/C01-18/QA/Pass03/
+          git add Assets/C01InteriorProps/C01-18/Sources/*.blend
+          git add Assets/C01InteriorProps/C01-18/Models/*.fbx
+          if git diff --cached --quiet; then
+            echo 'No material or evidence changes'
+          else
+            git commit -m 'C01-18 PASS03: preserve exact Blender mesh and topology before-after proof [skip ci]'
+            git push origin HEAD:c01/props-18-cargo
+          fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: C01-18-PASS03-W01-OriginalMeshEvidence
+          path: |
+            Assets/C01InteriorProps/C01-18/QA/Pass03/
+            Assets/C01InteriorProps/C01-18/Sources/*.blend
+            Assets/C01InteriorProps/C01-18/Models/*.fbx
+          if-no-files-found: error
+          retention-days: 30

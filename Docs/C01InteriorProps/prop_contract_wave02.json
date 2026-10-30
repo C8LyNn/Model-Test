@@ -1,0 +1,1194 @@
+{
+  "contract_id": "C01-PROP-INTERFACE-0.2.2-WAVE02",
+  "extends_contract_id": "C01-PROP-INTERFACE-0.2.1",
+  "architectural_contract": "C01-MAS-0.2-W02",
+  "status": "C01-01_LOCKED_FOR_PILOT_PENDING_C01-02_QA",
+  "scope": "NON_STRUCTURAL_INTERIOR_PROPS_ONLY",
+  "technical_reference": {
+    "engine": "Unity 6 URP",
+    "metres_per_unity_unit": 1,
+    "ship_grid_m": 3,
+    "ship_source_branch": "codex/c01-ship-integration",
+    "ship_source_pr": 1,
+    "model_front_local": "-Z",
+    "axes": "+X right,+Y up,+Z forward",
+    "wdh_to_xyz": [
+      "X",
+      "Z",
+      "Y"
+    ],
+    "root_scale": [
+      1,
+      1,
+      1
+    ],
+    "arch_source_readonly": true
+  },
+  "tolerances": {
+    "dimension_m": 0.002,
+    "pivot_m": 0.001,
+    "scale": 0.0001,
+    "port_position_m": 0.001,
+    "port_normal_degrees": 0.5,
+    "solid_penetration_m": 0.0001,
+    "nominal_overshoot_requires_approval_m": 0.01
+  },
+  "materials": {
+    "shader": "Universal Render Pipeline/Lit",
+    "allowed_families": [
+      "M_C01_STEEL",
+      "M_C01_PANEL_DARK",
+      "M_C01_CAUTION",
+      "M_C01_EMISSION"
+    ],
+    "max_slots": 4,
+    "emissive_color_variant_changes_only_color_not_geometry": true,
+    "normal_map_and_texture_require_valid_uv0": true
+  },
+  "required_evidence": [
+    "blend",
+    "fbx",
+    "unity_prefab",
+    "preview_front",
+    "preview_side",
+    "preview_top",
+    "manifest",
+    "sha256",
+    "qa_report"
+  ],
+  "qa_fields": [
+    "source_mesh",
+    "blender_export",
+    "fbx_roundtrip",
+    "unity_import",
+    "pivot",
+    "normals",
+    "uv0",
+    "materials",
+    "colliders",
+    "clearance",
+    "independent"
+  ],
+  "qa_states": [
+    "PASS",
+    "FAIL",
+    "BLOCKED",
+    "NOT_RUN"
+  ],
+  "asset_ids_wave01_reserved": [
+    "P15-01",
+    "P15-02",
+    "P15-03",
+    "P16-01",
+    "P16-02",
+    "P16-03",
+    "P17-01",
+    "P17-02",
+    "P17-03",
+    "P18-01",
+    "P18-02",
+    "P18-03",
+    "P19-01",
+    "P19-02",
+    "P19-03",
+    "P19-04"
+  ],
+  "assets": [
+    {
+      "id": "P15-04",
+      "owner": "C01-15",
+      "issue": 3,
+      "slug": "ceiling_cable_tray_straight_3m",
+      "nominal_wdh_m": [
+        3,
+        0.24,
+        0.18
+      ],
+      "pivot_profile": "rail",
+      "mount_surfaces": [
+        "ceiling"
+      ],
+      "interface_kind": "connector_straight",
+      "required_children": [
+        "Tray",
+        "MountBrackets"
+      ],
+      "materials": [
+        "M_C01_STEEL",
+        "M_C01_PANEL_DARK"
+      ],
+      "collider_policy": "static_compound",
+      "max_material_slots": 3,
+      "preview_views": [
+        "front",
+        "side",
+        "top"
+      ],
+      "status": "NOT_BUILT",
+      "ports": [
+        {
+          "name": "PORT_A",
+          "local_xyz_m": [
+            0,
+            0,
+            0
+          ],
+          "outward_normal": [
+            -1,
+            0,
+            0
+          ],
+          "aperture_yz_m": [
+            0.18,
+            0.24
+          ]
+        },
+        {
+          "name": "PORT_B",
+          "local_xyz_m": [
+            3,
+            0,
+            0
+          ],
+          "outward_normal": [
+            1,
+            0,
+            0
+          ],
+          "aperture_yz_m": [
+            0.18,
+            0.24
+          ]
+        }
+      ],
+      "reference_bounds_xyz_m": [
+        [
+          0,
+          -0.09,
+          -0.12
+        ],
+        [
+          3,
+          0.09,
+          0.12
+        ]
+      ]
+    },
+    {
+      "id": "P15-05",
+      "owner": "C01-15",
+      "issue": 3,
+      "slug": "ceiling_cable_tray_corner_90",
+      "nominal_wdh_m": [
+        0.62,
+        0.62,
+        0.18
+      ],
+      "pivot_profile": "elbow",
+      "mount_surfaces": [
+        "ceiling"
+      ],
+      "interface_kind": "connector_elbow",
+      "required_children": [
+        "TrayElbow",
+        "MountBrackets"
+      ],
+      "materials": [
+        "M_C01_STEEL",
+        "M_C01_PANEL_DARK"
+      ],
+      "collider_policy": "static_compound",
+      "max_material_slots": 3,
+      "preview_views": [
+        "front",
+        "side",
+        "top"
+      ],
+      "status": "NOT_BUILT",
+      "ports": [
+        {
+          "name": "PORT_A",
+          "local_xyz_m": [
+            -0.5,
+            0,
+            0
+          ],
+          "outward_normal": [
+            -1,
+            0,
+            0
+          ],
+          "aperture_yz_m": [
+            0.18,
+            0.24
+          ]
+        },
+        {
+          "name": "PORT_B",
+          "local_xyz_m": [
+            0,
+            0,
+            0.5
+          ],
+          "outward_normal": [
+            0,
+            0,
+            1
+          ],
+          "aperture_yz_m": [
+            0.18,
+            0.24
+          ]
+        }
+      ],
+      "reference_bounds_xyz_m": [
+        [
+          -0.5,
+          -0.09,
+          -0.12
+        ],
+        [
+          0.12,
+          0.09,
+          0.5
+        ]
+      ]
+    },
+    {
+      "id": "P15-06",
+      "owner": "C01-15",
+      "issue": 3,
+      "slug": "technical_cable_bundle_with_brackets",
+      "nominal_wdh_m": [
+        2,
+        0.2,
+        0.18
+      ],
+      "pivot_profile": "rail",
+      "mount_surfaces": [
+        "wall",
+        "ceiling"
+      ],
+      "interface_kind": "bracket_rail",
+      "required_children": [
+        "CableSet",
+        "Clip_A",
+        "Clip_B"
+      ],
+      "materials": [
+        "M_C01_PANEL_DARK",
+        "M_C01_CAUTION"
+      ],
+      "collider_policy": "static_compound",
+      "max_material_slots": 3,
+      "preview_views": [
+        "front",
+        "side",
+        "top"
+      ],
+      "status": "NOT_BUILT",
+      "reference_bounds_xyz_m": [
+        [
+          0,
+          -0.09,
+          -0.1
+        ],
+        [
+          2,
+          0.09,
+          0.1
+        ]
+      ]
+    },
+    {
+      "id": "P15-07",
+      "owner": "C01-15",
+      "issue": 3,
+      "slug": "wall_coolant_distributor",
+      "nominal_wdh_m": [
+        1.2,
+        0.35,
+        1.4
+      ],
+      "pivot_profile": "wall",
+      "mount_surfaces": [
+        "wall"
+      ],
+      "interface_kind": "service_ports",
+      "required_children": [
+        "Housing",
+        "SupplyPipe",
+        "ReturnPipe",
+        "Gauge_L",
+        "Gauge_R"
+      ],
+      "materials": [
+        "M_C01_STEEL",
+        "M_C01_PANEL_DARK",
+        "M_C01_CAUTION"
+      ],
+      "collider_policy": "static_compound",
+      "max_material_slots": 4,
+      "preview_views": [
+        "front",
+        "side",
+        "top"
+      ],
+      "status": "NOT_BUILT",
+      "reference_bounds_xyz_m": [
+        [
+          -0.6,
+          -0.7,
+          -0.35
+        ],
+        [
+          0.6,
+          0.7,
+          0
+        ]
+      ]
+    },
+    {
+      "id": "P16-04",
+      "owner": "C01-16",
+      "issue": 4,
+      "slug": "large_ceiling_light_panel",
+      "nominal_wdh_m": [
+        1.5,
+        0.6,
+        0.12
+      ],
+      "pivot_profile": "ceiling",
+      "mount_surfaces": [
+        "ceiling"
+      ],
+      "interface_kind": "emissive",
+      "required_children": [
+        "Housing",
+        "Diffuser"
+      ],
+      "materials": [
+        "M_C01_STEEL",
+        "M_C01_EMISSION"
+      ],
+      "collider_policy": "static_box",
+      "max_material_slots": 4,
+      "preview_views": [
+        "front",
+        "side",
+        "top"
+      ],
+      "status": "NOT_BUILT",
+      "reference_bounds_xyz_m": [
+        [
+          -0.75,
+          -0.12,
+          -0.3
+        ],
+        [
+          0.75,
+          0,
+          0.3
+        ]
+      ]
+    },
+    {
+      "id": "P16-05",
+      "owner": "C01-16",
+      "issue": 4,
+      "slug": "illuminated_corridor_directional_sign",
+      "nominal_wdh_m": [
+        0.9,
+        0.12,
+        0.35
+      ],
+      "pivot_profile": "wall",
+      "mount_surfaces": [
+        "wall"
+      ],
+      "interface_kind": "emissive",
+      "required_children": [
+        "Housing",
+        "IconFace"
+      ],
+      "materials": [
+        "M_C01_PANEL_DARK",
+        "M_C01_EMISSION"
+      ],
+      "collider_policy": "static_box",
+      "max_material_slots": 4,
+      "preview_views": [
+        "front",
+        "side",
+        "top"
+      ],
+      "status": "NOT_BUILT",
+      "reference_bounds_xyz_m": [
+        [
+          -0.45,
+          -0.175,
+          -0.12
+        ],
+        [
+          0.45,
+          0.175,
+          0
+        ]
+      ]
+    },
+    {
+      "id": "P16-06",
+      "owner": "C01-16",
+      "issue": 4,
+      "slug": "rotating_alarm_beacon",
+      "nominal_wdh_m": [
+        0.36,
+        0.36,
+        0.45
+      ],
+      "pivot_profile": "ceiling",
+      "mount_surfaces": [
+        "ceiling"
+      ],
+      "interface_kind": "rotor",
+      "required_children": [
+        "Housing",
+        "RotorPivot",
+        "RotorMesh"
+      ],
+      "materials": [
+        "M_C01_STEEL",
+        "M_C01_PANEL_DARK",
+        "M_C01_EMISSION"
+      ],
+      "collider_policy": "static_plus_kinematic",
+      "max_material_slots": 4,
+      "preview_views": [
+        "front",
+        "side",
+        "top"
+      ],
+      "status": "NOT_BUILT",
+      "reference_bounds_xyz_m": [
+        [
+          -0.18,
+          -0.45,
+          -0.18
+        ],
+        [
+          0.18,
+          0,
+          0.18
+        ]
+      ],
+      "moving_parts_policy": {
+        "transform_root": "separate child",
+        "initial_local_rotation_euler_xyz": [
+          0,
+          0,
+          0
+        ],
+        "root_scale_xyz": [
+          1,
+          1,
+          1
+        ],
+        "pivot_required": true,
+        "swept_volume_evidence_required": true
+      }
+    },
+    {
+      "id": "P16-07",
+      "owner": "C01-16",
+      "issue": 4,
+      "slug": "access_status_indicator",
+      "nominal_wdh_m": [
+        0.3,
+        0.12,
+        0.35
+      ],
+      "pivot_profile": "wall",
+      "mount_surfaces": [
+        "wall"
+      ],
+      "interface_kind": "status_3",
+      "required_children": [
+        "Housing",
+        "StatusFace"
+      ],
+      "materials": [
+        "M_C01_PANEL_DARK",
+        "M_C01_EMISSION"
+      ],
+      "collider_policy": "static_box",
+      "max_material_slots": 4,
+      "preview_views": [
+        "front",
+        "side",
+        "top"
+      ],
+      "status": "NOT_BUILT",
+      "reference_bounds_xyz_m": [
+        [
+          -0.15,
+          -0.175,
+          -0.12
+        ],
+        [
+          0.15,
+          0.175,
+          0
+        ]
+      ],
+      "variants": [
+        "available_green",
+        "locked_red",
+        "fault_amber"
+      ]
+    },
+    {
+      "id": "P17-04",
+      "owner": "C01-17",
+      "issue": 5,
+      "slug": "dual_screen_bridge_operator_station",
+      "nominal_wdh_m": [
+        2.4,
+        1,
+        1.35
+      ],
+      "pivot_profile": "floor",
+      "mount_surfaces": [
+        "floor"
+      ],
+      "interface_kind": "dual_screen",
+      "required_children": [
+        "Body",
+        "Screen_L",
+        "Screen_R"
+      ],
+      "materials": [
+        "M_C01_STEEL",
+        "M_C01_PANEL_DARK",
+        "M_C01_EMISSION"
+      ],
+      "collider_policy": "static_compound",
+      "max_material_slots": 4,
+      "preview_views": [
+        "front",
+        "side",
+        "top"
+      ],
+      "status": "NOT_BUILT",
+      "reference_bounds_xyz_m": [
+        [
+          -1.2,
+          0,
+          -0.5
+        ],
+        [
+          1.2,
+          1.35,
+          0.5
+        ]
+      ]
+    },
+    {
+      "id": "P17-05",
+      "owner": "C01-17",
+      "issue": 5,
+      "slug": "medical_laboratory_diagnostic_terminal",
+      "nominal_wdh_m": [
+        0.9,
+        0.55,
+        1.3
+      ],
+      "pivot_profile": "floor",
+      "mount_surfaces": [
+        "floor"
+      ],
+      "interface_kind": "single_screen",
+      "required_children": [
+        "Body",
+        "DiagnosticScreen"
+      ],
+      "materials": [
+        "M_C01_STEEL",
+        "M_C01_PANEL_DARK",
+        "M_C01_EMISSION"
+      ],
+      "collider_policy": "static_compound",
+      "max_material_slots": 4,
+      "preview_views": [
+        "front",
+        "side",
+        "top"
+      ],
+      "status": "NOT_BUILT",
+      "reference_bounds_xyz_m": [
+        [
+          -0.45,
+          0,
+          -0.275
+        ],
+        [
+          0.45,
+          1.3,
+          0.275
+        ]
+      ]
+    },
+    {
+      "id": "P17-06",
+      "owner": "C01-17",
+      "issue": 5,
+      "slug": "emergency_cutoff_panel",
+      "nominal_wdh_m": [
+        0.55,
+        0.24,
+        0.75
+      ],
+      "pivot_profile": "wall",
+      "mount_surfaces": [
+        "wall"
+      ],
+      "interface_kind": "dual_hinge",
+      "required_children": [
+        "Body",
+        "CoverPivot",
+        "CoverMesh",
+        "SwitchPivot",
+        "SwitchMesh"
+      ],
+      "materials": [
+        "M_C01_STEEL",
+        "M_C01_PANEL_DARK",
+        "M_C01_CAUTION"
+      ],
+      "collider_policy": "static_plus_kinematic",
+      "max_material_slots": 4,
+      "preview_views": [
+        "front",
+        "side",
+        "top"
+      ],
+      "status": "NOT_BUILT",
+      "reference_bounds_xyz_m": [
+        [
+          -0.275,
+          -0.375,
+          -0.24
+        ],
+        [
+          0.275,
+          0.375,
+          0
+        ]
+      ],
+      "moving_parts_policy": {
+        "transform_root": "separate child",
+        "initial_local_rotation_euler_xyz": [
+          0,
+          0,
+          0
+        ],
+        "root_scale_xyz": [
+          1,
+          1,
+          1
+        ],
+        "pivot_required": true,
+        "swept_volume_evidence_required": true
+      }
+    },
+    {
+      "id": "P17-07",
+      "owner": "C01-17",
+      "issue": 5,
+      "slug": "removable_fuse_module",
+      "nominal_wdh_m": [
+        0.65,
+        0.16,
+        0.85
+      ],
+      "pivot_profile": "wall",
+      "mount_surfaces": [
+        "wall"
+      ],
+      "interface_kind": "slide_fuse",
+      "required_children": [
+        "Housing",
+        "FuseSocket",
+        "FuseInsert"
+      ],
+      "materials": [
+        "M_C01_PANEL_DARK",
+        "M_C01_CAUTION"
+      ],
+      "collider_policy": "static_plus_kinematic",
+      "max_material_slots": 4,
+      "preview_views": [
+        "front",
+        "side",
+        "top"
+      ],
+      "status": "NOT_BUILT",
+      "reference_bounds_xyz_m": [
+        [
+          -0.325,
+          -0.425,
+          -0.16
+        ],
+        [
+          0.325,
+          0.425,
+          0
+        ]
+      ],
+      "moving_parts_policy": {
+        "transform_root": "separate child",
+        "initial_local_rotation_euler_xyz": [
+          0,
+          0,
+          0
+        ],
+        "root_scale_xyz": [
+          1,
+          1,
+          1
+        ],
+        "pivot_required": true,
+        "swept_volume_evidence_required": true
+      }
+    },
+    {
+      "id": "P18-04",
+      "owner": "C01-18",
+      "issue": 6,
+      "slug": "technical_transport_cylinder",
+      "nominal_wdh_m": [
+        0.75,
+        0.75,
+        1.2
+      ],
+      "pivot_profile": "floor",
+      "mount_surfaces": [
+        "floor"
+      ],
+      "interface_kind": "grabbable",
+      "required_children": [
+        "CylinderShell",
+        "GripSocket"
+      ],
+      "materials": [
+        "M_C01_STEEL",
+        "M_C01_PANEL_DARK"
+      ],
+      "collider_policy": "pickup_compound",
+      "max_material_slots": 4,
+      "preview_views": [
+        "front",
+        "side",
+        "top"
+      ],
+      "status": "NOT_BUILT",
+      "reference_bounds_xyz_m": [
+        [
+          -0.375,
+          0,
+          -0.375
+        ],
+        [
+          0.375,
+          1.2,
+          0.375
+        ]
+      ],
+      "pickup_policy": {
+        "socket": "SOCKET_GRIP",
+        "mass_distribution": "author declared",
+        "dynamic_collider": "convex compound primitive; no concave dynamic MeshCollider",
+        "pickup_playmode_required": true
+      }
+    },
+    {
+      "id": "P18-05",
+      "owner": "C01-18",
+      "issue": 6,
+      "slug": "lockable_equipment_case",
+      "nominal_wdh_m": [
+        0.55,
+        0.24,
+        0.4
+      ],
+      "pivot_profile": "floor",
+      "mount_surfaces": [
+        "floor"
+      ],
+      "interface_kind": "grabbable_hinge",
+      "required_children": [
+        "CaseBase",
+        "LidPivot",
+        "LidMesh",
+        "GripSocket"
+      ],
+      "materials": [
+        "M_C01_STEEL",
+        "M_C01_PANEL_DARK",
+        "M_C01_CAUTION"
+      ],
+      "collider_policy": "pickup_compound",
+      "max_material_slots": 4,
+      "preview_views": [
+        "front",
+        "side",
+        "top"
+      ],
+      "status": "NOT_BUILT",
+      "reference_bounds_xyz_m": [
+        [
+          -0.275,
+          0,
+          -0.12
+        ],
+        [
+          0.275,
+          0.4,
+          0.12
+        ]
+      ],
+      "moving_parts_policy": {
+        "transform_root": "separate child",
+        "initial_local_rotation_euler_xyz": [
+          0,
+          0,
+          0
+        ],
+        "root_scale_xyz": [
+          1,
+          1,
+          1
+        ],
+        "pivot_required": true,
+        "swept_volume_evidence_required": true
+      },
+      "pickup_policy": {
+        "socket": "SOCKET_GRIP",
+        "mass_distribution": "author declared",
+        "dynamic_collider": "convex compound primitive; no concave dynamic MeshCollider",
+        "pickup_playmode_required": true
+      }
+    },
+    {
+      "id": "P18-06",
+      "owner": "C01-18",
+      "issue": 6,
+      "slug": "hazardous_sample_secure_container",
+      "nominal_wdh_m": [
+        0.7,
+        0.62,
+        0.9
+      ],
+      "pivot_profile": "floor",
+      "mount_surfaces": [
+        "floor"
+      ],
+      "interface_kind": "grabbable",
+      "required_children": [
+        "ContainmentShell",
+        "GripSocket"
+      ],
+      "materials": [
+        "M_C01_STEEL",
+        "M_C01_PANEL_DARK",
+        "M_C01_CAUTION"
+      ],
+      "collider_policy": "pickup_compound",
+      "max_material_slots": 4,
+      "preview_views": [
+        "front",
+        "side",
+        "top"
+      ],
+      "status": "NOT_BUILT",
+      "reference_bounds_xyz_m": [
+        [
+          -0.35,
+          0,
+          -0.31
+        ],
+        [
+          0.35,
+          0.9,
+          0.31
+        ]
+      ],
+      "pickup_policy": {
+        "socket": "SOCKET_GRIP",
+        "mass_distribution": "author declared",
+        "dynamic_collider": "convex compound primitive; no concave dynamic MeshCollider",
+        "pickup_playmode_required": true
+      }
+    },
+    {
+      "id": "P18-07",
+      "owner": "C01-18",
+      "issue": 6,
+      "slug": "portable_tool_box",
+      "nominal_wdh_m": [
+        0.48,
+        0.3,
+        0.32
+      ],
+      "pivot_profile": "floor",
+      "mount_surfaces": [
+        "floor"
+      ],
+      "interface_kind": "grabbable_hinge",
+      "required_children": [
+        "ToolBox",
+        "LidPivot",
+        "LidMesh",
+        "GripSocket"
+      ],
+      "materials": [
+        "M_C01_STEEL",
+        "M_C01_PANEL_DARK",
+        "M_C01_CAUTION"
+      ],
+      "collider_policy": "pickup_compound",
+      "max_material_slots": 4,
+      "preview_views": [
+        "front",
+        "side",
+        "top"
+      ],
+      "status": "NOT_BUILT",
+      "reference_bounds_xyz_m": [
+        [
+          -0.24,
+          0,
+          -0.15
+        ],
+        [
+          0.24,
+          0.32,
+          0.15
+        ]
+      ],
+      "moving_parts_policy": {
+        "transform_root": "separate child",
+        "initial_local_rotation_euler_xyz": [
+          0,
+          0,
+          0
+        ],
+        "root_scale_xyz": [
+          1,
+          1,
+          1
+        ],
+        "pivot_required": true,
+        "swept_volume_evidence_required": true
+      },
+      "pickup_policy": {
+        "socket": "SOCKET_GRIP",
+        "mass_distribution": "author declared",
+        "dynamic_collider": "convex compound primitive; no concave dynamic MeshCollider",
+        "pickup_playmode_required": true
+      }
+    },
+    {
+      "id": "P19-05",
+      "owner": "C01-19",
+      "issue": 7,
+      "slug": "crew_two_seat_bench",
+      "nominal_wdh_m": [
+        1.4,
+        0.55,
+        0.82
+      ],
+      "pivot_profile": "floor",
+      "mount_surfaces": [
+        "floor"
+      ],
+      "interface_kind": "static",
+      "required_children": [
+        "Seat",
+        "Support"
+      ],
+      "materials": [
+        "M_C01_STEEL",
+        "M_C01_PANEL_DARK"
+      ],
+      "collider_policy": "static_compound",
+      "max_material_slots": 3,
+      "preview_views": [
+        "front",
+        "side",
+        "top"
+      ],
+      "status": "NOT_BUILT",
+      "reference_bounds_xyz_m": [
+        [
+          -0.7,
+          0,
+          -0.275
+        ],
+        [
+          0.7,
+          0.82,
+          0.275
+        ]
+      ]
+    },
+    {
+      "id": "P19-06",
+      "owner": "C01-19",
+      "issue": 7,
+      "slug": "foldable_wall_desk",
+      "nominal_wdh_m": [
+        0.8,
+        0.55,
+        0.15
+      ],
+      "pivot_profile": "wall",
+      "mount_surfaces": [
+        "wall"
+      ],
+      "interface_kind": "folding_table",
+      "required_children": [
+        "WallPlate",
+        "TablePivot",
+        "TableTop"
+      ],
+      "materials": [
+        "M_C01_STEEL",
+        "M_C01_PANEL_DARK"
+      ],
+      "collider_policy": "static_plus_kinematic",
+      "max_material_slots": 3,
+      "preview_views": [
+        "front",
+        "side",
+        "top"
+      ],
+      "status": "NOT_BUILT",
+      "reference_bounds_xyz_m": [
+        [
+          -0.4,
+          -0.075,
+          -0.55
+        ],
+        [
+          0.4,
+          0.075,
+          0
+        ]
+      ],
+      "moving_parts_policy": {
+        "transform_root": "separate child",
+        "initial_local_rotation_euler_xyz": [
+          0,
+          0,
+          0
+        ],
+        "root_scale_xyz": [
+          1,
+          1,
+          1
+        ],
+        "pivot_required": true,
+        "swept_volume_evidence_required": true
+      }
+    },
+    {
+      "id": "P19-07",
+      "owner": "C01-19",
+      "issue": 7,
+      "slug": "medical_diagnostic_bed",
+      "nominal_wdh_m": [
+        1.05,
+        2.2,
+        0.85
+      ],
+      "pivot_profile": "floor",
+      "mount_surfaces": [
+        "floor"
+      ],
+      "interface_kind": "static",
+      "required_children": [
+        "Frame",
+        "Mattress"
+      ],
+      "materials": [
+        "M_C01_STEEL",
+        "M_C01_PANEL_DARK"
+      ],
+      "collider_policy": "static_compound",
+      "max_material_slots": 3,
+      "preview_views": [
+        "front",
+        "side",
+        "top"
+      ],
+      "status": "NOT_BUILT",
+      "reference_bounds_xyz_m": [
+        [
+          -0.525,
+          0,
+          -1.1
+        ],
+        [
+          0.525,
+          0.85,
+          1.1
+        ]
+      ]
+    },
+    {
+      "id": "P19-08",
+      "owner": "C01-19",
+      "issue": 7,
+      "slug": "crew_sanitary_sink_module",
+      "nominal_wdh_m": [
+        0.75,
+        0.55,
+        1.3
+      ],
+      "pivot_profile": "floor",
+      "mount_surfaces": [
+        "floor"
+      ],
+      "interface_kind": "sanitary",
+      "required_children": [
+        "Base",
+        "Basin",
+        "Tap"
+      ],
+      "materials": [
+        "M_C01_STEEL",
+        "M_C01_PANEL_DARK"
+      ],
+      "collider_policy": "static_compound",
+      "max_material_slots": 3,
+      "preview_views": [
+        "front",
+        "side",
+        "top"
+      ],
+      "status": "NOT_BUILT",
+      "reference_bounds_xyz_m": [
+        [
+          -0.375,
+          0,
+          -0.275
+        ],
+        [
+          0.375,
+          1.3,
+          0.275
+        ]
+      ]
+    }
+  ]
+}

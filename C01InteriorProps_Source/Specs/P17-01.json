@@ -293,11 +293,175 @@
       ],
       "mat": "DARK",
       "parent": "ROOT"
+    },
+    {
+      "type": "cylinder_8",
+      "name": "ScreenMountBolt_LB",
+      "pos": [
+        -0.595,
+        0.926,
+        0.271
+      ],
+      "radius": 0.006,
+      "length": 0.004,
+      "axis": "+Z",
+      "size": [
+        0.012,
+        0.012,
+        0.004
+      ],
+      "mat": "STEEL",
+      "parent": "ROOT",
+      "support": "ScreenHousing",
+      "purpose": "screen-bezel structural fastener",
+      "detailPass": 15
+    },
+    {
+      "type": "cylinder_8",
+      "name": "ScreenMountBolt_LT",
+      "pos": [
+        -0.595,
+        1.021,
+        0.271
+      ],
+      "radius": 0.006,
+      "length": 0.004,
+      "axis": "+Z",
+      "size": [
+        0.012,
+        0.012,
+        0.004
+      ],
+      "mat": "STEEL",
+      "parent": "ROOT",
+      "support": "ScreenHousing",
+      "purpose": "screen-bezel structural fastener",
+      "detailPass": 15
+    },
+    {
+      "type": "cylinder_8",
+      "name": "ScreenMountBolt_RB",
+      "pos": [
+        0.595,
+        0.926,
+        0.271
+      ],
+      "radius": 0.006,
+      "length": 0.004,
+      "axis": "+Z",
+      "size": [
+        0.012,
+        0.012,
+        0.004
+      ],
+      "mat": "STEEL",
+      "parent": "ROOT",
+      "support": "ScreenHousing",
+      "purpose": "screen-bezel structural fastener",
+      "detailPass": 15
+    },
+    {
+      "type": "cylinder_8",
+      "name": "ScreenMountBolt_RT",
+      "pos": [
+        0.595,
+        1.021,
+        0.271
+      ],
+      "radius": 0.006,
+      "length": 0.004,
+      "axis": "+Z",
+      "size": [
+        0.012,
+        0.012,
+        0.004
+      ],
+      "mat": "STEEL",
+      "parent": "ROOT",
+      "support": "ScreenHousing",
+      "purpose": "screen-bezel structural fastener",
+      "detailPass": 15
+    },
+    {
+      "type": "box",
+      "name": "KeyboardGuide_L",
+      "pos": [
+        -0.454,
+        0.879,
+        -0.17
+      ],
+      "size": [
+        0.018,
+        0.018,
+        0.21
+      ],
+      "mat": "STEEL",
+      "parent": "ROOT",
+      "support": "Keyboard",
+      "purpose": "protective lateral keyboard retaining rail",
+      "detailPass": 15
+    },
+    {
+      "type": "box",
+      "name": "KeyboardGuide_R",
+      "pos": [
+        0.454,
+        0.879,
+        -0.17
+      ],
+      "size": [
+        0.018,
+        0.018,
+        0.21
+      ],
+      "mat": "STEEL",
+      "parent": "ROOT",
+      "support": "Keyboard",
+      "purpose": "protective lateral keyboard retaining rail",
+      "detailPass": 15
+    },
+    {
+      "type": "box",
+      "name": "RearServiceLatch_L",
+      "pos": [
+        -0.42,
+        0.65,
+        0.2905
+      ],
+      "size": [
+        0.036,
+        0.025,
+        0.005
+      ],
+      "mat": "STEEL",
+      "parent": "ROOT",
+      "support": "RearPanel",
+      "purpose": "rear service panel flush-latch",
+      "detailPass": 15
+    },
+    {
+      "type": "box",
+      "name": "RearServiceLatch_R",
+      "pos": [
+        0.42,
+        0.65,
+        0.2905
+      ],
+      "size": [
+        0.036,
+        0.025,
+        0.005
+      ],
+      "mat": "STEEL",
+      "parent": "ROOT",
+      "support": "RearPanel",
+      "purpose": "rear service panel flush-latch",
+      "detailPass": 15
     }
   ],
-  "expectedTriangleCount": 204,
-  "state": "mesh_data_created; Blender FBX and Unity still require execution",
-  "version": "0.1.0",
+  "expectedTriangleCount": 380,
+  "state": "PASS15_DETAIL_AUTHORING_GLTF_OBJ_UPDATED_BLENDER_FBX_STALE",
+  "version": "0.2.0",
   "units": "meters",
   "axes": "Y up; +Z toward access side for keypad",
   "materials": [
@@ -306,5 +470,15 @@
     "CAUTION",
     "EMISSION"
   ],
-  "owner": "C01-17"
+  "owner": "C01-17",
+  "detailPass15": {
+    "newParts": 8,
+    "originalParts": 17,
+    "originalTriangles": 204,
+    "newTriangles": 176,
+    "totalTriangles": 380,
+    "nativeBlenderFBX": "NOT_RUN",
+    "Unity6": "NOT_RUN",
+    "notes": "Preserved all preexisting moving pivots, part geometry and materials; new service hardware mounted on static parent ROOT"
+  }
 }

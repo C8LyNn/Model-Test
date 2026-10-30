@@ -549,6 +549,9 @@ namespace C01.InteriorProps.Editor
             string absolute=Absolute(root+".");
             if(!Directory.Exists(absolute))
                 throw new DirectoryNotFoundException("No staged QA FBX copies: "+root);
+            // External Git LFS hydration may have copied FBX bytes after Unity
+            // last refreshed AssetDatabase. Import real files synchronously.
+            AssetDatabase.Refresh(ImportAssetOptions.ForceSynchronousImport);
             int adjusted=0;
             foreach(var fbx in Directory.GetFiles(absolute,"*.fbx",SearchOption.AllDirectories))
             {
@@ -667,6 +670,9 @@ namespace C01.InteriorProps.Editor
         // Unity batchmode: -executeMethod C01.InteriorProps.Editor.Pass04SourceImportAudit.RunBatch
         public static void RunBatch()
         {
+            // A self-contained real batch import, never only a dry-run command:
+            // staged binaries are refreshed and configured before inspecting them.
+            PrepareReadableStagedCopies();
             Audit();
             BuildQuarantine(); // fails loudly if no actual validated sources
         }

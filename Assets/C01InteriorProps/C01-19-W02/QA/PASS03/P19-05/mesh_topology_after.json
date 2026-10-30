@@ -1,0 +1,370 @@
+{
+  "id": "P19-05",
+  "result": "PASS_STATIC_PARTS",
+  "changes": [
+    {
+      "action": "BOOLEAN_UNION_STATIC_SAME_MATERIAL",
+      "target": "Foot_-0.62_-0.21",
+      "removed_part": "Seat_Frame",
+      "overlap_volume_m3": 1.225e-05,
+      "location": [
+        -0.6200000047683716,
+        0.20999999344348907,
+        0.45875000953674316
+      ]
+    },
+    {
+      "action": "BOOLEAN_UNION_STATIC_SAME_MATERIAL",
+      "target": "Foot_-0.62_-0.21",
+      "removed_part": "Foot_-0.62_0.21",
+      "overlap_volume_m3": 0.002254001,
+      "location": [
+        -0.6200000047683716,
+        -0.20999999344348907,
+        0.23000000417232513
+      ]
+    },
+    {
+      "action": "BOOLEAN_UNION_STATIC_SAME_MATERIAL",
+      "target": "Foot_-0.62_-0.21",
+      "removed_part": "Foot_0.62_-0.21",
+      "overlap_volume_m3": 0.002254001,
+      "location": [
+        0.6200000047683716,
+        0.20999999344348907,
+        0.23000000417232513
+      ]
+    },
+    {
+      "action": "BOOLEAN_UNION_STATIC_SAME_MATERIAL",
+      "target": "Foot_-0.62_-0.21",
+      "removed_part": "Foot_0.62_0.21",
+      "overlap_volume_m3": 0.002254001,
+      "location": [
+        0.6200000047683716,
+        -0.20999999344348907,
+        0.23000000417232513
+      ]
+    }
+  ],
+  "exceptions": [
+    {
+      "classification": "INTENTIONAL_SEPARATE_COMPONENT",
+      "reason": "preserve material boundaries or movable hierarchy",
+      "overlap": {
+        "a": "Foot_-0.62_-0.21",
+        "b": "Seat_Edge",
+        "volume_m3": 8.28e-05,
+        "same_material": false,
+        "moving": false,
+        "center": [
+          0.0,
+          0.27300000190734863,
+          0.4860000014305115
+        ]
+      }
+    },
+    {
+      "classification": "INTENTIONAL_SEPARATE_COMPONENT",
+      "reason": "preserve material boundaries or movable hierarchy",
+      "overlap": {
+        "a": "Left_Cushion",
+        "b": "Back_Strut_-0.62",
+        "volume_m3": 5.1756e-05,
+        "same_material": false,
+        "moving": false,
+        "center": [
+          -0.6200000047683716,
+          -0.21875,
+          0.5372500121593475
+        ]
+      }
+    },
+    {
+      "classification": "INTENTIONAL_SEPARATE_COMPONENT",
+      "reason": "preserve material boundaries or movable hierarchy",
+      "overlap": {
+        "a": "Right_Cushion",
+        "b": "Back_Strut_0.62",
+        "volume_m3": 5.1756e-05,
+        "same_material": false,
+        "moving": false,
+        "center": [
+          0.6200000047683716,
+          -0.21875,
+          0.5372500121593475
+        ]
+      }
+    },
+    {
+      "classification": "INTENTIONAL_SEPARATE_COMPONENT",
+      "reason": "preserve material boundaries or movable hierarchy",
+      "overlap": {
+        "a": "Back_Strut_-0.62",
+        "b": "Backrest",
+        "volume_m3": 0.001245563,
+        "same_material": false,
+        "moving": false,
+        "center": [
+          -0.6200000047683716,
+          -0.24124999344348907,
+          0.7425000071525574
+        ]
+      }
+    },
+    {
+      "classification": "INTENTIONAL_SEPARATE_COMPONENT",
+      "reason": "preserve material boundaries or movable hierarchy",
+      "overlap": {
+        "a": "Back_Strut_0.62",
+        "b": "Backrest",
+        "volume_m3": 0.001245563,
+        "same_material": false,
+        "moving": false,
+        "center": [
+          0.6200000047683716,
+          -0.24124999344348907,
+          0.7425000071525574
+        ]
+      }
+    }
+  ],
+  "unresolved": [],
+  "fbx_roundtrip": {
+    "result": "PASS",
+    "bounds_max_error_m": 2.9802322387695312e-08,
+    "triangles": 148,
+    "imported_meshes": 7,
+    "uv0_meshes": 7
+  },
+  "parts": [
+    {
+      "name": "Foot_-0.62_-0.21",
+      "vertices": 40,
+      "edges": 68,
+      "faces": 30,
+      "triangles": 76,
+      "components": 1,
+      "loose_vertices": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "duplicate_coordinate_vertices": 0,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "zero_edges": 0,
+      "inconsistent_winding_candidates": 0,
+      "self_intersection_candidates": 0,
+      "uv_layers": 1,
+      "material": "M_C01_STEEL",
+      "moving": false
+    },
+    {
+      "name": "Left_Cushion",
+      "vertices": 8,
+      "edges": 12,
+      "faces": 6,
+      "triangles": 12,
+      "components": 1,
+      "loose_vertices": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "duplicate_coordinate_vertices": 0,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "zero_edges": 0,
+      "inconsistent_winding_candidates": 0,
+      "self_intersection_candidates": 0,
+      "uv_layers": 1,
+      "material": "M_C01_FABRIC",
+      "moving": false
+    },
+    {
+      "name": "Right_Cushion",
+      "vertices": 8,
+      "edges": 12,
+      "faces": 6,
+      "triangles": 12,
+      "components": 1,
+      "loose_vertices": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "duplicate_coordinate_vertices": 0,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "zero_edges": 0,
+      "inconsistent_winding_candidates": 0,
+      "self_intersection_candidates": 0,
+      "uv_layers": 1,
+      "material": "M_C01_FABRIC",
+      "moving": false
+    },
+    {
+      "name": "Back_Strut_-0.62",
+      "vertices": 8,
+      "edges": 12,
+      "faces": 6,
+      "triangles": 12,
+      "components": 1,
+      "loose_vertices": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "duplicate_coordinate_vertices": 0,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "zero_edges": 0,
+      "inconsistent_winding_candidates": 0,
+      "self_intersection_candidates": 0,
+      "uv_layers": 1,
+      "material": "M_C01_STEEL",
+      "moving": false
+    },
+    {
+      "name": "Back_Strut_0.62",
+      "vertices": 8,
+      "edges": 12,
+      "faces": 6,
+      "triangles": 12,
+      "components": 1,
+      "loose_vertices": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "duplicate_coordinate_vertices": 0,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "zero_edges": 0,
+      "inconsistent_winding_candidates": 0,
+      "self_intersection_candidates": 0,
+      "uv_layers": 1,
+      "material": "M_C01_STEEL",
+      "moving": false
+    },
+    {
+      "name": "Backrest",
+      "vertices": 8,
+      "edges": 12,
+      "faces": 6,
+      "triangles": 12,
+      "components": 1,
+      "loose_vertices": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "duplicate_coordinate_vertices": 0,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "zero_edges": 0,
+      "inconsistent_winding_candidates": 0,
+      "self_intersection_candidates": 0,
+      "uv_layers": 1,
+      "material": "M_C01_DARK",
+      "moving": false
+    },
+    {
+      "name": "Seat_Edge",
+      "vertices": 8,
+      "edges": 12,
+      "faces": 6,
+      "triangles": 12,
+      "components": 1,
+      "loose_vertices": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "duplicate_coordinate_vertices": 0,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "zero_edges": 0,
+      "inconsistent_winding_candidates": 0,
+      "self_intersection_candidates": 0,
+      "uv_layers": 1,
+      "material": "M_C01_ACCENT",
+      "moving": false
+    }
+  ],
+  "totals": {
+    "vertices": 88,
+    "edges": 140,
+    "faces": 66,
+    "triangles": 148,
+    "loose_vertices": 0,
+    "degenerate_faces": 0,
+    "duplicate_faces": 0,
+    "duplicate_coordinate_vertices": 0,
+    "boundary_edges": 0,
+    "nonmanifold_edges": 0,
+    "zero_edges": 0,
+    "inconsistent_winding_candidates": 0
+  },
+  "bounding_xyz_blender": [
+    [
+      -0.699999988079071,
+      -0.27500003576278687,
+      0.0
+    ],
+    [
+      0.699999988079071,
+      0.2750000059604645,
+      0.9399999976158142
+    ]
+  ],
+  "interpart_overlaps": [
+    {
+      "a": "Foot_-0.62_-0.21",
+      "b": "Seat_Edge",
+      "volume_m3": 8.28e-05,
+      "same_material": false,
+      "moving": false,
+      "center": [
+        0.0,
+        0.27300000190734863,
+        0.4860000014305115
+      ]
+    },
+    {
+      "a": "Left_Cushion",
+      "b": "Back_Strut_-0.62",
+      "volume_m3": 5.1756e-05,
+      "same_material": false,
+      "moving": false,
+      "center": [
+        -0.6200000047683716,
+        -0.21875,
+        0.5372500121593475
+      ]
+    },
+    {
+      "a": "Right_Cushion",
+      "b": "Back_Strut_0.62",
+      "volume_m3": 5.1756e-05,
+      "same_material": false,
+      "moving": false,
+      "center": [
+        0.6200000047683716,
+        -0.21875,
+        0.5372500121593475
+      ]
+    },
+    {
+      "a": "Back_Strut_-0.62",
+      "b": "Backrest",
+      "volume_m3": 0.001245563,
+      "same_material": false,
+      "moving": false,
+      "center": [
+        -0.6200000047683716,
+        -0.24124999344348907,
+        0.7425000071525574
+      ]
+    },
+    {
+      "a": "Back_Strut_0.62",
+      "b": "Backrest",
+      "volume_m3": 0.001245563,
+      "same_material": false,
+      "moving": false,
+      "center": [
+        0.6200000047683716,
+        -0.24124999344348907,
+        0.7425000071525574
+      ]
+    }
+  ]
+}

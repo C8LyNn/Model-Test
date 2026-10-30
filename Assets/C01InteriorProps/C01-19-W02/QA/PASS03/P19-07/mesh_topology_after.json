@@ -1,0 +1,439 @@
+{
+  "id": "P19-07",
+  "result": "PASS_STATIC_PARTS",
+  "changes": [
+    {
+      "action": "BOOLEAN_UNION_STATIC_SAME_MATERIAL",
+      "target": "Exam_Leg_-0.4_-0.98",
+      "removed_part": "Exam_Rail_-0.435",
+      "overlap_volume_m3": 0.0002088,
+      "location": [
+        -0.4150000065565109,
+        0.9799999892711639,
+        0.6410000026226044
+      ]
+    },
+    {
+      "action": "BOOLEAN_UNION_STATIC_SAME_MATERIAL",
+      "target": "Exam_Leg_-0.4_-0.98",
+      "removed_part": "Exam_Leg_-0.4_0.98",
+      "overlap_volume_m3": 0.004220998,
+      "location": [
+        -0.4000000059604645,
+        -0.9799999892711639,
+        0.33500000834465027
+      ]
+    },
+    {
+      "action": "BOOLEAN_UNION_STATIC_SAME_MATERIAL",
+      "target": "Exam_Leg_-0.4_-0.98",
+      "removed_part": "Exam_Crossbar_-1.06",
+      "overlap_volume_m3": 0.000791999,
+      "location": [
+        -0.42000000178813934,
+        1.059999942779541,
+        0.6600000262260437
+      ]
+    },
+    {
+      "action": "BOOLEAN_UNION_STATIC_SAME_MATERIAL",
+      "target": "Exam_Leg_-0.4_-0.98",
+      "removed_part": "Exam_Leg_0.4_-0.98",
+      "overlap_volume_m3": 0.004220998,
+      "location": [
+        0.4000000059604645,
+        0.9799999892711639,
+        0.33500000834465027
+      ]
+    },
+    {
+      "action": "BOOLEAN_UNION_STATIC_SAME_MATERIAL",
+      "target": "Exam_Leg_-0.4_-0.98",
+      "removed_part": "Exam_Leg_0.4_0.98",
+      "overlap_volume_m3": 0.004220998,
+      "location": [
+        0.4000000059604645,
+        -0.9799999892711639,
+        0.33500000834465027
+      ]
+    },
+    {
+      "action": "BOOLEAN_UNION_STATIC_SAME_MATERIAL",
+      "target": "Exam_Leg_-0.4_-0.98",
+      "removed_part": "Exam_Rail_0.435",
+      "overlap_volume_m3": 0.019359998,
+      "location": [
+        0.4350000023841858,
+        5.960464477539063e-08,
+        0.6669999957084656
+      ]
+    },
+    {
+      "action": "BOOLEAN_UNION_STATIC_SAME_MATERIAL",
+      "target": "Exam_Leg_-0.4_-0.98",
+      "removed_part": "Exam_Crossbar_1.06",
+      "overlap_volume_m3": 0.006839994,
+      "location": [
+        0.0,
+        -1.059999942779541,
+        0.6600000262260437
+      ]
+    }
+  ],
+  "exceptions": [
+    {
+      "classification": "INTENTIONAL_SEPARATE_COMPONENT",
+      "reason": "preserve material boundaries or movable hierarchy",
+      "overlap": {
+        "a": "Exam_Leg_-0.4_-0.98",
+        "b": "Mattress_Main",
+        "volume_m3": 0.046679197,
+        "same_material": false,
+        "moving": false,
+        "center": [
+          0.0,
+          0.29999998211860657,
+          0.7035000026226044
+        ]
+      }
+    },
+    {
+      "classification": "INTENTIONAL_SEPARATE_COMPONENT",
+      "reason": "preserve material boundaries or movable hierarchy",
+      "overlap": {
+        "a": "Exam_Leg_-0.4_-0.98",
+        "b": "Back_Section",
+        "volume_m3": 0.017811798,
+        "same_material": false,
+        "moving": true,
+        "center": [
+          0.0,
+          -0.7499999850988388,
+          0.7035000026226044
+        ]
+      }
+    },
+    {
+      "classification": "INTENTIONAL_SEPARATE_COMPONENT",
+      "reason": "preserve material boundaries or movable hierarchy",
+      "overlap": {
+        "a": "Exam_Leg_-0.4_-0.98",
+        "b": "Headboard",
+        "volume_m3": 0.002473796,
+        "same_material": false,
+        "moving": false,
+        "center": [
+          0.0,
+          -1.0689999461174011,
+          0.7010000050067902
+        ]
+      }
+    },
+    {
+      "classification": "INTENTIONAL_SEPARATE_COMPONENT",
+      "reason": "preserve material boundaries or movable hierarchy",
+      "overlap": {
+        "a": "Exam_Leg_-0.4_-0.98",
+        "b": "Footboard",
+        "volume_m3": 0.003062801,
+        "same_material": false,
+        "moving": false,
+        "center": [
+          0.0,
+          1.069000005722046,
+          0.6960000097751617
+        ]
+      }
+    },
+    {
+      "classification": "INTENTIONAL_SEPARATE_COMPONENT",
+      "reason": "preserve material boundaries or movable hierarchy",
+      "overlap": {
+        "a": "Exam_Leg_-0.4_-0.98",
+        "b": "Medical_Side_Stripe",
+        "volume_m3": 0.0003344,
+        "same_material": false,
+        "moving": false,
+        "center": [
+          -0.47099998593330383,
+          0.0,
+          0.6499999761581421
+        ]
+      }
+    },
+    {
+      "classification": "INTENTIONAL_SEPARATE_COMPONENT",
+      "reason": "preserve material boundaries or movable hierarchy",
+      "overlap": {
+        "a": "Mattress_Main",
+        "b": "Footboard",
+        "volume_m3": 0.002556394,
+        "same_material": false,
+        "moving": false,
+        "center": [
+          0.0,
+          1.0489999651908875,
+          0.7549999952316284
+        ]
+      }
+    },
+    {
+      "classification": "INTENTIONAL_SEPARATE_COMPONENT",
+      "reason": "preserve material boundaries or movable hierarchy",
+      "overlap": {
+        "a": "Back_Section",
+        "b": "Headboard",
+        "volume_m3": 0.000232397,
+        "same_material": false,
+        "moving": true,
+        "center": [
+          0.0,
+          -1.0389999747276306,
+          0.7549999952316284
+        ]
+      }
+    }
+  ],
+  "unresolved": [],
+  "fbx_roundtrip": {
+    "result": "PASS",
+    "bounds_max_error_m": 5.960464477539063e-08,
+    "triangles": 252,
+    "imported_meshes": 6,
+    "uv0_meshes": 6
+  },
+  "parts": [
+    {
+      "name": "Exam_Leg_-0.4_-0.98",
+      "vertices": 96,
+      "edges": 144,
+      "faces": 48,
+      "triangles": 192,
+      "components": 1,
+      "loose_vertices": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "duplicate_coordinate_vertices": 0,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "zero_edges": 0,
+      "inconsistent_winding_candidates": 0,
+      "self_intersection_candidates": 0,
+      "uv_layers": 1,
+      "material": "M_C01_STEEL.002",
+      "moving": false
+    },
+    {
+      "name": "Mattress_Main",
+      "vertices": 8,
+      "edges": 12,
+      "faces": 6,
+      "triangles": 12,
+      "components": 1,
+      "loose_vertices": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "duplicate_coordinate_vertices": 0,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "zero_edges": 0,
+      "inconsistent_winding_candidates": 0,
+      "self_intersection_candidates": 0,
+      "uv_layers": 1,
+      "material": "M_C01_FABRIC.002",
+      "moving": false
+    },
+    {
+      "name": "Back_Section",
+      "vertices": 8,
+      "edges": 12,
+      "faces": 6,
+      "triangles": 12,
+      "components": 1,
+      "loose_vertices": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "duplicate_coordinate_vertices": 0,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "zero_edges": 0,
+      "inconsistent_winding_candidates": 0,
+      "self_intersection_candidates": 0,
+      "uv_layers": 1,
+      "material": "M_C01_FABRIC.002",
+      "moving": true
+    },
+    {
+      "name": "Headboard",
+      "vertices": 8,
+      "edges": 12,
+      "faces": 6,
+      "triangles": 12,
+      "components": 1,
+      "loose_vertices": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "duplicate_coordinate_vertices": 0,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "zero_edges": 0,
+      "inconsistent_winding_candidates": 0,
+      "self_intersection_candidates": 0,
+      "uv_layers": 1,
+      "material": "M_C01_DARK.002",
+      "moving": false
+    },
+    {
+      "name": "Footboard",
+      "vertices": 8,
+      "edges": 12,
+      "faces": 6,
+      "triangles": 12,
+      "components": 1,
+      "loose_vertices": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "duplicate_coordinate_vertices": 0,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "zero_edges": 0,
+      "inconsistent_winding_candidates": 0,
+      "self_intersection_candidates": 0,
+      "uv_layers": 1,
+      "material": "M_C01_DARK.002",
+      "moving": false
+    },
+    {
+      "name": "Medical_Side_Stripe",
+      "vertices": 8,
+      "edges": 12,
+      "faces": 6,
+      "triangles": 12,
+      "components": 1,
+      "loose_vertices": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "duplicate_coordinate_vertices": 0,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "zero_edges": 0,
+      "inconsistent_winding_candidates": 0,
+      "self_intersection_candidates": 0,
+      "uv_layers": 1,
+      "material": "M_C01_ACCENT.002",
+      "moving": false
+    }
+  ],
+  "totals": {
+    "vertices": 136,
+    "edges": 204,
+    "faces": 78,
+    "triangles": 252,
+    "loose_vertices": 0,
+    "degenerate_faces": 0,
+    "duplicate_faces": 0,
+    "duplicate_coordinate_vertices": 0,
+    "boundary_edges": 0,
+    "nonmanifold_edges": 0,
+    "zero_edges": 0,
+    "inconsistent_winding_candidates": 0
+  },
+  "bounding_xyz_blender": [
+    [
+      -0.4749999940395355,
+      -1.100000023841858,
+      0.0
+    ],
+    [
+      0.4750000536441803,
+      1.100000023841858,
+      0.9000000357627869
+    ]
+  ],
+  "interpart_overlaps": [
+    {
+      "a": "Exam_Leg_-0.4_-0.98",
+      "b": "Mattress_Main",
+      "volume_m3": 0.046679197,
+      "same_material": false,
+      "moving": false,
+      "center": [
+        0.0,
+        0.29999998211860657,
+        0.7035000026226044
+      ]
+    },
+    {
+      "a": "Exam_Leg_-0.4_-0.98",
+      "b": "Back_Section",
+      "volume_m3": 0.017811798,
+      "same_material": false,
+      "moving": true,
+      "center": [
+        0.0,
+        -0.7499999850988388,
+        0.7035000026226044
+      ]
+    },
+    {
+      "a": "Exam_Leg_-0.4_-0.98",
+      "b": "Headboard",
+      "volume_m3": 0.002473796,
+      "same_material": false,
+      "moving": false,
+      "center": [
+        0.0,
+        -1.0689999461174011,
+        0.7010000050067902
+      ]
+    },
+    {
+      "a": "Exam_Leg_-0.4_-0.98",
+      "b": "Footboard",
+      "volume_m3": 0.003062801,
+      "same_material": false,
+      "moving": false,
+      "center": [
+        0.0,
+        1.069000005722046,
+        0.6960000097751617
+      ]
+    },
+    {
+      "a": "Exam_Leg_-0.4_-0.98",
+      "b": "Medical_Side_Stripe",
+      "volume_m3": 0.0003344,
+      "same_material": false,
+      "moving": false,
+      "center": [
+        -0.47099998593330383,
+        0.0,
+        0.6499999761581421
+      ]
+    },
+    {
+      "a": "Mattress_Main",
+      "b": "Footboard",
+      "volume_m3": 0.002556394,
+      "same_material": false,
+      "moving": false,
+      "center": [
+        0.0,
+        1.0489999651908875,
+        0.7549999952316284
+      ]
+    },
+    {
+      "a": "Back_Section",
+      "b": "Headboard",
+      "volume_m3": 0.000232397,
+      "same_material": false,
+      "moving": true,
+      "center": [
+        0.0,
+        -1.0389999747276306,
+        0.7549999952316284
+      ]
+    }
+  ]
+}

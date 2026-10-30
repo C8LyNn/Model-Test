@@ -38,6 +38,19 @@ namespace C01.InteriorProps.Editor
             @"^(P(?:15|16|17|18|19)-0[1-8])($|[_-])",
             RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
 
+        [Serializable]
+        sealed class SourceStageManifest
+        {
+            public SourceStageAsset[] assets;
+        }
+
+        [Serializable]
+        sealed class SourceStageAsset
+        {
+            public string id;
+            public string source_commit;
+        }
+
         sealed class Source
         {
             public string Id;
@@ -118,6 +131,23 @@ namespace C01.InteriorProps.Editor
                 return "STAGING_RECEIPT_STATUS_NOT_STAGED";
             if(!String.Equals(fields[3],sha,StringComparison.OrdinalIgnoreCase))
                 return "STAGING_RECEIPT_SHA_MISMATCH";
+            // Receipt must match the *current pinned producer revision*, not merely
+            // an old file+receipt pair left in Pass04Incoming by a previous wave.
+            string manifestFile=Path.Combine(ProjectRoot,"C01InteriorProps","Pass04","source_stage_36.json");
+            if(!File.Exists(manifestFile))return "MISSING_CURRENT_SOURCE_MANIFEST";
+            SourceStageManifest manifest;
+            try {
+                manifest=JsonUtility.FromJson<SourceStageManifest>(File.ReadAllText(manifestFile));
+            } catch(Exception) { return "INVALID_CURRENT_SOURCE_MANIFEST"; }
+            if(manifest==null || manifest.assets==null || manifest.assets.Length!=Ids.Length)
+                return "INCOMPLETE_CURRENT_SOURCE_MANIFEST";
+            var expected=manifest.assets.Where(x=>x!=null &&
+                String.Equals(x.id,id,StringComparison.Ordinal)).ToArray();
+            if(expected.Length!=1 || String.IsNullOrEmpty(expected[0].source_commit) ||
+               !Regex.IsMatch(expected[0].source_commit,@"\A[0-9a-f]{40}\z"))
+                return "AMBIGUOUS_OR_INVALID_CURRENT_SOURCE_COMMIT";
+            if(!String.Equals(expected[0].source_commit,fields[2],StringComparison.Ordinal))
+                return "STAGING_RECEIPT_PRODUCER_COMMIT_STALE";
             if(!String.Equals(fields[5].Replace('\\','/'),
                 AssetRoot+"/Pass04Incoming/"+id+"/"+id+".fbx",StringComparison.Ordinal))
                 return "STAGING_RECEIPT_PATH_MISMATCH";
@@ -162,7 +192,10 @@ namespace C01.InteriorProps.Editor
             if(importer==null){r.Status="BLOCKED";r.Diagnostics="MODEL_IMPORTER_NOT_AVAILABLE";return r;}
             r.Imported=AssetDatabase.LoadAssetAtPath<GameObject>(path);
             if(r.Imported==null){r.Status="BLOCKED";r.Diagnostics="MODEL_ASSET_NOT_IMPORTED";return r;}
-            var inst=(GameObject)PrefabUtility.InstantiatePrefab(r.Imported);
+            // Inspect the imported FBX asset directly. InstantiatePrefab in the
+            // user's active scene would mark it dirty, even if later destroyed.
+            // No hierarchy/mesh data is modified during this read-only preflight.
+            var inst=r.Imported;
             try {
                 r.RootTransforms="pos="+inst.transform.localPosition.ToString("F5")+
                     " rot="+inst.transform.localRotation.eulerAngles.ToString("F5")+
@@ -233,7 +266,6 @@ namespace C01.InteriorProps.Editor
                 if(r.NonUrpMaterials>0)defects.Add("MATERIAL_NOT_URP_REVIEW");
             }
             catch(Exception ex){defects.Add("UNITY_MESH_EXCEPTION:"+ex.GetType().Name+":"+ex.Message);}
-            finally{UnityEngine.Object.DestroyImmediate(inst);}
             r.Diagnostics=String.Join(";",defects.Distinct().ToArray());
             r.Status=defects.Count==0?"SOURCE_PRECHECK_PASS":"SOURCE_PRECHECK_FAIL_OR_INCOMPLETE";
             return r;

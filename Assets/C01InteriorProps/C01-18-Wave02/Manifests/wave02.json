@@ -1,0 +1,78 @@
+{
+  "wave": "02",
+  "owner": "C01-18",
+  "unity": "6000.3.14f1",
+  "urp": "17.3.0",
+  "source_file": "Sources/build_wave02.py",
+  "native_blend": "GitHub CI artifact; not claimed committed to repository",
+  "fbx": "GitHub CI artifact",
+  "prefab": "Unity Editor builder; NOT RUN until actual Unity import",
+  "qa_approval": "BLOCKED",
+  "units": "1m",
+  "axis": "Unity Y-up",
+  "assets": [
+    {
+      "id": "P18-04",
+      "name": "Transport cylinder",
+      "dimensions_WDH": [
+        0.56,
+        0.56,
+        1.08
+      ],
+      "pivot": "floor center",
+      "colliders": [
+        "Floor_Foot",
+        "Pressure_Shell",
+        "Transport_Socket"
+      ],
+      "priority": "P1"
+    },
+    {
+      "id": "P18-05",
+      "name": "Lockable equipment case",
+      "dimensions_WDH": [
+        0.68,
+        0.46,
+        0.34
+      ],
+      "pivot": "floor center; Lid_HingePivot [0,0.2,-0.2]",
+      "colliders": [
+        "Case_Bottom",
+        "Case_Lid"
+      ],
+      "priority": "P1"
+    },
+    {
+      "id": "P18-06",
+      "name": "Hazardous sample container",
+      "dimensions_WDH": [
+        0.66,
+        0.58,
+        0.78
+      ],
+      "pivot": "floor center",
+      "colliders": [
+        "Reinforced_Base",
+        "Sample_Vault",
+        "Safety_Lid"
+      ],
+      "priority": "P1"
+    },
+    {
+      "id": "P18-07",
+      "name": "Portable tool bin",
+      "dimensions_WDH": [
+        0.56,
+        0.34,
+        0.38
+      ],
+      "pivot": "floor center; Toolbox_LidHinge [0,0.23,-0.17]",
+      "colliders": [
+        "Base_Stiffener",
+        "Bin_Chassis",
+        "Bin_Lid"
+      ],
+      "priority": "P1"
+    }
+  ]
+}

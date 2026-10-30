@@ -9,7 +9,11 @@
     },
     "after": {
       "producer_commit": "cdcc18428d2fb52c2c60826fc8af9a70f51c82f9",
-      "gltf_git_blob_sha1": "d80a67af140e434b983104aaec0078f9cf5bd66f"
+      "gltf_git_blob_sha1": "d80a67af140e434b983104aaec0078f9cf5bd66f",
+      "producer_recorded_gltf_sha256": "a9995704a70776b49f2bd6916a50cf222a4ab40b370a0a9e258b63bdc4429786",
+      "producer_recorded_obj_sha256": "3c6fda66cecba7f10e40a741b2b8dcef6ad6e0021853647444c6bbe39c03ccf3",
+      "producer_recorded_spec_sha256": "a25a7aa74efe8cb59ccb659243c62daee6429d86e3f95578144f9777efba5b44",
+      "producer_QA_ref": "C01InteriorProps_Source/QA/PASS13/P17-02_ACTUAL_TRANSFORM_CONTACT_QA.json"
     }
   },
   "method": "Decoded real embedded glTF FLOAT32 POSITION and triangle indices; full per-node scale + translation; world-space triangle segment intersection. Mesh attachment QA only, not Blender importer or Unity.",
@@ -82,7 +86,8 @@
       16
     ],
     "contact": "PASS",
-    "note": "Before source report of metre-size screws was caused by omission of glTF node.scale. No uncontrolled weld needed."
+    "note": "Before source report of metre-size screws was caused by omission of glTF node.scale. No uncontrolled weld needed.",
+    "method_note": "Our array counts segment/triangle intersection PAIRS on two triangulated surfaces and can differ from producer's 32 per-screw individual plane-crossing counts; both independently establish zero-distance solid intersection. Do not compare raw event counts as equivalent."
   },
   "other_repeated_details": {
     "keyguide_01_to_Keybed": {

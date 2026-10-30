@@ -3,9 +3,8 @@ on:
   push:
     branches: [c01/props-19-furniture-wave02]
     paths:
-      - 'Assets/C01InteriorProps/C01-19-W02/Source/**'
-      - 'Assets/C01InteriorProps/C01-19-W02/QA/validate_native.py'
-      - '.github/workflows/c01-19-wave02-native.yml'
+      - 'Assets/C01InteriorProps/C01-19-W02/Source/wave02_parts.json'
+      - 'Assets/C01InteriorProps/C01-19-W02/Source/blender_export_wave02.py'
   workflow_dispatch:
 permissions:
   contents: write

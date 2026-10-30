@@ -1,0 +1,72 @@
+name: C01-03 Producer SHA256 Intake (Wave 01)
+
+on:
+  pull_request:
+    paths:
+      - 'C01InteriorProps_Library/catalog.json'
+      - 'C01InteriorProps_Library/tools/audit_supplier_candidates.py'
+      - '.github/workflows/c01-03-producer-intake.yml'
+  workflow_dispatch:
+
+jobs:
+  inspect-candidate-bytes:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - producer: C01-15
+            branch: c01/props-15-installations
+            sha: e4e6223e9afa9f1d03eb645d8b5746db69f08f78
+            sparse: Assets/C01InteriorProps/P15
+          - producer: C01-16
+            branch: c01/props-16-lighting
+            sha: e9cd92831c41ebd5fa2da026326831e524d08458
+            sparse: |
+              Assets/C01InteriorProps/Lighting
+              C01Source/Lighting
+          - producer: C01-17
+            branch: c01/props-17-controls
+            sha: 004a4af78208135592d0c51657af2e9e42b6b572
+            sparse: |
+              Assets/C01InteriorProps/Models
+              C01InteriorProps_Source
+          - producer: C01-18
+            branch: c01/props-18-cargo
+            sha: 78b3afd92214d44086ead37239120b077c6d1217
+            sparse: Assets/C01InteriorProps/C01-18
+          - producer: C01-19
+            branch: c01/props-19-furniture
+            sha: f3bccbf2fef5265e7cd37d094968d76bdc7b5192
+            sparse: Assets/C01InteriorProps/C01-19
+    steps:
+      - name: Checkout catalog PR under review
+        uses: actions/checkout@v4
+        with:
+          path: catalog
+          persist-credentials: false
+      - name: Checkout pinned producer files (LFS enabled)
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ matrix.sha }}
+          lfs: true
+          path: producer
+          sparse-checkout: ${{ matrix.sparse }}
+          persist-credentials: true
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Inspect real bytes; leave incomplete assets unapproved
+        run: |
+          python catalog/C01InteriorProps_Library/tools/audit_supplier_candidates.py \
+            --catalog catalog/C01InteriorProps_Library/catalog.json \
+            --producer ${{ matrix.producer }} \
+            --checkout producer \
+            --output reports/${{ matrix.producer }}.json
+      - name: Publish SHA256 receipt with clear NOT APPROVED status
+        uses: actions/upload-artifact@v4
+        with:
+          name: c01-03-wave01-intake-${{ matrix.producer }}
+          path: reports/${{ matrix.producer }}.json
+          if-no-files-found: error

@@ -112,26 +112,19 @@ namespace C01.Doors.Access
                             "do NOT accept based only on root box collider.");
                     }
 
-                    // Direct QA for P17-02 support contact: separate named mesh renderers,
-                    // NOT the entire reader bounds or a root collider. AABB separation is
-                    // conservative: a positive gap proves separation, zero does NOT prove contact.
-                    Bounds keybed, housing;
-                    if (!TryNamedRendererBounds(accessory, "Keybed", out keybed) ||
-                        !TryNamedRendererBounds(accessory, "Housing", out housing))
-                        Incomplete(report, "READER_KEYBED_OR_HOUSING_MISSING", accessory.name,
-                            "Cannot inspect Keybed/Housing rendered meshes in imported P17-02 prefab");
-                    else
-                    {
-                        float gap = AabbSeparation(keybed, housing);
-                        if (gap > 0.00025f)
-                        {
-                            report.readerAttachmentGapCandidates++;
-                            Add(report, "POSSIBLE_READER_KEYBED_HOUSING_GAP", "", accessory.name,
-                                "Keybed and Housing renderer AABBs have a positive world-space gap " +
-                                (gap * 1000f).ToString("F3") + " mm (threshold 0.250 mm). " +
-                                "Check exact FBX triangles and mechanical mounting; no auto-weld.");
-                        }
-                    }
+                    // A positive AABB gap is proof of separation. AABB overlap is
+                    // only broadphase and never claims full triangle-surface contact.
+                    // Missing new components = STALE native FBX or incomplete importer;
+                    // never award a clean gate result to an old 20-part P17-02 export.
+                    CheckReaderAttachment(report, accessory, "Keybed", "Housing");
+                    for (int guide = 1; guide <= 12; guide++)
+                        CheckReaderAttachment(report, accessory, "KeyGuide_" + guide.ToString("D2"), "Keybed");
+                    CheckReaderAttachment(report, accessory, "LeftClampReinforcement", "LeftClamp");
+                    CheckReaderAttachment(report, accessory, "RightClampReinforcement", "RightClamp");
+                    CheckReaderAttachment(report, accessory, "LeftBottomMountScrew", "MountBacking");
+                    CheckReaderAttachment(report, accessory, "LeftTopMountScrew", "MountBacking");
+                    CheckReaderAttachment(report, accessory, "RightBottomMountScrew", "MountBacking");
+                    CheckReaderAttachment(report, accessory, "RightTopMountScrew", "MountBacking");
                 }
 
                 bool boundToController = accessory.GetComponent<ShipButtonV4>() != null ||
@@ -281,6 +274,30 @@ namespace C01.Doors.Access
                 else bounds.Encapsulate(collider.bounds);
             }
             return found;
+        }
+
+        static void CheckReaderAttachment(Evidence report, Transform reader,
+            string partName, string supportName)
+        {
+            Bounds part, support;
+            if (!TryNamedRendererBounds(reader, partName, out part) ||
+                !TryNamedRendererBounds(reader, supportName, out support))
+            {
+                Incomplete(report, "READER_ATTACHMENT_MESH_MISSING", reader.name,
+                    partName + " / " + supportName +
+                    " mesh renderer missing from current import. The native FBX may be stale.");
+                return;
+            }
+
+            float gap = AabbSeparation(part, support);
+            if (gap > 0.00025f)
+            {
+                report.readerAttachmentGapCandidates++;
+                Add(report, "POSSIBLE_READER_ATTACHMENT_GAP", "", reader.name,
+                    partName + " / " + supportName +
+                    " world-space AABB separation " + (gap * 1000f).ToString("F3") +
+                    " mm (>0.250 mm). Verify actual source/FBX triangles; no auto-welding.");
+            }
         }
 
         static bool TryNamedRendererBounds(Transform root, string exactName, out Bounds bounds)

@@ -73,16 +73,57 @@ def visual_exceeds_collider(visual, physical, tolerance=0.03):
                visual[1][i] > physical[1][i] + tolerance for i in range(3))
 
 
+def aabb_separation(a, b):
+    """Mirror conservative world-space Unity renderer Bounds gap, metres."""
+    return sum(max(0.0, a[0][i]-b[1][i], b[0][i]-a[1][i])**2
+               for i in range(3))**.5
+
+
+class AccessReaderAttachmentReferenceTests(unittest.TestCase):
+    # Source-grounded P17-02 world bounds, not a Blender or Unity execution.
+    housing = ((-.0795, .0175, .0225), (.0795, .2625, .0575))
+    keybed = ((-.064, .0475, .058), (.064, .2025, .064))
+    backing = ((-.09, 0, 0), (.09, .28, .016))
+    screw = ((-.0875, .0055, .0155), (-.0785, .0145, .0185))
+
+    def test_source_keybed_housing_positive_half_mm_gap(self):
+        self.assertAlmostEqual(aabb_separation(self.keybed, self.housing), .0005, places=8)
+
+    def test_screw_overlaps_backing_after_full_scale(self):
+        self.assertEqual(aabb_separation(self.screw, self.backing), 0.0)
+
+    def test_gap_detected_above_two_hundred_fifty_micrometres(self):
+        self.assertGreater(aabb_separation(self.keybed, self.housing), .00025)
+
+    def test_example_seated_keybed_removes_aabb_gap(self):
+        seated = (tuple(v if i != 2 else v-.0006 for i,v in enumerate(self.keybed[0])),
+                  tuple(v if i != 2 else v-.0006 for i,v in enumerate(self.keybed[1])))
+        self.assertEqual(aabb_separation(seated, self.housing), 0.0)
+
+    def test_rotated_or_overlapping_aabb_cannot_certify_contact(self):
+        # AABB overlap is only a candidate; exact triangle testing remains mandatory.
+        self.assertEqual(aabb_separation(self.keybed, self.keybed), 0.0)
+
+
 class AccessReaderMeshEnvelopeReferenceTests(unittest.TestCase):
     # Directly measured from TRUE P17-02 producer glTF, PR #17 SHA
     # 79d8dcd3c7a4e39a7a3bcb3c88551642bf52d191, source binary buffer.
     # These fixtures do NOT substitute for Blender FBX/Unity validation.
     base_collider = ((-.09, 0, 0), (.09, .28, .07))
 
-    def test_real_producer_oversized_screw_regression_snapshot(self):
-        # Actual source screw POSITION accessor spans local xyz -1..1, plus node translation.
-        actual_render = ((-1.083, -.99, -.983), (1.083, 1.27, 1.017))
-        self.assertTrue(visual_exceeds_collider(actual_render, self.base_collider))
+    def test_historical_unscaled_screw_regression_snapshot(self):
+        # Old failing interpretation omitted glTF node.scale; should never be treated
+        # as the CURRENT P17-02 world geometry.
+        bad_render = ((-1.083, -.99, -.983), (1.083, 1.27, 1.017))
+        self.assertTrue(visual_exceeds_collider(bad_render, self.base_collider))
+
+    def test_current_transformed_screw_is_nominal(self):
+        # Real glTF P17-02 at C01-17 commit cf405ed6: mesh20 local +/-1m,
+        # node.scale (0.0045,0.0045,0.003), node translation (-.083,.01,.017).
+        actual_screw = ((-.0875, .0055, .0155), (-.0785, .0145, .0185))
+        self.assertFalse(visual_exceeds_collider(actual_screw, self.base_collider))
+        self.assertAlmostEqual(actual_screw[1][0] - actual_screw[0][0], .009, places=8)
+        self.assertAlmostEqual(actual_screw[1][2] - actual_screw[0][2], .003, places=8)
 
     def test_original_reader_nominal_mesh_is_bounded(self):
         self.assertFalse(visual_exceeds_collider(

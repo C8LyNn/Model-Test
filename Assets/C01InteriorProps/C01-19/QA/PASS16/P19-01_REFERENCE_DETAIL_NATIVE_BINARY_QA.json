@@ -1,0 +1,65 @@
+{
+  "pass": "C01-19_DETAIL_PASS16",
+  "issue": "https://github.com/C8LyNn/Model-Test/issues/36",
+  "owner": "C01-19",
+  "asset": "P19-01",
+  "stage": "OFFLINE_REAL_NATIVE_FORMAT_CANDIDATES_NOT_ENGINE_APPROVED",
+  "reference_file": "Assets/C01InteriorProps/C01-19/References/PASS16_MECHANICAL_CONSTRUCTION_REFERENCES.md",
+  "reference_count": 5,
+  "actual_candidate_delivery": {
+    "filename": "C01-19_DETAIL_PASS16_REFERENCE_BASED_REAL_BLEND_FBX_CANDIDATES.zip",
+    "archive_sha256": "193855ea22f1d617104a26b27d91f3d332ee39afc6793815d90bfbc97ef9881c",
+    "archive_bytes": 1622782,
+    "entries": 31,
+    "location": "ChatGPT conversation user-downloadable ZIP; binary not in production Git LFS paths"
+  },
+  "native_blend_source": {
+    "before_sha256": "d26c37f1fc5abf21d1d59132605bb182c3834dca5636abf8b8a414c04f5fdfd8",
+    "after_sha256": "e64d65b7a9000a7650f35acf2fe7ca5c7e2aaf10c9a7394456995a9e951a1c94",
+    "Blender_v400_raw_structure_readback": "PASS",
+    "Blender_application_open_save": "NOT_RUN"
+  },
+  "binary_fbx": {
+    "before_sha256": "ec4b8403559318a89cf729296f5d1b13ed776ae42b8970d80f0332ce43909ff4",
+    "after_sha256": "1c6933c0eabd9c6deb35b98d4184529ff3211e38e815e9207709ce452b3036f1",
+    "FBX_Binary_7400_reparse": "PASS",
+    "Blender_exporter_written_this_version": false,
+    "Blender_export_reimport": "NOT_RUN"
+  },
+  "geometry": {
+    "existing_model_ids_added": 0,
+    "mesh_objects_before": 4,
+    "mesh_objects_after": 4,
+    "vertices_before": 197,
+    "vertices_after": 269,
+    "triangles_before": 358,
+    "triangles_after": 470,
+    "added_functional_details": [
+      "4 symmetric triangular gussets at existing table corner uprights",
+      "4 matching seated low-poly hex screw heads"
+    ],
+    "actual_3D_edge_triangle_support_contacts": {
+      "gussets_to_existing_frame": "4/4, 10 distinct intersections each",
+      "bolts_to_specific_gusset": "4/4, 12 distinct intersections each"
+    },
+    "all_four_mesh_objects_watertight_manifold": "PASS",
+    "normal_winding_consistent": "PASS",
+    "zero_area_indexed_triangles": 0,
+    "old_positions_faces_UV0_unchanged": true,
+    "FBX_blend_indexed_face_and_corner_UV_parity": "PASS",
+    "original_AABB": "UNCHANGED",
+    "same_plane_old_mesh_vs_new_detail_overlap_pairs": 0,
+    "same_plane_overlap_area_m2": 0,
+    "limitation": "Analytic contact and same-plane triangle tests do not guarantee Blender load, arbitrary full-model collisions, animated clearance or Unity import"
+  },
+  "additional_models": {
+    "P19_02": "PASS13 unchanged, existing 5/5 seated contact",
+    "P19_05": "PASS13 unchanged, existing 6/6 seated contact",
+    "P19_07": "16 inherited same-mesh vertex-on-edge candidates; visual QA HOLD, no weld",
+    "P19_08": "PASS10 unchanged"
+  },
+  "screenshots": "Two static shaded/wireframe PNGs parsed from real source Mesh arrays, NOT Blender Workbench renders",
+  "independent_c01_02": "PENDING",
+  "Unity6_URP": "NOT_RUN",
+  "release": "NO_MERGE / NEEDS_OWNER_ACTION"
+}

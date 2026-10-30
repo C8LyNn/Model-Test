@@ -18,8 +18,9 @@ jobs:
       - name: Install Blender
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y blender
+          sudo apt-get install -y blender python3-numpy
           blender --version
+          blender --background --python-expr 'import numpy; print("Blender numpy:", numpy.__version__)'
       - name: Build actual native BLEND and binary FBX
         run: |
           blender --background --python Tools/C01Structures14/generate_blender.py -- --out Assets/C01StructuralPrototypes/P14

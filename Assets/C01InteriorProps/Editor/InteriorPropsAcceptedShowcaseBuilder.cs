@@ -158,8 +158,12 @@ namespace C01.InteriorProps.Editor
                 if(filter.sharedMesh==null)continue;
                 Mesh mesh=filter.sharedMesh;
                 if(mesh.vertexCount==0)continue;
-                foreach(var v in mesh.vertices)
+                var mb=mesh.bounds;
+                foreach(int dx in new[]{-1,1})
+                foreach(int dy in new[]{-1,1})
+                foreach(int dz in new[]{-1,1})
                 {
+                    Vector3 v=mb.center+Vector3.Scale(mb.extents,new Vector3(dx,dy,dz));
                     var p=root.transform.InverseTransformPoint(filter.transform.TransformPoint(v));
                     if(!found){b=new Bounds(p,Vector3.zero);found=true;}else b.Encapsulate(p);
                 }
@@ -310,11 +314,15 @@ namespace C01.InteriorProps.Editor
                 if(master==null)throw new IOException("Master prefab save failed");
             } finally {UnityEngine.Object.DestroyImmediate(root);}
             StandaloneScene("C01_InteriorProps_Showcase",records);
-            StandaloneScene("C01_InteriorProps_Cabin",records.Where(r=>r.Slot.Family=="Furniture"));
-            StandaloneScene("C01_InteriorProps_Bridge",records.Where(r=>r.Slot.Family=="Controls"));
-            StandaloneScene("C01_InteriorProps_Engineering",records.Where(r=>
-                r.Slot.Family=="Installations"||r.Slot.Family=="Lighting"));
-            StandaloneScene("C01_InteriorProps_Cargo",records.Where(r=>r.Slot.Family=="Cargo"));
+            var cabin=records.Where(r=>r.Slot.Family=="Furniture").ToArray();
+            var bridge=records.Where(r=>r.Slot.Family=="Controls").ToArray();
+            var engineering=records.Where(r=>r.Slot.Family=="Installations"||
+                                            r.Slot.Family=="Lighting").ToArray();
+            var cargo=records.Where(r=>r.Slot.Family=="Cargo").ToArray();
+            if(cabin.Length>0) StandaloneScene("C01_InteriorProps_Cabin",cabin);
+            if(bridge.Length>0) StandaloneScene("C01_InteriorProps_Bridge",bridge);
+            if(engineering.Length>0) StandaloneScene("C01_InteriorProps_Engineering",engineering);
+            if(cargo.Length>0) StandaloneScene("C01_InteriorProps_Cargo",cargo);
             AssetDatabase.SaveAssets();
             Debug.Log("[C01-10] Generated "+records.Count+" approved prefab instances in separate master and five scenes. "+
                 "Real ship 3m corridor, gate swing, stairs and elevators: NOT RUN until QA evidence.");

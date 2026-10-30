@@ -1,0 +1,50 @@
+{
+  "date": "2026-10-30",
+  "scope": "C01-02 PASS05 GitHub Actions attempt and exporter static defect; not Blender execution",
+  "incident": [
+    {
+      "run_id": 41094504957,
+      "owner": "C01-16 W01",
+      "rerun_invoked": true,
+      "rerun_attempt": 3,
+      "status": "completed",
+      "result": "failure",
+      "elapsed_seconds": 5,
+      "steps_executed": 0,
+      "runner_assigned": false
+    },
+    {
+      "run_id": 41094703040,
+      "owner": "C01-19 W02",
+      "rerun_invoked": false,
+      "reason": "GitHub returned 403 workflow already running",
+      "observed_attempt": 2,
+      "status": "completed",
+      "result": "failure",
+      "elapsed_seconds": 5,
+      "steps_executed": 0,
+      "runner_assigned": false
+    }
+  ],
+  "latent_defect": {
+    "owner": "C01-16",
+    "branches": [
+      "c01/props-16-lighting",
+      "c01/props-16-lighting-wave02"
+    ],
+    "path_suffix": "MeshRepairPASS04/ci_pass04_native.py",
+    "old": "blend_file.read_bytes()[:7] != b\"BLENDER-\"",
+    "fix": "not blend_file.read_bytes().startswith(b\"BLENDER-\")",
+    "impact": "100% false failure on correct Blender file; producer source not modified by QA"
+  },
+  "counts": {
+    "total": 36,
+    "real_fbx_audited": 22,
+    "git_lfs_exact_match": 22,
+    "unhydrated_P15": 7,
+    "ascii_only_P16": 7,
+    "fully_approved": 0,
+    "p19_preflight_issues": 5,
+    "blocked": 31
+  }
+}

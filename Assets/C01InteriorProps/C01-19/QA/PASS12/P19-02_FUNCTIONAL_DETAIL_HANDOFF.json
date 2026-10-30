@@ -1,0 +1,33 @@
+{
+  "task": "C01 Detail PASS12 issue #36",
+  "asset_id": "P19-02",
+  "owner": "C01-19",
+  "status": "ACTUAL_NATIVE_BINARY_AND_FBX_FILES_CREATED_OFFLINE_ENGINE_UNVERIFIED",
+  "source_blend_before_sha256": "d461ca95c70ac9ff30c6aac23beddbe19d9495ea7c70e2cc4bf28762f2c75b0e",
+  "new_blend_sha256": "6479553d44b5c9671b5a49fad926318d1f5c2bf347856b21ceb15c0769968150",
+  "archive": "C01-19_DETAIL_PASS12_REAL_BLEND_FBX_QA_CANDIDATES.zip",
+  "archive_sha256": "21447a1649b36a60771b1cd79f94557b92cea92edd06aa1c589136eeed2d533f",
+  "archive_location": "ChatGPT C01-19 PASS12 conversation artifact only; NOT in Git LFS or producer Models paths",
+  "details": [
+    "lower_door_hinge_plate",
+    "upper_door_hinge_plate",
+    "lower_hinge_fastener",
+    "upper_hinge_fastener",
+    "door_strike_receiver"
+  ],
+  "totals": {
+    "vertices_before": 118,
+    "vertices_after": 166,
+    "triangles_before": 216,
+    "triangles_after": 292
+  },
+  "changes": "Original coordinates, faces, UV0, material datablocks, parent transforms, pivots, model IDs and existing movable pieces unchanged. Added purposeful closed components into original mesh datablocks; new source physically written and re-read as BLENDER-v400. Matching FBX7400 candidate physically written and parsed.",
+  "independent_numeric_parity": "PASS",
+  "normal_winding_watertight_checks": "PASS",
+  "native_blender_application_open": "NOT RUN",
+  "native_blender_export_fbx_reimport": "NOT RUN",
+  "independent_c01_02": "PENDING",
+  "unity6_urp": "NOT RUN",
+  "requires_owner_action": "Access to Blender 4.x / Git LFS / Unity; do not merge, promote or overwrite production LFS assets",
+  "source_files_modified_in_this_PR": "Only QA metadata. Binary candidates delivered in user-visible ZIP."
+}

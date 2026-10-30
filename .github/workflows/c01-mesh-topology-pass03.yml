@@ -93,6 +93,34 @@ jobs:
             mkdir -p "reports/$asset"
             blender --background "$file" --python-exit-code 13 --python standards/Tools/c01_mesh_repair/topology_audit.py -- --asset-id "$asset" --stage BEFORE --out "reports/$asset/mesh_topology_before.json"
           done
+      - name: Re-import six existing binary FBX exports into native Blender
+        shell: bash
+        run: |
+          set -euo pipefail
+          entries=(
+            "P17-04|source17/C01InteriorProps_W02/Blender/P17-04.blend|source17/Assets/C01InteriorProps/W02/Models/P17-04.fbx"
+            "P17-05|source17/C01InteriorProps_W02/Blender/P17-05.blend|source17/Assets/C01InteriorProps/W02/Models/P17-05.fbx"
+            "P18-04|source18/Assets/C01InteriorProps/C01-18-Wave02/Sources/P18-04.blend|source18/Assets/C01InteriorProps/C01-18-Wave02/Models/P18-04.fbx"
+            "P18-05|source18/Assets/C01InteriorProps/C01-18-Wave02/Sources/P18-05.blend|source18/Assets/C01InteriorProps/C01-18-Wave02/Models/P18-05.fbx"
+            "P19-07|source19/Assets/C01InteriorProps/C01-19-W02/Models/P19-07/P19-07.blend|source19/Assets/C01InteriorProps/C01-19-W02/Models/P19-07/P19-07.fbx"
+            "P19-08|source19/Assets/C01InteriorProps/C01-19-W02/Models/P19-08/P19-08.blend|source19/Assets/C01InteriorProps/C01-19-W02/Models/P19-08/P19-08.fbx"
+          )
+          failed=0
+          for entry in "${entries[@]}"; do
+            IFS='|' read -r asset file fbx <<< "$entry"
+            if ! blender --background "$file" --python-exit-code 13 --python standards/Tools/c01_mesh_repair/inspect_existing_fbx.py -- --asset-id "$asset" --fbx "$fbx" --out "reports/$asset/fbx_import_blender.json"; then
+              echo "::error::Real Blender FBX import/geometry difference on $asset"
+              failed=1
+            fi
+          done
+          exit "$failed"
+      - name: Upload actual FBX importer reports (including failures)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-01-PASS03-SIX-FBX-NATIVE-BLENDER-REIMPORT
+          path: reports/
+          if-no-files-found: warn
       - name: Guarded repair candidates only when source still has detected split surfaces
         shell: bash
         run: |

@@ -98,5 +98,37 @@ class ContractTests(unittest.TestCase):
         bad=sample();bad["asset_id"]="P15-99"
         self.assertIn("UNKNOWN_ASSET",self.check(bad)["errors"])
 
+    def test_fake_fbx_with_valid_hash_rejected(self):
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d)
+            content=b"not a real FBX just text"
+            (root/"bad.fbx").write_bytes(content)
+            bad=sample("P16-04")
+            bad["files"]["fbx"]={"path":"bad.fbx","sha256":hashlib.sha256(content).hexdigest()}
+            self.assertIn("INVALID_FBX_SIGNATURE",self.check(bad,root)["errors"])
+
+    def test_claimed_independent_review_never_automatically_approved(self):
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d)
+            m=sample("P16-04")
+            payloads={
+                "blend": b"BLENDER"+b"0"*60,
+                "fbx": b"Kaydara FBX Binary  "+b"0"*60,
+                "unity_prefab": b"%YAML 1.1"+b"0"*60,
+                "preview_front": bytes((137,80,78,71,13,10,26,10))+b"0"*60,
+                "preview_side": bytes((137,80,78,71,13,10,26,10))+b"1"*60,
+                "preview_top": bytes((137,80,78,71,13,10,26,10))+b"2"*60,
+            }
+            for k,body in payloads.items():
+                file=root/(k+".bin")
+                file.write_bytes(body)
+                m["files"][k]={"path":file.name,"sha256":hashlib.sha256(body).hexdigest()}
+            m["qa"]={k:"PASS" for k in W2["qa_fields"]}
+            m["independent_review"]={"owner":"C01-02","report_url":"https://example.invalid/claimed","source_commit_sha":"f"*40}
+            r=self.check(m,root)
+            self.assertEqual(r["static"],"PASS",r)
+            self.assertEqual(r["delivery"],"READY_FOR_INDEPENDENT_QA")
+            self.assertEqual(r["approval"],"QA_REFERENCE_PRESENT_UNVERIFIED")
+
 if __name__=="__main__":
     unittest.main()

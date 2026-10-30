@@ -1,0 +1,116 @@
+{
+  "schema": "C01_10_PASS16_P17_01_GUIDE_REAL_TRIANGLE_COPLANAR_QA_V1",
+  "owner": "C01-10 source preflight / Unity integration",
+  "method": "Decode original embedded GLTF binary buffers and indexed POSITION accessors; apply per-instance translation and scale; choose same-facing coplanar XY triangle pairs and intersect using convex polygon clipping; count mm². Exact SOURCE only; not Blender application or Unity.",
+  "samples": [
+    {
+      "label": "BEFORE",
+      "commit": "f6ded93b8f2ac387c056446856fded87853d1f6e",
+      "gitBlobSha1": "c604553c874b590cfd5fcae135f4c892561eba96",
+      "sourcePath": "Assets/C01InteriorProps/Models/P17-01.gltf",
+      "instanceCount": 25,
+      "triangleCount": 380,
+      "guideNodeTransforms": [
+        {
+          "name": "KeyboardGuide_L",
+          "translation": [
+            -0.454,
+            0.879,
+            -0.17
+          ],
+          "scale": [
+            0.01125,
+            0.20454545,
+            0.32307692
+          ]
+        },
+        {
+          "name": "KeyboardGuide_R",
+          "translation": [
+            0.454,
+            0.879,
+            -0.17
+          ],
+          "scale": [
+            0.01125,
+            0.20454545,
+            0.32307692
+          ]
+        }
+      ],
+      "guideVsKeyboard": {
+        "L": {
+          "sameFacingCoplanarTrianglePairs": 6,
+          "areaSquareMillimeters": 190.0002,
+          "planesMillimeters": {
+            "-65": 95.0001,
+            "-275": 95.0001
+          }
+        },
+        "R": {
+          "sameFacingCoplanarTrianglePairs": 6,
+          "areaSquareMillimeters": 190.0002,
+          "planesMillimeters": {
+            "-65": 95.0001,
+            "-275": 95.0001
+          }
+        }
+      }
+    },
+    {
+      "label": "AFTER",
+      "commit": "7664324f503b83f01d0dccfc9578299465da1926",
+      "gitBlobSha1": "e0df06d260a955fe926f7e0279068bf2a2e6a6b5",
+      "sourcePath": "Assets/C01InteriorProps/Models/P17-01.gltf",
+      "instanceCount": 25,
+      "triangleCount": 380,
+      "guideNodeTransforms": [
+        {
+          "name": "KeyboardGuide_L",
+          "translation": [
+            -0.454,
+            0.879,
+            -0.169
+          ],
+          "scale": [
+            0.01125,
+            0.20454545,
+            0.32307692
+          ]
+        },
+        {
+          "name": "KeyboardGuide_R",
+          "translation": [
+            0.454,
+            0.879,
+            -0.169
+          ],
+          "scale": [
+            0.01125,
+            0.20454545,
+            0.32307692
+          ]
+        }
+      ],
+      "guideVsKeyboard": {
+        "L": {
+          "sameFacingCoplanarTrianglePairs": 0,
+          "areaSquareMillimeters": 0,
+          "planesMillimeters": {}
+        },
+        "R": {
+          "sameFacingCoplanarTrianglePairs": 0,
+          "areaSquareMillimeters": 0,
+          "planesMillimeters": {}
+        }
+      }
+    }
+  ],
+  "result": "BEFORE 190.0002mm2 each; AFTER 0mm2 each; confirmed authored source P0 defect repaired +1mm Z; release still blocked until genuine Blender native/FBX and independent C01-02 final QA.",
+  "limits": [
+    "Does not certify all-face z-fighting absence or arbitrary moving state",
+    "No actual .blend/FBX AFTER generated",
+    "No Unity6 import/URP/prefab/PlayMode execution"
+  ],
+  "releaseBlocked": true
+}

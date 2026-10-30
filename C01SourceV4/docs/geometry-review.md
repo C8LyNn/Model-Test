@@ -1,0 +1,32 @@
+# Geometry source review — C01 v4.0 T1
+
+Reviewed 2026-10-29 in `C:/Users/kubap/Desktop/C01_Ship_Multideck_v4.0`.
+
+## Verdict
+
+**Spec verdict: changes requested (P2 coverage-validation requirement).** The inspected generated geometry and source conform to the confirmed 3 m-square interpretation: 9×9 m cabins, 6×3 m bathrooms, 6 m cabin/corridor clear height, 12 m sectors, 12 m stern, 3 m corridor modules, three decks, and two physical lift shafts. No current physical geometry defect was established by this review. **Quality verdict: do not treat the current seven Python tests and zero-penetration audit as sufficient evidence of complete floor/ceiling coverage.** Resolve the finding below before closing T1; Unity import, player rides, and exported-model verification remain separate work.
+
+## Finding
+
+### [P2] Required slabs can be empty while coverage validation reports PASS
+
+- **Files/lines:** `Tools/validate_ship_v4.py:21–36`; `Tests/test_manifest_v4.py:55–61`.
+- **Requirement:** `docs/spec.md`, Geometry rules: missing geometry tests must verify coverage independently of collision counts.
+- **Evidence:** The validator tests membership of required placement IDs, without inspecting their model parts, top/bottom surfaces, or actual area. It never reads `coverage`. An in-memory mutation keeping `F_L2_6_24` and its model ID but replacing that model's `parts` with `[]` returned **PASS, errors=[]**. The current model is `F_5b08a013d30f`; because it is reusable, this mutation removes actual surfaces from every instance of that model. A separate in-memory mutation setting `coverage=[]` also returned **PASS, errors=[]**. These mutations were not saved. Existing damage tests delete placement IDs, so they cannot catch an empty or partially missing slab whose ID survives. The required-ID sets also omit bow floors, core ceilings, and exterior pads.
+- **Impact:** A damaged export or a clipping regression can create real holes while the layout check and zero-penetration check both pass. A zero-penetration result does not detect removed material.
+- **Requested correction:** Check expected walkable/overhead regions derived from the fixed plan against actual transformed model surface polygons at the required elevations, accounting explicitly for wall/node footprints, shafts, gallery voids, and intentional exterior openings. Include bow/core/exit regions. Do not use generator-produced `coverage` as the sole truth. Add mutations preserving placement IDs while emptying a floor model, shortening a floor/ceiling polygon, and deleting a bow/pad/core-roof surface; each must fail with an actionable location. A small independent coverage checker is sufficient; the broad penetration audit need not be repeated for this test-only correction.
+
+## Geometry reviewed beyond counts
+
+- Reviewed `docs/spec.md`, the full `geometry-review-package.txt` containing the primary Python generator, model definitions, validator and tests, and `Tools/ship_geometry.py`. Focused reads of actual manifest model parts and Unity socket construction were used for the named interface risks below. Source, manifest, index and HEAD were not modified.
+- Global wall ranges merge vertical ownership before subtracting gate envelopes. Separate junction nodes and internal wide-gate node cuts avoid duplicate shared walls. At the cabin/sector boundary, upper floors are clipped against the 12 m wall volumes. The deck-2 shared floor underside supplies the deck-1 cabin/corridor ceiling; deck-1 sectors and deck-2 rooms receive separate correctly elevated roof surfaces.
+- Physical shaft holes are distinct from the lift platforms. Bridge and stern cars are 2.58 m across inside 3 m shafts. Their facing edges meet fixed sills; at upper landings, short wall bands below gate bottoms contribute flush sill support. The narrower `SILL_LIFT_STERN_2` mesh is intentional after clipping, rather than evidence of a missing 0.15 m tread.
+- A focused check sampled real horizontal top faces at every gate centre, at normal offsets −0.30, −0.15, −0.075, 0, +0.075, +0.15 and +0.30 m. All stationary threshold samples were supported on the relevant deck. The only unsupported samples were 0.30 m inside lift shafts on decks 0 and 2, beyond the fixed sill and within the moving platform footprint; the platform is initially on deck 1. This checks threshold-centre continuity, not arbitrary room-area coverage or a live player ride.
+- The 98-zone graph was not accepted alone as a walking proof: cabin/branch and sector portals are placed on their actual shared boundaries; main corridor openings remove the corresponding walls; landing approaches connect to the bridge's rear gallery and stern's west gallery. Upper void edges have visible guard panels/posts, with lift entrance gaps occupied by shaft gates.
+- The escape craft is actual editable prism geometry, facing +X from the lower hangar. Its 4 m width fits the 6 m clear aperture inside each nominal 9 m evacuation module. The two portals at x=63 and x=75 align with the lower dock and outside pad. Exterior engines are at main-deck elevation and do not obstruct this lower-deck route. A live craft movement was not claimed.
+- Imported bed/locker meshes retain practical sizes (bed 2.1×1 m, locker 0.65×0.6 m) within the enlarged cabins. Bathroom fixtures, planted hydroponics models, lower reactors/purifiers, GYM exercise geometry with zero beds, two MED bed instances, and upper ENGINE_CONTROL consoles are physically represented. The medical scanner's integrated support surface is part of scanner equipment, not an additional `P_MedBed` instance.
+- Formal wall/gate sockets use nominal grid construction contacts at 0 and width, while junction nodes own the mesh end offsets. Floor/ceiling sockets retain nominal 3 m construction increments despite clipped footprints. Quarter-turn transformations and Unity socket creation agree; sockets are separate non-solid transforms. This is a coherent nominal assembly convention, not a claim that every socket lies on the clipped visible mesh boundary.
+
+## Verification limits
+
+The supplied independent audit of 17,214 solids with zero penetrations at gate poses 0/.25/.5/.75/1, seven passing Python tests, and 98/98 graph reachability was not rerun. Review-specific execution was limited to the two unsaved validator mutations and the gate-centre support check. Actual Unity import/rides and Blender/model export are being performed separately by the primary implementer.

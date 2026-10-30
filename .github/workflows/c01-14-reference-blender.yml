@@ -23,7 +23,7 @@ jobs:
           blender --background --python-expr 'import numpy; print("Blender numpy:", numpy.__version__)'
       - name: Build actual native BLEND and binary FBX
         run: |
-          blender --background --python Tools/C01Structures14/generate_blender.py -- --out Assets/C01StructuralPrototypes/P14
+          blender --background --python-exit-code 1 --python Tools/C01Structures14/generate_blender.py -- --out Assets/C01StructuralPrototypes/P14
       - name: Validate file signatures and checksums
         run: |
           python3 - <<'PY'

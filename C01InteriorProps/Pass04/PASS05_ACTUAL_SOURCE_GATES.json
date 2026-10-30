@@ -1,0 +1,148 @@
+{
+  "schema": "C01-10-PASS05-SOURCE-VERIFICATION",
+  "date": "2026-10-30",
+  "checks": {
+    "p19_git_lfs_pointer_verified": "YES; SHA256 OIDs observed from current producer pointers; original binary FBX not downloaded in C01-10",
+    "p16_ascii_fbx_source_verified": "YES; first bytes of all 7 files are ASCII and not Kaydara binary",
+    "native_blender_pass05": "NOT_RUN",
+    "unity_pass05": "NOT_RUN",
+    "independent_full_qa": "0_OF_36_APPROVED"
+  },
+  "known_failed_sha256": [
+    {
+      "id": "P19-01",
+      "pr": 15,
+      "branch": "c01/props-19-furniture",
+      "path": "Assets/C01InteriorProps/C01-19/Models/P19-01/P19-01.fbx",
+      "git_lfs_expected_binary_sha256": "47b4d6f2017626b6084584fbf0bad907505eb9e194703032d83af5315c1a4009",
+      "git_lfs_expected_size": 29772,
+      "qa_last_fan_zero_candidates": 13,
+      "state": "UNCHANGED_FROM_LAST_INDEPENDENT_QA_FAIL_SHA_NOT_NEW_REPAIR",
+      "source_binary_locally_inspected": false
+    },
+    {
+      "id": "P19-02",
+      "pr": 15,
+      "branch": "c01/props-19-furniture",
+      "path": "Assets/C01InteriorProps/C01-19/Models/P19-02/P19-02.fbx",
+      "git_lfs_expected_binary_sha256": "a42a57d168164cea335de3c9ee175a3074edca4a48b707a14beadbea16a8b6d8",
+      "git_lfs_expected_size": 31132,
+      "qa_last_fan_zero_candidates": 11,
+      "state": "UNCHANGED_FROM_LAST_INDEPENDENT_QA_FAIL_SHA_NOT_NEW_REPAIR",
+      "source_binary_locally_inspected": false
+    },
+    {
+      "id": "P19-05",
+      "pr": 29,
+      "branch": "c01/props-19-furniture-wave02",
+      "path": "Assets/C01InteriorProps/C01-19-W02/Models/P19-05/P19-05.fbx",
+      "git_lfs_expected_binary_sha256": "64156363cb5007831c243aeea50d5e59c862cc98b27cb12dd2f8af5b3c019892",
+      "git_lfs_expected_size": 34396,
+      "qa_last_fan_zero_candidates": 1,
+      "state": "UNCHANGED_FROM_LAST_INDEPENDENT_QA_FAIL_SHA_NOT_NEW_REPAIR",
+      "source_binary_locally_inspected": false
+    },
+    {
+      "id": "P19-07",
+      "pr": 29,
+      "branch": "c01/props-19-furniture-wave02",
+      "path": "Assets/C01InteriorProps/C01-19-W02/Models/P19-07/P19-07.fbx",
+      "git_lfs_expected_binary_sha256": "88b32fe2f5ddf981eecdc0469088f4e23e07c4c605a1db7bb9689a0b6011d585",
+      "git_lfs_expected_size": 34284,
+      "qa_last_fan_zero_candidates": 19,
+      "state": "UNCHANGED_FROM_LAST_INDEPENDENT_QA_FAIL_SHA_NOT_NEW_REPAIR",
+      "source_binary_locally_inspected": false
+    },
+    {
+      "id": "P19-08",
+      "pr": 29,
+      "branch": "c01/props-19-furniture-wave02",
+      "path": "Assets/C01InteriorProps/C01-19-W02/Models/P19-08/P19-08.fbx",
+      "git_lfs_expected_binary_sha256": "cbbea5435f8326e06fb5f43237986594df044c0e3ff94100fc44f856dce35ae2",
+      "git_lfs_expected_size": 33404,
+      "qa_last_fan_zero_candidates": 7,
+      "state": "UNCHANGED_FROM_LAST_INDEPENDENT_QA_FAIL_SHA_NOT_NEW_REPAIR",
+      "source_binary_locally_inspected": false
+    }
+  ],
+  "lighting_exports": [
+    {
+      "id": "P16-01",
+      "producer_pr": 12,
+      "git_blob_sha": "776b9de39845314e3dd6d98e01e12a5ada3197a0",
+      "observed_text_length": 6151,
+      "format": "ASCII_FBX_7_4",
+      "native_blend_present_in_pr": false,
+      "blender_binary_fbx_present_in_pr": false,
+      "unity_import": "NOT_RUN"
+    },
+    {
+      "id": "P16-02",
+      "producer_pr": 12,
+      "git_blob_sha": "5dddff4230e5dcaab136733907bb97d76209237c",
+      "observed_text_length": 6129,
+      "format": "ASCII_FBX_7_4",
+      "native_blend_present_in_pr": false,
+      "blender_binary_fbx_present_in_pr": false,
+      "unity_import": "NOT_RUN"
+    },
+    {
+      "id": "P16-03",
+      "producer_pr": 12,
+      "git_blob_sha": "cfd1ba9e7b659f124b5ba40fe49e29db14d1c093",
+      "observed_text_length": 6087,
+      "format": "ASCII_FBX_7_4",
+      "native_blend_present_in_pr": false,
+      "blender_binary_fbx_present_in_pr": false,
+      "unity_import": "NOT_RUN"
+    },
+    {
+      "id": "P16-04",
+      "producer_pr": 28,
+      "git_blob_sha": "b8d1c545984ddc1dd7790ae763d4e16f702d985a",
+      "observed_text_length": 7115,
+      "format": "ASCII_FBX_7_4",
+      "native_blend_present_in_pr": false,
+      "blender_binary_fbx_present_in_pr": false,
+      "unity_import": "NOT_RUN"
+    },
+    {
+      "id": "P16-05",
+      "producer_pr": 28,
+      "git_blob_sha": "078576421c3c728486ac6d0e218c31953f421856",
+      "observed_text_length": 7115,
+      "format": "ASCII_FBX_7_4",
+      "native_blend_present_in_pr": false,
+      "blender_binary_fbx_present_in_pr": false,
+      "unity_import": "NOT_RUN"
+    },
+    {
+      "id": "P16-06",
+      "producer_pr": 28,
+      "git_blob_sha": "a2dd22339411a61a66ddb60b233ecd0c2f54cd1f",
+      "observed_text_length": 8486,
+      "format": "ASCII_FBX_7_4",
+      "native_blend_present_in_pr": false,
+      "blender_binary_fbx_present_in_pr": false,
+      "unity_import": "NOT_RUN"
+    },
+    {
+      "id": "P16-07",
+      "producer_pr": 28,
+      "git_blob_sha": "2fec2e3c47684ee7f99f5d46904b2c52da26c126",
+      "observed_text_length": 5807,
+      "format": "ASCII_FBX_7_4",
+      "native_blend_present_in_pr": false,
+      "blender_binary_fbx_present_in_pr": false,
+      "unity_import": "NOT_RUN"
+    }
+  ],
+  "actions": {
+    "run_id": 41095999644,
+    "attempts": 2,
+    "last_conclusion": "failure",
+    "steps_executed": 0,
+    "runner_name": "",
+    "interpretation": "FAILED_BEFORE_RUNNER_ALLOCATED_ROOT_CAUSE_UNKNOWN"
+  }
+}

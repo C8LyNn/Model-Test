@@ -388,7 +388,7 @@
       "pos": [
         -0.454,
         0.879,
-        -0.17
+        -0.169
       ],
       "size": [
         0.018,
@@ -407,7 +407,7 @@
       "pos": [
         0.454,
         0.879,
-        -0.17
+        -0.169
       ],
       "size": [
         0.018,
@@ -460,8 +460,8 @@
     }
   ],
   "expectedTriangleCount": 380,
-  "state": "PASS15_DETAIL_AUTHORING_GLTF_OBJ_UPDATED_BLENDER_FBX_STALE",
-  "version": "0.2.0",
+  "state": "PASS16_ZFIGHTING_GUIDE_FIX_SOURCE_ONLY__BLENDER_FBX_NOT_RUN",
+  "version": "0.2.1",
   "units": "meters",
   "axes": "Y up; +Z toward access side for keypad",
   "materials": [
@@ -480,5 +480,22 @@
     "nativeBlenderFBX": "NOT_RUN",
     "Unity6": "NOT_RUN",
     "notes": "Preserved all preexisting moving pivots, part geometry and materials; new service hardware mounted on static parent ROOT"
+  },
+  "detailPass16": {
+    "fix": "Translate both preexisting KeyboardGuide boxes +0.001m in world +Z only to separate their old coincident +Z cap planes from the Keyboard while retaining substantial support intersection",
+    "before": {
+      "KeyboardGuidePlusZFace_m": -0.065,
+      "KeyboardPlusZFace_m": -0.065
+    },
+    "after": {
+      "KeyboardGuidePlusZFace_m": -0.064,
+      "KeyboardPlusZFace_m": -0.065,
+      "guideSupportZOverlap_m": 0.209
+    },
+    "noNewParts": true,
+    "originalMeshBuffersUnmodified": true,
+    "childrenMovingControlsUnaffected": true,
+    "BlenderExport": "NOT RUN",
+    "Unity": "NOT RUN"
   }
 }

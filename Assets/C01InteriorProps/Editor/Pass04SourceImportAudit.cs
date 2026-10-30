@@ -419,6 +419,12 @@ namespace C01.InteriorProps.Editor
             if(r.Bytes<200){r.Status="FAIL";r.Diagnostics="FBX_TOO_SMALL";return r;}
             var importer=AssetImporter.GetAtPath(path) as ModelImporter;
             if(importer==null){r.Status="BLOCKED";r.Diagnostics="MODEL_IMPORTER_NOT_AVAILABLE";return r;}
+            if(importer.meshCompression!=ModelImporterMeshCompression.Off)
+                defects.Add("DETAIL15_IMPORTER_MESH_COMPRESSION_NOT_OFF");
+            if(importer.importNormals!=ModelImporterNormals.Import)
+                defects.Add("DETAIL15_IMPORTER_NORMALS_NOT_PRESERVED");
+            if(!importer.preserveHierarchy)
+                defects.Add("DETAIL15_IMPORTER_PIVOT_HIERARCHY_NOT_PRESERVED");
             r.Imported=AssetDatabase.LoadAssetAtPath<GameObject>(path);
             if(r.Imported==null){r.Status="BLOCKED";r.Diagnostics="MODEL_ASSET_NOT_IMPORTED";return r;}
             // Inspect the imported FBX asset directly. InstantiatePrefab in the
@@ -549,10 +555,29 @@ namespace C01.InteriorProps.Editor
                 var assetPath=ToAssetPath(fbx);
                 var importer=AssetImporter.GetAtPath(assetPath) as ModelImporter;
                 if(importer==null)continue;
-                if(!importer.isReadable)
+                bool changed=false;
+                // QA-only importer profile: do NOT lose face normals, individual
+                // wheel/hub nodes or details to compression or automatic hierarchy
+                // flattening. Only changes the disposable staging *.fbx.meta.
+                if(!importer.isReadable){importer.isReadable=true;changed=true;}
+                if(importer.meshCompression!=ModelImporterMeshCompression.Off)
                 {
-                    importer.isReadable=true;
-                    importer.SaveAndReimport(); // staging .meta only
+                    importer.meshCompression=ModelImporterMeshCompression.Off;
+                    changed=true;
+                }
+                if(importer.importNormals!=ModelImporterNormals.Import)
+                {
+                    importer.importNormals=ModelImporterNormals.Import;
+                    changed=true;
+                }
+                if(!importer.preserveHierarchy)
+                {
+                    importer.preserveHierarchy=true;
+                    changed=true;
+                }
+                if(changed)
+                {
+                    importer.SaveAndReimport(); // disposable staging .meta ONLY
                     adjusted++;
                 }
             }

@@ -1,0 +1,108 @@
+name: C01 PASS04 SHA256 AFTER Candidates
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'C01InteriorProps_Library/Pass04/**'
+      - '.github/workflows/c01-pass04-after-intake.yml'
+jobs:
+  producer-byte-audit:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - group: '15-1'
+            sha: f5ca2b17beb4d8c374e79c08379907aae96abacb
+            assets: "P15-01 P15-02 P15-03"
+            sparse: |
+              Assets/C01InteriorProps/P15
+          - group: '15-2'
+            sha: 9fd0842ed5e522d1caa621590b1aa025b2c30048
+            assets: "P15-04 P15-05 P15-06 P15-07"
+            sparse: |
+              Assets/C01InteriorProps/P15Wave02
+          - group: '16-1'
+            sha: f7203d1e76f35b732d9bf023e250478bdac88cc5
+            assets: "P16-01 P16-02 P16-03"
+            sparse: |
+              C01Source/Lighting
+          - group: '16-2'
+            sha: 73e89ae3cf0f52eeb19feea00f3d52d2a7c61140
+            assets: "P16-04 P16-05 P16-06 P16-07"
+            sparse: |
+              C01Source/LightingW02
+          - group: '17-1'
+            sha: 30cd3e447584292325308883aa0ef18848bcd644
+            assets: "P17-01 P17-02 P17-03"
+            sparse: |
+              C01InteriorProps_Source/Blender
+              Assets/C01InteriorProps/Models
+          - group: '17-2'
+            sha: 1cc9eb8aaf9f44cb7c63741ad60ffd7d21b768c3
+            assets: "P17-04 P17-05 P17-06 P17-07"
+            sparse: |
+              C01InteriorProps_W02/Blender
+              Assets/C01InteriorProps/W02/Models
+          - group: '18-1'
+            sha: 7309a0b964249890478b9de4a4f237b3e401af79
+            assets: "P18-01 P18-02 P18-03"
+            sparse: |
+              Assets/C01InteriorProps/C01-18
+          - group: '18-2'
+            sha: 95b8ef34b6ec61931473e390e9d351f1d46943fa
+            assets: "P18-04 P18-05 P18-06 P18-07"
+            sparse: |
+              Assets/C01InteriorProps/C01-18-Wave02
+          - group: '19-1'
+            sha: 20777a18e5bbbb97cd8148ba9a63f217efd7ebc6
+            assets: "P19-01 P19-02 P19-03 P19-04"
+            sparse: |
+              Assets/C01InteriorProps/C01-19
+          - group: '19-2'
+            sha: e804786b94a1badb84f261f76f450f1e9500e43a
+            assets: "P19-05 P19-06 P19-07 P19-08"
+            sparse: |
+              Assets/C01InteriorProps/C01-19-W02
+    steps:
+      - name: Check out library under test
+        uses: actions/checkout@v4
+        with:
+          path: library
+          persist-credentials: false
+      - name: Check out immutable supplier commit with Git LFS hydration
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ matrix.sha }}
+          path: producer
+          lfs: true
+          sparse-checkout: ${{ matrix.sparse }}
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate no false release and run unit tests
+        run: |
+          python library/C01InteriorProps_Library/Pass04/capture_pass04.py validate
+          python -m unittest discover -s library/C01InteriorProps_Library/Pass04/tests -v
+      - name: Capture current producer candidate SHA256 from hydrated actual files
+        shell: bash
+        run: |
+          set -e
+          for asset in ${{ matrix.assets }}; do
+            set +e
+            python library/C01InteriorProps_Library/Pass04/capture_pass04.py capture --asset "$asset" --checkout producer --output "reports/${asset}.json"
+            code=$?
+            set -e
+            if [ "$code" -eq 2 ]; then
+              echo "BLOCKED: incomplete Blender or binary FBX candidate for $asset"
+            elif [ "$code" -ne 0 ]; then
+              exit "$code"
+            fi
+          done
+      - name: Preserve individual immutable byte receipts
+        uses: actions/upload-artifact@v4
+        with:
+          name: c01-pass04-candidates-${{ matrix.group }}
+          path: reports/*.json
+          if-no-files-found: error

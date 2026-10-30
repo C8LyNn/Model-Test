@@ -124,12 +124,12 @@ for ob in objects:
             emitter.default_value = rgba
             strength.default_value = 1.9
 
-pre = inspect(objects)
-if sum(x["vertices"] for x in pre) != expected_parts * 8:
+base_pre = inspect(objects)
+if sum(x["vertices"] for x in base_pre) != expected_parts * 8:
     raise RuntimeError("PASS03 weld was lost on OBJ import")
-if sum(x["triangles"] for x in pre) != expected_parts * 12:
+if sum(x["triangles"] for x in base_pre) != expected_parts * 12:
     raise RuntimeError("Original triangles changed on import")
-if any(x["uv0_loops"] != x["triangles"] * 3 for x in pre):
+if any(x["uv0_loops"] != x["triangles"] * 3 for x in base_pre):
     raise RuntimeError("UV loop count changed on import")
 
 # DETAIL PASS12 — merge real authored OBJ detail submeshes into the SAME asset scene.
@@ -171,6 +171,11 @@ for ob in detail_objects:
         if bsdf.inputs.get("Metallic"): bsdf.inputs["Metallic"].default_value = 0.4
         if bsdf.inputs.get("Roughness"): bsdf.inputs["Roughness"].default_value = 0.56
 
+# Native FBX roundtrip must compare to ALL authored source meshes,
+# including 57 PASS12 detail solids, not only the PASS03 primitive baseline.
+pre = inspect(objects)
+if sum(x["triangles"] for x in pre) != expected_parts * 12 + detail_triangles[ASSET]:
+    raise RuntimeError("Authored source triangles changed")
 if ASSET == "P16-06":
     # Unity local Y=-0.20 maps to Blender local Z=-0.20 after Y-up OBJ import.
     pivot = bpy.data.objects.new("ROTOR_Y_ANIMATABLE", None)

@@ -32,6 +32,8 @@ jobs:
           git add Assets/C01InteriorProps/C01-18-Wave02/QA/Pass03/*/mesh_overlap_review.json
           if ! git diff --cached --quiet; then
             git commit -m 'C01-18 PASS03: record actual Blender overlap-screen evidence [skip ci]'
+            git fetch origin c01/props-18-cargo-wave02
+            git rebase origin/c01/props-18-cargo-wave02
             git push origin HEAD:c01/props-18-cargo-wave02
           fi
       - uses: actions/upload-artifact@v4

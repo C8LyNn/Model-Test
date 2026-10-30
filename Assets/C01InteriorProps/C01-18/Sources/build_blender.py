@@ -14,7 +14,23 @@ for name in ('P18-01','P18-02','P18-03'):
   o.select_set(True)
   bpy.context.view_layer.objects.active=o
   bpy.ops.object.origin_set(type='ORIGIN_GEOMETRY',center='BOUNDS')
-  if o.name.startswith('Wheel_'):o['C01_WheelPivot']='local axle center'
+  if o.name in ('Wheel_LB','Wheel_LF','Wheel_RB','Wheel_RF'):
+   o['C01_WheelPivot']='local axle center'
+ # Wheel hubs are newly added authored meshes. Keep each pair parented to its existing
+ # movable wheel while caster brackets, axle and gussets remain static frame geometry.
+ bpy.context.view_layer.update()
+ by_name={o.name:o for o in objects}
+ for wid in ('Wheel_LB','Wheel_LF','Wheel_RB','Wheel_RF'):
+  wheel=by_name.get(wid)
+  if wheel is None:raise RuntimeError(name+' missing movable wheel '+wid)
+  if name=='P18-03':
+   for suffix in ('Hub_In','Hub_Out'):
+    hub=by_name.get(wid+'_'+suffix)
+    if hub is None:raise RuntimeError(name+' missing authored hub '+wid+'_'+suffix)
+    world=hub.matrix_world.copy()
+    hub.parent=wheel
+    hub.matrix_world=world
+   if abs(wheel.location.y-0.105)>0.001:raise RuntimeError(name+' wheel axle pivot not at y=.105: '+wid)
  bpy.ops.wm.save_as_mainfile(filepath=str(root/'Sources'/(name+'.blend')))
  bpy.ops.object.select_all(action='DESELECT')
  for o in objects:o.select_set(True)

@@ -1,0 +1,39 @@
+name: C01-18 PASS04 verified native source FBX w01
+on:
+  workflow_dispatch:
+  push:
+    branches: [c01/props-18-cargo]
+    paths:
+      - 'Assets/C01InteriorProps/C01-18/Repair/verify_pass04.py'
+      - '.github/workflows/c01-18-pass04-w01.yml'
+permissions:
+  contents: read
+jobs:
+  native-source-fbx-check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 24
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - name: Hydrate actual .blend and binary FBX
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y blender python3-numpy
+          git lfs pull
+          blender --version
+      - name: Audit genuine final binary FBX vs original Blender
+        run: |
+          blender -b --python Assets/C01InteriorProps/C01-18/Repair/verify_pass04.py -- "$PWD/Assets/C01InteriorProps/C01-18" P18-01 P18-02 P18-03
+      - name: Publish inspected SHA and results
+        if: always()
+        run: |
+          echo "PRODUCER_COMMIT_SHA=${GITHUB_SHA}"
+          find Assets/C01InteriorProps/C01-18/QA/Pass04 -name '*native_fbx_audit.json' -print || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: C01-18-PASS04-w01-NativeEvidence
+          path: Assets/C01InteriorProps/C01-18/QA/Pass04/*_native_fbx_audit.json
+          if-no-files-found: warn
+          retention-days: 30

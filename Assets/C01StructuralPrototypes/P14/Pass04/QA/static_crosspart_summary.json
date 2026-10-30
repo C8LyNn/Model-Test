@@ -1,0 +1,85 @@
+{
+  "scope": "C01-14 optional RMP-01/RAI-01 only; not counted among 36 P15-P19 assets",
+  "method": "offline numpy/trimesh + scipy ConvexHull/HalfspaceIntersection on genuine original v001 GLB visible component meshes; verified v002 BLEND/FBX binary SHA and earlier real Blender roundtrip",
+  "limits": [
+    "not a new Blender FBX import",
+    "no collider proxy in GLB",
+    "convex-solid intersections do not prove absence of coplanar face contacts",
+    "independent C01-02 QA and Unity6 not run"
+  ],
+  "ramp": {
+    "id": "RMP-01",
+    "visible_components": 5,
+    "pair_count": 10,
+    "unexpected_positive_volume_intersections": 0,
+    "intentional_hidden_collider_proxy": "COL_RampDeck; included in v002 native BLEND/FBX, excluded from v001 GLB",
+    "native_v_e_f_tris": {
+      "vertices": 48,
+      "edges": 108,
+      "faces": 72,
+      "triangles": 72,
+      "visual_triangles": 60
+    },
+    "source_topology_defects_before": 0,
+    "source_topology_defects_after": 0,
+    "repairs": 0
+  },
+  "railing": {
+    "id": "RAI-01",
+    "visible_components": 4,
+    "pair_count": 6,
+    "unexpected_positive_volume_intersections": 0,
+    "intentional_positive_volume_connections": [
+      {
+        "pair": [
+          "MiddleRail",
+          "Post_Start"
+        ],
+        "volume_m3": 0.000336000023
+      },
+      {
+        "pair": [
+          "MiddleRail",
+          "Post_End"
+        ],
+        "volume_m3": 0.000336000195
+      },
+      {
+        "pair": [
+          "TopRail",
+          "Post_Start"
+        ],
+        "volume_m3": 0.000191999817
+      },
+      {
+        "pair": [
+          "TopRail",
+          "Post_End"
+        ],
+        "volume_m3": 0.000191999916
+      }
+    ],
+    "native_v_e_f_tris": {
+      "vertices": 32,
+      "edges": 72,
+      "faces": 48,
+      "triangles": 48
+    },
+    "source_topology_defects_before": 0,
+    "source_topology_defects_after": 0,
+    "repairs": 0
+  },
+  "native_sha256_v002": {
+    "RMP-01_blend": "7cba127139253a34b0575b0c55f10112395acb790b9716e1a248a3bcc8812cfa",
+    "RMP-01_fbx": "97f0b125313057f4ecf601dd60a02b4d3f0d55b87c1713d71a0adbedcc6d1443",
+    "RAI-01_blend": "8a2f16205874f8485adb87c5251f6adbba3f51816936c0bf1964ad40a47850a5",
+    "RAI-01_fbx": "b51c3c012f5680de2d02c2deaf5c67c4ae9a12bb7e8347f179ed08d181a7e103"
+  },
+  "tests": {
+    "pass03_real_native_blender_fbx_roundtrip": "PASS (existing run 41089475908)",
+    "pass04_static_crosspart": "PASS within method limits",
+    "pass04_ci_new_native": "NOT_RUN; workflow failed before steps (41094351876 and rerun)",
+    "unity6": "NOT_RUN",
+    "independent_c01_02": "BLOCKED"
+  }
+}

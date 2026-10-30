@@ -1,0 +1,76 @@
+name: C01-15 PASS04 native source topology and FBX audit
+on:
+  push:
+    branches:
+      - c01/props-15-installations
+      - c01/props-15-installations-wave02
+    paths:
+      - .github/workflows/c01-p15-pass04.yml
+      - Tools/C01MeshPass04/P15/audit_native.py
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: c01-p15-pass04-\${{ github.ref_name }}
+  cancel-in-progress: true
+jobs:
+  audit-signed-source:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - name: Install real Blender 4.x and numpy
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends blender python3-numpy xvfb libegl1 libgl1 libgl1-mesa-dri libopengl0
+          git config lfs.https://github.com/C8LyNn/Model-Test.git/info/lfs.locksverify false
+          git lfs pull
+          blender --version | head -3
+      - name: Inspect current native source, enumerate T junctions and BVH candidates, import true binary FBX
+        env:
+          C01_P15_WAVE: \${{ github.ref_name == 'c01/props-15-installations-wave02' && 'W02' || 'W01' }}
+        run: LIBGL_ALWAYS_SOFTWARE=1 xvfb-run -a blender --background --python Tools/C01MeshPass04/P15/audit_native.py
+      - name: Ensure source and FBX unchanged by read-only audit
+        shell: bash
+        env:
+          C01_P15_WAVE: \${{ github.ref_name == 'c01/props-15-installations-wave02' && 'W02' || 'W01' }}
+        run: |
+          set -euo pipefail
+          ROOT=Assets/C01InteriorProps/P15
+          if [ "$C01_P15_WAVE" = "W02" ]; then ROOT=Assets/C01InteriorProps/P15Wave02; fi
+          if ! git diff --quiet -- "$ROOT/Sources/Blender" "$ROOT/Models/FBX"; then
+            echo "::error::Non-destructive PASS04 illegally changed source or FBX"
+            exit 1
+          fi
+          python3 - <<'PY'
+          import json,os,pathlib
+          root=pathlib.Path('Assets/C01InteriorProps')/('P15Wave02' if os.environ['C01_P15_WAVE']=='W02' else 'P15')
+          r=json.loads((root/'QA/Pass04/PASS04_SUMMARY.json').read_text())
+          assert r['status']=='PASS'
+          for aid,record in r['models'].items():
+            assert record['native']=='PASS' and record['fbx']=='PASS'
+            assert record['same_mesh_T_junctions']==0
+            print(aid,record['V_E_F_T'],record['source_sha256'],record['fbx_sha256'])
+          PY
+      - name: Write SHA-pinned reports into producer PR
+        shell: bash
+        env:
+          C01_P15_WAVE: \${{ github.ref_name == 'c01/props-15-installations-wave02' && 'W02' || 'W01' }}
+        run: |
+          set -euo pipefail
+          ROOT=Assets/C01InteriorProps/P15
+          if [ "$C01_P15_WAVE" = "W02" ]; then ROOT=Assets/C01InteriorProps/P15Wave02; fi
+          tar -cf "$RUNNER_TEMP/pass04_native_report.tar" "$ROOT/QA/Pass04/"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config lfs.https://github.com/C8LyNn/Model-Test.git/info/lfs.locksverify false
+          git fetch origin "$GITHUB_REF_NAME"
+          GIT_LFS_SKIP_SMUDGE=1 git reset --hard FETCH_HEAD
+          tar -xf "$RUNNER_TEMP/pass04_native_report.tar"
+          git add "$ROOT/QA/Pass04"
+          if ! git diff --cached --quiet; then
+            git commit -m "C01-15 PASS04: SHA-pinned native mesh and FBX topology audit"
+            git push origin "HEAD:$GITHUB_REF_NAME"
+          fi

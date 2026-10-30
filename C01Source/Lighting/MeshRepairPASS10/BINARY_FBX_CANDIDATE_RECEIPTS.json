@@ -1,0 +1,50 @@
+{
+  "schema": "C01-16-PASS10-OFFLINE-FBX-CANDIDATES-1",
+  "scope": "W01/P16",
+  "project": "C01-3D-Asset-Factory",
+  "repo": "C8LyNn/Model-Test",
+  "producer_PR": 12,
+  "producer_head_at_log": "c971ee9ddad081a4b92b730ddb85fd21835f31b7",
+  "published_binary_files_in_PR": false,
+  "provenance": "Previously welded genuine P16 OBJ source, parity to GitHub OBJ face-corner material/coordinate/UV/normal fingerprint <= 1e-6",
+  "work_completed": "Seven independent actual FBX 7400 binary files were generated in the active conversation container via direct FBX binary emitter, based on real original welded source OBJ. The files exist in the downloadable chat ZIP, not in GitHub or LFS.",
+  "bundle_name": "C01-16_PASS10_BINARY_CANDIDATES.zip",
+  "bundle_sha256": "dde99c479888f7fe2154e254c0a3be425fa3e1288bd0472661c9bc5b9379f4ab",
+  "candidate_only": "TRUE; not Blender-origin; not authorized to replace production FBX",
+  "proof": "Independent locally implemented FBX7400 binary node parser and exact per-face vertex/UV0/normal/material comparison to original OBJ; all 7 passed; not C01-02 independent QA",
+  "QA": {
+    "indexed_binary_structure": "PASS_STATIC_SELF_CHECK",
+    "original_geometry_UV0_normals": "PASS_STATIC_SELF_CHECK",
+    "blender_binary_roundtrip": "NOT_RUN",
+    "native_blender_source": "MISSING",
+    "unity_6_urp": "NOT_RUN",
+    "independent_C01_02": "BLOCKED"
+  },
+  "needs_owner_action": "Execute real Blender 4.x + git-lfs on approved workstation or restore C01 private repo Actions runners; generate .blend and genuine Blender binary FBX, run Blender reimport and real Unity before release.",
+  "models": [
+    {
+      "id": "P16-01",
+      "components": 5,
+      "triangles": 60,
+      "binary_candidate_bytes": 21248,
+      "binary_candidate_sha256": "2600b37c0b61fe3c9e6d12e4f814ddceead9fd91e1d55d5bc5b37ca3187893f3",
+      "candidate_in_github": false
+    },
+    {
+      "id": "P16-02",
+      "components": 5,
+      "triangles": 60,
+      "binary_candidate_bytes": 21232,
+      "binary_candidate_sha256": "58db4dd2b131042c5c5b3aec5aa710e8d6afe50246ee41471abb9c4058d18ef8",
+      "candidate_in_github": false
+    },
+    {
+      "id": "P16-03",
+      "components": 5,
+      "triangles": 60,
+      "binary_candidate_bytes": 21248,
+      "binary_candidate_sha256": "8fc550747186fdeea594de022012c96d5e3ff69d91277b905008becaa95b1b56",
+      "candidate_in_github": false
+    }
+  ]
+}

@@ -4,9 +4,8 @@ on:
     branches:
       - c01/props-19-furniture
     paths:
-      - 'Assets/C01InteriorProps/C01-19/Source/**'
-      - 'Assets/C01InteriorProps/C01-19/QA/validate_native.py'
-      - '.github/workflows/c01-19-native.yml'
+      - 'Assets/C01InteriorProps/C01-19/Source/parts.json'
+      - 'Assets/C01InteriorProps/C01-19/Source/blender_export.py'
   workflow_dispatch:
 permissions:
   contents: write

@@ -125,3 +125,32 @@ PASS04 remains OPEN until all 36 original geometry exports have independent SHA-
 - C01-01 corrected Python and Windows signature validators in existing C01-16 PR #12/#28 and added seven regression test methods in each. Independent local real-bytes header regression on two archival .blend source files: 12/12 PASS, but Blender runtime and seven new C01-16 exports NOT RUN.
 - GitHub Actions failures with runner_id=0 and steps=[] classify as INFRA_NOT_RUN. Repo admin metadata does not guarantee app access to Settings/Actions/billing. When no Blender 4.x + Git LFS runner is accessible, status NEEDS_OWNER_ACTION; specify exact owner control and executable commands. No budget, payment, ship, geometry or merge changes without approval.
 - Only actual producer-owned changed Blender source SHA, 36 SHA-pinned binary exports, independent C01-02 QA, and real Unity 6 URP validation can close #30. Keep all production PRs Draft.
+
+
+## DETAIL PASS 12 — ADDENDUM A4: mechanical detail and physical contact acceptance
+
+**Dispatch:** issue #36. Authorization applies only to the existing P15–P19 asset IDs. No new models, random greebles, ship changes or automatic welding; C01-01 does not independently sign C01-02 QA.
+
+### Actual source-pinned observations
+
+C01-18 authoring OBJ producer HEAD **4a0e58d422335af9c7f79fdcf6a80feb7c9c6435** compared to **ecfac25934a98985eca8222060e190f8d5cecd5c**: **49/49** ORIGINAL parts have identical oriented face-corner positions, UV0 and normals (full loop signatures, not merely bbox). P18-01: parts 15→37, tris 180→684; P18-02: 17→47, 204→1012; P18-03: 17→53, 348→1532. **88 actually added submeshes in 3 existing real source OBJ.** Read-only evidence recorded in [C01_01_DETAIL_PASS12_PILOT_SOURCE_EVIDENCE.json](C01_01_DETAIL_PASS12_PILOT_SOURCE_EVIDENCE.json).
+
+C01-17 authoring P17-02 current spec commit **bff1886e09ec04d21bab84a2f15e52c1cfb4a72b** compared to **85732482b075bcfab68e5d660d26318dfe9c630d**: **20/20** original spec parts unchanged, 18 new definitions (12 key guides, 2 clamp reinforcements, 4 fasteners). Actual native mesh export NOT RUN.
+
+### Mechanical attachment gates
+
+- **P18-01 crate:** Original eight trim strips were displaced **28 mm** from the shell. Revised source has eight TrimBacker support meshes whose AABBs contact both trim and shell with **0 mm box separation**. Confirm actual triangle faces physically connect without coplanar overlaps; assess hinge/latch mechanical attachment and preserve original corner/lid structure and opening pivot. Added purposeful hinges or latches may protrude slightly; document silhouette/AABB delta, don't require identical old box if intentional.
+- **P18-02 rack:** Two original top labels were **50 mm above the top deck** and **22 mm behind its edge**. Revised source adds two mounting backplates; their AABBs overlap the correct original label and top shelf with **0 mm box separation**. Confirm physical bracket/bolt/shelf-to-frame support in real Blender. No floating plate or fastener; eliminate coincident face z-fighting, not valid touching edges.
+- **P18-03 cart:** Preserve **four** separate movable wheels and Y=0 ground contact, all original wheel orientation and symmetry. Wheel center to corresponding upright horizontal offset is **67.268 mm**; shifting wheels toward posts without checking steering/rotation and collision is prohibited. Revised source has **nine assembly parts per wheel** (hub, axle, forks, anchor, gusset, fastener); the Axle→ForkOuter→Anchor chain has zero AABB gap for all 4. Actual face-level joins and pivot motion must be checked in Blender/Unity; AABB proximity cannot prove attached surfaces.
+- **P17-02 access reader:** Preserve 12 separately interactive keypad keys and state/EMISSION materials, existing wall-mount pivot and collider. Actual source spec now adds 12 retaining guides, 2 clamp reinforcements and 4 screws. Check guide-to-keybed and screw-to-backplate contact and avoid doubled outward-facing planes.
+- **P15/16/19:** Finish existing export, UV/normal and source triangulation defects before extra purposeful details. P16-06 rotor remains separate. No extra detail may hide a P19 topology defect.
+
+### 5-stage signoff contract
+
+1. **AUTHORING:** Pin exact producer Git commit and Git blob; preserve all original face-corner geometry/UV0/normals/pivots except approved targeted defects. Record individual new parts and contact gaps. AABB checks are screening, never final geometry acceptance. Never global merge-by-distance.
+2. **DETAIL COST:** Record actual V/E/F/T/material slot and part count, actual Unity draw calls, inspect hidden polys and LOD. Measured pilot increases: 3.8x, 5.0x and 4.4x triangles; these are review triggers (not automatic reject thresholds).
+3. **REAL BLENDER:** Open actual revised source in Blender 4.x, save a changed native .blend, export genuine Blender-origin binary FBX, and independently reopen/import it. Compare scale, pivots, parenting, UV loops, normal/winding, material assignments, moving parts and actual triangle contacts. Save matching real BEFORE/AFTER shaded/wireframe and detail closeups plus complete SHA-256 of final .blend and FBX.
+4. **INDEPENDENT C01-02:** Audit actual final FBX SHA bytes and triangle-level interpenetration, coplanar z-fight, T-junction, nonmanifold and proper attachment; no automatic signoff by old SHA.
+5. **UNITY C01-10:** Real Unity 6 URP prefab/import, wheel clearance and rotation, reader states, colliders/scale; if editor unavailable, NOT RUN. No merge without formal authorization.
+
+**C01-01 status here:** REAL authoring source verification executed and producer details measured; no native Blender roundtrip or Unity run by C01-01. Related #33/#30 source export blockers remain unresolved.

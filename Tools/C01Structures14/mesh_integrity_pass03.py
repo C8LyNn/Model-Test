@@ -147,7 +147,9 @@ def setup_camera(bounds,zoom=1):
         ld.energy=power;ld.shape="DISK";ld.size=size
     scene=bpy.context.scene;scene.render.engine="CYCLES";scene.cycles.samples=8
     scene.render.resolution_x=600;scene.render.resolution_y=480;scene.render.resolution_percentage=100
-    scene.render.image_settings.file_format="PNG";scene.world.color=(.12,.12,.12)
+    scene.render.image_settings.file_format="PNG"
+    if scene.world is None: scene.world=bpy.data.worlds.new("QA_World")
+    scene.world.color=(.12,.12,.12)
 def render_png(path,wire=False):
     overlay=[]
     if wire:

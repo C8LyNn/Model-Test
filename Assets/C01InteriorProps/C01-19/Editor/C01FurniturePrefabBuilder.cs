@@ -3,56 +3,104 @@ using System;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
-public static class C01FurniturePrefabBuilder {
- [Serializable] class Part { public string name; public string material; public float[] center; public float[] size; }
- [Serializable] class Model { public string id; public Part[] parts; }
- [Serializable] class Wrapper { public Model[] models; }
- private const string Root="Assets/C01InteriorProps/C01-19";
- [MenuItem("Tools/C01/Build furniture prefabs")]
- public static void Build(){
-  var src=AssetDatabase.LoadAssetAtPath<TextAsset>(Root+"/Source/parts_unity.json");
-  if(src==null)throw new Exception("Missing C01-19 geometry data");
-  var data=JsonUtility.FromJson<Wrapper>(src.text);
-  if(data==null||data.models==null||data.models.Length!=4)throw new Exception("Invalid geometry catalog");
-  var shader=Shader.Find("Universal Render Pipeline/Lit");
-  if(shader==null)throw new Exception("Universal Render Pipeline/Lit not found");
-  Directory.CreateDirectory(Root+"/Materials");Directory.CreateDirectory(Root+"/Prefabs");
-  string[] families={"steel","dark","fabric","accent"};
-  Color[] colors={new Color(.38f,.45f,.48f),new Color(.11f,.16f,.19f),new Color(.30f,.39f,.43f),new Color(.90f,.53f,.16f)};
-  var mats=new Material[families.Length];
-  for(int i=0;i<families.Length;i++){
-   string path=Root+"/Materials/M_C01_"+families[i].ToUpperInvariant()+".mat";
-   mats[i]=AssetDatabase.LoadAssetAtPath<Material>(path);
-   if(mats[i]==null){mats[i]=new Material(shader);mats[i].color=colors[i];AssetDatabase.CreateAsset(mats[i],path);}
-  }
-  foreach(var model in data.models){
-   var root=new GameObject(model.id+"_Furniture");
-   root.transform.position=Vector3.zero;root.transform.rotation=Quaternion.identity;root.transform.localScale=Vector3.one;
-   GameObject hinge=null;
-   Vector3 hingeAt=new Vector3(-.305f,.9f,-.237f);
-   if(model.id=="P19-02"){hinge=new GameObject("Door_Hinge_Pivot");hinge.transform.SetParent(root.transform,false);hinge.transform.localPosition=hingeAt;}
-   foreach(var part in model.parts){
-    string slug=System.Text.RegularExpressions.Regex.Replace(part.name,"[^a-zA-Z0-9_]","_");
-    string path=Root+"/Models/"+model.id+"/"+model.id+"__"+slug+".obj";
-    var imported=AssetDatabase.LoadAssetAtPath<GameObject>(path);
-    if(imported==null){UnityEngine.Object.DestroyImmediate(root);throw new Exception("OBJ not imported: "+path);}
-    bool swing=hinge!=null&&(part.name=="Door_Leaf"||part.name=="Door_Handle"||part.name=="Vent_Upper");
-    var go=(GameObject)PrefabUtility.InstantiatePrefab(imported);
-    go.name=part.name;go.transform.SetParent(swing?hinge.transform:root.transform,false);
-    go.transform.localPosition=swing?-hingeAt:Vector3.zero;go.transform.localRotation=Quaternion.identity;go.transform.localScale=Vector3.one;
-    int materialId=Array.IndexOf(families,part.material);
-    if(materialId<0)throw new Exception("Invalid material "+part.material);
-    foreach(var renderer in go.GetComponentsInChildren<MeshRenderer>())renderer.sharedMaterial=mats[materialId];
-    var collider=go.AddComponent<BoxCollider>();
-    collider.center=new Vector3(part.center[0],part.center[1],part.center[2]);
-    collider.size=new Vector3(part.size[0],part.size[1],part.size[2]);
-   }
-   string target=Root+"/Prefabs/"+model.id+"_Furniture.prefab";
-   if(PrefabUtility.SaveAsPrefabAsset(root,target)==null)throw new Exception("Unable to save prefab "+target);
-   UnityEngine.Object.DestroyImmediate(root);
-   Debug.Log("C01-19 prefab authored: "+target);
-  }
-  AssetDatabase.SaveAssets();AssetDatabase.Refresh();
- }
+
+/// <summary>PASS03 prefabs import the repaired FBX. Actual Unity execution is still NOT RUN.</summary>
+public static class C01FurniturePrefabBuilder
+{
+    [Serializable] private class Model { public string id; public float[] dims_xyz; public float[] dimensions_xyz; }
+    [Serializable] private class Collection { public Model[] models; }
+    private const string Root = "Assets/C01InteriorProps/C01-19";
+    [MenuItem("Tools/C01/Build furniture prefabs")]
+    public static void Build()
+    {
+        var source = AssetDatabase.LoadAssetAtPath<TextAsset>(Root + "/Source/parts_unity.json");
+        if (source == null) throw new Exception("C01-19 source manifest unavailable");
+        var collection = JsonUtility.FromJson<Collection>(source.text);
+        if (collection == null || collection.models == null || collection.models.Length != 4)
+            throw new Exception("C01-19 expected exactly four models per wave");
+        Shader shader = Shader.Find("Universal Render Pipeline/Lit");
+        if (shader == null) throw new Exception("Unity 6 URP Lit shader not found");
+        Directory.CreateDirectory(Root + "/Materials");
+        Directory.CreateDirectory(Root + "/Prefabs");
+        string[] keys = { "STEEL", "DARK", "FABRIC", "ACCENT" };
+        Color[] colors = { new Color(.39f,.47f,.52f), new Color(.105f,.15f,.19f),
+                           new Color(.30f,.38f,.43f), new Color(.88f,.47f,.13f) };
+        var materials = new Material[keys.Length];
+        for (int i=0;i<keys.Length;i++)
+        {
+            string p = Root + "/Materials/M_C01_" + keys[i] + ".mat";
+            materials[i] = AssetDatabase.LoadAssetAtPath<Material>(p);
+            if (materials[i] == null)
+            {
+                materials[i] = new Material(shader);
+                materials[i].SetColor("_BaseColor", colors[i]);
+                AssetDatabase.CreateAsset(materials[i],p);
+            }
+        }
+        foreach(var record in collection.models)
+        {
+            string fbxpath=Root+"/Models/"+record.id+"/"+record.id+".fbx";
+            var imported=AssetDatabase.LoadAssetAtPath<GameObject>(fbxpath);
+            if(imported == null) throw new Exception("C01-19 repaired FBX missing/unimportable: "+fbxpath);
+            var root = new GameObject(record.id + "_Furniture_PASS03");
+            root.transform.position = Vector3.zero;
+            root.transform.rotation = Quaternion.identity;
+            root.transform.localScale = Vector3.one;
+            try
+            {
+                var instance=(GameObject)PrefabUtility.InstantiatePrefab(imported);
+                instance.transform.SetParent(root.transform, false); // preserve FBX authoring transforms, hinge hierarchy
+                var meshFilters = instance.GetComponentsInChildren<MeshFilter>(true);
+                if(meshFilters.Length==0) throw new Exception("FBX has no imported MeshFilters: "+fbxpath);
+                int triangleCount=0;
+                foreach(var mf in meshFilters)
+                {
+                    var mesh=mf.sharedMesh;
+                    if(mesh==null) throw new Exception("Null MeshFilter mesh in "+fbxpath);
+                    for(int k=0;k<mesh.subMeshCount;k++) triangleCount += (int)mesh.GetIndexCount(k)/3;
+                    var renderer=mf.GetComponent<MeshRenderer>();
+                    if(renderer==null) throw new Exception("No MeshRenderer "+mf.name);
+                    var slots=renderer.sharedMaterials;
+                    for(int s=0;s<slots.Length;s++)
+                    {
+                        string name=slots[s] == null ? "" : slots[s].name.ToUpperInvariant();
+                        int index=Array.FindIndex(keys,k=>name.Contains(k));
+                        if(index<0) throw new Exception("Unmapped imported material "+name+" for "+mf.name);
+                        slots[s]=materials[index];
+                    }
+                    renderer.sharedMaterials=slots;
+                    var bc=mf.gameObject.GetComponent<BoxCollider>();
+                    if(bc==null) bc=mf.gameObject.AddComponent<BoxCollider>();
+                    bc.center=mesh.bounds.center;
+                    bc.size=mesh.bounds.size;
+                }
+                Bounds bounds=default;
+                bool found=false;
+                foreach(var renderer in root.GetComponentsInChildren<MeshRenderer>(true))
+                {
+                    if(!found){bounds=renderer.bounds;found=true;}
+                    else bounds.Encapsulate(renderer.bounds);
+                }
+                float[] expected=record.dims_xyz!=null && record.dims_xyz.Length==3 ?
+                                 record.dims_xyz : record.dimensions_xyz;
+                if(!found||expected==null||expected.Length!=3)
+                    throw new Exception("Mesh bounds/manifest missing for "+record.id);
+                Vector3 actual=bounds.size;
+                if(Mathf.Abs(actual.x-expected[0])>0.002f ||
+                   Mathf.Abs(actual.y-expected[1])>0.002f ||
+                   Mathf.Abs(actual.z-expected[2])>0.002f)
+                    throw new Exception("FBX imported bounds mismatch "+record.id+
+                        " actual XYZ "+actual+" expected "+expected[0]+","+expected[1]+","+expected[2]);
+                string output=Root+"/Prefabs/"+record.id+"_Furniture.prefab";
+                if(PrefabUtility.SaveAsPrefabAsset(root,output)==null)
+                    throw new Exception("Failed to persist prefab "+output);
+                Debug.Log("C01-19 PASS03 imported native FBX "+record.id+" meshes="+meshFilters.Length+
+                          " triangles="+triangleCount+" bounds="+actual);
+            }
+            finally { UnityEngine.Object.DestroyImmediate(root); }
+        }
+        AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
+    }
 }
 #endif

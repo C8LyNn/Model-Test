@@ -1,0 +1,53 @@
+{
+  "audit": "C01-19_PASS04_ACTUAL_BINARY_FBX_7400_STATIC",
+  "date": "2026-10-30",
+  "producer_pr": 15,
+  "input_file_provenance": "Original real PASS03 GitHub Actions native Blender binary FBX, not gallery reconstruction",
+  "execution": "LOCAL_PYTHON_FBXTREE_INDEXING",
+  "triangulation_test": "NAIVE_FAN_IS_RISK_SCREEN_ONLY",
+  "unity": "NOT_RUN",
+  "blender_pass04": "BLOCKED_RUNNER_NOT_STARTED",
+  "independent_qa": "FAIL_P1_THREE_MODELS_IN_QA_AS_BEFORE",
+  "models": [
+    {
+      "id": "P19-01",
+      "fbx_vertices": 133,
+      "fbx_faces": 78,
+      "nominal_triangles": 254,
+      "ngons_gt4": 38,
+      "max_vertices_per_face": 10,
+      "naive_fan_zero_area": 12,
+      "source_fbx_sha256": "47b4d6f2017626b6084584fbf0bad907505eb9e194703032d83af5315c1a4009"
+    },
+    {
+      "id": "P19-02",
+      "fbx_vertices": 118,
+      "fbx_faces": 86,
+      "nominal_triangles": 216,
+      "ngons_gt4": 31,
+      "max_vertices_per_face": 8,
+      "naive_fan_zero_area": 10,
+      "source_fbx_sha256": "a42a57d168164cea335de3c9ee175a3074edca4a48b707a14beadbea16a8b6d8"
+    },
+    {
+      "id": "P19-03",
+      "fbx_vertices": 72,
+      "fbx_faces": 48,
+      "nominal_triangles": 128,
+      "ngons_gt4": 10,
+      "max_vertices_per_face": 10,
+      "naive_fan_zero_area": 0,
+      "source_fbx_sha256": "872688775a1f373090867a466b21be441d8962b16b2a47703cc50c12220f1891"
+    },
+    {
+      "id": "P19-04",
+      "fbx_vertices": 72,
+      "fbx_faces": 54,
+      "nominal_triangles": 108,
+      "ngons_gt4": 0,
+      "max_vertices_per_face": 4,
+      "naive_fan_zero_area": 0,
+      "source_fbx_sha256": "529c1886bf8d727699db72578f01da9f6226981e02738a1b9fcd24ade489bc9"
+    }
+  ]
+}

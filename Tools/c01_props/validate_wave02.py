@@ -218,6 +218,18 @@ def check_manifest(m, spec, root):
             warnings.append("UNHYDRATED_LFS_"+key.upper())
             all_present=False
             continue
+        if key=="blend" and not raw.startswith(b"BLENDER"):
+            errors.append("INVALID_BLEND_SIGNATURE")
+            all_present=False
+        elif key=="fbx" and not (raw.startswith(b"Kaydara FBX Binary") or raw.startswith(b"; FBX")):
+            errors.append("INVALID_FBX_SIGNATURE")
+            all_present=False
+        elif key=="unity_prefab" and not raw.startswith(b"%YAML"):
+            errors.append("INVALID_UNITY_PREFAB_SIGNATURE")
+            all_present=False
+        elif key.startswith("preview_") and not (raw.startswith(bytes((137,80,78,71,13,10,26,10))) or raw.startswith(bytes((255,216,255)))):
+            errors.append("INVALID_PREVIEW_SIGNATURE_"+key.upper())
+            all_present=False
         if hashlib.sha256(raw).hexdigest()!=entry["sha256"].lower():
             errors.append("HASH_MISMATCH_"+key.upper())
             all_present=False

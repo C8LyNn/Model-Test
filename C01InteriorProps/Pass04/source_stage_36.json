@@ -3,7 +3,7 @@
   "date": "2026-10-30",
   "issue": 33,
   "approval": "NO_PRODUCTION_APPROVAL",
-  "warning": "PASS10: Ten eligible native FBX sources have FULL SHA256 confirmed from real hydrated previous successful Blender CI archives AND the exact original Git LFS OID at pinned producer commit. Others remain unhydrated/unverified or blocked. These 10 are QA-only source candidates; no new Blender repair/Unity or C01-02 final approval. DO NOT promote.",
+  "warning": "DETAIL PASS12: four mandatory pilots P18-03/02/01 and P17-02 blocked until native Blender+binary FBX detail exports and QA, even when a historical FBX+staging receipt has a valid SHA. Existing other outstanding P16/P19/P17/P18 blocks preserved. Unity importer independently enforces native_export_sync.",
   "staged_directory": "Assets/C01InteriorProps/Pass04Incoming/<ID>/<ID>.fbx",
   "assets": [
     {
@@ -237,14 +237,14 @@
       "owner": "C01-17",
       "producer_pr": 17,
       "source_branch": "c01/props-17-controls",
-      "source_commit": "85732482b075bcfab68e5d660d26318dfe9c630d",
+      "source_commit": "79d8dcd3c7a4e39a7a3bcb3c88551642bf52d191",
       "fbx_path": "Assets/C01InteriorProps/Models/P17-02.fbx",
       "final_fbx_sha256": "af858385a0abae9c623ee4002bcf22bcbc401b5687024acd8df142eb1b848147",
       "independent_qa": "NOT_APPROVED",
       "expected_source_type": "BINARY_FBX",
-      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval",
-      "native_export_sync": "CANDIDATE_BINARY_FBX_QA_NOT_APPROVED",
-      "native_export_blocker": "Source present; independent final Blender+Unity acceptance still PENDING."
+      "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval | DETAIL PASS12: historical FBX SHA still recorded, not approved as after-version.",
+      "native_export_sync": "BLOCKED_DETAIL_PASS12_NATIVE_EXPORT",
+      "native_export_blocker": "DETAIL PASS12 original native Blender .blend and genuine binary FBX with functional detail revisions NOT delivered or Blender/Unity roundtripped; previous source FBX full SHA is a PRE-DETAIL historical baseline only."
     },
     {
       "id": "P17-03",
@@ -327,14 +327,14 @@
       "owner": "C01-18",
       "producer_pr": 18,
       "source_branch": "c01/props-18-cargo",
-      "source_commit": "baa7040a5c0be09809abb2495b282c9972ea341c",
+      "source_commit": "6f9ff521384c1782f584db25492d8ad8f803f3c2",
       "fbx_path": "Assets/C01InteriorProps/C01-18/Models/P18-01.fbx",
       "final_fbx_sha256": null,
       "independent_qa": "NOT_APPROVED",
       "expected_source_type": "BINARY_FBX",
       "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval",
-      "native_export_sync": "BLOCKED_SOURCE_NEWER_THAN_FBX",
-      "native_export_blocker": "Actual producer source changed since previous binary FBX; Blender re-export/roundtrip and new exact SHA required."
+      "native_export_sync": "BLOCKED_DETAIL_PASS12_NATIVE_EXPORT",
+      "native_export_blocker": "DETAIL PASS12 original native Blender .blend and genuine binary FBX with functional detail revisions NOT delivered or Blender/Unity roundtripped; previous source FBX full SHA is a PRE-DETAIL historical baseline only."
     },
     {
       "id": "P18-02",
@@ -342,14 +342,14 @@
       "owner": "C01-18",
       "producer_pr": 18,
       "source_branch": "c01/props-18-cargo",
-      "source_commit": "baa7040a5c0be09809abb2495b282c9972ea341c",
+      "source_commit": "6f9ff521384c1782f584db25492d8ad8f803f3c2",
       "fbx_path": "Assets/C01InteriorProps/C01-18/Models/P18-02.fbx",
       "final_fbx_sha256": null,
       "independent_qa": "NOT_APPROVED",
       "expected_source_type": "BINARY_FBX",
       "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval",
-      "native_export_sync": "BLOCKED_SOURCE_NEWER_THAN_FBX",
-      "native_export_blocker": "Actual producer source changed since previous binary FBX; Blender re-export/roundtrip and new exact SHA required."
+      "native_export_sync": "BLOCKED_DETAIL_PASS12_NATIVE_EXPORT",
+      "native_export_blocker": "DETAIL PASS12 original native Blender .blend and genuine binary FBX with functional detail revisions NOT delivered or Blender/Unity roundtripped; previous source FBX full SHA is a PRE-DETAIL historical baseline only."
     },
     {
       "id": "P18-03",
@@ -357,14 +357,14 @@
       "owner": "C01-18",
       "producer_pr": 18,
       "source_branch": "c01/props-18-cargo",
-      "source_commit": "baa7040a5c0be09809abb2495b282c9972ea341c",
+      "source_commit": "6f9ff521384c1782f584db25492d8ad8f803f3c2",
       "fbx_path": "Assets/C01InteriorProps/C01-18/Models/P18-03.fbx",
       "final_fbx_sha256": null,
       "independent_qa": "NOT_APPROVED",
       "expected_source_type": "BINARY_FBX",
       "note": "Pinned PR HEAD snapshot for staging; NOT SHA-pinned FBX content approval",
-      "native_export_sync": "BLOCKED_SOURCE_NEWER_THAN_FBX",
-      "native_export_blocker": "Actual producer source changed since previous binary FBX; Blender re-export/roundtrip and new exact SHA required."
+      "native_export_sync": "BLOCKED_DETAIL_PASS12_NATIVE_EXPORT",
+      "native_export_blocker": "DETAIL PASS12 original native Blender .blend and genuine binary FBX with functional detail revisions NOT delivered or Blender/Unity roundtripped; previous source FBX full SHA is a PRE-DETAIL historical baseline only."
     },
     {
       "id": "P18-04",

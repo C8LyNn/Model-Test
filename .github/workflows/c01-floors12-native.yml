@@ -1,0 +1,57 @@
+name: C01-12 native Blender FBX legacy floor/ceiling QA
+on:
+  push:
+    branches:
+      - c01/floors-12-legacy-repair
+    paths:
+      - .github/workflows/c01-floors12-native.yml
+      - Tools/C01Floors12/**
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  blender-export:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Blender 4.x CLI
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends blender xvfb libgl1 libgl1-mesa-dri libopengl0
+          blender --version | head -4
+      - name: Generate native Blender FBX and assert Blender FBX reimport
+        run: |
+          LIBGL_ALWAYS_SOFTWARE=1 xvfb-run -a blender --background --factory-startup --python Tools/C01Floors12/build_native.py
+      - name: Verify binary output files and QA report
+        run: |
+          python3 - <<'PY'
+          import json, pathlib
+          root=pathlib.Path('C01StandaloneKits/FloorCeiling')
+          qa=json.loads((root/'QA/blender_native_roundtrip.json').read_text())
+          assert set(qa)=={'F01','F02','C01'}
+          for name,item in qa.items():
+              assert item['blender_fbx_import_roundtrip']=='PASS' and item['uv_import']=='PASS'
+              for key,sig in (('blend',b'BLENDER'),('fbx',b'Kaydara FBX Binary  '+bytes([0,26,0]))):
+                  p=root/item[key]
+                  assert p.is_file() and p.read_bytes().startswith(sig), (name,p)
+          print('C01-12: 3 Blender sources + 3 Blender FBX verified')
+          PY
+      - name: Upload real Blender and FBX artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-12-legacy-F01-F02-C01-native
+          path: |
+            C01StandaloneKits/FloorCeiling/Blend/*.blend
+            C01StandaloneKits/FloorCeiling/FBX_Blender_Export/*.fbx
+            C01StandaloneKits/FloorCeiling/QA/blender_native_roundtrip.json
+          if-no-files-found: error
+      - name: Commit artifacts to isolated branch for review
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add C01StandaloneKits/FloorCeiling/Blend C01StandaloneKits/FloorCeiling/FBX_Blender_Export C01StandaloneKits/FloorCeiling/QA
+          if ! git diff --cached --quiet; then
+            git commit -m "C01-12: Blender-native F01 F02 C01 and roundtrip proof"
+            git push origin HEAD:c01/floors-12-legacy-repair
+          fi

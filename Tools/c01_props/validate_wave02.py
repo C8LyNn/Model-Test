@@ -89,7 +89,7 @@ def check_contract(w2, w1):
             errors.append(aid+":MATERIAL_PALETTE_WRONG")
         if not x.get("required_children") or not x.get("mount_surfaces"):
             errors.append(aid+":CHILD_OR_MOUNT_MISSING")
-    s, e = next((x for x in a if x["id"]==i) for i in ("P15-04","P15-05"))
+    s, e = (next(x for x in a if x["id"] == i) for i in ("P15-04", "P15-05"))
     if len(s.get("ports", [])) != 2 or len(e.get("ports", [])) != 2:
         errors.append("TRAY_PORT_COUNT")
     else:
@@ -169,7 +169,11 @@ def check_manifest(m, spec, root):
             errors.append("MOVING_PIVOT_MISSING")
         if not m.get("swept_volume_evidence"):
             warnings.append("SWEPT_VOLUME_EVIDENCE_MISSING")
-    if ref.get("pickup_policy") and "SOCKET_GRIP" not in m.get("sockets",[]):
+    required_sockets = {"SOCKET_MOUNT", *ref.get("required_sockets", [])}
+    socket_names = m.get("sockets", [])
+    if not isinstance(socket_names, list) or not required_sockets.issubset(set(socket_names)):
+        errors.append("REQUIRED_SOCKETS_MISSING")
+    if ref.get("pickup_policy") and "SOCKET_GRIP" not in socket_names:
         errors.append("GRIP_SOCKET_MISSING")
     if ref.get("ports"):
         ports = m.get("ports",[])
@@ -219,7 +223,7 @@ def check_manifest(m, spec, root):
     static = "FAIL" if errors else "PASS"
     return dict(asset_id=aid,static=static,
                 delivery="READY_FOR_INDEPENDENT_QA" if static=="PASS" and all_present and all(qa.get(x)=="PASS" for x in spec["qa_fields"] if x!="independent") else "BLOCKED",
-                approval="C01-02_APPROVED" if qa.get("independent")=="PASS" and all_present and static=="PASS" else "NOT_APPROVED",
+                approval="C01-02_APPROVED" if qa.get("independent")=="PASS" and all_present and static=="PASS" and isinstance(m.get("independent_review"),dict) and m["independent_review"].get("owner")=="C01-02" and m["independent_review"].get("report_url") and m["independent_review"].get("source_commit_sha") else "NOT_APPROVED",
                 errors=errors,warnings=warnings)
 
 

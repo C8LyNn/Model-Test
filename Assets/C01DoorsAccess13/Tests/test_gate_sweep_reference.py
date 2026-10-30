@@ -66,5 +66,36 @@ class SlidingDoorSweepReferenceTests(unittest.TestCase):
         corner = ([2.0,.8,0], [2.1,1.08,.1])
         self.assertTrue(intersects(gate,corner))
 
+
+def visual_exceeds_collider(visual, physical, tolerance=0.03):
+    """Python math mirror of C01-13 Unity Editor ExtendsOutside, not Unity execution."""
+    return any(visual[0][i] < physical[0][i] - tolerance or
+               visual[1][i] > physical[1][i] + tolerance for i in range(3))
+
+
+class AccessReaderMeshEnvelopeReferenceTests(unittest.TestCase):
+    # Directly measured from TRUE P17-02 producer glTF, PR #17 SHA
+    # 79d8dcd3c7a4e39a7a3bcb3c88551642bf52d191, source binary buffer.
+    # These fixtures do NOT substitute for Blender FBX/Unity validation.
+    base_collider = ((-.09, 0, 0), (.09, .28, .07))
+
+    def test_real_producer_oversized_screw_regression_snapshot(self):
+        # Actual source screw POSITION accessor spans local xyz -1..1, plus node translation.
+        actual_render = ((-1.083, -.99, -.983), (1.083, 1.27, 1.017))
+        self.assertTrue(visual_exceeds_collider(actual_render, self.base_collider))
+
+    def test_original_reader_nominal_mesh_is_bounded(self):
+        self.assertFalse(visual_exceeds_collider(
+            ((-.09, 0, 0), (.09, .28, .07)), self.base_collider))
+
+    def test_legitimate_twenty_mm_overhang_is_not_rejected(self):
+        self.assertFalse(visual_exceeds_collider(
+            ((-.11, -.01, -.01), (.11, .29, .08)), self.base_collider))
+
+    def test_forty_mm_protrusion_is_rejected(self):
+        self.assertTrue(visual_exceeds_collider(
+            ((-.13, 0, 0), (.09, .28, .07)), self.base_collider))
+
+
 if __name__ == "__main__":
     unittest.main()

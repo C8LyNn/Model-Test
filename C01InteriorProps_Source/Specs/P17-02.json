@@ -60,12 +60,12 @@
       "pos": [
         0,
         0.14,
-        0.04
+        0.0405
       ],
       "size": [
         0.159,
         0.245,
-        0.035
+        0.036
       ],
       "mat": "DARK",
       "parent": "ROOT"
@@ -650,8 +650,8 @@
     }
   ],
   "expectedTriangleCount": 536,
-  "state": "DETAIL_PASS12_AUTHORING_GLTF_OBJ_UPDATED__NATIVE_BLEND_FBX_STALE",
-  "version": "0.2.0",
+  "state": "DETAIL_PASS13_CONTACT_SOURCE_FIXED__NATIVE_BLEND_FBX_STALE",
+  "version": "0.2.1",
   "units": "meters",
   "axes": "Y up; +Z toward access side for keypad",
   "materials": [
@@ -673,5 +673,15 @@
     "nativeExport": "NOT_RUN",
     "unity": "NOT_RUN",
     "silhouette": "unchanged bounds by construction"
+  },
+  "detailPass13": {
+    "physicalFix": "Housing +Z face advanced 1mm keeping back face fixed",
+    "originalKeybedHousingGapMm": 0.5,
+    "finalKeybedHousingSolidOverlapMm": 0.5,
+    "screws": "4x 9mm diameter,3mm thickness,0.5mm embedded in backing; no screw geometry change",
+    "additionalParts": 0,
+    "Blender": "NOT_RUN",
+    "FBX": "NOT_RUN",
+    "Unity": "NOT_RUN"
   }
 }

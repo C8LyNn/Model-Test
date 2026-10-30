@@ -1,0 +1,47 @@
+name: C01-11 real Blender source and FBX
+on:
+  push:
+    branches:
+      - c01/walls-11-wave02-native-export
+    paths:
+      - 'Assets/C01Architecture/Walls_W01_W04/Sources/**'
+      - '.github/workflows/c01-11-native-walls.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  native-authoring:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - name: Install real Blender
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y blender git-lfs xvfb xauth libegl1 libgl1 libopengl0
+          git lfs install --local
+      - name: Generate actual .blend FBX 12 previews and geometry report
+        run: |
+          xvfb-run -a blender -b --factory-startup --python-exit-code 1 --python Assets/C01Architecture/Walls_W01_W04/Sources/build_wall_models.py
+      - name: Assert real file headers and expected count
+        run: |
+          python3 Assets/C01Architecture/Walls_W01_W04/Sources/check_artifacts.py
+      - name: Upload authoring deliverable
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-11-W01-W04-native-blend-fbx-previews
+          if-no-files-found: error
+          path: |
+            Assets/C01Architecture/Walls_W01_W04/Blender/*.blend
+            Assets/C01Architecture/Walls_W01_W04/FBX/*.fbx
+            Assets/C01Architecture/Walls_W01_W04/Previews/*.png
+            Assets/C01Architecture/Walls_W01_W04/QA/*.json
+      - name: Publish binary outputs to isolated PR branch via Git LFS
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Assets/C01Architecture/Walls_W01_W04/Blender Assets/C01Architecture/Walls_W01_W04/FBX Assets/C01Architecture/Walls_W01_W04/Previews Assets/C01Architecture/Walls_W01_W04/QA
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "build(C01-11): actual native Blender FBX and model previews"
+          git push origin HEAD:c01/walls-11-wave02-native-export

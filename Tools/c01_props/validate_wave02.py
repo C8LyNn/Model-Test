@@ -53,7 +53,7 @@ def check_contract(w2, w1):
     ids = [x.get("id") for x in a if isinstance(x, dict)]
     if len(ids) != 20 or len(set(ids)) != 20:
         errors.append("WAVE02_IDS_NOT_EXACTLY_20")
-    expected = {f"P{owner}-{n:02d}" for owner in range(15,20) for n in range(4,8)}
+    expected = {f"P{owner}-{n:02d}" for owner in range(15,19) for n in range(4,8)} | {f"P19-{n:02d}" for n in range(5,9)}
     if set(ids) != expected:
         errors.append("WAVE02_ID_COVERAGE_WRONG")
     earlier = {x["id"] for x in w1.get("assets", [])}
@@ -89,8 +89,9 @@ def check_contract(w2, w1):
             errors.append(aid+":MATERIAL_PALETTE_WRONG")
         if not x.get("required_children") or not x.get("mount_surfaces"):
             errors.append(aid+":CHILD_OR_MOUNT_MISSING")
-    s, e = (next(x for x in a if x["id"] == i) for i in ("P15-04", "P15-05"))
-    if len(s.get("ports", [])) != 2 or len(e.get("ports", [])) != 2:
+    s = next((x for x in a if x["id"]=="P15-04"), None)
+    e = next((x for x in a if x["id"]=="P15-05"), None)
+    if not s or not e or len(s.get("ports", [])) != 2 or len(e.get("ports", [])) != 2:
         errors.append("TRAY_PORT_COUNT")
     else:
         def valid_normal(port):

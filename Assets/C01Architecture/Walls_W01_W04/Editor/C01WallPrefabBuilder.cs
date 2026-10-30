@@ -14,63 +14,110 @@ public static class C01WallPrefabBuilder
     };
 
 
-    // PASS04: fail closed before writing any prefab or material.
-    // Archived detailed r2 W02 contains 572 actual triangles; the 12-triangle
-    // replacement candidate is NOT an authorized topology repair.
-    private static void PreflightOriginalMeshIntegrity()
-    {
-        int[] expectedTriangles = { 12, 572, 20, 28 };
-        for (int i = 0; i < Ids.Length; i++)
-        {
-            string path = GetOriginalSourcePath(i);
-            var source = AssetDatabase.LoadAssetAtPath<GameObject>(path);
-            if (source == null)
-                throw new FileNotFoundException("Original imported FBX missing: " + path);
-            int count = 0;
-            foreach (var filter in source.GetComponentsInChildren<MeshFilter>(true))
-            {
-                if (filter.sharedMesh == null) continue;
-                count += (int)filter.sharedMesh.triangles.Length / 3;
-            }
-            if (count != expectedTriangles[i])
-                throw new InvalidOperationException(
-                    Ids[i] + ": source mismatch (" + count + " triangles, required " +
-                    expectedTriangles[i] + "). Refuse to replace original r2 geometry.");
-        }
-        // This is only a source identity triangle gate, not independent QA or
-        // approval for replacing any existing ship prefab.
-    }
 
-
-    // PASS05: load ONLY authentic archived r2 FBX; never the simplified
-    // 12-triangle candidate W02 from the earlier authoring prototype.
+    // Detailed W02 (572 tris) exists only as archived r2 binary source.
+    // An earlier candidate named W02_PANEL_WALL_1M has 12 triangles:
+    // never silently substitute it, regardless of matching bounds.
     private static readonly string[] OriginalR2Names =
     {
         "W01_FULL_WALL_1M.fbx", "W02_TECH_PANEL_WALL_1M.fbx",
         "W03_CORNER_90_1M.fbx", "W04_DOOR_OPENING_2M.fbx"
     };
-    private static string GetOriginalSourcePath(int index)
+    private static readonly int[] ExpectedTriangles = { 12, 572, 20, 28 };
+    private static readonly int[] CandidateIndices = { 0, 2, 3 };
+    private static readonly int[] AllIndices = { 0, 1, 2, 3 };
+
+    private static string GetSourcePath(int index, bool qaCandidates)
     {
-        return Root + "/OriginalR2/FBX/" + OriginalR2Names[index];
+        if (!qaCandidates)
+            return Root + "/OriginalR2/FBX/" + OriginalR2Names[index];
+
+        if (index == 1)
+            throw new InvalidOperationException(
+                "W02 is blocked: 12-triangle prototype is NOT detailed original r2.");
+
+        // Physically existing PR22 native FBX candidates, not original r2.
+        return Root + "/FBX/" + Ids[index] + "_" + Names[index] + ".fbx";
     }
 
-    [MenuItem("Tools/C01/C01-11/Build W01-W04 Prefabs")]
+    // All source checks complete BEFORE writing any Unity assets.
+    // These are authoring preflight checks, NOT C01-02 or Unity runtime acceptance.
+    private static void PreflightMeshes(int[] indices, bool qaCandidates)
+    {
+        foreach (int index in indices)
+        {
+            string path = GetSourcePath(index, qaCandidates);
+            var source = AssetDatabase.LoadAssetAtPath<GameObject>(path);
+            if (source == null)
+                throw new FileNotFoundException("Required hydrated FBX missing: " + path);
+            int triangles = 0;
+            int meshes = 0;
+            foreach (var filter in source.GetComponentsInChildren<MeshFilter>(true))
+            {
+                var mesh = filter.sharedMesh;
+                if (mesh == null) continue;
+                meshes++;
+                int[] indexBuffer = mesh.triangles;
+                triangles += indexBuffer.Length / 3;
+                if (indexBuffer.Length % 3 != 0 || indexBuffer.Length == 0)
+                    throw new InvalidOperationException(Ids[index] +
+                        ": missing or malformed triangle index buffer");
+                if (mesh.uv == null || mesh.uv.Length != mesh.vertexCount)
+                    throw new InvalidOperationException(Ids[index] +
+                        ": missing or incomplete UV0 on " + mesh.name);
+                if (mesh.normals == null || mesh.normals.Length != mesh.vertexCount)
+                    throw new InvalidOperationException(Ids[index] +
+                        ": missing or incomplete normals on " + mesh.name);
+                if (mesh.subMeshCount < 1)
+                    throw new InvalidOperationException(Ids[index] +
+                        ": missing material submeshes on " + mesh.name);
+            }
+            if (meshes < 1 || triangles != ExpectedTriangles[index])
+                throw new InvalidOperationException(Ids[index] +
+                    ": FBX has " + triangles + " triangles across " + meshes +
+                    " meshes; expected " + ExpectedTriangles[index] +
+                    ". Candidate rejected without any prefab output.");
+        }
+    }
+
+    [MenuItem("Tools/C01/C01-11/Build W01-W04 Original R2 Prefabs")]
     public static void Build()
     {
-        var shader = Shader.Find("Universal Render Pipeline/Lit");
-        if (shader == null)
-            throw new InvalidOperationException("Unity 6 URP/Lit shader missing.");
-        PreflightOriginalMeshIntegrity();
-        Directory.CreateDirectory(Root + "/Materials");
-        Directory.CreateDirectory(Root + "/Prefabs");
-        for (int index = 0; index < Ids.Length; index++)
+        // FAIL CLOSED if any original FBX is missing. This currently includes
+        // W02 original r2 until it is staged from the immutable source archive.
+        BuildSelected(AllIndices, false);
+    }
+
+    [MenuItem("Tools/C01/C01-11/QA Only/Build W01 W03 W04 Existing Candidate Prefabs")]
+    public static void BuildExistingCandidatesQaOnly()
+    {
+        // Always QUARANTINED: no detail-loss W02 and no active ship scene edits.
+        BuildSelected(CandidateIndices, true);
+    }
+
+    private static void BuildSelected(int[] indices, bool qaCandidates)
+    {
+        PreflightMeshes(indices, qaCandidates);
+
+        string prefabDir = Root + (qaCandidates ? "/QA_Candidates/Prefabs" : "/Prefabs");
+        string materialDir = Root + (qaCandidates ? "/QA_Candidates/Materials" : "/Materials");
+        // Do not use temporary source models or replace any ship prefabs.
+        Directory.CreateDirectory(prefabDir);
+        if (!qaCandidates)
         {
-            var id = Ids[index];
-            var assetPath = GetOriginalSourcePath(index);
+            if (Shader.Find("Universal Render Pipeline/Lit") == null)
+                throw new InvalidOperationException("Unity 6 URP/Lit shader missing.");
+            Directory.CreateDirectory(materialDir);
+        }
+
+        foreach (int index in indices)
+        {
+            string id = Ids[index];
+            string assetPath = GetSourcePath(index, qaCandidates);
             var imported = AssetDatabase.LoadAssetAtPath<GameObject>(assetPath);
             if (imported == null)
-                throw new FileNotFoundException("Required imported FBX missing: " + assetPath);
-            var temp = new GameObject("C01-11_" + id);
+                throw new FileNotFoundException("Required FBX disappeared: " + assetPath);
+            var temp = new GameObject("C01-11_" + id + (qaCandidates ? "_QA_ONLY" : ""));
             try
             {
                 temp.transform.position = Vector3.zero;
@@ -81,35 +128,45 @@ public static class C01WallPrefabBuilder
                 mesh.transform.localPosition = Vector3.zero;
                 mesh.transform.localRotation = Quaternion.identity;
                 mesh.transform.localScale = Vector3.one;
-                var renderers = mesh.GetComponentsInChildren<MeshRenderer>();
+                var renderers = mesh.GetComponentsInChildren<MeshRenderer>(true);
                 if (renderers.Length == 0)
-                    throw new InvalidOperationException(id + ": imported mesh has no renderers");
-                var matPath = Root + "/Materials/C01-11_" + id + "_Steel.mat";
-                var mat = AssetDatabase.LoadAssetAtPath<Material>(matPath);
-                if (mat == null)
+                    throw new InvalidOperationException(id + ": no imported MeshRenderer");
+
+                if (!qaCandidates)
                 {
-                    mat = new Material(shader);
-                    AssetDatabase.CreateAsset(mat, matPath);
+                    // Historical authored steel palette, original full-r2 workflow.
+                    var shader = Shader.Find("Universal Render Pipeline/Lit");
+                    var matPath = materialDir + "/C01-11_" + id + "_Steel.mat";
+                    var mat = AssetDatabase.LoadAssetAtPath<Material>(matPath);
+                    if (mat == null)
+                    {
+                        mat = new Material(shader);
+                        AssetDatabase.CreateAsset(mat, matPath);
+                    }
+                    var tint = id == "W02" ? new Color(.26f, .38f, .48f) :
+                               id == "W03" ? new Color(.49f, .53f, .57f) :
+                               id == "W04" ? new Color(.40f, .54f, .62f) :
+                                             new Color(.43f, .51f, .58f);
+                    mat.SetColor("_BaseColor", tint);
+                    mat.SetFloat("_Metallic", .45f);
+                    mat.SetFloat("_Smoothness", .32f);
+                    EditorUtility.SetDirty(mat);
+                    foreach (var renderer in renderers)
+                        renderer.sharedMaterial = mat;
                 }
-                var tint = id == "W02" ? new Color(.26f, .38f, .48f) :
-                           id == "W03" ? new Color(.49f, .53f, .57f) :
-                           id == "W04" ? new Color(.40f, .54f, .62f) :
-                                         new Color(.43f, .51f, .58f);
-                mat.SetColor("_BaseColor", tint);
-                mat.SetFloat("_Metallic", .45f);
-                mat.SetFloat("_Smoothness", .32f);
-                EditorUtility.SetDirty(mat);
-                foreach (var r in renderers) r.sharedMaterial = mat;
+                // QA-only mode intentionally keeps the actual imported FBX
+                // source materials; never pretend it has verified URP shaders.
                 AddColliders(temp, id);
-                var prefabPath = Root + "/Prefabs/C01-11_" + id + ".prefab";
-                PrefabUtility.SaveAsPrefabAsset(temp, prefabPath);
-                Debug.Log("C01-11 prefab candidate written: " + prefabPath);
+                string output = prefabDir + "/C01-11_" + id +
+                    (qaCandidates ? "_QA_ONLY.prefab" : ".prefab");
+                PrefabUtility.SaveAsPrefabAsset(temp, output);
+                Debug.Log("C01-11 prefab candidate saved (Unity QA pending): " + output);
             }
             finally { UnityEngine.Object.DestroyImmediate(temp); }
         }
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
-        Debug.Log("C01-11 W01-W04 prefab build complete. UNITY PHYSICAL QA STILL REQUIRED.");
+        Debug.Log("C01-11 prefab authoring complete; engine QA and C01-02 approval NOT RUN.");
     }
 
     private static void AddBox(GameObject go, Vector3 center, Vector3 size)

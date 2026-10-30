@@ -44,8 +44,8 @@
       "inconsistent_winding_edges": 0,
       "t_junction_candidates": 0,
       "closed": true,
-      "signed_volume": 0.03850200252449516,
-      "area": 0.725800022482872,
+      "signed_volume": 0.026784001918852364,
+      "area": 0.6068000122904778,
       "uv_layers": 1,
       "materials": 1
     },
@@ -182,8 +182,8 @@
       "inconsistent_winding_edges": 0,
       "t_junction_candidates": 0,
       "closed": true,
-      "signed_volume": 0.00013679999797940235,
-      "area": 0.0170800001360476,
+      "signed_volume": 0.00011248001245498428,
+      "area": 0.014584001968614757,
       "uv_layers": 1,
       "materials": 1
     },
@@ -205,8 +205,8 @@
       "inconsistent_winding_edges": 0,
       "t_junction_candidates": 0,
       "closed": true,
-      "signed_volume": 0.00013679999797940235,
-      "area": 0.0170800001360476,
+      "signed_volume": 0.00011248001245498428,
+      "area": 0.014584001968614757,
       "uv_layers": 1,
       "materials": 1
     },
@@ -277,17 +277,23 @@
   "unity_import": "NOT_RUN",
   "changes_by_mesh": {
     "Base_Stiffener": [],
-    "Bin_Chassis": [],
+    "Bin_Chassis": [
+      "local_face_plane_repair: remove overlapped base floor from body; retain external reinforcing foot (4 original vertices)"
+    ],
     "Bin_Lid": [],
     "Front_Lock": [],
     "Grip_Rail_-0.23": [],
     "Grip_Rail_0.23": [],
     "Handle_Grip": [],
-    "Handle_Post_L": [],
-    "Handle_Post_R": [],
+    "Handle_Post_L": [
+      "local_face_plane_repair: trim grip support to underside of separate handle (4 original vertices)"
+    ],
+    "Handle_Post_R": [
+      "local_face_plane_repair: trim grip support to underside of separate handle (4 original vertices)"
+    ],
     "Lid_Label": []
   },
   "source_before_sha256": "f0fabddd21df84c49eba175522bbe17eeba389555dde7ffef39a7726cbd985c5",
   "surface_parts_preserved": true,
-  "real_modification_count": 0
+  "real_modification_count": 3
 }

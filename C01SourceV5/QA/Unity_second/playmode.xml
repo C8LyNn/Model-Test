@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="8" result="Failed(Child)" total="8" passed="7" failed="1" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-29 21:35:32Z" end-time="2026-10-29 21:38:02Z" duration="150,6205957">
+  <test-suite type="TestSuite" id="1045" name="Model Test" fullname="Model Test" runstate="Runnable" testcasecount="20" result="Failed" site="Child" start-time="2026-10-29 21:35:32Z" end-time="2026-10-29 21:38:02Z" duration="150.620596" total="8" passed="7" failed="1" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1037" name="C01ShipV5.PlayTests.dll" fullname="C:/Users/kubap/Documents/GitHub/Model Test/Library/ScriptAssemblies/C01ShipV5.PlayTests.dll" runstate="Runnable" testcasecount="8" result="Failed" site="Child" start-time="2026-10-29 21:35:32Z" end-time="2026-10-29 21:38:02Z" duration="150.609865" total="8" passed="7" failed="1" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="25272" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1038" name="C01" fullname="C01" runstate="Runnable" testcasecount="8" result="Failed" site="Child" start-time="2026-10-29 21:35:32Z" end-time="2026-10-29 21:38:02Z" duration="150.608404" total="8" passed="7" failed="1" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1039" name="Ship" fullname="C01.Ship" runstate="Runnable" testcasecount="8" result="Failed" site="Child" start-time="2026-10-29 21:35:32Z" end-time="2026-10-29 21:38:02Z" duration="150.607701" total="8" passed="7" failed="1" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestSuite" id="1040" name="V5" fullname="C01.Ship.V5" runstate="Runnable" testcasecount="8" result="Failed" site="Child" start-time="2026-10-29 21:35:32Z" end-time="2026-10-29 21:38:02Z" duration="150.606712" total="8" passed="7" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-suite type="TestSuite" id="1041" name="Tests" fullname="C01.Ship.V5.Tests" runstate="Runnable" testcasecount="8" result="Failed" site="Child" start-time="2026-10-29 21:35:32Z" end-time="2026-10-29 21:38:02Z" duration="150.605987" total="8" passed="7" failed="1" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <failure>
+                <message><![CDATA[One or more child tests had errors]]></message>
+              </failure>
+              <test-suite type="TestFixture" id="1028" name="ShipRuntimePlayTests" fullname="C01.Ship.V5.Tests.ShipRuntimePlayTests" classname="C01.Ship.V5.Tests.ShipRuntimePlayTests" runstate="Runnable" testcasecount="8" result="Failed" site="Child" start-time="2026-10-29 21:35:32Z" end-time="2026-10-29 21:38:02Z" duration="150.604434" total="8" passed="7" failed="1" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <failure>
+                  <message><![CDATA[One or more child tests had errors]]></message>
+                </failure>
+                <test-case id="1031" name="AirlockRepeatedAndCancelledRequestsNeverOpenBothGates" fullname="C01.Ship.V5.Tests.ShipRuntimePlayTests.AirlockRepeatedAndCancelledRequestsNeverOpenBothGates" methodname="AirlockRepeatedAndCancelledRequestsNeverOpenBothGates" classname="C01.Ship.V5.Tests.ShipRuntimePlayTests" runstate="Runnable" seed="1721146649" result="Passed" start-time="2026-10-29 21:35:32Z" end-time="2026-10-29 21:36:07Z" duration="35.193898" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1032" name="BothLiftsCarryRealPlayerContinuouslyToAllFloorsAndLockAwayLandings" fullname="C01.Ship.V5.Tests.ShipRuntimePlayTests.BothLiftsCarryRealPlayerContinuouslyToAllFloorsAndLockAwayLandings" methodname="BothLiftsCarryRealPlayerContinuouslyToAllFloorsAndLockAwayLandings" classname="C01.Ship.V5.Tests.ShipRuntimePlayTests" runstate="Runnable" seed="413208774" result="Passed" start-time="2026-10-29 21:36:07Z" end-time="2026-10-29 21:36:37Z" duration="29.990476" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1029" name="ImmediateGatePositionIsReversibleAndOnlyLeavesMove" fullname="C01.Ship.V5.Tests.ShipRuntimePlayTests.ImmediateGatePositionIsReversibleAndOnlyLeavesMove" methodname="ImmediateGatePositionIsReversibleAndOnlyLeavesMove" classname="C01.Ship.V5.Tests.ShipRuntimePlayTests" runstate="Runnable" seed="356468584" result="Passed" start-time="2026-10-29 21:36:37Z" end-time="2026-10-29 21:36:43Z" duration="6.033694" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1034" name="LiftCancellationAndResetDoNotCarryUnrelatedNearbyPlayer" fullname="C01.Ship.V5.Tests.ShipRuntimePlayTests.LiftCancellationAndResetDoNotCarryUnrelatedNearbyPlayer" methodname="LiftCancellationAndResetDoNotCarryUnrelatedNearbyPlayer" classname="C01.Ship.V5.Tests.ShipRuntimePlayTests" runstate="Runnable" seed="1161117755" result="Passed" start-time="2026-10-29 21:36:43Z" end-time="2026-10-29 21:36:52Z" duration="8.910289" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1036" name="OverviewResetRetainsFramingAndColliders_WalkingRestoresGeometry" fullname="C01.Ship.V5.Tests.ShipRuntimePlayTests.OverviewResetRetainsFramingAndColliders_WalkingRestoresGeometry" methodname="OverviewResetRetainsFramingAndColliders_WalkingRestoresGeometry" classname="C01.Ship.V5.Tests.ShipRuntimePlayTests" runstate="Runnable" seed="885110979" result="Passed" start-time="2026-10-29 21:36:52Z" end-time="2026-10-29 21:36:58Z" duration="5.797697" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1030" name="PhysicalButtonOpensGate_ClosedGateBlocks_OpenGatePasses" fullname="C01.Ship.V5.Tests.ShipRuntimePlayTests.PhysicalButtonOpensGate_ClosedGateBlocks_OpenGatePasses" methodname="PhysicalButtonOpensGate_ClosedGateBlocks_OpenGatePasses" classname="C01.Ship.V5.Tests.ShipRuntimePlayTests" runstate="Runnable" seed="2127500188" result="Passed" start-time="2026-10-29 21:36:58Z" end-time="2026-10-29 21:37:06Z" duration="8.251857" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1035" name="SectorStairsVentAndLadderCarryRealCharacter" fullname="C01.Ship.V5.Tests.ShipRuntimePlayTests.SectorStairsVentAndLadderCarryRealCharacter" methodname="SectorStairsVentAndLadderCarryRealCharacter" classname="C01.Ship.V5.Tests.ShipRuntimePlayTests" runstate="Runnable" seed="904604069" result="Failed" start-time="2026-10-29 21:37:06Z" end-time="2026-10-29 21:37:30Z" duration="24.181904" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <failure>
+                    <message><![CDATA[  Ladder did not reach the lower floor; position=(17.4000, 0.0800, 41.5300)
+  Expected: False
+  But was:  True
+]]></message>
+                    <stack-trace><![CDATA[at C01.Ship.V5.Tests.ShipRuntimePlayTests+<SectorStairsVentAndLadderCarryRealCharacter>d__10.MoveNext () [0x00352] in C:\Users\kubap\Documents\GitHub\Model Test\Assets\C01ShipV5\Tests\PlayMode\ShipRuntimePlayTests.cs:296
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@aebcb98460c6\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+                  </failure>
+                </test-case>
+                <test-case id="1033" name="WalkingExplorerGravityKeepsPlayerAboardBothLiftsAcrossAllFloors" fullname="C01.Ship.V5.Tests.ShipRuntimePlayTests.WalkingExplorerGravityKeepsPlayerAboardBothLiftsAcrossAllFloors" methodname="WalkingExplorerGravityKeepsPlayerAboardBothLiftsAcrossAllFloors" classname="C01.Ship.V5.Tests.ShipRuntimePlayTests" runstate="Runnable" seed="914893688" result="Passed" start-time="2026-10-29 21:37:30Z" end-time="2026-10-29 21:38:02Z" duration="32.231131" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[Saving results to: C:\Users\kubap\Documents\GitHub\Model Test\C01ShipV5_QA\playmode.xml
+]]></output>
+                </test-case>
+              </test-suite>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

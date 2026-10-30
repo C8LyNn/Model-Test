@@ -224,6 +224,57 @@ if sum(x["triangles"] for x in pre) != expected_parts * 12 + detail_triangles[AS
 if any(x["uv0_loops"] != x["triangles"] * 3 for x in pre):
     raise RuntimeError("PASS15 source loop UV0 missing")
 
+# DETAIL PASS16: eight small retained screw heads on genuine PASS15 mounting.
+# Imported parts are static hardware, not new assets, not parented to P16-06 rotor.
+pass16_file = SOURCE / "DetailsPASS16" / (ASSET + "_detail16.obj")
+pass16_parts = {"P16-01":0, "P16-02":0, "P16-03":0, "P16-04":4,
+                "P16-05":2, "P16-06":2, "P16-07":0}
+pass16_triangles = {"P16-01":0, "P16-02":0, "P16-03":0, "P16-04":80,
+                    "P16-05":40, "P16-06":40, "P16-07":0}
+if pass16_parts[ASSET]:
+    if not pass16_file.is_file():
+        raise RuntimeError("PASS16 authoring mesh missing: " + str(pass16_file))
+    bpy.ops.object.select_all(action="DESELECT")
+    bpy.ops.wm.obj_import(filepath=str(pass16_file), forward_axis="NEGATIVE_Z",
+                          up_axis="Y", use_split_objects=True, use_split_groups=False)
+    objects = mesh_objects()
+    pass16_objects = [ob for ob in objects if "_DETAIL16_" in ob.name]
+    if len(pass16_objects) != pass16_parts[ASSET]:
+        raise RuntimeError("PASS16 fastener count mismatch")
+    if sum(len(o.data.polygons) for o in pass16_objects) != pass16_triangles[ASSET]:
+        raise RuntimeError("PASS16 fastener triangle budget mismatch")
+    if any("_ROTOR_" in o.name for o in pass16_objects):
+        raise RuntimeError("PASS16 STATIC hardware incorrectly classified as rotor")
+    for ob in pass16_objects:
+        for poly in ob.data.polygons:
+            poly.use_smooth = False
+        for mat in ob.data.materials:
+            if mat is None:
+                raise RuntimeError("PASS16 fastener missing Steel material")
+            mat_name = mat.name.split(".")[0]
+            if mat_name != "Steel" or mat_name not in SOURCE_PALETTE:
+                raise RuntimeError("PASS16 unexpected material " + mat.name)
+            mat.diffuse_color = SOURCE_PALETTE[mat_name]
+            mat.use_nodes = True
+            bsdf = mat.node_tree.nodes.get("Principled BSDF")
+            if bsdf is None:
+                raise RuntimeError("PASS16 material has no Principled BSDF")
+            bsdf.inputs["Base Color"].default_value = SOURCE_PALETTE[mat_name]
+            if bsdf.inputs.get("Metallic"): bsdf.inputs["Metallic"].default_value = 0.4
+            if bsdf.inputs.get("Roughness"): bsdf.inputs["Roughness"].default_value = 0.56
+elif pass16_file.exists():
+    raise RuntimeError("Unexpected PASS16 source for unchanged asset")
+
+if len(objects) != expected_parts + detail_counts[ASSET] + extra_counts[ASSET] + pass16_parts[ASSET]:
+    raise RuntimeError("Merged original + PASS12 + PASS15 + PASS16 object count mismatch")
+pre = inspect(objects)
+if sum(x["triangles"] for x in pre) != (
+        expected_parts * 12 + detail_triangles[ASSET] +
+        extra_triangles[ASSET] + pass16_triangles[ASSET]):
+    raise RuntimeError("Complete source triangle count mismatch")
+if any(x["uv0_loops"] != x["triangles"] * 3 for x in pre):
+    raise RuntimeError("PASS16 authored source UV0 loop count mismatch")
+
 if ASSET == "P16-06":
     # Unity local Y=-0.20 maps to Blender local Z=-0.20 after Y-up OBJ import.
     pivot = bpy.data.objects.new("ROTOR_Y_ANIMATABLE", None)
@@ -269,7 +320,7 @@ if ASSET == "P16-06":
     if any(o.parent != pivot_after[0] for o in moving_after):
         raise RuntimeError("FBX imported rotor solids without their parent pivot")
 
-if len(imported) != expected_parts + detail_counts[ASSET] + extra_counts[ASSET]:
+if len(imported) != expected_parts + detail_counts[ASSET] + extra_counts[ASSET] + pass16_parts[ASSET]:
     raise RuntimeError("Binary FBX roundtrip changed mesh part count")
 if sum(x["triangles"] for x in post) != sum(x["triangles"] for x in pre):
     raise RuntimeError("FBX roundtrip changed triangle count")
@@ -288,6 +339,8 @@ report = {
     "detail_parts": detail_counts[ASSET], "detail_triangles": detail_triangles[ASSET],
     "detail15_sha256": sha256(extra_file) if extra_counts[ASSET] else None,
     "detail15_parts": extra_counts[ASSET], "detail15_triangles": extra_triangles[ASSET],
+    "detail16_obj_sha256": sha256(pass16_file) if pass16_parts[ASSET] else None,
+    "detail16_parts": pass16_parts[ASSET], "detail16_triangles": pass16_triangles[ASSET],
     "blend_sha256": sha256(blend_file),
     "binary_fbx_sha256": sha256(fbx_file), "fbx_bytes": pre_fbx_bytes,
     "parts_before": pre, "parts_after": post,

@@ -154,6 +154,10 @@ jobs:
             # Blender/checkout may touch unrelated tracked binaries. Do not include them in the producer commit.
             git status --short
             git stash push --include-untracked -m "C01-12 PASS17 temporary non-delivery worktree changes"
+            # Existing repository LFS mismatch: the tutorial URP.png is restored as non-pointer by checkout.
+            # Ignore ONLY this unrelated file for clean-rebase inspection; do not stage/ship it.
+            git update-index --assume-unchanged Assets/TutorialInfo/Icons/URP.png
+            git diff --quiet || { git status --short; echo "Unexpected worktree edits - fail closed"; exit 1; }
             git fetch origin c01/floors-12-legacy-repair
             git rebase origin/c01/floors-12-legacy-repair
             git push origin HEAD:c01/floors-12-legacy-repair

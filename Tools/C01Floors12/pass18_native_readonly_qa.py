@@ -40,7 +40,7 @@ def snapshot(ob,id,context,check_nodes):
     delta=max(abs(bb[j][i]-expect[j][i]) for j in range(2) for i in range(3))
     assert delta<1e-4,(id,context,'bounds_error',delta)
     assert ob.location.length<1e-6 and ob.scale==Vector((1,1,1)),(id,context,'pivot_or_scale')
-    assert ob.rotation_euler.length<1e-6,(id,context,'rotation')
+    assert sum(abs(float(a)) for a in ob.rotation_euler)<1e-6,(id,context,'rotation')
     faces=[list(p.vertices) for p in me.polygons]
     edge_faces={}
     for fi,face in enumerate(faces):

@@ -192,3 +192,5 @@ for id in IDS:
           "FBX roundtrip",fbx["status"],flush=True)
 (DST/"SUMMARY.json").write_text(json.dumps({"scope":"REAL_NATIVE_BLEND_FBX_PASS04","models":summary,
      "unity":"NOT_RUN","independent_QA":"PENDING"},indent=2))
+
+# PASS17_NATIVE_RUNNER_RECOVERY_PROBE: trigger existing native Blender 4.x + FBX export/reimport QA; preserve model code.

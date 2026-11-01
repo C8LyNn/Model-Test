@@ -25,10 +25,11 @@ jobs:
       - name: Install genuine Blender
         run: |
           sudo apt-get update
-          sudo apt-get install -y blender git-lfs
+          sudo apt-get install -y blender git-lfs python3-numpy
           git lfs install --local
           git lfs pull
           blender --version
+          blender -b --factory-startup --python-exit-code 1 --python-expr "import numpy; print('C01-16 BLENDER NUMPY OK', numpy.__version__)"
       - name: Real native Blender and FBX import roundtrip
         shell: bash
         run: |

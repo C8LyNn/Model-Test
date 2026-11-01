@@ -29,6 +29,13 @@
 - **10/10 new functional pieces** had positive real 3D segment/triangle crossings against named original supports. Previous P18 OBJ is an exact source-text prefix of new OBJ for 3/3 files; all pre-existing part bounds unchanged; no new same-facing coplanar overlaps; all four cart wheels still contact ground **Y=0m**.
 - This check does NOT prove animated clearance, exact weld craftsmanship, Unity collision shape correctness, or photoreal material parity.
 
+
+## Read-only interactive actual-source geometry comparison
+
+[Open or download the standalone **actual-source before/after HTML viewer**](Previews/ACTUAL_SOURCE_INTERACTIVE_BEFORE_AFTER.html). For P18-01/02/03 it embeds both real PASS16 and current pinned PASS17 OBJ geometry (synchronized camera); P17-01/02/03 show their current exact authored OBJ triangles. Local user workflow: download the .html file from the private GitHub repository and open it in a browser. No private GitHub API key or external CDN needed.
+
+**9 distinct real OBJ source versions embedded**, with all current **5104** triangles and prior P18 **3764** triangles. Source vertex coordinates are signed micrometer-quantized (max 0.5µm deviation); actual face indices, per-face source material names, and group names retained. The browser script parsed successfully and **9/9** decoded packed binary lengths / all triangle-index/material/group references PASS on read-back from the actual committed HTML Git blob (`93e06e68c2db01558285933e6c7b26d94e4158d1`). No invented geometry and no historical FBX loading. Diagnostic Canvas2D draws shaded and optional wireframe overlay, with drag-to-rotate and wheel zoom; scene material appearance is approximate and painter-sorted occlusion is not a substitute for native render. **Visual browser-run validation NOT RUN.** Real Blender 4.x and Unity 6 screenshots **NOT RUN**.
+
 ## Release blockers and required handoff
 **Six current canonical P17/P18 FBX paths contain Git LFS text POINTERS (130 bytes each), not the new hydrated Blender-exported binary FBXs.** The SHA-256 of an LFS `oid` refers to an earlier binary and MUST NOT be claimed as current-detail FBX SHA. Full pointers listed in JSON. No new native FBX/BLEND supplied to this QA role in this wave.
 
@@ -40,7 +47,7 @@
 | P17-03 explicit intentional open ends or repair | **P1 REVIEW** |
 | New Blender 4.x .blend save and Blender-origin binary FBX | **NOT RUN** |
 | Hydrated current FBX SHA256 and Blender reimport | **NOT RUN** |
-| Accurate latest shaded/wireframe BEFORE/AFTER and interactive native OBJ viewer | **NOT RUN in this QA pass** (do not reuse older geometry previews) |
+| Actual-source interactive shaded/wireframe before/after viewer | **GENERATED** from 9 real current/prior OBJ sources. Script syntax and packed indexed geometry **9/9 PASS**; visual browser runtime **NOT RUN**, and not a Blender render. |
 | Unity 6 URP actual importer, materials, pivots, hierarchy, animation | **NOT RUN** |
 | Release acceptance across 36 existing model IDs | **0/36 FINAL APPROVED** |
 

@@ -78,8 +78,8 @@ def repair_p1901_backtrack():
     face area and total triangulated count unchanged.
     """
     candidates=[o for o in bpy.context.scene.objects
-        if o.type=="MESH" and o.name=="Cube.001"]
-    assert len(candidates)==1,"P19-01 source Cube.001 not uniquely found"
+        if o.type=="MESH" and o.data.name=="Cube.001"]
+    assert len(candidates)==1,("P19-01 mesh datablock Cube.001 not uniquely found",[(o.name,o.data.name) for o in bpy.context.scene.objects if o.type=="MESH"])
     o=candidates[0]
     bm=bmesh.new();bm.from_mesh(o.data)
     bm.verts.ensure_lookup_table();bm.faces.ensure_lookup_table()

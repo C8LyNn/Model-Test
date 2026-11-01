@@ -1,0 +1,66 @@
+name: C01-13 PASS18 genuine latest Blender GLB to BLEND FBX
+on:
+  push:
+    branches:
+      - c01/doors-13-pass03-legacy-mesh-topology
+    paths:
+      - 'C01-13_PASS18_Transport/part*.txt'
+      - 'C01-13_PASS18_Transport/pass18_native.py'
+      - '.github/workflows/c01-13-pass18-native.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  native-current-d01-d02:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+          persist-credentials: true
+      - name: Install actual Blender4 and Git LFS
+        run: |
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y blender git-lfs xvfb xauth libegl1 libgl1
+          git lfs install --local
+          blender --version | head -2
+      - name: Real source GLB SHA and native Blender 4.x save export reimport
+        run: |
+          xvfb-run -a blender -b --factory-startup --threads 2 --python-exit-code 1 --python C01-13_PASS18_Transport/pass18_native.py
+      - name: Independent file-signature and exact receipt check
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import json,hashlib
+          p=Path('C01-13_PASS18_Transport/Native')
+          report=json.loads((p/'PASS18_NATIVE_QA.json').read_text())
+          assert set(report)=={'D01','D02'}
+          for key,item in report.items():
+              assert item['status']=='REAL_BLENDER_FBX_REIMPORT_PASS'
+              assert item['max_bounds_error_m']<.0002
+              for ext,sig,field in [('blend',b'BLENDER','blend_sha256'),
+                                    ('fbx',b'Kaydara FBX Binary','fbx_sha256')]:
+                  b=(p/(key+'_DETAIL_PASS18.'+ext)).read_bytes()
+                  assert b.startswith(sig) and hashlib.sha256(b).hexdigest()==item[field]
+              print(key,item['mesh_parts'],item['triangles'],item['fbx_sha256'])
+          PY
+      - name: Upload REAL native binary Blender and FBX plus native Workbench previews
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-13-PASS18-REAL-BLEND-FBX-PREVIEW-QA
+          if-no-files-found: error
+          path: |
+            C01-13_PASS18_Transport/Native/
+            C01-13_PASS18_Transport/Previews/
+      - name: Commit actual native results to this EXISTING Draft branch with LFS
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git lfs install --local
+          git add C01-13_PASS18_Transport/Native/ C01-13_PASS18_Transport/Previews/
+          if git diff --cached --quiet; then echo "No output changes"; exit 0; fi
+          git commit -m "C01-13 PASS18: genuine Blender4 latest D01 D02 BLEND FBX Workbench"
+          git push origin HEAD:c01/doors-13-pass03-legacy-mesh-topology

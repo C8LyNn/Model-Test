@@ -145,8 +145,8 @@
       "name": "Actuator",
       "p": [
         0,
-        0.06,
-        0.01
+        0.061,
+        0.011
       ],
       "s": [
         0.052,
@@ -209,7 +209,7 @@
         0.015
       ],
       "s": [
-        0.47,
+        0.468,
         0.025,
         0.055
       ],
@@ -247,5 +247,46 @@
       "parent": "ROOT"
     }
   ],
-  "stage": "geometry ready; independent QA pending"
+  "stage": "PASS17_MESH_CONTACT_SOURCE_FIXED_NATIVE_EXPORT_PENDING",
+  "pass17": {
+    "producer": "C01-17",
+    "fixes": [
+      {
+        "name": "Actuator",
+        "translation": [
+          0,
+          0.061,
+          0.011
+        ],
+        "dimension": [
+          0.052,
+          0.12,
+          0.046
+        ]
+      },
+      {
+        "name": "CoverBottomLip",
+        "translation": [
+          0,
+          -0.44,
+          0.015
+        ],
+        "scale": [
+          0.9957446808510639,
+          1,
+          1
+        ],
+        "dimension": [
+          0.468,
+          0.025,
+          0.055
+        ]
+      }
+    ],
+    "motileHierarchyUnchanged": true,
+    "sourceGLTF_geometry_buffers_unchanged": true,
+    "actualNewBlenderBLEND": "NOT RUN",
+    "actualNewBlenderFBX": "NOT RUN",
+    "Unity": "NOT RUN"
+  }
 }

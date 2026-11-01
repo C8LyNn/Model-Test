@@ -1,6 +1,6 @@
 {
   "contract": "C01-15-W01-PROPS",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "coordinate_system": "Unity Y-up X-right Z-front, meter=1, localScale=1",
   "materials": {
     "STEEL": [
@@ -1734,6 +1734,70 @@
       "axis": "Z",
       "radius": 0.004,
       "depth": 0.004,
+      "sides": 8
+    },
+    {
+      "asset": "P15-02",
+      "component": "Body",
+      "name": "LouverFrameAnchor_L_Bottom",
+      "shape": "cylinder",
+      "material": "STEEL",
+      "center": [
+        -0.225,
+        -0.164,
+        0.0625
+      ],
+      "axis": "Z",
+      "radius": 0.005,
+      "depth": 0.037,
+      "sides": 8
+    },
+    {
+      "asset": "P15-02",
+      "component": "Body",
+      "name": "LouverFrameAnchor_L_Top",
+      "shape": "cylinder",
+      "material": "STEEL",
+      "center": [
+        -0.225,
+        0.164,
+        0.0625
+      ],
+      "axis": "Z",
+      "radius": 0.005,
+      "depth": 0.037,
+      "sides": 8
+    },
+    {
+      "asset": "P15-02",
+      "component": "Body",
+      "name": "LouverFrameAnchor_R_Bottom",
+      "shape": "cylinder",
+      "material": "STEEL",
+      "center": [
+        0.225,
+        -0.164,
+        0.0625
+      ],
+      "axis": "Z",
+      "radius": 0.005,
+      "depth": 0.037,
+      "sides": 8
+    },
+    {
+      "asset": "P15-02",
+      "component": "Body",
+      "name": "LouverFrameAnchor_R_Top",
+      "shape": "cylinder",
+      "material": "STEEL",
+      "center": [
+        0.225,
+        0.164,
+        0.0625
+      ],
+      "axis": "Z",
+      "radius": 0.005,
+      "depth": 0.037,
       "sides": 8
     }
   ]

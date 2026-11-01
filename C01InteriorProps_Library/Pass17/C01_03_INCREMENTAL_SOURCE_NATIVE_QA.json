@@ -1,0 +1,242 @@
+{
+  "schema": "C01-03-PASS17-INDEPENDENT-SOURCE-SNAPSHOT-AND-BLENDER-NATIVE-CANDIDATE-GATE",
+  "snapshot_date": "2026-11-01",
+  "issue": 36,
+  "producer_changed_while_PREVIEW_work_in_progress": true,
+  "note": "This immutable latest-source snapshot supersedes earlier PASS16/current or initial PASS17 states when source Git blobs changed; it does not alter shared producer models. New LFS OIDs are genuine producer-run candidates but independent hydrated binary C01-02 and Unity6 have not approved them.",
+  "prior_36_ID_register": "C01InteriorProps_Library/Pass16/LIVE_ASSET_REGISTRY_36.json",
+  "source_exact_sha256_algorithm_selftest": "NIST_empty_and_abc_2_OF_2_PASS",
+  "sha_source_provenance": "Re-fetched immutable source GitHub text and computed exact UTF-8 source SHA256; no historical binary SHA substitution.",
+  "source_sha256_receipts": [
+    {
+      "id": "P15-SPEC",
+      "owner": "C01-15",
+      "path": "Assets/C01InteriorProps/P15/Sources/geometry_spec.json",
+      "commit": "c48b22b7177c68205c256f185bcc3234d7a70da2",
+      "git_blob_sha1": "07531d92cef59d81c9e185810c4a407c48bb918a",
+      "actual_source_SHA256": "9394e90c72b78ce8d33e0629e383fe32b9faafb0a1cbf3fcb817281623cf05f3",
+      "details": "v0.1.6 25/34/34 parts across existing P15-01/02/03",
+      "result": "EXACT_UTF8_SOURCE_HASH_EXECUTED",
+      "binary_fbx_proof": false
+    },
+    {
+      "id": "P17-03",
+      "owner": "C01-17",
+      "path": "Assets/C01InteriorProps/Models/P17-03.gltf",
+      "commit": "44c7d948488f03dfa743b89b4ec03485df254668",
+      "git_blob_sha1": "0cf58dfd446c23f4077b59aea47d93f873d2db6e",
+      "actual_source_SHA256": "4949558f7eb03d9c70aee938acb2942fe21fc50b772d8412041fa9c521ad9abb",
+      "details": "424 instanced triangles; producer fixes coplanar Base/SocketRetainer surfaces; independent PASS17 recheck pending",
+      "result": "EXACT_UTF8_SOURCE_HASH_EXECUTED",
+      "binary_fbx_proof": false
+    },
+    {
+      "id": "P18-01",
+      "owner": "C01-18",
+      "path": "Assets/C01InteriorProps/C01-18/Models/P18-01.obj",
+      "commit": "03f97354e47645ee80422115d29c67ef48808679",
+      "git_blob_sha1": "7dc5c975e39ff6eb9be093b77e8720b7c26a89ab",
+      "actual_source_SHA256": "4fd8fc54e37f9941142aed85559ecef077cdfc97e2326b153dfb2ca91fa7b566",
+      "details": "47 parts, 980 source triangles",
+      "result": "EXACT_UTF8_SOURCE_HASH_EXECUTED",
+      "binary_fbx_proof": false
+    },
+    {
+      "id": "P18-02",
+      "owner": "C01-18",
+      "path": "Assets/C01InteriorProps/C01-18/Models/P18-02.obj",
+      "commit": "03f97354e47645ee80422115d29c67ef48808679",
+      "git_blob_sha1": "fe96d137d0ac6de5b4c53820cade6cce89ccf2b9",
+      "actual_source_SHA256": "b7ee7803f625c2ec48901a0ad6739248e22a59ac56d7dada5e20847604e4d2fc",
+      "details": "59 parts, 1284 source triangles",
+      "result": "EXACT_UTF8_SOURCE_HASH_EXECUTED",
+      "binary_fbx_proof": false
+    },
+    {
+      "id": "P18-03",
+      "owner": "C01-18",
+      "path": "Assets/C01InteriorProps/C01-18/Models/P18-03.obj",
+      "commit": "03f97354e47645ee80422115d29c67ef48808679",
+      "git_blob_sha1": "2aaea1148ca37d8835c1298fadf1010b7ebf7875",
+      "actual_source_SHA256": "4446cfc77a6c4a9de4cf7c172ae06395b9dad9e39941566046d952eab0f16a6a",
+      "details": "63 parts, 1780 source triangles",
+      "result": "EXACT_UTF8_SOURCE_HASH_EXECUTED",
+      "binary_fbx_proof": false
+    },
+    {
+      "id": "P16-06",
+      "owner": "C01-16",
+      "path": "C01Source/LightingW02/OBJ/P16-06.obj",
+      "commit": "6ada4fed1eeb7bffc5ead7632ae3bc7349a49524",
+      "git_blob_sha1": "b091a32f2a50b9de68a48db67107d079d134adf0",
+      "actual_source_SHA256": "63ab5763d2a5b711a94275f86e6ca5c693a43d1a0e9fd041b9784389fdaf7283",
+      "details": "source detail change; Blender exporter pending C01-16 NumPy fix",
+      "result": "EXACT_UTF8_SOURCE_HASH_EXECUTED",
+      "binary_fbx_proof": false
+    }
+  ],
+  "blender_native_candidates": [
+    {
+      "id": "P15-01",
+      "family": "P15",
+      "blend_path": "Assets/C01InteriorProps/P15/Sources/Blender/P15-01.blend",
+      "blend_sha256_Git_LFS_oid": "d91783a2be0b13fcaec8477eb73cc2bb4717be17be6cf6bad329a89dd88ae4c0",
+      "fbx_path": "Assets/C01InteriorProps/P15/Models/FBX/P15-01.fbx",
+      "fbx_sha256_Git_LFS_oid": "bff1a07223b61762e4dcb27df7ff4c91dae11d42e0695163fe17bedc6b314c5a",
+      "producer_Blender4_workflow_run": 41344475164,
+      "producer_run_status": "SUCCESS",
+      "git_LFS_pointer_presence": "VERIFIED_FROM_GITHUB_TEXT_12_OF_12",
+      "binary_bytes_hydrated_independently_by_C01_03": false,
+      "independent_C01_02_native_fbx": "NOT_RUN",
+      "Unity6_URP": "NOT_RUN",
+      "release": "BLOCKED"
+    },
+    {
+      "id": "P15-02",
+      "family": "P15",
+      "blend_path": "Assets/C01InteriorProps/P15/Sources/Blender/P15-02.blend",
+      "blend_sha256_Git_LFS_oid": "2244f6d72ba7bb8fc336b033ccbf89d07a60eaee96e4d448b6e61f6da8c165c3",
+      "fbx_path": "Assets/C01InteriorProps/P15/Models/FBX/P15-02.fbx",
+      "fbx_sha256_Git_LFS_oid": "470fdbdfad19d6b94ee227fc546053548b709da31115fd928f07790780066590",
+      "producer_Blender4_workflow_run": 41344475164,
+      "producer_run_status": "SUCCESS",
+      "git_LFS_pointer_presence": "VERIFIED_FROM_GITHUB_TEXT_12_OF_12",
+      "binary_bytes_hydrated_independently_by_C01_03": false,
+      "independent_C01_02_native_fbx": "NOT_RUN",
+      "Unity6_URP": "NOT_RUN",
+      "release": "BLOCKED"
+    },
+    {
+      "id": "P15-03",
+      "family": "P15",
+      "blend_path": "Assets/C01InteriorProps/P15/Sources/Blender/P15-03.blend",
+      "blend_sha256_Git_LFS_oid": "1deb3df36a1c87be8fe6ebec7529233b1d9eececa38230f4d9f693bf40fceb9a",
+      "fbx_path": "Assets/C01InteriorProps/P15/Models/FBX/P15-03.fbx",
+      "fbx_sha256_Git_LFS_oid": "7be76765763308deb8c0fa9d4c11cec8c74b60777e0199a160ebab088c59189d",
+      "producer_Blender4_workflow_run": 41344475164,
+      "producer_run_status": "SUCCESS",
+      "git_LFS_pointer_presence": "VERIFIED_FROM_GITHUB_TEXT_12_OF_12",
+      "binary_bytes_hydrated_independently_by_C01_03": false,
+      "independent_C01_02_native_fbx": "NOT_RUN",
+      "Unity6_URP": "NOT_RUN",
+      "release": "BLOCKED"
+    },
+    {
+      "id": "P18-01",
+      "family": "P18",
+      "blend_path": "Assets/C01InteriorProps/C01-18/Sources/P18-01.blend",
+      "blend_sha256_Git_LFS_oid": "d8a525acdb0eb7dcfd7b37fb31117b42a53bb655a6543282adac3dff857900a1",
+      "fbx_path": "Assets/C01InteriorProps/C01-18/Models/P18-01.fbx",
+      "fbx_sha256_Git_LFS_oid": "f541d502ba9eaaf5c7a0a7279c44f71f36dd482e3aed3ba0734058dcf1045f6c",
+      "producer_Blender4_workflow_run": 41344872313,
+      "producer_run_status": "SUCCESS",
+      "git_LFS_pointer_presence": "VERIFIED_FROM_GITHUB_TEXT_12_OF_12",
+      "binary_bytes_hydrated_independently_by_C01_03": false,
+      "independent_C01_02_native_fbx": "NOT_RUN",
+      "Unity6_URP": "NOT_RUN",
+      "release": "BLOCKED"
+    },
+    {
+      "id": "P18-02",
+      "family": "P18",
+      "blend_path": "Assets/C01InteriorProps/C01-18/Sources/P18-02.blend",
+      "blend_sha256_Git_LFS_oid": "49b3697ff01efe0497f12703421f05fedb4e9a29636626bf72d1e57493a369d5",
+      "fbx_path": "Assets/C01InteriorProps/C01-18/Models/P18-02.fbx",
+      "fbx_sha256_Git_LFS_oid": "e962c47fc60d84fb0d06d69f7aec3eead745705be002b7eb0abf11c5da452558",
+      "producer_Blender4_workflow_run": 41344872313,
+      "producer_run_status": "SUCCESS",
+      "git_LFS_pointer_presence": "VERIFIED_FROM_GITHUB_TEXT_12_OF_12",
+      "binary_bytes_hydrated_independently_by_C01_03": false,
+      "independent_C01_02_native_fbx": "NOT_RUN",
+      "Unity6_URP": "NOT_RUN",
+      "release": "BLOCKED"
+    },
+    {
+      "id": "P18-03",
+      "family": "P18",
+      "blend_path": "Assets/C01InteriorProps/C01-18/Sources/P18-03.blend",
+      "blend_sha256_Git_LFS_oid": "ea1b4f5cc5612f8d8ff5c3c585b9b48843659972c2371204b5d3b5c4df3a3b56",
+      "fbx_path": "Assets/C01InteriorProps/C01-18/Models/P18-03.fbx",
+      "fbx_sha256_Git_LFS_oid": "f169ab74086ee3853c14b46ac6f6199cd255cfca15d8b7cbef32c3758cde7926",
+      "producer_Blender4_workflow_run": 41344872313,
+      "producer_run_status": "SUCCESS",
+      "git_LFS_pointer_presence": "VERIFIED_FROM_GITHUB_TEXT_12_OF_12",
+      "binary_bytes_hydrated_independently_by_C01_03": false,
+      "independent_C01_02_native_fbx": "NOT_RUN",
+      "Unity6_URP": "NOT_RUN",
+      "release": "BLOCKED"
+    }
+  ],
+  "producer_verified_workflows": [
+    {
+      "id": 41344475164,
+      "owner": "C01-15",
+      "conclusion": "success",
+      "real_Blender4_export_reimport": "WORKFLOW_PASS",
+      "asset_ids": [
+        "P15-01",
+        "P15-02",
+        "P15-03"
+      ]
+    },
+    {
+      "id": 41344872313,
+      "owner": "C01-18",
+      "conclusion": "success",
+      "real_Blender4_export_reimport": "WORKFLOW_PASS",
+      "asset_ids": [
+        "P18-01",
+        "P18-02",
+        "P18-03"
+      ]
+    }
+  ],
+  "unblocked_pipeline": {
+    "issue": "C01-16 FBX export missing numpy in Ubuntu Blender 4.0.2",
+    "run_attempt_2": 41138429511,
+    "run_status": "FAIL_REAL_BLENDER_EXECUTED",
+    "error": "ModuleNotFoundError: No module named 'numpy' from io_scene_fbx/export_fbx_bin.py",
+    "new_fix_draft_pr": "https://github.com/C8LyNn/Model-Test/pull/37",
+    "patch_status": "DRAFT_NOT_MERGED_NOT_TESTED_ON_C01_16_PRODUCER_BRANCH",
+    "runner_allocation": "RECOVERED_FOR_RERUN"
+  },
+  "actual_source_viewer": {
+    "path": "C01InteriorProps_Library/Pass17/REAL_SOURCE_INTERACTIVE_VIEWER.html",
+    "models_after": 6,
+    "versions_before": 5,
+    "all_real_triangles_after": 5384,
+    "all_versions_total_triangles": 9704,
+    "source_pins_expected_blob_match": true,
+    "render_engine": "self-contained WebGL; no CDN or network; source-coordinates quantized to 0.01mm",
+    "runtime_browser_test": "NOT_RUN",
+    "native_Blender_shaded_wireframe_claim": false
+  },
+  "independent_qa_notes": {
+    "C01_02_PASS17_initial_check": "P17-03 LeverShaft and LeverGrip open four boundary edges each; producer changed source after QA, so source recheck required; no blanket PASS.",
+    "P18_current_source": "169 parts, 4044 triangles; existing independent scoped SOURCE analysis, final real FBX independent QA NOT_RUN",
+    "P19_07": "VISUAL_HOLD",
+    "P15_current_spec": "0.1.6",
+    "no_new_model_ids": true
+  },
+  "release_gates": {
+    "source_hashes_tested": "6/6",
+    "GitLFS_pointer_paths_verified": "12/12",
+    "real_Blender4_CI_success": "6 candidate models",
+    "blender_binary_independent_downloaded_by_C01_03": "NOT_RUN",
+    "independent_C01_02_exact_native_fbx": "NOT_RUN",
+    "Unity6_URP": "NOT_RUN",
+    "global_release": "36/36 BLOCKED",
+    "merge": "NONE"
+  },
+  "validation": {
+    "thirty_six_unique_ids": true,
+    "six_new_source_shas": true,
+    "six_native_candidate_pairs": true,
+    "source_snapshot_asset_IDs_stable": true,
+    "p18_triangle_count": true,
+    "p18_parts_total": true,
+    "five_before_six_after_preview": true,
+    "all_final_native_qa_pending": true,
+    "all_unity_not_run": true
+  }
+}

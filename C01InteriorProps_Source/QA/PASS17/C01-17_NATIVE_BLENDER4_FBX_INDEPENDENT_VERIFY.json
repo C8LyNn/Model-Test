@@ -1,0 +1,112 @@
+{
+  "schema": "C01-17-DETAIL-PASS17-NATIVE-BLENDER4-BINARY-EXPORTED-AND-INDEPENDENTLY-REPROVED",
+  "owner": "C01-17",
+  "hq_issue": 36,
+  "repo": "C8LyNn/Model-Test",
+  "run": {
+    "id": 41347796593,
+    "url": "https://github.com/C8LyNn/Model-Test/actions/runs/41347796593",
+    "conclusion": "success",
+    "Blender4_version": "4.0.2",
+    "source_QA": "PASS",
+    "native_BLEND_save": "PASS 3/3",
+    "binary_FBX_export": "PASS 3/3",
+    "true_Blender_FBX_reimport": "PASS 3/3",
+    "PASS03_mesh_topology": "PASS 3/3",
+    "PASS04_source_vs_fbx": "PASS 3/3",
+    "real_workbench_renders": "PASS 3x 3 angles + shaded/wire QA",
+    "Git_LFS_upload": "PASS 6/6"
+  },
+  "actual_binary_download": {
+    "github_artifact_id": 13099877855,
+    "name": "C01-17_PASS17_BLENDER4_SOURCE_FBX_REIMPORT.zip",
+    "bytes_SHA256": "2ddab5c829475d29a8e22cdde37861de43e4e2eaf9f67f2dc46c25f86afccd51",
+    "zip_crc": "PASS",
+    "fileCount": 44,
+    "independently_checked": "read exact physical hydrated bytes from original GitHub Actions artifact; all six sha256 equal Git-LFS repository pointers and Blender manifest"
+  },
+  "models": [
+    {
+      "id": "P17-01",
+      "parts": 25,
+      "triangles": 380,
+      "blend_sha256": "7e7fb3911d7f0d061dfa202804a42b18ef0d99510f95e6cc1b6b42d0c53c17eb",
+      "fbx_sha256": "cd6a5787bb7b4c088f0af35382385e4274c85c415c60467f9a22e46fe33ef02c",
+      "gltf_blob_sha1": "e0df06d260a955fe926f7e0279068bf2a2e6a6b5"
+    },
+    {
+      "id": "P17-02",
+      "parts": 38,
+      "triangles": 536,
+      "blend_sha256": "9039029aece72ad4416ebe162c55141c8a3123572142423235e61e7865d1d756",
+      "fbx_sha256": "db49121a520f16ca636626795550b83e8a4df94ded56a7ccb76308520bb7c3f6",
+      "gltf_blob_sha1": "d80a67af140e434b983104aaec0078f9cf5bd66f"
+    },
+    {
+      "id": "P17-03",
+      "parts": 20,
+      "triangles": 424,
+      "blend_sha256": "c06f6388a948fa0264fae1278c7753587e7eae746b9e58748e642f458b65898d",
+      "fbx_sha256": "a48c9dde921c25f61cef175896c5b7fde997392fc898784e16bb9612f39a4520",
+      "gltf_blob_sha1": "0cf58dfd446c23f4077b59aea47d93f873d2db6e"
+    }
+  ],
+  "full_validation": {
+    "binary_format": "Kaydara FBX Binary 7400 on all three",
+    "individual_mesh_models": 83,
+    "source_triangles_and_fbx_triangle_count": 1340,
+    "fbx_bad_indices": 0,
+    "fbx_zero_area_triangles": 0,
+    "fbx_invalid_UV0_and_normal_corner_index_lists": 0,
+    "producer_pass04_triangle_position_mismatches": 0,
+    "producer_pass04_normal_winding_mismatches": 0,
+    "producer_pass04_same_mesh_t_junctions": 0,
+    "producer_pass04_cross_object_same_facing_coplanar_candidates": 0,
+    "movable_LeverPivot": "present in true Blender roundtrip P17-03"
+  },
+  "source_preview": {
+    "path": "C01InteriorProps_Source/Previews/PASS17_C01-17_INTERACTIVE_CURRENT_GLTF.html",
+    "mode": "exact current embedded authoring glTF, including original base64 binary float32/index/UV and full transform node hierarchy, not historical FBX",
+    "no_external_network_or_library": true,
+    "models": [
+      {
+        "id": "P17-01",
+        "gltf_blob_sha1": "e0df06d260a955fe926f7e0279068bf2a2e6a6b5"
+      },
+      {
+        "id": "P17-02",
+        "gltf_blob_sha1": "d80a67af140e434b983104aaec0078f9cf5bd66f"
+      },
+      {
+        "id": "P17-03",
+        "gltf_blob_sha1": "0cf58dfd446c23f4077b59aea47d93f873d2db6e"
+      }
+    ],
+    "functions": [
+      "rotate",
+      "zoom",
+      "selection by actual model part",
+      "shaded",
+      "wireframe",
+      "XYZ bounds",
+      "PNG export"
+    ]
+  },
+  "delivered_physical_viewer": {
+    "html": "C01-17_PASS17_INTERACTIVE_SOURCE_OBJ.html",
+    "zip": "C01-17_PASS17_INTERACTIVE_SOURCE_VIEWER.zip",
+    "zip_SHA256": "2d24531c27a6e76bd9bad76be1c16df581e45b8a602f4e39a3419c17b034d68c",
+    "zip_bytes": 216363,
+    "screenshot_comparison": "three real Blender renders BEFORE vs AFTER shaded/wire"
+  },
+  "reason_previous_ci_failed": "legacy qa_gltf.py asserted number of unique glTF Mesh resources == number of named model child instances and ignored multiple buffers and parent rotation/scales",
+  "real_fix": "C01InteriorProps_Source/Tools/qa_gltf.py now traverses all actual glTF node instances and parent T*R*S, buffers/UVs/normals/triangle indices, expected dimensions, moving pivot and exact instance triangle count; successful test executed on runner",
+  "release": {
+    "full_C01_02_independent_signoff": "PENDING",
+    "Unity_6_URP_actual_import": "NOT RUN",
+    "game_prefab_PlayMode": "NOT RUN",
+    "merge": "NOT PERFORMED",
+    "status": "NATIVE_EXPORT_COMPLETE_QA_HANDOFF_WAITING_FOR_C01-02_AND_UNITY"
+  },
+  "note": "Producer Blender PASS03/04 and independent read-only FBX parser passed; not a substitute for independent final C01-02 acceptance and actual Unity 6 URP prefab tests. No new 3D IDs, architecture changes or unapproved merge."
+}

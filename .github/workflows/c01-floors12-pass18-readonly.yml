@@ -52,7 +52,7 @@ jobs:
             timeout 80s "$BROWSER" --headless=new --no-sandbox --disable-dev-shm-usage \
               --enable-unsafe-swiftshader --use-gl=angle --use-angle=swiftshader \
               --window-size=1280,940 --virtual-time-budget=24000 \
-              --screenshot="$(pwd)/$ROOT/QA/PASS18_$MODEL_REAL_CHROME.png" \
+              --screenshot="$(pwd)/$ROOT/QA/PASS18_${MODEL}_REAL_CHROME.png" \
               --dump-dom "file://$(pwd)/$ROOT/Interactive/C01_12_PASS18_REAL_GLB_VIEWER.html?asset=$MODEL" \
               > "/tmp/c01_pass18_$MODEL.html" 2> "/tmp/c01_pass18_$MODEL.err"
           done

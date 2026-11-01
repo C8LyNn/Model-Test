@@ -44,6 +44,8 @@ namespace C01.Floors12Pass18.Editor
         [Serializable] class Report {
             public string unityVersion, renderPipeline, status, independentC0102Final="PENDING";
             public string testMode="EXPLICIT_UNITY_EDITOR_EXECUTION";
+            public string productionUrpPbrTextureAndNormalMapValidation="NOT_RUN";
+            public string shipIntegrationClearanceAndPlayMode="NOT_RUN";
             public List<Entry> models=new List<Entry>();
             public List<string> errors=new List<string>();
         }

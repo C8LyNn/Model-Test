@@ -6,6 +6,15 @@
 
 Read-only PASS18 on the three existing historic F01, F02 and C01 modular floor/ceiling assets. They are **NOT** among 36 P15–P19 interior props and must not be substituted for current ship architectural prefabs. **No new models, ship edits or merge.** Current exact native sources, Blender-generated FBX, GLB and 12 true BEFORE/AFTER shaded/wireframe previews remain unmodified in C01StandaloneKits/FloorCeiling/DetailPass17.
 
+## Verified final PASS18 execution and current test statuses
+
+- **Actual Blender 4.0.2 & headless Chrome:** [GitHub Actions run #41352753090](https://github.com/C8LyNn/Model-Test/actions/runs/41352753090) **SUCCESS, every job step completed**.
+- [Artifact #13102410237 — PASS18 three native QA receipts/screenshots/offline HTML](https://github.com/C8LyNn/Model-Test/actions/runs/41352753090/artifacts/13102410237) — download ZIP, SHA and PNG evidence. Includes 6 files: Blender QA JSON, Chrome QA JSON, 3 genuine screenshots and self-contained HTML.
+- **F01 / F02 / C01 native Blender checks:** **PASS 3/3** on current original-vs-current native sources, real FBX and real GLB imports, exact SHA256. Each 16 vertices, 28 edges, 14 quads, 28 triangles; 0 checked degenerates/UV collapses/nonmanifold and 0 same-facing planar interior overlap. Full producer QA JSON in the Actions artifact.
+- **Chrome actual real-data smoke:** **PASS 3/3**. All three pinned genuine GLBs loaded in browser, 28 triangles each, matching source SHA. F01 screenshot 149,958 bytes (SHA256 16bd75a9277654a8373ba1d895981876c671f857074c6e0210c602d373bb355c), F02 152,866 bytes (SHA256 f2e3c510869dd2418132defe035a3c712451f248497592e156e270731838d874), C01 150,495 bytes (SHA256 ca8fc18bed9412f0a7409f53038e38c05a12d753339555b76df64c2ab99bdd8a).
+- Browser loading and screenshot existence are proven; detailed human visual review of every render remains **NOT RUN**.
+- **Unity 6 Editor compilation, imported prefab/collider/URP PBR visual/PlayMode tests NOT RUN; C01-02 final acceptance PENDING**. Not a replacement for the 36 asset QA matrix.
+
 ## Current true binary SHA256 pins
 
 | Asset | .blend v004 | FBX v004 | GLB v004 |

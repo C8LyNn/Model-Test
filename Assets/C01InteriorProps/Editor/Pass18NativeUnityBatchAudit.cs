@@ -150,6 +150,18 @@ namespace C01.InteriorProps.Editor
                             throw new InvalidDataException("Hydrated FBX hash/magic mismatch");
                         var importer=AssetImporter.GetAtPath(path) as ModelImporter;
                         if(importer==null) throw new InvalidDataException("Not a Unity ModelImporter");
+                        // Restrict importer-setting updates to PASS04Incoming QA copies ONLY.
+                        // Preserve actual FBX normals and child pivots; never optimize away the hierarchy.
+                        if(!importer.isReadable || importer.importNormals!=ModelImporterNormals.Import ||
+                           importer.meshCompression!=ModelImporterMeshCompression.Off ||
+                           !importer.preserveHierarchy)
+                        {
+                            importer.isReadable=true;
+                            importer.importNormals=ModelImporterNormals.Import;
+                            importer.meshCompression=ModelImporterMeshCompression.Off;
+                            importer.preserveHierarchy=true;
+                            importer.SaveAndReimport();
+                        }
                         var prefab=AssetDatabase.LoadAssetAtPath<GameObject>(path);
                         if(prefab==null) throw new InvalidDataException("Unity did not import a GameObject");
                         var filters=prefab.GetComponentsInChildren<MeshFilter>(true);

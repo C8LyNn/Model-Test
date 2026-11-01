@@ -75,6 +75,10 @@ jobs:
           git add 'C01Source/LightingW02/Blender' 'C01Source/LightingW02/FBX' 'C01Source/LightingW02/MeshRepairPASS04'
           if git diff --cached --quiet; then exit 0; fi
           git commit -m 'fix(C01-16 PASS04 W02): real native .blend, binary FBX and verified roundtrip'
+          # Clean only the disposable CI checkout after native outputs are committed.
+          # Blender/LFS leave incidental tracked modifications that otherwise block rebase.
+          git status --short
+          git reset --hard HEAD
           git fetch origin 'c01/props-16-lighting-wave02'
           git rebase 'origin/c01/props-16-lighting-wave02'
           git push origin HEAD:'c01/props-16-lighting-wave02'

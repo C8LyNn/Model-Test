@@ -34,6 +34,7 @@ shaded.onclick=()=>{style="shaded";selectButtons();dirty=true};
 wire.onclick=()=>{style="wireframe";selectButtons();dirty=true};
 model.onchange=()=>{yaw=model.value==="P18-03"?.68:2.55;pitch=.30;zoom=1;dirty=true};
 fit.onclick=()=>{yaw=model.value==="P18-03"?.68:2.55;pitch=.30;zoom=1;dirty=true};
+window.addEventListener("resize",()=>{dirty=true});
 canvas.addEventListener("pointerdown",e=>{pointer={x:e.clientX,y:e.clientY,id:e.pointerId};canvas.setPointerCapture(e.pointerId)});
 canvas.addEventListener("pointermove",e=>{if(pointer&&e.pointerId===pointer.id){yaw+=(e.clientX-pointer.x)*.008;pitch=Math.min(1.40,Math.max(-1.35,pitch+(e.clientY-pointer.y)*.006));pointer.x=e.clientX;pointer.y=e.clientY;dirty=true}});
 canvas.addEventListener("pointerup",()=>{pointer=null});

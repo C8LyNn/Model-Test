@@ -1,0 +1,82 @@
+{
+  "schema": "C01-13-DETAIL-PASS17-REAL-SOURCE-VIEWER-AND-RECHECK",
+  "dated": "2026-11-01",
+  "role": "C01-13 DOORS & ACCESS — legacy D01/D02; NOT part of 36 P15–P19 assets",
+  "producer_branch": "c01/doors-13-pass03-legacy-mesh-topology",
+  "change_type": "read-only source geometry verification; offline interactive viewer; NO new model geometry and NO merge",
+  "physical_archive": {
+    "name": "C01-13_DETAIL_PASS17_ACTUAL_SOURCES_INTERACTIVE_QA.zip",
+    "bytes": 806297,
+    "sha256": "067085171c77e1c982e622958b0ea58a82b7b926cb828feba4e7ad4b5b1cde66",
+    "file_count": 31,
+    "location": "The user's ChatGPT conversation file download (actual GLB/OBJ/HTML/PNG/QA/Scripts); binary contents ARE NOT committed in GitHub or Git LFS"
+  },
+  "interactive_viewer": {
+    "name": "C01-13_PASS17_INTERACTIVE_REAL_GLB_BEFORE_AFTER.html",
+    "bytes": 122009,
+    "sha256": "a84179b2f37fa27147a1128f3451ef58771f933b66686db348bd1ed7ea510280",
+    "methods": "Offline Canvas2D triangle rasterizer with perspective-correct reciprocal depth buffer, no WebGL/remote CDN/proxies, actual indexed triangle geometry extracted from physical PASS15 vs PASS16 GLB files.",
+    "controls": "D01/D02; BEFORE/AFTER; shaded/shaded+hidden-line-wireframe/wireframe; all/hardware/new washers; orbit/pan/zoom",
+    "browser_chromium": {
+      "actual_shaded_D01": "PASS screenshot saved from software rasterizer",
+      "actual_shaded_D02": "PASS screenshot saved from software rasterizer",
+      "actual_shaded_wireframe_D01": "PASS screenshot saved from software rasterizer",
+      "test_controls": "5/5 PASS (D01 AFTER 1468 triangles, D02 AFTER 1248, D02 BEFORE wire 864, BEFORE new-only 0, AFTER new-only 384)",
+      "js_page_errors": 0,
+      "limitations": "Browser smoke and real still previews only; not Unity/Blender"
+    }
+  },
+  "source_models": {
+    "D01": {
+      "previous_glb_sha256": "4be7d2ac91e29c28535eb01e69ea80d62fe2bd00507c92f59a8848e73f3c9e2b",
+      "current_glb_sha256": "19b5132d07eef279589699ec49ed4504d40310fbf7ab8dba7ef367bf7a936125",
+      "current_obj_sha256": "4df936169357d2fb66e65c041f1340aa76597b7c6e6005644f5c943ef7bac98b",
+      "before_parts": 21,
+      "after_parts": 33,
+      "before_tris": 700,
+      "after_tris": 1468,
+      "new_washers_2_sided_true_triangle_attachment": "12/12 PASS",
+      "UV0": "33/33 PASS",
+      "source_before_parts_unchanged": "21/21",
+      "QA_only_uv_normal_seam_collapsed_watertight": "33/33 PASS",
+      "consistent_winding": "33/33 PASS",
+      "zero_area_tris": 0,
+      "same_facing_axis_aligned_coplanar_pairs": 0
+    },
+    "D02": {
+      "previous_glb_sha256": "0a5b89fa425b23ccfa32fe3cb530b7a71b7ab5463a90acc24ac55b210935e4bf",
+      "current_glb_sha256": "5d21e10dc29c79325bd4c4f7c43a84b2f99df4dd6f3a596b93242f63cba7525b",
+      "current_obj_sha256": "4678f4a8b847901929d8926e4e44d9af981454817fb474d8ab72f564306b3c58",
+      "before_parts": 28,
+      "after_parts": 34,
+      "before_tris": 864,
+      "after_tris": 1248,
+      "new_washers_2_sided_true_triangle_attachment": "6/6 PASS",
+      "UV0": "34/34 PASS",
+      "source_before_parts_unchanged": "28/28",
+      "QA_only_uv_normal_seam_collapsed_watertight": "34/34 PASS",
+      "consistent_winding": "34/34 PASS",
+      "zero_area_tris": 0,
+      "same_facing_axis_aligned_coplanar_pairs": 0
+    }
+  },
+  "source_QA_note": "The render-indexed GLB base meshes have UV0/normal seam-split vertices; only QA copies with merge_vertices(merge_tex=true,merge_norm=true) are watertight. Do NOT alter original geometry or claim original indexed render surfaces themselves are welded.",
+  "native_gates": {
+    "new_blend": "NOT RUN",
+    "new_Blender_origin_binary_FBX": "NOT RUN",
+    "Blender_to_FBX_to_Blender_roundtrip": "NOT RUN",
+    "Unity6_URP": "NOT RUN",
+    "C01_02_independent_release": "PENDING",
+    "full_D02_door_sweep": "NOT RUN",
+    "all_arbitrary_angle_zfight_screen": "NOT RUN"
+  },
+  "infrastructure": "No Blender 4.x/bpy/Git LFS/Unity on execution host; prior private C01 Actions native jobs failed before runner allocation (runner_id=0 steps=0). Do not claim root cause.",
+  "restrictions": {
+    "new_asset_ids": 0,
+    "source_mesh_changes_pass17": 0,
+    "ship_changes": 0,
+    "merges": 0,
+    "producer_P15_to_P19_file_changes": 0
+  },
+  "release_decision": "HOLD / NEEDS_OWNER_ACTION"
+}

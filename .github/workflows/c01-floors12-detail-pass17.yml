@@ -5,6 +5,7 @@ on:
     paths:
       - .github/workflows/c01-floors12-detail-pass17.yml
       - Tools/C01Floors12/detail_pass17_material_native.py
+      - Tools/C01Floors12/detail_pass17_glb_viewer.py
   workflow_dispatch:
 permissions:
   contents: write
@@ -54,6 +55,27 @@ jobs:
           assert info['unity6_urp']=='NOT_RUN'
           assert info['independent_C01_02_final_QA']=='PENDING'
           print('C01-12 PASS17 actual artifacts verified; Unity NOT RUN')
+          PY
+      - name: Generate real GLB WebGL viewer and Blender before-after images
+        run: |
+          python3 Tools/C01Floors12/detail_pass17_glb_viewer.py
+          python3 - <<'PY'
+          import base64,hashlib,json,pathlib
+          repo=pathlib.Path('.')
+          root=repo/'C01StandaloneKits/FloorCeiling/DetailPass17'
+          page=(root/'C01_12_DETAIL_PASS17_REAL_GLB_INTERACTIVE.html').read_text()
+          data=json.loads((root/'QA/DETAIL_PASS17_NATIVE_SHA256.json').read_text())
+          assert '__EMBEDDED_SOURCE_DATA__' not in page
+          for name in ('F01','F02','C01'):
+            row=data['asset_ids'][name]
+            glb=(repo/row['native']['glb']['path']).read_bytes()
+            assert base64.b64encode(glb).decode() in page, name
+            assert row['native']['glb']['sha256'] in page
+            for key in ('before','after'):
+              for still in row['previews'][key]:
+                png=(repo/still['path']).read_bytes()
+                assert base64.b64encode(png).decode() in page,(name,key)
+          print('PASS17 viewer embeds genuine NEW GLB and Blender previews 3/3; WebGL browser NOT RUN')
           PY
       - name: Upload genuine v004 native, 9 maps and 12 Blender source-mesh previews
         uses: actions/upload-artifact@v4

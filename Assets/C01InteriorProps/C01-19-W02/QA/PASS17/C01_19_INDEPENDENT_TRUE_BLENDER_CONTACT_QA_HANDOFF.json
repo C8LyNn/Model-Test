@@ -1,0 +1,43 @@
+{
+  "stage": "PASS17_ACTUAL_BLENDER4_NATIVE_AND_INDEPENDENT_C01_19_QA",
+  "scope": "Existing P19 furniture only, no new model ID, no ship edits, no merge",
+  "runs": {
+    "W01": "https://github.com/C8LyNn/Model-Test/actions/runs/41346465283",
+    "W02": "https://github.com/C8LyNn/Model-Test/actions/runs/41346471952"
+  },
+  "official_c01_02": "PENDING_NOT_INDEPENDENTLY_SIGNED",
+  "unity6_urp": "NOT_RUN",
+  "delivery": {
+    "archive_name": "C01-19_PASS17_COMPLETE_REAL_BLENDER_FBX_INTERACTIVE_GLTF_QA.zip",
+    "sha256": "23b2b199f6fbada2ece507af5e301517d9e4870083eb661104cb6990324cd534",
+    "bytes": 6771560,
+    "entries": 50,
+    "zip_crc": "PASS",
+    "interactive_preview": "C01-19_PASS17_INTERACTIVE_REAL_MESH_VIEWER.html",
+    "models_from_current_native_Blender_meshes": [
+      "P19-01",
+      "P19-02",
+      "P19-05",
+      "P19-07",
+      "P19-08"
+    ],
+    "interactive_browser_smoke": "NOT_RUN_BROWSER_BLOCKED"
+  },
+  "producer_branch": "c01/props-19-furniture-wave02",
+  "independent_numeric_test": "True 3D indexed segment triangle intersections on actual Blender 4.0.2 source-saved .blend; coplanar new-vs-original same-mesh triangle 2D plane clipping; existing UV/pivots not rewritten",
+  "scope_limitations": "Contact graph and same-facing coplanar test only; not animated clearance or complete whole-model BVH. C01-02 still must independently accept exact final FBX SHA.",
+  "models": [
+    {
+      "id": "P19-05",
+      "vertices": 152,
+      "triangles": 252,
+      "parts": 7,
+      "blend_sha256": "7905086e87660461d46e6d633b16fc655142939ac4cbc0df0c670067da9314b2",
+      "fbx_sha256": "d07b4884cfe1de2c48a96dc9407c2eccdfbdbdf703551c71ae195bd3fd8c9d87",
+      "blender_roundtrip": "PASS",
+      "contact_supports": 6,
+      "contact_verified": 6,
+      "coplanar_overlap_pairs": 0
+    }
+  ]
+}

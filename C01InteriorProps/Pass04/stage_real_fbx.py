@@ -107,6 +107,14 @@ def stage(manifest: Path, project: Path, apply: bool, selected_ids: set[str]) ->
                 id=entry["id"], state=state, source_commit=entry["source_commit"],
                 fbx_sha256="", size_bytes="", detail=entry["native_export_blocker"]
             ))
+        elif not re.fullmatch(r"[0-9a-f]{64}", entry.get("final_fbx_sha256") or ""):
+            # QA-only staging still requires an immutable physical FBX SHA pin.
+            # Without it, a historical/stale binary could silently be staged.
+            rows.append(dict(
+                id=entry["id"], state="BLOCKED_UNPINNED_BINARY_SHA256",
+                source_commit=entry["source_commit"], fbx_sha256="",
+                size_bytes="", detail="Candidate has no exact 64-character final FBX SHA-256; do not fetch or stage"
+            ))
         else:
             eligible.append(entry)
     by_commit: dict[tuple[str, str], list[dict]] = {}
@@ -142,8 +150,9 @@ def stage(manifest: Path, project: Path, apply: bool, selected_ids: set[str]) ->
                                   fbx_sha256="", size_bytes="", detail="")
                     try:
                         digest, size = validate_real_fbx(origin)
-                        expected = entry.get("final_fbx_sha256")
-                        if expected and expected != digest:
+                        # All eligible candidates must have passed the SHA-pin gate above.
+                        expected = entry["final_fbx_sha256"]
+                        if expected != digest:
                             raise ValueError("FBX SHA differs from pinned final source SHA")
                         if dest.exists() and sha256(dest) != digest:
                             raise ValueError("Different staging FBX already exists; refuse overwrite")

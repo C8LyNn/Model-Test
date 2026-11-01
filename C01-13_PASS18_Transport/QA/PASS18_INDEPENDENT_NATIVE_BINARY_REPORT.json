@@ -1,0 +1,101 @@
+{
+  "schema": "C01-13-DETAIL-PASS18-INDEPENDENT-NATIVE-BINARY-QA",
+  "scope": "D01 and D02 legacy DOORS & ACCESS ONLY; NOT counted toward 36 P15-P19",
+  "source_transport": "Exactly four real physically-authored PASS15/PASS16 GLB assets, decompressed+SHA checked in Blender script; no proxy or historic FBX source",
+  "source": {
+    "D01_after_glb_sha256": "19b5132d07eef279589699ec49ed4504d40310fbf7ab8dba7ef367bf7a936125",
+    "D02_after_glb_sha256": "5d21e10dc29c79325bd4c4f7c43a84b2f99df4dd6f3a596b93242f63cba7525b"
+  },
+  "producer": {
+    "run_id": 41353714587,
+    "run_url": "https://github.com/C8LyNn/Model-Test/actions/runs/41353714587",
+    "status": "SUCCESS",
+    "blender": "4.0.2",
+    "uploaded_artifact_id": 13102038192,
+    "artifact_zip_byte_count": 3810822,
+    "artifact_zip_sha256": "d7ccf2b8eb41fb27a4807e21ab91e0fb8bcb4a6ba1d6f97c93c21403241e7a58",
+    "zip_crc": "PASS",
+    "native_files_committed_to_existing_draft_pr32": true,
+    "committed_head": "0ce75c00886b0f9dcb77809de65b86ca48cfd595"
+  },
+  "producer_native": {
+    "D01": {
+      "mesh_parts": 33,
+      "triangles": 1468,
+      "blend_sha256": "fd68ebb8a3a700fc6a17387eda962a53afb219e8bad682d0d442954971bf3c37",
+      "fbx_sha256": "b1300e771ad8178c36997d7333fc669c835ee814a3ef6035c00247567e5e7e68",
+      "world_bounds_delta_m": 1.092784742695585e-7,
+      "triangle_multiset_0_1mm": "IDENTICAL"
+    },
+    "D02": {
+      "mesh_parts": 34,
+      "triangles": 1248,
+      "blend_sha256": "bdb8648ef37e5aea627e4da0d3e1441fa29d78fe1a34af93ca047449e133d3e7",
+      "fbx_sha256": "290943f58904e8cb4097dd8c2237d8694b7c5b7b86fdcdd070d1fb1fa35de591",
+      "world_bounds_delta_m": 1.0244548320770264e-7,
+      "triangle_multiset_0_1mm": "IDENTICAL"
+    }
+  },
+  "independent_physical_artifact_checks": {
+    "method": "Downloaded actual successful GitHub Actions artifact ZIP via connector. Byte-extracted and directly rehashed four native binary files. Verified BLENDER-v400 & Kaydara FBX Binary 7400 magic bytes. Read FBX 7400 node/property binary tree independently of Blender with an original raw parser, iterated Geometry Mesh nodes, triangulated indices, UVIndex bounds and normal finite/length.",
+    "exact_native_file_sha_to_LFS_oid": "PASS 4/4",
+    "zip_crc": "PASS",
+    "native_signature": "PASS 4/4",
+    "fbx_binary_versions": [
+      7400,
+      7400
+    ],
+    "D01": {
+      "binary_geometry_mesh_nodes": 33,
+      "triangles": 1468,
+      "fbx_vertex_records": 864,
+      "UV_layers": 33,
+      "normal_layers": 33,
+      "degenerate_triangles": 0,
+      "nonunit_normals": 0,
+      "invalid_UV_indices": 0,
+      "nonfinite_attributes": 0
+    },
+    "D02": {
+      "binary_geometry_mesh_nodes": 34,
+      "triangles": 1248,
+      "fbx_vertex_records": 708,
+      "UV_layers": 34,
+      "normal_layers": 34,
+      "degenerate_triangles": 0,
+      "nonunit_normals": 0,
+      "invalid_UV_indices": 0,
+      "nonfinite_attributes": 0
+    },
+    "workbench_preview": {
+      "png_files": 8,
+      "actual_before_after_shaded_and_wireframe": "PASS",
+      "D01_changed_pixels_shaded_vs_wireframe_gt5": 10016,
+      "D02_changed_pixels_shaded_vs_wireframe_gt5": 10027,
+      "notes": "Actual downloaded Workbench PNG pixel arrays compared. Genuine temporary source-edge Blender modifier wire overlay used in preview ONLY and removed immediately; not committed into source geometry, BLEND or FBX."
+    }
+  },
+  "source_hinge_aperture_check": {
+    "method": "361 static actual latest D02 indexed GLB world-vertex poses over 0–90 degrees about nominal Unity hinge pivot; compared to fixed D01 aperture region; NOT full triangle-vs-triangle swept collision or Unity PhysX.",
+    "smallest_hinge_side_clearance_mm": 5,
+    "smallest_latch_side_clearance_mm": 29.798,
+    "smallest_top_clearance_mm": 40,
+    "result": "SOURCE_VERTEX_SWEEP_GEOMETRIC_ONLY"
+  },
+  "gates": {
+    "producer_native_blend": "PASS",
+    "producer_blender_fbx_export": "PASS",
+    "producer_blender_fbx_reimport": "PASS",
+    "independent_raw_fbx_sha_topology_uv_normals": "PASS",
+    "independent_C01_02_release": "PENDING",
+    "all_36_assets_C01_02_final": "NOT_RUN_BY_C01_13",
+    "Unity6_URP_prefab_motion_physics": "NOT_RUN",
+    "merge": "NOT_DONE"
+  },
+  "limitations": [
+    "C01-13 legacy hinge assembly is optional and not the live ShipGateV4 spacecraft replacement",
+    "Full arbitrary-angle z-fighting and articulated PhysX were not tested in Unity",
+    "Independent raw-FBX QA above is not C01-02 formal final acceptance",
+    "No ship/other producer model files edited or merged"
+  ]
+}

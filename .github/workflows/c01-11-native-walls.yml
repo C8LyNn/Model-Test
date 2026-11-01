@@ -1,45 +1,62 @@
-name: C01-11 PASS04 - read-only native Blender FBX audit
+name: C01-11 PASS17 - actual Blender W02 restored-source export and QA
 on:
   push:
     branches:
       - c01/walls-11-wave02-native-export
     paths:
-      - 'Assets/C01Architecture/Walls_W01_W04/Sources/pass03_native_topology_audit.py'
+      - 'Assets/C01Architecture/Walls_W01_W04/Sources/original_r2_w02.py'
+      - 'Assets/C01Architecture/Walls_W01_W04/Sources/OriginalR2/W02_TECH_PANEL_WALL_1M_R2_AUTHORING.obj'
+      - 'Assets/C01Architecture/Walls_W01_W04/Sources/build_wall_models.py'
       - 'Assets/C01Architecture/Walls_W01_W04/Sources/check_artifacts.py'
+      - 'Assets/C01Architecture/Walls_W01_W04/Sources/pass17_native_roundtrip_qa.py'
       - '.github/workflows/c01-11-native-walls.yml'
   workflow_dispatch:
 concurrency:
-  group: c01-11-pass04-native-audit
+  group: c01-11-pass17-native-QA
   cancel-in-progress: true
 permissions:
   contents: read
 jobs:
-  native-mesh-audit:
+  native-w02-restore:
     runs-on: ubuntu-24.04
+    timeout-minutes: 25
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout pinned Draft C01-11 source and LFS references
+        uses: actions/checkout@v4
         with:
           lfs: true
           persist-credentials: false
-      - name: Install real Blender and FBX dependencies
+      - name: Verify real runner and install Blender 4.x
         run: |
-          sudo apt-get update
+          sudo apt-get update -qq
           sudo apt-get install -y blender python3-numpy git-lfs xvfb xauth libegl1 libgl1 libopengl0
-      - name: Check actual committed native assets (no generation)
+          blender --version | head -2
+          git lfs version
+      - name: Verify exact W02 r2 source identity (288V / 572T)
+        run: |
+          python3 Assets/C01Architecture/Walls_W01_W04/Sources/original_r2_w02.py
+          python3 -m py_compile Assets/C01Architecture/Walls_W01_W04/Sources/build_wall_models.py Assets/C01Architecture/Walls_W01_W04/Sources/check_artifacts.py Assets/C01Architecture/Walls_W01_W04/Sources/pass17_native_roundtrip_qa.py
+      - name: ACTUAL Blender 4.x save .blend and export binary FBX to isolated QA directory
+        run: |
+          xvfb-run -a blender -b --factory-startup --python-exit-code 1 --python Assets/C01Architecture/Walls_W01_W04/Sources/build_wall_models.py
+      - name: Check actual fresh binary headers, SHA and 572-triangle W02 Blender report
         run: |
           python3 Assets/C01Architecture/Walls_W01_W04/Sources/check_artifacts.py
-      - name: Inspect genuine Blender sources and FBX reimport
+      - name: ACTUAL Blender open saved native source + reimport exported FBX
         run: |
-          xvfb-run -a blender -b --factory-startup --python-exit-code 1 --python Assets/C01Architecture/Walls_W01_W04/Sources/pass03_native_topology_audit.py
-      - name: Export QA evidence without changing repository
+          xvfb-run -a blender -b --factory-startup --python-exit-code 1 --python Assets/C01Architecture/Walls_W01_W04/Sources/pass17_native_roundtrip_qa.py
+      - name: Verify no production W01-W04 binaries or spaceship source changed
+        run: |
+          git diff --exit-code -- Assets/C01Architecture/Walls_W01_W04/Blender Assets/C01Architecture/Walls_W01_W04/FBX Assets/C01Modular
+      - name: Upload real quarantined Blender/FBX + shaded previews + exact SHA receipts
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: C01-11-PASS04-readonly-native-FBX-QA
-          if-no-files-found: error
+          name: C01-11-PASS17-REAL-BLENDER-W02-572T-QA-ONLY
+          if-no-files-found: warn
+          retention-days: 30
           path: |
-            Assets/C01Architecture/Walls_W01_W04/QA/PASS03_blender_fbx_roundtrip.json
-            Assets/C01Architecture/Walls_W01_W04/QA/W0*_mesh_topology_*.json
-            Assets/C01Architecture/Walls_W01_W04/Previews/W0*_PASS03_*.png
-      - name: Confirm original tracked sources unchanged
-        run: |
-          git diff --exit-code -- Assets/C01Architecture/Walls_W01_W04/Blender Assets/C01Architecture/Walls_W01_W04/FBX
+            Assets/C01Architecture/Walls_W01_W04/QA_Candidates/PASS17_SourceRecovery/Blender/*.blend
+            Assets/C01Architecture/Walls_W01_W04/QA_Candidates/PASS17_SourceRecovery/FBX/*.fbx
+            Assets/C01Architecture/Walls_W01_W04/QA_Candidates/PASS17_SourceRecovery/Previews/*.png
+            Assets/C01Architecture/Walls_W01_W04/QA_Candidates/PASS17_SourceRecovery/QA/*.json

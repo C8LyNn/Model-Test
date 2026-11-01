@@ -329,5 +329,30 @@
         }
       }
     }
-  ]
+  ],
+  "unity_preparation": {
+    "status": "SOURCE_BUILDER_UPDATED_UNITY_RUNTIME_NOT_RUN",
+    "editor_script": "Assets/C01InteriorProps/C01-18/Editor/BuildWave01CargoPrefabs.cs",
+    "mapped_source_groups": 169,
+    "material_lookup": "Exact id/name keys read from actual authored OBJ usemtl (STEEL/DARK/RUBBER/CAUTION), no wheel-prefix guessing",
+    "bug_fixed": "Prior t.name.StartsWith('Wheel_') counted all hub/fork/axle accessory meshes; now explicitly counts only Wheel_LB/Wheel_LF/Wheel_RB/Wheel_RF",
+    "strict_mesh_parts_expected": {
+      "P18-01": 47,
+      "P18-02": 59,
+      "P18-03": 63
+    },
+    "strict_triangle_expected": {
+      "P18-01": 980,
+      "P18-02": 1284,
+      "P18-03": 1780
+    },
+    "strict_collision_parts_expected": {
+      "P18-01": 1,
+      "P18-02": 7,
+      "P18-03": 6
+    },
+    "checked_in_prefab_yaml": "HISTORICAL: not regenerated; requires Unity6 import / menu command",
+    "unity_editor_compile": "NOT RUN",
+    "unity6_urp_import_and_actual_prefab": "NOT RUN"
+  }
 }

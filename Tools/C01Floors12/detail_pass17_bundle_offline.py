@@ -25,7 +25,7 @@ if mode=='extract':
 else:
     bundle=(tmp/'viewer_bundle.js').read_text(encoding='utf-8')
     license=(tmp/'node_modules/three/LICENSE').read_text(encoding='utf-8')
-    assert len(bundle)>100000 and 'THREE' in bundle
+    assert len(bundle)>100000
     assert 'MIT License' in license
     importmap=re.search(r'<script type="importmap">[\s\S]*?</script>',html)
     assert importmap

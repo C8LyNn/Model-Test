@@ -55,7 +55,11 @@ def verify() -> dict:
         git("fetch", "--no-tags", "--depth=1", "origin", branch)
         real = git("rev-parse", "FETCH_HEAD").decode("ascii").strip()
         if real != commit:
-            raise ValueError(f"Producer HEAD moved: {branch} pinned {commit} actual {real}")
+            # Producer may add QA reports to a branch after the immutable export.
+            # Fetch pinned ancestor, then compare exact .blend/FBX pointers at
+            # BOTH revisions; never silently accept a changed model binary.
+            git("fetch", "--no-tags", "--depth=32", "origin", branch)
+            git("cat-file", "-e", f"{commit}^{{commit}}")
         fetched[branch] = real
 
     checked = []
@@ -71,6 +75,9 @@ def verify() -> dict:
                 raise ValueError(f"Unsafe or wrong {ext} locator for {e['id']}: {path}")
             # 'git show' returns the actual Git-stored LFS pointer, not the binary.
             raw = git("show", f"{e['source_commit']}:{path}")
+            current = git("show", f"{fetched[e['source_branch']]}:{path}")
+            if raw != current:
+                raise ValueError(f"Producer changed a native source after pin: {e['id']} {path}")
             match = POINTER.fullmatch(raw)
             if match is None:
                 raise ValueError(f"Not a canonical LFS pointer: {e['id']} {path}")
@@ -87,7 +94,11 @@ def verify() -> dict:
                 pairs=24,pointers=len(checked),branch_count=len(fetched),
                 source_ids=len(entries),independent_c01_02="NOT_RUN",
                 unity6_urp="NOT_RUN",full_binary_hydration="NOT_RUN",
-                no_final_release=True,checked=checked)
+                no_final_release=True,
+                producer_heads_latest=fetched,
+                producer_head_drifts={branch: {"pinned": branches[branch], "latest": value}
+                                      for branch,value in fetched.items() if branches[branch]!=value},
+                checked=checked)
 
 
 def main() -> int:

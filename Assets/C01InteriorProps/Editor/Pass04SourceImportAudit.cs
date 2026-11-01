@@ -331,7 +331,7 @@ namespace C01.InteriorProps.Editor
                         "RightBottomMountScrew","RightTopMountScrew"};
                     break;
                 case "P18-01":
-                    minimumMeshes=41; minimumTriangles=844;
+                    minimumMeshes=47; minimumTriangles=980;
                     mandatory=new[]{
                         "Crate_Shell","Lower_Rim","Upper_Lid",
                         "TrimBacker_B_0.28","TrimBacker_F_0.63",
@@ -341,10 +341,13 @@ namespace C01.InteriorProps.Editor
                         "FrontLatch_L_Lever","FrontLatch_R_Lever",
                         "LidCornerBolt_LB","LidCornerBolt_RF",
                         "RearHinge_L_Retainer_L","RearHinge_L_Retainer_R",
-                        "RearHinge_R_Retainer_L","RearHinge_R_Retainer_R"};
+                        "RearHinge_R_Retainer_L","RearHinge_R_Retainer_R",
+                        "FrontLatch_L_UpperKeeper","FrontLatch_R_UpperKeeper",
+                        "FrontLatch_L_KeeperScrew_A","FrontLatch_L_KeeperScrew_B",
+                        "FrontLatch_R_KeeperScrew_A","FrontLatch_R_KeeperScrew_B"};
                     break;
                 case "P18-02":
-                    minimumMeshes=51; minimumTriangles=1044;
+                    minimumMeshes=59; minimumTriangles=1284;
                     mandatory=new[]{
                         "Back_Support_0.6","Back_Support_1.48",
                         "Top_Label_-0.5","Top_Label_0.5",
@@ -354,10 +357,14 @@ namespace C01.InteriorProps.Editor
                         "Shelf0_Bracket_LB","Shelf2_Bracket_RF",
                         "Shelf0_LipBolt_LB","Shelf2_LipBolt_RF",
                         "BackSupport_0.60_Gusset_L","BackSupport_0.60_Gusset_R",
-                        "BackSupport_1.48_Gusset_L","BackSupport_1.48_Gusset_R"};
+                        "BackSupport_1.48_Gusset_L","BackSupport_1.48_Gusset_R",
+                        "BackSupport_0.60_GussetFastener_L","BackSupport_0.60_GussetFastener_R",
+                        "BackSupport_1.48_GussetFastener_L","BackSupport_1.48_GussetFastener_R",
+                        "Rack_FootPlate_LB","Rack_FootPlate_LF",
+                        "Rack_FootPlate_RB","Rack_FootPlate_RF"};
                     break;
                 case "P18-03":
-                    minimumMeshes=57; minimumTriangles=1628;
+                    minimumMeshes=63; minimumTriangles=1780;
                     mandatory=new[]{
                         "Wheel_LB","Wheel_LF","Wheel_RB","Wheel_RF",
                         "Cart_Shelf_0","Cart_Shelf_1",
@@ -368,7 +375,10 @@ namespace C01.InteriorProps.Editor
                         "Wheel_LB_Hub_In","Wheel_LB_Hub_Out",
                         "Wheel_LB_AxleFastener","Wheel_RF_AxleFastener",
                         "Wheel_LB_CrownBolt","Wheel_LF_CrownBolt",
-                        "Wheel_RB_CrownBolt","Wheel_RF_CrownBolt"};
+                        "Wheel_RB_CrownBolt","Wheel_RF_CrownBolt",
+                        "Wheel_LB_AnchorRetainer","Wheel_LF_AnchorRetainer",
+                        "Wheel_RB_AnchorRetainer","Wheel_RF_AnchorRetainer",
+                        "Cart_HandleClamp_L","Cart_HandleClamp_R"};
                     break;
                 default: return;
             }

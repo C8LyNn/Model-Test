@@ -1,0 +1,78 @@
+name: C01-12 DETAIL PASS17 real Blender4 material-only native and preview
+on:
+  push:
+    branches: [c01/floors-12-legacy-repair]
+    paths:
+      - .github/workflows/c01-floors12-detail-pass17.yml
+      - Tools/C01Floors12/detail_pass17_material_native.py
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  actual-v003-to-v004:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+          persist-credentials: true
+      - name: Install actual Blender and software renderer
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends blender python3-numpy xvfb libgl1 libgl1-mesa-dri libopengl0 git-lfs
+          blender --version | head -4
+          git lfs pull
+      - name: Execute native Blender source / non-destructive PBR / real FBX+GLB
+        shell: bash
+        run: |
+          set -euo pipefail
+          LIBGL_ALWAYS_SOFTWARE=1 xvfb-run -a blender --background --factory-startup --python Tools/C01Floors12/detail_pass17_material_native.py 2>&1 | tee /tmp/c01_12_pass17.log
+          grep -q 'C01-12 DETAIL PASS17 NATIVE EXPORTS COMPLETED' /tmp/c01_12_pass17.log
+          ! grep -q 'Traceback (most recent call last)' /tmp/c01_12_pass17.log
+      - name: Fail-closed genuine bytes and evidence gate
+        run: |
+          python3 - <<'PY'
+          import pathlib,json,hashlib
+          repo=pathlib.Path('.')
+          out=repo/'C01StandaloneKits/FloorCeiling/DetailPass17'
+          info=json.loads((out/'QA/DETAIL_PASS17_NATIVE_SHA256.json').read_text())
+          assert set(info['asset_ids'])=={'F01','F02','C01'}
+          for asset,d in info['asset_ids'].items():
+            assert d['before_mesh_signature_sha256']==d['after_mesh_signature_sha256']
+            assert d['native_blender_4_save']==d['fbx_binary_roundtrip']=='PASS'
+            for typ,head in [('blend',b'BLENDER'),('fbx',b'Kaydara FBX Binary  '+bytes([0,26,0])),('glb',b'glTF')]:
+              f=repo/d['native'][typ]['path'];raw=f.read_bytes()
+              assert raw.startswith(head) and not raw.startswith(b'version https://git-lfs'),f
+              assert hashlib.sha256(raw).hexdigest()==d['native'][typ]['sha256'],f
+            for m in d['texture_files'].values():
+              f=repo/m['path'];assert f.read_bytes().startswith(b'\x89PNG\r\n\x1a\n')
+              assert hashlib.sha256(f.read_bytes()).hexdigest()==m['sha256']
+            for p in d['previews']['before']+d['previews']['after']:
+              f=repo/p['path'];assert f.read_bytes().startswith(b'\x89PNG\r\n\x1a\n')
+              assert hashlib.sha256(f.read_bytes()).hexdigest()==p['sha256']
+          assert info['unity6_urp']=='NOT_RUN'
+          assert info['independent_C01_02_final_QA']=='PENDING'
+          print('C01-12 PASS17 actual artifacts verified; Unity NOT RUN')
+          PY
+      - name: Upload genuine v004 native, 9 maps and 12 Blender source-mesh previews
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-12-DETAIL-PASS17-REAL-F01-F02-C01
+          path: C01StandaloneKits/FloorCeiling/DetailPass17/
+          if-no-files-found: error
+          retention-days: 14
+      - name: Commit evidence to existing isolated Draft PR branch only
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git lfs install --local
+          git add C01StandaloneKits/FloorCeiling/DetailPass17
+          if ! git diff --cached --quiet; then
+            git commit -m "C01-12 PASS17: real Blender4 v004 material-only FBX GLB PNG and SHA evidence"
+            git fetch origin c01/floors-12-legacy-repair
+            git rebase origin/c01/floors-12-legacy-repair
+            git push origin HEAD:c01/floors-12-legacy-repair
+          fi

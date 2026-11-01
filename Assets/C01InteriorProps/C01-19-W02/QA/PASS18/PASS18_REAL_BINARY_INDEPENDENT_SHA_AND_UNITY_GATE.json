@@ -1,0 +1,111 @@
+{
+  "owner": "C01-19",
+  "stage": "DETAIL_PASS18_NATIVE_RELEASE_PREFLIGHT",
+  "date": "2026-11-01",
+  "pull_request": 29,
+  "source": "ACTUAL downloaded successful Blender 4.0.2 Actions artifacts, not historical or reconstructed assets",
+  "native_producer_run": 41346471952,
+  "sha_verification": "ALL 8/8 `.blend` and 8/8 `.fbx` SHA-256 exact match with live Git LFS pointers on branches #15/#29, physically SHA measured and GitHub pointer read",
+  "whole_C01_19_independent_indexed_stats": {
+    "models": 8,
+    "static_pass": 5,
+    "geometry_review_or_hold": 3,
+    "incorrect_vertex_indices": 0,
+    "boundary_edges": 0,
+    "nonmanifold_edges": 0,
+    "bad_edge_windings": 0,
+    "broken_UV0_indexing": 0,
+    "opposing_corner_normals": 0,
+    "exact_zero_area_triangles": 0
+  },
+  "additional_real_blender_run": {
+    "model": "P19-07",
+    "run_id": 41352494944,
+    "conclusion": "SUCCESS",
+    "artifact_id": 13101753068,
+    "artifact_sha256": "8deec3279cb0b44f9752fbbc184641e785a9641d1578f362572922ffbf2527f8",
+    "version": "4.0.2",
+    "source_geometry_changed": false,
+    "mesh_parts": 6,
+    "triangles": 252,
+    "manifold_edges_bad": 0,
+    "zero_area_faces": 0,
+    "UV0_mesh_parts": 6,
+    "vertex_on_edge_candidates_native_BMesh": 17,
+    "FBX_reimport": "PASS"
+  },
+  "geometry_caveats": {
+    "P19_01": "2 positive but micro triangle areas approximately 6.99e-12 and 2.43e-11 m²; 3 vertex-on-edge screening relations. Not exact degenerate.",
+    "P19_07": "18 candidate relations in separately decoded physical FBX, 17 in real native Blender world-space BMesh, source unchanged. Could represent contact partition instead of fatal surface defect; no auto-weld.",
+    "P19_08": "2 vertex-on-edge near 99.992% fraction at support edges, not proved to be defects."
+  },
+  "scope_limitations": [
+    "Within-a-single-mesh co-planar triangle overlap test 0 positive pairs using normalized plane grouping; not full scene dynamic z-fighting or triangle BVH.",
+    "Source normals, UV indexes, manifoldness measured independently from binary FBX; actual detailed 3 P19-01/02/05 Blender roundtrip confirmed in original PASS17 producer CI.",
+    "This receipt is producer-owned QA preflight, NOT independent C01-02 release signoff.",
+    "Unity6 URP executable/editor was not available in current runtime; no prefab/material/physics test conducted."
+  ],
+  "artifact_delivery": {
+    "filename": "C01-19_DETAIL_PASS18_REAL_BLENDER_INDEPENDENT_QA_AND_UNITY_HANDOFF.zip",
+    "sha256": "e374eb92abb074c01ec61bb1dd77d1db8fba9a211cf822dad9bcb07455d275be",
+    "bytes": 9687345,
+    "contained_real_blend": 8,
+    "contained_real_binary_fbx": 8,
+    "contained_actual_blender_png": 15,
+    "contained_interactive_html": 1,
+    "availability": "user-downloadable in PASS18 ChatGPT conversation (not a new release commit)"
+  },
+  "models": [
+    {
+      "id": "P19-05",
+      "blend": "7905086e87660461d46e6d633b16fc655142939ac4cbc0df0c670067da9314b2",
+      "fbx": "d07b4884cfe1de2c48a96dc9407c2eccdfbdbdf703551c71ae195bd3fd8c9d87",
+      "parts": 7,
+      "tri": 252,
+      "state": "STATIC_INDEXED_PASS",
+      "tiny": 0,
+      "tj": 0,
+      "independent_approval": "PENDING",
+      "Unity6_URP": "NOT_RUN"
+    },
+    {
+      "id": "P19-06",
+      "blend": "08f0ed1791beb7c4c4e37ffb1dc3016ebeddf0b94e5e63eb491ec934c51ac4bd",
+      "fbx": "61e371d97c7ff5d17dbc8c5673c8edf489df0b8bdb1b4337396f41f8d4f477ea",
+      "parts": 7,
+      "tri": 84,
+      "state": "STATIC_INDEXED_PASS",
+      "tiny": 0,
+      "tj": 0,
+      "independent_approval": "PENDING",
+      "Unity6_URP": "NOT_RUN"
+    },
+    {
+      "id": "P19-07",
+      "blend": "a6dc5d3287dc1b4842de35f6a3e1c8e7c885fd8c161016c11243ed2c760dbc28",
+      "fbx": "eb579a85355756c0d803f58ec96fac509e33788d8142390349aebbffdba50e81",
+      "parts": 6,
+      "tri": 252,
+      "state": "HOLD_P19_07_GEOMETRIC_EDGE_CLASSIFICATION",
+      "tiny": 0,
+      "tj": 18,
+      "independent_approval": "PENDING",
+      "Unity6_URP": "NOT_RUN"
+    },
+    {
+      "id": "P19-08",
+      "blend": "9f878a0c1f9fb28e9b9748801e16a18319da4391dac8062285f80c1f8c5c81c5",
+      "fbx": "9de76d296482e2d302b5b0a14c30692dbdb6adacd90fcd4e022da9ab35ec658c",
+      "parts": 6,
+      "tri": 282,
+      "state": "REVIEW_GEOMETRIC_NEAR_ENDPOINTS",
+      "tiny": 0,
+      "tj": 2,
+      "independent_approval": "PENDING",
+      "Unity6_URP": "NOT_RUN"
+    }
+  ],
+  "gate": "RELEASE_HOLD_UNTIL_C01_02_AND_UNITY",
+  "merge": false,
+  "model_bytes_modified_in_PASS18": false
+}

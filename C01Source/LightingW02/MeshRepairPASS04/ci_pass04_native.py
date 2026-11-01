@@ -124,7 +124,42 @@ for ob in objects:
             emitter.default_value = rgba
             strength.default_value = 1.9
 
+def check_p16_06_rod_to_base(meshes, phase):
+    """Actual world-space original rectangular-solid contact, fails before Blender export/reimport."""
+    if ASSET != "P16-06":
+        return None
+    originals = {}
+    for ob in meshes:
+        if "_STATIC_Steel_" not in ob.name:
+            continue
+        suffix = ob.name.rsplit("_STATIC_Steel_", 1)[1].split(".", 1)[0]
+        if suffix.isdigit() and int(suffix) in (1, 2, 3):
+            index = int(suffix)
+            if index in originals:
+                raise RuntimeError("Duplicated original suspension part %d" % index)
+            originals[index] = ob
+    if set(originals) != {1, 2, 3}:
+        raise RuntimeError("%s: missing lower base / two original rods" % phase)
+    def bb(ob):
+        pts = [ob.matrix_world @ v.co for v in ob.data.vertices]
+        if not pts:
+            raise RuntimeError("Empty source mount " + ob.name)
+        return [(min(p[k] for p in pts), max(p[k] for p in pts)) for k in range(3)]
+    base = bb(originals[1]); evidence = []
+    for i in (2, 3):
+        rod = bb(originals[i])
+        # Actual Blender world Z is source OBJ Y (explicit Y-up OBJ import).
+        embed = base[2][1] - rod[2][0]
+        xy_overlap = [(min(base[k][1], rod[k][1]) - max(base[k][0], rod[k][0])) for k in (0, 1)]
+        if embed < 0.001 or min(xy_overlap) < 0.005:
+            raise RuntimeError("%s: original rod %d floats; axial embed %.6fm, XY %.6fm" %
+                               (phase, i, embed, min(xy_overlap)))
+        evidence.append({"rod": i, "axial_embed_m": round(embed, 7),
+                         "minimum_cross_section_overlap_m": round(min(xy_overlap), 7)})
+    return evidence
+
 base_pre = inspect(objects)
+rod_base_source_qa = check_p16_06_rod_to_base(objects, 'OBJ_SOURCE')
 if sum(x["vertices"] for x in base_pre) != expected_parts * 8:
     raise RuntimeError("PASS03 weld was lost on OBJ import")
 if sum(x["triangles"] for x in base_pre) != expected_parts * 12:
@@ -310,6 +345,7 @@ bpy.ops.object.delete(use_global=False)
 bpy.ops.import_scene.fbx(filepath=str(fbx_file), automatic_bone_orientation=False)
 imported = mesh_objects()
 post = inspect(imported)
+rod_base_fbx_reimport_qa = check_p16_06_rod_to_base(imported, 'FBX_REIMPORT')
 # Verify the moving-rotor hierarchy AFTER genuine binary FBX re-import.
 # A 360-degree animation is still a separate engine/editor test (NOT RUN).
 if ASSET == "P16-06":
@@ -348,6 +384,8 @@ report = {
     "bounds_blender_after_fbx_reimport_xyz": after_bounds,
     "max_bounds_delta_m": max_error,
     "rotor_separate": ASSET == "P16-06",
+    "p16_06_mount_source_qa": rod_base_source_qa,
+    "p16_06_mount_fbx_reimport_qa": rod_base_fbx_reimport_qa,
     "unity_6_urp": "NOT_RUN", "independent_C01_02_QA": "BLOCKED",
 }
 (report_dir / "blender_binary_fbx_roundtrip.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")

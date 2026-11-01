@@ -63,8 +63,6 @@ jobs:
           git add Assets/C01InteriorProps/C01-19/Models Assets/C01InteriorProps/C01-19/QA/PASS04
           if git diff --cached --quiet; then exit 0; fi
           git commit -m "fix(C01-19 PASS04): real native triangulated Blender/FBX and evidence"
-          git fetch origin c01/props-19-furniture
-          # Runner-only Blender/LFS worktree modifications are not part of the committed candidate.
-          git reset --hard HEAD
-          git rebase origin/c01/props-19-furniture
+          # Fail closed on a concurrent producer update: no force/rebase or unapproved merge.
+          git status --short | head -30
           git push origin HEAD:c01/props-19-furniture

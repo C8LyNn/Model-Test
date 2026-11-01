@@ -13,7 +13,7 @@ import re
 import subprocess
 import sys
 
-ROOT = pathlib.Path(__file__).resolve().parents[3]
+ROOT = pathlib.Path(__file__).resolve().parents[2]
 MANIFEST = ROOT / "C01InteriorProps/Pass04/source_stage_36.json"
 RECEIPT = ROOT / "C01InteriorProps_QA/PASS18/PRODUCER_LFS_POINTER_AUDIT.json"
 SHA64 = re.compile(r"[0-9a-f]{64}\Z")

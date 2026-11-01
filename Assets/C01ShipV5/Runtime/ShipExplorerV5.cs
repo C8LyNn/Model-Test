@@ -129,6 +129,22 @@ namespace C01.Ship.V5
             float span = Mathf.Max(bounds.size.x, bounds.size.z, 30);
             view.transform.position = target + new Vector3(span * .08f, span * .82f, -span * .64f);
             view.transform.rotation = Quaternion.LookRotation(target - view.transform.position, Vector3.up);
+            if (view.orthographic)
+            {
+                // Camera distance does not change orthographic framing. Project
+                // all corners so the enlarged ship fits at any viewport aspect.
+                float required = 0;
+                float aspect = Mathf.Max(.01f, view.aspect);
+                for (int x=0; x<2; x++) for (int y=0; y<2; y++) for (int z=0; z<2; z++)
+                {
+                    var corner = new Vector3(x==0?bounds.min.x:bounds.max.x,
+                        y==0?bounds.min.y:bounds.max.y, z==0?bounds.min.z:bounds.max.z);
+                    var delta = corner-target;
+                    required = Mathf.Max(required, Mathf.Abs(Vector3.Dot(delta,view.transform.up)),
+                        Mathf.Abs(Vector3.Dot(delta,view.transform.right))/aspect);
+                }
+                view.orthographicSize = Mathf.Max(overviewSize,required*1.08f);
+            }
             view.nearClipPlane = .05f;
             view.farClipPlane = Mathf.Max(500, span * 5);
         }

@@ -26,14 +26,14 @@ const DATA={"P18-01":{"v":[-0.41,0.09,-0.41,0.41,0.09,-0.41,0.41,0.81,-0.41,-0.4
 const canvas=document.getElementById("view"),ctx=canvas.getContext("2d",{alpha:false});
 const model=document.getElementById("model"),before=document.getElementById("before"),after=document.getElementById("after"),shaded=document.getElementById("shaded"),wire=document.getElementById("wireframe"),fit=document.getElementById("fit");
 const PALETTE=[[135,160,176],[47,61,78],[28,37,45],[209,166,63]];
-let stage="after",style="shaded",yaw=.63,pitch=.30,zoom=1.00,pointer=null,dirty=true;
+let stage="after",style="shaded",yaw=2.55,pitch=.30,zoom=1.00,pointer=null,dirty=true;
 function selectButtons(){before.setAttribute("aria-pressed",String(stage==="before"));after.setAttribute("aria-pressed",String(stage==="after"));shaded.setAttribute("aria-pressed",String(style==="shaded"));wire.setAttribute("aria-pressed",String(style==="wireframe"))}
 before.onclick=()=>{stage="before";selectButtons();dirty=true};
 after.onclick=()=>{stage="after";selectButtons();dirty=true};
 shaded.onclick=()=>{style="shaded";selectButtons();dirty=true};
 wire.onclick=()=>{style="wireframe";selectButtons();dirty=true};
-model.onchange=()=>{yaw=.63;pitch=.30;zoom=1;dirty=true};
-fit.onclick=()=>{yaw=.63;pitch=.30;zoom=1;dirty=true};
+model.onchange=()=>{yaw=model.value==="P18-03"?.68:2.55;pitch=.30;zoom=1;dirty=true};
+fit.onclick=()=>{yaw=model.value==="P18-03"?.68:2.55;pitch=.30;zoom=1;dirty=true};
 canvas.addEventListener("pointerdown",e=>{pointer={x:e.clientX,y:e.clientY,id:e.pointerId};canvas.setPointerCapture(e.pointerId)});
 canvas.addEventListener("pointermove",e=>{if(pointer&&e.pointerId===pointer.id){yaw+=(e.clientX-pointer.x)*.008;pitch=Math.min(1.40,Math.max(-1.35,pitch+(e.clientY-pointer.y)*.006));pointer.x=e.clientX;pointer.y=e.clientY;dirty=true}});
 canvas.addEventListener("pointerup",()=>{pointer=null});

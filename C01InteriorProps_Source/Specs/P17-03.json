@@ -40,7 +40,7 @@
       "name": "Base",
       "pos": [
         0,
-        0.052,
+        0.053,
         0
       ],
       "size": [
@@ -311,7 +311,7 @@
       "name": "SocketRetainer_L",
       "type": "box",
       "pos": [
-        -0.06,
+        -0.059,
         0.385,
         -0.015
       ],
@@ -329,7 +329,7 @@
       "name": "SocketRetainer_R",
       "type": "box",
       "pos": [
-        0.06,
+        0.059,
         0.385,
         -0.015
       ],
@@ -387,8 +387,8 @@
     }
   ],
   "expectedTriangleCount": 424,
-  "state": "PASS15_DETAIL_AUTHORING_NATIVE_BLEND_FBX_STALE",
-  "version": "0.2.0",
+  "state": "PASS17_REPAIR_SOURCE_GLTF_OBJ_NATIVE_EXPORT_STALE",
+  "version": "0.2.2",
   "units": "meters",
   "axes": "Y up; +Z toward access side for keypad",
   "materials": [
@@ -407,5 +407,31 @@
     "movingLeverPivotUnchanged": true,
     "blenderFBX": "NOT_RUN",
     "unity": "NOT_RUN"
+  },
+  "detailPass17": {
+    "purpose": "Fix five confirmed same-facing coplanar mesh pairs, preserving pivot and parts",
+    "repairs": [
+      {
+        "name": "Base",
+        "axis": "Y",
+        "delta_m": 0.001
+      },
+      {
+        "name": "SocketRetainer_L",
+        "axis": "X",
+        "delta_m": 0.001
+      },
+      {
+        "name": "SocketRetainer_R",
+        "axis": "X",
+        "delta_m": -0.001
+      }
+    ],
+    "new_model_parts": 0,
+    "source_expected_parts": 20,
+    "source_expected_triangles": 424,
+    "blender_after": "NOT RUN",
+    "fbx_after": "NOT RUN",
+    "unity_after": "NOT RUN"
   }
 }

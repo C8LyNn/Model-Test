@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """C01-11 isolated W01-W04 authoring: native .blend, FBX, 3-angle previews.
 
-Provisional modules only. Does not edit the ship, doors or corridors.
+PASS17: W02 authentic original source is recovered exactly, not re-designed.
+Outputs are quarantined QA candidates; no ship, prefab, or deploy paths edited.
 Run with: blender -b --factory-startup --python-exit-code 1 --python build_wall_models.py
 """
 import bpy
@@ -9,13 +10,15 @@ import bmesh
 import json
 import math
 from pathlib import Path
+from original_r2_w02 import build_exact as original_r2_w02
 from mathutils import Vector
 
 ROOT = Path(__file__).resolve().parents[1]
-BLEND = ROOT / "Blender"
-FBX = ROOT / "FBX"
-PREVIEW = ROOT / "Previews"
-QA = ROOT / "QA"
+PASS17_QUARANTINE = ROOT / "QA_Candidates" / "PASS17_SourceRecovery"
+BLEND = PASS17_QUARANTINE / "Blender"
+FBX = PASS17_QUARANTINE / "FBX"
+PREVIEW = PASS17_QUARANTINE / "Previews"
+QA = PASS17_QUARANTINE / "QA"
 for directory in (BLEND, FBX, PREVIEW, QA):
     directory.mkdir(parents=True, exist_ok=True)
 EXPECTED = {
@@ -87,8 +90,26 @@ def setup_material(mid):
     return mat
 
 def build(mid):
-    if mid in ("W01","W02"):
-        # W01 and W02 are dimensionally and geometrically interchangeable.
+    if mid == "W02":
+        # PASS17: genuinely restore original r2, never the 12-triangle proxy.
+        # Authored records reproduce exact 288 vertices and 572 triangles.
+        unity_vertices, faces = original_r2_w02()
+        mesh = bpy.data.meshes.new("W02_original_r2_572_triangles")
+        mesh.from_pydata([unity_to_blender(p) for p in unity_vertices], [], faces)
+        mesh.update(calc_edges=True)
+        uv = mesh.uv_layers.new(name="UVMap")
+        for poly in mesh.polygons:
+            ids = [mesh.loops[li].vertex_index for li in poly.loop_indices]
+            a, b, c = (Vector(unity_vertices[k]) for k in ids)
+            normal = (b-a).cross(c-a)
+            axis = max(range(3), key=lambda k: abs(normal[k]))
+            for li in poly.loop_indices:
+                x, y, z = unity_vertices[mesh.loops[li].vertex_index]
+                uv.data[li].uv = ((z,y) if axis == 0 else
+                                  ((x,z) if axis == 1 else (x,y)))
+        assert len(mesh.vertices) == 288
+        assert len(mesh.polygons) == 572
+    elif mid == "W01":
         mesh = extrude_polygon([(0,0),(1,0),(1,3),(0,3)], 0, .2, "XY")
     elif mid == "W03":
         # One watertight L-solid; internal and external arms share no volume.
@@ -120,6 +141,10 @@ def audit(mid, obj):
     expected_low, expected_high = EXPECTED[mid]
     assert low == expected_low and high == expected_high, (mid, low, high)
     assert len(obj.data.uv_layers) == 1
+    if mid == "W02":
+        # Refuse any future unintended drop of the actual mechanical panel.
+        assert len(obj.data.vertices) == 288
+        assert sum(len(p.vertices)-2 for p in obj.data.polygons) == 572
     assert tuple(obj.scale) == (1,1,1)
     assert tuple(obj.location) == (0,0,0)
     assert all(p.area > 1e-9 for p in obj.data.polygons), mid
@@ -175,4 +200,4 @@ for mid in ("W01","W02","W03","W04"):
     for view in ("iso","front","side"):
         render(mid,obj,view)
 (QA/"blender_static_report.json").write_text(json.dumps(results,indent=2)+"\n")
-print("C01-11 W01-W04 NATIVE BLENDER/FBX/PREVIEW GENERATION COMPLETED")
+print("C01-11 PASS17 QA_ONLY native outputs generated; independent C01-02 + Unity gates still required")

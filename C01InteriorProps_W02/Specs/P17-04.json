@@ -130,7 +130,7 @@
         0.41
       ],
       "s": [
-        1.85,
+        1.848,
         0.13,
         0.12
       ],
@@ -231,7 +231,7 @@
       "name": "WarningStrip",
       "p": [
         0,
-        1.003,
+        1.0039999999999998,
         -0.35
       ],
       "s": [
@@ -468,5 +468,46 @@
       "parent": "ROOT"
     }
   ],
-  "stage": "geometry ready; independent QA pending"
+  "stage": "PASS17_MESH_CONTACT_SOURCE_FIXED_NATIVE_EXPORT_PENDING",
+  "pass17": {
+    "producer": "C01-17",
+    "fixes": [
+      {
+        "name": "WarningStrip",
+        "translation": [
+          0,
+          1.0039999999999998,
+          -0.35
+        ],
+        "dimension": [
+          1.7,
+          0.01,
+          0.025
+        ]
+      },
+      {
+        "name": "CableBar",
+        "translation": [
+          0,
+          0.62,
+          0.41
+        ],
+        "scale": [
+          0.9989189189189189,
+          1,
+          1
+        ],
+        "dimension": [
+          1.848,
+          0.13,
+          0.12
+        ]
+      }
+    ],
+    "motileHierarchyUnchanged": true,
+    "sourceGLTF_geometry_buffers_unchanged": true,
+    "actualNewBlenderBLEND": "NOT RUN",
+    "actualNewBlenderFBX": "NOT RUN",
+    "Unity": "NOT RUN"
+  }
 }

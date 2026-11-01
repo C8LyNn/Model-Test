@@ -136,8 +136,10 @@ def one(id):
     imps=[o for o in bpy.context.scene.objects if o.type=='MESH']
     assert len(imps)==1,(id,'FBX reimported mesh count',len(imps))
     imported=snapshot(imps[0],id,'v004_binary_fbx',False)
-    for key in ('quad_surface_uv_material_sha256','per_face_material_ids','bounds_source_xyz_m','uv0_loops'):
+    for key in ('quad_surface_uv_material_sha256','per_face_material_ids','uv0_loops'):
         assert source[key]==imported[key],(id,'FBX quad surface/UV/material mismatch',key,source[key],imported[key])
+    bound_err=max(abs(a-b) for lhs,rhs in zip(source['bounds_source_xyz_m'],imported['bounds_source_xyz_m']) for a,b in zip(lhs,rhs))
+    assert bound_err<1e-5,(id,'FBX floating-point bounds regression',bound_err)
     different_diagonal=source['world_triangles_sha256']!=imported['world_triangles_sha256']
     # GLB inspection as a separate real-app read: glTF scene graph may split
     # components by material. Preserve Blender's per-triangle totals, not pseudo boxes.
@@ -151,6 +153,7 @@ def one(id):
         glb_tri+=len(ob.data.loop_triangles)
     assert glb_tri==28,(id,'GLB has wrong triangle count',glb_tri)
     return {'v003_source':base,'v004_blend':source,'v004_fbx_reimport':imported,
+            'fbx_bounds_max_abs_difference_m':bound_err,
             'fbx_tri_diagonal_changed_with_identical_quad_surfaces':different_diagonal,
             'v004_real_blender_glb_import_triangles':glb_tri,'v004_real_blender_glb_import_meshes':len(globs),
             'sha256':{x:rec['native'][x]['sha256'] for x in ('blend','fbx','glb')},

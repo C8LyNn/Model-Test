@@ -1,0 +1,655 @@
+{
+  "id": "P19-01",
+  "source_before_sha256": "8327069f58c9991a560234091ca5536b5946dc5b907e8b36bc4f5f6ec245c60f",
+  "source_after_sha256": "dd0dbe5f3859e4de59a463f46a4942fb79c48677d4a987205b89131c3ec4063c",
+  "fix": "EXPLICIT_BMESH_EAR_CLIP_TRIANGULATION_NO_GEOMETRIC_REDESIGN",
+  "parts": [
+    {
+      "name": "Leg_-0.44_-0.975",
+      "source_polygons": 60,
+      "ngons_before": 38,
+      "triangulated_faces": 58,
+      "triangles_after": 218
+    },
+    {
+      "name": "Mattress",
+      "source_polygons": 6,
+      "ngons_before": 0,
+      "triangulated_faces": 6,
+      "triangles_after": 12
+    },
+    {
+      "name": "Mattress_Accent_Stripe",
+      "source_polygons": 6,
+      "ngons_before": 0,
+      "triangulated_faces": 6,
+      "triangles_after": 12
+    },
+    {
+      "name": "Headboard",
+      "source_polygons": 6,
+      "ngons_before": 0,
+      "triangulated_faces": 6,
+      "triangles_after": 12
+    }
+  ],
+  "seam_repair": {
+    "asset": "P19-01",
+    "source_part": "Leg_-0.44_-0.975",
+    "face23_before": [
+      35,
+      24,
+      5,
+      14,
+      13,
+      47,
+      45
+    ],
+    "face59_before": [
+      76,
+      5,
+      24,
+      46,
+      64,
+      65
+    ],
+    "face23_after": [
+      35,
+      24,
+      46,
+      5,
+      14,
+      13,
+      47,
+      45
+    ],
+    "face59_after": [
+      76,
+      5,
+      46,
+      64,
+      65
+    ],
+    "vertices_added": 0,
+    "vertices_moved": 0,
+    "faces_added": 0,
+    "nominal_triangles_delta": 0,
+    "uv": "old loops unchanged, one interpolated seam loop",
+    "moving_parts": "unchanged"
+  },
+  "before": {
+    "parts": [
+      {
+        "name": "Leg_-0.44_-0.975",
+        "vertices": 109,
+        "edges": 169,
+        "faces": 60,
+        "triangles": 218,
+        "components": 1,
+        "loose_vertices": 0,
+        "degenerate_faces": 0,
+        "duplicate_faces": 0,
+        "duplicate_coordinate_vertices": 0,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "zero_edges": 0,
+        "inconsistent_winding_candidates": 0,
+        "self_intersection_candidates": 0,
+        "uv_layers": 1,
+        "material": "M_C01_STEEL",
+        "moving": false
+      },
+      {
+        "name": "Mattress",
+        "vertices": 8,
+        "edges": 12,
+        "faces": 6,
+        "triangles": 12,
+        "components": 1,
+        "loose_vertices": 0,
+        "degenerate_faces": 0,
+        "duplicate_faces": 0,
+        "duplicate_coordinate_vertices": 0,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "zero_edges": 0,
+        "inconsistent_winding_candidates": 0,
+        "self_intersection_candidates": 0,
+        "uv_layers": 1,
+        "material": "M_C01_FABRIC",
+        "moving": false
+      },
+      {
+        "name": "Mattress_Accent_Stripe",
+        "vertices": 8,
+        "edges": 12,
+        "faces": 6,
+        "triangles": 12,
+        "components": 1,
+        "loose_vertices": 0,
+        "degenerate_faces": 0,
+        "duplicate_faces": 0,
+        "duplicate_coordinate_vertices": 0,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "zero_edges": 0,
+        "inconsistent_winding_candidates": 0,
+        "self_intersection_candidates": 0,
+        "uv_layers": 1,
+        "material": "M_C01_ACCENT",
+        "moving": false
+      },
+      {
+        "name": "Headboard",
+        "vertices": 8,
+        "edges": 12,
+        "faces": 6,
+        "triangles": 12,
+        "components": 1,
+        "loose_vertices": 0,
+        "degenerate_faces": 0,
+        "duplicate_faces": 0,
+        "duplicate_coordinate_vertices": 0,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "zero_edges": 0,
+        "inconsistent_winding_candidates": 0,
+        "self_intersection_candidates": 0,
+        "uv_layers": 1,
+        "material": "M_C01_DARK",
+        "moving": false
+      }
+    ],
+    "totals": {
+      "vertices": 133,
+      "edges": 205,
+      "faces": 78,
+      "triangles": 254,
+      "loose_vertices": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "duplicate_coordinate_vertices": 0,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "zero_edges": 0,
+      "inconsistent_winding_candidates": 0
+    },
+    "bounding_xyz_blender": [
+      [
+        -0.4749999940395355,
+        -1.0500000715255737,
+        0.0
+      ],
+      [
+        0.4750000238418579,
+        1.0499999523162842,
+        0.6500000357627869
+      ]
+    ],
+    "interpart_overlaps": [
+      {
+        "a": "Leg_-0.44_-0.975",
+        "b": "Headboard",
+        "volume_m3": 0.017084985,
+        "same_material": false,
+        "moving": false,
+        "center": [
+          0.0,
+          -1.0199999809265137,
+          0.36750001460313797
+        ]
+      },
+      {
+        "a": "Mattress",
+        "b": "Mattress_Accent_Stripe",
+        "volume_m3": 0.000747,
+        "same_material": false,
+        "moving": false,
+        "center": [
+          0.0,
+          0.8500000238418579,
+          0.6449999809265137
+        ]
+      }
+    ],
+    "ngons": 38,
+    "triangle_only": false,
+    "degenerate_triangles": 0,
+    "normal_length_bad": 0,
+    "mesh_count": 4,
+    "uv0_meshes": 4,
+    "per_part_signed_volumes": {
+      "Leg_-0.44_-0.975": 0.04633799569400785,
+      "Mattress": 0.17121239800636162,
+      "Mattress_Accent_Stripe": 0.0007469999979659906,
+      "Headboard": 0.01784999979771672
+    },
+    "hierarchy": [
+      [
+        "Headboard",
+        "P19-01_ROOT",
+        [
+          0.0,
+          -1.02,
+          0.375
+        ]
+      ],
+      [
+        "Leg_-0.44_-0.975",
+        "P19-01_ROOT",
+        [
+          -0.44,
+          0.975,
+          0.2625
+        ]
+      ],
+      [
+        "Mattress",
+        "P19-01_ROOT",
+        [
+          0.0,
+          0.0,
+          0.596
+        ]
+      ],
+      [
+        "Mattress_Accent_Stripe",
+        "P19-01_ROOT",
+        [
+          0.0,
+          0.85,
+          0.645
+        ]
+      ],
+      [
+        "P19-01_ROOT",
+        null,
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ]
+    ],
+    "tjunction_candidates": [
+      {
+        "vertex_mesh": "Leg_-0.44_-0.975",
+        "edge_mesh": "Leg_-0.44_-0.975",
+        "same_mesh": true,
+        "coordinate": [
+          -0.415,
+          1.05,
+          0.535
+        ],
+        "fraction": 0.06742,
+        "distance": 5.960464477539063e-08
+      },
+      {
+        "vertex_mesh": "Leg_-0.44_-0.975",
+        "edge_mesh": "Leg_-0.44_-0.975",
+        "same_mesh": true,
+        "coordinate": [
+          0.4732859,
+          0.9900073,
+          0.535
+        ],
+        "fraction": 0.99986,
+        "distance": 7.271766662597656e-06
+      },
+      {
+        "vertex_mesh": "Mattress_Accent_Stripe",
+        "edge_mesh": "Mattress",
+        "same_mesh": false,
+        "coordinate": [
+          -0.415,
+          0.805,
+          0.65
+        ],
+        "fraction": 0.92147,
+        "distance": 5.960464477539063e-08
+      },
+      {
+        "vertex_mesh": "Mattress_Accent_Stripe",
+        "edge_mesh": "Mattress",
+        "same_mesh": false,
+        "coordinate": [
+          -0.415,
+          0.895,
+          0.65
+        ],
+        "fraction": 0.96859,
+        "distance": 1.3328003749250113e-07
+      },
+      {
+        "vertex_mesh": "Mattress_Accent_Stripe",
+        "edge_mesh": "Mattress",
+        "same_mesh": false,
+        "coordinate": [
+          0.415,
+          0.805,
+          0.65
+        ],
+        "fraction": 0.07853,
+        "distance": 5.960464477539063e-08
+      },
+      {
+        "vertex_mesh": "Mattress_Accent_Stripe",
+        "edge_mesh": "Mattress",
+        "same_mesh": false,
+        "coordinate": [
+          0.415,
+          0.895,
+          0.65
+        ],
+        "fraction": 0.03141,
+        "distance": 5.960464477539063e-08
+      }
+    ]
+  },
+  "after": {
+    "parts": [
+      {
+        "name": "Leg_-0.44_-0.975",
+        "vertices": 109,
+        "edges": 327,
+        "faces": 218,
+        "triangles": 218,
+        "components": 1,
+        "loose_vertices": 0,
+        "degenerate_faces": 1,
+        "duplicate_faces": 0,
+        "duplicate_coordinate_vertices": 0,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "zero_edges": 0,
+        "inconsistent_winding_candidates": 0,
+        "self_intersection_candidates": 0,
+        "uv_layers": 1,
+        "material": "M_C01_STEEL",
+        "moving": false
+      },
+      {
+        "name": "Mattress",
+        "vertices": 8,
+        "edges": 18,
+        "faces": 12,
+        "triangles": 12,
+        "components": 1,
+        "loose_vertices": 0,
+        "degenerate_faces": 0,
+        "duplicate_faces": 0,
+        "duplicate_coordinate_vertices": 0,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "zero_edges": 0,
+        "inconsistent_winding_candidates": 0,
+        "self_intersection_candidates": 0,
+        "uv_layers": 1,
+        "material": "M_C01_FABRIC",
+        "moving": false
+      },
+      {
+        "name": "Mattress_Accent_Stripe",
+        "vertices": 8,
+        "edges": 18,
+        "faces": 12,
+        "triangles": 12,
+        "components": 1,
+        "loose_vertices": 0,
+        "degenerate_faces": 0,
+        "duplicate_faces": 0,
+        "duplicate_coordinate_vertices": 0,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "zero_edges": 0,
+        "inconsistent_winding_candidates": 0,
+        "self_intersection_candidates": 0,
+        "uv_layers": 1,
+        "material": "M_C01_ACCENT",
+        "moving": false
+      },
+      {
+        "name": "Headboard",
+        "vertices": 8,
+        "edges": 18,
+        "faces": 12,
+        "triangles": 12,
+        "components": 1,
+        "loose_vertices": 0,
+        "degenerate_faces": 0,
+        "duplicate_faces": 0,
+        "duplicate_coordinate_vertices": 0,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "zero_edges": 0,
+        "inconsistent_winding_candidates": 0,
+        "self_intersection_candidates": 0,
+        "uv_layers": 1,
+        "material": "M_C01_DARK",
+        "moving": false
+      }
+    ],
+    "totals": {
+      "vertices": 133,
+      "edges": 381,
+      "faces": 254,
+      "triangles": 254,
+      "loose_vertices": 0,
+      "degenerate_faces": 1,
+      "duplicate_faces": 0,
+      "duplicate_coordinate_vertices": 0,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "zero_edges": 0,
+      "inconsistent_winding_candidates": 0
+    },
+    "bounding_xyz_blender": [
+      [
+        -0.4749999940395355,
+        -1.0500000715255737,
+        0.0
+      ],
+      [
+        0.4750000238418579,
+        1.0499999523162842,
+        0.6500000357627869
+      ]
+    ],
+    "interpart_overlaps": [
+      {
+        "a": "Leg_-0.44_-0.975",
+        "b": "Headboard",
+        "volume_m3": 0.017084985,
+        "same_material": false,
+        "moving": false,
+        "center": [
+          0.0,
+          -1.0199999809265137,
+          0.36750001460313797
+        ]
+      },
+      {
+        "a": "Mattress",
+        "b": "Mattress_Accent_Stripe",
+        "volume_m3": 0.000747,
+        "same_material": false,
+        "moving": false,
+        "center": [
+          0.0,
+          0.8500000238418579,
+          0.6449999809265137
+        ]
+      }
+    ],
+    "ngons": 0,
+    "triangle_only": true,
+    "degenerate_triangles": 0,
+    "normal_length_bad": 0,
+    "mesh_count": 4,
+    "uv0_meshes": 4,
+    "per_part_signed_volumes": {
+      "Leg_-0.44_-0.975": 0.04633799569400783,
+      "Mattress": 0.17121239800636165,
+      "Mattress_Accent_Stripe": 0.0007469999979659906,
+      "Headboard": 0.01784999979771672
+    },
+    "hierarchy": [
+      [
+        "Headboard",
+        "P19-01_ROOT",
+        [
+          0.0,
+          -1.02,
+          0.375
+        ]
+      ],
+      [
+        "Leg_-0.44_-0.975",
+        "P19-01_ROOT",
+        [
+          -0.44,
+          0.975,
+          0.2625
+        ]
+      ],
+      [
+        "Mattress",
+        "P19-01_ROOT",
+        [
+          0.0,
+          0.0,
+          0.596
+        ]
+      ],
+      [
+        "Mattress_Accent_Stripe",
+        "P19-01_ROOT",
+        [
+          0.0,
+          0.85,
+          0.645
+        ]
+      ],
+      [
+        "P19-01_ROOT",
+        null,
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ]
+    ],
+    "tjunction_candidates": [
+      {
+        "vertex_mesh": "Leg_-0.44_-0.975",
+        "edge_mesh": "Leg_-0.44_-0.975",
+        "same_mesh": true,
+        "coordinate": [
+          -0.415,
+          1.05,
+          0.535
+        ],
+        "fraction": 0.06742,
+        "distance": 5.960464477539063e-08
+      },
+      {
+        "vertex_mesh": "Leg_-0.44_-0.975",
+        "edge_mesh": "Leg_-0.44_-0.975",
+        "same_mesh": true,
+        "coordinate": [
+          0.4157258,
+          1.0245968,
+          0.435
+        ],
+        "fraction": 0.9879,
+        "distance": 0.0
+      },
+      {
+        "vertex_mesh": "Leg_-0.44_-0.975",
+        "edge_mesh": "Leg_-0.44_-0.975",
+        "same_mesh": true,
+        "coordinate": [
+          0.4732859,
+          0.9900073,
+          0.535
+        ],
+        "fraction": 0.99986,
+        "distance": 7.271766662597656e-06
+      },
+      {
+        "vertex_mesh": "Leg_-0.44_-0.975",
+        "edge_mesh": "Leg_-0.44_-0.975",
+        "same_mesh": true,
+        "coordinate": [
+          -0.475,
+          -0.990176,
+          0.5347068
+        ],
+        "fraction": 0.93842,
+        "distance": 0.0
+      },
+      {
+        "vertex_mesh": "Mattress_Accent_Stripe",
+        "edge_mesh": "Mattress",
+        "same_mesh": false,
+        "coordinate": [
+          -0.415,
+          0.805,
+          0.65
+        ],
+        "fraction": 0.92147,
+        "distance": 5.960464477539063e-08
+      },
+      {
+        "vertex_mesh": "Mattress_Accent_Stripe",
+        "edge_mesh": "Mattress",
+        "same_mesh": false,
+        "coordinate": [
+          -0.415,
+          0.895,
+          0.65
+        ],
+        "fraction": 0.96859,
+        "distance": 1.3328003749250113e-07
+      },
+      {
+        "vertex_mesh": "Mattress_Accent_Stripe",
+        "edge_mesh": "Mattress",
+        "same_mesh": false,
+        "coordinate": [
+          0.415,
+          0.805,
+          0.65
+        ],
+        "fraction": 0.07853,
+        "distance": 5.960464477539063e-08
+      },
+      {
+        "vertex_mesh": "Mattress_Accent_Stripe",
+        "edge_mesh": "Mattress",
+        "same_mesh": false,
+        "coordinate": [
+          0.415,
+          0.895,
+          0.65
+        ],
+        "fraction": 0.03141,
+        "distance": 5.960464477539063e-08
+      }
+    ]
+  },
+  "fbx_roundtrip": {
+    "status": "PASS",
+    "triangles": 254,
+    "imported_meshes": 4,
+    "uv0_meshes": 4,
+    "non_triangle_polygons": 0,
+    "bbox_max_error_m": 3.3080674199936766e-08,
+    "binary_fbx_sha256": "b770da2a8b70b75fc1ab30658cc564a1660fe602644dda2db8853a0b981978c6",
+    "binary_fbx_bytes": 31628
+  },
+  "tjunction_note": "geometric candidates only, moving separate parts are allowed; no forced welding",
+  "unity": "NOT_RUN",
+  "independent_C01_02": "PENDING"
+}

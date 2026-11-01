@@ -1,0 +1,2869 @@
+{
+  "scope": "REAL_NATIVE_BLEND_FBX_PASS04",
+  "models": [
+    {
+      "id": "P19-01",
+      "source_before_sha256": "8327069f58c9991a560234091ca5536b5946dc5b907e8b36bc4f5f6ec245c60f",
+      "source_after_sha256": "dd0dbe5f3859e4de59a463f46a4942fb79c48677d4a987205b89131c3ec4063c",
+      "fix": "EXPLICIT_BMESH_EAR_CLIP_TRIANGULATION_NO_GEOMETRIC_REDESIGN",
+      "parts": [
+        {
+          "name": "Leg_-0.44_-0.975",
+          "source_polygons": 60,
+          "ngons_before": 38,
+          "triangulated_faces": 58,
+          "triangles_after": 218
+        },
+        {
+          "name": "Mattress",
+          "source_polygons": 6,
+          "ngons_before": 0,
+          "triangulated_faces": 6,
+          "triangles_after": 12
+        },
+        {
+          "name": "Mattress_Accent_Stripe",
+          "source_polygons": 6,
+          "ngons_before": 0,
+          "triangulated_faces": 6,
+          "triangles_after": 12
+        },
+        {
+          "name": "Headboard",
+          "source_polygons": 6,
+          "ngons_before": 0,
+          "triangulated_faces": 6,
+          "triangles_after": 12
+        }
+      ],
+      "seam_repair": {
+        "asset": "P19-01",
+        "source_part": "Leg_-0.44_-0.975",
+        "face23_before": [
+          35,
+          24,
+          5,
+          14,
+          13,
+          47,
+          45
+        ],
+        "face59_before": [
+          76,
+          5,
+          24,
+          46,
+          64,
+          65
+        ],
+        "face23_after": [
+          35,
+          24,
+          46,
+          5,
+          14,
+          13,
+          47,
+          45
+        ],
+        "face59_after": [
+          76,
+          5,
+          46,
+          64,
+          65
+        ],
+        "vertices_added": 0,
+        "vertices_moved": 0,
+        "faces_added": 0,
+        "nominal_triangles_delta": 0,
+        "uv": "old loops unchanged, one interpolated seam loop",
+        "moving_parts": "unchanged"
+      },
+      "before": {
+        "parts": [
+          {
+            "name": "Leg_-0.44_-0.975",
+            "vertices": 109,
+            "edges": 169,
+            "faces": 60,
+            "triangles": 218,
+            "components": 1,
+            "loose_vertices": 0,
+            "degenerate_faces": 0,
+            "duplicate_faces": 0,
+            "duplicate_coordinate_vertices": 0,
+            "boundary_edges": 0,
+            "nonmanifold_edges": 0,
+            "zero_edges": 0,
+            "inconsistent_winding_candidates": 0,
+            "self_intersection_candidates": 0,
+            "uv_layers": 1,
+            "material": "M_C01_STEEL",
+            "moving": false
+          },
+          {
+            "name": "Mattress",
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "triangles": 12,
+            "components": 1,
+            "loose_vertices": 0,
+            "degenerate_faces": 0,
+            "duplicate_faces": 0,
+            "duplicate_coordinate_vertices": 0,
+            "boundary_edges": 0,
+            "nonmanifold_edges": 0,
+            "zero_edges": 0,
+            "inconsistent_winding_candidates": 0,
+            "self_intersection_candidates": 0,
+            "uv_layers": 1,
+            "material": "M_C01_FABRIC",
+            "moving": false
+          },
+          {
+            "name": "Mattress_Accent_Stripe",
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "triangles": 12,
+            "components": 1,
+            "loose_vertices": 0,
+            "degenerate_faces": 0,
+            "duplicate_faces": 0,
+            "duplicate_coordinate_vertices": 0,
+            "boundary_edges": 0,
+            "nonmanifold_edges": 0,
+            "zero_edges": 0,
+            "inconsistent_winding_candidates": 0,
+            "self_intersection_candidates": 0,
+            "uv_layers": 1,
+            "material": "M_C01_ACCENT",
+            "moving": false
+          },
+          {
+            "name": "Headboard",
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "triangles": 12,
+            "components": 1,
+            "loose_vertices": 0,
+            "degenerate_faces": 0,
+            "duplicate_faces": 0,
+            "duplicate_coordinate_vertices": 0,
+            "boundary_edges": 0,
+            "nonmanifold_edges": 0,
+            "zero_edges": 0,
+            "inconsistent_winding_candidates": 0,
+            "self_intersection_candidates": 0,
+            "uv_layers": 1,
+            "material": "M_C01_DARK",
+            "moving": false
+          }
+        ],
+        "totals": {
+          "vertices": 133,
+          "edges": 205,
+          "faces": 78,
+          "triangles": 254,
+          "loose_vertices": 0,
+          "degenerate_faces": 0,
+          "duplicate_faces": 0,
+          "duplicate_coordinate_vertices": 0,
+          "boundary_edges": 0,
+          "nonmanifold_edges": 0,
+          "zero_edges": 0,
+          "inconsistent_winding_candidates": 0
+        },
+        "bounding_xyz_blender": [
+          [
+            -0.4749999940395355,
+            -1.0500000715255737,
+            0.0
+          ],
+          [
+            0.4750000238418579,
+            1.0499999523162842,
+            0.6500000357627869
+          ]
+        ],
+        "interpart_overlaps": [
+          {
+            "a": "Leg_-0.44_-0.975",
+            "b": "Headboard",
+            "volume_m3": 0.017084985,
+            "same_material": false,
+            "moving": false,
+            "center": [
+              0.0,
+              -1.0199999809265137,
+              0.36750001460313797
+            ]
+          },
+          {
+            "a": "Mattress",
+            "b": "Mattress_Accent_Stripe",
+            "volume_m3": 0.000747,
+            "same_material": false,
+            "moving": false,
+            "center": [
+              0.0,
+              0.8500000238418579,
+              0.6449999809265137
+            ]
+          }
+        ],
+        "ngons": 38,
+        "triangle_only": false,
+        "degenerate_triangles": 0,
+        "normal_length_bad": 0,
+        "mesh_count": 4,
+        "uv0_meshes": 4,
+        "per_part_signed_volumes": {
+          "Leg_-0.44_-0.975": 0.04633799569400785,
+          "Mattress": 0.17121239800636162,
+          "Mattress_Accent_Stripe": 0.0007469999979659906,
+          "Headboard": 0.01784999979771672
+        },
+        "hierarchy": [
+          [
+            "Headboard",
+            "P19-01_ROOT",
+            [
+              0.0,
+              -1.02,
+              0.375
+            ]
+          ],
+          [
+            "Leg_-0.44_-0.975",
+            "P19-01_ROOT",
+            [
+              -0.44,
+              0.975,
+              0.2625
+            ]
+          ],
+          [
+            "Mattress",
+            "P19-01_ROOT",
+            [
+              0.0,
+              0.0,
+              0.596
+            ]
+          ],
+          [
+            "Mattress_Accent_Stripe",
+            "P19-01_ROOT",
+            [
+              0.0,
+              0.85,
+              0.645
+            ]
+          ],
+          [
+            "P19-01_ROOT",
+            null,
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ]
+        ],
+        "tjunction_candidates": [
+          {
+            "vertex_mesh": "Leg_-0.44_-0.975",
+            "edge_mesh": "Leg_-0.44_-0.975",
+            "same_mesh": true,
+            "coordinate": [
+              -0.415,
+              1.05,
+              0.535
+            ],
+            "fraction": 0.06742,
+            "distance": 5.960464477539063e-08
+          },
+          {
+            "vertex_mesh": "Leg_-0.44_-0.975",
+            "edge_mesh": "Leg_-0.44_-0.975",
+            "same_mesh": true,
+            "coordinate": [
+              0.4732859,
+              0.9900073,
+              0.535
+            ],
+            "fraction": 0.99986,
+            "distance": 7.271766662597656e-06
+          },
+          {
+            "vertex_mesh": "Mattress_Accent_Stripe",
+            "edge_mesh": "Mattress",
+            "same_mesh": false,
+            "coordinate": [
+              -0.415,
+              0.805,
+              0.65
+            ],
+            "fraction": 0.92147,
+            "distance": 5.960464477539063e-08
+          },
+          {
+            "vertex_mesh": "Mattress_Accent_Stripe",
+            "edge_mesh": "Mattress",
+            "same_mesh": false,
+            "coordinate": [
+              -0.415,
+              0.895,
+              0.65
+            ],
+            "fraction": 0.96859,
+            "distance": 1.3328003749250113e-07
+          },
+          {
+            "vertex_mesh": "Mattress_Accent_Stripe",
+            "edge_mesh": "Mattress",
+            "same_mesh": false,
+            "coordinate": [
+              0.415,
+              0.805,
+              0.65
+            ],
+            "fraction": 0.07853,
+            "distance": 5.960464477539063e-08
+          },
+          {
+            "vertex_mesh": "Mattress_Accent_Stripe",
+            "edge_mesh": "Mattress",
+            "same_mesh": false,
+            "coordinate": [
+              0.415,
+              0.895,
+              0.65
+            ],
+            "fraction": 0.03141,
+            "distance": 5.960464477539063e-08
+          }
+        ]
+      },
+      "after": {
+        "parts": [
+          {
+            "name": "Leg_-0.44_-0.975",
+            "vertices": 109,
+            "edges": 327,
+            "faces": 218,
+            "triangles": 218,
+            "components": 1,
+            "loose_vertices": 0,
+            "degenerate_faces": 1,
+            "duplicate_faces": 0,
+            "duplicate_coordinate_vertices": 0,
+            "boundary_edges": 0,
+            "nonmanifold_edges": 0,
+            "zero_edges": 0,
+            "inconsistent_winding_candidates": 0,
+            "self_intersection_candidates": 0,
+            "uv_layers": 1,
+            "material": "M_C01_STEEL",
+            "moving": false
+          },
+          {
+            "name": "Mattress",
+            "vertices": 8,
+            "edges": 18,
+            "faces": 12,
+            "triangles": 12,
+            "components": 1,
+            "loose_vertices": 0,
+            "degenerate_faces": 0,
+            "duplicate_faces": 0,
+            "duplicate_coordinate_vertices": 0,
+            "boundary_edges": 0,
+            "nonmanifold_edges": 0,
+            "zero_edges": 0,
+            "inconsistent_winding_candidates": 0,
+            "self_intersection_candidates": 0,
+            "uv_layers": 1,
+            "material": "M_C01_FABRIC",
+            "moving": false
+          },
+          {
+            "name": "Mattress_Accent_Stripe",
+            "vertices": 8,
+            "edges": 18,
+            "faces": 12,
+            "triangles": 12,
+            "components": 1,
+            "loose_vertices": 0,
+            "degenerate_faces": 0,
+            "duplicate_faces": 0,
+            "duplicate_coordinate_vertices": 0,
+            "boundary_edges": 0,
+            "nonmanifold_edges": 0,
+            "zero_edges": 0,
+            "inconsistent_winding_candidates": 0,
+            "self_intersection_candidates": 0,
+            "uv_layers": 1,
+            "material": "M_C01_ACCENT",
+            "moving": false
+          },
+          {
+            "name": "Headboard",
+            "vertices": 8,
+            "edges": 18,
+            "faces": 12,
+            "triangles": 12,
+            "components": 1,
+            "loose_vertices": 0,
+            "degenerate_faces": 0,
+            "duplicate_faces": 0,
+            "duplicate_coordinate_vertices": 0,
+            "boundary_edges": 0,
+            "nonmanifold_edges": 0,
+            "zero_edges": 0,
+            "inconsistent_winding_candidates": 0,
+            "self_intersection_candidates": 0,
+            "uv_layers": 1,
+            "material": "M_C01_DARK",
+            "moving": false
+          }
+        ],
+        "totals": {
+          "vertices": 133,
+          "edges": 381,
+          "faces": 254,
+          "triangles": 254,
+          "loose_vertices": 0,
+          "degenerate_faces": 1,
+          "duplicate_faces": 0,
+          "duplicate_coordinate_vertices": 0,
+          "boundary_edges": 0,
+          "nonmanifold_edges": 0,
+          "zero_edges": 0,
+          "inconsistent_winding_candidates": 0
+        },
+        "bounding_xyz_blender": [
+          [
+            -0.4749999940395355,
+            -1.0500000715255737,
+            0.0
+          ],
+          [
+            0.4750000238418579,
+            1.0499999523162842,
+            0.6500000357627869
+          ]
+        ],
+        "interpart_overlaps": [
+          {
+            "a": "Leg_-0.44_-0.975",
+            "b": "Headboard",
+            "volume_m3": 0.017084985,
+            "same_material": false,
+            "moving": false,
+            "center": [
+              0.0,
+              -1.0199999809265137,
+              0.36750001460313797
+            ]
+          },
+          {
+            "a": "Mattress",
+            "b": "Mattress_Accent_Stripe",
+            "volume_m3": 0.000747,
+            "same_material": false,
+            "moving": false,
+            "center": [
+              0.0,
+              0.8500000238418579,
+              0.6449999809265137
+            ]
+          }
+        ],
+        "ngons": 0,
+        "triangle_only": true,
+        "degenerate_triangles": 0,
+        "normal_length_bad": 0,
+        "mesh_count": 4,
+        "uv0_meshes": 4,
+        "per_part_signed_volumes": {
+          "Leg_-0.44_-0.975": 0.04633799569400783,
+          "Mattress": 0.17121239800636165,
+          "Mattress_Accent_Stripe": 0.0007469999979659906,
+          "Headboard": 0.01784999979771672
+        },
+        "hierarchy": [
+          [
+            "Headboard",
+            "P19-01_ROOT",
+            [
+              0.0,
+              -1.02,
+              0.375
+            ]
+          ],
+          [
+            "Leg_-0.44_-0.975",
+            "P19-01_ROOT",
+            [
+              -0.44,
+              0.975,
+              0.2625
+            ]
+          ],
+          [
+            "Mattress",
+            "P19-01_ROOT",
+            [
+              0.0,
+              0.0,
+              0.596
+            ]
+          ],
+          [
+            "Mattress_Accent_Stripe",
+            "P19-01_ROOT",
+            [
+              0.0,
+              0.85,
+              0.645
+            ]
+          ],
+          [
+            "P19-01_ROOT",
+            null,
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ]
+        ],
+        "tjunction_candidates": [
+          {
+            "vertex_mesh": "Leg_-0.44_-0.975",
+            "edge_mesh": "Leg_-0.44_-0.975",
+            "same_mesh": true,
+            "coordinate": [
+              -0.415,
+              1.05,
+              0.535
+            ],
+            "fraction": 0.06742,
+            "distance": 5.960464477539063e-08
+          },
+          {
+            "vertex_mesh": "Leg_-0.44_-0.975",
+            "edge_mesh": "Leg_-0.44_-0.975",
+            "same_mesh": true,
+            "coordinate": [
+              0.4157258,
+              1.0245968,
+              0.435
+            ],
+            "fraction": 0.9879,
+            "distance": 0.0
+          },
+          {
+            "vertex_mesh": "Leg_-0.44_-0.975",
+            "edge_mesh": "Leg_-0.44_-0.975",
+            "same_mesh": true,
+            "coordinate": [
+              0.4732859,
+              0.9900073,
+              0.535
+            ],
+            "fraction": 0.99986,
+            "distance": 7.271766662597656e-06
+          },
+          {
+            "vertex_mesh": "Leg_-0.44_-0.975",
+            "edge_mesh": "Leg_-0.44_-0.975",
+            "same_mesh": true,
+            "coordinate": [
+              -0.475,
+              -0.990176,
+              0.5347068
+            ],
+            "fraction": 0.93842,
+            "distance": 0.0
+          },
+          {
+            "vertex_mesh": "Mattress_Accent_Stripe",
+            "edge_mesh": "Mattress",
+            "same_mesh": false,
+            "coordinate": [
+              -0.415,
+              0.805,
+              0.65
+            ],
+            "fraction": 0.92147,
+            "distance": 5.960464477539063e-08
+          },
+          {
+            "vertex_mesh": "Mattress_Accent_Stripe",
+            "edge_mesh": "Mattress",
+            "same_mesh": false,
+            "coordinate": [
+              -0.415,
+              0.895,
+              0.65
+            ],
+            "fraction": 0.96859,
+            "distance": 1.3328003749250113e-07
+          },
+          {
+            "vertex_mesh": "Mattress_Accent_Stripe",
+            "edge_mesh": "Mattress",
+            "same_mesh": false,
+            "coordinate": [
+              0.415,
+              0.805,
+              0.65
+            ],
+            "fraction": 0.07853,
+            "distance": 5.960464477539063e-08
+          },
+          {
+            "vertex_mesh": "Mattress_Accent_Stripe",
+            "edge_mesh": "Mattress",
+            "same_mesh": false,
+            "coordinate": [
+              0.415,
+              0.895,
+              0.65
+            ],
+            "fraction": 0.03141,
+            "distance": 5.960464477539063e-08
+          }
+        ]
+      },
+      "fbx_roundtrip": {
+        "status": "PASS",
+        "triangles": 254,
+        "imported_meshes": 4,
+        "uv0_meshes": 4,
+        "non_triangle_polygons": 0,
+        "bbox_max_error_m": 3.3080674199936766e-08,
+        "binary_fbx_sha256": "b770da2a8b70b75fc1ab30658cc564a1660fe602644dda2db8853a0b981978c6",
+        "binary_fbx_bytes": 31628
+      },
+      "tjunction_note": "geometric candidates only, moving separate parts are allowed; no forced welding",
+      "unity": "NOT_RUN",
+      "independent_C01_02": "PENDING"
+    },
+    {
+      "id": "P19-02",
+      "source_before_sha256": "a449e0c7f2327171f9c05f277d16e391dfc82e434908766428a43c8da5dbaaa7",
+      "source_after_sha256": "5872d56a19b60bbef1bed311b616a57482ce04ae38e65fc71f56c34eb04675a2",
+      "fix": "EXPLICIT_BMESH_EAR_CLIP_TRIANGULATION_NO_GEOMETRIC_REDESIGN",
+      "parts": [
+        {
+          "name": "Back",
+          "source_polygons": 62,
+          "ngons_before": 31,
+          "triangulated_faces": 52,
+          "triangles_after": 168
+        },
+        {
+          "name": "Shelf",
+          "source_polygons": 6,
+          "ngons_before": 0,
+          "triangulated_faces": 6,
+          "triangles_after": 12
+        },
+        {
+          "name": "Door_Leaf",
+          "source_polygons": 6,
+          "ngons_before": 0,
+          "triangulated_faces": 6,
+          "triangles_after": 12
+        },
+        {
+          "name": "Door_Handle",
+          "source_polygons": 6,
+          "ngons_before": 0,
+          "triangulated_faces": 6,
+          "triangles_after": 12
+        },
+        {
+          "name": "Vent_Upper",
+          "source_polygons": 6,
+          "ngons_before": 0,
+          "triangulated_faces": 6,
+          "triangles_after": 12
+        }
+      ],
+      "seam_repair": null,
+      "before": {
+        "parts": [
+          {
+            "name": "Back",
+            "vertices": 86,
+            "edges": 146,
+            "faces": 62,
+            "triangles": 168,
+            "components": 1,
+            "loose_vertices": 0,
+            "degenerate_faces": 0,
+            "duplicate_faces": 0,
+            "duplicate_coordinate_vertices": 0,
+            "boundary_edges": 0,
+            "nonmanifold_edges": 0,
+            "zero_edges": 0,
+            "inconsistent_winding_candidates": 0,
+            "self_intersection_candidates": 0,
+            "uv_layers": 1,
+            "material": "M_C01_STEEL.001",
+            "moving": false
+          },
+          {
+            "name": "Shelf",
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "triangles": 12,
+            "components": 1,
+            "loose_vertices": 0,
+            "degenerate_faces": 0,
+            "duplicate_faces": 0,
+            "duplicate_coordinate_vertices": 0,
+            "boundary_edges": 0,
+            "nonmanifold_edges": 0,
+            "zero_edges": 0,
+            "inconsistent_winding_candidates": 0,
+            "self_intersection_candidates": 0,
+            "uv_layers": 1,
+            "material": "M_C01_DARK.001",
+            "moving": false
+          },
+          {
+            "name": "Door_Leaf",
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "triangles": 12,
+            "components": 1,
+            "loose_vertices": 0,
+            "degenerate_faces": 0,
+            "duplicate_faces": 0,
+            "duplicate_coordinate_vertices": 0,
+            "boundary_edges": 0,
+            "nonmanifold_edges": 0,
+            "zero_edges": 0,
+            "inconsistent_winding_candidates": 0,
+            "self_intersection_candidates": 0,
+            "uv_layers": 1,
+            "material": "M_C01_DARK.001",
+            "moving": true
+          },
+          {
+            "name": "Door_Handle",
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "triangles": 12,
+            "components": 1,
+            "loose_vertices": 0,
+            "degenerate_faces": 0,
+            "duplicate_faces": 0,
+            "duplicate_coordinate_vertices": 0,
+            "boundary_edges": 0,
+            "nonmanifold_edges": 0,
+            "zero_edges": 0,
+            "inconsistent_winding_candidates": 0,
+            "self_intersection_candidates": 0,
+            "uv_layers": 1,
+            "material": "M_C01_ACCENT.001",
+            "moving": true
+          },
+          {
+            "name": "Vent_Upper",
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "triangles": 12,
+            "components": 1,
+            "loose_vertices": 0,
+            "degenerate_faces": 0,
+            "duplicate_faces": 0,
+            "duplicate_coordinate_vertices": 0,
+            "boundary_edges": 0,
+            "nonmanifold_edges": 0,
+            "zero_edges": 0,
+            "inconsistent_winding_candidates": 0,
+            "self_intersection_candidates": 0,
+            "uv_layers": 1,
+            "material": "M_C01_ACCENT.001",
+            "moving": true
+          }
+        ],
+        "totals": {
+          "vertices": 118,
+          "edges": 194,
+          "faces": 86,
+          "triangles": 216,
+          "loose_vertices": 0,
+          "degenerate_faces": 0,
+          "duplicate_faces": 0,
+          "duplicate_coordinate_vertices": 0,
+          "boundary_edges": 0,
+          "nonmanifold_edges": 0,
+          "zero_edges": 0,
+          "inconsistent_winding_candidates": 0
+        },
+        "bounding_xyz_blender": [
+          [
+            -0.6100000143051147,
+            -0.2750000059604645,
+            0.0
+          ],
+          [
+            0.32499998807907104,
+            0.5109999775886536,
+            2.6399998664855957
+          ]
+        ],
+        "interpart_overlaps": [
+          {
+            "a": "Back",
+            "b": "Shelf",
+            "volume_m3": 0.008849991,
+            "same_material": false,
+            "moving": false,
+            "center": [
+              0.0,
+              0.0,
+              1.0
+            ]
+          }
+        ],
+        "ngons": 31,
+        "triangle_only": false,
+        "degenerate_triangles": 0,
+        "normal_length_bad": 0,
+        "mesh_count": 5,
+        "uv0_meshes": 5,
+        "per_part_signed_volumes": {
+          "Back": 0.1280759215171042,
+          "Shelf": 0.008849999408796438,
+          "Door_Leaf": 0.0327936013027906,
+          "Door_Handle": 0.00010799999946355805,
+          "Vent_Upper": 3.6000000625848766e-05
+        },
+        "hierarchy": [
+          [
+            "Back",
+            "P19-02_ROOT",
+            [
+              0.0,
+              -0.26,
+              0.9
+            ]
+          ],
+          [
+            "Door_Handle",
+            "Door_Hinge_Pivot",
+            [
+              0.225,
+              0.264,
+              0.9499999
+            ]
+          ],
+          [
+            "Door_Hinge_Pivot",
+            "P19-02_ROOT",
+            [
+              -0.305,
+              0.237,
+              0.9
+            ]
+          ],
+          [
+            "Door_Leaf",
+            "Door_Hinge_Pivot",
+            [
+              0.0,
+              0.237,
+              0.9
+            ]
+          ],
+          [
+            "P19-02_ROOT",
+            null,
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          [
+            "Shelf",
+            "P19-02_ROOT",
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          [
+            "Vent_Upper",
+            "Door_Hinge_Pivot",
+            [
+              0.0,
+              0.264,
+              1.62
+            ]
+          ]
+        ],
+        "tjunction_candidates": [
+          {
+            "vertex_mesh": "Back",
+            "edge_mesh": "Back",
+            "same_mesh": true,
+            "coordinate": [
+              0.3233638,
+              -0.2450036,
+              0.0
+            ],
+            "fraction": 0.99989,
+            "distance": 3.6507844924926758e-06
+          }
+        ]
+      },
+      "after": {
+        "parts": [
+          {
+            "name": "Back",
+            "vertices": 86,
+            "edges": 252,
+            "faces": 168,
+            "triangles": 168,
+            "components": 1,
+            "loose_vertices": 0,
+            "degenerate_faces": 0,
+            "duplicate_faces": 0,
+            "duplicate_coordinate_vertices": 0,
+            "boundary_edges": 0,
+            "nonmanifold_edges": 0,
+            "zero_edges": 0,
+            "inconsistent_winding_candidates": 0,
+            "self_intersection_candidates": 0,
+            "uv_layers": 1,
+            "material": "M_C01_STEEL.001",
+            "moving": false
+          },
+          {
+            "name": "Shelf",
+            "vertices": 8,
+            "edges": 18,
+            "faces": 12,
+            "triangles": 12,
+            "components": 1,
+            "loose_vertices": 0,
+            "degenerate_faces": 0,
+            "duplicate_faces": 0,
+            "duplicate_coordinate_vertices": 0,
+            "boundary_edges": 0,
+            "nonmanifold_edges": 0,
+            "zero_edges": 0,
+            "inconsistent_winding_candidates": 0,
+            "self_intersection_candidates": 0,
+            "uv_layers": 1,
+            "material": "M_C01_DARK.001",
+            "moving": false
+          },
+          {
+            "name": "Door_Leaf",
+            "vertices": 8,
+            "edges": 18,
+            "faces": 12,
+            "triangles": 12,
+            "components": 1,
+            "loose_vertices": 0,
+            "degenerate_faces": 0,
+            "duplicate_faces": 0,
+            "duplicate_coordinate_vertices": 0,
+            "boundary_edges": 0,
+            "nonmanifold_edges": 0,
+            "zero_edges": 0,
+            "inconsistent_winding_candidates": 0,
+            "self_intersection_candidates": 0,
+            "uv_layers": 1,
+            "material": "M_C01_DARK.001",
+            "moving": true
+          },
+          {
+            "name": "Door_Handle",
+            "vertices": 8,
+            "edges": 18,
+            "faces": 12,
+            "triangles": 12,
+            "components": 1,
+            "loose_vertices": 0,
+            "degenerate_faces": 0,
+            "duplicate_faces": 0,
+            "duplicate_coordinate_vertices": 0,
+            "boundary_edges": 0,
+            "nonmanifold_edges": 0,
+            "zero_edges": 0,
+            "inconsistent_winding_candidates": 0,
+            "self_intersection_candidates": 0,
+            "uv_layers": 1,
+            "material": "M_C01_ACCENT.001",
+            "moving": true
+          },
+          {
+            "name": "Vent_Upper",
+            "vertices": 8,
+            "edges": 18,
+            "faces": 12,
+            "triangles": 12,
+            "components": 1,
+            "loose_vertices": 0,
+            "degenerate_faces": 0,
+            "duplicate_faces": 0,
+            "duplicate_coordinate_vertices": 0,
+            "boundary_edges": 0,
+            "nonmanifold_edges": 0,
+            "zero_edges": 0,
+            "inconsistent_winding_candidates": 0,
+            "self_intersection_candidates": 0,
+            "uv_layers": 1,
+            "material": "M_C01_ACCENT.001",
+            "moving": true
+          }
+        ],
+        "totals": {
+          "vertices": 118,
+          "edges": 324,
+          "faces": 216,
+          "triangles": 216,
+          "loose_vertices": 0,
+          "degenerate_faces": 0,
+          "duplicate_faces": 0,
+          "duplicate_coordinate_vertices": 0,
+          "boundary_edges": 0,
+          "nonmanifold_edges": 0,
+          "zero_edges": 0,
+          "inconsistent_winding_candidates": 0
+        },
+        "bounding_xyz_blender": [
+          [
+            -0.6100000143051147,
+            -0.2750000059604645,
+            0.0
+          ],
+          [
+            0.32499998807907104,
+            0.5109999775886536,
+            2.6399998664855957
+          ]
+        ],
+        "interpart_overlaps": [
+          {
+            "a": "Back",
+            "b": "Shelf",
+            "volume_m3": 0.008849991,
+            "same_material": false,
+            "moving": false,
+            "center": [
+              0.0,
+              0.0,
+              1.0
+            ]
+          }
+        ],
+        "ngons": 0,
+        "triangle_only": true,
+        "degenerate_triangles": 0,
+        "normal_length_bad": 0,
+        "mesh_count": 5,
+        "uv0_meshes": 5,
+        "per_part_signed_volumes": {
+          "Back": 0.12807592151710415,
+          "Shelf": 0.008849999408796438,
+          "Door_Leaf": 0.0327936013027906,
+          "Door_Handle": 0.00010799999946355805,
+          "Vent_Upper": 3.6000000625848766e-05
+        },
+        "hierarchy": [
+          [
+            "Back",
+            "P19-02_ROOT",
+            [
+              0.0,
+              -0.26,
+              0.9
+            ]
+          ],
+          [
+            "Door_Handle",
+            "Door_Hinge_Pivot",
+            [
+              0.225,
+              0.264,
+              0.9499999
+            ]
+          ],
+          [
+            "Door_Hinge_Pivot",
+            "P19-02_ROOT",
+            [
+              -0.305,
+              0.237,
+              0.9
+            ]
+          ],
+          [
+            "Door_Leaf",
+            "Door_Hinge_Pivot",
+            [
+              0.0,
+              0.237,
+              0.9
+            ]
+          ],
+          [
+            "P19-02_ROOT",
+            null,
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          [
+            "Shelf",
+            "P19-02_ROOT",
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          [
+            "Vent_Upper",
+            "Door_Hinge_Pivot",
+            [
+              0.0,
+              0.264,
+              1.62
+            ]
+          ]
+        ],
+        "tjunction_candidates": [
+          {
+            "vertex_mesh": "Back",
+            "edge_mesh": "Back",
+            "same_mesh": true,
+            "coordinate": [
+              0.3233638,
+              -0.2450036,
+              0.0
+            ],
+            "fraction": 0.99989,
+            "distance": 3.6507844924926758e-06
+          }
+        ]
+      },
+      "fbx_roundtrip": {
+        "status": "PASS",
+        "triangles": 216,
+        "imported_meshes": 5,
+        "uv0_meshes": 5,
+        "non_triangle_polygons": 0,
+        "bbox_max_error_m": 1.1920928955078125e-07,
+        "binary_fbx_sha256": "669d077c38dd027c37bae3f4df5cff5bcdf6fb1039c4901a9db6364ba37bb6a2",
+        "binary_fbx_bytes": 32444
+      },
+      "tjunction_note": "geometric candidates only, moving separate parts are allowed; no forced welding",
+      "unity": "NOT_RUN",
+      "independent_C01_02": "PENDING"
+    },
+    {
+      "id": "P19-03",
+      "source_before_sha256": "fd90fde2e1c42c044ab1f1701a8cef1418b387c2140460ec17799aee8dc36b1b",
+      "source_after_sha256": "3652b4f738783e3fab0940311d77b5cd9e6435a23ef60c2c7249f209fa4b11cd",
+      "fix": "EXPLICIT_BMESH_EAR_CLIP_TRIANGULATION_NO_GEOMETRIC_REDESIGN",
+      "parts": [
+        {
+          "name": "Desktop",
+          "action": "NO_TRIANGULATION_REQUIRED"
+        },
+        {
+          "name": "Leg_-0.64_-0.29",
+          "action": "NO_TRIANGULATION_REQUIRED"
+        },
+        {
+          "name": "Leg_-0.64_0.29",
+          "action": "NO_TRIANGULATION_REQUIRED"
+        },
+        {
+          "name": "Leg_0.64_-0.29",
+          "action": "NO_TRIANGULATION_REQUIRED"
+        },
+        {
+          "name": "Desk_Edge",
+          "action": "NO_TRIANGULATION_REQUIRED"
+        }
+      ],
+      "seam_repair": null,
+      "before": {
+        "parts": [
+          {
+            "name": "Desktop",
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "triangles": 12,
+            "components": 1,
+            "loose_vertices": 0,
+            "degenerate_faces": 0,
+            "duplicate_faces": 0,
+            "duplicate_coordinate_vertices": 0,
+            "boundary_edges": 0,
+            "nonmanifold_edges": 0,
+            "zero_edges": 0,
+            "inconsistent_winding_candidates": 0,
+            "self_intersection_candidates": 0,
+            "uv_layers": 1,
+            "material": "M_C01_DARK.002",
+            "moving": false
+          },
+          {
+            "name": "Leg_-0.64_-0.29",
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "triangles": 12,
+            "components": 1,
+            "loose_vertices": 0,
+            "degenerate_faces": 0,
+            "duplicate_faces": 0,
+            "duplicate_coordinate_vertices": 0,
+            "boundary_edges": 0,
+            "nonmanifold_edges": 0,
+            "zero_edges": 0,
+            "inconsistent_winding_candidates": 0,
+            "self_intersection_candidates": 0,
+            "uv_layers": 1,
+            "material": "M_C01_STEEL.002",
+            "moving": false
+          },
+          {
+            "name": "Leg_-0.64_0.29",
+            "vertices": 40,
+            "edges": 64,
+            "faces": 24,
+            "triangles": 80,
+            "components": 1,
+            "loose_vertices": 0,
+            "degenerate_faces": 0,
+            "duplicate_faces": 0,
+            "duplicate_coordinate_vertices": 0,
+            "boundary_edges": 0,
+            "nonmanifold_edges": 0,
+            "zero_edges": 0,
+            "inconsistent_winding_candidates": 0,
+            "self_intersection_candidates": 0,
+            "uv_layers": 1,
+            "material": "M_C01_STEEL.002",
+            "moving": false
+          },
+          {
+            "name": "Leg_0.64_-0.29",
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "triangles": 12,
+            "components": 1,
+            "loose_vertices": 0,
+            "degenerate_faces": 0,
+            "duplicate_faces": 0,
+            "duplicate_coordinate_vertices": 0,
+            "boundary_edges": 0,
+            "nonmanifold_edges": 0,
+            "zero_edges": 0,
+            "inconsistent_winding_candidates": 0,
+            "self_intersection_candidates": 0,
+            "uv_layers": 1,
+            "material": "M_C01_STEEL.002",
+            "moving": false
+          },
+          {
+            "name": "Desk_Edge",
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "triangles": 12,
+            "components": 1,
+            "loose_vertices": 0,
+            "degenerate_faces": 0,
+            "duplicate_faces": 0,
+            "duplicate_coordinate_vertices": 0,
+            "boundary_edges": 0,
+            "nonmanifold_edges": 0,
+            "zero_edges": 0,
+            "inconsistent_winding_candidates": 0,
+            "self_intersection_candidates": 0,
+            "uv_layers": 1,
+            "material": "M_C01_ACCENT.002",
+            "moving": false
+          }
+        ],
+        "totals": {
+          "vertices": 72,
+          "edges": 112,
+          "faces": 48,
+          "triangles": 128,
+          "loose_vertices": 0,
+          "degenerate_faces": 0,
+          "duplicate_faces": 0,
+          "duplicate_coordinate_vertices": 0,
+          "boundary_edges": 0,
+          "nonmanifold_edges": 0,
+          "zero_edges": 0,
+          "inconsistent_winding_candidates": 0
+        },
+        "bounding_xyz_blender": [
+          [
+            -0.699999988079071,
+            -0.32499998807907104,
+            0.0
+          ],
+          [
+            0.699999988079071,
+            0.32499998807907104,
+            0.75
+          ]
+        ],
+        "interpart_overlaps": [
+          {
+            "a": "Desktop",
+            "b": "Leg_-0.64_-0.29",
+            "volume_m3": 0.0001152,
+            "same_material": false,
+            "moving": false,
+            "center": [
+              -0.6399999856948853,
+              0.28999999165534973,
+              0.7019999921321869
+            ]
+          },
+          {
+            "a": "Desktop",
+            "b": "Leg_-0.64_0.29",
+            "volume_m3": 0.003832402,
+            "same_material": false,
+            "moving": false,
+            "center": [
+              0.0,
+              -0.29249998927116394,
+              0.7080000042915344
+            ]
+          },
+          {
+            "a": "Desktop",
+            "b": "Leg_0.64_-0.29",
+            "volume_m3": 0.0001152,
+            "same_material": false,
+            "moving": false,
+            "center": [
+              0.6399999856948853,
+              0.28999999165534973,
+              0.7019999921321869
+            ]
+          },
+          {
+            "a": "Desktop",
+            "b": "Desk_Edge",
+            "volume_m3": 0.0001344,
+            "same_material": false,
+            "moving": false,
+            "center": [
+              0.0,
+              0.3199999928474426,
+              0.7239999771118164
+            ]
+          },
+          {
+            "a": "Leg_-0.64_-0.29",
+            "b": "Desk_Edge",
+            "volume_m3": 3.6e-07,
+            "same_material": false,
+            "moving": false,
+            "center": [
+              -0.6399999856948853,
+              0.31849999725818634,
+              0.7169999778270721
+            ]
+          },
+          {
+            "a": "Leg_0.64_-0.29",
+            "b": "Desk_Edge",
+            "volume_m3": 3.6e-07,
+            "same_material": false,
+            "moving": false,
+            "center": [
+              0.6399999856948853,
+              0.31849999725818634,
+              0.7169999778270721
+            ]
+          }
+        ],
+        "ngons": 10,
+        "triangle_only": false,
+        "degenerate_triangles": 0,
+        "normal_length_bad": 0,
+        "mesh_count": 5,
+        "uv0_meshes": 5,
+        "per_part_signed_volumes": {
+          "Desktop": 0.05823999963819969,
+          "Leg_-0.64_-0.29": 0.0025847998655676866,
+          "Leg_-0.64_0.29": 0.013065617474545037,
+          "Leg_0.64_-0.29": 0.0025847998655676866,
+          "Desk_Edge": 0.00013440000526309005
+        },
+        "hierarchy": [
+          [
+            "Desk_Edge",
+            "P19-03_ROOT",
+            [
+              0.0,
+              0.32,
+              0.724
+            ]
+          ],
+          [
+            "Desktop",
+            "P19-03_ROOT",
+            [
+              0.0,
+              0.0,
+              0.718
+            ]
+          ],
+          [
+            "Leg_-0.64_-0.29",
+            "P19-03_ROOT",
+            [
+              -0.64,
+              0.29,
+              0.359
+            ]
+          ],
+          [
+            "Leg_-0.64_0.29",
+            "P19-03_ROOT",
+            [
+              -0.64,
+              -0.29,
+              0.359
+            ]
+          ],
+          [
+            "Leg_0.64_-0.29",
+            "P19-03_ROOT",
+            [
+              0.64,
+              0.29,
+              0.359
+            ]
+          ],
+          [
+            "P19-03_ROOT",
+            null,
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ]
+        ],
+        "tjunction_candidates": []
+      },
+      "after": {
+        "parts": [
+          {
+            "name": "Desktop",
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "triangles": 12,
+            "components": 1,
+            "loose_vertices": 0,
+            "degenerate_faces": 0,
+            "duplicate_faces": 0,
+            "duplicate_coordinate_vertices": 0,
+            "boundary_edges": 0,
+            "nonmanifold_edges": 0,
+            "zero_edges": 0,
+            "inconsistent_winding_candidates": 0,
+            "self_intersection_candidates": 0,
+            "uv_layers": 1,
+            "material": "M_C01_DARK.002",
+            "moving": false
+          },
+          {
+            "name": "Leg_-0.64_-0.29",
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "triangles": 12,
+            "components": 1,
+            "loose_vertices": 0,
+            "degenerate_faces": 0,
+            "duplicate_faces": 0,
+            "duplicate_coordinate_vertices": 0,
+            "boundary_edges": 0,
+            "nonmanifold_edges": 0,
+            "zero_edges": 0,
+            "inconsistent_winding_candidates": 0,
+            "self_intersection_candidates": 0,
+            "uv_layers": 1,
+            "material": "M_C01_STEEL.002",
+            "moving": false
+          },
+          {
+            "name": "Leg_-0.64_0.29",
+            "vertices": 40,
+            "edges": 64,
+            "faces": 24,
+            "triangles": 80,
+            "components": 1,
+            "loose_vertices": 0,
+            "degenerate_faces": 0,
+            "duplicate_faces": 0,
+            "duplicate_coordinate_vertices": 0,
+            "boundary_edges": 0,
+            "nonmanifold_edges": 0,
+            "zero_edges": 0,
+            "inconsistent_winding_candidates": 0,
+            "self_intersection_candidates": 0,
+            "uv_layers": 1,
+            "material": "M_C01_STEEL.002",
+            "moving": false
+          },
+          {
+            "name": "Leg_0.64_-0.29",
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "triangles": 12,
+            "components": 1,
+            "loose_vertices": 0,
+            "degenerate_faces": 0,
+            "duplicate_faces": 0,
+            "duplicate_coordinate_vertices": 0,
+            "boundary_edges": 0,
+            "nonmanifold_edges": 0,
+            "zero_edges": 0,
+            "inconsistent_winding_candidates": 0,
+            "self_intersection_candidates": 0,
+            "uv_layers": 1,
+            "material": "M_C01_STEEL.002",
+            "moving": false
+          },
+          {
+            "name": "Desk_Edge",
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "triangles": 12,
+            "components": 1,
+            "loose_vertices": 0,
+            "degenerate_faces": 0,
+            "duplicate_faces": 0,
+            "duplicate_coordinate_vertices": 0,
+            "boundary_edges": 0,
+            "nonmanifold_edges": 0,
+            "zero_edges": 0,
+            "inconsistent_winding_candidates": 0,
+            "self_intersection_candidates": 0,
+            "uv_layers": 1,
+            "material": "M_C01_ACCENT.002",
+            "moving": false
+          }
+        ],
+        "totals": {
+          "vertices": 72,
+          "edges": 112,
+          "faces": 48,
+          "triangles": 128,
+          "loose_vertices": 0,
+          "degenerate_faces": 0,
+          "duplicate_faces": 0,
+          "duplicate_coordinate_vertices": 0,
+          "boundary_edges": 0,
+          "nonmanifold_edges": 0,
+          "zero_edges": 0,
+          "inconsistent_winding_candidates": 0
+        },
+        "bounding_xyz_blender": [
+          [
+            -0.699999988079071,
+            -0.32499998807907104,
+            0.0
+          ],
+          [
+            0.699999988079071,
+            0.32499998807907104,
+            0.75
+          ]
+        ],
+        "interpart_overlaps": [
+          {
+            "a": "Desktop",
+            "b": "Leg_-0.64_-0.29",
+            "volume_m3": 0.0001152,
+            "same_material": false,
+            "moving": false,
+            "center": [
+              -0.6399999856948853,
+              0.28999999165534973,
+              0.7019999921321869
+            ]
+          },
+          {
+            "a": "Desktop",
+            "b": "Leg_-0.64_0.29",
+            "volume_m3": 0.003832402,
+            "same_material": false,
+            "moving": false,
+            "center": [
+              0.0,
+              -0.29249998927116394,
+              0.7080000042915344
+            ]
+          },
+          {
+            "a": "Desktop",
+            "b": "Leg_0.64_-0.29",
+            "volume_m3": 0.0001152,
+            "same_material": false,
+            "moving": false,
+            "center": [
+              0.6399999856948853,
+              0.28999999165534973,
+              0.7019999921321869
+            ]
+          },
+          {
+            "a": "Desktop",
+            "b": "Desk_Edge",
+            "volume_m3": 0.0001344,
+            "same_material": false,
+            "moving": false,
+            "center": [
+              0.0,
+              0.3199999928474426,
+              0.7239999771118164
+            ]
+          },
+          {
+            "a": "Leg_-0.64_-0.29",
+            "b": "Desk_Edge",
+            "volume_m3": 3.6e-07,
+            "same_material": false,
+            "moving": false,
+            "center": [
+              -0.6399999856948853,
+              0.31849999725818634,
+              0.7169999778270721
+            ]
+          },
+          {
+            "a": "Leg_0.64_-0.29",
+            "b": "Desk_Edge",
+            "volume_m3": 3.6e-07,
+            "same_material": false,
+            "moving": false,
+            "center": [
+              0.6399999856948853,
+              0.31849999725818634,
+              0.7169999778270721
+            ]
+          }
+        ],
+        "ngons": 10,
+        "triangle_only": false,
+        "degenerate_triangles": 0,
+        "normal_length_bad": 0,
+        "mesh_count": 5,
+        "uv0_meshes": 5,
+        "per_part_signed_volumes": {
+          "Desktop": 0.05823999963819969,
+          "Leg_-0.64_-0.29": 0.0025847998655676866,
+          "Leg_-0.64_0.29": 0.013065617474545037,
+          "Leg_0.64_-0.29": 0.0025847998655676866,
+          "Desk_Edge": 0.00013440000526309005
+        },
+        "hierarchy": [
+          [
+            "Desk_Edge",
+            "P19-03_ROOT",
+            [
+              0.0,
+              0.32,
+              0.724
+            ]
+          ],
+          [
+            "Desktop",
+            "P19-03_ROOT",
+            [
+              0.0,
+              0.0,
+              0.718
+            ]
+          ],
+          [
+            "Leg_-0.64_-0.29",
+            "P19-03_ROOT",
+            [
+              -0.64,
+              0.29,
+              0.359
+            ]
+          ],
+          [
+            "Leg_-0.64_0.29",
+            "P19-03_ROOT",
+            [
+              -0.64,
+              -0.29,
+              0.359
+            ]
+          ],
+          [
+            "Leg_0.64_-0.29",
+            "P19-03_ROOT",
+            [
+              0.64,
+              0.29,
+              0.359
+            ]
+          ],
+          [
+            "P19-03_ROOT",
+            null,
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ]
+        ],
+        "tjunction_candidates": []
+      },
+      "fbx_roundtrip": {
+        "status": "PASS",
+        "triangles": 128,
+        "imported_meshes": 5,
+        "uv0_meshes": 5,
+        "non_triangle_polygons": 48,
+        "bbox_max_error_m": 2.9802322387695312e-08,
+        "binary_fbx_sha256": "1bd730b2382879d7d9c2f3d67c4b9646b8ca036c04de663e53b3019c403af2df",
+        "binary_fbx_bytes": 28796
+      },
+      "tjunction_note": "geometric candidates only, moving separate parts are allowed; no forced welding",
+      "unity": "NOT_RUN",
+      "independent_C01_02": "PENDING"
+    },
+    {
+      "id": "P19-04",
+      "source_before_sha256": "405df332511b8e7aa2ec1b21275028eaab9b14ec62495397e616dc9868365b15",
+      "source_after_sha256": "8690c61df28d2126e6d84cba00326f6d47fa54f6be56edcedcda4c816b283b70",
+      "fix": "EXPLICIT_BMESH_EAR_CLIP_TRIANGULATION_NO_GEOMETRIC_REDESIGN",
+      "parts": [
+        {
+          "name": "Chair_Leg_-0.275_-0.275",
+          "action": "NO_TRIANGULATION_REQUIRED"
+        },
+        {
+          "name": "Chair_Leg_-0.275_0.275",
+          "action": "NO_TRIANGULATION_REQUIRED"
+        },
+        {
+          "name": "Chair_Leg_0.275_-0.275",
+          "action": "NO_TRIANGULATION_REQUIRED"
+        },
+        {
+          "name": "Chair_Leg_0.275_0.275",
+          "action": "NO_TRIANGULATION_REQUIRED"
+        },
+        {
+          "name": "Seat",
+          "action": "NO_TRIANGULATION_REQUIRED"
+        },
+        {
+          "name": "Cushion",
+          "action": "NO_TRIANGULATION_REQUIRED"
+        },
+        {
+          "name": "Back_Stanchion_-0.275",
+          "action": "NO_TRIANGULATION_REQUIRED"
+        },
+        {
+          "name": "Back_Stanchion_0.275",
+          "action": "NO_TRIANGULATION_REQUIRED"
+        },
+        {
+          "name": "Back_Rest",
+          "action": "NO_TRIANGULATION_REQUIRED"
+        }
+      ],
+      "seam_repair": null,
+      "before": {
+        "parts": [
+          {
+            "name": "Chair_Leg_-0.275_-0.275",
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "triangles": 12,
+            "components": 1,
+            "loose_vertices": 0,
+            "degenerate_faces": 0,
+            "duplicate_faces": 0,
+            "duplicate_coordinate_vertices": 0,
+            "boundary_edges": 0,
+            "nonmanifold_edges": 0,
+            "zero_edges": 0,
+            "inconsistent_winding_candidates": 0,
+            "self_intersection_candidates": 0,
+            "uv_layers": 1,
+            "material": "M_C01_STEEL.003",
+            "moving": false
+          },
+          {
+            "name": "Chair_Leg_-0.275_0.275",
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "triangles": 12,
+            "components": 1,
+            "loose_vertices": 0,
+            "degenerate_faces": 0,
+            "duplicate_faces": 0,
+            "duplicate_coordinate_vertices": 0,
+            "boundary_edges": 0,
+            "nonmanifold_edges": 0,
+            "zero_edges": 0,
+            "inconsistent_winding_candidates": 0,
+            "self_intersection_candidates": 0,
+            "uv_layers": 1,
+            "material": "M_C01_STEEL.003",
+            "moving": false
+          },
+          {
+            "name": "Chair_Leg_0.275_-0.275",
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "triangles": 12,
+            "components": 1,
+            "loose_vertices": 0,
+            "degenerate_faces": 0,
+            "duplicate_faces": 0,
+            "duplicate_coordinate_vertices": 0,
+            "boundary_edges": 0,
+            "nonmanifold_edges": 0,
+            "zero_edges": 0,
+            "inconsistent_winding_candidates": 0,
+            "self_intersection_candidates": 0,
+            "uv_layers": 1,
+            "material": "M_C01_STEEL.003",
+            "moving": false
+          },
+          {
+            "name": "Chair_Leg_0.275_0.275",
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "triangles": 12,
+            "components": 1,
+            "loose_vertices": 0,
+            "degenerate_faces": 0,
+            "duplicate_faces": 0,
+            "duplicate_coordinate_vertices": 0,
+            "boundary_edges": 0,
+            "nonmanifold_edges": 0,
+            "zero_edges": 0,
+            "inconsistent_winding_candidates": 0,
+            "self_intersection_candidates": 0,
+            "uv_layers": 1,
+            "material": "M_C01_STEEL.003",
+            "moving": false
+          },
+          {
+            "name": "Seat",
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "triangles": 12,
+            "components": 1,
+            "loose_vertices": 0,
+            "degenerate_faces": 0,
+            "duplicate_faces": 0,
+            "duplicate_coordinate_vertices": 0,
+            "boundary_edges": 0,
+            "nonmanifold_edges": 0,
+            "zero_edges": 0,
+            "inconsistent_winding_candidates": 0,
+            "self_intersection_candidates": 0,
+            "uv_layers": 1,
+            "material": "M_C01_DARK.003",
+            "moving": false
+          },
+          {
+            "name": "Cushion",
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "triangles": 12,
+            "components": 1,
+            "loose_vertices": 0,
+            "degenerate_faces": 0,
+            "duplicate_faces": 0,
+            "duplicate_coordinate_vertices": 0,
+            "boundary_edges": 0,
+            "nonmanifold_edges": 0,
+            "zero_edges": 0,
+            "inconsistent_winding_candidates": 0,
+            "self_intersection_candidates": 0,
+            "uv_layers": 1,
+            "material": "M_C01_FABRIC.003",
+            "moving": false
+          },
+          {
+            "name": "Back_Stanchion_-0.275",
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "triangles": 12,
+            "components": 1,
+            "loose_vertices": 0,
+            "degenerate_faces": 0,
+            "duplicate_faces": 0,
+            "duplicate_coordinate_vertices": 0,
+            "boundary_edges": 0,
+            "nonmanifold_edges": 0,
+            "zero_edges": 0,
+            "inconsistent_winding_candidates": 0,
+            "self_intersection_candidates": 0,
+            "uv_layers": 1,
+            "material": "M_C01_STEEL.003",
+            "moving": false
+          },
+          {
+            "name": "Back_Stanchion_0.275",
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "triangles": 12,
+            "components": 1,
+            "loose_vertices": 0,
+            "degenerate_faces": 0,
+            "duplicate_faces": 0,
+            "duplicate_coordinate_vertices": 0,
+            "boundary_edges": 0,
+            "nonmanifold_edges": 0,
+            "zero_edges": 0,
+            "inconsistent_winding_candidates": 0,
+            "self_intersection_candidates": 0,
+            "uv_layers": 1,
+            "material": "M_C01_STEEL.003",
+            "moving": false
+          },
+          {
+            "name": "Back_Rest",
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "triangles": 12,
+            "components": 1,
+            "loose_vertices": 0,
+            "degenerate_faces": 0,
+            "duplicate_faces": 0,
+            "duplicate_coordinate_vertices": 0,
+            "boundary_edges": 0,
+            "nonmanifold_edges": 0,
+            "zero_edges": 0,
+            "inconsistent_winding_candidates": 0,
+            "self_intersection_candidates": 0,
+            "uv_layers": 1,
+            "material": "M_C01_FABRIC.003",
+            "moving": false
+          }
+        ],
+        "totals": {
+          "vertices": 72,
+          "edges": 108,
+          "faces": 54,
+          "triangles": 108,
+          "loose_vertices": 0,
+          "degenerate_faces": 0,
+          "duplicate_faces": 0,
+          "duplicate_coordinate_vertices": 0,
+          "boundary_edges": 0,
+          "nonmanifold_edges": 0,
+          "zero_edges": 0,
+          "inconsistent_winding_candidates": 0
+        },
+        "bounding_xyz_blender": [
+          [
+            -0.30000001192092896,
+            -0.30000001192092896,
+            0.0
+          ],
+          [
+            0.30000001192092896,
+            0.30000001192092896,
+            0.9500000476837158
+          ]
+        ],
+        "interpart_overlaps": [
+          {
+            "a": "Chair_Leg_-0.275_-0.275",
+            "b": "Seat",
+            "volume_m3": 4.375e-05,
+            "same_material": false,
+            "moving": false,
+            "center": [
+              -0.2750000059604645,
+              0.2750000059604645,
+              0.4412499964237213
+            ]
+          },
+          {
+            "a": "Chair_Leg_-0.275_0.275",
+            "b": "Seat",
+            "volume_m3": 4.375e-05,
+            "same_material": false,
+            "moving": false,
+            "center": [
+              -0.2750000059604645,
+              -0.2750000059604645,
+              0.4412499964237213
+            ]
+          },
+          {
+            "a": "Chair_Leg_0.275_-0.275",
+            "b": "Seat",
+            "volume_m3": 4.375e-05,
+            "same_material": false,
+            "moving": false,
+            "center": [
+              0.2750000059604645,
+              0.2750000059604645,
+              0.4412499964237213
+            ]
+          },
+          {
+            "a": "Chair_Leg_0.275_0.275",
+            "b": "Seat",
+            "volume_m3": 4.375e-05,
+            "same_material": false,
+            "moving": false,
+            "center": [
+              0.2750000059604645,
+              -0.2750000059604645,
+              0.4412499964237213
+            ]
+          },
+          {
+            "a": "Cushion",
+            "b": "Back_Stanchion_-0.275",
+            "volume_m3": 2.52e-06,
+            "same_material": false,
+            "moving": false,
+            "center": [
+              -0.26000000536441803,
+              -0.25199998915195465,
+              0.5075000077486038
+            ]
+          },
+          {
+            "a": "Cushion",
+            "b": "Back_Stanchion_0.275",
+            "volume_m3": 2.52e-06,
+            "same_material": false,
+            "moving": false,
+            "center": [
+              0.26000000536441803,
+              -0.25199998915195465,
+              0.5075000077486038
+            ]
+          },
+          {
+            "a": "Back_Stanchion_-0.275",
+            "b": "Back_Rest",
+            "volume_m3": 0.0004508,
+            "same_material": false,
+            "moving": false,
+            "center": [
+              -0.26999999582767487,
+              -0.2744999974966049,
+              0.8349999785423279
+            ]
+          },
+          {
+            "a": "Back_Stanchion_0.275",
+            "b": "Back_Rest",
+            "volume_m3": 0.0004508,
+            "same_material": false,
+            "moving": false,
+            "center": [
+              0.26999999582767487,
+              -0.2744999974966049,
+              0.8349999785423279
+            ]
+          }
+        ],
+        "ngons": 0,
+        "triangle_only": false,
+        "degenerate_triangles": 0,
+        "normal_length_bad": 0,
+        "mesh_count": 9,
+        "uv0_meshes": 9,
+        "per_part_signed_volumes": {
+          "Chair_Leg_-0.275_-0.275": 0.0011250000037252895,
+          "Chair_Leg_-0.275_0.275": 0.0011250000037252895,
+          "Chair_Leg_0.275_-0.275": 0.0011250000037252895,
+          "Chair_Leg_0.275_0.275": 0.0011250000037252895,
+          "Seat": 0.019800001466274288,
+          "Cushion": 0.008261999989137044,
+          "Back_Stanchion_-0.275": 0.0011325000564008961,
+          "Back_Stanchion_0.275": 0.0011325000564008961,
+          "Back_Rest": 0.006670000028461213
+        },
+        "hierarchy": [
+          [
+            "Back_Rest",
+            "P19-04_ROOT",
+            [
+              0.0,
+              -0.275,
+              0.835
+            ]
+          ],
+          [
+            "Back_Stanchion_-0.275",
+            "P19-04_ROOT",
+            [
+              -0.275,
+              -0.274,
+              0.7235
+            ]
+          ],
+          [
+            "Back_Stanchion_0.275",
+            "P19-04_ROOT",
+            [
+              0.275,
+              -0.274,
+              0.7235
+            ]
+          ],
+          [
+            "Chair_Leg_-0.275_-0.275",
+            "P19-04_ROOT",
+            [
+              -0.275,
+              0.275,
+              0.225
+            ]
+          ],
+          [
+            "Chair_Leg_-0.275_0.275",
+            "P19-04_ROOT",
+            [
+              -0.275,
+              -0.275,
+              0.225
+            ]
+          ],
+          [
+            "Chair_Leg_0.275_-0.275",
+            "P19-04_ROOT",
+            [
+              0.275,
+              0.275,
+              0.225
+            ]
+          ],
+          [
+            "Chair_Leg_0.275_0.275",
+            "P19-04_ROOT",
+            [
+              0.275,
+              -0.275,
+              0.225
+            ]
+          ],
+          [
+            "Cushion",
+            "P19-04_ROOT",
+            [
+              0.0,
+              0.0,
+              0.503
+            ]
+          ],
+          [
+            "P19-04_ROOT",
+            null,
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          [
+            "Seat",
+            "P19-04_ROOT",
+            [
+              0.0,
+              0.0,
+              0.46
+            ]
+          ]
+        ],
+        "tjunction_candidates": [
+          {
+            "vertex_mesh": "Chair_Leg_-0.275_-0.275",
+            "edge_mesh": "Seat",
+            "same_mesh": false,
+            "coordinate": [
+              -0.3,
+              0.3,
+              0.45
+            ],
+            "fraction": 0.68182,
+            "distance": 0.0
+          },
+          {
+            "vertex_mesh": "Chair_Leg_-0.275_0.275",
+            "edge_mesh": "Seat",
+            "same_mesh": false,
+            "coordinate": [
+              -0.3,
+              -0.3,
+              0.45
+            ],
+            "fraction": 0.31818,
+            "distance": 0.0
+          },
+          {
+            "vertex_mesh": "Chair_Leg_0.275_-0.275",
+            "edge_mesh": "Seat",
+            "same_mesh": false,
+            "coordinate": [
+              0.3,
+              0.3,
+              0.45
+            ],
+            "fraction": 0.68182,
+            "distance": 0.0
+          },
+          {
+            "vertex_mesh": "Chair_Leg_0.275_0.275",
+            "edge_mesh": "Seat",
+            "same_mesh": false,
+            "coordinate": [
+              0.3,
+              -0.3,
+              0.45
+            ],
+            "fraction": 0.68182,
+            "distance": 0.0
+          },
+          {
+            "vertex_mesh": "Seat",
+            "edge_mesh": "Chair_Leg_-0.275_0.275",
+            "same_mesh": false,
+            "coordinate": [
+              -0.3,
+              -0.3,
+              0.4325
+            ],
+            "fraction": 0.96111,
+            "distance": 0.0
+          },
+          {
+            "vertex_mesh": "Seat",
+            "edge_mesh": "Chair_Leg_-0.275_-0.275",
+            "same_mesh": false,
+            "coordinate": [
+              -0.3,
+              0.3,
+              0.4325
+            ],
+            "fraction": 0.03889,
+            "distance": 0.0
+          },
+          {
+            "vertex_mesh": "Seat",
+            "edge_mesh": "Chair_Leg_0.275_0.275",
+            "same_mesh": false,
+            "coordinate": [
+              0.3,
+              -0.3,
+              0.4325
+            ],
+            "fraction": 0.03889,
+            "distance": 0.0
+          },
+          {
+            "vertex_mesh": "Seat",
+            "edge_mesh": "Chair_Leg_0.275_-0.275",
+            "same_mesh": false,
+            "coordinate": [
+              0.3,
+              0.3,
+              0.4325
+            ],
+            "fraction": 0.03889,
+            "distance": 0.0
+          }
+        ]
+      },
+      "after": {
+        "parts": [
+          {
+            "name": "Chair_Leg_-0.275_-0.275",
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "triangles": 12,
+            "components": 1,
+            "loose_vertices": 0,
+            "degenerate_faces": 0,
+            "duplicate_faces": 0,
+            "duplicate_coordinate_vertices": 0,
+            "boundary_edges": 0,
+            "nonmanifold_edges": 0,
+            "zero_edges": 0,
+            "inconsistent_winding_candidates": 0,
+            "self_intersection_candidates": 0,
+            "uv_layers": 1,
+            "material": "M_C01_STEEL.003",
+            "moving": false
+          },
+          {
+            "name": "Chair_Leg_-0.275_0.275",
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "triangles": 12,
+            "components": 1,
+            "loose_vertices": 0,
+            "degenerate_faces": 0,
+            "duplicate_faces": 0,
+            "duplicate_coordinate_vertices": 0,
+            "boundary_edges": 0,
+            "nonmanifold_edges": 0,
+            "zero_edges": 0,
+            "inconsistent_winding_candidates": 0,
+            "self_intersection_candidates": 0,
+            "uv_layers": 1,
+            "material": "M_C01_STEEL.003",
+            "moving": false
+          },
+          {
+            "name": "Chair_Leg_0.275_-0.275",
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "triangles": 12,
+            "components": 1,
+            "loose_vertices": 0,
+            "degenerate_faces": 0,
+            "duplicate_faces": 0,
+            "duplicate_coordinate_vertices": 0,
+            "boundary_edges": 0,
+            "nonmanifold_edges": 0,
+            "zero_edges": 0,
+            "inconsistent_winding_candidates": 0,
+            "self_intersection_candidates": 0,
+            "uv_layers": 1,
+            "material": "M_C01_STEEL.003",
+            "moving": false
+          },
+          {
+            "name": "Chair_Leg_0.275_0.275",
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "triangles": 12,
+            "components": 1,
+            "loose_vertices": 0,
+            "degenerate_faces": 0,
+            "duplicate_faces": 0,
+            "duplicate_coordinate_vertices": 0,
+            "boundary_edges": 0,
+            "nonmanifold_edges": 0,
+            "zero_edges": 0,
+            "inconsistent_winding_candidates": 0,
+            "self_intersection_candidates": 0,
+            "uv_layers": 1,
+            "material": "M_C01_STEEL.003",
+            "moving": false
+          },
+          {
+            "name": "Seat",
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "triangles": 12,
+            "components": 1,
+            "loose_vertices": 0,
+            "degenerate_faces": 0,
+            "duplicate_faces": 0,
+            "duplicate_coordinate_vertices": 0,
+            "boundary_edges": 0,
+            "nonmanifold_edges": 0,
+            "zero_edges": 0,
+            "inconsistent_winding_candidates": 0,
+            "self_intersection_candidates": 0,
+            "uv_layers": 1,
+            "material": "M_C01_DARK.003",
+            "moving": false
+          },
+          {
+            "name": "Cushion",
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "triangles": 12,
+            "components": 1,
+            "loose_vertices": 0,
+            "degenerate_faces": 0,
+            "duplicate_faces": 0,
+            "duplicate_coordinate_vertices": 0,
+            "boundary_edges": 0,
+            "nonmanifold_edges": 0,
+            "zero_edges": 0,
+            "inconsistent_winding_candidates": 0,
+            "self_intersection_candidates": 0,
+            "uv_layers": 1,
+            "material": "M_C01_FABRIC.003",
+            "moving": false
+          },
+          {
+            "name": "Back_Stanchion_-0.275",
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "triangles": 12,
+            "components": 1,
+            "loose_vertices": 0,
+            "degenerate_faces": 0,
+            "duplicate_faces": 0,
+            "duplicate_coordinate_vertices": 0,
+            "boundary_edges": 0,
+            "nonmanifold_edges": 0,
+            "zero_edges": 0,
+            "inconsistent_winding_candidates": 0,
+            "self_intersection_candidates": 0,
+            "uv_layers": 1,
+            "material": "M_C01_STEEL.003",
+            "moving": false
+          },
+          {
+            "name": "Back_Stanchion_0.275",
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "triangles": 12,
+            "components": 1,
+            "loose_vertices": 0,
+            "degenerate_faces": 0,
+            "duplicate_faces": 0,
+            "duplicate_coordinate_vertices": 0,
+            "boundary_edges": 0,
+            "nonmanifold_edges": 0,
+            "zero_edges": 0,
+            "inconsistent_winding_candidates": 0,
+            "self_intersection_candidates": 0,
+            "uv_layers": 1,
+            "material": "M_C01_STEEL.003",
+            "moving": false
+          },
+          {
+            "name": "Back_Rest",
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "triangles": 12,
+            "components": 1,
+            "loose_vertices": 0,
+            "degenerate_faces": 0,
+            "duplicate_faces": 0,
+            "duplicate_coordinate_vertices": 0,
+            "boundary_edges": 0,
+            "nonmanifold_edges": 0,
+            "zero_edges": 0,
+            "inconsistent_winding_candidates": 0,
+            "self_intersection_candidates": 0,
+            "uv_layers": 1,
+            "material": "M_C01_FABRIC.003",
+            "moving": false
+          }
+        ],
+        "totals": {
+          "vertices": 72,
+          "edges": 108,
+          "faces": 54,
+          "triangles": 108,
+          "loose_vertices": 0,
+          "degenerate_faces": 0,
+          "duplicate_faces": 0,
+          "duplicate_coordinate_vertices": 0,
+          "boundary_edges": 0,
+          "nonmanifold_edges": 0,
+          "zero_edges": 0,
+          "inconsistent_winding_candidates": 0
+        },
+        "bounding_xyz_blender": [
+          [
+            -0.30000001192092896,
+            -0.30000001192092896,
+            0.0
+          ],
+          [
+            0.30000001192092896,
+            0.30000001192092896,
+            0.9500000476837158
+          ]
+        ],
+        "interpart_overlaps": [
+          {
+            "a": "Chair_Leg_-0.275_-0.275",
+            "b": "Seat",
+            "volume_m3": 4.375e-05,
+            "same_material": false,
+            "moving": false,
+            "center": [
+              -0.2750000059604645,
+              0.2750000059604645,
+              0.4412499964237213
+            ]
+          },
+          {
+            "a": "Chair_Leg_-0.275_0.275",
+            "b": "Seat",
+            "volume_m3": 4.375e-05,
+            "same_material": false,
+            "moving": false,
+            "center": [
+              -0.2750000059604645,
+              -0.2750000059604645,
+              0.4412499964237213
+            ]
+          },
+          {
+            "a": "Chair_Leg_0.275_-0.275",
+            "b": "Seat",
+            "volume_m3": 4.375e-05,
+            "same_material": false,
+            "moving": false,
+            "center": [
+              0.2750000059604645,
+              0.2750000059604645,
+              0.4412499964237213
+            ]
+          },
+          {
+            "a": "Chair_Leg_0.275_0.275",
+            "b": "Seat",
+            "volume_m3": 4.375e-05,
+            "same_material": false,
+            "moving": false,
+            "center": [
+              0.2750000059604645,
+              -0.2750000059604645,
+              0.4412499964237213
+            ]
+          },
+          {
+            "a": "Cushion",
+            "b": "Back_Stanchion_-0.275",
+            "volume_m3": 2.52e-06,
+            "same_material": false,
+            "moving": false,
+            "center": [
+              -0.26000000536441803,
+              -0.25199998915195465,
+              0.5075000077486038
+            ]
+          },
+          {
+            "a": "Cushion",
+            "b": "Back_Stanchion_0.275",
+            "volume_m3": 2.52e-06,
+            "same_material": false,
+            "moving": false,
+            "center": [
+              0.26000000536441803,
+              -0.25199998915195465,
+              0.5075000077486038
+            ]
+          },
+          {
+            "a": "Back_Stanchion_-0.275",
+            "b": "Back_Rest",
+            "volume_m3": 0.0004508,
+            "same_material": false,
+            "moving": false,
+            "center": [
+              -0.26999999582767487,
+              -0.2744999974966049,
+              0.8349999785423279
+            ]
+          },
+          {
+            "a": "Back_Stanchion_0.275",
+            "b": "Back_Rest",
+            "volume_m3": 0.0004508,
+            "same_material": false,
+            "moving": false,
+            "center": [
+              0.26999999582767487,
+              -0.2744999974966049,
+              0.8349999785423279
+            ]
+          }
+        ],
+        "ngons": 0,
+        "triangle_only": false,
+        "degenerate_triangles": 0,
+        "normal_length_bad": 0,
+        "mesh_count": 9,
+        "uv0_meshes": 9,
+        "per_part_signed_volumes": {
+          "Chair_Leg_-0.275_-0.275": 0.0011250000037252895,
+          "Chair_Leg_-0.275_0.275": 0.0011250000037252895,
+          "Chair_Leg_0.275_-0.275": 0.0011250000037252895,
+          "Chair_Leg_0.275_0.275": 0.0011250000037252895,
+          "Seat": 0.019800001466274288,
+          "Cushion": 0.008261999989137044,
+          "Back_Stanchion_-0.275": 0.0011325000564008961,
+          "Back_Stanchion_0.275": 0.0011325000564008961,
+          "Back_Rest": 0.006670000028461213
+        },
+        "hierarchy": [
+          [
+            "Back_Rest",
+            "P19-04_ROOT",
+            [
+              0.0,
+              -0.275,
+              0.835
+            ]
+          ],
+          [
+            "Back_Stanchion_-0.275",
+            "P19-04_ROOT",
+            [
+              -0.275,
+              -0.274,
+              0.7235
+            ]
+          ],
+          [
+            "Back_Stanchion_0.275",
+            "P19-04_ROOT",
+            [
+              0.275,
+              -0.274,
+              0.7235
+            ]
+          ],
+          [
+            "Chair_Leg_-0.275_-0.275",
+            "P19-04_ROOT",
+            [
+              -0.275,
+              0.275,
+              0.225
+            ]
+          ],
+          [
+            "Chair_Leg_-0.275_0.275",
+            "P19-04_ROOT",
+            [
+              -0.275,
+              -0.275,
+              0.225
+            ]
+          ],
+          [
+            "Chair_Leg_0.275_-0.275",
+            "P19-04_ROOT",
+            [
+              0.275,
+              0.275,
+              0.225
+            ]
+          ],
+          [
+            "Chair_Leg_0.275_0.275",
+            "P19-04_ROOT",
+            [
+              0.275,
+              -0.275,
+              0.225
+            ]
+          ],
+          [
+            "Cushion",
+            "P19-04_ROOT",
+            [
+              0.0,
+              0.0,
+              0.503
+            ]
+          ],
+          [
+            "P19-04_ROOT",
+            null,
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          [
+            "Seat",
+            "P19-04_ROOT",
+            [
+              0.0,
+              0.0,
+              0.46
+            ]
+          ]
+        ],
+        "tjunction_candidates": [
+          {
+            "vertex_mesh": "Chair_Leg_-0.275_-0.275",
+            "edge_mesh": "Seat",
+            "same_mesh": false,
+            "coordinate": [
+              -0.3,
+              0.3,
+              0.45
+            ],
+            "fraction": 0.68182,
+            "distance": 0.0
+          },
+          {
+            "vertex_mesh": "Chair_Leg_-0.275_0.275",
+            "edge_mesh": "Seat",
+            "same_mesh": false,
+            "coordinate": [
+              -0.3,
+              -0.3,
+              0.45
+            ],
+            "fraction": 0.31818,
+            "distance": 0.0
+          },
+          {
+            "vertex_mesh": "Chair_Leg_0.275_-0.275",
+            "edge_mesh": "Seat",
+            "same_mesh": false,
+            "coordinate": [
+              0.3,
+              0.3,
+              0.45
+            ],
+            "fraction": 0.68182,
+            "distance": 0.0
+          },
+          {
+            "vertex_mesh": "Chair_Leg_0.275_0.275",
+            "edge_mesh": "Seat",
+            "same_mesh": false,
+            "coordinate": [
+              0.3,
+              -0.3,
+              0.45
+            ],
+            "fraction": 0.68182,
+            "distance": 0.0
+          },
+          {
+            "vertex_mesh": "Seat",
+            "edge_mesh": "Chair_Leg_-0.275_0.275",
+            "same_mesh": false,
+            "coordinate": [
+              -0.3,
+              -0.3,
+              0.4325
+            ],
+            "fraction": 0.96111,
+            "distance": 0.0
+          },
+          {
+            "vertex_mesh": "Seat",
+            "edge_mesh": "Chair_Leg_-0.275_-0.275",
+            "same_mesh": false,
+            "coordinate": [
+              -0.3,
+              0.3,
+              0.4325
+            ],
+            "fraction": 0.03889,
+            "distance": 0.0
+          },
+          {
+            "vertex_mesh": "Seat",
+            "edge_mesh": "Chair_Leg_0.275_0.275",
+            "same_mesh": false,
+            "coordinate": [
+              0.3,
+              -0.3,
+              0.4325
+            ],
+            "fraction": 0.03889,
+            "distance": 0.0
+          },
+          {
+            "vertex_mesh": "Seat",
+            "edge_mesh": "Chair_Leg_0.275_-0.275",
+            "same_mesh": false,
+            "coordinate": [
+              0.3,
+              0.3,
+              0.4325
+            ],
+            "fraction": 0.03889,
+            "distance": 0.0
+          }
+        ]
+      },
+      "fbx_roundtrip": {
+        "status": "PASS",
+        "triangles": 108,
+        "imported_meshes": 9,
+        "uv0_meshes": 9,
+        "non_triangle_polygons": 54,
+        "bbox_max_error_m": 2.9802322387695312e-08,
+        "binary_fbx_sha256": "a8ef74e3972e58b8964d8fd17f121b3cb4977c5c98c9b5ad0928630e77258469",
+        "binary_fbx_bytes": 37292
+      },
+      "tjunction_note": "geometric candidates only, moving separate parts are allowed; no forced welding",
+      "unity": "NOT_RUN",
+      "independent_C01_02": "PENDING"
+    }
+  ],
+  "unity": "NOT_RUN",
+  "independent_QA": "PENDING"
+}

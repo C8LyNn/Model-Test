@@ -64,6 +64,14 @@ for name in ('P18-01','P18-02','P18-03'):
    world=child.matrix_world.copy()
    child.parent=lid
    child.matrix_world=world
+  # PASS17: screw-head details are mechanically fixed to the lid's steel keepers.
+  for side in ('L','R'):
+   for suffix in ('A','B'):
+    child=by_name.get('FrontLatch_'+side+'_KeeperScrew_'+suffix)
+    if child is None:raise RuntimeError('P18-01 missing PASS17 keeper screw '+side+suffix)
+    world=child.matrix_world.copy()
+    child.parent=lid
+    child.matrix_world=world
  if name=='P18-02':
   for height in ('0.60','1.48'):
    for side in ('L','R'):
@@ -73,7 +81,27 @@ for name in ('P18-01','P18-02','P18-03'):
     world=child.matrix_world.copy()
     child.parent=parent
     child.matrix_world=world
+  # PASS17: floor-level octagonal base shoes follow fixed rack posts.
+  for xside in ('L','R'):
+   for zside in ('B','F'):
+    post_x='-1.015' if xside=='L' else '1.015'
+    post_z='-0.365' if zside=='B' else '0.365'
+    parent=by_name.get('Rack_Post_'+post_x+'_'+post_z)
+    child=by_name.get('Rack_FootPlate_'+xside+zside)
+    if parent is None or child is None:raise RuntimeError('P18-02 missing PASS17 post/shoe '+xside+zside)
+    world=child.matrix_world.copy()
+    child.parent=parent
+    child.matrix_world=world
  if name=='P18-03':
+  # PASS17: fixed handle-end clamps must never follow animated wheel pivots.
+  handle=by_name.get('Cart_Handle_Grip')
+  if handle is None:raise RuntimeError('P18-03 missing original grip')
+  for side in ('L','R'):
+   child=by_name.get('Cart_HandleClamp_'+side)
+   if child is None:raise RuntimeError('P18-03 missing PASS17 grip clamp '+side)
+   world=child.matrix_world.copy()
+   child.parent=handle
+   child.matrix_world=world
   for wheel in ('Wheel_LB','Wheel_LF','Wheel_RB','Wheel_RF'):
    parent=by_name.get(wheel+'_Anchor')
    child=by_name.get(wheel+'_AnchorRetainer')
@@ -81,7 +109,7 @@ for name in ('P18-01','P18-02','P18-03'):
    world=child.matrix_world.copy()
    child.parent=parent
    child.matrix_world=world
- expected={'P18-01':(43,868),'P18-02':(55,1172),'P18-03':(61,1724)}
+ expected={'P18-01':(47,980),'P18-02':(59,1284),'P18-03':(63,1780)}
  assert len(objects)==expected[name][0], f'{name} expected {expected[name][0]} authored mesh parts, got {len(objects)}'
  tri=lambda arr:sum(max(0,len(p.vertices)-2) for o in arr for p in o.data.polygons)
  assert tri(objects)==expected[name][1], f'{name} authored triangles changed: {tri(objects)}'

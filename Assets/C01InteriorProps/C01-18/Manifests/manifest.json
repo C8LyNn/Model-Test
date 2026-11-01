@@ -1,34 +1,41 @@
 {
   "package": "C01-18",
-  "version": "0.1.0",
+  "version": "0.1.17",
   "issue": 6,
   "assets": [
     {
       "id": "P18-01",
       "dims_xyz": [
         0.9,
-        0.9,
-        0.9
+        0.907,
+        0.919
       ],
-      "triangles": 180,
-      "parts": 15,
+      "triangles": 980,
+      "parts": 47,
       "collider_parts": [
         "Crate_Shell"
       ],
-      "moving_parts": [],
-      "blender": "MISSING",
+      "moving_parts": [
+        "Upper_Lid (requires motion review)"
+      ],
+      "blender": "PASS - real CI Blender 4.0.2 save",
       "fbx_unity_import": "NOT RUN",
-      "prefab_unity_import": "NOT RUN"
+      "prefab_unity_import": "NOT RUN",
+      "blender_fbx_roundtrip": "PASS - real CI Blender 4.0.2 binary FBX 7400 reimport",
+      "source_obj_sha256": "4fd8fc54e37f9941142aed85559ecef077cdfc97e2326b153dfb2ca91fa7b566",
+      "native_blend_sha256": "d8a525acdb0eb7dcfd7b37fb31117b42a53bb655a6543282adac3dff857900a1",
+      "native_fbx_sha256": "f541d502ba9eaaf5c7a0a7279c44f71f36dd482e3aed3ba0734058dcf1045f6c",
+      "independent_QA": "NOT RUN"
     },
     {
       "id": "P18-02",
       "dims_xyz": [
+        2.162,
         2.1,
-        2.1,
-        0.8
+        0.862
       ],
-      "triangles": 204,
-      "parts": 17,
+      "triangles": 1284,
+      "parts": 59,
       "collider_parts": [
         "Rack_Post_-1.015_-0.365",
         "Rack_Post_-1.015_0.365",
@@ -39,9 +46,14 @@
         "Shelf_2_Deck"
       ],
       "moving_parts": [],
-      "blender": "MISSING",
+      "blender": "PASS - real CI Blender 4.0.2 save",
       "fbx_unity_import": "NOT RUN",
-      "prefab_unity_import": "NOT RUN"
+      "prefab_unity_import": "NOT RUN",
+      "blender_fbx_roundtrip": "PASS - real CI Blender 4.0.2 binary FBX 7400 reimport",
+      "source_obj_sha256": "b7ee7803f625c2ec48901a0ad6739248e22a59ac56d7dada5e20847604e4d2fc",
+      "native_blend_sha256": "49b3697ff01efe0497f12703421f05fedb4e9a29636626bf72d1e57493a369d5",
+      "native_fbx_sha256": "e962c47fc60d84fb0d06d69f7aec3eead745705be002b7eb0abf11c5da452558",
+      "independent_QA": "NOT RUN"
     },
     {
       "id": "P18-03",
@@ -50,8 +62,8 @@
         1.2,
         0.7
       ],
-      "triangles": 348,
-      "parts": 17,
+      "triangles": 1780,
+      "parts": 63,
       "collider_parts": [
         "Cart_Shelf_0",
         "Cart_Shelf_1",
@@ -66,9 +78,23 @@
         "Wheel_RB",
         "Wheel_RF"
       ],
-      "blender": "MISSING",
+      "blender": "PASS - real CI Blender 4.0.2 save",
       "fbx_unity_import": "NOT RUN",
-      "prefab_unity_import": "NOT RUN"
+      "prefab_unity_import": "NOT RUN",
+      "blender_fbx_roundtrip": "PASS - real CI Blender 4.0.2 binary FBX 7400 reimport",
+      "source_obj_sha256": "4446cfc77a6c4a9de4cf7c172ae06395b9dad9e39941566046d952eab0f16a6a",
+      "native_blend_sha256": "ea1b4f5cc5612f8d8ff5c3c585b9b48843659972c2371204b5d3b5c4df3a3b56",
+      "native_fbx_sha256": "f169ab74086ee3853c14b46ac6f6199cd255cfca15d8b7cbef32c3758cde7926",
+      "independent_QA": "NOT RUN"
     }
-  ]
+  ],
+  "detail_pass": 17,
+  "native_build": {
+    "status": "PASS",
+    "blender": "4.0.2",
+    "github_actions_run_id": 41344872313,
+    "git_commit": "03f97354e47645ee80422115d29c67ef48808679",
+    "independent_QA": "NOT RUN",
+    "unity6_prefab_build": "NOT RUN"
+  }
 }

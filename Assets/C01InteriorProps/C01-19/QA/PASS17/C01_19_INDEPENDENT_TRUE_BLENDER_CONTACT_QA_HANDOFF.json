@@ -1,0 +1,55 @@
+{
+  "stage": "PASS17_ACTUAL_BLENDER4_NATIVE_AND_INDEPENDENT_C01_19_QA",
+  "scope": "Existing P19 furniture only, no new model ID, no ship edits, no merge",
+  "runs": {
+    "W01": "https://github.com/C8LyNn/Model-Test/actions/runs/41346465283",
+    "W02": "https://github.com/C8LyNn/Model-Test/actions/runs/41346471952"
+  },
+  "official_c01_02": "PENDING_NOT_INDEPENDENTLY_SIGNED",
+  "unity6_urp": "NOT_RUN",
+  "delivery": {
+    "archive_name": "C01-19_PASS17_COMPLETE_REAL_BLENDER_FBX_INTERACTIVE_GLTF_QA.zip",
+    "sha256": "23b2b199f6fbada2ece507af5e301517d9e4870083eb661104cb6990324cd534",
+    "bytes": 6771560,
+    "entries": 50,
+    "zip_crc": "PASS",
+    "interactive_preview": "C01-19_PASS17_INTERACTIVE_REAL_MESH_VIEWER.html",
+    "models_from_current_native_Blender_meshes": [
+      "P19-01",
+      "P19-02",
+      "P19-05",
+      "P19-07",
+      "P19-08"
+    ],
+    "interactive_browser_smoke": "NOT_RUN_BROWSER_BLOCKED"
+  },
+  "producer_branch": "c01/props-19-furniture",
+  "independent_numeric_test": "True 3D indexed segment triangle intersections on actual Blender 4.0.2 source-saved .blend; coplanar new-vs-original same-mesh triangle 2D plane clipping; existing UV/pivots not rewritten",
+  "scope_limitations": "Contact graph and same-facing coplanar test only; not animated clearance or complete whole-model BVH. C01-02 still must independently accept exact final FBX SHA.",
+  "models": [
+    {
+      "id": "P19-01",
+      "vertices": 269,
+      "triangles": 470,
+      "parts": 4,
+      "blend_sha256": "a8883117ec9e59b93cb988970c09d6cdaf496b8a73957a60aa3ca503f8be420f",
+      "fbx_sha256": "e2e0bb9e095c1daed87e407814e88f8788cf503ab705d3e34513879038bcd559",
+      "blender_roundtrip": "PASS",
+      "contact_supports": 14,
+      "contact_verified": 14,
+      "coplanar_overlap_pairs": 0
+    },
+    {
+      "id": "P19-02",
+      "vertices": 166,
+      "triangles": 292,
+      "parts": 5,
+      "blend_sha256": "ff0448b34e70ab65380889dfc1d46e426d88873684e831775306cfca28e1a99f",
+      "fbx_sha256": "b0d68ce917a938b4bdaa32f4b2d48dcab5275c752c141260cabd3d82a5c9374f",
+      "blender_roundtrip": "PASS",
+      "contact_supports": 5,
+      "contact_verified": 5,
+      "coplanar_overlap_pairs": 0
+    }
+  ]
+}

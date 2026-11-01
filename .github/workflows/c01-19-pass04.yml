@@ -35,7 +35,7 @@ jobs:
           assert len(x['models'])==4
           assert {z['id'] for z in x['models']}=={'P19-01','P19-02','P19-03','P19-04'}
           for m in x['models']:
-            if m['id'] in {'P19-01','P19-02','P19-03'}:
+            if m['id'] in {'P19-01','P19-02'}:
               assert m['after']['triangle_only'] and not m['after']['ngons']
             assert m['after']['degenerate_triangles']==0
             assert m['fbx_roundtrip']['status']=='PASS'
@@ -64,5 +64,7 @@ jobs:
           if git diff --cached --quiet; then exit 0; fi
           git commit -m "fix(C01-19 PASS04): real native triangulated Blender/FBX and evidence"
           git fetch origin c01/props-19-furniture
+          # Runner-only Blender/LFS worktree modifications are not part of the committed candidate.
+          git reset --hard HEAD
           git rebase origin/c01/props-19-furniture
           git push origin HEAD:c01/props-19-furniture

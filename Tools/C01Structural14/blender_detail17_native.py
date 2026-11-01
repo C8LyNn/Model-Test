@@ -3,7 +3,7 @@ Source is a losslessly encoded latest OBJ-derived RAI-01 GLB with 20 actual mesh
 Original four native Blender-v002 meshes/UVs replace their temporary GLB copies.
 """
 import bpy, json, pathlib, base64, lzma, hashlib
-ROOT=pathlib.Path(__file__).resolve().parents[1]
+ROOT=pathlib.Path(__file__).resolve().parents[2]
 P14=ROOT/'Assets/C01StructuralPrototypes/P14'
 SRC=P14/'Pass17/Source/RAI-01_REAL_SOURCE_GLB.xz.b64'
 LEG=P14/'Pass03/Sources/C01_14_RAI-01_v002.blend'

@@ -23,7 +23,7 @@ jobs:
       - name: Install Blender 4.x
         run: |
           sudo apt-get update -qq
-          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y blender
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y blender python3-numpy
           blender --version | head -2
       - name: Inspect and roundtrip actual mesh topology through Blender and FBX
         run: |

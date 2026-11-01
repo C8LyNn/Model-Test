@@ -29,6 +29,30 @@ jobs:
           assert 'new Mesh(' not in editor and 'CreatePrimitive(' not in editor
           print('C01 PASS04 STATIC MANIFEST+SOURCE CHECKS PASS; no Blender or Unity QA was run')
           PY
+      - name: Regression - exact FBX SHA pin required before QA staging
+        run: |
+          python3 - <<'PY'
+          import copy, json, pathlib, tempfile
+          from C01InteriorProps.Pass04.stage_real_fbx import stage
+          project = pathlib.Path.cwd()
+          source = json.loads((project/'C01InteriorProps/Pass04/source_stage_36.json').read_text())
+          pinned = next(x for x in source['assets'] if x['id'] == 'P18-01')
+          assert len(pinned['final_fbx_sha256']) == 64
+          with tempfile.TemporaryDirectory() as tmp:
+              manifest = pathlib.Path(tmp)/'manifest.json'
+              def stage_one(apply):
+                  manifest.write_text(json.dumps(source))
+                  return stage(manifest, project, apply, {'P18-01'})
+              assert stage_one(False)[0]['state'] == 'NOT_RUN_DRY_RUN'
+              pinned['final_fbx_sha256'] = None
+              assert stage_one(False)[0]['state'] == 'BLOCKED_UNPINNED_BINARY_SHA256'
+              # Apply mode must not fetch old producer FBX or create a staged asset.
+              assert stage_one(True)[0]['state'] == 'BLOCKED_UNPINNED_BINARY_SHA256'
+              assert not (project/'Assets/C01InteriorProps/Pass04Incoming/P18-01/P18-01.fbx').exists()
+              pinned['final_fbx_sha256'] = 'not-a-real-sha'
+              assert stage_one(False)[0]['state'] == 'BLOCKED_UNPINNED_BINARY_SHA256'
+          print('C01-10 QA SHA PIN GATE: 4/4 regression assertions PASS; Unity/Blender NOT RUN')
+          PY
       - name: Execute Python staging dry run with current checkout
         run: |
           python3 C01InteriorProps/Pass04/stage_real_fbx.py --repo . --ids P19-05 P19-07 P19-08

@@ -202,7 +202,7 @@ public static class BuildWave01CargoPrefabs {
      var mat=AssetDatabase.LoadAssetAtPath<Material>(Root+"/Materials/"+matName+".mat");
      if(!mat)throw new InvalidOperationException("Missing URP material "+matName+" for "+id+"/"+mf.name);
      renderer.sharedMaterial=mat;
-     bool collider=id=="P18-01"?mf.name.StartsWith("Crate_Shell"):id=="P18-02"?(mf.name.StartsWith("Rack_Post")||(mf.name.StartsWith("Shelf_")&&mf.name.Contains("_Deck"))):(mf.name.StartsWith("Cart_Shelf_")||mf.name.StartsWith("Cart_Upright_"));
+     bool collider=id=="P18-01"?mf.name.StartsWith("Crate_Shell"):id=="P18-02"?(mf.name.StartsWith("Rack_Post")||(mf.name.StartsWith("Shelf_")&&mf.name.Contains("_Deck"))):((mf.name=="Cart_Shelf_0"||mf.name=="Cart_Shelf_1")||mf.name.StartsWith("Cart_Upright_"));
      if(collider) {
       var bc=mf.GetComponent<BoxCollider>()??mf.gameObject.AddComponent<BoxCollider>();
       bc.center=mf.sharedMesh.bounds.center;bc.size=mf.sharedMesh.bounds.size;collision++;
@@ -210,8 +210,9 @@ public static class BuildWave01CargoPrefabs {
     }
     int expectedParts=id=="P18-01"?47:(id=="P18-02"?59:63);
     int expectedTriangles=id=="P18-01"?980:(id=="P18-02"?1284:1780);
-    if(count!=expectedParts||totalTriangles!=expectedTriangles||collision==0)
-     throw new InvalidOperationException(id+" FBX fidelity gate failed: "+count+"/"+totalTriangles+"/"+collision+" expected "+expectedParts+"/"+expectedTriangles+"/positive");
+    int expectedColliders=id=="P18-01"?1:(id=="P18-02"?7:6);
+    if(count!=expectedParts||totalTriangles!=expectedTriangles||collision!=expectedColliders)
+     throw new InvalidOperationException(id+" FBX fidelity gate failed: "+count+"/"+totalTriangles+"/"+collision+" expected "+expectedParts+"/"+expectedTriangles+"/"+expectedColliders);
     if(id=="P18-03") {
      int wheels=0;
      foreach(var t in root.GetComponentsInChildren<Transform>(true)) {

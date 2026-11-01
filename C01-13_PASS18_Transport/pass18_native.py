@@ -83,13 +83,37 @@ def preview(label,wire):
     cam.data.type="ORTHO";cam.data.ortho_scale=longest*1.8;s.camera=cam
     s.render.engine="BLENDER_WORKBENCH";s.display.shading.light="STUDIO"
     s.display.shading.color_type="MATERIAL"
-    if hasattr(s.display.shading,"show_wireframes"):s.display.shading.show_wireframes=wire
+    # Workbench headless ignores the viewport-only show_wireframes flag.
+    # Derive thin actual mesh-edge geometry strictly for WIRE preview, remove
+    # it immediately after the render; never save it into .blend or export FBX.
+    qa_overlays=[]
+    if wire:
+        edge_mat=bpy.data.materials.new("QA_DARK_WIRE_ONLY")
+        edge_mat.diffuse_color=(0.025,0.065,0.09,1)
+        original_meshes=list(meshes())
+        for src in original_meshes:
+            e=src.copy()
+            e.data=src.data.copy()
+            e.name="QA_WIRE_"+src.name
+            s.collection.objects.link(e)
+            e.matrix_world=src.matrix_world.copy()
+            e.data.materials.clear()
+            e.data.materials.append(edge_mat)
+            mod=e.modifiers.new("TrueSourceIndexedEdges","WIREFRAME")
+            mod.use_replace=True
+            mod.thickness=max(0.001, longest*0.0014)
+            mod.offset=0.04
+            qa_overlays.append(e)
     s.render.resolution_x=850;s.render.resolution_y=850;s.render.resolution_percentage=100
     s.render.image_settings.file_format="PNG"
     p=PREV/(label+("_WIREFRAME" if wire else "_SHADED")+".png")
     s.render.filepath=str(p);bpy.ops.render.render(write_still=True)
     assert p.exists() and p.stat().st_size>1000
     bpy.data.objects.remove(cam,do_unlink=True)
+    for e in qa_overlays:
+        datablock=e.data
+        bpy.data.objects.remove(e,do_unlink=True)
+        if datablock.users==0:bpy.data.meshes.remove(datablock)
     return {"file":p.name,"sha256":hashbytes(p.read_bytes())}
 results={}
 for key in ("D01","D02"):

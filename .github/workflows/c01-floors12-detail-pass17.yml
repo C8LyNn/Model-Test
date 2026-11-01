@@ -77,6 +77,44 @@ jobs:
                 assert base64.b64encode(png).decode() in page,(name,key)
           print('PASS17 viewer embeds genuine NEW GLB and Blender previews 3/3; WebGL browser NOT RUN')
           PY
+      - name: Smoke-test REAL GLB rendering in installed Chrome (fail closed)
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import pathlib
+          p=pathlib.Path('C01StandaloneKits/FloorCeiling/DetailPass17')
+          assert (p/'C01_12_DETAIL_PASS17_REAL_GLB_INTERACTIVE.html').stat().st_size>100000
+          PY
+          BROWSER="$(command -v google-chrome || command -v chromium || command -v chromium-browser || true)"
+          if [ -z "$BROWSER" ]; then
+            echo '{"chrome_browser":"NOT_RUN","reason":"No Chrome/Chromium binary on hosted runner"}' > C01StandaloneKits/FloorCeiling/DetailPass17/QA/DETAIL_PASS17_BROWSER_SMOKE.json
+            echo "BROWSER NOT RUN — no browser installed"
+          else
+            HTML="file://$(pwd)/C01StandaloneKits/FloorCeiling/DetailPass17/C01_12_DETAIL_PASS17_REAL_GLB_INTERACTIVE.html"
+            timeout 90s "$BROWSER" --headless=new --no-sandbox --disable-dev-shm-usage \
+              --enable-unsafe-swiftshader --use-gl=angle --use-angle=swiftshader \
+              --window-size=1280,940 --virtual-time-budget=20000 \
+              --screenshot="$(pwd)/C01StandaloneKits/FloorCeiling/DetailPass17/QA/DETAIL_PASS17_REAL_CHROME_F01.png" \
+              --dump-dom "$HTML" > /tmp/c01_12_pass17_chrome_dom.html 2> /tmp/c01_12_pass17_chrome_err.log
+            python3 - <<'PY'
+          import json,pathlib,re
+          root=pathlib.Path('C01StandaloneKits/FloorCeiling/DetailPass17/QA')
+          dom=pathlib.Path('/tmp/c01_12_pass17_chrome_dom.html').read_text(errors='replace')
+          match=re.search(r'<div id="status"[^>]*>(.*?)</div>',dom,re.S)
+          status=re.sub('<[^>]*>','',match.group(1)) if match else ''
+          screenshot=root/'DETAIL_PASS17_REAL_CHROME_F01.png'
+          result={'chrome_browser':'PASS' if 'F01 | real v004 GLB' in status else 'FAIL',
+             'actual_glb_loader_status':status[:512],
+             'real_chrome_screenshot_saved':screenshot.is_file() and screenshot.read_bytes().startswith(b'\x89PNG\r\n\x1a\n'),
+             'models_browser_tested':['F01'],
+             'other_model_browser_runtime':'NOT_RUN',
+             'unity6_urp':'NOT_RUN'}
+          (root/'DETAIL_PASS17_BROWSER_SMOKE.json').write_text(json.dumps(result,indent=2)+'\n')
+          assert result['chrome_browser']=='PASS' and result['real_chrome_screenshot_saved'],result
+          print('REAL CHROME F01 GLB LOADER AND SCREENSHOT PASS; F02/C01 BROWSER NOT RUN')
+          PY
+          fi
       - name: Upload genuine v004 native, 9 maps and 12 Blender source-mesh previews
         uses: actions/upload-artifact@v4
         with:

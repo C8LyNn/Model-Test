@@ -23,11 +23,17 @@ jobs:
       - name: Install verified Blender 4.x CLI
         run: |
           sudo apt-get update
-          sudo apt-get install -y --no-install-recommends blender xvfb libegl1 libgl1 libgl1-mesa-dri libopengl0
+          sudo apt-get install -y --no-install-recommends blender python3-numpy xvfb libegl1 libgl1 libgl1-mesa-dri libopengl0
           blender --version | head -4
           blender --version | head -1 | grep -E '^Blender 4\.'
       - name: Save actual native BLEND and export FBX, reimport independent
-        run: LIBGL_ALWAYS_SOFTWARE=1 xvfb-run -a blender --background --python Tools/C01Structural14/blender_detail17_native.py
+        shell: bash
+        run: |
+          set -o pipefail
+          LIBGL_ALWAYS_SOFTWARE=1 xvfb-run -a blender --background --python Tools/C01Structural14/blender_detail17_native.py 2>&1 | tee c01_14_blender_detail17.log
+          if grep -E 'Traceback \(most recent call last\)|ModuleNotFoundError|AssertionError' c01_14_blender_detail17.log; then
+            echo "ERROR: Blender script raised an exception"; exit 1
+          fi
       - name: Verify generated file signatures and receipt
         run: |
           python3 - <<'PY'

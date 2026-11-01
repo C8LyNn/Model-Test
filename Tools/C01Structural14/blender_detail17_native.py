@@ -45,10 +45,11 @@ for o in new:
  if not o.data.uv_layers:
   uv=o.data.uv_layers.new(name='UVMap')
   for p in o.data.polygons:
-   n=p.normal;major=max(range(3),key=lambda k:abs(n[k]))
+   pts=[o.matrix_world @ o.data.vertices[o.data.loops[li].vertex_index].co for li in p.loop_indices]
+   n=(pts[1]-pts[0]).cross(pts[2]-pts[0])
+   major=max(range(3),key=lambda k:abs(n[k]))
    axes=[i for i in range(3) if i!=major]
-   for li in p.loop_indices:
-    v=o.matrix_world @ o.data.vertices[o.data.loops[li].vertex_index].co
+   for li,v in zip(p.loop_indices,pts):
     uv.data[li].uv=(float(v[axes[0]])*2,float(v[axes[1]])*2)
  if not o.data.materials:
   mat=bpy.data.materials.get('M_C01_STEEL' if ('Screw' in o.name or 'Bolt' in o.name) else 'M_C01_DARK')
@@ -66,9 +67,22 @@ def assert_exact_world_bounds(objs,stage):
   assert all(abs(actual[j][k]-expected[j][k])<=0.00001 for j in range(2) for k in range(3)),(stage,o.name,expected,actual)
  assert seen==set(SOURCE_BOUNDS),(stage,sorted(seen^set(SOURCE_BOUNDS)))
 
+def assert_no_degenerate_uv0(objs,stage):
+ bad=[]
+ for o in objs:
+  assert o.data.uv_layers,(stage,o.name,'NO_UV0')
+  layer=o.data.uv_layers.active.data
+  for p in o.data.polygons:
+   assert len(p.loop_indices)==3,(stage,o.name,'NOT_TRIANGULATED')
+   uv=[layer[i].uv for i in p.loop_indices]
+   cross=(uv[1][0]-uv[0][0])*(uv[2][1]-uv[0][1])-(uv[1][1]-uv[0][1])*(uv[2][0]-uv[0][0])
+   if abs(cross)<1e-10:bad.append((o.name,p.index))
+ assert not bad,(stage,'DEGENERATE_UV0_TRIANGLES',bad[:25],len(bad))
+
 meshes=[o for o in bpy.data.objects if o.type=='MESH']
 assert len(meshes)==20
 assert_exact_world_bounds(meshes,'PRE_EXPORT')
+assert_no_degenerate_uv0(meshes,'PRE_EXPORT')
 assert sum(len(p.vertices)-2 for o in meshes for p in o.data.polygons)==424
 assert all(o.data.uv_layers for o in meshes)
 assert all(o.data.materials for o in meshes)
@@ -87,6 +101,7 @@ bpy.ops.import_scene.fbx(filepath=str(fbx))
 re=[o for o in bpy.data.objects if o.type=='MESH']
 actual={o.name:sum(len(p.vertices)-2 for p in o.data.polygons) for o in re}
 assert_exact_world_bounds(re,'FBX_REIMPORT')
+assert_no_degenerate_uv0(re,'FBX_REIMPORT')
 assert actual==expected,{'actual':actual,'expected':expected}
 assert all(o.data.uv_layers for o in re)
 assert all(o.data.materials for o in re)

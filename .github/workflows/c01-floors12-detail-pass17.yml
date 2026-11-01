@@ -132,6 +132,9 @@ jobs:
           git add C01StandaloneKits/FloorCeiling/DetailPass17
           if ! git diff --cached --quiet; then
             git commit -m "C01-12 PASS17: real Blender4 v004 material-only FBX GLB PNG and SHA evidence"
+            # Blender/checkout may touch unrelated tracked binaries. Do not include them in the producer commit.
+            git status --short
+            git stash push --include-untracked -m "C01-12 PASS17 temporary non-delivery worktree changes"
             git fetch origin c01/floors-12-legacy-repair
             git rebase origin/c01/floors-12-legacy-repair
             git push origin HEAD:c01/floors-12-legacy-repair

@@ -22,6 +22,9 @@ EPS=1e-6
 def sha(path): return hashlib.sha256(path.read_bytes()).hexdigest()
 def vec(p): return tuple(float(x) for x in p)
 def canonical_tri(points):return tuple(sorted(tuple(round(float(x),6) for x in p) for p in points))
+def safe_round(x):
+    v=round(float(x),5)
+    return 0.0 if abs(v)<.000001 else v
 def good_image(image):
     return image is not None and image.size[0]==512 and image.size[1]==512 and image.packed_file is not None
 
@@ -42,6 +45,16 @@ def snapshot(ob,id,context,check_nodes):
     assert ob.location.length<1e-6 and ob.scale==Vector((1,1,1)),(id,context,'pivot_or_scale')
     assert sum(abs(float(a)) for a in ob.rotation_euler)<1e-6,(id,context,'rotation')
     faces=[list(p.vertices) for p in me.polygons]
+    # Compare original quad corners, their associated UV0 and material id,
+    # independently of importer-chosen planar quad triangulation diagonals.
+    surface_faces=[]
+    for poly in me.polygons:
+        corners=[]
+        for vi,li in zip(poly.vertices,poly.loop_indices):
+            corners.append((tuple(safe_round(z) for z in world[vi]),
+                            tuple(safe_round(z) for z in uv.data[li].uv)))
+        surface_faces.append((int(poly.material_index),tuple(sorted(corners))))
+    quad_surface_sha=hashlib.sha256(json.dumps(sorted(surface_faces),separators=(',',':')).encode()).hexdigest()
     edge_faces={}
     for fi,face in enumerate(faces):
         for a,b in zip(face,face[1:]+face[:1]):
@@ -95,7 +108,7 @@ def snapshot(ob,id,context,check_nodes):
                 assert matches[0].colorspace_settings.name==('sRGB' if typ=='basecolor' else 'Non-Color'),(id,'colorspace',idx,typ)
     return {'vertices':len(world),'edges':len(edge_faces),'quads':len(faces),'triangles':len(v_to_tri),
         'material_slots':len(me.materials),'per_face_material_ids':[p.material_index for p in me.polygons],
-        'uv0_loops':len(uv.data),'uv0_min_triangle_area_valid':not baduv,'same_facing_coplanar_overlap_count':len(overlaps),
+        'quad_surface_uv_material_sha256':quad_surface_sha,'uv0_loops':len(uv.data),'uv0_min_triangle_area_valid':not baduv,'same_facing_coplanar_overlap_count':len(overlaps),
         'bounds_source_xyz_m':[[round(float(z),7) for z in row] for row in bb],
         'world_triangles_sha256':hashlib.sha256(json.dumps(sorted(v_to_tri),separators=(',',':')).encode()).hexdigest(),
         'whole_mesh_connected':True,'manifold':True}
@@ -123,8 +136,9 @@ def one(id):
     imps=[o for o in bpy.context.scene.objects if o.type=='MESH']
     assert len(imps)==1,(id,'FBX reimported mesh count',len(imps))
     imported=snapshot(imps[0],id,'v004_binary_fbx',False)
-    for key in ('world_triangles_sha256','per_face_material_ids','bounds_source_xyz_m','uv0_loops'):
-        assert source[key]==imported[key],(id,'FBX mismatch',key,source[key],imported[key])
+    for key in ('quad_surface_uv_material_sha256','per_face_material_ids','bounds_source_xyz_m','uv0_loops'):
+        assert source[key]==imported[key],(id,'FBX quad surface/UV/material mismatch',key,source[key],imported[key])
+    different_diagonal=source['world_triangles_sha256']!=imported['world_triangles_sha256']
     # GLB inspection as a separate real-app read: glTF scene graph may split
     # components by material. Preserve Blender's per-triangle totals, not pseudo boxes.
     bpy.ops.wm.read_factory_settings(use_empty=True)
@@ -137,6 +151,7 @@ def one(id):
         glb_tri+=len(ob.data.loop_triangles)
     assert glb_tri==28,(id,'GLB has wrong triangle count',glb_tri)
     return {'v003_source':base,'v004_blend':source,'v004_fbx_reimport':imported,
+            'fbx_tri_diagonal_changed_with_identical_quad_surfaces':different_diagonal,
             'v004_real_blender_glb_import_triangles':glb_tri,'v004_real_blender_glb_import_meshes':len(globs),
             'sha256':{x:rec['native'][x]['sha256'] for x in ('blend','fbx','glb')},
             'producer_static_native_qa':'PASS','independent_C01_02_final_qa':'PENDING','unity6_urp':'NOT_RUN'}

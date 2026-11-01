@@ -20,6 +20,7 @@ import tempfile
 from pathlib import Path, PurePosixPath
 
 BINARY_FBX_MAGIC = b"Kaydara FBX Binary"
+NATIVE_BLEND_MAGIC = b"BLENDER-"
 VALID_ID = re.compile(r"^P(?:15|16|17|18|19)-0[1-8]$")
 OUT_REL = Path("Assets/C01InteriorProps/Pass04Incoming")
 REPORT_REL = Path("C01InteriorProps_QA/PASS04/staged_sources.csv")
@@ -56,6 +57,7 @@ def validate_entry(entry: dict) -> None:
     valid_states = {
         "CANDIDATE_BINARY_FBX_QA_NOT_APPROVED",
         "BLOCKED_P19_EXPORT_TOPOLOGY",
+        "BLOCKED_P19_VISUAL_T_JUNCTION",
         "BLOCKED_NO_NATIVE_BINARY_FBX",
         "BLOCKED_SOURCE_NEWER_THAN_FBX",
         "BLOCKED_DETAIL_PASS12_NATIVE_EXPORT",
@@ -65,6 +67,20 @@ def validate_entry(entry: dict) -> None:
         raise ValueError(f"Unreviewed export-sync state for {ident}")
     if not entry.get("native_export_blocker"):
         raise ValueError(f"Missing export-sync reason for {ident}")
+
+
+def validate_real_blend(file: Path, expected_sha: str) -> tuple[str, int]:
+    size = file.stat().st_size
+    with file.open("rb") as stream:
+        header = stream.read(32)
+    if header.startswith(b"version https://git-lfs.github.com/spec/v1"):
+        raise ValueError("Git LFS pointer, not native Blender source")
+    if not header.startswith(NATIVE_BLEND_MAGIC) or size < 200:
+        raise ValueError("Not an actual Blender source binary")
+    digest = sha256(file)
+    if digest != expected_sha:
+        raise ValueError("Native Blender SHA differs from pinned producer source")
+    return digest, size
 
 
 def validate_real_fbx(file: Path) -> tuple[str, int]:
@@ -115,6 +131,22 @@ def stage(manifest: Path, project: Path, apply: bool, selected_ids: set[str]) ->
                 source_commit=entry["source_commit"], fbx_sha256="",
                 size_bytes="", detail="Candidate has no exact 64-character final FBX SHA-256; do not fetch or stage"
             ))
+        elif not re.fullmatch(r"[0-9a-f]{64}", entry.get("native_blend_sha256") or ""):
+            rows.append(dict(
+                id=entry["id"], state="BLOCKED_UNPINNED_NATIVE_BLEND_SHA256",
+                source_commit=entry["source_commit"], fbx_sha256="",
+                size_bytes="", detail="No exact native .blend SHA-256; refuse unmatched FBX"
+            ))
+        elif not entry.get("native_blend_path") or \
+             PurePosixPath(entry["native_blend_path"]).is_absolute() or \
+             ".." in PurePosixPath(entry["native_blend_path"]).parts or \
+             PurePosixPath(entry["native_blend_path"]).suffix.lower() != ".blend" or \
+             PurePosixPath(entry["native_blend_path"]).stem != entry["id"]:
+            rows.append(dict(
+                id=entry["id"], state="BLOCKED_INVALID_NATIVE_BLEND_PATH",
+                source_commit=entry["source_commit"], fbx_sha256="",
+                size_bytes="", detail="Unsafe or missing canonical native Blender source path"
+            ))
         else:
             eligible.append(entry)
     by_commit: dict[tuple[str, str], list[dict]] = {}
@@ -139,16 +171,18 @@ def stage(manifest: Path, project: Path, apply: bool, selected_ids: set[str]) ->
                 git(project, "cat-file", "-e", f"{commit}^{{commit}}")
                 env = dict(os.environ, GIT_LFS_SKIP_SMUDGE="1")
                 git(project, "worktree", "add", "--detach", str(worktree), commit, env=env)
-                source_names = [e["fbx_path"] for e in group]
+                source_names = [p for e in group for p in (e["fbx_path"], e["native_blend_path"])]
                 include = ",".join(source_names)
                 git(worktree, "lfs", "pull", "--include", include, "--exclude", "")
                 for entry in group:
                     ident = entry["id"]
                     origin = worktree.joinpath(*PurePosixPath(entry["fbx_path"]).parts)
+                    native = worktree.joinpath(*PurePosixPath(entry["native_blend_path"]).parts)
                     dest = project / OUT_REL / ident / (ident + ".fbx")
                     record = dict(id=ident, state="BLOCKED", source_commit=commit,
                                   fbx_sha256="", size_bytes="", detail="")
                     try:
+                        blend_digest, _ = validate_real_blend(native, entry["native_blend_sha256"])
                         digest, size = validate_real_fbx(origin)
                         # All eligible candidates must have passed the SHA-pin gate above.
                         expected = entry["final_fbx_sha256"]
@@ -161,7 +195,8 @@ def stage(manifest: Path, project: Path, apply: bool, selected_ids: set[str]) ->
                             shutil.copy2(origin, dest)
                         record.update(state="STAGED_SOURCE_NOT_QA_APPROVED",
                                       fbx_sha256=digest, size_bytes=str(size),
-                                      detail=str(dest.relative_to(project)).replace("\\", "/"))
+                                      detail=str(dest.relative_to(project)).replace("\\", "/") +
+                                             " [native .blend SHA256 " + blend_digest + "]")
                     except Exception as ex:
                         record["detail"] = type(ex).__name__ + ": " + str(ex)
                     rows.append(record)

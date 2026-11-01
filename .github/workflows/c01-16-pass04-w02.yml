@@ -77,8 +77,7 @@ jobs:
           git commit -m 'fix(C01-16 PASS04 W02): real native .blend, binary FBX and verified roundtrip'
           # Clean only the disposable CI checkout after native outputs are committed.
           # Blender/LFS leave incidental tracked modifications that otherwise block rebase.
-          git status --short
-          git reset --hard HEAD
-          git fetch origin 'c01/props-16-lighting-wave02'
-          git rebase 'origin/c01/props-16-lighting-wave02'
+          # Push the exact child commit with GitHub fast-forward protection.
+          # Do not rebase a working tree containing non-pointer legacy LFS assets.
+          # On concurrent head movement GitHub rejects this push safely.
           git push origin HEAD:'c01/props-16-lighting-wave02'

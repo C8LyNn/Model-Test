@@ -9,6 +9,11 @@ on:
       - '.github/workflows/c01-13-pass18-native.yml'
   workflow_dispatch:
 
+# Avoid overlapping PASS18 publishing attempts; never force-push or rewrite producer history.
+concurrency:
+  group: c01-13-pass18-native
+  cancel-in-progress: false
+
 permissions:
   contents: write
 

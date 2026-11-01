@@ -6,6 +6,7 @@ on:
       - .github/workflows/c01-floors12-detail-pass17.yml
       - Tools/C01Floors12/detail_pass17_material_native.py
       - Tools/C01Floors12/detail_pass17_glb_viewer.py
+      - Tools/C01Floors12/detail_pass17_bundle_offline.py
   workflow_dispatch:
 permissions:
   contents: write
@@ -76,6 +77,24 @@ jobs:
                 png=(repo/still['path']).read_bytes()
                 assert base64.b64encode(png).decode() in page,(name,key)
           print('PASS17 viewer embeds genuine NEW GLB and Blender previews 3/3; WebGL browser NOT RUN')
+          PY
+      - name: Embed pinned Three.js into ONE fully OFFLINE real-GLB viewer
+        shell: bash
+        run: |
+          set -euo pipefail
+          WORKDIR=/tmp/c01_12_offline_3d
+          mkdir -p "$WORKDIR"
+          python3 Tools/C01Floors12/detail_pass17_bundle_offline.py extract "$WORKDIR"
+          npm install --prefix "$WORKDIR" --no-audit --no-fund --no-save three@0.165.0 esbuild@0.24.0
+          "$WORKDIR/node_modules/.bin/esbuild" "$WORKDIR/viewer_client.mjs" --bundle --format=iife --minify --outfile="$WORKDIR/viewer_bundle.js"
+          python3 Tools/C01Floors12/detail_pass17_bundle_offline.py embed "$WORKDIR"
+          python3 - <<'PY'
+          from pathlib import Path
+          s=Path('C01StandaloneKits/FloorCeiling/DetailPass17/C01_12_DETAIL_PASS17_REAL_GLB_INTERACTIVE.html').read_text()
+          assert 'C01_PASS17_BUNDLED_OFFLINE_THREE' in s
+          assert '<script type="module">' not in s and 'three@0.165.0/' not in s
+          assert 'glb_base64' in s and 'MIT LICENSE' in s
+          print('SELF-CONTAINED OFFLINE 3D viewer static PASS')
           PY
       - name: Smoke-test REAL GLB rendering in installed Chrome (fail closed)
         shell: bash

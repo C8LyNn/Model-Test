@@ -45,8 +45,16 @@ def render(stage,mode,view,camera_location,target,scale,meshes):
  shading.background_type='WORLD'
  shading.show_cavity=True
  shading.cavity_type='BOTH'
- assert hasattr(shading,'show_wireframes'), 'Blender workbench wireframe overlay unavailable'
- shading.show_wireframes=(mode=='WIREFRAME')
+ # Workbench background render does not expose viewport wireframe overlays.
+ # Use Blender's native non-destructive modifier ONLY for exact source mesh edge previews.
+ modifiers=[]
+ if mode=='WIREFRAME':
+  for meshobj in meshes:
+   mod=meshobj.modifiers.new(name='C01_PASS18_RENDER_ONLY_WIREFRAME',type='WIREFRAME')
+   mod.thickness=0.0025
+   mod.use_replace=True
+   mod.use_even_offset=True
+   modifiers.append((meshobj,mod))
  for obj in meshes:
   n=obj.name.lower()
   if 'screw' in n or 'bolt' in n: obj.color=(0.77,0.79,0.81,1.0)
@@ -65,6 +73,8 @@ def render(stage,mode,view,camera_location,target,scale,meshes):
  path=PREV/f'RAI-01_PASS18_{stage}_{view}_{mode}_REAL_BLENDER.png'
  scene.render.filepath=str(path)
  bpy.ops.render.render(write_still=True)
+ for meshobj,mod in modifiers:
+  meshobj.modifiers.remove(mod)
  data=path.read_bytes()
  assert data[:8]==b'\x89PNG\r\n\x1a\n' and len(data)>15000,(path,len(data))
  bpy.data.objects.remove(cam,do_unlink=True)

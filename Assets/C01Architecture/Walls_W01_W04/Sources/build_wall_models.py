@@ -9,7 +9,10 @@ import bpy
 import bmesh
 import json
 import math
+import sys
 from pathlib import Path
+# Blender --python may not add the invoked script's directory to sys.path.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 from original_r2_w02 import build_exact as original_r2_w02
 from mathutils import Vector
 

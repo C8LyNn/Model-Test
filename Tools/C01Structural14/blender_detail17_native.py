@@ -3,6 +3,7 @@ Source is a losslessly encoded latest OBJ-derived RAI-01 GLB with 20 actual mesh
 Original four native Blender-v002 meshes/UVs replace their temporary GLB copies.
 """
 import bpy, json, pathlib, base64, lzma, hashlib
+from mathutils import Matrix
 ROOT=pathlib.Path(__file__).resolve().parents[2]
 P14=ROOT/'Assets/C01StructuralPrototypes/P14'
 SRC=P14/'Pass17/Source/RAI-01_REAL_SOURCE_GLB.xz.b64'
@@ -36,6 +37,10 @@ for o in imported:
  else:new.append(o)
 assert len(new)==16,[o.name for o in new]
 assert sum(len(p.vertices)-2 for o in new for p in o.data.polygons)==376
+# glTF is Y-up, authored OBJ and our original BLEND are Z-up.
+# Convert imported GLB world positions back from (x,-z,y) to original (x,y,z).
+for o in new:
+ o.matrix_world=Matrix.Rotation(-1.5707963267948966,4,'X') @ o.matrix_world
 for o in new:
  if not o.data.uv_layers:
   uv=o.data.uv_layers.new(name='UVMap')
@@ -49,8 +54,21 @@ for o in new:
   mat=bpy.data.materials.get('M_C01_STEEL' if ('Screw' in o.name or 'Bolt' in o.name) else 'M_C01_DARK')
   if mat is None:mat=bpy.data.materials.new(name='M_C01_STEEL' if ('Screw' in o.name or 'Bolt' in o.name) else 'M_C01_DARK')
   o.data.materials.append(mat)
+SOURCE_BOUNDS={"BaseSocket_A":[[0.05,-0.05,0.012],[0.15,0.05,0.132]],"BaseSocket_B":[[1.85,-0.05,0.012],[1.95,0.05,0.132]],"FootBolt_A_L":[[0.025,-0.009,0.01],[0.043,0.009,0.02]],"FootBolt_A_R":[[0.157,-0.009,0.01],[0.175,0.009,0.02]],"FootBolt_B_L":[[1.825,-0.009,0.01],[1.843,0.009,0.02]],"FootBolt_B_R":[[1.957,-0.009,0.01],[1.975,0.009,0.02]],"Footplate_A":[[0.02,-0.07,0.002],[0.18,0.07,0.014]],"Footplate_B":[[1.82,-0.07,0.002],[1.98,0.07,0.014]],"MidJointCollar_A_Far":[[0.036,0.038,0.436],[0.164,0.05,0.522]],"MidJointCollar_A_Near":[[0.036,-0.05,0.436],[0.164,-0.038,0.522]],"MidJointCollar_B_Far":[[1.836,0.038,0.436],[1.964,0.05,0.522]],"MidJointCollar_B_Near":[[1.836,-0.05,0.436],[1.964,-0.038,0.522]],"MiddleRail":[[0,-0.035,0.45],[2,0.035,0.51]],"Post_End":[[1.86,-0.04,0],[1.94,0.04,1.05]],"Post_Start":[[0.06,-0.04,0],[0.14,0.04,1.05]],"SocketSetScrew_A_1":[[0.0925,0.037,0.0495],[0.1075,0.06,0.0645]],"SocketSetScrew_A_2":[[0.0925,0.037,0.0945],[0.1075,0.06,0.1095]],"SocketSetScrew_B_1":[[1.8925,0.037,0.0495],[1.9075,0.06,0.0645]],"SocketSetScrew_B_2":[[1.8925,0.037,0.0945],[1.9075,0.06,0.1095]],"TopRail":[[0,-0.05,1.02],[2,0.05,1.1]]}
+def assert_exact_world_bounds(objs,stage):
+ seen=set()
+ for o in objs:
+  seen.add(o.name)
+  pts=[o.matrix_world @ v.co for v in o.data.vertices]
+  assert pts, (stage,o.name,'empty')
+  actual=[[min(float(p[k]) for p in pts) for k in range(3)],[max(float(p[k]) for p in pts) for k in range(3)]]
+  expected=SOURCE_BOUNDS[o.name]
+  assert all(abs(actual[j][k]-expected[j][k])<=0.00001 for j in range(2) for k in range(3)),(stage,o.name,expected,actual)
+ assert seen==set(SOURCE_BOUNDS),(stage,sorted(seen^set(SOURCE_BOUNDS)))
+
 meshes=[o for o in bpy.data.objects if o.type=='MESH']
 assert len(meshes)==20
+assert_exact_world_bounds(meshes,'PRE_EXPORT')
 assert sum(len(p.vertices)-2 for o in meshes for p in o.data.polygons)==424
 assert all(o.data.uv_layers for o in meshes)
 assert all(o.data.materials for o in meshes)
@@ -68,6 +86,7 @@ bpy.ops.wm.read_factory_settings(use_empty=True)
 bpy.ops.import_scene.fbx(filepath=str(fbx))
 re=[o for o in bpy.data.objects if o.type=='MESH']
 actual={o.name:sum(len(p.vertices)-2 for p in o.data.polygons) for o in re}
+assert_exact_world_bounds(re,'FBX_REIMPORT')
 assert actual==expected,{'actual':actual,'expected':expected}
 assert all(o.data.uv_layers for o in re)
 assert all(o.data.materials for o in re)

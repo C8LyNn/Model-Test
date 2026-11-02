@@ -98,9 +98,12 @@ def build(pid,root,parts):
   lid=box("Bin_Lid",[0,.265,0],[.56,.07,.34],"DARK",True)
   trim=box("Lid_Label",[0,.305,.08],[.24,.008,.10],"CAUTION")
   h=hinge("Toolbox_LidHinge",[0,.23,-.17],root,parts);attach_preserve(lid,h);attach_preserve(trim,h)
-  box("Handle_Post_L",[-.13,.317,0],[.038,.074,.04],"GASKET")  # PASS03 native: upper face 0.354m
-  box("Handle_Post_R",[.13,.317,0],[.038,.074,.04],"GASKET")  # PASS03 native: upper face 0.354m
-  box("Handle_Grip",[0,.367,0],[.30,.026,.04],"GASKET")
+  # PASS20: fixed handles blocked the moving lid in REAL Blender/FBX sweep.
+  # Handle posts and grip are attached to lid hinge, with WORLD rest transforms preserved.
+  post_l=box("Handle_Post_L",[-.13,.317,0],[.038,.074,.04],"GASKET")  # PASS03 shape unchanged
+  post_r=box("Handle_Post_R",[.13,.317,0],[.038,.074,.04],"GASKET")
+  grip=box("Handle_Grip",[0,.367,0],[.30,.026,.04],"GASKET")
+  for moving in (post_l,post_r,grip):attach_preserve(moving,h)
   box("Front_Lock",[0,.225,.165],[.08,.075,.012],"CAUTION")  # PASS08: 1mm outward; avoid coplanar visible front face with Bin_Lid
   for x in [-.23,.23]:box("Grip_Rail_"+str(x),[x,.12,.164],[.027,.15,.01],"DARK")
  else:raise ValueError(pid)

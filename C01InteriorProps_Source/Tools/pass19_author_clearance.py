@@ -17,8 +17,8 @@ GLTF=ROOT/"Assets/C01InteriorProps/Models/P17-03.gltf"
 OBJ=ROOT/"C01InteriorProps_Source/MeshText/P17-03.obj.txt"
 SPEC=ROOT/"C01InteriorProps_Source/Specs/P17-03.json"
 LAYOUT={
-    "TopCap":{"mesh":2,"outer":[.38,.048,.295],"x":[-.052,.052],"z":[-.067,.037]},
-    "LeverSocket":{"mesh":6,"outer":[.135,.035,.135],"x":[-.05,.05],"z":[-.05,.05]},
+    "TopCap":{"mesh":2,"outer":[.38,.048,.295],"x":[-.052,.052],"z":[-.082,.052]},
+    "LeverSocket":{"mesh":6,"outer":[.135,.035,.135],"x":[-.05,.05],"z":[-.058,.058]},
 }
 def make_ring(cfg):
     sx,sy,sz=cfg["outer"]

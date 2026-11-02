@@ -64,7 +64,7 @@ namespace C01.Cargo
         /// <summary>Uses the imported hinge's LOCAL axis; verify sign in REAL Unity Editor.</summary>
         public bool TrySetOpeningDegrees(float degrees)
         {
-            if (!initialized || !unlocked || !Mathf.IsFinite(degrees) ||
+            if (!initialized || !unlocked || (float.IsNaN(degrees) || float.IsInfinity(degrees)) ||
                 degrees < 0f || degrees > maximumOpeningDegrees ||
                 localOpeningAxis.sqrMagnitude < 0.5f)
                 return false;

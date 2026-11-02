@@ -13,7 +13,8 @@
     "PASS19_03": "Only P16-01/P17-02 .blend+FBX, and P18-01 FBX re-read from current producer Git LFS pointers; pointer verification does not hydrate the FBX",
     "C01_02": "No independent per-model final FBX acceptance sourced or conferred by C01-03",
     "Unity": "No real Unity editor run proven in this intake",
-    "PASS19_9": "C01-03 physically downloaded and hashed 3 original Actions ZIP; extracted 9 actual .blend + 9 binary FBX, parsed actual FBX7400 geometry/UV/normals, zero scoped anomalies, full 18 SHA matched producer LFS OIDs. C01-02 final still PENDING."
+    "PASS19_9": "C01-03 physically downloaded and hashed 3 original Actions ZIP; extracted 9 actual .blend + 9 binary FBX, parsed actual FBX7400 geometry/UV/normals, zero scoped anomalies, full 18 SHA matched producer LFS OIDs. C01-02 final still PENDING.",
+    "PASS19_UNITY_STAGING": "C01-03 independently ZIP CRC+SHA verified original 3-FBX staging artifact 13182701367 from C01-10 workflow 41531591861; Unity Editor job SKIPPED due license release gate."
   },
   "critical": "If source HEAD changed, previous signed binary candidate may remain byte-identical, but exact current HEAD/authoring parity must be reconciled by owner/QA before release. No silent SHA promotion.",
   "statistics": {
@@ -30,7 +31,10 @@
     "release_approved": 0,
     "pass19_c01_03_actual_hydrated_pairs": 9,
     "pass19_c01_03_actual_full_sha_matches": 18,
-    "pass19_c01_03_fbx_parser_scoped_pass": 9
+    "pass19_c01_03_fbx_parser_scoped_pass": 9,
+    "three_pilot_fbx_stage_actual_verified": 3,
+    "unity_license_gate": "FAILED_CI_LICENSE_UNAVAILABLE",
+    "unity_editor_executed": 0
   },
   "invariants": {
     "rows36": true,
@@ -45,7 +49,10 @@
     "twoSourceMismatch": true,
     "oneSignedP19Hold": true,
     "pass19_NinePhysicalOnly": true,
-    "no_OfficialApprovalAfterPhysical": true
+    "no_OfficialApprovalAfterPhysical": true,
+    "three_pilot_staged_signed": true,
+    "three_pilot_editor_not_run": true,
+    "no_editor_pass": true
   },
   "rows": [
     {
@@ -248,13 +255,17 @@
       "pass19_c01_03_pointer_check": "BLEND_AND_FBX_OID_MATCH_LATEST_HEAD",
       "independent_c01_02_static_exact_fbx": "PENDING",
       "independent_c01_02_motion_clearance": "PENDING",
-      "unity6_editor": "UNITY_NOT_RUN",
+      "unity6_editor": "UNITY_NOT_RUN_LICENSE_GATE",
       "final_disposition": "HOLD",
       "candidate_category": "SIGNED_NATIVE_CANDIDATE",
       "priority_defect": null,
-      "blocker": "C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN",
+      "blocker": "C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN; UNITY_CI_LICENSE_UNAVAILABLE_EDITOR_SKIPPED",
       "pass19_c01_03_hydrated_binary": "FULL_NATIVE_BINARY_SHA_AND_SCOPED_FBX_QA_PASS",
-      "pass19_c01_03_native_evidence": "C01InteriorProps_Library/Pass19/W19_ACTUAL_9_NATIVE_BINARY_QA.json"
+      "pass19_c01_03_native_evidence": "C01InteriorProps_Library/Pass19/W19_ACTUAL_9_NATIVE_BINARY_QA.json",
+      "pass19_Unity_staging": "FULL_HYDRATED_FBX_SHA_MATCH_AND_ZIP_CRC_PASS",
+      "pass19_Unity_staging_run": 41531591861,
+      "pass19_Unity_staging_artifact": 13182701367,
+      "pass19_Unity_staging_evidence": "C01InteriorProps_Library/Pass19/W19_REAL_UNITY_STAGING_3_RECEIPT.json"
     },
     {
       "asset_id": "P16-02",
@@ -456,13 +467,17 @@
       "pass19_c01_03_pointer_check": "BLEND_AND_FBX_OID_MATCH_LATEST_HEAD",
       "independent_c01_02_static_exact_fbx": "PENDING",
       "independent_c01_02_motion_clearance": "PENDING",
-      "unity6_editor": "UNITY_NOT_RUN",
+      "unity6_editor": "UNITY_NOT_RUN_LICENSE_GATE",
       "final_disposition": "HOLD",
       "candidate_category": "SIGNED_NATIVE_CANDIDATE",
       "priority_defect": null,
-      "blocker": "C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN",
+      "blocker": "C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN; UNITY_CI_LICENSE_UNAVAILABLE_EDITOR_SKIPPED",
       "pass19_c01_03_hydrated_binary": "FULL_NATIVE_BINARY_SHA_AND_SCOPED_FBX_QA_PASS",
-      "pass19_c01_03_native_evidence": "C01InteriorProps_Library/Pass19/W19_ACTUAL_9_NATIVE_BINARY_QA.json"
+      "pass19_c01_03_native_evidence": "C01InteriorProps_Library/Pass19/W19_ACTUAL_9_NATIVE_BINARY_QA.json",
+      "pass19_Unity_staging": "FULL_HYDRATED_FBX_SHA_MATCH_AND_ZIP_CRC_PASS",
+      "pass19_Unity_staging_run": 41531591861,
+      "pass19_Unity_staging_artifact": 13182701367,
+      "pass19_Unity_staging_evidence": "C01InteriorProps_Library/Pass19/W19_REAL_UNITY_STAGING_3_RECEIPT.json"
     },
     {
       "asset_id": "P17-03",
@@ -612,13 +627,17 @@
       "pass19_c01_03_pointer_check": "FBX_OID_MATCH_LATEST_HEAD",
       "independent_c01_02_static_exact_fbx": "PENDING",
       "independent_c01_02_motion_clearance": "PENDING",
-      "unity6_editor": "UNITY_NOT_RUN",
+      "unity6_editor": "UNITY_NOT_RUN_LICENSE_GATE",
       "final_disposition": "HOLD",
       "candidate_category": "SIGNED_NATIVE_CANDIDATE",
       "priority_defect": null,
-      "blocker": "C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN",
+      "blocker": "C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN; UNITY_CI_LICENSE_UNAVAILABLE_EDITOR_SKIPPED",
       "pass19_c01_03_hydrated_binary": "FULL_NATIVE_BINARY_SHA_AND_SCOPED_FBX_QA_PASS",
-      "pass19_c01_03_native_evidence": "C01InteriorProps_Library/Pass19/W19_ACTUAL_9_NATIVE_BINARY_QA.json"
+      "pass19_c01_03_native_evidence": "C01InteriorProps_Library/Pass19/W19_ACTUAL_9_NATIVE_BINARY_QA.json",
+      "pass19_Unity_staging": "FULL_HYDRATED_FBX_SHA_MATCH_AND_ZIP_CRC_PASS",
+      "pass19_Unity_staging_run": 41531591861,
+      "pass19_Unity_staging_artifact": 13182701367,
+      "pass19_Unity_staging_evidence": "C01InteriorProps_Library/Pass19/W19_REAL_UNITY_STAGING_3_RECEIPT.json"
     },
     {
       "asset_id": "P18-02",

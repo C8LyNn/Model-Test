@@ -24,7 +24,7 @@ bpy.context.view_layer.update()
 pts=[o.matrix_world@Vector(v) for o in mesh for v in o.bound_box]
 bounds=[[min(p[k] for p in pts),max(p[k] for p in pts)] for k in range(3)]
 size=[b-a for a,b in bounds]
-assert all(abs(size[i]-[.4,.55,.3][i])<.003 for i in range(3)),size
+assert all(abs(size[i]-[.4,.3,.55][i])<.003 for i in range(3)),size
 dest=R/"C01InteriorProps_Source/Blender/P17-03.blend"
 dest.parent.mkdir(parents=True,exist_ok=True)
 bpy.ops.wm.save_as_mainfile(filepath=str(dest))

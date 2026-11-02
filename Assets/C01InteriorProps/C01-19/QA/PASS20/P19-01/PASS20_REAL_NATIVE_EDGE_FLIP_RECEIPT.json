@@ -1,0 +1,82 @@
+{
+  "id": "P19-01",
+  "kind": "PASS20_SURGICAL_TWO_TRIANGLE_EDGE_FLIPS",
+  "blender": "4.0.2",
+  "source_old_blend_sha256": "a8883117ec9e59b93cb988970c09d6cdaf496b8a73957a60aa3ca503f8be420f",
+  "source_old_fbx_sha256": "e2e0bb9e095c1daed87e407814e88f8788cf503ab705d3e34513879038bcd559",
+  "new_blend_sha256": "b4c695f3731ba1cfc575134f41ac795faedbf23ec4cfb58daaeb8bc44b8d8e98",
+  "new_fbx_sha256": "f3b9f806f4dcaafe00f24ac22b0805bf06a49d4216cb1339460ed1be9b26a2f2",
+  "original_vertices_preserved_bitwise": true,
+  "old_mesh_count": 4,
+  "new_mesh_count": 4,
+  "triangles": 470,
+  "slivers_before": [
+    {
+      "indices": [
+        3,
+        106,
+        107
+      ],
+      "area_m2": 0.0
+    }
+  ],
+  "slivers_after": [],
+  "patches": [
+    {
+      "old_diagonal": [
+        3,
+        107
+      ],
+      "new_diagonal": [
+        106,
+        32
+      ],
+      "triangle_areas_before_m2": [
+        0.0001428592950105667,
+        0.0
+      ],
+      "triangle_areas_after_m2": [
+        0.00013406091602519155,
+        8.79727303981781e-06
+      ],
+      "new_min_triangle_area_m2": 8.79727303981781e-06,
+      "old_patch_area_m2": 0.0001428592950105667,
+      "new_patch_area_m2": 0.00014285818906500936,
+      "uv0_explicitly_restored": true
+    },
+    {
+      "old_diagonal": [
+        87,
+        13
+      ],
+      "new_diagonal": [
+        88,
+        47
+      ],
+      "triangle_areas_before_m2": [
+        4.656612873077393e-10,
+        0.0007714251987636089
+      ],
+      "triangle_areas_after_m2": [
+        0.0007620935793966055,
+        9.331753972219303e-06
+      ],
+      "new_min_triangle_area_m2": 9.331753972219303e-06,
+      "old_patch_area_m2": 0.0007714256644248962,
+      "new_patch_area_m2": 0.0007714253333688248,
+      "uv0_explicitly_restored": true
+    }
+  ],
+  "manifold_after": true,
+  "uv0_after": true,
+  "fbx_reimport": {
+    "mesh_objects": 4,
+    "triangles": 470,
+    "micro_sliver_faces": 0,
+    "uv0_objects": 4,
+    "bbox_max_error_m": 3.176933560666839e-08
+  },
+  "realtime_Unity6": "NOT_RUN",
+  "C01_02_independent": "PENDING",
+  "release": "HOLD_NO_MERGE"
+}

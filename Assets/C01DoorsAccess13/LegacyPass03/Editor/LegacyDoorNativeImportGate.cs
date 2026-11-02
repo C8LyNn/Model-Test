@@ -1,4 +1,4 @@
-// C01-13 W19: QA-only physical native FBX staging. Never modifies the live ship
+// C01-13 W21: QA-only physical native FBX staging, fail-closed and transactional. Never modifies the live ship
 // nor adds D01/D02 to the P15-P19 set of 36 production props.
 #if UNITY_EDITOR
 using System;
@@ -44,6 +44,10 @@ namespace C01.Doors.Access
                 unityVersion = Application.unityVersion,
                 status = "HOLD"
             };
+            // Track files created by THIS invocation only. Existing QA imports are
+            // never overwritten or deleted; this is a candidate staging tool.
+            var newlyStaged = new List<string>();
+            string activeFile = "preflight";
             try
             {
                 // Fail closed BEFORE writing anything to Assets.
@@ -66,12 +70,34 @@ namespace C01.Doors.Access
                     evidence.entries.Add(new Entry { name=name, sha256=digest, status="SHA_OK" });
                 }
 
+                // ALSO reject stale files already occupying the isolated QA folder.
+                // This validation covers BOTH assets before any copy/import writes.
+                for (int i = 0; i < Names.Length; i++)
+                {
+                    string staged = Staging + Names[i];
+                    if (!File.Exists(staged)) continue;
+                    string existingSha;
+                    using (var stream = File.OpenRead(staged))
+                    using (var sha = SHA256.Create())
+                        existingSha = BitConverter.ToString(sha.ComputeHash(stream))
+                            .Replace("-", "").ToLowerInvariant();
+                    if (existingSha != ExpectedSha[i])
+                        throw new IOException("STALE_EXISTING_QA_FILE: " + staged +
+                            " SHA256=" + existingSha + "; quarantine must be reconciled manually.");
+                }
+
                 Directory.CreateDirectory(Staging);
                 for (int i = 0; i < Names.Length; i++)
                 {
                     Entry e = evidence.entries[i];
+                    activeFile = Names[i];
                     string staged = Staging + Names[i];
-                    File.Copy(Path.Combine(Source, Names[i]), staged, true);
+                    if (!File.Exists(staged))
+                    {
+                        // Enlist before writing so even a partial copy is rolled back.
+                        newlyStaged.Add(staged);
+                        File.Copy(Path.Combine(Source, Names[i]), staged, false);
+                    }
                     AssetDatabase.ImportAsset(staged, ImportAssetOptions.ForceSynchronousImport);
                     e.assetPath = staged;
                     if (!(AssetImporter.GetAtPath(staged) is ModelImporter))
@@ -108,11 +134,31 @@ namespace C01.Doors.Access
             catch (Exception ex)
             {
                 evidence.status = "HOLD";
-                if (evidence.entries.Count == 0) evidence.entries.Add(new Entry { name="preflight" });
-                Entry failed = evidence.entries[evidence.entries.Count-1];
-                failed.status = "HOLD";
-                failed.error = ex.ToString();
-                Debug.LogError("[C01-13 W19] Import gate HOLD: " + ex);
+                evidence.entries.Add(new Entry { name=activeFile, status="HOLD",
+                    error=ex.ToString() });
+                // Roll back ONLY newly copied candidate assets; never touch an asset
+                // that was present before this QA invocation, nor any ship prefab.
+                for (int i = newlyStaged.Count - 1; i >= 0; i--)
+                {
+                    string staged = newlyStaged[i];
+                    try
+                    {
+                        if (!AssetDatabase.DeleteAsset(staged))
+                        {
+                            if (File.Exists(staged)) File.Delete(staged);
+                            if (File.Exists(staged + ".meta")) File.Delete(staged + ".meta");
+                        }
+                    }
+                    catch (Exception rollbackError)
+                    {
+                        evidence.entries.Add(new Entry { name=staged,
+                            status="ROLLBACK_FAILED_MANUAL_CLEANUP_REQUIRED",
+                            error=rollbackError.ToString() });
+                        Debug.LogError("[C01-13 W21] QA-only rollback failed: " + rollbackError);
+                    }
+                }
+                AssetDatabase.Refresh();
+                Debug.LogError("[C01-13 W21] Import gate HOLD; new candidates rolled back: " + ex);
             }
             finally
             {

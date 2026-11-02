@@ -1,0 +1,35 @@
+name: C01-16 W20 reconcile signed native inventory (QA-only)
+on:
+  push:
+    branches:
+      - 'c01/props-16-lighting-wave02'
+    paths:
+      - 'C01Source/LightingW02/MeshRepairPASS17/GENUINE_BLENDER_SHA_AND_QA.json'
+      - 'C01Source/LightingW02/MeshRepairPASS20/verify_signed_inventory.py'
+      - '.github/workflows/c01-16-pass20-signed-inventory.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-signatures:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          lfs: false
+      - name: Read W01 immutable exact source branch (no merge or writes)
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags --depth=1 origin refs/heads/c01/props-16-lighting:refs/remotes/origin/c01/props-16-lighting
+      - name: Verify 7 full SHA256 native BLEND/FBX LFS pointers and original Blender4 receipts
+        run: python3 C01Source/LightingW02/MeshRepairPASS20/verify_signed_inventory.py
+      - name: Save reconciliation evidence only (not 3D export)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-16-W20-SIGNED-P16-NATIVE-RECONCILIATION
+          if-no-files-found: ignore
+          path: C01Source/LightingW02/MeshRepairPASS20/W20_SIGNED_POINTER_RECEIPT.json

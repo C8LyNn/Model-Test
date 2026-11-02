@@ -210,7 +210,7 @@
       "size": [
         0.085,
         0.025,
-        0.07
+        0.036
       ],
       "mat": "DARK",
       "parent": "LeverPivot"
@@ -411,8 +411,8 @@
     }
   ],
   "expectedTriangleCount": 464,
-  "state": "PASS19_SOURCE_CLEARANCE_REPAIR__AWAIT_NATIVE_DYNAMIC_QA",
-  "version": "0.3.0",
+  "state": "PASS21_SOURCE_ANCHOR_CLEARANCE__NATIVE_QA_PENDING",
+  "version": "0.3.1",
   "units": "meters",
   "axes": "Y up; +Z toward access side for keypad",
   "materials": [
@@ -472,5 +472,20 @@
     ],
     "motionSweep": "PENDING real Blender reimport",
     "Unity6": "NOT RUN"
+  },
+  "detailPass21": {
+    "defect": "C01-02 actual FBX MOTION_FAIL: PivotAnchorVisual intersects fixed Housing at +/-30..45 degrees",
+    "fix": "Only existing PivotAnchorVisual mesh local Z half depth 35mm to 18mm; 24 vertex Z values; no new parts",
+    "leverPivotUnchanged": [
+      0,
+      0.35,
+      -0.015
+    ],
+    "anchorParentUnchanged": "LeverPivot",
+    "topCapLeverSocketUnchanged": true,
+    "meshParts": 20,
+    "triangles": 464,
+    "UV0NormalsMaterialsUnchanged": true,
+    "unity": "NOT RUN"
   }
 }

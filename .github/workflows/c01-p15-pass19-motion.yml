@@ -28,7 +28,6 @@ jobs:
           set -euo pipefail
           git lfs install --local
           git lfs pull --include="Assets/C01InteriorProps/P15/Sources/Blender/P15-03.blend,Assets/C01InteriorProps/P15/Models/FBX/P15-03*.fbx" --exclude=""
-          git lfs checkout --include="Assets/C01InteriorProps/P15/Sources/Blender/P15-03.blend,Assets/C01InteriorProps/P15/Models/FBX/P15-03*.fbx"
           test "$(head -c 7 Assets/C01InteriorProps/P15/Sources/Blender/P15-03.blend)" = "BLENDER"
           test "$(head -c 18 Assets/C01InteriorProps/P15/Models/FBX/P15-03.fbx)" = "Kaydara FBX Binary"
 

@@ -133,7 +133,9 @@ public static class C01Structures14Pass19SignedUnityQa
                 foreach(var i in tris)if(i<0 || i>=mesh.vertexCount)
                     throw new InvalidDataException("Invalid index "+i+" on "+filter.name);
                 var rend=filter.GetComponent<MeshRenderer>();
-                bool isCollision=filter.name.StartsWith("COL_",StringComparison.OrdinalIgnoreCase);
+                string logicalName=filter.name.EndsWith("_Mesh",StringComparison.Ordinal)
+                    ?filter.name.Substring(0,filter.name.Length-5):filter.name;
+                bool isCollision=logicalName.StartsWith("COL_",StringComparison.OrdinalIgnoreCase);
                 if(isCollision && candidate.Id=="RMP-01")
                 {
                     if(rend!=null)rend.enabled=false;
@@ -145,12 +147,12 @@ public static class C01Structures14Pass19SignedUnityQa
                 else
                 {
                     if(rend==null)throw new InvalidDataException("Missing renderer: "+filter.name);
-                    rend.sharedMaterial=filter.name.Contains("AntiSlip")?caution:
-                        filter.name.Contains("MiddleRail")?dark:steel;
+                    rend.sharedMaterial=logicalName.Contains("AntiSlip")?caution:
+                        logicalName.Contains("MiddleRail")?dark:steel;
                     visibleParts++;
                     if(candidate.Id=="RAI-01" && (
-                        filter.name=="TopRail" || filter.name=="MiddleRail" ||
-                        filter.name=="Post_Start" || filter.name=="Post_End"))
+                        logicalName=="TopRail" || logicalName=="MiddleRail" ||
+                        logicalName=="Post_Start" || logicalName=="Post_End"))
                     {
                         // Only main physical members get colliders. No accidental
                         // hundreds of bolt/washer colliders or rigidbody welds.

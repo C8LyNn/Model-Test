@@ -41,6 +41,17 @@ These three can be **SHA-gated QA-quarantine imported by C01-10**, not released 
 
 **P19-08 / `9de76d296482e2d302b5b0a14c30692dbdb6adacd90fcd4e022da9ab35ec658c` — STATIC_PASS WITH TOLERANCE REVIEW.** Two physically observed vertex-on-edge candidates at normalized edge parameter **0.999921994**, distance to 50 mm edge endpoint about **0.0039 mm**; not interior 4 mm or 40 mm T-junction, no open/nonmanifold edges. At a proposed 0.01 mm proximity tolerance, classify as near-endpoint imprecision rather than *proven* structural defect. No automated weld, monitor after Unity import.
 
+
+### PASS19 supplemental exact FBX per-corner normal-direction gate
+
+Independent complete FBX per-polygon-vertex normal vectors were compared against geometric indexed face normals by cosine, skipping near-zero-area faces. All 21 binary FBX contain finite indexed normals of unit length, but **valid arrays do not guarantee correct orientation for every shaded face**.
+
+- **P17-01** FBX `cd6a5787bb7b4c088f0af35382385e4274c85c415c60467f9a22e46fe33ef02c`: **32/708** face corners cosine <= 0.02, all on single reused eight-sided bolt geometry `C01_AccessBolt_8s` (16 indexed faces). **STATIC_TOPOLOGY_PASS, NORMAL_DIRECTION_REVIEW**. Blender/Unity shaded closeup required; not proved reversed faces.
+- **P17-03** FBX `a48c9dde921c25f61cef175896c5b7fde997392fc898784e16bb9612f39a4520`: **32/720** corners <= 0.02, on `P17_03_8side_Bolt`. Dominant blocker remains proven TopCap/shaft interpenetration.
+- **P19-07** FBX `eb579a85355756c0d803f58ec96fac509e33788d8142390349aebbffdba50e81`: **3/756** corners cosine ~0.012 at `Cube.019` face 86; inspect actual shaded material and geometrical seam. T-junction HOLD unchanged.
+
+Across this additional scan: no non-sliver corner had cosine less than -0.02 (strict reversed relative to its geometric face). Per-corner shading direction problems require targeted review rather than bulk recomputation, which can damage intentional hard normals.
+
 ## 36-ID release matrix and practical handoff
 
 - **21/36 physical binary BLEND/FBX pairs independently hydrated+SHA-verified and static-index-audited.** These were genuine producer files, not old source-only models.

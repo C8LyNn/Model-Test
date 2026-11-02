@@ -72,10 +72,25 @@ public static class C01WallPass19UnitySmoke
             purpose = "QA-only exact PASS17 native walls; not ship or 36-prop approval"
         };
 
+        // Only roll back files from this invocation. Existing QA prefabs
+        // are NEVER deleted by this smoke test, even on a failed preflight.
+        bool freshQaOutputs = true;
+        foreach (string id in Ids)
+        {
+            string output = PrefabDir + "/C01-11_" + id + "_QA_ONLY.prefab";
+            if (File.Exists(output) ||
+                AssetDatabase.LoadMainAssetAtPath(output) != null)
+                freshQaOutputs = false;
+        }
+        bool builderAttempted = false;
         try
         {
+            if (!freshQaOutputs)
+                throw new IOException("QA prefab already exists; run in a fresh disposable project");
+
             // This method verifies exact immutable FBX SHA before creating anything,
             // and refuses pre-existing prefab outputs in QA_Candidates.
+            builderAttempted = true;
             C01WallPrefabBuilder.BuildPass17NativeQaOnly();
             AssetDatabase.Refresh();
 
@@ -186,6 +201,32 @@ public static class C01WallPass19UnitySmoke
         {
             evidence.status = "UNITY_EDITOR_SMOKE_HOLD";
             evidence.error = ex.ToString();
+            if (builderAttempted)
+            {
+                // Even a successful builder can fail the subsequent URP,
+                // collider or pivot smoke; never retain unapproved QA prefabs.
+                foreach (string id in Ids)
+                {
+                    string output = PrefabDir + "/C01-11_" + id + "_QA_ONLY.prefab";
+                    try
+                    {
+                        if (AssetDatabase.LoadMainAssetAtPath(output) != null)
+                        {
+                            if (!AssetDatabase.DeleteAsset(output))
+                                Debug.LogError("C01-11 QA cleanup refused: " + output);
+                        }
+                        else if (File.Exists(output))
+                        {
+                            File.Delete(output);
+                            if (File.Exists(output + ".meta")) File.Delete(output + ".meta");
+                        }
+                    }
+                    catch (Exception cleanupError)
+                    {
+                        Debug.LogError("C01-11 QA cleanup failed: " + cleanupError);
+                    }
+                }
+            }
             Debug.LogError("C01-11 PASS19 Unity smoke HOLD: " + ex);
             throw; // Never turn a failed batchmode QA into a false PASS.
         }

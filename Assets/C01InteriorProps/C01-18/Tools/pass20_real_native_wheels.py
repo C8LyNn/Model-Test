@@ -3,7 +3,7 @@ Non-destructive, no export or altered asset. SHA-pinned real Git LFS binaries.
 All contacts reported separately for rubber and moving hub vs rigid bearing interfaces.
 """
 import bpy,math,pathlib,hashlib,json,sys
-from mathutils import Vector
+from mathutils import Vector,Matrix
 from mathutils.bvhtree import BVHTree
 ROOT=pathlib.Path(sys.argv[sys.argv.index("--")+1]).resolve()
 PIN={"blend":"ea1b4f5cc5612f8d8ff5c3c585b9b48843659972c2371204b5d3b5c4df3a3b56",
@@ -51,11 +51,14 @@ def gather(tag):
   center=wheel.matrix_world.translation
   assert abs(center.z-.105)<.001,(tag,wid,"wrong axle height",tuple(center))
   assert abs(abs(center.x)-.39)<.001
-  rest=wheel.rotation_euler.copy()
+  # Rotate around the WORLD X axle, not the Blender-importer's local Euler X.
+  # FBX import can leave an axis-conversion rotation on object/parents.
+  # The local-Euler method distorted the wheel orbit and falsely reported -43 mm floor penetration.
+  rest_world=wheel.matrix_world.copy()
   contacts=[];rubber_contacts=[];ground=[]
   for deg in range(0,360,5):
-   wheel.rotation_euler=rest.copy()
-   wheel.rotation_euler.x=rest.x+math.radians(deg)
+   spin=Matrix.Translation(center) @ Matrix.Rotation(math.radians(deg),4,'X') @ Matrix.Translation(-center)
+   wheel.matrix_world=spin @ rest_world
    bpy.context.view_layer.update()
    wb=bounds_world(wheel)
    ground.append(wb[2][0])
@@ -70,7 +73,7 @@ def gather(tag):
                "classification":"BEARING_AXLE_CONTACT_EXPECTED" if st.name.endswith(("Axle","AxleFastener")) and mob!=wheel else "REQUIRES_ASSEMBLY_TRIAGE"}
      contacts.append(witness)
      if mob==wheel and not st.name.endswith(("Axle","AxleFastener")):rubber_contacts.append(witness)
-  wheel.rotation_euler=rest
+  wheel.matrix_world=rest_world
   bpy.context.view_layer.update()
   summary[wid]={"wheel_axle_blender_xyz_m":[round(float(v),7) for v in center],
    "moving_children":[h1.name,h2.name],
@@ -78,7 +81,7 @@ def gather(tag):
    "moving_wheel_or_hub_other_contacts":contacts,
    "rolling_min_ground_m":min(ground),"rolling_max_ground_m":max(ground),
    "resting_ground_m":bounds_world(wheel)[2][0],
-   "method":"BVH exact triangle overlap on real source or reimported FBX world vertices, with 3D AABB broadphase at 5-degree increments. Contact can mean surface touch or volume intersection."}
+   "method":"WORLD X-axis rotation about original actual wheel object-space origin via 4x4 Matrix, BVH world triangle overlap and AABB broadphase at 5-degree increments. Contact can mean touch or volume intersection."}
  return {"format":tag,"mesh_parts":len(meshes),"triangles":1780,
          "per_wheel":summary,
          "nonbearing_rubber_contact_count":sum(len(a["rubber_to_nonbearing_fixed_BVH_contacts"]) for a in summary.values()),

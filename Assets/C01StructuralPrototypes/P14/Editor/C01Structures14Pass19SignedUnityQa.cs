@@ -2,6 +2,7 @@
 // C01-14 W19 — QA-ONLY signed original native Blender FBX -> Unity 6 URP prefab validation.
 // Not a release approval. Does not touch ship geometry, production prefabs or 36 P15-P19 assets.
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
@@ -220,26 +221,60 @@ public static class C01Structures14Pass19SignedUnityQa
                 throw new InvalidOperationException("QA prefab already exists; no silent overwrite "+x.Prefab);
         }
 
-        Directory.CreateDirectory(Absolute(Incoming));
-        Directory.CreateDirectory(Absolute(Prefabs));
-        Directory.CreateDirectory(Absolute(Materials));
-        foreach(var x in Inputs)
+        // PASS20_ATOMIC_ROLLBACK: the importer must never leave a misleading
+        // partial result (e.g. RAI prefab created but RMP import failed).
+        // All paths below were checked to be absent before this transaction.
+        var createdStages=new List<string>();
+        var materialPaths=new[] {
+            Materials+"/Steel_QA_ONLY.mat",
+            Materials+"/Dark_QA_ONLY.mat",
+            Materials+"/Caution_QA_ONLY.mat"
+        };
+        var newMaterials=materialPaths.Where(path=>!File.Exists(Absolute(path))).ToArray();
+        try
         {
-            if(!File.Exists(Absolute(x.Staged)))
-                File.Copy(Absolute(x.FbxPath),Absolute(x.Staged),false);
-            AssertSigned(x.Staged,x.FbxSha,"Kaydara FBX Binary");
-        }
-        AssetDatabase.Refresh(ImportAssetOptions.ForceSynchronousImport);
+            Directory.CreateDirectory(Absolute(Incoming));
+            Directory.CreateDirectory(Absolute(Prefabs));
+            Directory.CreateDirectory(Absolute(Materials));
+            foreach(var x in Inputs)
+            {
+                if(!File.Exists(Absolute(x.Staged)))
+                {
+                    File.Copy(Absolute(x.FbxPath),Absolute(x.Staged),false);
+                    createdStages.Add(x.Staged);
+                }
+                AssertSigned(x.Staged,x.FbxSha,"Kaydara FBX Binary");
+            }
+            AssetDatabase.Refresh(ImportAssetOptions.ForceSynchronousImport);
 
-        var shader=Shader.Find("Universal Render Pipeline/Lit");
-        if(shader==null)throw new InvalidOperationException("URP Lit shader unavailable");
-        var steel=QaMaterial("Steel",new Color(.47f,.52f,.59f),shader);
-        var dark=QaMaterial("Dark",new Color(.12f,.16f,.20f),shader);
-        var caution=QaMaterial("Caution",new Color(.86f,.61f,.12f),shader);
-        foreach(var x in Inputs)PrefabFromSigned(x,steel,dark,caution);
-        AssetDatabase.SaveAssets();
-        Debug.Log("[C01-14 W19] Both signed OPTIONAL structure QA prefabs built. " +
-            "Real Unity Editor execution is REQUIRED to claim success; external C01-02 and release still PENDING.");
+            var shader=Shader.Find("Universal Render Pipeline/Lit");
+            if(shader==null)throw new InvalidOperationException("URP Lit shader unavailable");
+            var steel=QaMaterial("Steel",new Color(.47f,.52f,.59f),shader);
+            var dark=QaMaterial("Dark",new Color(.12f,.16f,.20f),shader);
+            var caution=QaMaterial("Caution",new Color(.86f,.61f,.12f),shader);
+            foreach(var x in Inputs)PrefabFromSigned(x,steel,dark,caution);
+            AssetDatabase.SaveAssets();
+            Debug.Log("[C01-14 W20] Both signed OPTIONAL structure QA prefabs built, transactional gate complete. " +
+                "Real Unity Editor execution is REQUIRED to claim success; external C01-02 and release still PENDING.");
+        }
+        catch
+        {
+            // Preflight has established NONE of these QA prefab paths existed.
+            // A partial first prefab may exist if a later candidate failed.
+            foreach(var x in Inputs)
+                if(File.Exists(Absolute(x.Prefab)))
+                    AssetDatabase.DeleteAsset(x.Prefab);
+            foreach(var path in createdStages)
+                if(File.Exists(Absolute(path)))
+                    AssetDatabase.DeleteAsset(path);
+            foreach(var path in newMaterials)
+                if(File.Exists(Absolute(path)))
+                    AssetDatabase.DeleteAsset(path);
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
+            Debug.LogError("[C01-14 W20] QA-only build aborted and rolled back; no valid Unity PASS or prefab approval.");
+            throw;
+        }
     }
 }
 #endif

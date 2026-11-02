@@ -87,4 +87,4 @@ if __name__ == "__main__":
     print("C01-12 W20 THREE REAL FBX SOURCE SHA + UNITY C# PRESTAGING CONTRACT PASS", flush=True)
     print(json.dumps({"result": result["actual_lfs_hydrated_fbx"],
                       "verified": [(x["asset_id"], x["physical_binary_sha256"]) for x in result["models"]],
-                      "unity": result["unity_editor"]}, indent=2))
+                      "unity": result["unity_compile"]}, indent=2))

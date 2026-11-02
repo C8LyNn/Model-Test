@@ -8,7 +8,8 @@ W02="C01InteriorProps_W02" in str(Path(__file__).resolve())
 SRC=ROOT/("C01InteriorProps_W02" if W02 else "C01InteriorProps_Source")
 MODEL=ROOT/("Assets/C01InteriorProps/W02/Models" if W02 else "Assets/C01InteriorProps/Models")
 IDS=["P17-04","P17-05","P17-06","P17-07"] if W02 else ["P17-01","P17-02","P17-03"]
-OUT=SRC/"QA"/"PASS04"; OUT.mkdir(parents=True,exist_ok=True)
+if __import__("os").environ.get("C01_IDS"): IDS=__import__("os").environ["C01_IDS"].split(",")
+OUT=SRC/"QA"/("PASS19/StrictFBX" if __import__("os").environ.get("C01_IDS") else "PASS04"); OUT.mkdir(parents=True,exist_ok=True)
 def sha(p): return hashlib.sha256(p.read_bytes()).hexdigest()
 def q(v): return tuple(round(float(x),5) for x in v)
 def analyze(objs):

@@ -1,14 +1,8 @@
 name: C01 PASS19 REAL signed 3 FBX to Unity 6 URP
+# W21: run only on explicit owner-authorized dispatch after license setup.
+# Do not repeatedly hydrate unchanged native FBX on ordinary Draft PR commits.
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - c01/props-10-showcase-integration
-    paths:
-      - 'Assets/C01InteriorProps/Pass19/**'
-      - 'C01InteriorProps/Pass04/stage_real_fbx.py'
-      - 'C01InteriorProps/Pass04/source_stage_36.json'
-      - '.github/workflows/c01-pass19-real-unity-three-fbx.yml'
 
 permissions:
   contents: read

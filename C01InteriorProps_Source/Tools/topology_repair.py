@@ -11,7 +11,8 @@ FAMILY="W01"
 SRC=R/("C01InteriorProps_W02" if FAMILY=="W02" else "C01InteriorProps_Source")
 MODELS=R/("Assets/C01InteriorProps/W02/Models" if FAMILY=="W02" else "Assets/C01InteriorProps/Models")
 IDS=["P17-04","P17-05","P17-06","P17-07"] if FAMILY=="W02" else ["P17-01","P17-02","P17-03"]
-EVIDENCE=SRC/"QA"/"PASS03"
+if __import__("os").environ.get("C01_IDS"): IDS=__import__("os").environ["C01_IDS"].split(",")
+EVIDENCE=SRC/"QA"/("PASS19/Topology" if __import__("os").environ.get("C01_IDS") else "PASS03")
 PREV=EVIDENCE/"Previews"
 PREV.mkdir(parents=True,exist_ok=True)
 TOL=1e-6

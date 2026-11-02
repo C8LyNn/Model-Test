@@ -112,7 +112,15 @@
       "original_run": 41531265944,
       "original_zip_SHA256": "ad3dd235e9e9f26b9d08894bd6894c2ae2fa5e51d2646eec2facabc3fc5bfd46",
       "models": [
-        "P18-07"
+        "P18-07_W19_SUPERSEDED"
+      ]
+    },
+    {
+      "id": 13184427833,
+      "original_run": 41536767833,
+      "original_zip_SHA256": "08c7c62a18b52ee2edf83a6a1e01fdf0337991f5640e5007349989166750b74e",
+      "models": [
+        "P18-07_W20_CURRENT"
       ]
     }
   ],
@@ -126,14 +134,17 @@
       "P18-05",
       "P18-06"
     ],
-    "note": "Current repository LFS OID FBX differs from this older physical artifact. P18-04 current BLEND coincides but FBX changed. Do not promote outdated artifact."
+    "note": "Current repository LFS OID FBX differs from this older physical artifact. P18-04 current BLEND coincides but FBX changed. Do not promote outdated artifact.",
+    "P18_07_historical_W19_SHA": "38d93a5c2dc9f1511e568925998d7ea42c26dffc1f14e99cdaae80f1501273da"
   },
   "unity_CI_gate": {
     "run_id": 41531591861,
     "real_3_FBX_signed_staging": "PASS",
     "actual_Unity_Editor": "SKIPPED_LICENSE_AUTHORIZATION_NOT_CONFIGURED",
     "secrets": "NOT_ACCESSED_OR_DISCLOSED",
-    "owner_action": "C01-10 or authorized owner configure legitimate Unity CI license securely or run signed 3 FBX in licensed local Windows Editor 6000.3.14f1"
+    "owner_action": "C01-10 or authorized owner configure legitimate Unity CI license securely or run signed 3 FBX in licensed local Windows Editor 6000.3.14f1",
+    "owner_runbook": "C01InteriorProps/Pass20/UNITY6_WINDOWS_OWNER_RUNBOOK.md on C01-10 PR #11",
+    "owner_launcher": "C01InteriorProps/Pass20/run_real_unity_windows.ps1 on C01-10 PR #11"
   },
   "summary": {
     "rows": 36,
@@ -157,7 +168,9 @@
     "old_P17_03_C02_rejected": true,
     "all_failsafe": true,
     "pilot_physical": true,
-    "no_repeated_blender_export": true
+    "no_repeated_blender_export": true,
+    "latest_P18_07_W20_sha": true,
+    "P18_07_W19_superseded": true
   },
   "rows": [
     {
@@ -867,26 +880,28 @@
       "producer_owner": "C01-18",
       "producer_pr": 26,
       "producer_ref": "c01/props-18-cargo-wave02",
-      "producer_head_observed": "09fdec0a7cbb0399441b3a83dd7bd472b9124c2f",
+      "producer_head_observed": "8ce2bf595fd34daf1ecccc5228d42b603c3d3578",
       "prior_W19_source_commit": "ce5f80db7121f435b09e3bed17d7daa93b4147c8",
       "blend_file": "Assets/C01InteriorProps/C01-18-Wave02/Sources/P18-07.blend",
-      "blend_SHA256_LFS_oid": "ca81b1b5b03354f6988657324f2f30b28ff1b785529388fb692469ffb2d3f9c3",
+      "blend_SHA256_LFS_oid": "5fd990d8153430dd4f1a8893ebef0097465a404d1b2c6bbd77777de695b3e87d",
       "fbx_file": "Assets/C01InteriorProps/C01-18-Wave02/Models/P18-07.fbx",
-      "FBX_SHA256_LFS_oid": "38d93a5c2dc9f1511e568925998d7ea42c26dffc1f14e99cdaae80f1501273da",
+      "FBX_SHA256_LFS_oid": "858a24db4338804ee3a3a70c310cd4936e3c45f559b9c4ab81c6037add564554",
       "current_pointer_verification": "EXACT_GIT_LFS_TEXT_POINTER_AND_SHA_READ_OR_UNCHANGED_SHA_VERIFIED_VIA_COMMIT_COMPARE",
       "native_bytes_integrity": "PHYSICAL_BYTES_SHA256_MATCH_CURRENT_LFS",
       "full_hydrated_SHA256_confirmation": "2_OF_2_MATCH",
-      "Action_run_id": 41531265944,
-      "Action_artifact_id": 13182237560,
-      "Action_zip_SHA256": "ad3dd235e9e9f26b9d08894bd6894c2ae2fa5e51d2646eec2facabc3fc5bfd46",
-      "producer_native_export_commit": "e5b5c43673559e7f887fa3af831978f2e8880a64",
+      "Action_run_id": 41536767833,
+      "Action_artifact_id": 13184427833,
+      "Action_zip_SHA256": "08c7c62a18b52ee2edf83a6a1e01fdf0337991f5640e5007349989166750b74e",
+      "producer_native_export_commit": "80689ca076c00e15a0472d6dfe17d91375710225",
       "independent_C01_02_static_exact_current_SHA": "PENDING_CURRENT_FBX_SHA",
-      "independent_C01_02_motion_exact_current_SHA": "NEW_SHA_PENDING_C01_02_HINGE_CLEARANCE",
-      "producer_motion_or_geometry_context": "PRODUCER_NATIVE_REPAIRED_1MM_FRONT_LOCK_POSITION;C01_02_TOLERANCE_HINGE_MOTION_PENDING",
+      "independent_C01_02_motion_exact_current_SHA": "PENDING_NEW_SHA_EXACT_LATCH_AND_HINGE_CLASSIFICATION",
+      "producer_motion_or_geometry_context": "W20_REAL_NEW_HANDLE_POSTS_AND_GRIP_PARENTED_TO_LID_HINGE;PRODUCER_23_POSES_PASS_SCOPED;ENGAGED_LOCK_CONTACTS_REVIEW",
       "Unity6_URP_Editor": "UNITY_NOT_RUN_LICENSE_OWNER_ACTION_REQUIRED",
       "Unity_editor_evidence": "NO_EDITOR_LOG_NO_PREFAB_TEST_RESULTS",
       "production_verdict": "HOLD",
-      "blocker": "NEW_REAL_NATIVE_120T_SHA_PASS_BUT_C01_02_HINGE_TOLERANCE_PENDING"
+      "blocker": "NEW_W20_FBXSHA_VERIFIED_PRODUCER_MOTION_23_POSES;ENGAGED_FRONT_LOCK_CONTACT_AT_0_AND_5_DEG_REQUIRES_C01_02_AND_UNITY",
+      "previous_P18_07_W19_SHA_superseded": "38d93a5c2dc9f1511e568925998d7ea42c26dffc1f14e99cdaae80f1501273da",
+      "previous_P18_07_W19_blend_SHA_superseded": "ca81b1b5b03354f6988657324f2f30b28ff1b785529388fb692469ffb2d3f9c3"
     },
     {
       "asset_id": "P19-01",

@@ -12,7 +12,8 @@
     "PASS18_24": "24 complete source+FBX signed OID pairs in C01-10 matrix; three P15 pointer-only in this evidence set",
     "PASS19_03": "Only P16-01/P17-02 .blend+FBX, and P18-01 FBX re-read from current producer Git LFS pointers; pointer verification does not hydrate the FBX",
     "C01_02": "No independent per-model final FBX acceptance sourced or conferred by C01-03",
-    "Unity": "No real Unity editor run proven in this intake"
+    "Unity": "No real Unity editor run proven in this intake",
+    "PASS19_9": "C01-03 physically downloaded and hashed 3 original Actions ZIP; extracted 9 actual .blend + 9 binary FBX, parsed actual FBX7400 geometry/UV/normals, zero scoped anomalies, full 18 SHA matched producer LFS OIDs. C01-02 final still PENDING."
   },
   "critical": "If source HEAD changed, previous signed binary candidate may remain byte-identical, but exact current HEAD/authoring parity must be reconciled by owner/QA before release. No silent SHA promotion.",
   "statistics": {
@@ -26,7 +27,10 @@
     "signed_but_hold_P19_07": 1,
     "official_C01_02_final_approved": 0,
     "Unity_Editor_verified": 0,
-    "release_approved": 0
+    "release_approved": 0,
+    "pass19_c01_03_actual_hydrated_pairs": 9,
+    "pass19_c01_03_actual_full_sha_matches": 18,
+    "pass19_c01_03_fbx_parser_scoped_pass": 9
   },
   "invariants": {
     "rows36": true,
@@ -39,7 +43,9 @@
     "noRelease36": true,
     "tenOrdinaryMissing": true,
     "twoSourceMismatch": true,
-    "oneSignedP19Hold": true
+    "oneSignedP19Hold": true,
+    "pass19_NinePhysicalOnly": true,
+    "no_OfficialApprovalAfterPhysical": true
   },
   "rows": [
     {
@@ -64,7 +70,9 @@
       "final_disposition": "HOLD",
       "candidate_category": "SIGNED_NATIVE_CANDIDATE",
       "priority_defect": null,
-      "blocker": "C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN"
+      "blocker": "C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN",
+      "pass19_c01_03_hydrated_binary": "NOT_RECHECKED_BY_C01_03",
+      "pass19_c01_03_native_evidence": null
     },
     {
       "asset_id": "P15-02",
@@ -88,7 +96,9 @@
       "final_disposition": "HOLD",
       "candidate_category": "SIGNED_NATIVE_CANDIDATE",
       "priority_defect": null,
-      "blocker": "C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN"
+      "blocker": "C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN",
+      "pass19_c01_03_hydrated_binary": "NOT_RECHECKED_BY_C01_03",
+      "pass19_c01_03_native_evidence": null
     },
     {
       "asset_id": "P15-03",
@@ -112,7 +122,9 @@
       "final_disposition": "HOLD",
       "candidate_category": "SIGNED_NATIVE_CANDIDATE",
       "priority_defect": "HINGE_DOOR_MOTION_REVIEW",
-      "blocker": "HINGE_DOOR_MOTION_REVIEW; C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN"
+      "blocker": "HINGE_DOOR_MOTION_REVIEW; C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN",
+      "pass19_c01_03_hydrated_binary": "NOT_RECHECKED_BY_C01_03",
+      "pass19_c01_03_native_evidence": null
     },
     {
       "asset_id": "P15-04",
@@ -136,7 +148,9 @@
       "final_disposition": "HOLD",
       "candidate_category": "MISSING_SIGNED_NATIVE_PAIR",
       "priority_defect": null,
-      "blocker": "MISSING_NATIVE_SOURCE_PAIR_AND_EXACT_BINARY_SHA; C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN"
+      "blocker": "MISSING_NATIVE_SOURCE_PAIR_AND_EXACT_BINARY_SHA; C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN",
+      "pass19_c01_03_hydrated_binary": "NOT_RECHECKED_BY_C01_03",
+      "pass19_c01_03_native_evidence": null
     },
     {
       "asset_id": "P15-05",
@@ -160,7 +174,9 @@
       "final_disposition": "HOLD",
       "candidate_category": "MISSING_SIGNED_NATIVE_PAIR",
       "priority_defect": null,
-      "blocker": "MISSING_NATIVE_SOURCE_PAIR_AND_EXACT_BINARY_SHA; C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN"
+      "blocker": "MISSING_NATIVE_SOURCE_PAIR_AND_EXACT_BINARY_SHA; C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN",
+      "pass19_c01_03_hydrated_binary": "NOT_RECHECKED_BY_C01_03",
+      "pass19_c01_03_native_evidence": null
     },
     {
       "asset_id": "P15-06",
@@ -184,7 +200,9 @@
       "final_disposition": "HOLD",
       "candidate_category": "MISSING_SIGNED_NATIVE_PAIR",
       "priority_defect": null,
-      "blocker": "MISSING_NATIVE_SOURCE_PAIR_AND_EXACT_BINARY_SHA; C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN"
+      "blocker": "MISSING_NATIVE_SOURCE_PAIR_AND_EXACT_BINARY_SHA; C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN",
+      "pass19_c01_03_hydrated_binary": "NOT_RECHECKED_BY_C01_03",
+      "pass19_c01_03_native_evidence": null
     },
     {
       "asset_id": "P15-07",
@@ -208,7 +226,9 @@
       "final_disposition": "HOLD",
       "candidate_category": "MISSING_SIGNED_NATIVE_PAIR",
       "priority_defect": null,
-      "blocker": "MISSING_NATIVE_SOURCE_PAIR_AND_EXACT_BINARY_SHA; C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN"
+      "blocker": "MISSING_NATIVE_SOURCE_PAIR_AND_EXACT_BINARY_SHA; C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN",
+      "pass19_c01_03_hydrated_binary": "NOT_RECHECKED_BY_C01_03",
+      "pass19_c01_03_native_evidence": null
     },
     {
       "asset_id": "P16-01",
@@ -232,7 +252,9 @@
       "final_disposition": "HOLD",
       "candidate_category": "SIGNED_NATIVE_CANDIDATE",
       "priority_defect": null,
-      "blocker": "C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN"
+      "blocker": "C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN",
+      "pass19_c01_03_hydrated_binary": "FULL_NATIVE_BINARY_SHA_AND_SCOPED_FBX_QA_PASS",
+      "pass19_c01_03_native_evidence": "C01InteriorProps_Library/Pass19/W19_ACTUAL_9_NATIVE_BINARY_QA.json"
     },
     {
       "asset_id": "P16-02",
@@ -256,7 +278,9 @@
       "final_disposition": "HOLD",
       "candidate_category": "SIGNED_NATIVE_CANDIDATE",
       "priority_defect": null,
-      "blocker": "C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN"
+      "blocker": "C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN",
+      "pass19_c01_03_hydrated_binary": "FULL_NATIVE_BINARY_SHA_AND_SCOPED_FBX_QA_PASS",
+      "pass19_c01_03_native_evidence": "C01InteriorProps_Library/Pass19/W19_ACTUAL_9_NATIVE_BINARY_QA.json"
     },
     {
       "asset_id": "P16-03",
@@ -280,7 +304,9 @@
       "final_disposition": "HOLD",
       "candidate_category": "SIGNED_NATIVE_CANDIDATE",
       "priority_defect": null,
-      "blocker": "C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN"
+      "blocker": "C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN",
+      "pass19_c01_03_hydrated_binary": "FULL_NATIVE_BINARY_SHA_AND_SCOPED_FBX_QA_PASS",
+      "pass19_c01_03_native_evidence": "C01InteriorProps_Library/Pass19/W19_ACTUAL_9_NATIVE_BINARY_QA.json"
     },
     {
       "asset_id": "P16-04",
@@ -304,7 +330,9 @@
       "final_disposition": "HOLD",
       "candidate_category": "SIGNED_NATIVE_CANDIDATE",
       "priority_defect": null,
-      "blocker": "C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN"
+      "blocker": "C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN",
+      "pass19_c01_03_hydrated_binary": "NOT_RECHECKED_BY_C01_03",
+      "pass19_c01_03_native_evidence": null
     },
     {
       "asset_id": "P16-05",
@@ -328,7 +356,9 @@
       "final_disposition": "HOLD",
       "candidate_category": "SIGNED_NATIVE_CANDIDATE",
       "priority_defect": null,
-      "blocker": "C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN"
+      "blocker": "C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN",
+      "pass19_c01_03_hydrated_binary": "NOT_RECHECKED_BY_C01_03",
+      "pass19_c01_03_native_evidence": null
     },
     {
       "asset_id": "P16-06",
@@ -352,7 +382,9 @@
       "final_disposition": "HOLD",
       "candidate_category": "SIGNED_NATIVE_CANDIDATE",
       "priority_defect": "ROTOR_PIVOT_SWEEP_REVIEW",
-      "blocker": "ROTOR_PIVOT_SWEEP_REVIEW; C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN"
+      "blocker": "ROTOR_PIVOT_SWEEP_REVIEW; C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN",
+      "pass19_c01_03_hydrated_binary": "NOT_RECHECKED_BY_C01_03",
+      "pass19_c01_03_native_evidence": null
     },
     {
       "asset_id": "P16-07",
@@ -376,7 +408,9 @@
       "final_disposition": "HOLD",
       "candidate_category": "SIGNED_NATIVE_CANDIDATE",
       "priority_defect": null,
-      "blocker": "C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN"
+      "blocker": "C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN",
+      "pass19_c01_03_hydrated_binary": "NOT_RECHECKED_BY_C01_03",
+      "pass19_c01_03_native_evidence": null
     },
     {
       "asset_id": "P17-01",
@@ -400,7 +434,9 @@
       "final_disposition": "HOLD",
       "candidate_category": "SIGNED_NATIVE_CANDIDATE",
       "priority_defect": null,
-      "blocker": "C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN"
+      "blocker": "C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN",
+      "pass19_c01_03_hydrated_binary": "FULL_NATIVE_BINARY_SHA_AND_SCOPED_FBX_QA_PASS",
+      "pass19_c01_03_native_evidence": "C01InteriorProps_Library/Pass19/W19_ACTUAL_9_NATIVE_BINARY_QA.json"
     },
     {
       "asset_id": "P17-02",
@@ -424,7 +460,9 @@
       "final_disposition": "HOLD",
       "candidate_category": "SIGNED_NATIVE_CANDIDATE",
       "priority_defect": null,
-      "blocker": "C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN"
+      "blocker": "C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN",
+      "pass19_c01_03_hydrated_binary": "FULL_NATIVE_BINARY_SHA_AND_SCOPED_FBX_QA_PASS",
+      "pass19_c01_03_native_evidence": "C01InteriorProps_Library/Pass19/W19_ACTUAL_9_NATIVE_BINARY_QA.json"
     },
     {
       "asset_id": "P17-03",
@@ -448,7 +486,9 @@
       "final_disposition": "HOLD",
       "candidate_category": "SIGNED_NATIVE_CANDIDATE",
       "priority_defect": "LEVER_TOPCAP_SOCKET_TRIANGLE_COLLISIONS_P0",
-      "blocker": "LEVER_TOPCAP_SOCKET_TRIANGLE_COLLISIONS_P0; C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN"
+      "blocker": "LEVER_TOPCAP_SOCKET_TRIANGLE_COLLISIONS_P0; C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN",
+      "pass19_c01_03_hydrated_binary": "FULL_NATIVE_BINARY_SHA_AND_SCOPED_FBX_QA_PASS",
+      "pass19_c01_03_native_evidence": "C01InteriorProps_Library/Pass19/W19_ACTUAL_9_NATIVE_BINARY_QA.json"
     },
     {
       "asset_id": "P17-04",
@@ -472,7 +512,9 @@
       "final_disposition": "HOLD",
       "candidate_category": "MISSING_SIGNED_NATIVE_PAIR",
       "priority_defect": null,
-      "blocker": "MISSING_NATIVE_SOURCE_PAIR_AND_EXACT_BINARY_SHA; C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN"
+      "blocker": "MISSING_NATIVE_SOURCE_PAIR_AND_EXACT_BINARY_SHA; C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN",
+      "pass19_c01_03_hydrated_binary": "NOT_RECHECKED_BY_C01_03",
+      "pass19_c01_03_native_evidence": null
     },
     {
       "asset_id": "P17-05",
@@ -496,7 +538,9 @@
       "final_disposition": "HOLD",
       "candidate_category": "SOURCE_MISMATCH_BLOCKED",
       "priority_defect": "SOURCE_OUTRUNS_NATIVE_P0",
-      "blocker": "MISSING_NATIVE_SOURCE_PAIR_AND_EXACT_BINARY_SHA; SOURCE_OUTRUNS_NATIVE_P0; C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN"
+      "blocker": "MISSING_NATIVE_SOURCE_PAIR_AND_EXACT_BINARY_SHA; SOURCE_OUTRUNS_NATIVE_P0; C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN",
+      "pass19_c01_03_hydrated_binary": "NOT_RECHECKED_BY_C01_03",
+      "pass19_c01_03_native_evidence": null
     },
     {
       "asset_id": "P17-06",
@@ -520,7 +564,9 @@
       "final_disposition": "HOLD",
       "candidate_category": "MISSING_SIGNED_NATIVE_PAIR",
       "priority_defect": null,
-      "blocker": "MISSING_NATIVE_SOURCE_PAIR_AND_EXACT_BINARY_SHA; C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN"
+      "blocker": "MISSING_NATIVE_SOURCE_PAIR_AND_EXACT_BINARY_SHA; C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN",
+      "pass19_c01_03_hydrated_binary": "NOT_RECHECKED_BY_C01_03",
+      "pass19_c01_03_native_evidence": null
     },
     {
       "asset_id": "P17-07",
@@ -544,7 +590,9 @@
       "final_disposition": "HOLD",
       "candidate_category": "MISSING_SIGNED_NATIVE_PAIR",
       "priority_defect": null,
-      "blocker": "MISSING_NATIVE_SOURCE_PAIR_AND_EXACT_BINARY_SHA; C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN"
+      "blocker": "MISSING_NATIVE_SOURCE_PAIR_AND_EXACT_BINARY_SHA; C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN",
+      "pass19_c01_03_hydrated_binary": "NOT_RECHECKED_BY_C01_03",
+      "pass19_c01_03_native_evidence": null
     },
     {
       "asset_id": "P18-01",
@@ -568,7 +616,9 @@
       "final_disposition": "HOLD",
       "candidate_category": "SIGNED_NATIVE_CANDIDATE",
       "priority_defect": null,
-      "blocker": "C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN"
+      "blocker": "C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN",
+      "pass19_c01_03_hydrated_binary": "FULL_NATIVE_BINARY_SHA_AND_SCOPED_FBX_QA_PASS",
+      "pass19_c01_03_native_evidence": "C01InteriorProps_Library/Pass19/W19_ACTUAL_9_NATIVE_BINARY_QA.json"
     },
     {
       "asset_id": "P18-02",
@@ -592,7 +642,9 @@
       "final_disposition": "HOLD",
       "candidate_category": "SIGNED_NATIVE_CANDIDATE",
       "priority_defect": null,
-      "blocker": "C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN"
+      "blocker": "C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN",
+      "pass19_c01_03_hydrated_binary": "FULL_NATIVE_BINARY_SHA_AND_SCOPED_FBX_QA_PASS",
+      "pass19_c01_03_native_evidence": "C01InteriorProps_Library/Pass19/W19_ACTUAL_9_NATIVE_BINARY_QA.json"
     },
     {
       "asset_id": "P18-03",
@@ -616,7 +668,9 @@
       "final_disposition": "HOLD",
       "candidate_category": "SIGNED_NATIVE_CANDIDATE",
       "priority_defect": "FOUR_WHEEL_DYNAMIC_SWEEP_REVIEW",
-      "blocker": "FOUR_WHEEL_DYNAMIC_SWEEP_REVIEW; C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN"
+      "blocker": "FOUR_WHEEL_DYNAMIC_SWEEP_REVIEW; C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN",
+      "pass19_c01_03_hydrated_binary": "FULL_NATIVE_BINARY_SHA_AND_SCOPED_FBX_QA_PASS",
+      "pass19_c01_03_native_evidence": "C01InteriorProps_Library/Pass19/W19_ACTUAL_9_NATIVE_BINARY_QA.json"
     },
     {
       "asset_id": "P18-04",
@@ -640,7 +694,9 @@
       "final_disposition": "HOLD",
       "candidate_category": "MISSING_SIGNED_NATIVE_PAIR",
       "priority_defect": null,
-      "blocker": "MISSING_NATIVE_SOURCE_PAIR_AND_EXACT_BINARY_SHA; C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN"
+      "blocker": "MISSING_NATIVE_SOURCE_PAIR_AND_EXACT_BINARY_SHA; C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN",
+      "pass19_c01_03_hydrated_binary": "NOT_RECHECKED_BY_C01_03",
+      "pass19_c01_03_native_evidence": null
     },
     {
       "asset_id": "P18-05",
@@ -664,7 +720,9 @@
       "final_disposition": "HOLD",
       "candidate_category": "MISSING_SIGNED_NATIVE_PAIR",
       "priority_defect": null,
-      "blocker": "MISSING_NATIVE_SOURCE_PAIR_AND_EXACT_BINARY_SHA; C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN"
+      "blocker": "MISSING_NATIVE_SOURCE_PAIR_AND_EXACT_BINARY_SHA; C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN",
+      "pass19_c01_03_hydrated_binary": "NOT_RECHECKED_BY_C01_03",
+      "pass19_c01_03_native_evidence": null
     },
     {
       "asset_id": "P18-06",
@@ -688,7 +746,9 @@
       "final_disposition": "HOLD",
       "candidate_category": "MISSING_SIGNED_NATIVE_PAIR",
       "priority_defect": null,
-      "blocker": "MISSING_NATIVE_SOURCE_PAIR_AND_EXACT_BINARY_SHA; C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN"
+      "blocker": "MISSING_NATIVE_SOURCE_PAIR_AND_EXACT_BINARY_SHA; C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN",
+      "pass19_c01_03_hydrated_binary": "NOT_RECHECKED_BY_C01_03",
+      "pass19_c01_03_native_evidence": null
     },
     {
       "asset_id": "P18-07",
@@ -712,7 +772,9 @@
       "final_disposition": "HOLD",
       "candidate_category": "SOURCE_MISMATCH_BLOCKED",
       "priority_defect": "SOURCE_OFFSET_OUTRUNS_NATIVE_P0",
-      "blocker": "MISSING_NATIVE_SOURCE_PAIR_AND_EXACT_BINARY_SHA; SOURCE_OFFSET_OUTRUNS_NATIVE_P0; C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN"
+      "blocker": "MISSING_NATIVE_SOURCE_PAIR_AND_EXACT_BINARY_SHA; SOURCE_OFFSET_OUTRUNS_NATIVE_P0; C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN",
+      "pass19_c01_03_hydrated_binary": "NOT_RECHECKED_BY_C01_03",
+      "pass19_c01_03_native_evidence": null
     },
     {
       "asset_id": "P19-01",
@@ -736,7 +798,9 @@
       "final_disposition": "HOLD",
       "candidate_category": "SIGNED_NATIVE_CANDIDATE",
       "priority_defect": "MICROSLIVER_TOLERANCE_REVIEW",
-      "blocker": "MICROSLIVER_TOLERANCE_REVIEW; C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN"
+      "blocker": "MICROSLIVER_TOLERANCE_REVIEW; C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN",
+      "pass19_c01_03_hydrated_binary": "NOT_RECHECKED_BY_C01_03",
+      "pass19_c01_03_native_evidence": null
     },
     {
       "asset_id": "P19-02",
@@ -760,7 +824,9 @@
       "final_disposition": "HOLD",
       "candidate_category": "SIGNED_NATIVE_CANDIDATE",
       "priority_defect": null,
-      "blocker": "C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN"
+      "blocker": "C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN",
+      "pass19_c01_03_hydrated_binary": "NOT_RECHECKED_BY_C01_03",
+      "pass19_c01_03_native_evidence": null
     },
     {
       "asset_id": "P19-03",
@@ -784,7 +850,9 @@
       "final_disposition": "HOLD",
       "candidate_category": "SIGNED_NATIVE_CANDIDATE",
       "priority_defect": null,
-      "blocker": "C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN"
+      "blocker": "C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN",
+      "pass19_c01_03_hydrated_binary": "NOT_RECHECKED_BY_C01_03",
+      "pass19_c01_03_native_evidence": null
     },
     {
       "asset_id": "P19-04",
@@ -808,7 +876,9 @@
       "final_disposition": "HOLD",
       "candidate_category": "SIGNED_NATIVE_CANDIDATE",
       "priority_defect": null,
-      "blocker": "C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN"
+      "blocker": "C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN",
+      "pass19_c01_03_hydrated_binary": "NOT_RECHECKED_BY_C01_03",
+      "pass19_c01_03_native_evidence": null
     },
     {
       "asset_id": "P19-05",
@@ -832,7 +902,9 @@
       "final_disposition": "HOLD",
       "candidate_category": "SIGNED_NATIVE_CANDIDATE",
       "priority_defect": null,
-      "blocker": "C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN"
+      "blocker": "C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN",
+      "pass19_c01_03_hydrated_binary": "NOT_RECHECKED_BY_C01_03",
+      "pass19_c01_03_native_evidence": null
     },
     {
       "asset_id": "P19-06",
@@ -856,7 +928,9 @@
       "final_disposition": "HOLD",
       "candidate_category": "SIGNED_NATIVE_CANDIDATE",
       "priority_defect": null,
-      "blocker": "C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN"
+      "blocker": "C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN",
+      "pass19_c01_03_hydrated_binary": "NOT_RECHECKED_BY_C01_03",
+      "pass19_c01_03_native_evidence": null
     },
     {
       "asset_id": "P19-07",
@@ -880,7 +954,9 @@
       "final_disposition": "HOLD",
       "candidate_category": "SIGNED_NATIVE_WITH_QA_HOLD",
       "priority_defect": "REAL_T_JUNCTION_REVIEW_P0",
-      "blocker": "REAL_T_JUNCTION_REVIEW_P0; C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN"
+      "blocker": "REAL_T_JUNCTION_REVIEW_P0; C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN",
+      "pass19_c01_03_hydrated_binary": "NOT_RECHECKED_BY_C01_03",
+      "pass19_c01_03_native_evidence": null
     },
     {
       "asset_id": "P19-08",
@@ -904,7 +980,10 @@
       "final_disposition": "HOLD",
       "candidate_category": "SIGNED_NATIVE_CANDIDATE",
       "priority_defect": "NEAR_ENDPOINT_REVIEW",
-      "blocker": "NEAR_ENDPOINT_REVIEW; C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN"
+      "blocker": "NEAR_ENDPOINT_REVIEW; C01_02_FINAL_PER_SHA_QA_AND_UNITY_EDITOR_NOT_RUN",
+      "pass19_c01_03_hydrated_binary": "NOT_RECHECKED_BY_C01_03",
+      "pass19_c01_03_native_evidence": null
     }
-  ]
+  ],
+  "evidence_receipt": "C01InteriorProps_Library/Pass19/W19_ACTUAL_9_NATIVE_BINARY_QA.json"
 }

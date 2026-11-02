@@ -68,7 +68,7 @@
       "parent": "ROOT"
     },
     {
-      "type": "box",
+      "type": "rectangular_through_aperture",
       "name": "TopCap",
       "pos": [
         0,
@@ -81,7 +81,19 @@
         0.295
       ],
       "mat": "DARK",
-      "parent": "ROOT"
+      "parent": "ROOT",
+      "opening": {
+        "x": [
+          -0.052,
+          0.052
+        ],
+        "z": [
+          -0.082,
+          0.052
+        ],
+        "cutThroughAxis": "Y"
+      },
+      "meshTriangles": 32
     },
     {
       "type": "box",
@@ -132,7 +144,7 @@
       "parent": "ROOT"
     },
     {
-      "type": "box",
+      "type": "rectangular_through_aperture",
       "name": "LeverSocket",
       "pos": [
         0,
@@ -145,7 +157,19 @@
         0.135
       ],
       "mat": "STEEL",
-      "parent": "ROOT"
+      "parent": "ROOT",
+      "opening": {
+        "x": [
+          -0.05,
+          0.05
+        ],
+        "z": [
+          -0.058,
+          0.058
+        ],
+        "cutThroughAxis": "Y"
+      },
+      "meshTriangles": 32
     },
     {
       "type": "cylinder",
@@ -386,9 +410,9 @@
       ]
     }
   ],
-  "expectedTriangleCount": 424,
-  "state": "PASS17_REPAIR_SOURCE_GLTF_OBJ_NATIVE_EXPORT_STALE",
-  "version": "0.2.2",
+  "expectedTriangleCount": 464,
+  "state": "PASS19_SOURCE_CLEARANCE_REPAIR__AWAIT_NATIVE_DYNAMIC_QA",
+  "version": "0.3.0",
   "units": "meters",
   "axes": "Y up; +Z toward access side for keypad",
   "materials": [
@@ -433,5 +457,20 @@
     "blender_after": "NOT RUN",
     "fbx_after": "NOT RUN",
     "unity_after": "NOT RUN"
+  },
+  "detailPass19": {
+    "model": "P17-03",
+    "parts": 20,
+    "trianglesBefore": 424,
+    "trianglesAfter": 464,
+    "defect": "LeverShaft and PivotAnchorVisual intersected solid TopCap and LeverSocket in PASS18 FBX sweep",
+    "fix": "Real manifold through-openings in two EXISTING fixed meshes; no proxy, no new part, no pivot edit",
+    "pivotUnchanged": [
+      0,
+      0.35,
+      -0.015
+    ],
+    "motionSweep": "PENDING real Blender reimport",
+    "Unity6": "NOT RUN"
   }
 }

@@ -62,6 +62,24 @@ namespace C01.Floors12Pass18.Editor
         static void EnsureAssetDir(string path) {
             if(!Directory.Exists(Disk(path))) Directory.CreateDirectory(Disk(path));
         }
+        // W20: fail the entire three-model intake BEFORE creating even one staged FBX.
+        // A stale second or third model must never leave a partially admitted first prefab.
+        static void PreflightAllThreeImmutableInputs() {
+            Require(Models.Length==3, "Expected exactly 3 historical QA-only model IDs");
+            Require(Models.Select(m=>m.id).Distinct().Count()==3, "Duplicate model ID");
+            foreach (var m in Models) {
+                string src=Disk(Root+"/FBX/"+m.stem+"_v004.fbx");
+                Require(File.Exists(src),m.id+" current source FBX missing; hydrate LFS first");
+                var file=new FileInfo(src);
+                Require(file.Length>1000,m.id+" FBX is empty or a Git LFS pointer");
+                Require(SHA256File(src)==m.fbxHash,m.id+" immutable source FBX SHA256 mismatch");
+                // Fail closed on all three existing stage slots before copying any model.
+                string alreadyStaged=Disk(Output+"/Models/"+m.stem+"_v004.fbx");
+                if(File.Exists(alreadyStaged))
+                    Require(SHA256File(alreadyStaged)==m.fbxHash,
+                        m.id+" incompatible/stale staged FBX; no automatic overwrite");
+            }
+        }
         static Bounds WorldToRootBounds(Transform root, IEnumerable<MeshFilter> filters) {
             Bounds result=default;bool first=true;
             foreach(var filter in filters){
@@ -159,8 +177,9 @@ namespace C01.Floors12Pass18.Editor
                 Require(Application.unityVersion.StartsWith("6000.3."),"Expected Unity 6000.3.x actual Editor");
                 Require(GraphicsSettings.currentRenderPipeline is UniversalRenderPipelineAsset,
                     "URP renderer is not active");
+                // Read-only, all-or-nothing SHA gate BEFORE directory/asset mutations.
+                PreflightAllThreeImmutableInputs();
                 EnsureAssetDir(Output+"/Models");EnsureAssetDir(Output+"/Prefabs");
-                Require(Models.Length==3,"Unexpected model contract");
                 preview=EditorSceneManager.NewPreviewScene();
                 foreach(var model in Models) report.models.Add(StageOne(model,preview));
                 AssetDatabase.SaveAssets();

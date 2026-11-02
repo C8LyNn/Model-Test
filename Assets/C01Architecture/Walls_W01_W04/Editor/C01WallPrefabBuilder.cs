@@ -98,6 +98,15 @@ public static class C01WallPrefabBuilder
         return Root + "/FBX/" + Ids[index] + "_" + Names[index] + ".fbx";
     }
 
+    // AssetDatabase.Refresh() can import staged FBX and generate .meta files.
+    // Check the physical bytes for ALL requested inputs before any refresh.
+    // PreflightMeshes still re-checks the same immutable SHA after import.
+    private static void PreflightSourceBytes(int[] indices, SourceVariant variant)
+    {
+        foreach (int index in indices)
+            VerifySourceSha256(GetSourcePath(index, variant), index, variant);
+    }
+
     // All source checks complete BEFORE writing any Unity assets.
     // These are authoring preflight checks, NOT C01-02 or Unity runtime acceptance.
     private static void PreflightMeshes(int[] indices, SourceVariant variant)
@@ -176,7 +185,9 @@ public static class C01WallPrefabBuilder
 
     private static void BuildSelected(int[] indices, SourceVariant variant)
     {
-        // Refresh imports before the SHA and mesh preflight. Does not edit the ship scene.
+        // Reject a wrong, stale, or unhydrated FBX before AssetDatabase.Refresh()
+        // has a chance to import it or create sidecar metadata.
+        PreflightSourceBytes(indices, variant);
         AssetDatabase.Refresh();
         PreflightMeshes(indices, variant);
 

@@ -89,6 +89,16 @@ jobs:
           if-no-files-found: error
           retention-days: 14
 
+  unity-not-run-license-blocker:
+    needs: stage-three-real-native-fbx
+    if: needs.stage-three-real-native-fbx.result == 'success' && needs.stage-three-real-native-fbx.outputs.unity_license_ready != 'true'
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Fail release gate explicitly without a licensed Unity Editor
+        run: |
+          echo '::error::UNITY_NOT_RUN: real Unity 6000.3.14f1 cannot start because complete Unity CI license configuration is absent. Original three FBX staged successfully, but NO prefab/scene/EditMode/PlayMode evidence exists. Set authorized GitHub Actions Unity licensing secrets or run same immutable input via licensed local Windows Unity Editor. Never mark this W19 Unity gate PASS.'
+          exit 19
+
   actual-unity-6-urp:
     needs: stage-three-real-native-fbx
     if: needs.stage-three-real-native-fbx.result == 'success' && needs.stage-three-real-native-fbx.outputs.unity_license_ready == 'true'

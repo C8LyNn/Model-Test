@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="15" result="Passed" total="15" passed="15" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-29 14:35:47Z" end-time="2026-10-29 14:36:02Z" duration="14,5679891">
+  <test-suite type="TestSuite" id="1000" name="Model Test" fullname="Model Test" runstate="Runnable" testcasecount="15" result="Passed" start-time="2026-10-29 14:35:47Z" end-time="2026-10-29 14:36:02Z" duration="14.567989" total="15" passed="15" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1010" name="C01.EditTests.dll" fullname="C:/Users/kubap/Documents/GitHub/Model Test/Library/ScriptAssemblies/C01.EditTests.dll" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-10-29 14:35:47Z" end-time="2026-10-29 14:35:50Z" duration="2.180836" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="41272" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1011" name="C01" fullname="C01" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-10-29 14:35:47Z" end-time="2026-10-29 14:35:50Z" duration="2.180544" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1012" name="Tests" fullname="C01.Tests" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-10-29 14:35:47Z" end-time="2026-10-29 14:35:50Z" duration="2.180411" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1001" name="C01EditTests" fullname="C01.Tests.C01EditTests" classname="C01.Tests.C01EditTests" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-10-29 14:35:47Z" end-time="2026-10-29 14:35:50Z" duration="2.179917" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1003" name="CompleteScenePassesGeometryPhysicsAndImportAudit" fullname="C01.Tests.C01EditTests.CompleteScenePassesGeometryPhysicsAndImportAudit" methodname="CompleteScenePassesGeometryPhysicsAndImportAudit" classname="C01.Tests.C01EditTests" runstate="Runnable" seed="1375173864" result="Passed" start-time="2026-10-29 14:35:47Z" end-time="2026-10-29 14:35:48Z" duration="1.017787" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[C01_UNITY_QA PASS: 820 complete solids, 273 door poses, 297 surface rays, 15 FBX imports
+]]></output>
+            </test-case>
+            <test-case id="1002" name="ImportedPackageKeepsQaInsideTargetProject" fullname="C01.Tests.C01EditTests.ImportedPackageKeepsQaInsideTargetProject" methodname="ImportedPackageKeepsQaInsideTargetProject" classname="C01.Tests.C01EditTests" runstate="Runnable" seed="1438183319" result="Passed" start-time="2026-10-29 14:35:48Z" end-time="2026-10-29 14:35:48Z" duration="0.002428" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1004" name="MissingNestedFrameIsRejected" fullname="C01.Tests.C01EditTests.MissingNestedFrameIsRejected" methodname="MissingNestedFrameIsRejected" classname="C01.Tests.C01EditTests" runstate="Runnable" seed="1321258251" result="Passed" start-time="2026-10-29 14:35:48Z" end-time="2026-10-29 14:35:50Z" duration="1.135091" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[C01_UNITY_QA FAIL: 817 complete solids, 273 door poses, 297 surface rays, 15 FBX imports
+]]></output>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1009" name="WallVariantsHaveUnchangedGraphSocketTransforms" fullname="C01.Tests.C01EditTests.WallVariantsHaveUnchangedGraphSocketTransforms" classname="C01.Tests.C01EditTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-29 14:35:50Z" end-time="2026-10-29 14:35:50Z" duration="0.014949" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1005" name="WallVariantsHaveUnchangedGraphSocketTransforms(&quot;W01_Wall_3m&quot;)" fullname="C01.Tests.C01EditTests.WallVariantsHaveUnchangedGraphSocketTransforms(&quot;W01_Wall_3m&quot;)" methodname="WallVariantsHaveUnchangedGraphSocketTransforms" classname="C01.Tests.C01EditTests" runstate="Runnable" seed="1354199443" result="Passed" start-time="2026-10-29 14:35:50Z" end-time="2026-10-29 14:35:50Z" duration="0.006065" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1006" name="WallVariantsHaveUnchangedGraphSocketTransforms(&quot;W02_Wall_3m_Variant&quot;)" fullname="C01.Tests.C01EditTests.WallVariantsHaveUnchangedGraphSocketTransforms(&quot;W02_Wall_3m_Variant&quot;)" methodname="WallVariantsHaveUnchangedGraphSocketTransforms" classname="C01.Tests.C01EditTests" runstate="Runnable" seed="1036530998" result="Passed" start-time="2026-10-29 14:35:50Z" end-time="2026-10-29 14:35:50Z" duration="0.001389" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1007" name="WallVariantsHaveUnchangedGraphSocketTransforms(&quot;W05_Wall_3m_Service&quot;)" fullname="C01.Tests.C01EditTests.WallVariantsHaveUnchangedGraphSocketTransforms(&quot;W05_Wall_3m_Service&quot;)" methodname="WallVariantsHaveUnchangedGraphSocketTransforms" classname="C01.Tests.C01EditTests" runstate="Runnable" seed="528709750" result="Passed" start-time="2026-10-29 14:35:50Z" end-time="2026-10-29 14:35:50Z" duration="0.001898" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1008" name="WallVariantsHaveUnchangedGraphSocketTransforms(&quot;W04_DoorWall_3m&quot;)" fullname="C01.Tests.C01EditTests.WallVariantsHaveUnchangedGraphSocketTransforms(&quot;W04_DoorWall_3m&quot;)" methodname="WallVariantsHaveUnchangedGraphSocketTransforms" classname="C01.Tests.C01EditTests" runstate="Runnable" seed="1745960464" result="Passed" start-time="2026-10-29 14:35:50Z" end-time="2026-10-29 14:35:50Z" duration="0.002137" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+    <test-suite type="Assembly" id="1024" name="C01Ship.EditTests.dll" fullname="C:/Users/kubap/Documents/GitHub/Model Test/Library/ScriptAssemblies/C01Ship.EditTests.dll" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-10-29 14:35:50Z" end-time="2026-10-29 14:36:02Z" duration="12.382016" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="41272" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1025" name="C01" fullname="C01" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-10-29 14:35:50Z" end-time="2026-10-29 14:36:02Z" duration="12.381442" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1026" name="Ship" fullname="C01.Ship" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-10-29 14:35:50Z" end-time="2026-10-29 14:36:02Z" duration="12.381264" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1027" name="Tests" fullname="C01.Ship.Tests" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-10-29 14:35:50Z" end-time="2026-10-29 14:36:02Z" duration="12.381090" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1014" name="ShipEditTests" fullname="C01.Ship.Tests.ShipEditTests" classname="C01.Ship.Tests.ShipEditTests" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-10-29 14:35:50Z" end-time="2026-10-29 14:36:02Z" duration="12.380883" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1015" name="ExpandedBranchesKeepTheSameThreeMetreWidth" fullname="C01.Ship.Tests.ShipEditTests.ExpandedBranchesKeepTheSameThreeMetreWidth" methodname="ExpandedBranchesKeepTheSameThreeMetreWidth" classname="C01.Ship.Tests.ShipEditTests" runstate="Runnable" seed="444699328" result="Passed" start-time="2026-10-29 14:35:50Z" end-time="2026-10-29 14:35:50Z" duration="0.758324" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1021" name="MissingDoorFrameIsRejected" fullname="C01.Ship.Tests.ShipEditTests.MissingDoorFrameIsRejected" methodname="MissingDoorFrameIsRejected" classname="C01.Ship.Tests.ShipEditTests" runstate="Runnable" seed="105609287" result="Passed" start-time="2026-10-29 14:35:50Z" end-time="2026-10-29 14:35:52Z" duration="1.979015" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[C01_SHIP_QA FAIL: 7340 solids, 3276 door poses, 35 reachable zones, 62 new FBX models
+]]></output>
+              </test-case>
+              <test-case id="1022" name="MissingEngineIsRejected" fullname="C01.Ship.Tests.ShipEditTests.MissingEngineIsRejected" methodname="MissingEngineIsRejected" classname="C01.Ship.Tests.ShipEditTests" runstate="Runnable" seed="1678555666" result="Passed" start-time="2026-10-29 14:35:52Z" end-time="2026-10-29 14:35:54Z" duration="1.960481" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[C01_SHIP_QA FAIL: 7333 solids, 3276 door poses, 35 reachable zones, 62 new FBX models
+]]></output>
+              </test-case>
+              <test-suite type="ParameterizedMethod" id="1018" name="MissingExtendedBranchSurfaceIsRejected" fullname="C01.Ship.Tests.ShipEditTests.MissingExtendedBranchSurfaceIsRejected" classname="C01.Ship.Tests.ShipEditTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-29 14:35:54Z" end-time="2026-10-29 14:35:58Z" duration="3.912500" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1016" name="MissingExtendedBranchSurfaceIsRejected(&quot;Floors&quot;,&quot;F_6_24&quot;)" fullname="C01.Ship.Tests.ShipEditTests.MissingExtendedBranchSurfaceIsRejected(&quot;Floors&quot;,&quot;F_6_24&quot;)" methodname="MissingExtendedBranchSurfaceIsRejected" classname="C01.Ship.Tests.ShipEditTests" runstate="Runnable" seed="1457442270" result="Passed" start-time="2026-10-29 14:35:54Z" end-time="2026-10-29 14:35:56Z" duration="1.949469" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[C01_SHIP_QA FAIL: 7337 solids, 3276 door poses, 35 reachable zones, 62 new FBX models
+]]></output>
+                </test-case>
+                <test-case id="1017" name="MissingExtendedBranchSurfaceIsRejected(&quot;Ceilings&quot;,&quot;C_6_24&quot;)" fullname="C01.Ship.Tests.ShipEditTests.MissingExtendedBranchSurfaceIsRejected(&quot;Ceilings&quot;,&quot;C_6_24&quot;)" methodname="MissingExtendedBranchSurfaceIsRejected" classname="C01.Ship.Tests.ShipEditTests" runstate="Runnable" seed="537895438" result="Passed" start-time="2026-10-29 14:35:56Z" end-time="2026-10-29 14:35:58Z" duration="1.958848" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[C01_SHIP_QA FAIL: 7333 solids, 3276 door poses, 35 reachable zones, 62 new FBX models
+]]></output>
+                </test-case>
+              </test-suite>
+              <test-case id="1023" name="NegativeAuditDoesNotModifyDeliveredNavmesh" fullname="C01.Ship.Tests.ShipEditTests.NegativeAuditDoesNotModifyDeliveredNavmesh" methodname="NegativeAuditDoesNotModifyDeliveredNavmesh" classname="C01.Ship.Tests.ShipEditTests" runstate="Runnable" seed="1376949658" result="Passed" start-time="2026-10-29 14:35:58Z" end-time="2026-10-29 14:36:00Z" duration="2.012206" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[C01_SHIP_QA FAIL: 7340 solids, 3276 door poses, 35 reachable zones, 62 new FBX models
+]]></output>
+              </test-case>
+              <test-case id="1019" name="PackageQaStaysInsideIndependentTargetProject" fullname="C01.Ship.Tests.ShipEditTests.PackageQaStaysInsideIndependentTargetProject" methodname="PackageQaStaysInsideIndependentTargetProject" classname="C01.Ship.Tests.ShipEditTests" runstate="Runnable" seed="1660552843" result="Passed" start-time="2026-10-29 14:36:00Z" end-time="2026-10-29 14:36:00Z" duration="0.000435" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1020" name="ReferenceScenePassesFullGeometryAndRoutes" fullname="C01.Ship.Tests.ShipEditTests.ReferenceScenePassesFullGeometryAndRoutes" methodname="ReferenceScenePassesFullGeometryAndRoutes" classname="C01.Ship.Tests.ShipEditTests" runstate="Runnable" seed="1815447130" result="Passed" start-time="2026-10-29 14:36:00Z" end-time="2026-10-29 14:36:02Z" duration="1.756302" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[Main Object Name '' does not match filename 'Ship_OpenDoors_NavMesh'
+C01_SHIP_QA PASS: 7343 solids, 3276 door poses, 35 reachable zones, 62 new FBX models
+Saving results to: C:\Users\kubap\Documents\GitHub\Model Test\C01Ship_QA\model_test_editmode.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

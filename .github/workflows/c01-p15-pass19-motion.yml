@@ -1,0 +1,60 @@
+name: C01-15 PASS19 existing native P15-03 hinge motion QA
+
+on:
+  push:
+    branches:
+      - c01/props-15-installations
+    paths:
+      - .github/workflows/c01-p15-pass19-motion.yml
+      - Tools/C01MeshPass19/P15/**
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  existing-native-p15-03:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - name: Checkout current frozen producer branch (do NOT export again)
+        uses: actions/checkout@v4
+        with:
+          lfs: false
+
+      - name: Hydrate only original P15-03 binary sources and 3 FBX from Git LFS
+        shell: bash
+        run: |
+          set -euo pipefail
+          git lfs install --local
+          git lfs pull --include="Assets/C01InteriorProps/P15/Sources/Blender/P15-03.blend,Assets/C01InteriorProps/P15/Models/FBX/P15-03*.fbx" --exclude="*"
+          test "$(head -c 7 Assets/C01InteriorProps/P15/Sources/Blender/P15-03.blend)" = "BLENDER"
+          test "$(head -c 18 Assets/C01InteriorProps/P15/Models/FBX/P15-03.fbx)" = "Kaydara FBX Binary"
+
+      - name: Install actual Blender 4.0.x with FBX dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends blender python3-numpy xvfb libegl1 libgl1 libgl1-mesa-dri libopengl0
+          blender --version | head -4
+
+      - name: Execute actual native .blend + imported FBX hinge sweep and SHA verification
+        id: native-hinge
+        shell: bash
+        run: |
+          mkdir -p C01_PASS19_P15_NATIVE_QA
+          set -o pipefail
+          LIBGL_ALWAYS_SOFTWARE=1 xvfb-run -a blender --background --python Tools/C01MeshPass19/P15/native_hinge_gate.py 2>&1 | tee C01_PASS19_P15_NATIVE_QA/Blender4_P15-03_motion.log
+
+      - name: Upload genuine hydrated native files and measured independent QA evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-P15-03-PASS19-REAL-NATIVE-MOTION-AND-BINARIES
+          path: |
+            C01_PASS19_P15_NATIVE_QA/
+            Assets/C01InteriorProps/P15/Sources/Blender/P15-03.blend
+            Assets/C01InteriorProps/P15/Models/FBX/P15-03.fbx
+            Assets/C01InteriorProps/P15/Models/FBX/P15-03_Body.fbx
+            Assets/C01InteriorProps/P15/Models/FBX/P15-03_Door.fbx
+          if-no-files-found: warn
+          retention-days: 14

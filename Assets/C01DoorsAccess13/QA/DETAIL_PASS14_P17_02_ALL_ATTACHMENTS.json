@@ -1,0 +1,259 @@
+{
+  "schema": "C01-13-DETAIL-PASS14-REAL-GLTF-TRIANGLE-CONTACTS-v1",
+  "asset": "P17-02",
+  "owner": "C01-17",
+  "qa_contributor": "C01-13",
+  "producer": {
+    "pr": "https://github.com/C8LyNn/Model-Test/pull/17",
+    "commit": "cdcc18428d2fb52c2c60826fc8af9a70f51c82f9",
+    "gltf_git_blob_sha1": "d80a67af140e434b983104aaec0078f9cf5bd66f",
+    "gltf_sha256": "a9995704a70776b49f2bd6916a50cf222a4ab40b370a0a9e258b63bdc4429786"
+  },
+  "method": "Actually decoded current producer embedded glTF buffer POSITION (float32) + triangle indices, applied per-node scale and translation, then tested segment-vs-triangle intersections in world metres. Positive crossings establish intersecting triangle surfaces at specific points; do not establish overall no self-intersections, no hidden coplanarity, Blender FBX roundtrip or Unity.",
+  "metrics": {
+    "mesh_instances": 38,
+    "triangles": 536,
+    "zero_area_triangles": 0,
+    "missing_uv0_mesh_instances": 0,
+    "physical_envelope_xyz_m": [
+      0.18,
+      0.28,
+      0.07
+    ],
+    "source_attachment_tests_pass": 19,
+    "source_attachment_tests_total": 19
+  },
+  "results": [
+    {
+      "part": "KeyGuide_01",
+      "support": "Keybed",
+      "result": "SOURCE_SURFACE_INTERSECTION_PASS",
+      "edge_vs_triangle_crossings": 20,
+      "witness_xyz_m": [
+        -0.035333333,
+        0.165,
+        0.064
+      ]
+    },
+    {
+      "part": "KeyGuide_02",
+      "support": "Keybed",
+      "result": "SOURCE_SURFACE_INTERSECTION_PASS",
+      "edge_vs_triangle_crossings": 16,
+      "witness_xyz_m": [
+        0.005666667,
+        0.165,
+        0.064
+      ]
+    },
+    {
+      "part": "KeyGuide_03",
+      "support": "Keybed",
+      "result": "SOURCE_SURFACE_INTERSECTION_PASS",
+      "edge_vs_triangle_crossings": 16,
+      "witness_xyz_m": [
+        0.046666667,
+        0.165,
+        0.064
+      ]
+    },
+    {
+      "part": "KeyGuide_04",
+      "support": "Keybed",
+      "result": "SOURCE_SURFACE_INTERSECTION_PASS",
+      "edge_vs_triangle_crossings": 20,
+      "witness_xyz_m": [
+        -0.035333333,
+        0.129,
+        0.064
+      ]
+    },
+    {
+      "part": "KeyGuide_05",
+      "support": "Keybed",
+      "result": "SOURCE_SURFACE_INTERSECTION_PASS",
+      "edge_vs_triangle_crossings": 20,
+      "witness_xyz_m": [
+        -0.003303226,
+        0.129,
+        0.064
+      ]
+    },
+    {
+      "part": "KeyGuide_06",
+      "support": "Keybed",
+      "result": "SOURCE_SURFACE_INTERSECTION_PASS",
+      "edge_vs_triangle_crossings": 16,
+      "witness_xyz_m": [
+        0.046666667,
+        0.129,
+        0.064
+      ]
+    },
+    {
+      "part": "KeyGuide_07",
+      "support": "Keybed",
+      "result": "SOURCE_SURFACE_INTERSECTION_PASS",
+      "edge_vs_triangle_crossings": 16,
+      "witness_xyz_m": [
+        -0.035333333,
+        0.093,
+        0.064
+      ]
+    },
+    {
+      "part": "KeyGuide_08",
+      "support": "Keybed",
+      "result": "SOURCE_SURFACE_INTERSECTION_PASS",
+      "edge_vs_triangle_crossings": 20,
+      "witness_xyz_m": [
+        0.005666667,
+        0.093,
+        0.064
+      ]
+    },
+    {
+      "part": "KeyGuide_09",
+      "support": "Keybed",
+      "result": "SOURCE_SURFACE_INTERSECTION_PASS",
+      "edge_vs_triangle_crossings": 20,
+      "witness_xyz_m": [
+        0.026425808,
+        0.093,
+        0.064
+      ]
+    },
+    {
+      "part": "KeyGuide_10",
+      "support": "Keybed",
+      "result": "SOURCE_SURFACE_INTERSECTION_PASS",
+      "edge_vs_triangle_crossings": 16,
+      "witness_xyz_m": [
+        -0.035333333,
+        0.057,
+        0.064
+      ]
+    },
+    {
+      "part": "KeyGuide_11",
+      "support": "Keybed",
+      "result": "SOURCE_SURFACE_INTERSECTION_PASS",
+      "edge_vs_triangle_crossings": 16,
+      "witness_xyz_m": [
+        0.005666667,
+        0.057,
+        0.064
+      ]
+    },
+    {
+      "part": "KeyGuide_12",
+      "support": "Keybed",
+      "result": "SOURCE_SURFACE_INTERSECTION_PASS",
+      "edge_vs_triangle_crossings": 20,
+      "witness_xyz_m": [
+        0.046666667,
+        0.057,
+        0.064
+      ]
+    },
+    {
+      "part": "LeftClampReinforcement",
+      "support": "LeftClamp",
+      "result": "SOURCE_SURFACE_INTERSECTION_PASS",
+      "edge_vs_triangle_crossings": 20,
+      "witness_xyz_m": [
+        -0.073833335,
+        0.059999999,
+        0.064000001
+      ]
+    },
+    {
+      "part": "RightClampReinforcement",
+      "support": "RightClamp",
+      "result": "SOURCE_SURFACE_INTERSECTION_PASS",
+      "edge_vs_triangle_crossings": 20,
+      "witness_xyz_m": [
+        0.076166665,
+        0.059999999,
+        0.064000001
+      ]
+    },
+    {
+      "part": "LeftBottomMountScrew",
+      "support": "MountBacking",
+      "result": "SOURCE_SURFACE_INTERSECTION_PASS",
+      "edge_vs_triangle_crossings": 32,
+      "witness_xyz_m": [
+        -0.07981802,
+        0.00681802,
+        0.016
+      ]
+    },
+    {
+      "part": "LeftTopMountScrew",
+      "support": "MountBacking",
+      "result": "SOURCE_SURFACE_INTERSECTION_PASS",
+      "edge_vs_triangle_crossings": 36,
+      "witness_xyz_m": [
+        -0.07981802,
+        0.26681802,
+        0.016
+      ]
+    },
+    {
+      "part": "RightBottomMountScrew",
+      "support": "MountBacking",
+      "result": "SOURCE_SURFACE_INTERSECTION_PASS",
+      "edge_vs_triangle_crossings": 36,
+      "witness_xyz_m": [
+        0.08618198,
+        0.00681802,
+        0.016
+      ]
+    },
+    {
+      "part": "RightTopMountScrew",
+      "support": "MountBacking",
+      "result": "SOURCE_SURFACE_INTERSECTION_PASS",
+      "edge_vs_triangle_crossings": 32,
+      "witness_xyz_m": [
+        0.08618198,
+        0.26681802,
+        0.016
+      ]
+    },
+    {
+      "part": "Keybed",
+      "support": "Housing",
+      "result": "SOURCE_SURFACE_INTERSECTION_PASS",
+      "edge_vs_triangle_crossings": 20,
+      "witness_xyz_m": [
+        0.053333334,
+        0.047499999,
+        0.0585
+      ]
+    }
+  ],
+  "native_file_gate": {
+    "source_blend": "STALE",
+    "source_blend_previous_lfs_sha256": "183d4ebbcc9e13ad220aaa869db80949fb315d58666f79c2e1c7ae85f6e69649",
+    "binary_fbx": "STALE",
+    "binary_fbx_previous_lfs_sha256": "af858385a0abae9c623ee4002bcf22bcbc401b5687024acd8df142eb1b848147",
+    "native_blender_after": "NOT_RUN",
+    "blender_fbx_reimport": "NOT_RUN",
+    "unity6_import": "NOT_RUN",
+    "independent_C01_02": "PENDING"
+  },
+  "c01_13_action": {
+    "own_pr": 19,
+    "code": "Assets/C01DoorsAccess13/Editor/DoorAccessSweepAudit.cs",
+    "change": "For actual imported reader inspect all 19 named part/support renderer AABBs, fail closed if missing new meshes (old/stale FBX) or gap >0.25 mm; collisions broadphase only, not triangle certificate."
+  },
+  "exclusions": [
+    "No P17-02 producer geometry modified by C01-13",
+    "No replacement model made",
+    "No full 36-model QA approval claimed",
+    "No Blender/Unity output manufactured",
+    "No authorized merge"
+  ]
+}

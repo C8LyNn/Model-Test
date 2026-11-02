@@ -62,7 +62,7 @@ jobs:
           assert r["triangles_before_after"]==[120,120]
           srcblend=q/"P18-07_PASS08.blend";srcfbx=q/"P18-07_PASS08.fbx"
           assert srcblend.read_bytes()[:8]==b"BLENDER-"
-          assert srcfbx.read_bytes()[:21]==b"Kaydara FBX Binary  "
+          assert srcfbx.read_bytes().startswith(b"Kaydara FBX Binary  ")
           def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
           assert sha(srcblend)==r["new_blend_sha256"]
           assert sha(srcfbx)==r["new_binary_fbx_sha256"]

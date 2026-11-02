@@ -64,7 +64,7 @@ def check():
  evidence=[]
  for model,attrs in NATIVE.items():
   ensure(("\""+model+"\"") in newer,"missing current ID "+model)
-  ensure(","+str(attrs["meshes"])+","+str(attrs["triangles"])+")" in newer,"mesh/triangle pin missing "+model)
+  ensure(re.search(r"\b"+str(attrs["meshes"])+r"\s*,\s*"+str(attrs["triangles"])+r"\s*\)",newer) is not None,"mesh/triangle pin missing "+model)
   for kind in ("blend","fbx"):
    relative,expected=attrs[kind]
    path=BASE/relative

@@ -145,6 +145,17 @@ namespace C01.InteriorProps.Pass19
             if(pipe==null || pipe.GetType().FullName.IndexOf("Universal",StringComparison.OrdinalIgnoreCase)<0)
                 throw new InvalidOperationException("Current render pipeline is not URP");
             var lit=UrpLit();
+            // W21 fail-closed: verify ALL three immutable physical FBX byte streams
+            // before creating any material, prefab, scene, or report.
+            foreach(var target in Targets)
+            {
+                string source=Incoming+"/"+target.Id+"/"+target.Id+".fbx";
+                string physical=FullPath(source);
+                if(!File.Exists(physical))
+                    throw new FileNotFoundException("Signed real FBX not staged: "+target.Id,physical);
+                if(!IsNativeFbx(physical) || Sha256(physical)!=target.Sha)
+                    throw new InvalidDataException(target.Id+" full-byte SHA256 / binary-FBX signature failed in preflight");
+            }
             DirectoryAt(OutPrefabs);
             DirectoryAt(OutMaterials);
             DirectoryAt(OutScenes);
@@ -158,10 +169,10 @@ namespace C01.InteriorProps.Pass19
             {
                 string source=Incoming+"/"+target.Id+"/"+target.Id+".fbx";
                 string physical=FullPath(source);
-                if(!File.Exists(physical))
-                    throw new FileNotFoundException("Signed real FBX not staged",physical);
-                if(!IsNativeFbx(physical)||Sha256(physical)!=target.Sha)
-                    throw new InvalidDataException(target.Id+" mismatched full-byte SHA256 / FBX magic");
+                // Recheck immutable SHA immediately before Unity import; all sources
+                // were already preflighted before the first asset write above.
+                if(!File.Exists(physical) || !IsNativeFbx(physical) || Sha256(physical)!=target.Sha)
+                    throw new InvalidDataException(target.Id+" physical FBX changed during Unity import run");
                 var importer=AssetImporter.GetAtPath(source) as ModelImporter;
                 if(importer==null)throw new InvalidDataException("Not a Unity ModelImporter: "+source);
                 if(!importer.isReadable || importer.importNormals!=ModelImporterNormals.Import ||

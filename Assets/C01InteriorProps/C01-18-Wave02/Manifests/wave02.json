@@ -4,8 +4,8 @@
   "unity": "6000.3.14f1",
   "urp": "17.3.0",
   "source_file": "Sources/build_wave02.py",
-  "native_blend": "GitHub CI artifact; not claimed committed to repository",
-  "fbx": "GitHub CI artifact",
+  "native_blend": "Native Blender originals tracked in Git LFS; for changed P18-07 W19 native Blender4 save/export/reimport PASS",
+  "fbx": "Binary FBX 7400 tracked in Git LFS; P18-07 W19 source correction generated with real Blender4",
   "prefab": "Unity Editor builder; NOT RUN until actual Unity import",
   "qa_approval": "BLOCKED",
   "units": "1m",
@@ -72,7 +72,33 @@
         "Bin_Chassis",
         "Bin_Lid"
       ],
-      "priority": "P1"
+      "priority": "P1",
+      "nominal_dimensions_WDH": [
+        0.56,
+        0.34,
+        0.38
+      ],
+      "measured_dimensions_WDH": [
+        0.56,
+        0.341,
+        0.38
+      ],
+      "measured_depth_delta_from_nominal_m": 0.001,
+      "native_blend_sha256": "ca81b1b5b03354f6988657324f2f30b28ff1b785529388fb692469ffb2d3f9c3",
+      "native_binary_fbx_sha256": "38d93a5c2dc9f1511e568925998d7ea42c26dffc1f14e99cdaae80f1501273da",
+      "w19_status": "PRODUCER_NATIVE_BLENDER_FBX_ROUNDTRIP_PASS; independent motion QA and Unity Editor NOT RUN"
     }
-  ]
+  ],
+  "wave19": {
+    "focus_asset": "P18-07",
+    "modified_only": "P18-07 BLEND and FBX; P18-04/05/06 native outputs unchanged",
+    "run_id": 41531265944,
+    "run_url": "https://github.com/C8LyNn/Model-Test/actions/runs/41531265944",
+    "artifact_id": 13182237560,
+    "commit": "1d6a24fc5c83112f5594139dd85b2521f33de912",
+    "blender_roundtrip": "PRODUCER_PASS",
+    "C01_02": "PENDING",
+    "Unity6": "NOT_RUN",
+    "release": "HOLD"
+  }
 }

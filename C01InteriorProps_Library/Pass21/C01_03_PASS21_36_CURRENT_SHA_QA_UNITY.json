@@ -701,7 +701,7 @@
       "owner": "C01-17",
       "producer_pr": 17,
       "producer_branch": "c01/props-17-controls",
-      "producer_head_current": "ece6f7ea79bf531fa9c4500121d51701cea0cc6b",
+      "producer_head_current": "24116e6b89ee01fcfb98f59b37aea22bf06b7304",
       "source_commit_previous_W19": "ac5311667d08c07da064e0b2fef3c6c01eba6db3",
       "HEAD_changed_from_previous": true,
       "native_blend_path": "C01InteriorProps_Source/Blender/P17-03.blend",
@@ -730,7 +730,9 @@
       "w21_source_evidence": "UNCHANGED_W20_NATIVE_BYTES_REUSED",
       "w21_independent_qa_class": "C01_02_PREV_EXACT_SHA_VERDICT",
       "w21_unity": "UNITY_NOT_RUN",
-      "w21_release": "HOLD"
+      "w21_release": "HOLD",
+      "w21_producer_inflight_run": 41540952660,
+      "w21_producer_inflight_state": "QUEUED_AT_LAST_CHECK; SOURCE_FBX_SHA_UNCHANGED; NO_PRODUCER_NATIVE_FIX_DELIVERED"
     },
     {
       "asset_id": "P17-04",
@@ -1428,6 +1430,14 @@
     "P17-03 last known new FBX 775b1e... independent MOTION_FAIL PivotAnchorVisual vs Housing. No new P17-03 producer fix available at snapshot.",
     "P19-01 old micro-sliver HOLD applies only to superseded FBX e2e0bb9e..., not new f3b9f806... . New QA pending.",
     "P18-07 old hinge/motion FAIL/HOLD on superseded FBX 38d93a... cannot be promoted to newest 858a24... . Current Front_Lock contacts need independent classification.",
-    "All 36 FINAL HOLD while Unity 6 Editor and per-exact-SHA independent final acceptance NOT_RUN."
-  ]
+    "All 36 FINAL HOLD while Unity 6 Editor and per-exact-SHA independent final acceptance NOT_RUN.",
+    "C01-17 W21 PR #17 HEAD 24116e6b... changes scripts/workflow only, not physical P17-03 FBX 775b1e6a...; W21 workflow #41540952660 QUEUED when observed, so independent MOTION_FAIL remains current until a new native SHA and exact C01-02 retest."
+  ],
+  "producer_inflight_at_snapshot": {
+    "id": "P17-03",
+    "head": "24116e6b89ee01fcfb98f59b37aea22bf06b7304",
+    "workflow_run": 41540952660,
+    "status": "QUEUED",
+    "fbx_sha_unchanged": "775b1e6a0024c69285d9fb9e885f35bc2a55deb4be787acc9ad3c2d3ebe8408f"
+  }
 }

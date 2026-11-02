@@ -94,7 +94,25 @@
         "Handle_Post_L",
         "Handle_Post_R",
         "Handle_Grip"
-      ]
+      ],
+      "independent_C01_02_W21": {
+        "sha256_fbx": "858a24db4338804ee3a3a70c310cd4936e3c45f559b9c4ab81c6037add564554",
+        "gate": "STATIC_PASS_LOCKED_LATCH_MOTION_HOLD",
+        "binary_artifact": 13184427833,
+        "real_native_evidence": "https://github.com/C8LyNn/Model-Test/actions/runs/41536767833",
+        "actual_independent_qa": "https://github.com/C8LyNn/Model-Test/blob/c01/props-02-independent-qa/C01InteriorProps_QA/DETAIL_PASS21/W21_INDEPENDENT_FBX_QA_HANDOFF.md",
+        "hinge": "Toolbox_LidHinge; five actual moving mesh children verified",
+        "locked_contact": {
+          "0_degrees": 13,
+          "5_degrees": 9,
+          "10_to_110_degrees": 0
+        },
+        "nominal_depth_m": 0.34,
+        "actual_depth_m": 0.341,
+        "depth_tolerance_owner": "C01-01_PENDING",
+        "unity": "NOT_RUN",
+        "final": "HOLD"
+      }
     }
   ],
   "wave19": {
@@ -134,5 +152,28 @@
     "independent_C01_02": "NOT_RUN",
     "Unity6": "NOT_RUN",
     "release": "HOLD"
+  },
+  "wave22": {
+    "scope": "C01-18 existing P18-07 only, no new asset or geometry export",
+    "fbx_sha256": "858a24db4338804ee3a3a70c310cd4936e3c45f559b9c4ab81c6037add564554",
+    "blend_sha256": "5fd990d8153430dd4f1a8893ebef0097465a404d1b2c6bbd77777de695b3e87d",
+    "current_producer_source_branch": "c01/props-18-cargo-wave02",
+    "C01_02_independent": "STATIC_PASS / LOCKED_LATCH_MOTION_HOLD; native FBX 13 triangle contacts at 0deg, 9 at 5deg; 0 at >=10deg",
+    "C01_02_evidence": "https://github.com/C8LyNn/Model-Test/blob/c01/props-02-independent-qa/C01InteriorProps_QA/DETAIL_PASS21/W21_INDEPENDENT_FBX_QA_HANDOFF.md",
+    "actual_producer_unlocked_motion_evidence": "https://github.com/C8LyNn/Model-Test/actions/runs/41540397981",
+    "locked_lid_runtime_contract": {
+      "default_state": "LOCKED; only request opening after authenticated unlocked action",
+      "locked_behavior": "block opening and retain hinge rest angle; never rotate locked lid into Front_Lock",
+      "unlock_transition": "complete unlock BEFORE lid rotation; disable or retract ONLY Front_Lock blocking collider, then allow movement",
+      "unlocked_behavior": "full 0..110deg tested geometry; source and FBX BVH zero unexpected intersections with lock collider excluded",
+      "relock_transition": "only permit reengagement after lid fully closes to 0deg and movement has stopped",
+      "acceptance_tests": "must run as actual Unity Editor/PlayMode when C01-10 owner license available; never claim gameplay PASS from Blender collision-state toggling"
+    },
+    "C01_01_depth_delta_mm": 1,
+    "C01_01_tolerance_signoff": "PENDING",
+    "C01_02_full_motion_approval": "HOLD",
+    "Unity6_editor": "NOT_RUN",
+    "release": "HOLD",
+    "no_reexport": "P18-04/05/06/07 original native BLEND and FBX SHA unchanged in W22"
   }
 }

@@ -1,5 +1,6 @@
 #if UNITY_EDITOR
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography;
 using UnityEditor;
@@ -204,6 +205,12 @@ public static class C01WallPrefabBuilder
 
         // Preview scene prevents the QA utility from dirtying the artist's open
         // spacecraft scene, even on a failed imported mesh or prefab save.
+        // Preflight above established all output paths absent. Track only
+        // this invocation's attempted QA prefabs, so an interrupted build
+        // cannot leave a misleading partial 1/4 or 2/4 result.
+        var attemptedPrefabs = new List<string>();
+        try
+        {
         Scene previewScene = EditorSceneManager.NewPreviewScene();
         try
         {
@@ -232,6 +239,8 @@ public static class C01WallPrefabBuilder
                 AddColliders(temp, id);
                 string output = prefabDir + "/C01-11_" + id +
                     "_QA_ONLY.prefab";
+                // Record BEFORE saving: Unity may write bytes then throw.
+                attemptedPrefabs.Add(output);
                 var saved = PrefabUtility.SaveAsPrefabAsset(temp, output);
                 if (saved == null)
                     throw new IOException(id + ": prefab save failed: " + output);
@@ -243,6 +252,38 @@ public static class C01WallPrefabBuilder
         finally { EditorSceneManager.ClosePreviewScene(previewScene); }
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
+        }
+        catch
+        {
+            // QA outputs only. Preserve the original exception while trying
+            // to remove every prefab this invocation may have created.
+            foreach (string output in attemptedPrefabs)
+            {
+                try
+                {
+                    if (AssetDatabase.LoadMainAssetAtPath(output) != null)
+                    {
+                        if (!AssetDatabase.DeleteAsset(output))
+                            Debug.LogError("C01-11 QA rollback could not delete: " + output);
+                    }
+                    else if (File.Exists(output))
+                    {
+                        // Handles a partial on-disk file before AssetDatabase import.
+                        // These paths are inside the isolated QA_Candidates folder.
+                        File.Delete(output);
+                        string meta = output + ".meta";
+                        if (File.Exists(meta)) File.Delete(meta);
+                    }
+                }
+                catch (Exception rollbackError)
+                {
+                    Debug.LogError("C01-11 QA rollback failed for " + output +
+                                   ": " + rollbackError);
+                }
+            }
+            AssetDatabase.Refresh();
+            throw;
+        }
         Debug.Log("C01-11 prefab authoring complete; engine QA and C01-02 approval NOT RUN.");
     }
 

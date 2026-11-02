@@ -1,0 +1,75 @@
+{
+  "schema": "C01-13/DETAIL-PASS19/OWN-LEGACY-BINARY-QA-1",
+  "date": "2026-11-02",
+  "owner": "C01-13 DOORS & ACCESS",
+  "dispatch": "https://github.com/C8LyNn/Model-Test/issues/36#issuecomment-6589035504",
+  "scope": "ONLY legacy D01/D02, OUTSIDE production 36 P15-P19 assets; no new models, no ship geometry, no merge",
+  "provenance": {
+    "native_git_LFS_repo_branch": "c01/doors-13-pass03-legacy-mesh-topology",
+    "folder": "C01-13_PASS18_Transport/Native",
+    "saved_Blender4_CI": "https://github.com/C8LyNn/Model-Test/actions/runs/41353714587",
+    "test_method": "Direct independent Python FBX 7400 binary reader of genuine hydrated FBX file bytes (header, zlib arrays, Geometry.Vertices/PolygonVertexIndex, LayerElementUV/LayerElementNormal), per-position welded edge incidence, nonzero signed volume and finite UV/normal checks. NOT Blender or Unity runtime.",
+    "source_files": "Actual hydrated original FBX/BLEND from prior saved C01-13 PASS18 file artifacts; local SHA recomputed in PASS19 and matched exact current Git LFS pointer OIDs"
+  },
+  "native_assets": {
+    "D01": {
+      "blend": {
+        "sha256": "fd68ebb8a3a700fc6a17387eda962a53afb219e8bad682d0d442954971bf3c37",
+        "signature": "BLENDER-v400",
+        "size_bytes": 1205376
+      },
+      "fbx": {
+        "sha256": "b1300e771ad8178c36997d7333fc669c835ee814a3ef6035c00247567e5e7e68",
+        "signature": "Kaydara FBX Binary",
+        "version": 7400,
+        "size_bytes": 137180,
+        "mesh_count": 33,
+        "triangle_count": 1468,
+        "vertex_records": 864,
+        "uv_pairs": 864,
+        "normal_vectors": 4404,
+        "zero_area_triangles": 0,
+        "boundary_or_nonmanifold_position_welded_edges": 0,
+        "issues": 0
+      }
+    },
+    "D02": {
+      "blend": {
+        "sha256": "bdb8648ef37e5aea627e4da0d3e1441fa29d78fe1a34af93ca047449e133d3e7",
+        "signature": "BLENDER-v400",
+        "size_bytes": 1341716
+      },
+      "fbx": {
+        "sha256": "290943f58904e8cb4097dd8c2237d8694b7c5b7b86fdcdd070d1fb1fa35de591",
+        "signature": "Kaydara FBX Binary",
+        "version": 7400,
+        "size_bytes": 142140,
+        "mesh_count": 34,
+        "triangle_count": 1248,
+        "vertex_records": 708,
+        "uv_pairs": 708,
+        "normal_vectors": 3744,
+        "zero_area_triangles": 0,
+        "boundary_or_nonmanifold_position_welded_edges": 0,
+        "issues": 0
+      }
+    }
+  },
+  "implementation": {
+    "unity_qa_only_source": "Assets/C01DoorsAccess13/LegacyPass03/Editor/LegacyDoorNativeImportGate.cs",
+    "behavior": "User-invoked Editor QA staging: before writes SHA256+real binary magic check both files, reject LFS pointer and stale FBX, only copy into Assets/C01DoorsAccess13/QA_Candidates/PASS19_Native, import with ModelImporter, inspect MeshFilter count/triangle count/UV0/normals, write Library/C01Doors13/legacy_pass19_native_import.json; never edits main ship scenes or releases prefabs.",
+    "unity_editor_executed": false,
+    "csharp_compilation": "NOT_RUN",
+    "actual_blender_reexport": "NOT_RUN by design: existing genuine PASS18 binaries intact with unchanged SHA",
+    "independent_c01_02_release": "PENDING",
+    "unity6_urp_import": "NOT_RUN",
+    "unity_playmode": "NOT_RUN"
+  },
+  "quality_limits": [
+    "Static FBX topology readback does not establish absence of all inter-mesh oblique intersections/coplanarity",
+    "Indexed render vertices may split at UV/normal seams; welded-edge check is on QA-only coordinate keys, no source mesh welding",
+    "No swept hinge-body collision or Unity PhysX evaluation in this wave",
+    "Legacy D01 D02 cannot count as any of the 36 P15-P19 production props"
+  ],
+  "disposition": "LEGACY_NATIVE_SOURCE_STATIC_GATE_PASS__UNITY_NOT_RUN__INDEPENDENT_RELEASE_QA_PENDING__DRAFT_NO_MERGE"
+}

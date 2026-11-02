@@ -1,0 +1,98 @@
+{
+  "id": "C01-13-PASS05-REAL-FBX-STATIC",
+  "scope": "Legacy D01/D02, NOT counted among 36 P15-P19 assets",
+  "methodology": "Independently decoded binary FBX7400 real Vertices/PolygonVertexIndex/LayerElementUV/LayerElementNormal, compared triangle geometry to actual original/repaired OBJ and GLB; coordinate rounding at 1e-6 m due FBX f64 vs GLB f32",
+  "local_evidence": "C01-13_PASS05_D01_D02_ACTUAL_FBX_EVIDENCE.zip (conversation downloadable package)",
+  "local_evidence_sha256": "c8493580909bfe4e1a289c5cf0825f80a9c7fa8f83e46756abdaa6fb6d542be6",
+  "check_count": 23,
+  "pass": 23,
+  "fail": 0,
+  "source_binary_static": "PASS",
+  "blender_4": "NOT_RUN",
+  "fbx_blender_reimport": "NOT_RUN",
+  "unity_6_urp": "NOT_RUN",
+  "C01_02_independent_QA": "PENDING",
+  "assets": {
+    "D01": {
+      "before": {
+        "FBX_SHA256": "e2f1ee6a3f25278a42c06f27402703164ff5a131de47e89f1346b5cb54d2633b",
+        "V": 24,
+        "E": 54,
+        "T": 36,
+        "components": 3
+      },
+      "after": {
+        "FBX_SHA256": "11213b72c5512eb1490056a6d8a24fe12c2d619db9cf3fc93d44fd9afe433f55",
+        "V": 20,
+        "E": 54,
+        "T": 36,
+        "components": 1
+      },
+      "defects_before": {
+        "duplicate_coordinate_vertices": 4,
+        "t_junction_candidates": 4,
+        "missing_UV0": true
+      },
+      "defects_after": {
+        "duplicate_coordinate_vertices": 0,
+        "t_junction_candidates": 0,
+        "missing_UV0": false
+      },
+      "indexed_fbx_checks_after": {
+        "degenerate": 0,
+        "boundary": 0,
+        "nonmanifold": 0,
+        "loose": 0,
+        "duplicate_faces": 0,
+        "incorrect_normal_corners": 0,
+        "uv_zero_area": 0
+      },
+      "geometry_changed_in_pass05": false
+    },
+    "D02": {
+      "before": {
+        "FBX_SHA256": "13f728c0c27840db24796b570a260a5808617394631fe0291d8c0fc641476984",
+        "V": 8,
+        "E": 18,
+        "T": 12
+      },
+      "after": {
+        "FBX_SHA256": "57d2df1b7f89dfceb53a4607bb356c2c5e623346d5ecf012ee6e4932073eabd3",
+        "V": 8,
+        "E": 18,
+        "T": 12
+      },
+      "defects_before": {
+        "missing_UV0": true,
+        "degenerate": 0,
+        "nonmanifold": 0
+      },
+      "defects_after": {
+        "missing_UV0": false,
+        "degenerate": 0,
+        "nonmanifold": 0
+      },
+      "leaf_surface_positions_preserved": true,
+      "geometry_changed_in_pass05": false
+    }
+  },
+  "ci": {
+    "url": "https://github.com/C8LyNn/Model-Test/actions/runs/41094734425",
+    "attempt": 2,
+    "job_id": 124210134820,
+    "conclusion": "failure",
+    "runner_id": 0,
+    "steps": [],
+    "billable_ubuntu_ms": 0,
+    "scope": "Runner not allocated; no code/Blender executed",
+    "root_cause": "UNKNOWN (Actions entitlement / billing / quota is a possible account-level cause, unverified)"
+  },
+  "local_environment": {
+    "blender_executable": "MISSING",
+    "python_bpy": "MISSING",
+    "unity": "MISSING",
+    "external_package_download": "FAILED_NETWORK"
+  },
+  "merge": "NOT_AUTHORIZED",
+  "recommended_action": "Check Actions private-repo billing/spending limits and runner availability; run existing Blender 4.x verifier; C01-02 sign exact new SHA only after DCC evidence"
+}

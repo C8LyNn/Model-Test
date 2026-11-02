@@ -1,0 +1,64 @@
+name: C01-13 PASS04 legacy Blender FBX roundtrip
+on:
+  push:
+    branches:
+      - c01/doors-13-pass03-legacy-mesh-topology
+    paths:
+      # Re-export v003 ONLY when genuine legacy source geometry or exporter changes.
+      # Other PASS19/20/21 QA metadata and Unity staging code do NOT change FBX inputs.
+      - "Assets/C01DoorsAccess13/LegacyPass03/D01_REPAIRED_v003_source_topology.obj"
+      - "Assets/C01DoorsAccess13/LegacyPass03/D02_REPAIRED_v003_source_topology.obj"
+      - "Assets/C01DoorsAccess13/LegacyPass03/blender_validate_export.py"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  native-blender-roundtrip:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          lfs: true
+      - name: Install Blender 4.x
+        run: |
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y blender python3-numpy
+          blender --version | head -2
+      - name: Inspect and roundtrip actual mesh topology through Blender and FBX
+        run: |
+          blender --background --factory-startup --threads 2 --python Assets/C01DoorsAccess13/LegacyPass03/blender_validate_export.py
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('Assets/C01DoorsAccess13/LegacyPass03/BlenderValidated')
+          data=json.loads((root/'blender_validation.json').read_text())
+          assert set(data)=={'D01','D02'}
+          for key,item in data.items():
+              assert item['roundtrip']=='PASS'
+              assert item['source_triangle_multiset_exact_5dp']
+              assert item['blender_source_topology']['uv_layers']>=1
+              assert item['blender_source_topology']['boundary_edges']==0
+              assert item['fbx_reimport_topology']['tris']==item['source_tris']
+              assert (root/(key+'_REPAIRED_v003.blend')).read_bytes().startswith(b'BLENDER')
+              assert (root/(key+'_REPAIRED_v003_BLENDER.fbx')).read_bytes().startswith(b'Kaydara FBX Binary')
+              print(key, item['export_fbx_sha256'], 'BLENDER+FBX PASS')
+          PY
+      - name: Upload genuine Blender native files and results
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-13_PASS04_REAL_BLEND_FBX
+          path: Assets/C01DoorsAccess13/LegacyPass03/BlenderValidated/
+          if-no-files-found: error
+      - name: Commit generated native files to EXISTING draft PR branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git lfs install --local
+          git add Assets/C01DoorsAccess13/LegacyPass03/BlenderValidated/
+          git diff --cached --quiet && exit 0
+          git commit -m "C01-13 PASS04: verified Blender native blend + binary FBX and importer roundtrip"
+          git push origin HEAD:c01/doors-13-pass03-legacy-mesh-topology

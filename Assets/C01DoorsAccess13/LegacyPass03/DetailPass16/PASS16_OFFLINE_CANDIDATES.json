@@ -1,0 +1,63 @@
+{
+  "schema": "C01-13-Detail-Pass16-GitHub-receipt",
+  "project": "C01",
+  "role": "C01-13",
+  "asset_scope": "legacy D01/D02 outside 36 P15-P19",
+  "candidate_archive": {
+    "filename": "C01-13_DETAIL_PASS16_ACTUAL_GLB_OBJ_QA.zip",
+    "sha256": "dfd42085f4f476250948b7c27861547bba81ec7213536b858e1cc541e51258e1",
+    "bytes": 491442,
+    "zip_crc": "PASS",
+    "files": 20,
+    "location": "User's ChatGPT conversation download, BINARY CONTENT NOT COMMITTED TO GITHUB"
+  },
+  "inputs": {
+    "PASS15_D01_GLB": "4be7d2ac91e29c28535eb01e69ea80d62fe2bd00507c92f59a8848e73f3c9e2b",
+    "PASS15_D02_GLB": "0a5b89fa425b23ccfa32fe3cb530b7a71b7ab5463a90acc24ac55b210935e4bf"
+  },
+  "actual_outputs": {
+    "D01": {
+      "new_model_ids": 0,
+      "previous_parts": 21,
+      "current_parts": 33,
+      "added_washers": 12,
+      "original_tris": 700,
+      "current_tris": 1468,
+      "GLB_sha256": "19b5132d07eef279589699ec49ed4504d40310fbf7ab8dba7ef367bf7a936125",
+      "OBJ_sha256": "4df936169357d2fb66e65c041f1340aa76597b7c6e6005644f5c943ef7bac98b",
+      "exact_triangle_mounting_to_both_targets": "12/12 PASS"
+    },
+    "D02": {
+      "new_model_ids": 0,
+      "previous_parts": 28,
+      "current_parts": 34,
+      "added_washers": 6,
+      "original_tris": 864,
+      "current_tris": 1248,
+      "GLB_sha256": "5d21e10dc29c79325bd4c4f7c43a84b2f99df4dd6f3a596b93242f63cba7525b",
+      "OBJ_sha256": "4678f4a8b847901929d8926e4e44d9af981454817fb474d8ab72f564306b3c58",
+      "exact_triangle_mounting_to_both_targets": "6/6 PASS"
+    }
+  },
+  "QA": {
+    "glb_reimport": "PASS both",
+    "original_geometry_faces_normals_UV0": "PASS no existing part changed; exact triangle indices + UV0 within 1e-6 source float32 tolerance",
+    "pivot_and_scene_transforms": "PASS identity",
+    "geometric_watertightness_after_QA_only_seam_collapse": "PASS 67/67",
+    "UV0": "PASS 67/67",
+    "zero_area_tris": 0,
+    "all_new_washers_source_triangle_contacts": "18/18 to BOTH real bolt and original plate",
+    "cross_object_same_facing_axis_coplanarity": "PASS 0 matching area; only axis-aligned surfaces; arbitrary angle/inside duplicate not fully covered",
+    "native_Blend": "NOT RUN",
+    "Blender_FBX_export": "NOT RUN",
+    "Blender_FBX_reimport": "NOT RUN",
+    "Unity6_URP": "NOT RUN",
+    "independent_C01_02": "PENDING"
+  },
+  "references": "Assets/C01DoorsAccess13/LegacyPass03/DetailPass16/CONSTRUCTION_REFERENCES.md",
+  "no_merge": true,
+  "no_ship_change": true,
+  "no_replacement_of_existing_production_binary": true,
+  "no_new_production_models": true,
+  "remaining": "NEEDS_OWNER_ACTION: approved Blender 4.x + Git LFS and Unity6 host OR restore private Actions runner; execute genuine native Blender save, FBX export and reimport, SHA pinned, independent QA."
+}

@@ -1,0 +1,58 @@
+{
+  "schema": "C01-13-detail-pass15-offline-legacy-candidate-v1",
+  "source": "Original D01/D02 v003 real repaired binary GLB meshes from prior C01-13 PASS04 zip, unchanged in candidate",
+  "scope": "Two legacy assets D01/D02 ONLY — outside 36 P15-P19 models",
+  "release_status": "DRAFT_CANDIDATE_NOT_NATIVE_APPROVED",
+  "identity": {
+    "new_asset_ids": 0,
+    "ship_edited": false,
+    "legacy_replacement_committed": false,
+    "blend_export_NOT_RUN": true,
+    "blender_origin_fbx_NOT_RUN": true,
+    "unity_NOT_RUN": true,
+    "independent_qa": "PENDING"
+  },
+  "produced": {
+    "D01": {
+      "parts": 21,
+      "new_parts": 20,
+      "total_triangles": 700,
+      "base_triangles_unchanged": 36,
+      "glb_sha256": "4be7d2ac91e29c28535eb01e69ea80d62fe2bd00507c92f59a8848e73f3c9e2b",
+      "obj_sha256": "afc491d54adb247c5be735055dbdb37250debf95d1ce7797041e4a0fe23776e7",
+      "contact_actual_edge_triangle_pass": "20/20",
+      "same_facing_axis_aligned_coplanar_pairs": 0
+    },
+    "D02": {
+      "parts": 28,
+      "new_parts": 27,
+      "total_triangles": 864,
+      "base_triangles_unchanged": 12,
+      "glb_sha256": "0a5b89fa425b23ccfa32fe3cb530b7a71b7ab5463a90acc24ac55b210935e4bf",
+      "obj_sha256": "86e3c5e335b4e8e29d728970bf802e108d0a22fbefa0d31675fa295ed96bc6d2",
+      "contact_actual_edge_triangle_pass": "27/27",
+      "same_facing_axis_aligned_coplanar_pairs": 0
+    }
+  },
+  "actual_source_fix": "Two newly-authored D02 handle bolts z-center 0.037m -> 0.038m, removing 34 same-facing z=0.0325m triangle-pairs and 0.000216m2 projected coincident area; after=0. Base mesh was never modified.",
+  "source_qa": {
+    "physical_GLB_and_OBJ_generated": true,
+    "GLB_trimesh_reimport": true,
+    "UV0_original_exact_preservation": "PASS",
+    "base_mesh_triangle_geometry_identity": "PASS",
+    "geometric_watertightness_after_seam_only_QA": "PASS",
+    "valid_winding": "PASS",
+    "zero_area_triangles": 0,
+    "static_contiguous_contacts": 47,
+    "limitations": "Static tri-edge intersection; does not replace Blender/FBX/Unity and does not guarantee complete no-zfighting for all rotations."
+  },
+  "artifact": {
+    "where": "User-facing ChatGPT conversation download archive, not committed in GitHub and not part of Git LFS",
+    "archive_filename": "C01-13_DETAIL_PASS15_D01_D02_REAL_GEOMETRY_CANDIDATES.zip",
+    "bytes": 765567,
+    "sha256": "3b9f66580e4c17e28136cb10648418ee09ccf3c8d3c623bab8f2b771c60ec816",
+    "contents": "Physical GLB+OBJ, original v003 evidence, four actual geometry shaded/wireframe previews, source-level QA JSON, exact hashes, reproducible local scripts"
+  },
+  "environment": "No Blender executable, bpy, Git LFS, Unity, or authorized Windows execution in this session. Native Blender app export/reimport NOT RUN.",
+  "integration": "Keep legacy D01 fixed frame and D02 moving leaf separate; root origin remains, no spaceship sliding gate changes. Do NOT merge prior to independent C01-02 and C01-10 clearance tests."
+}

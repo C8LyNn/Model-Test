@@ -64,7 +64,8 @@
     "P19_01_clear": true,
     "P17_03_hold": true,
     "unity0": true,
-    "final0": true
+    "final0": true,
+    "w22_five_hotspot_pointer_pass": true
   },
   "rows": [
     {
@@ -434,7 +435,8 @@
       "w22_qa_decision": "INDEPENDENT_STATIC_PASS_GAUGE_FACE_VISUAL_HOLD",
       "w22_unity": "UNITY_NOT_RUN_OWNER_ACTION_REQUIRED",
       "w22_final": "HOLD_NOT_RELEASED",
-      "w22_blocker": "STATIC_TOPOLOGY_PASS but 48 gauge face boundary edges; visual one-sided dial/disc material policy pending"
+      "w22_blocker": "STATIC_TOPOLOGY_PASS but 48 gauge face boundary edges; visual one-sided dial/disc material policy pending",
+      "w22_live_source_LFS": "BLEND_AND_FBX_POINTER_OID_SHA256_MATCH_CURRENT_PRODUCER_HEAD"
     },
     {
       "asset_id": "P16-01",
@@ -951,7 +953,8 @@
       "w22_unity": "UNITY_NOT_RUN_OWNER_ACTION_REQUIRED",
       "w22_final": "HOLD_NOT_RELEASED",
       "w22_blocker": "Producer 91 BLEND and 91 FBX angle BVH zero contacts; C01-02 W21 motion FAIL was for SUPERSEDED FBX 775b1e6a; independent real FBX SHA 32d460d5 91-pose test pending",
-      "w22_producer_motion": "PRODUCER_91_BLEND_AND_91_FBX_BVH_ZERO_INTERSECTIONS"
+      "w22_producer_motion": "PRODUCER_91_BLEND_AND_91_FBX_BVH_ZERO_INTERSECTIONS",
+      "w22_live_source_LFS": "BLEND_AND_FBX_POINTER_OID_SHA256_MATCH_CURRENT_PRODUCER_HEAD"
     },
     {
       "asset_id": "P17-04",
@@ -1308,7 +1311,8 @@
       "w22_qa_decision": "INDEPENDENT_WHEEL_STATIC_SCOPED_PASS_BEARING_CLASSIFICATION_HOLD",
       "w22_unity": "UNITY_NOT_RUN_OWNER_ACTION_REQUIRED",
       "w22_final": "HOLD_NOT_RELEASED",
-      "w22_blocker": "8 hub-to-fork true positive-volume witnesses: independent classification intended bearing mating vs rotating interference PENDING; rubber wheel to frame scoped independent clearance PASS 2 mm; Unity PhysX NOT_RUN"
+      "w22_blocker": "8 hub-to-fork true positive-volume witnesses: independent classification intended bearing mating vs rotating interference PENDING; rubber wheel to frame scoped independent clearance PASS 2 mm; Unity PhysX NOT_RUN",
+      "w22_live_source_LFS": "BLEND_AND_FBX_POINTER_OID_SHA256_MATCH_CURRENT_PRODUCER_HEAD"
     },
     {
       "asset_id": "P18-04",
@@ -1513,7 +1517,8 @@
       "w22_qa_decision": "INDEPENDENT_STATIC_PASS_MOTION_LOCKED_LATCH_HOLD",
       "w22_unity": "UNITY_NOT_RUN_OWNER_ACTION_REQUIRED",
       "w22_final": "HOLD_NOT_RELEASED",
-      "w22_blocker": "STATIC_PASS; Front_Lock locked-lid 13 triangle pairs at 0 deg and 9 at 5 deg; 0 from 10 to 110; unlock state runtime contract and 1mm depth tolerance need approval"
+      "w22_blocker": "STATIC_PASS; Front_Lock locked-lid 13 triangle pairs at 0 deg and 9 at 5 deg; 0 from 10 to 110; unlock state runtime contract and 1mm depth tolerance need approval",
+      "w22_live_source_LFS": "BLEND_AND_FBX_POINTER_OID_SHA256_MATCH_CURRENT_PRODUCER_HEAD"
     },
     {
       "asset_id": "P19-01",
@@ -1568,7 +1573,8 @@
       "w22_qa_decision": "INDEPENDENT_CURRENT_SHA_STATIC_PASS_MICROSLIVER_HOLD_CLOSED",
       "w22_unity": "UNITY_NOT_RUN_OWNER_ACTION_REQUIRED",
       "w22_final": "HOLD_NOT_RELEASED",
-      "w22_blocker": "Independent CURRENT_FBXSHA static topology pass, old 2 micro-slivers now 0, no further native export; Unity Editor still missing"
+      "w22_blocker": "Independent CURRENT_FBXSHA static topology pass, old 2 micro-slivers now 0, no further native export; Unity Editor still missing",
+      "w22_live_source_LFS": "BLEND_AND_FBX_POINTER_OID_SHA256_MATCH_CURRENT_PRODUCER_HEAD"
     },
     {
       "asset_id": "P19-02",
@@ -1927,5 +1933,20 @@
       "w22_final": "HOLD_NOT_RELEASED",
       "w22_blocker": "2 near-endpoint 0.0039mm observations, no confirmed macro gap; Unity visual NOT RUN"
     }
-  ]
+  ],
+  "w22_live_producer_LFS_verification": {
+    "method": "C01-03 fetch_file original producer HEAD Git LFS pointer record, parse exact SHA256 OID and size; SHA equality only, not fresh physical hydrating of file",
+    "ids": [
+      "P15-07",
+      "P17-03",
+      "P18-03",
+      "P18-07",
+      "P19-01"
+    ],
+    "blends": 5,
+    "fbx": 5,
+    "pointer_sha256_match": 10,
+    "missing_or_mismatched": 0,
+    "scope": "five W22 P0 hot spots; previous 36 physical artifact proofs inherited"
+  }
 }

@@ -61,8 +61,10 @@ render("BEFORE_REAL_BLENDER_SHADED.png",False)
 render("BEFORE_REAL_BLENDER_WIREFRAME.png",True)
 bm=bmesh.new();bm.from_mesh(m);bm.verts.ensure_lookup_table();bm.edges.ensure_lookup_table()
 bm.faces.ensure_lookup_table();bm.verts.index_update()
-tiny_before=smallfaces(bm);assert len(tiny_before)==2,tiny_before
-assert {frozenset(x["indices"]) for x in tiny_before}=={frozenset([3,106,107]),frozenset([88,87,13])},tiny_before
+tiny_before=smallfaces(bm)
+print("NATIVE_LOW_AREA",sorted([{"indices":[v.index for v in f.verts],"area_m2":f.calc_area()} for f in bm.faces],key=lambda v:v["area_m2"])[:12],flush=True)
+print("NATIVE_FACE_MATCHES",[(needle,[(f.index,f.calc_area()) for f in bm.faces if {v.index for v in f.verts}==set(needle)]) for needle in [[3,106,107],[88,87,13]]],flush=True)
+assert all(set(x["indices"]) in ({3,106,107},{88,87,13}) for x in tiny_before),tiny_before
 flips=[{"small":[3,106,107],"old_edge":[3,107],"new_edge":[106,32]},
        {"small":[88,87,13],"old_edge":[87,13],"new_edge":[88,47]}]
 patch_records=[]

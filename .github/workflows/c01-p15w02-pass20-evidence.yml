@@ -1,0 +1,52 @@
+name: C01-15 PASS20 P15-04..07 existing native evidence NO REEXPORT
+on:
+  push:
+    branches: [c01/props-15-installations-wave02]
+    paths:
+      - .github/workflows/c01-p15w02-pass20-evidence.yml
+      - Tools/C01MeshPass20/P15Wave02/**
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  hydrate-test-signed-existing:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+      - name: Hydrate four original BLEND plus four actual FBX from Git LFS
+        shell: bash
+        run: |
+          set -euo pipefail
+          git lfs install --local
+          git lfs pull --include="Assets/C01InteriorProps/P15Wave02/Sources/Blender/P15-0*.blend,Assets/C01InteriorProps/P15Wave02/Models/FBX/P15-0*.fbx" --exclude=""
+      - name: Install Blender 4.x for READ-ONLY original-file verification
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends blender python3-numpy xvfb libegl1 libgl1 libgl1-mesa-dri libopengl0
+          blender --version | head -4
+      - name: SHA verify actual bytes and execute genuine Blender/FBX reimport
+        shell: bash
+        run: |
+          mkdir -p C01_PASS20_P15W02_RECEIPT
+          set -o pipefail
+          LIBGL_ALWAYS_SOFTWARE=1 xvfb-run -a blender --background --python Tools/C01MeshPass20/P15Wave02/verify_original_native.py 2>&1 | tee C01_PASS20_P15W02_RECEIPT/Blender4_W20.log
+      - name: Publish all 8 ORIGINAL full binary files for independent C01-02 and C01-03
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-15-PASS20-P15-W02-ORIGINAL-HYDRATED-BLEND-FBX
+          path: |
+            C01_PASS20_P15W02_RECEIPT/
+            Assets/C01InteriorProps/P15Wave02/Sources/Blender/P15-04.blend
+            Assets/C01InteriorProps/P15Wave02/Sources/Blender/P15-05.blend
+            Assets/C01InteriorProps/P15Wave02/Sources/Blender/P15-06.blend
+            Assets/C01InteriorProps/P15Wave02/Sources/Blender/P15-07.blend
+            Assets/C01InteriorProps/P15Wave02/Models/FBX/P15-04.fbx
+            Assets/C01InteriorProps/P15Wave02/Models/FBX/P15-05.fbx
+            Assets/C01InteriorProps/P15Wave02/Models/FBX/P15-06.fbx
+            Assets/C01InteriorProps/P15Wave02/Models/FBX/P15-07.fbx
+          if-no-files-found: warn
+          retention-days: 14

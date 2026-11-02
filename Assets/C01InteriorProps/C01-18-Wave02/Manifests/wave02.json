@@ -70,7 +70,8 @@
       "colliders": [
         "Base_Stiffener",
         "Bin_Chassis",
-        "Bin_Lid"
+        "Bin_Lid",
+        "Front_Lock"
       ],
       "priority": "P1",
       "nominal_dimensions_WDH": [
@@ -174,6 +175,26 @@
     "C01_02_full_motion_approval": "HOLD",
     "Unity6_editor": "NOT_RUN",
     "release": "HOLD",
-    "no_reexport": "P18-04/05/06/07 original native BLEND and FBX SHA unchanged in W22"
+    "no_reexport": "P18-04/05/06/07 original native BLEND and FBX SHA unchanged in W22",
+    "prefab_source_correction": {
+      "actual_issue": "Existing W02 Unity builder previously did not create Front_Lock collider, so locked-vs-unlocked physical latch policy could not be represented in generated prefab",
+      "added_existing_part_to_collider_plan": "Front_Lock",
+      "required_p1807_exact_meshes": 10,
+      "required_p1807_exact_colliders": 4,
+      "prefab_script": "Assets/C01InteriorProps/C01-18-Wave02/Editor/BuildWave02CargoPrefabs.cs",
+      "latch_state_script": "Assets/C01InteriorProps/C01-18-Wave02/Runtime/C01ToolBinLatchGate.cs",
+      "signed_binary_fbx_preflight_before_any_prefab_writes": "SHA256 858a24db4338804ee3a3a70c310cd4936e3c45f559b9c4ab81c6037add564554; exact 41484 bytes",
+      "static_source_guard_checks": "13/13 PASS; NOT a Unity compilation",
+      "runtime_locked_state": "Front_Lock solid BoxCollider enabled, false unlock state, hinge movement blocked",
+      "runtime_unlock_state": "Front_Lock collider disabled only after TryUnlock; hinge movement via TrySetOpeningDegrees up to 110 degrees",
+      "runtime_relock_state": "only when lid localRotation returned to closed within 0.1 degrees",
+      "unity_editor_compile": "NOT_RUN_LICENSE_OWNER_ACTION_REQUIRED",
+      "real_import_prefab_playmode": "NOT_RUN",
+      "first_unity_validation": "Verify physical hinge axis and exact rotation sign in Unity 6000.3.14f1 URP, runtime locking, 3D collision/colliders and no SaveAsPrefabAsset side effects before claiming PASS",
+      "geometry_changes": 0,
+      "fbx_sha_unchanged": true,
+      "blend_sha_unchanged": true,
+      "CI_preflight_rerun": "NOT_RUN_NO_REDUNDANT_GH_ACTIONS"
+    }
   }
 }

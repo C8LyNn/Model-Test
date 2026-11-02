@@ -4,8 +4,11 @@ on:
     branches:
       - c01/doors-13-pass03-legacy-mesh-topology
     paths:
-      - "Assets/C01DoorsAccess13/LegacyPass03/**"
-      - ".github/workflows/c01-13-pass04-legacy-blender.yml"
+      # Re-export v003 ONLY when genuine legacy source geometry or exporter changes.
+      # Other PASS19/20/21 QA metadata and Unity staging code do NOT change FBX inputs.
+      - "Assets/C01DoorsAccess13/LegacyPass03/D01_REPAIRED_v003_source_topology.obj"
+      - "Assets/C01DoorsAccess13/LegacyPass03/D02_REPAIRED_v003_source_topology.obj"
+      - "Assets/C01DoorsAccess13/LegacyPass03/blender_validate_export.py"
   workflow_dispatch:
 
 permissions:

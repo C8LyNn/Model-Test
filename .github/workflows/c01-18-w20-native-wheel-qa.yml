@@ -37,11 +37,11 @@ jobs:
           import json
           p="Assets/C01InteriorProps/C01-18/QA/Pass20/P18-03_REAL_NATIVE_WHEEL_HUB_MOTION_QA.json"
           q=json.load(open(p))
-          assert q["source_and_fbx_agree_on_nonbearing_rubber"]
+          assert q["blender_fbx_rubber_clear_agreement"]
           assert q["source"]["mesh_parts"]==q["fbx"]["mesh_parts"]==63
           assert q["source"]["triangles"]==q["fbx"]["triangles"]==1780
-          assert all(r["angles_sampled"]==72 for r in q["fbx"]["per_wheel"].values())
-          print("C01_W20_PRODUCER_REAL_WHEELS",q["producer_disposition"])
+          assert all(r["angles_tested"]==72 for r in q["fbx"]["wheels"].values())
+          print("C01_W20_PRODUCER_REAL_WHEELS",q["nonbearing_rubber_clear"])
           PY
       - name: Commit measured QA only — source FBX untouched
         run: |

@@ -124,9 +124,14 @@ public static class C01WallPass19UnitySmoke
                                 bool inside = false;
                                 foreach (var box in boxes)
                                 {
-                                    Bounds bounds = box.bounds;
-                                    bounds.Expand(.002f); // 1mm numerical tolerance per side.
-                                    if (bounds.Contains(world)) { inside = true; break; }
+                                    // AABB bounds.Contains can incorrectly accept a point
+                                    // outside a rotated BoxCollider. Test the real oriented
+                                    // box in its own local coordinates instead.
+                                    if (InsideActualBox(box, world, .001f))
+                                    {
+                                        inside = true;
+                                        break;
+                                    }
                                 }
                                 if (!inside) outside++;
                             }
@@ -190,6 +195,22 @@ public static class C01WallPass19UnitySmoke
             File.WriteAllText(reportPath, JsonUtility.ToJson(evidence, true));
             AssetDatabase.Refresh();
         }
+    }
+
+    // True oriented box containment, not a world-space AABB approximation.
+    // World tolerance is converted to each axis' local scale; test-only,
+    // no collider or source mesh changes.
+    private static bool InsideActualBox(BoxCollider box, Vector3 worldPoint, float worldTolerance)
+    {
+        Vector3 local = box.transform.InverseTransformPoint(worldPoint) - box.center;
+        Vector3 half = box.size * .5f;
+        Vector3 scale = box.transform.lossyScale;
+        float xTolerance = worldTolerance / Mathf.Max(Mathf.Abs(scale.x), 1e-6f);
+        float yTolerance = worldTolerance / Mathf.Max(Mathf.Abs(scale.y), 1e-6f);
+        float zTolerance = worldTolerance / Mathf.Max(Mathf.Abs(scale.z), 1e-6f);
+        return Mathf.Abs(local.x) <= half.x + xTolerance &&
+               Mathf.Abs(local.y) <= half.y + yTolerance &&
+               Mathf.Abs(local.z) <= half.z + zTolerance;
     }
 
     private static string Sha256(string path)

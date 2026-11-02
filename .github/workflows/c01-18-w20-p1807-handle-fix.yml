@@ -1,0 +1,71 @@
+name: C01-18 W20 Real Native P18-07 Hinge Handle Repair
+on:
+  push:
+    branches: [c01/props-18-cargo-wave02]
+    paths: ['.github/workflows/c01-18-w20-p1807-handle-fix.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: c01-18-w20-p1807-handle-repair
+  cancel-in-progress: false
+jobs:
+  repair-existing-native:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+          persist-credentials: true
+      - name: Real Blender4 and hydrated existing original
+        run: |
+          set -euo pipefail
+          git lfs install --local
+          git lfs pull --include='Assets/C01InteriorProps/C01-18-Wave02/Sources/P18-07.blend' --exclude=''
+          sudo apt-get update -qq
+          sudo apt-get install -y blender python3-numpy
+          blender --version | grep -E '^Blender 4\.'
+      - name: Surgery on existing handle object parenting, full actual native and FBX 23-step BVH
+        run: |
+          set -euo pipefail
+          root="$PWD/Assets/C01InteriorProps/C01-18-Wave02"
+          blender -b --factory-startup --python-exit-code 1 --python "$root/Tools/pass20_repair_native_p1807_handle.py" -- "$root"
+      - name: Commit only repaired P18-07 binaries and exact SHA if genuine source+FBX motion PASS
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import pathlib,json,hashlib,shutil
+          d=pathlib.Path("Assets/C01InteriorProps/C01-18-Wave02")
+          n=d/"QA"/"Pass20"/"Native"
+          j=json.loads((n/"P18-07_W20_NATIVE_HINGE_REPAIR.json").read_text())
+          assert j["promotion"]=="CANDIDATE_PASS" and j["fbx_source_motion_agreement"]
+          assert not j["source"]["unexpected_contacts"] and not j["fbx"]["unexpected_contacts"]
+          for ext,name,sha_key in (("blend","Sources","native_blend_sha256"),("fbx","Models","binary_fbx_sha256")):
+              src=n/("P18-07_W20."+ext)
+              dst=d/name/("P18-07."+ext)
+              assert hashlib.sha256(src.read_bytes()).hexdigest()==j[sha_key]
+              shutil.copyfile(src,dst)
+              assert hashlib.sha256(dst.read_bytes()).hexdigest()==j[sha_key]
+          p=d/"QA"/"Pass20"/"P18-07_HANDLE_NATIVE_MOTION_VERIFIED.json"
+          j["promotion"]="PRODUCER_NATIVE_BINARY_UPDATED_INDEPENDENT_QA_HOLD"
+          j["Unity6"]="NOT_RUN"
+          p.write_text(json.dumps(j,indent=2,sort_keys=True)+"\n",encoding="utf-8")
+          print("C01_W20_NATIVE_COMMITTED_QA",j["binary_fbx_sha256"])
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          root=Assets/C01InteriorProps/C01-18-Wave02
+          git add "$root/Sources/P18-07.blend" "$root/Models/P18-07.fbx" "$root/QA/Pass20/P18-07_HANDLE_NATIVE_MOTION_VERIFIED.json"
+          test "$(git diff --cached --name-only | wc -l)" -eq 3
+          git commit -m 'C01-18 W20: genuine Blender4 hinge-following handle repair, actual FBX 23-pose QA [skip ci]'
+          git push origin 'HEAD:c01/props-18-cargo-wave02'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: C01-18-W20-P18-07-HANDLE-NATIVE-MOTION-FBX
+          path: |
+            Assets/C01InteriorProps/C01-18-Wave02/QA/Pass20/Native/
+            Assets/C01InteriorProps/C01-18-Wave02/QA/Pass20/P18-07_HANDLE_NATIVE_MOTION_VERIFIED.json
+          if-no-files-found: warn
+          retention-days: 21

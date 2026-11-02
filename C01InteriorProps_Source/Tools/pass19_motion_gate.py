@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""C01-17 W19 independent rigid-sweep BVH gate on REAL Blender source + new FBX.
+"""C01-17 W21 91-pose real native BVH, including Housing penetration regression.
 No mesh proxies, AABB substitution, or simulated Unity acceptance.
 """
 import bpy
@@ -16,7 +16,7 @@ FBX=ROOT/"Assets/C01InteriorProps/Models/P17-03.fbx"
 assert BLEND.read_bytes().startswith(b"BLENDER")
 assert FBX.read_bytes().startswith(b"Kaydara FBX Binary")
 MOVING=("LeverShaft","LeverGrip","PivotAnchorVisual")
-FIXED=("TopCap","LeverSocket","SocketRetainer_L","SocketRetainer_R",
+FIXED=("Housing","Base","TopCap","LeverSocket","SocketRetainer_L","SocketRetainer_R",
        "CoverBolt_L","CoverBolt_R","PanelBolt_LB","PanelBolt_LT","PanelBolt_RB","PanelBolt_RT")
 
 def current(name):
@@ -48,7 +48,7 @@ def inspect_native(kind):
     assert all(o.parent!=pivot for k,o in objects.items() if k in FIXED)
     samples=[]
     initial=pivot.rotation_euler.copy()
-    for degrees in range(-45,46,5):
+    for degrees in range(-45,46):
         pivot.rotation_mode="XYZ"
         pivot.rotation_euler[0]=math.radians(degrees)
         bpy.context.view_layer.update()
@@ -60,16 +60,32 @@ def inspect_native(kind):
                 pairs=source[a].overlap(target[b])
                 if pairs:
                     contacts.append({"moving":a,"stationary":b,"triangle_intersections":len(pairs)})
-        samples.append({"angle_deg":degrees,"contacts":contacts})
+        # Independent QA W20 found 2 anchor vertices strictly inside Housing.
+        # Detect containment separately: BVH surface crossing alone can miss fully
+        # enclosed triangles. Evaluate actual vertex positions in housing-local space.
+        housing=objects["Housing"]
+        local_bounds=[[min(float(c[k]) for c in housing.bound_box),
+                       max(float(c[k]) for c in housing.bound_box)] for k in range(3)]
+        inv=housing.matrix_world.inverted()
+        enclosed=0
+        for v in objects["PivotAnchorVisual"].data.vertices:
+            local=inv @ (objects["PivotAnchorVisual"].matrix_world @ v.co)
+            if all(local_bounds[k][0]+1e-6 < local[k] < local_bounds[k][1]-1e-6 for k in range(3)):
+                enclosed+=1
+        if enclosed:
+            contacts.append({"moving":"PivotAnchorVisual","stationary":"Housing",
+                             "strictly_contained_vertices":enclosed})
+        samples.append({"angle_deg":degrees,"contacts":contacts,
+                        "anchor_inside_Housing_vertices":enclosed})
     pivot.rotation_euler=initial
     bpy.context.view_layer.update()
     errors=[s for s in samples if s["contacts"]]
     return {"asset":"P17-03","source":kind,"angles_checked":len(samples),
-            "angle_span":[-45,45],"step_deg":5,"sweep_samples":samples,
+            "angle_span":[-45,45],"step_deg":1,"sweep_samples":samples,
             "collision_samples":len(errors),"status":"PASS" if not errors else "FAIL"}
 
 reports=[inspect_native("BLEND"),inspect_native("FBX")]
-qa=SRC/"QA/PASS19"
+qa=SRC/"QA/PASS21"
 qa.mkdir(parents=True,exist_ok=True)
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 report={"model":"P17-03","blender_runtime":bpy.app.version_string,
@@ -80,10 +96,10 @@ report={"model":"P17-03","blender_runtime":bpy.app.version_string,
         "C01_02_final_independent_QA":"PENDING",
         "source_export_release":"HOLD" if any(x["collision_samples"] for x in reports) else "PRODUCER_NATIVE_MOTION_CANDIDATE",
         "unity":"NOT RUN"}
-(qa/"P17-03_PASS19_REAL_BLENDER_FBX_MOTION_QA.json").write_text(json.dumps(report,indent=2)+"\n")
-print("PASS19 REAL BVH",json.dumps({"summary":report["source_export_release"],
+(qa/"P17-03_PASS21_REAL_BLENDER_FBX_HOUSING_MOTION_QA.json").write_text(json.dumps(report,indent=2)+"\n")
+print("PASS21 REAL BVH",json.dumps({"summary":report["source_export_release"],
              "samples":[{"source":x["source"],"collision_samples":x["collision_samples"]} for x in reports],
              "blend_sha256":report["blend_sha256"],"fbx_sha256":report["fbx_sha256"]}),flush=True)
 if any(x["collision_samples"] for x in reports):
-    raise RuntimeError("W19 P17-03 STILL COLLIDES in real BVH: "+repr(
+    raise RuntimeError("W21 P17-03 STILL COLLIDES with current geometry in real BVH: "+repr(
         [(x["source"],[s for s in x["sweep_samples"] if s["contacts"]][:3]) for x in reports]))

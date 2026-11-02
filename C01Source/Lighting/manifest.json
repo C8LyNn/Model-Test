@@ -1,0 +1,104 @@
+{
+  "title": "C01-16 Interior Props WAVE 01",
+  "version": "0.1.0",
+  "issue": 4,
+  "coordinate_system": "Y up, meters, W x D x H",
+  "assets": [
+    {
+      "id": "P16-01",
+      "name": "Ceiling_Lightbar",
+      "dimensions_WDH_m": [
+        1.2,
+        0.15,
+        0.12
+      ],
+      "anchor": "ceiling Y=0; into room -Y",
+      "triangle_count": 60,
+      "vertex_count": 120,
+      "material_slots": [
+        "Steel",
+        "DarkPanel",
+        "EmissionWhite"
+      ],
+      "collider_center": [
+        0,
+        -0.06,
+        0
+      ],
+      "collider_size": [
+        1.2,
+        0.12,
+        0.15
+      ],
+      "mesh_file": "Assets/C01InteriorProps/Lighting/Meshes/P16-01.asset",
+      "prefab_file": "Assets/C01InteriorProps/Lighting/Prefabs/P16-01.prefab",
+      "fbx_file": "C01Source/Lighting/FBX/P16-01.fbx",
+      "unity_import": "NOT RUN",
+      "blender_source": "MISSING native .blend"
+    },
+    {
+      "id": "P16-02",
+      "name": "Emergency_Wall_Lamp",
+      "dimensions_WDH_m": [
+        0.35,
+        0.14,
+        0.22
+      ],
+      "anchor": "wall Z=0; into room +Z",
+      "triangle_count": 60,
+      "vertex_count": 120,
+      "material_slots": [
+        "Steel",
+        "DarkPanel",
+        "EmissionRed"
+      ],
+      "collider_center": [
+        0,
+        0,
+        0.07
+      ],
+      "collider_size": [
+        0.35,
+        0.22,
+        0.14
+      ],
+      "mesh_file": "Assets/C01InteriorProps/Lighting/Meshes/P16-02.asset",
+      "prefab_file": "Assets/C01InteriorProps/Lighting/Prefabs/P16-02.prefab",
+      "fbx_file": "C01Source/Lighting/FBX/P16-02.fbx",
+      "unity_import": "NOT RUN",
+      "blender_source": "MISSING native .blend"
+    },
+    {
+      "id": "P16-03",
+      "name": "Status_Beacon",
+      "dimensions_WDH_m": [
+        0.2,
+        0.2,
+        0.3
+      ],
+      "anchor": "wall Z=0; into room +Z",
+      "triangle_count": 60,
+      "vertex_count": 120,
+      "material_slots": [
+        "Steel",
+        "DarkPanel",
+        "EmissionGreen"
+      ],
+      "collider_center": [
+        0,
+        0,
+        0.1
+      ],
+      "collider_size": [
+        0.2,
+        0.3,
+        0.2
+      ],
+      "mesh_file": "Assets/C01InteriorProps/Lighting/Meshes/P16-03.asset",
+      "prefab_file": "Assets/C01InteriorProps/Lighting/Prefabs/P16-03.prefab",
+      "fbx_file": "C01Source/Lighting/FBX/P16-03.fbx",
+      "unity_import": "NOT RUN",
+      "blender_source": "MISSING native .blend"
+    }
+  ]
+}

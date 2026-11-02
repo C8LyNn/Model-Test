@@ -1,0 +1,21 @@
+name: C01-16 PASS05 Runner Allocation Smoke
+on:
+  push:
+    branches: [c01/props-16-lighting]
+    paths:
+      - '.github/workflows/c01-16-pass05-runner-smoke.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  runner-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Prove actual GitHub-hosted runner allocation
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "C01_16_RUNNER_ALLOCATED PASS"
+          echo "runner_name=$RUNNER_NAME"
+          uname -a

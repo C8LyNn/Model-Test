@@ -1,0 +1,82 @@
+name: C01-16 PASS04 W01 Native Blender and Binary FBX
+on:
+  push:
+    branches:
+      - 'c01/props-16-lighting'
+    paths:
+      - '.github/workflows/c01-16-pass04-w01.yml'
+      - 'C01Source/Lighting/MeshRepairPASS04/ci_pass04_native.py'
+      - 'C01Source/Lighting/MeshRepairPASS04/test_native_blend_header.py'
+      - 'C01Source/Lighting/MeshRepairPASS04/run_pass04_windows.ps1'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  blender-binary-export:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+          persist-credentials: true
+      - name: Regress native BLENDER- header validation (7 tests, no Blender claims)
+        run: python3 'C01Source/Lighting/MeshRepairPASS04/test_native_blend_header.py'
+      - name: Install genuine Blender
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y blender git-lfs python3-numpy
+          git lfs install --local
+          git lfs pull
+          blender --version
+          blender -b --factory-startup --python-exit-code 1 --python-expr "import numpy; print('C01-16 BLENDER NUMPY OK', numpy.__version__)"
+      - name: Real native Blender and FBX import roundtrip
+        shell: bash
+        run: |
+          set -euo pipefail
+          for asset in P16-01 P16-02 P16-03; do
+            blender -b --factory-startup --python-exit-code 1 --python 'C01Source/Lighting/MeshRepairPASS04/ci_pass04_native.py' -- "$asset"
+          done
+      - name: Validate true binaries and per-asset SHA reports
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json,pathlib,hashlib
+          root=pathlib.Path('C01Source/Lighting')
+          for aid in ["P16-01","P16-02","P16-03"]:
+              report=json.loads((root/'MeshRepairPASS04'/aid/'blender_binary_fbx_roundtrip.json').read_text())
+              blend=root/'Blender'/f'{aid}.blend'
+              fbx=root/'FBX'/f'{aid}.fbx'
+              assert blend.read_bytes().startswith(b'BLENDER-')
+              assert fbx.read_bytes().startswith(b'Kaydara FBX Binary')
+              assert hashlib.sha256(blend.read_bytes()).hexdigest()==report['blend_sha256']
+              assert hashlib.sha256(fbx.read_bytes()).hexdigest()==report['binary_fbx_sha256']
+              assert report['result']=='PASS', aid
+              assert report['max_bounds_delta_m']<=0.001, aid
+          print('REAL_NATIVE_BLENDER_FBX_VALIDATED 3/3')
+          PY
+      - name: Upload genuine native FBX / Blend and roundtrip QA evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-16-PASS04-W01-Blender-Native
+          if-no-files-found: warn
+          path: |
+            C01Source/Lighting/Blender/P16-*.blend
+            C01Source/Lighting/FBX/P16-*.fbx
+            C01Source/Lighting/MeshRepairPASS04/P16-*/blender_binary_fbx_roundtrip.json
+      - name: Commit genuine binary files into the existing producer PR
+        if: success()
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add 'C01Source/Lighting/Blender' 'C01Source/Lighting/FBX' 'C01Source/Lighting/MeshRepairPASS04'
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'fix(C01-16 PASS04 W01): real native .blend, binary FBX and verified roundtrip'
+          # Fresh GitHub runner checkout only: discard generated unstaged Blender/LFS changes after committing intended outputs.
+          # Push the exact child commit with GitHub fast-forward protection.
+          # Do not rebase a working tree containing non-pointer legacy LFS assets.
+          # On concurrent head movement GitHub rejects this push safely.
+          git push origin HEAD:'c01/props-16-lighting'

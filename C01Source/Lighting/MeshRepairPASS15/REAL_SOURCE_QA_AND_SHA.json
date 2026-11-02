@@ -1,0 +1,63 @@
+{
+  "schema": "C01-16-DETAIL-PASS15-GITHUB-SOURCE-QA-1",
+  "owner": "C01-16 LIGHTING & SIGNALS",
+  "issue": 36,
+  "existing_draft_pr": 12,
+  "head_before_report": "db08eeee2a39ac6b276aa6180fd3b892f3eadce8",
+  "project": "C01",
+  "scope": "P16-01..07 ONLY",
+  "new_model_ids": 0,
+  "changed_models": 0,
+  "added_independent_functional_meshes": 0,
+  "added_triangles": 0,
+  "final_whole_wave": {
+    "parts": 36,
+    "triangles": 660
+  },
+  "source_method": "Actual versioned OBJ written to this existing PR and matching local read-back Git blobs; per-solid source closed edge manifold, valid UV0 loop mapping and normals, no degenerate faces; projected triangle-plane cross-part contact audit and AABB attachment checks",
+  "changed_mesh_QA": "NOT_APPLICABLE (no new geometry)",
+  "source_previews": "Local software shaded z-buffer and wireframe BEFORE/AFTER; NOT Blender render",
+  "exporter_change": "Fixed historical base-only pre-export count bug. W01 compares all PASS12 parts; W02 imports PASS15 source and compares all PASS12+15 parts.",
+  "real_native_blender": {
+    "blend_created": 0,
+    "fbx_exported_in_blender": 0,
+    "fbx_reimported": 0,
+    "status": "NOT_RUN",
+    "blocker": "No Blender/bpy in runtime, current C01 GitHub-hosted jobs fail before runner assignment"
+  },
+  "unity_6_urp": "NOT_RUN",
+  "independent_c01_02_final": "PENDING",
+  "local_binary_candidates": "Seven genuine binary FBX 7400 candidate files generated and parsed 7/7 PASS as local self-check; never Blender-origin; not safe to replace canonical FBX",
+  "binary_candidate_zip": "C01-16_DETAIL_PASS15_DELIVERY.zip",
+  "binary_candidate_zip_size_bytes": 872533,
+  "binary_candidate_zip_sha256": "146760b027df5f1ce7f2477bc4b773d2bec1f3d452a376cff44dbb28b8cae019",
+  "global_totals_all_7": {
+    "parts": 108,
+    "vertices": 1162,
+    "edges": 2838,
+    "triangles": 1892
+  },
+  "models": [
+    {
+      "id": "P16-01",
+      "parts": 12,
+      "triangles": 220,
+      "new_mesh_edit": false,
+      "binary_candidate_sha256": "66267484e172f2f1ea07300da08df0068a9867065af0e5e9ab0a41a085ec45e4"
+    },
+    {
+      "id": "P16-02",
+      "parts": 12,
+      "triangles": 220,
+      "new_mesh_edit": false,
+      "binary_candidate_sha256": "3eb4d3bacd56e3c8bba3144a60448b37d2a68b6e23c8c4ae7c6ac200e5960997"
+    },
+    {
+      "id": "P16-03",
+      "parts": 12,
+      "triangles": 220,
+      "new_mesh_edit": false,
+      "binary_candidate_sha256": "72cdb12b3927fbdd89695c0a8244d0c18733431da49780a18f7e7823dc44a138"
+    }
+  ]
+}

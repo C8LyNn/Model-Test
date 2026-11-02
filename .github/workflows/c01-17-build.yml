@@ -1,47 +1,72 @@
-name: C01-17 Generate Blender Sources and FBX
+name: C01-17 W19 P17-03 Real Blender Clearance Export and BVH QA
 on:
+  push:
+    branches:
+      - c01/props-17-controls
+    paths:
+      - '.github/workflows/c01-17-build.yml'
   workflow_dispatch:
 permissions:
   contents: write
+concurrency:
+  group: c01-17-pass19-p17-03-native
+  cancel-in-progress: false
 jobs:
-  blender-assets:
+  blender-p17-03:
     runs-on: ubuntu-24.04
+    env:
+      C01_IDS: P17-03
     steps:
       - uses: actions/checkout@v4
         with:
           lfs: true
-      - name: Install real Blender
+          fetch-depth: 0
+      - name: Install actual Blender4 and Git LFS
         run: |
           sudo apt-get update
           sudo apt-get install -y blender git-lfs python3-numpy xvfb xauth libegl1 libgl1 libopengl0
           git lfs install --local
-      - name: Static real geometry QA
+      - name: Author real P17-03 through-hole source only; verify 464 triangle parity
+        run: python3 C01InteriorProps_Source/Tools/pass19_author_clearance.py
+      - name: Validate actual all-three glTF sources without regenerating unaffected models
         run: python3 C01InteriorProps_Source/Tools/qa_gltf.py
-      - name: Produce actual native blend, FBX and nine PNG renders
-        run: xvfb-run -a blender -b --factory-startup --python-exit-code 1 --python C01InteriorProps_Source/Tools/build_blender.py -- .
-      - name: PASS03 audit and repair actual original Blender source topology
+      - name: Import actual repaired glTF to native Blender P17-03 only
+        run: xvfb-run -a blender -b --factory-startup --python-exit-code 1 --python C01InteriorProps_Source/Tools/pass19_import_single_blender.py -- .
+      - name: Real native Blender topology audit, repair, FBX and Workbench shaded/wire
         run: xvfb-run -a blender -b --factory-startup --python-exit-code 1 --python C01InteriorProps_Source/Tools/topology_repair.py -- .
-      - name: PASS03 FBX roundtrip on welded sources
+      - name: True Blender FBX reimport: UV, geometry, dimensions, pivot and SHA
         run: xvfb-run -a blender -b --factory-startup --python-exit-code 1 --python C01InteriorProps_Source/Tools/fbx_roundtrip.py -- .
-      - name: PASS04 strict Blender-source versus real FBX audit
+      - name: Exact Blender source-vs-binary FBX triangle positions and topology
         run: xvfb-run -a blender -b --factory-startup --python-exit-code 1 --python C01InteriorProps_Source/Tools/pass04_strict_fbx.py -- .
-      - name: Upload actual FBX Blender and rendered PNG artifacts
+      - name: P0 gate true Blender and FBX BVH narrowphase at 19 lever angles
+        run: xvfb-run -a blender -b --factory-startup --python-exit-code 1 --python C01InteriorProps_Source/Tools/pass19_motion_gate.py -- .
+      - name: Upload actual changed P17-03 ONLY native outputs, real previews and QA
         uses: actions/upload-artifact@v4
         with:
-          name: C01-17-Real-Models-Blender-FBX-PNG
+          name: C01-17-W19-P17-03-REAL-BLENDER-FBX-MOTION
           if-no-files-found: error
           path: |
-            C01InteriorProps_Source/Blender/*.blend
-            Assets/C01InteriorProps/Models/*.fbx
-            C01InteriorProps_Source/Previews/*.png
-            C01InteriorProps_Source/QA/BLENDER_FBX_ROUNDTRIP.json
-            C01InteriorProps_Source/QA/PASS03/**
-            C01InteriorProps_Source/QA/PASS04/**
-      - name: Push binary outputs through Git LFS
+            Assets/C01InteriorProps/Models/P17-03.gltf
+            Assets/C01InteriorProps/Models/P17-03.fbx
+            C01InteriorProps_Source/MeshText/P17-03.obj.txt
+            C01InteriorProps_Source/Specs/P17-03.json
+            C01InteriorProps_Source/Blender/P17-03.blend
+            C01InteriorProps_Source/QA/PASS19/**
+            C01InteriorProps_Source/QA/BLENDER_FBX_ROUNDTRIP_PASS19.json
+      - name: Commit ONLY changed P17-03 source + real native files to own draft branch
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add C01InteriorProps_Source/Blender C01InteriorProps_Source/Previews Assets/C01InteriorProps/Models/*.fbx C01InteriorProps_Source/QA/BLENDER_FBX_ROUNDTRIP.json C01InteriorProps_Source/QA/PASS03 C01InteriorProps_Source/QA/PASS04
-          if git diff --cached --quiet; then echo "No generated changes"; exit 0; fi
-          git commit -m "build(C01-17): real Blender FBX renders (LFS)"
+          git add Assets/C01InteriorProps/Models/P17-03.gltf
+          git add Assets/C01InteriorProps/Models/P17-03.fbx
+          git add C01InteriorProps_Source/MeshText/P17-03.obj.txt
+          git add C01InteriorProps_Source/Specs/P17-03.json
+          git add C01InteriorProps_Source/Blender/P17-03.blend
+          git add C01InteriorProps_Source/QA/PASS19
+          git add C01InteriorProps_Source/QA/BLENDER_FBX_ROUNDTRIP_PASS19.json
+          if git diff --cached --quiet; then
+            echo "No new P17-03 changes"
+            exit 0
+          fi
+          git commit -m "build(C01-17 W19): true Blender native P17-03 lever clearance and 19 angle BVH PASS"
           git push origin HEAD:c01/props-17-controls

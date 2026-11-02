@@ -36,7 +36,7 @@ jobs:
           receipt=json.loads(Path('C01StandaloneKits/FloorCeiling/DetailPass20/QA/UNITY_EDITOR_INTAKE_PREFLIGHT.json').read_text())
           assert receipt['actual_lfs_hydrated_fbx']=='PASS_3_OF_3'
           assert set(x['asset_id'] for x in receipt['models'])=={'F01','F02','C01'}
-          assert receipt['unity_compile']==receipt['unity_editor']=='NOT_RUN'
+          assert receipt['unity_compile']==receipt['editmode_playmode']=='NOT_RUN'
           assert receipt['independent_c01_02_approval']=='PENDING'
           print('W20 source-byte / C# contract gate PASS, actual Unity NOT RUN')
           PY

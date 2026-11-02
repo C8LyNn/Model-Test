@@ -34,7 +34,7 @@ jobs:
         run: xvfb-run -a blender -b --factory-startup --python-exit-code 1 --python C01InteriorProps_Source/Tools/pass19_import_single_blender.py -- .
       - name: Real native Blender topology audit, repair, FBX and Workbench shaded/wire
         run: xvfb-run -a blender -b --factory-startup --python-exit-code 1 --python C01InteriorProps_Source/Tools/topology_repair.py -- .
-      - name: True Blender FBX reimport: UV, geometry, dimensions, pivot and SHA
+      - name: "True Blender FBX reimport - UV, geometry, dimensions, pivot and SHA"
         run: xvfb-run -a blender -b --factory-startup --python-exit-code 1 --python C01InteriorProps_Source/Tools/fbx_roundtrip.py -- .
       - name: Exact Blender source-vs-binary FBX triangle positions and topology
         run: xvfb-run -a blender -b --factory-startup --python-exit-code 1 --python C01InteriorProps_Source/Tools/pass04_strict_fbx.py -- .

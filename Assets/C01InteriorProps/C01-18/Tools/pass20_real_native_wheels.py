@@ -50,7 +50,7 @@ def gather(tag):
   st_box={o.name:bounds_world(o) for o in stationary}
   center=wheel.matrix_world.translation
   assert abs(center.z-.105)<.001,(tag,wid,"wrong axle height",tuple(center))
-  assert abs(center.x)-.39<.001
+  assert abs(abs(center.x)-.39)<.001
   rest=wheel.rotation_euler.copy()
   contacts=[];rubber_contacts=[];ground=[]
   for deg in range(0,360,5):

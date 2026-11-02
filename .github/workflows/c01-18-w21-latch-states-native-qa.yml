@@ -1,0 +1,68 @@
+name: C01-18 W21 REAL Blender FBX P18-07 Latch State QA
+on:
+  push:
+    branches: [c01/props-18-cargo-wave02]
+    paths:
+      - '.github/workflows/c01-18-w21-latch-states-native-qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: c01-18-w21-latch-native-qa
+  cancel-in-progress: false
+jobs:
+  native-fbx-unchanged-geometry:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+          persist-credentials: true
+      - name: Load genuine LFS binaries and actual Blender 4
+        shell: bash
+        run: |
+          set -euo pipefail
+          git lfs install --local
+          git lfs pull --include='Assets/C01InteriorProps/C01-18-Wave02/Sources/P18-07.blend,Assets/C01InteriorProps/C01-18-Wave02/Models/P18-07.fbx' --exclude=''
+          sudo apt-get update -qq
+          sudo apt-get install -y blender python3-numpy
+          blender --version | grep -E '^Blender 4\.'
+      - name: Verify SHA-pinned actual native and binary FBX world mesh contact states
+        shell: bash
+        run: |
+          set -euo pipefail
+          root="$PWD/Assets/C01InteriorProps/C01-18-Wave02"
+          blender -b --factory-startup --python-exit-code 1 --python "$root/Tools/pass21_latch_state_real_native_qa.py" -- "$root"
+          python3 - <<'PY'
+          from pathlib import Path
+          import json
+          p=Path("Assets/C01InteriorProps/C01-18-Wave02/QA/Pass21/P18-07_REAL_BLENDER_FBX_LATCH_STATES.json")
+          j=json.loads(p.read_text())
+          assert j['source_fbx_exact_contact_parity']
+          for k in ('native','binary_fbx'):
+              assert j[k]['angles']==23
+              assert j[k]['summary']['UNLOCKED_COLLIDER_DISABLED']['unexpected_contacts']==0
+              assert j[k]['summary']['LOCKED']['lock_contacts']>0
+          print('C01_W21_REAL_NATIVE_LATCH_QA_VERIFIED')
+          PY
+      - name: Commit ONLY QA evidence (never modify/re-export existing .blend/.fbx)
+        shell: bash
+        run: |
+          set -euo pipefail
+          f=Assets/C01InteriorProps/C01-18-Wave02/QA/Pass21/P18-07_REAL_BLENDER_FBX_LATCH_STATES.json
+          git add "$f"
+          if ! git diff --cached --quiet; then
+            test "$(git diff --cached --name-only)" = "$f"
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git commit -m 'C01-18 W21: real native P18-07 latch blocked/unlocked mechanical sweep [skip ci]'
+            git push origin HEAD:c01/props-18-cargo-wave02
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: C01-18-W21-P18-07-REAL-BLEND-FBX-LATCH-QA
+          path: Assets/C01InteriorProps/C01-18-Wave02/QA/Pass21/P18-07_REAL_BLENDER_FBX_LATCH_STATES.json
+          if-no-files-found: warn
+          retention-days: 21

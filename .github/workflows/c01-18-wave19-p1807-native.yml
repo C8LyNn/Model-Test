@@ -27,7 +27,7 @@ jobs:
           git lfs install --local
           git lfs pull --include="Assets/C01InteriorProps/C01-18-Wave02/Sources/P18-07.blend" --exclude=""
           sudo apt-get update -qq
-          sudo apt-get install -y blender
+          sudo apt-get install -y blender python3-numpy
           blender --version | grep -E '^Blender 4\.'
           python3 - <<'PY'
           from pathlib import Path

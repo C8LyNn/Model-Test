@@ -8,11 +8,11 @@ import re
 import subprocess
 import sys
 
-ROOT = pathlib.Path(__file__).resolve().parents[4]
+ROOT = pathlib.Path(__file__).resolve().parents[3]
 CURRENT = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
 W01 = subprocess.check_output(["git", "rev-parse", "refs/remotes/origin/c01/props-16-lighting"], cwd=ROOT, text=True).strip()
 RECEIPT_PATH = "C01Source/LightingW02/MeshRepairPASS17/GENUINE_BLENDER_SHA_AND_QA.json"
-PTR = re.compile(r"version https://git-lfs.github.com/spec/v1\noid sha256:([0-9a-f]{64})\nsize ([0-9]+)\n?\\Z")
+PTR = re.compile(r"version https://git-lfs.github.com/spec/v1\noid sha256:([0-9a-f]{64})\nsize ([0-9]+)\n?")
 SHA = re.compile(r"^[0-9a-f]{64}$")
 
 def git_file(commit, path):

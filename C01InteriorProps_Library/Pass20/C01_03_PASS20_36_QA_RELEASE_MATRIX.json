@@ -40,7 +40,9 @@
     "unity0": true,
     "new_fbx_P17_03": true,
     "new_fbx_P17_05": true,
-    "new_fbx_P18_07": true
+    "new_fbx_P18_07": true,
+    "current_P18_07_2026_11_02_SHA": true,
+    "no_auto_approval": true
   },
   "rows": [
     {
@@ -831,29 +833,30 @@
       "owner": "C01-18",
       "producer_pr": 26,
       "producer_branch": "c01/props-18-cargo-wave02",
-      "producer_head_current": "09fdec0a7cbb0399441b3a83dd7bd472b9124c2f",
+      "producer_head_current": "8ce2bf595fd34daf1ecccc5228d42b603c3d3578",
       "source_commit_previous_W19": "ce5f80db7121f435b09e3bed17d7daa93b4147c8",
       "HEAD_changed_from_previous": true,
       "native_blend_path": "Assets/C01InteriorProps/C01-18-Wave02/Sources/P18-07.blend",
-      "native_blend_sha256_lfs_oid": "ca81b1b5b03354f6988657324f2f30b28ff1b785529388fb692469ffb2d3f9c3",
+      "native_blend_sha256_lfs_oid": "5fd990d8153430dd4f1a8893ebef0097465a404d1b2c6bbd77777de695b3e87d",
       "binary_fbx_path": "Assets/C01InteriorProps/C01-18-Wave02/Models/P18-07.fbx",
-      "binary_fbx_sha256_lfs_oid": "38d93a5c2dc9f1511e568925998d7ea42c26dffc1f14e99cdaae80f1501273da",
-      "previous_fbx_sha256_if_superseded": null,
-      "producer_Action_run": 41531265944,
-      "producer_Artifact_id": 13182237560,
-      "artifact_ZIP_sha256": "ad3dd235e9e9f26b9d08894bd6894c2ae2fa5e51d2646eec2facabc3fc5bfd46",
+      "binary_fbx_sha256_lfs_oid": "858a24db4338804ee3a3a70c310cd4936e3c45f559b9c4ab81c6037add564554",
+      "previous_fbx_sha256_if_superseded": "38d93a5c2dc9f1511e568925998d7ea42c26dffc1f14e99cdaae80f1501273da",
+      "producer_Action_run": 41536767833,
+      "producer_Artifact_id": 13184427833,
+      "artifact_ZIP_sha256": "08c7c62a18b52ee2edf83a6a1e01fdf0337991f5640e5007349989166750b74e",
       "native_sha_presence": "SIGNED_PAIR_COMPLETE",
       "actual_native_byte_QA": "FULL_BINARY_MATCH_ARTIFACT_AND_LFS",
-      "asset_specific_binary_evidence": "https://github.com/C8LyNn/Model-Test/actions/runs/41531265944/artifacts/13182237560",
+      "asset_specific_binary_evidence": "https://github.com/C8LyNn/Model-Test/actions/runs/41536767833/artifacts/13184427833",
       "c01_02_static_exact_sha": "PENDING_EXACT_NEW_SHA",
       "c01_02_motion_exact_sha": "PENDING_EXACT_NEW_SHA",
       "c01_02_reference_sha": null,
-      "producer_or_QA_specific_issue": "OLD_NATIVE_MISMATCH_CLEARED; NEW_SHA_FRONT_LOCK_1MM_OFFSET; C01_02_TOLERANCE_HINGE_PENDING",
+      "producer_or_QA_specific_issue": "W20_NEW_REAL_BLENDER_HANDLE_PARENTED_TO_LID_HINGE;23_PRODUCER_POSES;FRONT_LOCK_ENGAGED_CONTACTS_AT_0_AND_5_DEG_NEED_INDEPENDENT_CLASSIFICATION",
       "unity6_Editor": "UNITY_NOT_RUN",
       "final_disposition": "HOLD_NOT_APPROVED",
-      "release_blocker": "OLD_NATIVE_MISMATCH_CLEARED; NEW_SHA_FRONT_LOCK_1MM_OFFSET; C01_02_TOLERANCE_HINGE_PENDING; C01_02_FULL_EXACT_SHA_FINAL_APPROVAL_PENDING; UNITY_6_EDITOR_NOT_RUN",
-      "source_export_parity": "EXACT_LFS_PRESENT; END_TO_END_AUTHORING_PARITY_NOT_INDEPENDENTLY_CLEARED",
-      "notes": "Current FBX 10 instances/120T, front lock +1 mm, independent tolerance pending"
+      "release_blocker": "W20_NEW_REAL_BLENDER_HANDLE_PARENTED_TO_LID_HINGE;23_PRODUCER_POSES;FRONT_LOCK_ENGAGED_CONTACTS_AT_0_AND_5_DEG_NEED_INDEPENDENT_CLASSIFICATION;C01_02_FINAL_EXACT_SHA_QA_PENDING;UNITY_6_EDITOR_NOT_RUN",
+      "source_export_parity": "CURRENT_W20_REAL_BLENDER4_BINARY_PHYSICALLY_VERIFIED;C01_02_EXACT_SHA_MOTION_NOT_RUN",
+      "notes": "Current W20 BLEND/FBX exact full SHA256; 10 mesh parts/120 triangles; producer BVH sweep 23 poses; latch engaged contact remains independent/Unity HOLD.",
+      "previous_blend_sha256_if_superseded": "ca81b1b5b03354f6988657324f2f30b28ff1b785529388fb692469ffb2d3f9c3"
     },
     {
       "asset_id": "P19-01",
@@ -1087,5 +1090,15 @@
       "source_export_parity": "EXACT_LFS_PRESENT; END_TO_END_AUTHORING_PARITY_NOT_INDEPENDENTLY_CLEARED",
       "notes": null
     }
-  ]
+  ],
+  "latest_P18_07_W20_proof": {
+    "producer_run": 41536767833,
+    "artifact_id": 13184427833,
+    "artifact_zip_full_sha256": "08c7c62a18b52ee2edf83a6a1e01fdf0337991f5640e5007349989166750b74e",
+    "ZIP_CRC": "PASS",
+    "full_current_blend_and_fbx_SHA256": "2_OF_2_MATCH_LFS",
+    "previous_W19_binary_fbx_sha256": "38d93a5c2dc9f1511e568925998d7ea42c26dffc1f14e99cdaae80f1501273da",
+    "independent_C01_02": "PENDING_EXACT_SHA",
+    "Unity6": "NOT_RUN"
+  }
 }

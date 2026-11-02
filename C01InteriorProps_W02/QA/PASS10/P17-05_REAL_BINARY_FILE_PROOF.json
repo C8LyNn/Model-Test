@@ -1,0 +1,62 @@
+{
+  "schema": "C01-17-PASS10-ACTUAL-BINARY-FILES-v1",
+  "scope": "P17-05",
+  "issue": 33,
+  "status": "QUARANTINED_REAL_FILE_BYTES_NO_BLENDER_RUNTIME",
+  "physical_evidence_zip": {
+    "file": "C01-17_PASS10_P17-05_REAL_BINARY_EVIDENCE.zip",
+    "sha256": "d5ea004504f1793e37fea78476005653da3f1ca5ec7b0dcfba58dafeab3d0b56",
+    "bytes": 211195,
+    "crc": "PASS",
+    "availability": "ChatGPT PASS10 artifact link; NOT pushed to GitHub binary producer"
+  },
+  "before": {
+    "blender_sha256": "07be57396ccab85423745dc71db2e820eacd00f8191cb86809091c4d14a6dbbd",
+    "fbx_sha256": "3fa314481f87d66f9a878936028b809cd78440d781146a058594e28f3f4e1740"
+  },
+  "after_quarantine": {
+    "blender_sha256": "16ad0dffa17f5918e64b009086d16efc7c998703b14f2d43f6fa258bb084d440",
+    "fbx_sha256": "c2b8f049de4e84697980e53d0f443a77b19ce930ea6b159a10fb5b3df8695c71"
+  },
+  "byte_diff": {
+    "blend_offsets": [
+      276088,
+      276089,
+      276090
+    ],
+    "fbx_offsets": [
+      52311,
+      52312,
+      52313,
+      52314,
+      52315,
+      52316
+    ],
+    "size_unchanged": true
+  },
+  "binary_checks": {
+    "blend_header": "BLENDER-v400",
+    "bhead_records_before_after": 1664,
+    "dna1_endb_present": true,
+    "fbx_format": "Kaydara FBX Binary 7400",
+    "changed_parsed_fbx_properties": 1,
+    "mesh_objects_before_after": 20,
+    "triangles_before_after": 240,
+    "rail_bezel_coplanar_triangle_pairs_before": 6,
+    "rail_bezel_coplanar_triangle_pairs_after": 0,
+    "area_before_m2": 0.059199983764,
+    "area_after_m2": 0,
+    "other_coplanar_pairs_before_after": 0
+  },
+  "runtime": {
+    "blender_4x_open_save": "NOT_RUN",
+    "blender_fbx_export_reimport": "NOT_RUN",
+    "unity_6_urp": "NOT_RUN",
+    "c01_02_approval": "PENDING"
+  },
+  "blockers": {
+    "github_c01_private_repo": "runner_id=0 and steps=[] in latest verified failed jobs; not independently established exact cause",
+    "local_runtime": "blender not installed; bpy not installed; PyPI DNS unavailable"
+  },
+  "release": "BLOCKED. Do not overwrite existing Git LFS .blend/FBX in PR #23 until true Blender save/export and C01-02 exact SHA QA."
+}

@@ -1,0 +1,75 @@
+{
+  "pass": "PASS09",
+  "role": "C01-17",
+  "scope": "P17-05",
+  "status": "QUARANTINED_NATIVE_BINARY_CANDIDATES_NOT_BLENDER_RUNTIME_PASS",
+  "source_blend_original": {
+    "sha256": "07be57396ccab85423745dc71db2e820eacd00f8191cb86809091c4d14a6dbbd",
+    "bytes": 603584
+  },
+  "source_blend_candidate": {
+    "sha256": "16ad0dffa17f5918e64b009086d16efc7c998703b14f2d43f6fa258bb084d440",
+    "bytes": 603584,
+    "changed_bytes": 3,
+    "changed_offsets": [
+      276088,
+      276089,
+      276090
+    ],
+    "field": "Blender Object LowerDisplayRail loc[1]"
+  },
+  "binary_fbx_original": {
+    "sha256": "3fa314481f87d66f9a878936028b809cd78440d781146a058594e28f3f4e1740",
+    "bytes": 63116
+  },
+  "binary_fbx_candidate": {
+    "sha256": "c2b8f049de4e84697980e53d0f443a77b19ce930ea6b159a10fb5b3df8695c71",
+    "bytes": 63116,
+    "changed_bytes": 6,
+    "changed_offsets": [
+      52311,
+      52312,
+      52313,
+      52314,
+      52315,
+      52316
+    ],
+    "field": "FBX Model LowerDisplayRail > Properties70 > Lcl Translation Y"
+  },
+  "actual_binary_testing": {
+    "source_signatures_sha256": "PASS",
+    "blend_bhead_and_sdna_structural_integrity": "PASS",
+    "fbx_full_tree_binary_parse": "PASS",
+    "fbx_all_other_nodes_exactly_identical": "PASS",
+    "fbx_coplanar_overlap_pairs_before": 6,
+    "fbx_coplanar_overlap_pairs_after": 0,
+    "mesh_parts": 20,
+    "triangles": 240,
+    "uv0_normals_materials_unchanged": true,
+    "crosspart_tjunction_candidates_before": 0,
+    "crosspart_tjunction_candidates_after": 0
+  },
+  "gates": {
+    "blender_native_load_save": "NOT_RUN",
+    "blender_binary_fbx_export_roundtrip": "NOT_RUN",
+    "independent_c01_02": "PENDING",
+    "unity6_urp": "NOT_RUN",
+    "merge": "BLOCKED"
+  },
+  "bundled_portable_zip": {
+    "name": "C01-17_PASS09_P17-05_NATIVE_BINARY_CANDIDATES.zip",
+    "sha256": "0b9b2481e9a7711a59e1d00348c000d4d790cd1cbe32bacbd7be9549db816bfb",
+    "bytes": 108735,
+    "zip_crc": "PASS",
+    "contents": [
+      "P17-05_AFTER_OFFLINE_CANDIDATE.blend",
+      "P17-05_AFTER_OFFLINE_CANDIDATE.fbx",
+      "PASS09_BINARY_PATCH_RECEIPT.json",
+      "BLENDER_REOPEN_EXPORT_QA.py",
+      "RUN_WINDOWS.ps1",
+      "README.md"
+    ]
+  },
+  "project_isolation": "C01 model bytes only; B01 ENV01–ENV05 used only for independent procedural QA lessons. No cross-repo asset transfers.",
+  "required_owner_action": "Run Blender 4.x on candidate .blend, save via bpy, export fresh FBX and reimport; commit runtime-saved outputs only after verified SHA + C01-02 QA."
+}

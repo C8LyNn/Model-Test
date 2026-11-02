@@ -1,0 +1,292 @@
+{
+  "id": "P17-06",
+  "owner": "C01-17",
+  "wave": 2,
+  "title": "Emergency cutoff with safety cover",
+  "dimensions_WDH_m": [
+    0.52,
+    0.2265,
+    0.72
+  ],
+  "mount": "wall",
+  "pivot": "wall back-plane Z=0; lower center Y=0",
+  "moving_parts": [
+    {
+      "name": "CoverPivot",
+      "p": [
+        0,
+        0.62,
+        0.164
+      ],
+      "motion": "rotate local X 0..95 degrees"
+    },
+    {
+      "name": "SwitchPivot",
+      "p": [
+        0,
+        0.33,
+        0.184
+      ],
+      "motion": "rotate local X -25..25 degrees"
+    }
+  ],
+  "collider": {
+    "center": [
+      0,
+      0.36,
+      0.11
+    ],
+    "size": [
+      0.52,
+      0.72,
+      0.22
+    ]
+  },
+  "materials": [
+    "METAL",
+    "DARK",
+    "CAUTION",
+    "GLOW"
+  ],
+  "triangle_count": 156,
+  "mesh_parts": 13,
+  "parts": [
+    {
+      "name": "WallPlate",
+      "p": [
+        0,
+        0.36,
+        0.012
+      ],
+      "s": [
+        0.52,
+        0.72,
+        0.024
+      ],
+      "m": "METAL",
+      "parent": "ROOT"
+    },
+    {
+      "name": "Seal",
+      "p": [
+        0,
+        0.36,
+        0.042
+      ],
+      "s": [
+        0.49,
+        0.67,
+        0.036
+      ],
+      "m": "DARK",
+      "parent": "ROOT"
+    },
+    {
+      "name": "Housing",
+      "p": [
+        0,
+        0.36,
+        0.103
+      ],
+      "s": [
+        0.47,
+        0.64,
+        0.108
+      ],
+      "m": "DARK",
+      "parent": "ROOT"
+    },
+    {
+      "name": "UpperWarning",
+      "p": [
+        0,
+        0.65,
+        0.167
+      ],
+      "s": [
+        0.43,
+        0.09,
+        0.016
+      ],
+      "m": "CAUTION",
+      "parent": "ROOT"
+    },
+    {
+      "name": "SwitchPlate",
+      "p": [
+        0,
+        0.33,
+        0.165
+      ],
+      "s": [
+        0.23,
+        0.24,
+        0.018
+      ],
+      "m": "METAL",
+      "parent": "ROOT"
+    },
+    {
+      "name": "SwitchBlack",
+      "p": [
+        0,
+        0.33,
+        0.177
+      ],
+      "s": [
+        0.17,
+        0.18,
+        0.012
+      ],
+      "m": "DARK",
+      "parent": "ROOT"
+    },
+    {
+      "name": "Actuator",
+      "p": [
+        0,
+        0.061,
+        0.011
+      ],
+      "s": [
+        0.052,
+        0.12,
+        0.046
+      ],
+      "m": "CAUTION",
+      "parent": "SwitchPivot"
+    },
+    {
+      "name": "ActuatorFoot",
+      "p": [
+        0,
+        0,
+        0
+      ],
+      "s": [
+        0.105,
+        0.065,
+        0.085
+      ],
+      "m": "METAL",
+      "parent": "SwitchPivot"
+    },
+    {
+      "name": "Cover",
+      "p": [
+        0,
+        -0.22,
+        0.014
+      ],
+      "s": [
+        0.48,
+        0.42,
+        0.035
+      ],
+      "m": "METAL",
+      "parent": "CoverPivot"
+    },
+    {
+      "name": "SafetyWindow",
+      "p": [
+        0,
+        -0.22,
+        0.035
+      ],
+      "s": [
+        0.32,
+        0.22,
+        0.007
+      ],
+      "m": "GLOW",
+      "parent": "CoverPivot"
+    },
+    {
+      "name": "CoverBottomLip",
+      "p": [
+        0,
+        -0.44,
+        0.015
+      ],
+      "s": [
+        0.468,
+        0.025,
+        0.055
+      ],
+      "m": "DARK",
+      "parent": "CoverPivot"
+    },
+    {
+      "name": "StatusGreen",
+      "p": [
+        -0.158,
+        0.55,
+        0.169
+      ],
+      "s": [
+        0.08,
+        0.026,
+        0.01
+      ],
+      "m": "GLOW",
+      "parent": "ROOT"
+    },
+    {
+      "name": "StatusRed",
+      "p": [
+        0.158,
+        0.55,
+        0.169
+      ],
+      "s": [
+        0.08,
+        0.026,
+        0.01
+      ],
+      "m": "CAUTION",
+      "parent": "ROOT"
+    }
+  ],
+  "stage": "PASS17_MESH_CONTACT_SOURCE_FIXED_NATIVE_EXPORT_PENDING",
+  "pass17": {
+    "producer": "C01-17",
+    "fixes": [
+      {
+        "name": "Actuator",
+        "translation": [
+          0,
+          0.061,
+          0.011
+        ],
+        "dimension": [
+          0.052,
+          0.12,
+          0.046
+        ]
+      },
+      {
+        "name": "CoverBottomLip",
+        "translation": [
+          0,
+          -0.44,
+          0.015
+        ],
+        "scale": [
+          0.9957446808510639,
+          1,
+          1
+        ],
+        "dimension": [
+          0.468,
+          0.025,
+          0.055
+        ]
+      }
+    ],
+    "motileHierarchyUnchanged": true,
+    "sourceGLTF_geometry_buffers_unchanged": true,
+    "actualNewBlenderBLEND": "NOT RUN",
+    "actualNewBlenderFBX": "NOT RUN",
+    "Unity": "NOT RUN"
+  }
+}

@@ -1,0 +1,54 @@
+name: C01-17 W02 Blender/FBX Production
+on:
+  push:
+    branches: [c01/props-17-wave02]
+    paths:
+      - 'C01InteriorProps_W02/Specs/**'
+      - 'C01InteriorProps_W02/Tools/**'
+      - 'Assets/C01InteriorProps/W02/Models/*.gltf'
+      - '.github/workflows/c01-17-wave02.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  produce:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - name: Install Blender 4 and headless renderer
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y blender python3-numpy xvfb xauth libegl1 libgl1 libopengl0 git-lfs
+          git lfs install --local
+      - name: QA actual glTF UV0 normals bounds
+        run: python3 C01InteriorProps_W02/Tools/qa_gltf.py
+      - name: Real Blender import native sources FBX export 12 PNG renders
+        run: xvfb-run -a blender -b --factory-startup --python-exit-code 1 --python C01InteriorProps_W02/Tools/blender_build.py -- .
+      - name: PASS03 repair original Blender meshes and create true before-after wireframes
+        run: xvfb-run -a blender -b --factory-startup --python-exit-code 1 --python C01InteriorProps_W02/Tools/topology_repair.py -- .
+      - name: PASS03 reimport repaired FBX and verify UV, scale and pivots
+        run: xvfb-run -a blender -b --factory-startup --python-exit-code 1 --python C01InteriorProps_W02/Tools/fbx_roundtrip.py -- .
+      - name: PASS04 strict Blender-source versus real FBX audit
+        run: xvfb-run -a blender -b --factory-startup --python-exit-code 1 --python C01InteriorProps_W02/Tools/pass04_strict_fbx.py -- .
+      - name: Upload sources and renders as direct artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-17-Wave02-4x-Blender-FBX-12PNG
+          if-no-files-found: error
+          path: |
+            C01InteriorProps_W02/Blender/*.blend
+            Assets/C01InteriorProps/W02/Models/*.fbx
+            C01InteriorProps_W02/Previews/*.png
+            C01InteriorProps_W02/QA/BLENDER_FBX_ROUNDTRIP.json
+            C01InteriorProps_W02/QA/PASS03/**
+            C01InteriorProps_W02/QA/PASS04/**
+      - name: Commit real binary sources/exports through Git LFS
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add C01InteriorProps_W02/Blender Assets/C01InteriorProps/W02/Models/*.fbx C01InteriorProps_W02/Previews C01InteriorProps_W02/QA/BLENDER_FBX_ROUNDTRIP.json C01InteriorProps_W02/QA/PASS03 C01InteriorProps_W02/QA/PASS04
+          if git diff --cached --quiet; then echo "No changes"; exit 0; fi
+          git commit -m "build(C01-17 W02): native Blender FBX and 12 previews (LFS)"
+          git push origin HEAD:c01/props-17-wave02

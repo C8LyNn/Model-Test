@@ -1,0 +1,360 @@
+{
+  "id": "P17-07",
+  "owner": "C01-17",
+  "wave": 2,
+  "title": "Fuse distribution module with removable cartridge",
+  "dimensions_WDH_m": [
+    0.7,
+    0.24,
+    0.82
+  ],
+  "mount": "wall",
+  "pivot": "wall back-plane Z=0; lower center Y=0",
+  "moving_parts": [
+    {
+      "name": "CartridgePivot",
+      "p": [
+        0,
+        0.43,
+        0.12
+      ],
+      "motion": "translate +Z 0..0.25 m; removable child"
+    }
+  ],
+  "collider": {
+    "center": [
+      0,
+      0.41,
+      0.115
+    ],
+    "size": [
+      0.7,
+      0.82,
+      0.23
+    ]
+  },
+  "materials": [
+    "METAL",
+    "DARK",
+    "CAUTION",
+    "GLOW"
+  ],
+  "triangle_count": 228,
+  "mesh_parts": 19,
+  "parts": [
+    {
+      "name": "WallMount",
+      "p": [
+        0,
+        0.41,
+        0.012
+      ],
+      "s": [
+        0.7,
+        0.82,
+        0.024
+      ],
+      "m": "METAL",
+      "parent": "ROOT"
+    },
+    {
+      "name": "OuterCase",
+      "p": [
+        0,
+        0.41,
+        0.07
+      ],
+      "s": [
+        0.66,
+        0.76,
+        0.096
+      ],
+      "m": "DARK",
+      "parent": "ROOT"
+    },
+    {
+      "name": "Header",
+      "p": [
+        0,
+        0.766,
+        0.13
+      ],
+      "s": [
+        0.62,
+        0.108,
+        0.033
+      ],
+      "m": "CAUTION",
+      "parent": "ROOT"
+    },
+    {
+      "name": "Panel",
+      "p": [
+        0,
+        0.43,
+        0.137
+      ],
+      "s": [
+        0.61,
+        0.55,
+        0.045
+      ],
+      "m": "METAL",
+      "parent": "ROOT"
+    },
+    {
+      "name": "LeftFuseSlot",
+      "p": [
+        -0.195,
+        0.44,
+        0.165
+      ],
+      "s": [
+        0.17,
+        0.36,
+        0.014
+      ],
+      "m": "DARK",
+      "parent": "ROOT"
+    },
+    {
+      "name": "MidFuseSlot",
+      "p": [
+        0,
+        0.44,
+        0.165
+      ],
+      "s": [
+        0.17,
+        0.36,
+        0.014
+      ],
+      "m": "DARK",
+      "parent": "ROOT"
+    },
+    {
+      "name": "RightFuseSlot",
+      "p": [
+        0.195,
+        0.44,
+        0.165
+      ],
+      "s": [
+        0.17,
+        0.36,
+        0.014
+      ],
+      "m": "DARK",
+      "parent": "ROOT"
+    },
+    {
+      "name": "LeftInstalledFuse",
+      "p": [
+        -0.195,
+        0.43,
+        0.186
+      ],
+      "s": [
+        0.13,
+        0.29,
+        0.042
+      ],
+      "m": "METAL",
+      "parent": "ROOT"
+    },
+    {
+      "name": "RightInstalledFuse",
+      "p": [
+        0.195,
+        0.43,
+        0.186
+      ],
+      "s": [
+        0.13,
+        0.29,
+        0.042
+      ],
+      "m": "METAL",
+      "parent": "ROOT"
+    },
+    {
+      "name": "RemovableCore",
+      "p": [
+        0,
+        0,
+        0.054
+      ],
+      "s": [
+        0.13,
+        0.29,
+        0.085
+      ],
+      "m": "CAUTION",
+      "parent": "CartridgePivot"
+    },
+    {
+      "name": "RemovableHandle",
+      "p": [
+        0,
+        0.134,
+        0.092
+      ],
+      "s": [
+        0.128,
+        0.048,
+        0.056
+      ],
+      "m": "DARK",
+      "parent": "CartridgePivot"
+    },
+    {
+      "name": "RemovableContactT",
+      "p": [
+        0,
+        0.161,
+        0.048
+      ],
+      "s": [
+        0.105,
+        0.019,
+        0.088
+      ],
+      "m": "METAL",
+      "parent": "CartridgePivot"
+    },
+    {
+      "name": "RemovableContactB",
+      "p": [
+        0,
+        -0.161,
+        0.048
+      ],
+      "s": [
+        0.105,
+        0.019,
+        0.088
+      ],
+      "m": "METAL",
+      "parent": "CartridgePivot"
+    },
+    {
+      "name": "BottomRail",
+      "p": [
+        0,
+        0.123,
+        0.157
+      ],
+      "s": [
+        0.61,
+        0.052,
+        0.032
+      ],
+      "m": "METAL",
+      "parent": "ROOT"
+    },
+    {
+      "name": "LEDLeft",
+      "p": [
+        -0.195,
+        0.648,
+        0.161
+      ],
+      "s": [
+        0.08,
+        0.024,
+        0.012
+      ],
+      "m": "GLOW",
+      "parent": "ROOT"
+    },
+    {
+      "name": "LEDCenter",
+      "p": [
+        0,
+        0.648,
+        0.161
+      ],
+      "s": [
+        0.08,
+        0.024,
+        0.012
+      ],
+      "m": "GLOW",
+      "parent": "ROOT"
+    },
+    {
+      "name": "LEDRight",
+      "p": [
+        0.195,
+        0.648,
+        0.161
+      ],
+      "s": [
+        0.08,
+        0.024,
+        0.012
+      ],
+      "m": "GLOW",
+      "parent": "ROOT"
+    },
+    {
+      "name": "EdgeRailL",
+      "p": [
+        -0.31,
+        0.42,
+        0.15
+      ],
+      "s": [
+        0.022,
+        0.6,
+        0.055
+      ],
+      "m": "METAL",
+      "parent": "ROOT"
+    },
+    {
+      "name": "EdgeRailR",
+      "p": [
+        0.31,
+        0.42,
+        0.15
+      ],
+      "s": [
+        0.022,
+        0.6,
+        0.055
+      ],
+      "m": "METAL",
+      "parent": "ROOT"
+    }
+  ],
+  "stage": "PASS17_MESH_CONTACT_SOURCE_FIXED_NATIVE_EXPORT_PENDING",
+  "pass17": {
+    "producer": "C01-17",
+    "fixes": [
+      {
+        "name": "RemovableHandle",
+        "translation": [
+          0,
+          0.134,
+          0.092
+        ],
+        "scale": [
+          0.9846153846153846,
+          1,
+          1
+        ],
+        "dimension": [
+          0.128,
+          0.048,
+          0.056
+        ]
+      }
+    ],
+    "motileHierarchyUnchanged": true,
+    "sourceGLTF_geometry_buffers_unchanged": true,
+    "actualNewBlenderBLEND": "NOT RUN",
+    "actualNewBlenderFBX": "NOT RUN",
+    "Unity": "NOT RUN"
+  }
+}

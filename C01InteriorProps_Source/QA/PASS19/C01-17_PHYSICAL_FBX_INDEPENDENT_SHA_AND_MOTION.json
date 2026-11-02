@@ -1,0 +1,90 @@
+{
+  "schema": "C01-17-WAVE19-INDEPENDENT-PHYSICAL-FBX-VALIDATION",
+  "role": "C01-17 producer-side independent byte validation; NOT C01-02 signoff",
+  "exact_asset": "P17-03",
+  "source": {
+    "branch": "c01/props-17-controls",
+    "pr": 17,
+    "producer_workflow": 41532763700,
+    "workflow_artifact": 13182807424,
+    "producer_HEAD_before_this_qa": "b19b1de13eeaabaa96f7c91bee39a7cc8c7afde8",
+    "gltf_sha256": "04e2757972469b545ee4973e1ec9a939aca08d599e87aeb3f6757f93e9f30932",
+    "obj_sha256": "cfbddf12ce3ec6711c80763935c12e6030b9403272f2b75088b7c9595c9f8394",
+    "spec_sha256": "3ee75256f3aec670e9f1f4ab66984feab34ac04ada3712ecd268c6f6d982acd3",
+    "parts": 20,
+    "triangles": 464,
+    "source_gltf_obj_world_mesh": "464/464 identical at 1um",
+    "repair": "Through-rectangular manifold aperture in existing fixed TopCap and LeverSocket. Original lever pivot, 3 moving children and 8 service hardware meshes preserved."
+  },
+  "actual_physical_native": {
+    "Blender4_0_2_PASS": true,
+    "blend_sha256": "c35e300cd59a4c7c8a1edfa5bf37d9fe3143343a18623998109cf41bf3c3bbe3",
+    "blend_bytes": 585224,
+    "FBX7400_SHA256": "775b1e6a0024c69285d9fb9e885f35bc2a55deb4be787acc9ad3c2d3ebe8408f",
+    "fbx_bytes": 55756,
+    "fbx_current_Git_LFS_OID_same": true,
+    "actual_original_Actions_artifact_SHA256": "18870843652d600212079c82e10b746a6f07c84ec3d4a49dcd552b96fb09e08e",
+    "artifact_size_bytes": 4028024,
+    "artifact_ZIP_CRC": "PASS",
+    "artifact_entries": 17,
+    "independent_binary_parser": {
+      "version": 7400,
+      "mesh_geometry_count": 20,
+      "actual_triangles": 464,
+      "TopCap_triangles": 32,
+      "LeverSocket_triangles": 32,
+      "invalid_index": 0,
+      "degenerate": 0,
+      "missing_uv0": 0,
+      "invalid_uv_indices": 0,
+      "missing_corner_normals": 0,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_winding": 0
+    },
+    "source_Blender_FBX_strict": {
+      "source_triangles": 464,
+      "FBX_triangles": 464,
+      "missing_triangle_positions": 0,
+      "extra_triangle_positions": 0,
+      "winding_mismatches": 0,
+      "UV0_missing": 0,
+      "T_junctions": 0,
+      "coplanar_overlaps": 0
+    },
+    "motion": {
+      "producer_native_Blender_BVH_samples": 19,
+      "producer_imported_FBX_BVH_samples": 19,
+      "producer_collsions": 0,
+      "independent_FBXT7400_world_triangle_narrowphase": {
+        "angles_count": 19,
+        "angles": "-45 through +45 in 5 degree increments",
+        "moving_parts": 3,
+        "fixed_parts": 6,
+        "part_pair_checks": 342,
+        "actual_triangle_surface_intersections": 0
+      },
+      "real_Unity_animation": "NOT RUN"
+    }
+  },
+  "additional_W02_P17_05_verification": {
+    "producer_PR": 23,
+    "successful_W02_Blender_run": 41345178998,
+    "artifact_id": 13099420243,
+    "actual_native_zip_SHA256": "a3b80b2c89cf7ea7693282e97fb63564c019844ca9d3172e326c94a0ebb16003",
+    "current_fbx_sha256": "ee2f4dfb9e0af327633c24ff3e665df3a5aaff91a05634a84cadfb4d0b04c4f2",
+    "current_blend_sha256": "3707060640a772e92b74ca7d20fd5bd040e3fa50770d01a157d61a590acfb3d4",
+    "real_fbx_parts": 20,
+    "triangles": 240,
+    "DisplayBezel_LowerDisplayRail_same_facing_projected_coplanar_triangle_pairs": 0,
+    "area_cm2": 0,
+    "qualification": "Old PASS06/09/10 historical blocker refers to prior FBX SHA. The corrected newer actual genuine Blender FBX at this exact SHA has no named coplanar conflict. This is not broad motion/Unity/C01-02 approval."
+  },
+  "release": {
+    "P17_03": "PRODUCER_NATIVE_MOTION_CANDIDATE__C01_02_PENDING",
+    "P17_05": "SPECIFIC_DISPLAY_RAIL_ZFIGHT_CLOSED_ON_ACTUAL_FBX__C01_02_PENDING",
+    "Unity6_URP": "NOT RUN",
+    "PRs_merged": false,
+    "owner_action": "C01-02 formal QA by immutable SHA; C01-10 Unity6 imported prefab source for P17-02 then P17-03 only on accepted subflow."
+  }
+}

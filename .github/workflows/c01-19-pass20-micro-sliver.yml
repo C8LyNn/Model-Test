@@ -37,7 +37,8 @@ jobs:
           folder=root/'QA/PASS20/P19-01'
           d=json.loads((folder/'PASS20_REAL_NATIVE_EDGE_FLIP_RECEIPT.json').read_text())
           assert d['triangles']==470 and d['old_mesh_count']==d['new_mesh_count']==4
-          assert len(d['slivers_before'])==2 and len(d['slivers_after'])==0
+          assert len(d['slivers_before'])==1 and sorted(d['slivers_before'][0]['indices'])==[3,106,107]
+          assert len(d['patches'])==2 and len(d['slivers_after'])==0
           assert d['fbx_reimport']['micro_sliver_faces']==0
           for ext,key,header in [('.blend','new_blend_sha256',b'BLENDER-v400'),('.fbx','new_fbx_sha256',b'Kaydara FBX Binary')]:
             p=root/'Models/P19-01'/('P19-01'+ext)

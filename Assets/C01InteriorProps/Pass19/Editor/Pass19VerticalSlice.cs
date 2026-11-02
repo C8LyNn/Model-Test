@@ -265,7 +265,7 @@ namespace C01.InteriorProps.Pass19
             camera.clearFlags=CameraClearFlags.SolidColor;
             camera.backgroundColor=new Color(.07f,.085f,.105f);
             camera.fieldOfView=50;
-            if(!EditorSceneManager.SaveScene(EditorSceneManager.GetActiveScene(),ScenePath))
+            if(!EditorSceneManager.SaveScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene(),ScenePath))
                 throw new IOException("Unable to persist isolated test scene");
             AssetDatabase.SaveAssets();
             string output=FullPath(CsvPath);

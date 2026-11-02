@@ -1,4 +1,4 @@
-name: C01-17 W19 P17-03 Real Blender Clearance Export and BVH QA
+name: C01-17 W21 P17-03 Native Anchor Clearance and 91-Pose BVH QA
 on:
   push:
     branches:
@@ -9,14 +9,14 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: c01-17-pass19-p17-03-native
+  group: c01-17-pass21-p17-03-native
   cancel-in-progress: false
 jobs:
   blender-p17-03:
     runs-on: ubuntu-24.04
     env:
       C01_IDS: P17-03
-      C01_W19_GATE_VERSION: 2
+      C01_W21_GATE_VERSION: 3
     steps:
       - uses: actions/checkout@v4
         with:
@@ -27,8 +27,8 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y blender git-lfs python3-numpy xvfb xauth libegl1 libgl1 libopengl0
           git lfs install --local
-      - name: Author real P17-03 through-hole source only; verify 464 triangle parity
-        run: python3 C01InteriorProps_Source/Tools/pass19_author_clearance.py
+      - name: Repair only real P17-03 PivotAnchorVisual local Z; source parity and Housing clearance
+        run: python3 C01InteriorProps_Source/Tools/pass21_anchor_clearance.py
       - name: Validate actual all-three glTF sources without regenerating unaffected models
         run: python3 C01InteriorProps_Source/Tools/qa_gltf.py
       - name: Import actual repaired glTF to native Blender P17-03 only
@@ -39,12 +39,12 @@ jobs:
         run: xvfb-run -a blender -b --factory-startup --python-exit-code 1 --python C01InteriorProps_Source/Tools/fbx_roundtrip.py -- .
       - name: Exact Blender source-vs-binary FBX triangle positions and topology
         run: xvfb-run -a blender -b --factory-startup --python-exit-code 1 --python C01InteriorProps_Source/Tools/pass04_strict_fbx.py -- .
-      - name: P0 gate true Blender and FBX BVH narrowphase at 19 lever angles
+      - name: P0 gate true Blender and FBX BVH + Housing containment at 91 lever angles
         run: xvfb-run -a blender -b --factory-startup --python-exit-code 1 --python C01InteriorProps_Source/Tools/pass19_motion_gate.py -- .
       - name: Upload actual changed P17-03 ONLY native outputs, real previews and QA
         uses: actions/upload-artifact@v4
         with:
-          name: C01-17-W19-P17-03-REAL-BLENDER-FBX-MOTION
+          name: C01-17-W21-P17-03-REAL-BLENDER-FBX-HOUSING-MOTION
           if-no-files-found: error
           path: |
             Assets/C01InteriorProps/Models/P17-03.gltf
@@ -53,6 +53,7 @@ jobs:
             C01InteriorProps_Source/Specs/P17-03.json
             C01InteriorProps_Source/Blender/P17-03.blend
             C01InteriorProps_Source/QA/PASS19/**
+            C01InteriorProps_Source/QA/PASS21/**
             C01InteriorProps_Source/QA/BLENDER_FBX_ROUNDTRIP_PASS19.json
       - name: Commit ONLY changed P17-03 source + real native files to own draft branch
         run: |
@@ -64,10 +65,11 @@ jobs:
           git add C01InteriorProps_Source/Specs/P17-03.json
           git add C01InteriorProps_Source/Blender/P17-03.blend
           git add C01InteriorProps_Source/QA/PASS19
+          git add C01InteriorProps_Source/QA/PASS21
           git add C01InteriorProps_Source/QA/BLENDER_FBX_ROUNDTRIP_PASS19.json
           if git diff --cached --quiet; then
             echo "No new P17-03 changes"
             exit 0
           fi
-          git commit -m "build(C01-17 W19): true Blender native P17-03 lever clearance and 19 angle BVH PASS"
+          git commit -m "build(C01-17 W21): actual Blender4 FBX anchor clearance and 91-angle Housing gate"
           git push origin HEAD:c01/props-17-controls

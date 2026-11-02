@@ -1,14 +1,19 @@
 #if UNITY_EDITOR
 using System;
 using System.IO;
+using System.Security.Cryptography;
 using UnityEditor;
 using UnityEngine;
 namespace C01.Cargo {
 public static class BuildWave02CargoPrefabs {
  const string Root = "Assets/C01InteriorProps/C01-18-Wave02";
+ const string P1807ExpectedFBXSha256 = "858a24db4338804ee3a3a70c310cd4936e3c45f559b9c4ab81c6037add564554";
  static readonly string[] IDs = {"P18-04","P18-05","P18-06","P18-07"};
  [MenuItem("Tools/C01/Cargo/Build Wave 02 FBX Prefabs")]
  public static void Build() {
+  // Fail closed before ANY asset/material/prefab write: this must be the actual
+  // independently STATIC_PASS W20 P18-07 binary FBX, never Git LFS pointer text.
+  VerifyExactP1807FbxBeforeAnyWrites();
   string matDir=Root+"/Materials",prefabDir=Root+"/Prefabs";
   if(!AssetDatabase.IsValidFolder(matDir)) AssetDatabase.CreateFolder(Root,"Materials");
   if(!AssetDatabase.IsValidFolder(prefabDir))AssetDatabase.CreateFolder(Root,"Prefabs");
@@ -47,6 +52,30 @@ public static class BuildWave02CargoPrefabs {
      string needle=id=="P18-05"?"Lid_HingePivot":"Toolbox_LidHinge";
      if(!FindTransform(root.transform,needle))throw new InvalidOperationException("Lid pivot missing: "+id);
     }
+    if(id=="P18-07") {
+     // C01-02 confirmed 13 lock-vs-lid triangle contacts at 0° and 9 at 5°.
+     // A locked lid MUST have the real static Front_Lock collider; it is
+     // disabled only when the explicit unlock state precedes any hinge movement.
+     if(meshes!=10 || colliders!=4)
+      throw new InvalidOperationException("P18-07 expected 10 native meshes / 4 solid colliders: "+
+       meshes+"/"+colliders);
+     var hinge=FindTransform(root.transform,"Toolbox_LidHinge");
+     var lockNode=FindTransform(root.transform,"Front_Lock");
+     if(!hinge || !lockNode)
+      throw new InvalidOperationException("P18-07 actual native FBX lid hinge / Front_Lock missing");
+     foreach(string child in new[]{"Bin_Lid","Lid_Label","Handle_Post_L","Handle_Post_R","Handle_Grip"}) {
+      var t=FindTransform(root.transform,child);
+      if(!t || t.parent!=hinge)
+       throw new InvalidOperationException("P18-07 moving lid/handle child not parented to hinge: "+child);
+     }
+     var lockCollider=lockNode.GetComponent<BoxCollider>();
+     if(!lockCollider || lockCollider.isTrigger)
+      throw new InvalidOperationException("P18-07 requires physical non-trigger Front_Lock collider");
+     var gate=root.AddComponent<C01ToolBinLatchGate>();
+     gate.Configure(hinge,lockCollider);
+     if(gate.IsUnlocked || !lockCollider.enabled)
+      throw new InvalidOperationException("P18-07 prefab MUST initialize locked");
+    }
     // A kinematic Rigidbody allows later pickup by gameplay scripts; no autonomous falling.
     var body=root.AddComponent<Rigidbody>();
     body.isKinematic=true;body.useGravity=false;body.interpolation=RigidbodyInterpolation.Interpolate;
@@ -58,6 +87,19 @@ public static class BuildWave02CargoPrefabs {
   }
   AssetDatabase.SaveAssets();AssetDatabase.Refresh();
  }
+ private static void VerifyExactP1807FbxBeforeAnyWrites() {
+  var path=Root+"/Models/P18-07.fbx";
+  if(!File.Exists(path))
+   throw new FileNotFoundException("P18-07 real binary FBX not staged",path);
+  using(var stream=File.OpenRead(path))
+  using(var hasher=SHA256.Create()) {
+   if(stream.Length!=41484)
+    throw new InvalidOperationException("P18-07 genuine FBX size mismatch; possible LFS pointer/stale export: "+stream.Length);
+   string actual=BitConverter.ToString(hasher.ComputeHash(stream)).Replace("-","").ToLowerInvariant();
+   if(!string.Equals(actual,P1807ExpectedFBXSha256,StringComparison.Ordinal))
+    throw new InvalidOperationException("P18-07 immutable REAL FBX SHA256 mismatch (refuse prefab writes)");
+  }
+ }
  private static Transform FindTransform(Transform t,string name) {
   if(t.name==name)return t;
   foreach(Transform c in t) {var x=FindTransform(c,name);if(x)return x;}return null;
@@ -66,7 +108,7 @@ public static class BuildWave02CargoPrefabs {
   return n=="Floor_Foot"||n=="Pressure_Shell"||n=="Transport_Socket"||
    n=="Case_Bottom"||n=="Case_Lid"||n=="Sample_Vault"||
    n=="Reinforced_Base"||n=="Safety_Lid"||n=="Bin_Chassis"||
-   n=="Bin_Lid"||n=="Base_Stiffener";
+   n=="Bin_Lid"||n=="Base_Stiffener"||n=="Front_Lock";
  }
  private static Material SharedMaterial(string part,string folder) {
   string u=part.ToUpperInvariant();

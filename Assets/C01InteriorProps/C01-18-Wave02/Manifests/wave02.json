@@ -84,9 +84,17 @@
         0.38
       ],
       "measured_depth_delta_from_nominal_m": 0.001,
-      "native_blend_sha256": "ca81b1b5b03354f6988657324f2f30b28ff1b785529388fb692469ffb2d3f9c3",
-      "native_binary_fbx_sha256": "38d93a5c2dc9f1511e568925998d7ea42c26dffc1f14e99cdaae80f1501273da",
-      "w19_status": "PRODUCER_NATIVE_BLENDER_FBX_ROUNDTRIP_PASS; independent motion QA and Unity Editor NOT RUN"
+      "native_blend_sha256": "5fd990d8153430dd4f1a8893ebef0097465a404d1b2c6bbd77777de695b3e87d",
+      "native_binary_fbx_sha256": "858a24db4338804ee3a3a70c310cd4936e3c45f559b9c4ab81c6037add564554",
+      "w19_status": "PRODUCER_NATIVE_BLENDER_FBX_ROUNDTRIP_PASS; independent motion QA and Unity Editor NOT RUN",
+      "w20_status": "REAL_BLENDER_FBX_HANDLE_HINGE_PIVOT_FIX_PASS; C01-02 final PENDING; Unity NOT RUN; engaged latch contact 0 and 5 degrees REVIEW",
+      "moving_parts": [
+        "Bin_Lid",
+        "Lid_Label",
+        "Handle_Post_L",
+        "Handle_Post_R",
+        "Handle_Grip"
+      ]
     }
   ],
   "wave19": {
@@ -98,6 +106,32 @@
     "commit": "1d6a24fc5c83112f5594139dd85b2521f33de912",
     "blender_roundtrip": "PRODUCER_PASS",
     "C01_02": "PENDING",
+    "Unity6": "NOT_RUN",
+    "release": "HOLD"
+  },
+  "wave20": {
+    "model": "P18-07",
+    "native_blend_sha256": "5fd990d8153430dd4f1a8893ebef0097465a404d1b2c6bbd77777de695b3e87d",
+    "native_fbx_sha256": "858a24db4338804ee3a3a70c310cd4936e3c45f559b9c4ab81c6037add564554",
+    "actions_url": "https://github.com/C8LyNn/Model-Test/actions/runs/41536767833",
+    "artifact_id": 13184427833,
+    "disposition": "PRODUCER_SOURCE_AND_BINARY_FBX_MOTION_PASS_WITH_ENGAGED_LATCH_REVIEW",
+    "source_and_imported_fbx_23_angle_pose_agreement": true,
+    "mesh_parts": 10,
+    "triangles": 120,
+    "geometry_changed": false,
+    "moving_hinge_parts": [
+      "Bin_Lid",
+      "Lid_Label",
+      "Handle_Post_L",
+      "Handle_Post_R",
+      "Handle_Grip"
+    ],
+    "resting_closed_contacts": [
+      "Bin_Lid/Bin_Chassis closed seam 0°",
+      "Bin_Lid/Front_Lock engaged latch 0° and 5°"
+    ],
+    "independent_C01_02": "NOT_RUN",
     "Unity6": "NOT_RUN",
     "release": "HOLD"
   }

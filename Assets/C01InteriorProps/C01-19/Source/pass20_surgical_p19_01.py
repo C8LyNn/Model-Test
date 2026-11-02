@@ -78,7 +78,8 @@ for entry in flips:
  assert len({f.material_index for f in faces})==1,("material seam",entry)
  assert len({f.smooth for f in faces})==1,("shading seam",entry)
  assert all(len(f.verts)==3 for f in faces)
- oldvol=sum(f.calc_area() for f in faces)
+ oldfaceareas=[float(f.calc_area()) for f in faces]
+ oldvol=sum(oldfaceareas)
  oldnormal=[f.normal.copy() for f in faces]
  assert oldnormal[0].dot(oldnormal[1])>.999999,("not coplanar",entry)
  corner_ids=set(v.index for f in faces for v in f.verts)
@@ -113,7 +114,7 @@ for entry in flips:
    for loop in f.loops:
     assert max(abs(a-b) for a,b in zip(vals[loop.vert.index],loop[layer].uv))<1e-6
  patch_records.append({"old_diagonal":entry["old_edge"],"new_diagonal":entry["new_edge"],
-   "old_triangle_m2":[float(f.calc_area()) for f in nfaces],"new_min_triangle_area_m2":min(f.calc_area() for f in nfaces),
+   "triangle_areas_before_m2":oldfaceareas,"triangle_areas_after_m2":[float(f.calc_area()) for f in nfaces],"new_min_triangle_area_m2":min(f.calc_area() for f in nfaces),
    "old_patch_area_m2":oldvol,"new_patch_area_m2":newvol,"uv0_explicitly_restored":True})
 small_after=smallfaces(bm)
 assert len(small_after)==0,small_after

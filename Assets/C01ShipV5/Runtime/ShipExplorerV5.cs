@@ -23,6 +23,14 @@ namespace C01.Ship.V5
         ShipZoneV5[] zones = new ShipZoneV5[0];
         Renderer[] renderers = new Renderer[0];
         ShipInstanceV5[] ladders = new ShipInstanceV5[0];
+        struct VisibilityRecord
+        {
+            public Renderer renderer;
+            public ShipInstanceV5 marker;
+            public bool zoneLabel, ceiling, shell, floor;
+        }
+        VisibilityRecord[] visibility = new VisibilityRecord[0];
+        GameObject cachedMaster;
         Vector3 climbFront;
         float climbBase;
         bool climbing, exitingClimb;
@@ -39,10 +47,34 @@ namespace C01.Ship.V5
         void CacheScene()
         {
             if (view == null) view = Camera.main;
-            if (master == null) return;
+            if (master == cachedMaster && master != null && visibility.Length != 0) return;
+            if (master == null) { InvalidateSceneCache(); return; }
             zones = master.GetComponentsInChildren<ShipZoneV5>(true);
             renderers = master.GetComponentsInChildren<Renderer>(true);
             ladders = master.GetComponentsInChildren<ShipInstanceV5>(true);
+            visibility = new VisibilityRecord[renderers.Length];
+            for (int i = 0; i < renderers.Length; i++)
+            {
+                var r = renderers[i];
+                var marker = r.GetComponentInParent<ShipInstanceV5>();
+                var category = marker != null ? marker.category ?? "" : "";
+                visibility[i] = new VisibilityRecord { renderer = r, marker = marker,
+                    zoneLabel = r.GetComponentInParent<ShipZoneV5>() != null,
+                    ceiling = category.IndexOf("roof", StringComparison.OrdinalIgnoreCase) >= 0 || category.IndexOf("ceiling", StringComparison.OrdinalIgnoreCase) >= 0,
+                    shell = category.IndexOf("hull", StringComparison.OrdinalIgnoreCase) >= 0 || category.IndexOf("shell", StringComparison.OrdinalIgnoreCase) >= 0,
+                    floor = category.IndexOf("floor", StringComparison.OrdinalIgnoreCase) >= 0 };
+            }
+            cachedMaster = master;
+        }
+
+        // Call after changing the ship hierarchy or a module's category at runtime.
+        public void InvalidateSceneCache()
+        {
+            cachedMaster = null;
+            zones = Array.Empty<ShipZoneV5>();
+            renderers = Array.Empty<Renderer>();
+            ladders = Array.Empty<ShipInstanceV5>();
+            visibility = Array.Empty<VisibilityRecord>();
         }
 
         public void SetWalking(bool value)
@@ -119,10 +151,11 @@ namespace C01.Ship.V5
             view.fieldOfView = overviewFov;
             // Bounds include disabled renderers: changing the cutaway cannot change framing.
             var bounds = new Bounds(new Vector3(25.5f, 0, 22.5f), new Vector3(99, 25, 45));
-            if (renderers.Length > 0)
+            bool hasBounds = false;
+            foreach (var renderer in renderers) if (renderer != null)
             {
-                bounds = renderers[0].bounds;
-                foreach (var renderer in renderers) bounds.Encapsulate(renderer.bounds);
+                if (!hasBounds) { bounds = renderer.bounds; hasBounds = true; }
+                else bounds.Encapsulate(renderer.bounds);
             }
             float floor = selectedDeck < 0 ? Floor(1) : Floor(selectedDeck);
             var target = new Vector3(bounds.center.x, floor + 1.5f, bounds.center.z);
@@ -152,28 +185,26 @@ namespace C01.Ship.V5
         void RefreshVisibility()
         {
             if (master == null) return;
-            if (renderers.Length == 0) CacheScene();
+            if (master != cachedMaster || visibility.Length == 0) CacheScene();
             float floor = Floor(selectedDeck);
-            foreach (var renderer in renderers)
+            foreach (var record in visibility)
             {
+                var renderer = record.renderer;
                 if (renderer == null) continue;
                 // Floor labels are enabled explicitly for editor plan captures only.
                 // Runtime labels use OnGUI and follow the L toggle.
-                if (renderer.GetComponentInParent<ShipZoneV5>() != null)
+                if (record.zoneLabel)
                 {
                     renderer.enabled = false;
                     continue;
                 }
                 bool visible = true;
-                var marker = renderer.GetComponentInParent<ShipInstanceV5>();
+                var marker = record.marker;
                 if (!walking && marker != null)
                 {
-                    string category = (marker.category ?? "").ToLowerInvariant();
-                    bool ceiling = category.Contains("roof") || category.Contains("ceiling");
-                    bool shell = category.Contains("hull") || category.Contains("shell");
-                    bool upperSlab = category.Contains("floor") && selectedDeck >= 0 && renderer.bounds.min.y > floor + .25f;
+                    bool upperSlab = record.floor && selectedDeck >= 0 && renderer.bounds.min.y > floor + .25f;
                     visible = (selectedDeck < 0 || marker.deck < 0 || marker.deck <= selectedDeck) &&
-                        (!ceiling || roofs) && !shell && !upperSlab;
+                        (!record.ceiling || roofs) && !record.shell && !upperSlab;
                 }
                 renderer.enabled = visible;
             }

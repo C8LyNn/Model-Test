@@ -21,7 +21,7 @@ QA = ROOT / "C01InteriorProps_Source/QA/PASS21/P17-03_SOURCE_ANCHOR_CLEARANCE_QA
 EXPECTED = {
     GLTF: "04e2757972469b545ee4973e1ec9a939aca08d599e87aeb3f6757f93e9f30932",
     OBJ: "cfbddf12ce3ec6711c80763935c12e6030b9403272f2b75088b7c9595c9f8394",
-    SPEC: "3ee75256f3aec670e9f1f4ab66984feab34ac04ada3712ecd268c6d982acd3",
+    SPEC: "3ee75256f3aec670e9f1f4ab66984feab34ac04ada3712ecd268c6f6d982acd3",
 }
 sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
 for path, expected in EXPECTED.items():

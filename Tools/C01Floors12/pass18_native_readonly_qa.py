@@ -61,6 +61,27 @@ def snapshot(ob,id,context,check_nodes):
             edge_faces.setdefault(tuple(sorted((a,b))),[]).append((a,b,fi))
     assert len(edge_faces)==28
     assert all(len(z)==2 and z[0][:2]==tuple(reversed(z[1][:2])) for z in edge_faces.values()),(id,context,'nonmanifold_or_winding')
+    # PASS19 correctness fix: do NOT hardcode whole_mesh_connected=True merely
+    # because all indexed edges are manifold. Two closed shells may still exist.
+    neighbors={i:set() for i in range(len(world))}
+    for a,b in edge_faces:
+        neighbors[a].add(b)
+        neighbors[b].add(a)
+    visited=set()
+    components=0
+    for vertex in neighbors:
+        if vertex in visited:continue
+        components+=1
+        frontier=[vertex]
+        visited.add(vertex)
+        while frontier:
+            for nxt in neighbors[frontier.pop()]:
+                if nxt not in visited:
+                    visited.add(nxt)
+                    frontier.append(nxt)
+    assert components==1 and len(visited)==len(world),(id,context,'disconnected_shells_or_loose_vertices',components,len(visited))
+    euler=len(world)-len(edge_faces)+len(faces)
+    assert euler==2,(id,context,'unexpected_euler_characteristic',euler)
     v_to_tri=[]
     badxyz=[];baduv=[];badnormal=[];dupes=[]
     tris={}
@@ -78,6 +99,13 @@ def snapshot(ob,id,context,check_nodes):
         tris[key]=tri.index
         v_to_tri.append(key)
     assert not (badxyz or baduv or badnormal or dupes),(id,context,{'xyz':badxyz,'uv0':baduv,'normal':badnormal,'dupes':dupes})
+    # World-space, oriented closed-shell volume. Degenerate or inverted shells
+    # are not permitted. The original floor and ceiling each occupy 0.2 m³.
+    oriented_volume=0.0
+    for tri in me.loop_triangles:
+        a,b,c=(world[k] for k in tri.vertices)
+        oriented_volume+=a.dot(b.cross(c))/6.0
+    assert abs(oriented_volume-0.2)<1e-4,(id,context,'wrong_signed_volume_m3',oriented_volume)
     # Detect exact SAME-FACING coplanar interiors (rectangular flat panels);
     # adjacent shared edges are valid; opposite normals denote a real closed volume.
     overlaps=[]
@@ -111,7 +139,8 @@ def snapshot(ob,id,context,check_nodes):
         'quad_surface_uv_material_sha256':quad_surface_sha,'uv0_loops':len(uv.data),'uv0_min_triangle_area_valid':not baduv,'same_facing_coplanar_overlap_count':len(overlaps),
         'bounds_source_xyz_m':[[round(float(z),7) for z in row] for row in bb],
         'world_triangles_sha256':hashlib.sha256(json.dumps(sorted(v_to_tri),separators=(',',':')).encode()).hexdigest(),
-        'whole_mesh_connected':True,'manifold':True}
+        'whole_mesh_connected':components==1,'connected_components':components,
+        'euler_characteristic':euler,'signed_volume_m3':round(oriented_volume,7),'manifold':True}
 
 def one(id):
     rec=MANIFEST['asset_ids'][id]

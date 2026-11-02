@@ -22,7 +22,7 @@ jobs:
         run: |
           set -euo pipefail
           sudo apt-get update -qq
-          sudo apt-get install -y blender git-lfs
+          sudo apt-get install -y blender git-lfs python3-numpy
           git lfs pull
           blender --version
       - name: P16-06 hydrated binary FBX continuous rotation geometry QA

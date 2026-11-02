@@ -1,0 +1,39 @@
+name: C01-16 PASS19 P16-06 real FBX rotor sweep (QA only)
+on:
+  push:
+    branches:
+      - 'c01/props-16-lighting-wave02'
+    paths:
+      - '.github/workflows/c01-16-pass19-rotor-qa.yml'
+      - 'C01Source/LightingW02/MeshRepairPASS19/p16_06_rotor_sweep_fbx.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  fbx-rotor-sweep:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - name: Get genuine native Blender (no exports)
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y blender git-lfs
+          git lfs pull
+          blender --version
+      - name: P16-06 hydrated binary FBX continuous rotation geometry QA
+        shell: bash
+        run: |
+          set -euo pipefail
+          blender -b --factory-startup --python-exit-code 1 --python 'C01Source/LightingW02/MeshRepairPASS19/p16_06_rotor_sweep_fbx.py'
+      - name: Archive QA-only evidence (no duplicate exports)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-16-PASS19-P16-06-FBX-SWEEP-QA
+          if-no-files-found: ignore
+          path: C01Source/LightingW02/MeshRepairPASS19/P16-06-rotor-sweep-fbx.json

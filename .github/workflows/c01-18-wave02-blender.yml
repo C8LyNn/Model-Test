@@ -1,11 +1,8 @@
 name: C01-18 Wave02 Real Blender Models
 on:
+  # Manual dispatch only: bulk exporter rebuilds ALL four W02 models.
+  # PASS20 P18-07-only native repair is independently SHA-gated in targeted workflow.
   workflow_dispatch:
-  push:
-    branches: [c01/props-18-cargo-wave02]
-    paths:
-      - 'Assets/C01InteriorProps/C01-18-Wave02/Sources/**'
-      - '.github/workflows/c01-18-wave02-blender.yml'
 permissions:
   contents: write
 jobs:

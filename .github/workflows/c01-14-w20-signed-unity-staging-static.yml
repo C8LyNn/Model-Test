@@ -1,0 +1,42 @@
+name: C01-14 W20 Signed Unity QA-Only Static Native SHA Gate
+on:
+  push:
+    branches:
+      - c01/structures-14-prototypes-w02
+    paths:
+      - .github/workflows/c01-14-w20-signed-unity-staging-static.yml
+      - Tools/C01Structural14/qa_pass20_unity_staging.py
+      - Assets/C01StructuralPrototypes/P14/Editor/C01Structures14PrefabBuilder.cs
+      - Assets/C01StructuralPrototypes/P14/Editor/C01Structures14Pass19SignedUnityQa.cs
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  signed-qa-staging-preflight-only:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - name: Checkout exact optional C01-14 source and fully hydrate real Git LFS binaries
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+          fetch-depth: 1
+      - name: Verify LFS binaries, exact 4 native SHA256 and rollback guards
+        run: |
+          set -euo pipefail
+          python3 Tools/C01Structural14/qa_pass20_unity_staging.py | tee c01_14_w20_real_native_static_gate.json
+          python3 - <<'PY'
+          import json
+          d=json.load(open("c01_14_w20_real_native_static_gate.json"))
+          assert d["status"]=="PASS_STATIC_INPUT_SHA_AND_GUARDS_ONLY"
+          assert d["physical_native_sha_match"]=="4/4"
+          assert d["unity_editor"]=="NOT RUN" and d["csharp_compilation"]=="NOT RUN"
+          assert d["prefabs"]=="NOT RUN"
+          print("C01-14 PRE-UNITY SIGNED INPUT GATE PASS; Unity Editor NOT RUN")
+          PY
+      - name: Archive exact signed-input read-only QA receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-14-W20-UNITY-NOT-RUN-SIGNED-INPUT-PREFLIGHT
+          path: c01_14_w20_real_native_static_gate.json
+          retention-days: 14

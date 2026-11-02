@@ -1,13 +1,5 @@
 name: C01-17 Generate Blender Sources and FBX
 on:
-  push:
-    branches:
-      - c01/props-17-controls
-    paths:
-      - 'C01InteriorProps_Source/Specs/**'
-      - 'C01InteriorProps_Source/Tools/**'
-      - 'Assets/C01InteriorProps/Models/*.gltf'
-      - '.github/workflows/c01-17-build.yml'
   workflow_dispatch:
 permissions:
   contents: write

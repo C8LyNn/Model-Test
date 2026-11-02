@@ -1,0 +1,49 @@
+name: C01-12 W20 real FBX SHA to Unity QA-only contract (no Unity)
+on:
+  push:
+    branches: [c01/floors-12-legacy-repair]
+    paths:
+      - .github/workflows/c01-floors12-pass20-intake.yml
+      - Tools/C01Floors12/pass20_unity_contract_preflight.py
+      - Assets/C01Floors12Pass18/Editor/RealNativeUnityAudit.cs
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  physical-input-preflight:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+          persist-credentials: false
+      - name: Confirm current source FBX are real Git LFS hydrated files
+        shell: bash
+        run: |
+          set -euo pipefail
+          git lfs version
+          git lfs pull --include="C01StandaloneKits/FloorCeiling/DetailPass17/FBX/*" --exclude=""
+      - name: Verify actual FBX SHA and all-three-source-before-any-staging Unity contract
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 Tools/C01Floors12/pass20_unity_contract_preflight.py 2>&1 | tee /tmp/c01-12-w20.txt
+          grep -q "C01-12 W20 THREE REAL FBX SOURCE SHA + UNITY C# PRESTAGING CONTRACT PASS" /tmp/c01-12-w20.txt
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          receipt=json.loads(Path('C01StandaloneKits/FloorCeiling/DetailPass20/QA/UNITY_EDITOR_INTAKE_PREFLIGHT.json').read_text())
+          assert receipt['actual_lfs_hydrated_fbx']=='PASS_3_OF_3'
+          assert set(x['asset_id'] for x in receipt['models'])=={'F01','F02','C01'}
+          assert receipt['unity_compile']==receipt['unity_editor']=='NOT_RUN'
+          assert receipt['independent_c01_02_approval']=='PENDING'
+          print('W20 source-byte / C# contract gate PASS, actual Unity NOT RUN')
+          PY
+      - name: Upload real SHA byte evidence (NOT an Editor execution result)
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-12-W20-PHYSICAL-FBX-UNITY-INPUT-ONLY
+          path: C01StandaloneKits/FloorCeiling/DetailPass20/QA/UNITY_EDITOR_INTAKE_PREFLIGHT.json
+          if-no-files-found: error
+          retention-days: 14

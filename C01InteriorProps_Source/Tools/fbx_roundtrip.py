@@ -5,7 +5,7 @@ from mathutils import Vector
 R=Path(sys.argv[sys.argv.index("--")+1]).resolve() if "--" in sys.argv else Path(".").resolve()
 SRC=R/"C01InteriorProps_Source";MODEL=R/"Assets/C01InteriorProps/Models"
 results=[];hashes={}
-for id in ("P17-01","P17-02","P17-03"):
+for id in __import__("os").environ.get("C01_IDS","P17-01,P17-02,P17-03").split(","):
     spec=json.loads((SRC/"Specs"/(id+".json")).read_text())
     bpy.ops.wm.read_factory_settings(use_empty=True)
     bpy.ops.import_scene.fbx(filepath=str(MODEL/(id+".fbx")),axis_forward="-Z",axis_up="Y")
@@ -32,7 +32,7 @@ for id in ("P17-01","P17-02","P17-03"):
 for p in sorted((SRC/"Previews").glob("P17-0*.png")):
     hashes[str(p.relative_to(R))]=hashlib.sha256(p.read_bytes()).hexdigest()
 report={"blender_version":bpy.app.version_string,"fbx_round_trip":results,"sha256":hashes,"unity":"NOT RUN","c01_02":"PENDING"}
-out=SRC/"QA"/"BLENDER_FBX_ROUNDTRIP.json"
+out=SRC/"QA"/("BLENDER_FBX_ROUNDTRIP_PASS19.json" if __import__("os").environ.get("C01_IDS") else "BLENDER_FBX_ROUNDTRIP.json")
 out.parent.mkdir(parents=True,exist_ok=True)
 out.write_text(json.dumps(report,indent=2)+"\n")
 print("W01 Blender FBX roundtrip 3/3 PASS; SHA256",len(hashes),"files",flush=True)

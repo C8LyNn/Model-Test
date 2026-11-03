@@ -19,6 +19,11 @@ for k,p in FILES.items():
  assert p.stat().st_size>=41000 and sha(p)==SHA[k],("SHA drift",k)
 assert FILES["blend"].read_bytes().startswith(b"BLENDER-")
 assert FILES["fbx"].read_bytes().startswith(b"Kaydara FBX Binary")
+def bvh_world(obj):
+ obj.data.calc_loop_triangles()
+ verts=[tuple(obj.matrix_world@v.co) for v in obj.data.vertices]
+ tris=[tuple(t.vertices) for t in obj.data.loop_triangles]
+ return BVHTree.FromPolygons(verts,tris,all_triangles=True,epsilon=0)
 def swept(which,delta):
  meshes={o.name:o for o in bpy.context.scene.objects if o.type=="MESH"}
  assert len(meshes)==10
@@ -29,14 +34,14 @@ def swept(which,delta):
  lock.matrix_world=Matrix.Translation(Vector(delta))@lock_mat
  bpy.context.view_layer.update()
  lock.data.calc_loop_triangles()
- fixed=BVHTree.FromObject(lock,bpy.context.evaluated_depsgraph_get(),epsilon=0)
+ fixed=bvh_world(lock)
  contacts=[]
  for deg in range(0,111,5):
   hinge.rotation_euler=basis.copy();hinge.rotation_euler.x=basis.x-math.radians(deg)
   bpy.context.view_layer.update()
   for n in MOV:
    mesh=meshes[n];mesh.data.calc_loop_triangles()
-   movable=BVHTree.FromObject(mesh,bpy.context.evaluated_depsgraph_get(),epsilon=0)
+   movable=bvh_world(mesh)
    hits=movable.overlap(fixed)
    if hits:contacts.append({"angle":deg,"moving":n,"triangle_pairs":len(hits)})
  hinge.rotation_euler=basis;lock.matrix_world=lock_mat

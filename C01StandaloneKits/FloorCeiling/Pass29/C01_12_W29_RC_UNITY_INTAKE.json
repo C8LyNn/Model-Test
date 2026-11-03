@@ -1,0 +1,184 @@
+{
+  "schema": "C01-12_W29_NONDOOR_RC_UNITY_INTAKE_v1",
+  "wave": 29,
+  "date": "2026-11-03",
+  "description": "Machine-readable C01-12 legacy 3/8 architecture model intake for C01-10; NO UNITY test or release claim.",
+  "repo": "C8LyNn/Model-Test",
+  "branch": "c01/floors-12-legacy-repair",
+  "draft_pr": 20,
+  "producer_head_before_manifest": "1e4fedc8570336d2cf9de017cab0a6f170ff6077",
+  "original_manifest_path": "C01StandaloneKits/FloorCeiling/DetailPass17/QA/DETAIL_PASS17_NATIVE_SHA256.json",
+  "original_manifest_git_blob": "44453be731c836f81e4bd36a7f3dcf0c4c2cb822",
+  "source_provenance": "W29 independently read 6 current native Git LFS pointer OIDs and sizes and matched manifest 6/6; physical full-byte Blender4 and FBX reimport evidence is W26 unchanged SHA.",
+  "independent_architecture_registry": {
+    "owner": "C01-03",
+    "draft_pr": 27,
+    "path": "C01InteriorProps_Library/Pass28/C01_03_W28_ARCHITECTURE_8_STATUS.csv",
+    "git_blob": "59e436300daae8ecdf4aecdb05adbb684cd8b5b7",
+    "scoped_current_sha_match_count": 3
+  },
+  "evidence": {
+    "physical_blender4_run": "https://github.com/C8LyNn/Model-Test/actions/runs/41707857851",
+    "original_mesh_png_and_qa_json": "https://github.com/C8LyNn/Model-Test/actions/runs/41707857851/artifacts/13267576174",
+    "independent_static_44_model_W26": "https://github.com/C8LyNn/Model-Test/issues/36#issuecomment-6614428949",
+    "C01_13_latest_F01_W01_P19_03_spatial_run": "https://github.com/C8LyNn/Model-Test/actions/runs/41730728371",
+    "C01_12_existing_unity_editor_source_code_NOT_EXECUTED": "Assets/C01Floors12Pass18/Editor/RealNativeUnityAudit.cs"
+  },
+  "models": [
+    {
+      "id": "F01",
+      "owner": "C01-12",
+      "scope": "AUX_ARCHITECTURE_NOT_CANONICAL36",
+      "producer_pr": 20,
+      "producer_commit": "1e4fedc8570336d2cf9de017cab0a6f170ff6077",
+      "original_blend": {
+        "path": "C01StandaloneKits/FloorCeiling/DetailPass17/Blend/C01_SHI_F01_FLOOR_BASIC_v004.blend",
+        "sha256": "ea75f1c8b4f039b3d58569b483955b24f5d891df4f1f543180fb7af16f136525",
+        "bytes": 985680
+      },
+      "original_fbx": {
+        "path": "C01StandaloneKits/FloorCeiling/DetailPass17/FBX/C01_SHI_F01_FLOOR_BASIC_v004.fbx",
+        "sha256": "46acac987ca3f8387472b2dc8b611cd871c90cd3e7d4773568c9005c84cb5c09",
+        "bytes": 63164
+      },
+      "topology": {
+        "vertices": 16,
+        "edges": 28,
+        "quads": 14,
+        "triangles": 28,
+        "connected_solid_shells": 1
+      },
+      "qa": {
+        "blender_original_full_byte_sha_and_fbx_reimport": "PASS_W26_UNCHANGED_SHA",
+        "room_corridor_source_assembly": "PASS_W26_UNCHANGED_SHA",
+        "independent_exact_current_sha_static": "STATIC_ACCEPTED",
+        "independent_composite_layout": "NOT_RUN",
+        "unity6_URP": "NOT_RUN",
+        "independent_unity_visual": "NOT_RUN"
+      },
+      "defect": "NONE_CONFIRMED",
+      "native_repair": "NOT_REQUIRED",
+      "release_candidate": "BLOCKED_NOT_UNITY_ACCEPTED"
+    },
+    {
+      "id": "F02",
+      "owner": "C01-12",
+      "scope": "AUX_ARCHITECTURE_NOT_CANONICAL36",
+      "producer_pr": 20,
+      "producer_commit": "1e4fedc8570336d2cf9de017cab0a6f170ff6077",
+      "original_blend": {
+        "path": "C01StandaloneKits/FloorCeiling/DetailPass17/Blend/C01_SHI_F02_FLOOR_MARKED_v004.blend",
+        "sha256": "073eed0c5f150a09067c9797bff6be6af90a5596ae99ed8d71359039ea5113de",
+        "bytes": 987768
+      },
+      "original_fbx": {
+        "path": "C01StandaloneKits/FloorCeiling/DetailPass17/FBX/C01_SHI_F02_FLOOR_MARKED_v004.fbx",
+        "sha256": "229d88a2471fb27e48e62a7c81396f935b45e6ae548ce9d2540908ef63932782",
+        "bytes": 63196
+      },
+      "topology": {
+        "vertices": 16,
+        "edges": 28,
+        "quads": 14,
+        "triangles": 28,
+        "connected_solid_shells": 1
+      },
+      "qa": {
+        "blender_original_full_byte_sha_and_fbx_reimport": "PASS_W26_UNCHANGED_SHA",
+        "room_corridor_source_assembly": "PASS_W26_UNCHANGED_SHA",
+        "independent_exact_current_sha_static": "STATIC_ACCEPTED",
+        "independent_composite_layout": "NOT_RUN",
+        "unity6_URP": "NOT_RUN",
+        "independent_unity_visual": "NOT_RUN"
+      },
+      "defect": "NONE_CONFIRMED",
+      "native_repair": "NOT_REQUIRED",
+      "release_candidate": "BLOCKED_NOT_UNITY_ACCEPTED"
+    },
+    {
+      "id": "C01",
+      "owner": "C01-12",
+      "scope": "AUX_ARCHITECTURE_NOT_CANONICAL36",
+      "producer_pr": 20,
+      "producer_commit": "1e4fedc8570336d2cf9de017cab0a6f170ff6077",
+      "original_blend": {
+        "path": "C01StandaloneKits/FloorCeiling/DetailPass17/Blend/C01_SHI_C01_CEILING_BASIC_v004.blend",
+        "sha256": "70715084bd5917b10916d33d5ff2224cd79878677e19e39b312b207d1cc82fb6",
+        "bytes": 985676
+      },
+      "original_fbx": {
+        "path": "C01StandaloneKits/FloorCeiling/DetailPass17/FBX/C01_SHI_C01_CEILING_BASIC_v004.fbx",
+        "sha256": "632135269d3ac8893a273b364e23aac088c09494011d1d79dc2ca511394344e6",
+        "bytes": 63244
+      },
+      "topology": {
+        "vertices": 16,
+        "edges": 28,
+        "quads": 14,
+        "triangles": 28,
+        "connected_solid_shells": 1
+      },
+      "qa": {
+        "blender_original_full_byte_sha_and_fbx_reimport": "PASS_W26_UNCHANGED_SHA",
+        "room_corridor_source_assembly": "PASS_W26_UNCHANGED_SHA",
+        "independent_exact_current_sha_static": "STATIC_ACCEPTED",
+        "independent_composite_layout": "NOT_RUN",
+        "unity6_URP": "NOT_RUN",
+        "independent_unity_visual": "NOT_RUN"
+      },
+      "defect": "NONE_CONFIRMED",
+      "native_repair": "NOT_REQUIRED",
+      "release_candidate": "BLOCKED_NOT_UNITY_ACCEPTED"
+    }
+  ],
+  "optional_licensed_unity_scene_NOT_EXECUTED": {
+    "target": "Unity 6000.3.14f1 URP, isolated QA scene, no production ship layout mutation",
+    "original_authoring_axes": "Blender source Z-up. Unity import axis/orientation and pivot MUST be measured; never infer an actual Unity PASS from this manifest.",
+    "modular_grid_m": 1,
+    "room": {
+      "dimensions_m": [
+        4,
+        4
+      ],
+      "floor_instances": 16,
+      "ceiling_C01_instances": 16
+    },
+    "corridor": {
+      "dimensions_m": [
+        2,
+        4
+      ],
+      "floor_instances": 8
+    },
+    "room_corridor_total_floor_instances": 24,
+    "producer_W26_real_Blend_FBX_sampled_seams": 36,
+    "producer_W26_positive_volume_overlaps": 0,
+    "require_exact_fbx_sha_before_import": true,
+    "allowed_architecture_only": "F01,F02,C01 plus C01-11 independent signed non-door walls after exact current version acceptance; exclude W04",
+    "walls_W01_W03_warning": "Curated current W01/W02/W03 SHA differs from independently tested previous candidate SHA. Do not transfer PASS across versions.",
+    "optional_props": "C01-13 W28 current P19-03, P17-01, P18-01 placement sources with their own signed SHA; P19-01 excluded until z-fighting repair and independent new SHA acceptance.",
+    "real_editor_acceptance": [
+      "actual Unity FBX import and SHA checks",
+      "real 1m scale, pivot, axis and floor/ceiling matching",
+      "genuine URP materials/shadows/UV/normals and 1080p Game+Scene captures",
+      "collider and seam/penetration checks",
+      "actual EditMode+PlayMode XML and sanitized Editor.log",
+      "separate independent C01-02 scene/visual acceptance"
+    ]
+  },
+  "global_release_status": {
+    "canonical36_final_approved": 0,
+    "legacy_three_static_accepted": 3,
+    "legacy_three_unity_accepted": 0,
+    "unity": "UNITY_NOT_RUN_OWNER_ACTION_REQUIRED"
+  },
+  "blockers": [
+    "licensed Unity Editor execution by C01-10/owner",
+    "separate C01-02 composite/visual scene approval",
+    "curated-versus-physically-accepted W01-W03 identity resolution for chosen wall version"
+  ],
+  "doors": "CLAUDE_DOORS_EXTERNAL_HOLD: D01, D02, all entrusted doors/gates, W04, frozen PR19 and PR32 NO_READ_TEST_EXPORT_IMPORT_EDIT",
+  "no_original_mesh_changes": true,
+  "no_CI_rerun": true,
+  "no_merge": true
+}

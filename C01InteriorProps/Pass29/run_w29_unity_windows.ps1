@@ -36,21 +36,21 @@ try {
  if($LASTEXITCODE -ne 0){throw 'Signed binary source stage failed'}
  $state.source='NINE_PHYSICAL_SIGNED_FBX'
  $state.unity='EDITOR_STARTED';Save
- Invoke-UnityEditor @('-batchmode','-quit','-projectPath',$ProjectRoot,
+ Invoke-UnityEditor -CommandArgs @('-batchmode','-quit','-projectPath',$ProjectRoot,
  '-executeMethod','C01.InteriorProps.Pass29.W29Room.Build',
- '-logFile',(Join-Path $folder 'Build-Editor.log')) 'BUILD'
+ '-logFile',(Join-Path $folder 'Build-Editor.log')) -Tag 'BUILD'
  $scene=Join-Path $ProjectRoot 'Assets\C01InteriorProps\Pass29\Generated\Scenes\W29_NONDOOR_ROOM_4x4_CORRIDOR_2x4.unity'
  if(!(Test-Path $scene)){throw 'Real scene not generated'}
  $state.build='NATIVE_UNITY_SCENE_SAVED';Save
  $edit=Join-Path $folder 'EditMode-results.xml'
- Invoke-UnityEditor @('-batchmode','-quit','-projectPath',$ProjectRoot,'-runTests','-testPlatform','editmode',
+ Invoke-UnityEditor -CommandArgs @('-batchmode','-quit','-projectPath',$ProjectRoot,'-runTests','-testPlatform','editmode',
  '-testFilter','C01.InteriorProps.Pass29.W29EditTests','-testResults',$edit,
- '-logFile',(Join-Path $folder 'EditMode-Editor.log')) 'EDITMODE'
+ '-logFile',(Join-Path $folder 'EditMode-Editor.log')) -Tag 'EDITMODE'
  $state.editmode=CheckXml $edit;Save
  $play=Join-Path $folder 'PlayMode-results.xml'
- Invoke-UnityEditor @('-batchmode','-quit','-projectPath',$ProjectRoot,'-runTests','-testPlatform','playmode',
+ Invoke-UnityEditor -CommandArgs @('-batchmode','-quit','-projectPath',$ProjectRoot,'-runTests','-testPlatform','playmode',
  '-testFilter','C01.InteriorProps.Pass29.W29Play','-testResults',$play,
- '-logFile',(Join-Path $folder 'PlayMode-Editor.log')) 'PLAYMODE'
+ '-logFile',(Join-Path $folder 'PlayMode-Editor.log')) -Tag 'PLAYMODE'
  $state.playmode=CheckXml $play
  $state.unity='EDITOR_EDITMODE_PLAYMODE_SMOKE_PASS'
  $state.screenshots='REAL_1080P_SCENE_GAME_NOT_YET_SIGNED'

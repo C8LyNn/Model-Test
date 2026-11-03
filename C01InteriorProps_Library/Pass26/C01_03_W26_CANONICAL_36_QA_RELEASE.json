@@ -7,7 +7,7 @@
     "all": 36,
     "all_hold": 36,
     "release_approved": 0,
-    "producer_new_signed_native_candids_pending_independent": 1,
+    "producer_new_signed_native_candids_pending_independent": 3,
     "original_36": 36,
     "original_source_sha_unchanged_count": 33,
     "actual_new_native_SHA_unmerged_drafts": 3,
@@ -102,7 +102,7 @@
       "audit_state": "PRODUCER_NEW_CURRENT_34_PART_UV0_120_TO_0_AND_CORRECTED_BVH_361_PLUS_46_SAMPLES_PASS; C01_02_CURRENT_SHA_NOT_RUN",
       "defect_state": "OLD_SIGNED_FBX_120_OF_672_ZERO_AREA_UV0_TRIANGLES; OLD_W19_MOTION_EVIDENCE_REVOKED_DUE_INVERTED_AABB_PREFILTER",
       "repair_state": "PRODUCER_W26_REAL_NATIVE_UV_MAPPING_REPAIR_NO_PART_COUNT_OR_PIVOT_CHANGE; 34_MESHES_672_TRIS",
-      "independent_QA": "PENDING_C01_02_CURRENT_P15_03_FBX_EA25D2D7_UV_AND_CORRECTED_MOTION; NO_W19_MOTION_PASS",
+      "independent_QA": "PENDING_C01_02_W27_EXACT_NEW_FBX_SHA_ea25d2d7",
       "unity": "NOT_RUN_OWNER_ACTION_REQUIRED",
       "release": "HOLD",
       "next_action": "C01-00 first confirm P15-03 internal DoorSkin is NOT delegated Claude door model; C01-02 may test only authorized non-Claude asset current full SHA, 120->0 UV0 and fixed broadphase 361+46 hinge samples; Unity gate still blocked",
@@ -126,7 +126,25 @@
       "W26_C01_02_original_polygon_UV_collapsed": 60,
       "W26_C01_02_original_polygon_inverted_corner_normals": 0,
       "W26_C01_02_original_polygon_near_perpendicular_normals": 0,
-      "W26_C01_02_evidence_scope": "HISTORICAL_FBXSHA_ONLY_DO_NOT_TRANSFER_TO_NEW_PRODUCER_VERSION"
+      "W26_C01_02_evidence_scope": "HISTORICAL_FBXSHA_ONLY_DO_NOT_TRANSFER_TO_NEW_PRODUCER_VERSION",
+      "W27_current_producer_source_verification": {
+        "basis": "CURRENT_GITHUB_LFS_POINTER_SHA256_OID_AND_SIZE_MATCH; NOT_A_NEW_FULL_BINARY_REHASH",
+        "branch_head": "7eef12868dd214852e44adf72d4b76200c382487",
+        "producer_pr": 16,
+        "blend_sha256": "e787a9455baa08d5e6b198b4c47d236376b240e08781792020b93be899ca38de",
+        "blend_file_size": 661300,
+        "fbx_sha256": "ea25d2d7b47baa50fdca3000b101c65b19ba252994553ee6fe6691ca89d5c149",
+        "fbx_file_size": 102252,
+        "blend_pointer": "PASS",
+        "fbx_pointer": "PASS",
+        "signed_original_Action_run": 41711037346,
+        "artifact_id": 13267968948,
+        "previous_physical_proof": "W26 ORIGINAL_NATIVE_ACTIONS_SIGNED_BYTES_CARRIED_FORWARD",
+        "C01_02_new_exact_sha": "PENDING_NOT_RUN",
+        "required_independent_scope": "UV0 repaired producer; independently verify original polygons, hinge motion/AABB oracle, no impact on external Claude doors.",
+        "unity6": "NOT_RUN_OWNER_ACTION_REQUIRED",
+        "final_release": "HOLD"
+      }
     },
     {
       "id": "P15-04",
@@ -808,7 +826,7 @@
       "audit_state": "C01-03_W26_ACTUAL_NEW_NATIVE_BINARY_INDEX_UV_NORMALS_SCOPED_PASS; PRODUCER_8_OF_8_HUB_GAPS_ROUNDTRIP_PASS; C01_02_CURRENT_NEW_SHA_PENDING",
       "defect_state": "OLDER_576_OF_576_HUB_FORK_INTERSECTIONS_REPAIRED_PRODUCER_STAGED; C01_02_NEW_SHA_HIERARCHICAL_NARROWPHASE_AND_SHADED_NORMS_REVIEW_PENDING",
       "repair_state": "NATIVE_W26_OBJ_272_VERTEX_X_POSITION_ADJUSTMENTS; FBX_8_HUB_MODEL_LOCAL_X_TRANSLATIONS_PLUS_MINUS_4MM; 63_MESHES_AND_1780_TRIS_PRESERVED",
-      "independent_QA": "PENDING_C01_02_EXACT_NEW_FBX_SHA_F932C5FB; OLD_C01_02_RENDER_ONLY_CONTRACT_WAS_FOR_SUPERSEDED_F169AB74",
+      "independent_QA": "PENDING_C01_02_W27_EXACT_NEW_FBX_SHA_f932c5fb",
       "unity": "NOT_RUN_OWNER_ACTION_REQUIRED",
       "release": "HOLD",
       "next_action": "C01-02 independently hydrate new full signed P18-03 FBX+BLEND and verify 8 hub/fork clearances with full hierarchy, normal stream differences/shaded before-after, UV0 and motion; C01-10 true Unity6 imported 4-wheel rolling, 6 body colliders PhysX/Game View",
@@ -837,7 +855,25 @@
       "W26_C01_02_original_polygon_UV_collapsed": 0,
       "W26_C01_02_original_polygon_inverted_corner_normals": 0,
       "W26_C01_02_original_polygon_near_perpendicular_normals": 0,
-      "W26_C01_02_evidence_scope": "HISTORICAL_FBXSHA_ONLY_DO_NOT_TRANSFER_TO_NEW_PRODUCER_VERSION"
+      "W26_C01_02_evidence_scope": "HISTORICAL_FBXSHA_ONLY_DO_NOT_TRANSFER_TO_NEW_PRODUCER_VERSION",
+      "W27_current_producer_source_verification": {
+        "basis": "CURRENT_GITHUB_LFS_POINTER_SHA256_OID_AND_SIZE_MATCH; NOT_A_NEW_FULL_BINARY_REHASH",
+        "branch_head": "7377d51ee43796609aeb9eac0fa3bc6d4c3f29cf",
+        "producer_pr": 43,
+        "blend_sha256": "1c8086b048ac1c62a6791bea5df22a22168b5aea4bc17008a2ce233d86ede41e",
+        "blend_file_size": 916908,
+        "fbx_sha256": "f932c5fb36624ef91c039b1de04367fff4e99da7c400bbcb4cadd4138f83618f",
+        "fbx_file_size": 194156,
+        "blend_pointer": "PASS",
+        "fbx_pointer": "PASS",
+        "signed_original_Action_run": 41707987897,
+        "artifact_id": 13266241194,
+        "previous_physical_proof": "W26 ORIGINAL_NATIVE_ACTIONS_SIGNED_BYTES_CARRIED_FORWARD",
+        "C01_02_new_exact_sha": "PENDING_NOT_RUN",
+        "required_independent_scope": "Hub/fork 8 wheel-axis gaps, full FBX parent hierarchy, 8 changed normal arrays and visual/z-fighting from actual new FBX.",
+        "unity6": "NOT_RUN_OWNER_ACTION_REQUIRED",
+        "final_release": "HOLD"
+      }
     },
     {
       "id": "P18-04",
@@ -1057,7 +1093,7 @@
       "audit_state": "PRODUCER_BLENDER4_SAVE_FBX_EXPORT_REIMPORT_NGONS_10_TO_0; SOURCE_UV_WINDING_MATERIALS_SCOPED; C01_02_NEW_SHA_PENDING",
       "defect_state": "TEN_SOURCE_NGONS_OVER_FOUR_VERTICES_IN_EXISTING_LEG_PART_CONFIRMED",
       "repair_state": "SURGICAL_BMESH_EAR_CLIP_ONLY_TEN_FACES; 5_PARTS_72_VERTICES_128_TRI_EQUIVALENTS_PRESERVED",
-      "independent_QA": "PENDING_C01_02_NEW_P19_03_FBX_SHA_4A1AD590; PREVIOUS_STATIC_PASS_SUPERSEDED",
+      "independent_QA": "PENDING_C01_02_W27_EXACT_NEW_FBX_SHA_4a1ad590",
       "unity": "NOT_RUN_OWNER_ACTION_REQUIRED",
       "release": "HOLD",
       "next_action": "C01-02 hydrate original signed current BLEND/FBX and review 10 modified source polygons triangulation, per-corner UV/shading, normals, material/pivot; Unity EditMode/PlayMode NOT_RUN",
@@ -1080,7 +1116,25 @@
       "W26_C01_02_original_polygon_UV_collapsed": 0,
       "W26_C01_02_original_polygon_inverted_corner_normals": 0,
       "W26_C01_02_original_polygon_near_perpendicular_normals": 0,
-      "W26_C01_02_evidence_scope": "HISTORICAL_FBXSHA_ONLY_DO_NOT_TRANSFER_TO_NEW_PRODUCER_VERSION"
+      "W26_C01_02_evidence_scope": "HISTORICAL_FBXSHA_ONLY_DO_NOT_TRANSFER_TO_NEW_PRODUCER_VERSION",
+      "W27_current_producer_source_verification": {
+        "basis": "CURRENT_GITHUB_LFS_POINTER_SHA256_OID_AND_SIZE_MATCH; NOT_A_NEW_FULL_BINARY_REHASH",
+        "branch_head": "e053a786ffe8f08e5121c3ae5aa0f974a629660d",
+        "producer_pr": 15,
+        "blend_sha256": "ce43931f9116fe3aef6f795c98e505665c921e6c1080c7d61c5cd518e7f7f5b8",
+        "blend_file_size": 907792,
+        "fbx_sha256": "4a1ad590e79515b0a699f0fb643d9999b4d1726bd68fce97505f401bb8375967",
+        "fbx_file_size": 29308,
+        "blend_pointer": "PASS",
+        "fbx_pointer": "PASS",
+        "signed_original_Action_run": 41709447234,
+        "artifact_id": 13267052777,
+        "previous_physical_proof": "W26 ORIGINAL_NATIVE_ACTIONS_SIGNED_BYTES_CARRIED_FORWARD",
+        "C01_02_new_exact_sha": "PENDING_NOT_RUN",
+        "required_independent_scope": "10 ear-clipped source n-gons; 5 existing mesh nodes, 72 vertices and 128 triangle-equivalents; winding UV0 seams and shaded appearance.",
+        "unity6": "NOT_RUN_OWNER_ACTION_REQUIRED",
+        "final_release": "HOLD"
+      }
     },
     {
       "id": "P19-04",
@@ -1402,5 +1456,41 @@
       "sha64": true,
       "independent_snapshot_44": true
     }
+  },
+  "W27_C01_03_current_registered_proofs": {
+    "dispatch": "https://github.com/C8LyNn/Model-Test/issues/45",
+    "current_producer_heads_source": "current existing Draft #16/#43/#15",
+    "W27_producer_SHA_6_LFS_OID_checks": "6/6 MATCH, binary files NOT hydrated in W27",
+    "current_36_native_SHA_reuse": "W26 verified full original-native signed pairs, no duplicate exports in W27",
+    "C01_02_latest_independent_source": "C01InteriorProps_QA/GLOBAL_MESH_W26/W26_44_SIGNED_FBX_INDEPENDENT_POLYGON_QA.csv",
+    "latest_independent_PR13_HEAD": "f33a47e5ed41c89c8bb310c01d2d533a37aaad4c",
+    "independent_latest_total_physical_scope_44": 44,
+    "independently_exact_sha_matched_current_36": 33,
+    "W27_new_repaired_sha_pending": [
+      "P15-03",
+      "P18-03",
+      "P19-03"
+    ],
+    "new_C01_02_W27_results_discovered": "NONE_AT_SNAPSHOT",
+    "synthetic_or_unverified_acceptance": "NONE",
+    "P18_07_owner_dimensional_scope": "0.341m static, 0.361m latch operational envelope; C01-01 formal decision not signed here",
+    "other_visual_triage": "P19-07/P19-08/P17-01 remain evidence-gated; do not rewrite without confirmed defect",
+    "doors": "CLAUDE_DOORS_EXTERNAL_HOLD, D01/D02/W04 & PR#19/#32 UNTOUCHED",
+    "unity": "OWNER_ACTION_REQUIRED; no real Unity6 Editor logs/prefab/test evidence",
+    "release": "0/36 FINAL_APPROVED; 36/36 HOLD",
+    "work_type": "C01-03 exact source registry + SHA provenance only; not independent geometry QA or mesh producer repair"
+  },
+  "W27_C01_03_integrity_checks": {
+    "canonical36": true,
+    "unique36": true,
+    "no_door_model_ids": true,
+    "signed_SHA64": true,
+    "current_producer_pointer_proofs6": true,
+    "last_C01_02_current_SHA_matches33": true,
+    "three_w27_independent_missing": true,
+    "release_zero": true,
+    "unity_unrun": true,
+    "no_new_models": true,
+    "old_proofs_retained": true
   }
 }

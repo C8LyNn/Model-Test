@@ -88,14 +88,16 @@
       "independent_static_status": "STATIC_ACCEPTED",
       "independent_QA": "STATIC_PASS_UV_PASS_MOTION_PASS",
       "independent_QA_evidence": "https://github.com/C8LyNn/Model-Test/actions/runs/41717112468",
-      "visual_status": "BLENDER_1080P_W29_CAPTURE_IN_PROGRESS_41735420957__UNITY_NOT_RUN",
+      "visual_status": "ACTUAL_SIGNED_FBX_BLENDER4_1920x1080_SHADED_TRUE_WIRE_CAPTURED__UNITY_URP_VISUAL_NOT_RUN",
       "unity_status": "NOT_RUN",
       "rc_status": "BLOCKED",
       "blockers": [
         "UNITY_6000_3_14f1_REAL_EDITOR_URP_PREFAB_SCENE_EDIT_PLAY_NOT_RUN",
         "UNITY_GAMEVIEW_1920x1080_VISUAL_SIGNOFF_NOT_RUN"
       ],
-      "no_cross_sha_proof_transfer": true
+      "no_cross_sha_proof_transfer": true,
+      "native_visual_evidence": "https://github.com/C8LyNn/Model-Test/actions/runs/41735420957",
+      "native_visual_exact_sha_signoff": true
     },
     {
       "asset_id": "P15-04",
@@ -557,14 +559,16 @@
       "independent_static_status": "STATIC_ACCEPTED",
       "independent_QA": "STATIC_PASS_UV_PASS_MOTION_PASS",
       "independent_QA_evidence": "https://github.com/C8LyNn/Model-Test/actions/runs/41717691683",
-      "visual_status": "BLENDER_1080P_W29_CAPTURE_IN_PROGRESS_41735420957__UNITY_NOT_RUN",
+      "visual_status": "ACTUAL_SIGNED_FBX_BLENDER4_1920x1080_SHADED_TRUE_WIRE_CAPTURED__UNITY_URP_VISUAL_NOT_RUN",
       "unity_status": "NOT_RUN",
       "rc_status": "BLOCKED",
       "blockers": [
         "UNITY_6000_3_14f1_REAL_EDITOR_URP_PREFAB_SCENE_EDIT_PLAY_NOT_RUN",
         "UNITY_GAMEVIEW_1920x1080_VISUAL_SIGNOFF_NOT_RUN"
       ],
-      "no_cross_sha_proof_transfer": true
+      "no_cross_sha_proof_transfer": true,
+      "native_visual_evidence": "https://github.com/C8LyNn/Model-Test/actions/runs/41736031650",
+      "native_visual_exact_sha_signoff": true
     },
     {
       "asset_id": "P18-04",
@@ -713,14 +717,16 @@
       "independent_static_status": "STATIC_ACCEPTED",
       "independent_QA": "STATIC_PASS_UV_PASS",
       "independent_QA_evidence": "https://github.com/C8LyNn/Model-Test/actions/runs/41717112468",
-      "visual_status": "BLENDER_1080P_W29_CAPTURE_IN_PROGRESS_41735420957__UNITY_NOT_RUN",
+      "visual_status": "ACTUAL_SIGNED_FBX_BLENDER4_1920x1080_SHADED_TRUE_WIRE_CAPTURED__UNITY_URP_VISUAL_NOT_RUN",
       "unity_status": "NOT_RUN",
       "rc_status": "BLOCKED",
       "blockers": [
         "UNITY_6000_3_14f1_REAL_EDITOR_URP_PREFAB_SCENE_EDIT_PLAY_NOT_RUN",
         "UNITY_GAMEVIEW_1920x1080_VISUAL_SIGNOFF_NOT_RUN"
       ],
-      "no_cross_sha_proof_transfer": true
+      "no_cross_sha_proof_transfer": true,
+      "native_visual_evidence": "https://github.com/C8LyNn/Model-Test/actions/runs/41735420957",
+      "native_visual_exact_sha_signoff": true
     },
     {
       "asset_id": "P19-04",
@@ -1025,5 +1031,27 @@
       "description": "No actual URP 1080p signoff and unresolved intentional vs unintentional P16 nested-pair intersections"
     }
   ],
-  "owner_action_dependency": "C01-10 PR11 Windows Unity runbook. C01-03 to adopt RC into own PR27 only after same-SHA reconciliation; never merge unapproved."
+  "owner_action_dependency": "C01-10 PR11 Windows Unity runbook. C01-03 to adopt RC into own PR27 only after same-SHA reconciliation; never merge unapproved.",
+  "W29_1080p_visual": {
+    "successful_original_FBXSHA": [
+      "P15-03",
+      "P18-03",
+      "P19-03"
+    ],
+    "first_run": 41735420957,
+    "focused_P18_framing_corrected_run": 41736031650,
+    "artifacts": [
+      13278871411,
+      13279007246
+    ],
+    "original_image_resolution": [
+      1920,
+      1080
+    ],
+    "blender_version": "4.0.2",
+    "capture_only": true,
+    "actual_Unity_URP_render": "NOT_RUN",
+    "QA_camera_first_P18_crop": "INVALID_FRAME_REPLACED_BY_FOCUSED_CORRECTION",
+    "asset_geometry_modified": 0
+  }
 }

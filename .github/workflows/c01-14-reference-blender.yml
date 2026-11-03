@@ -1,0 +1,44 @@
+name: C01-14 reference Blender export (non-release)
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  native-blender:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Blender
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y blender python3-numpy
+          blender --version
+          blender --background --python-expr 'import numpy; print("Blender numpy:", numpy.__version__)'
+      - name: Build actual native BLEND and binary FBX
+        run: |
+          blender --background --python-exit-code 1 --python Tools/C01Structures14/generate_blender.py -- --out Assets/C01StructuralPrototypes/P14
+      - name: Validate file signatures and checksums
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import json
+          base=Path('Assets/C01StructuralPrototypes/P14')
+          for ext,signature in (('blend',b'BLENDER'),('fbx',b'Kaydara FBX Binary')):
+              paths=sorted(base.glob('*/*.'+ext))
+              assert len(paths)==2,(ext,paths)
+              for p in paths:
+                  assert p.stat().st_size>1024,p
+                  assert p.read_bytes().startswith(signature),p
+          manifest=json.loads((base/'QA/native_binary_manifest.json').read_text())
+          assert len(manifest['files'])==4
+          print('PASS: 2 native .blend, 2 binary .fbx, 4 SHA256 records')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: C01-14-reference-native-blend-fbx
+          path: |
+            Assets/C01StructuralPrototypes/P14/Blender/*.blend
+            Assets/C01StructuralPrototypes/P14/FBX/*.fbx
+            Assets/C01StructuralPrototypes/P14/QA/native_binary_manifest.json
+          if-no-files-found: error

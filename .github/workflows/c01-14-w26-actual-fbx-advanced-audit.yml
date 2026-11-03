@@ -1,0 +1,62 @@
+name: C01-14 W26 Actual FBX7400 Advanced Static Audit
+on:
+  push:
+    branches:
+      - c01/structures-14-prototypes-w02
+    paths:
+      - .github/workflows/c01-14-w26-actual-fbx-advanced-audit.yml
+      - Tools/C01Structural14/pass26_actual_fbx_advanced_qa.py
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  exact-native-read-only:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Checkout original signed Blender FBX7400 with Git LFS
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+          fetch-depth: 1
+      - name: Python environment for independent read-only binary QA
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install indexed-geometry QA dependencies
+        run: python -m pip install "numpy>=1.24,<3" "shapely>=2,<3"
+      - name: Execute raw FBX source geometry T-junction and visible coplanar exact-SHA tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m py_compile Tools/C01Structural14/pass26_actual_fbx_advanced_qa.py
+          python Tools/C01Structural14/pass26_actual_fbx_advanced_qa.py | tee c01_14_w26_advanced_fbx.log
+          python - <<'PY'
+          import json,pathlib
+          p=pathlib.Path("Assets/C01StructuralPrototypes/P14/Pass26/QA/W26_ACTUAL_NATIVE_FBX_ADVANCED_STATIC.json")
+          x=json.loads(p.read_text())
+          assert x["status"]=="STATIC_BINARY_MESH_NO_NEW_DEFECT_CONFIRMED"
+          assert [(z["asset"],z["mesh_parts"],z["triangles"]) for z in x["assets"]]==[("RAI-01",20,424),("RMP-01",6,72)]
+          assert all(z["T_junctions_actual_2um_tolerance"]==0 and z["cross_part_visible_coplanar_overlap_count"]==0 for z in x["assets"])
+          assert x["unity6_editor"]=="NOT RUN" and not x["source_mesh_modified"]
+          print("PASS: authentic 2 FBX, 26 mesh parts, 496 triangles, zero targeted new defects; Unity NOT RUN")
+          PY
+      - name: Upload actual binary-based reproducible read-only QA
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-14-W26-REAL-FBX7400-ADVANCED-AUDIT
+          path: |
+            Assets/C01StructuralPrototypes/P14/Pass26/QA/W26_ACTUAL_NATIVE_FBX_ADVANCED_STATIC.json
+            c01_14_w26_advanced_fbx.log
+          retention-days: 14
+      - name: Commit QA report only to existing Draft PR24 branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Assets/C01StructuralPrototypes/P14/Pass26/QA/W26_ACTUAL_NATIVE_FBX_ADVANCED_STATIC.json
+          if ! git diff --cached --quiet; then
+            git commit -m "C01-14 W26 actual signed FBX advanced no-defect QA receipt"
+            git push origin HEAD:c01/structures-14-prototypes-w02
+          fi

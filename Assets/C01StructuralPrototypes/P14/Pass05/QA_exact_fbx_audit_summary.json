@@ -1,0 +1,110 @@
+{
+  "pass": "05",
+  "run_date": "2026-10-30",
+  "producer": "C01-14",
+  "models_outside_36_main_scope": true,
+  "raw_bytes_source": "C01-14-PASS03-native-before-after artifact from successful GitHub Blender 4.0.2 run 41089475908; 4 binary SHA256 exact matches",
+  "local_test_program": "Direct FBX 7400 indexed parser of actual hydrated FBX bytes, no substitute GLB/OBJ/reconstruction",
+  "local_tests": {
+    "passed": 11,
+    "failed": 0
+  },
+  "model_results": [
+    {
+      "id": "RMP-01",
+      "native_parts": 6,
+      "visual_parts": 5,
+      "collider_proxy": "COL_RampDeck",
+      "before": {
+        "v": 48,
+        "e": 108,
+        "f": 72,
+        "t": 72
+      },
+      "after": {
+        "v": 48,
+        "e": 108,
+        "f": 72,
+        "t": 72
+      },
+      "source_mesh_repairs": 0,
+      "defects_before": 0,
+      "defects_after": 0,
+      "indexed_fbx": {
+        "explicit_triangles": true,
+        "degenerates": 0,
+        "duplicates": 0,
+        "loose": 0,
+        "nonmanifold": 0,
+        "winding_disagreements": 0,
+        "uv0_missing": 0,
+        "zero_uv_area": 0,
+        "normal_disagreements": 0
+      },
+      "blend_sha256": "7cba127139253a34b0575b0c55f10112395acb790b9716e1a248a3bcc8812cfa",
+      "fbx_sha256": "97f0b125313057f4ecf601dd60a02b4d3f0d55b87c1713d71a0adbedcc6d1443"
+    },
+    {
+      "id": "RAI-01",
+      "native_parts": 4,
+      "structural_joins": "four intentional positive-volume post-to-rail assembly joins (PASS04)",
+      "before": {
+        "v": 32,
+        "e": 72,
+        "f": 48,
+        "t": 48
+      },
+      "after": {
+        "v": 32,
+        "e": 72,
+        "f": 48,
+        "t": 48
+      },
+      "source_mesh_repairs": 0,
+      "defects_before": 0,
+      "defects_after": 0,
+      "indexed_fbx": {
+        "explicit_triangles": true,
+        "degenerates": 0,
+        "duplicates": 0,
+        "loose": 0,
+        "nonmanifold": 0,
+        "winding_disagreements": 0,
+        "uv0_missing": 0,
+        "zero_uv_area": 0,
+        "normal_disagreements": 0
+      },
+      "blend_sha256": "8a2f16205874f8485adb87c5251f6adbba3f51816936c0bf1964ad40a47850a5",
+      "fbx_sha256": "b51c3c012f5680de2d02c2deaf5c67c4ae9a12bb7e8347f179ed08d181a7e103"
+    }
+  ],
+  "ci_diagnosis": {
+    "run_41094351876": {
+      "attempts": 2,
+      "total_billable_ms": 0,
+      "runner_id": 0,
+      "steps": 0,
+      "conclusion": "failure"
+    },
+    "run_41099050445": {
+      "runner_label": "ubuntu-latest",
+      "steps": 0,
+      "conclusion": "failure"
+    },
+    "run_41089475908": {
+      "runner_id": 1000012662,
+      "steps": 11,
+      "conclusion": "success",
+      "meaning": "older genuine Blender v4.0.2 native+FBX roundtrip"
+    },
+    "root_cause": "UNKNOWN; pre-run runner allocation/account/service issue, not diagnosed as Blender/model defect"
+  },
+  "gates": {
+    "new_blender_v4_pass05": "NOT_RUN",
+    "previous_blender_v4_pass03": "PASS",
+    "binary_fbx_static_pass05": "PASS",
+    "unity6": "NOT_RUN",
+    "independent_c01_02": "PENDING",
+    "global_36_models": "NOT_PART_OF_SCOPE"
+  }
+}

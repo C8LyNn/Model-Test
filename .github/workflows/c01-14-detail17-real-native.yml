@@ -1,0 +1,68 @@
+name: C01-14 DETAIL17 Real Blender Native QA
+on:
+  push:
+    branches:
+      - c01/structures-14-prototypes-w02
+    paths:
+      - .github/workflows/c01-14-detail17-real-native.yml
+      - Tools/C01Structural14/blender_detail17_native.py
+      - Assets/C01StructuralPrototypes/P14/Pass17/Source/**
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  native-blender-roundtrip:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - name: Checkout genuine LFS originals
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+          fetch-depth: 1
+      - name: Install verified Blender 4.x CLI
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends blender python3-numpy xvfb libegl1 libgl1 libgl1-mesa-dri libopengl0
+          blender --version | head -4
+          blender --version | head -1 | grep -E '^Blender 4\.'
+      - name: Save actual native BLEND and export FBX, reimport independent
+        shell: bash
+        run: |
+          set -o pipefail
+          LIBGL_ALWAYS_SOFTWARE=1 xvfb-run -a blender --background --python Tools/C01Structural14/blender_detail17_native.py 2>&1 | tee c01_14_blender_detail17.log
+          if grep -E 'Traceback \(most recent call last\)|ModuleNotFoundError|AssertionError' c01_14_blender_detail17.log; then
+            echo "ERROR: Blender script raised an exception"; exit 1
+          fi
+      - name: Verify generated file signatures and receipt
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import json
+          b=Path('Assets/C01StructuralPrototypes/P14/Pass17/Native')
+          x=json.loads(Path('Assets/C01StructuralPrototypes/P14/Pass17/QA/BLENDER_DETAIL17_REAL_EXPORT_REIMPORT.json').read_text())
+          assert x['status']=='BLENDER_4_REAL_NATIVE_FBX_REIMPORT_PASS'
+          assert x['parts']==20 and x['triangles']==424 and x['uv_parts']==20
+          assert (b/'C01_14_RAI-01_DETAIL17.blend').read_bytes()[:7]==b'BLENDER'
+          assert (b/'C01_14_RAI-01_DETAIL17.fbx').read_bytes().startswith(b'Kaydara FBX Binary')
+          print('REAL BLENDER OUTPUT VERIFIED', x['blend_sha256'],x['fbx_sha256'])
+          PY
+      - name: Archive actual native artifacts for isolated QA
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-14-RAI-01-DETAIL17-REAL-BLENDER
+          path: |
+            Assets/C01StructuralPrototypes/P14/Pass17/Native/C01_14_RAI-01_DETAIL17.blend
+            Assets/C01StructuralPrototypes/P14/Pass17/Native/C01_14_RAI-01_DETAIL17.fbx
+            Assets/C01StructuralPrototypes/P14/Pass17/QA/BLENDER_DETAIL17_REAL_EXPORT_REIMPORT.json
+          retention-days: 14
+      - name: Commit real generated output to SAME Draft branch (no merge)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Assets/C01StructuralPrototypes/P14/Pass17/Native/
+          git add Assets/C01StructuralPrototypes/P14/Pass17/QA/BLENDER_DETAIL17_REAL_EXPORT_REIMPORT.json
+          if ! git diff --cached --quiet; then
+            git commit -m "C01-14: actual Blender4 RAI-01 native BLEND FBX and strict reimport QA"
+            git push origin HEAD:c01/structures-14-prototypes-w02
+          fi

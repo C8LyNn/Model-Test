@@ -24,7 +24,7 @@ def sha(p):
 actual={"BLEND":sha(SRC), "FBX":sha(FBX)}
 assert actual == EXPECTED, ("FROZEN_SHA_MISMATCH",actual)
 assert SRC.read_bytes()[:7] == b"BLENDER", "NOT_NATIVE_BLENDER"
-assert FBX.read_bytes()[:21] == b"Kaydara FBX Binary  ", "NOT_BINARY_FBX"
+assert FBX.read_bytes()[:20] == b"Kaydara FBX Binary  ", "NOT_BINARY_FBX"
 def meshes():
     return [o for o in bpy.data.objects if o.type == 'MESH']
 def analyze(tag):

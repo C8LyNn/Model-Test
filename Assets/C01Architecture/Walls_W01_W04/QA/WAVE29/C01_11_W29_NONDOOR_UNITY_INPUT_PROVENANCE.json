@@ -1,0 +1,125 @@
+{
+  "schema": "C01-11-W29-NONDOOR-UNITY-INPUT-PROVENANCE-V1",
+  "date": "2026-11-03",
+  "repo": "C8LyNn/Model-Test",
+  "existing_pr": 22,
+  "source_pr_head_before_receipt": "0bdd9c92c3cc9430431facfd4ee7cddaede51388",
+  "scope": "Three unchanged legacy wall models only; NOT part of canonical 36",
+  "no_door_models": [
+    "D01",
+    "D02",
+    "W04",
+    "all Claude-delegated doors/gates"
+  ],
+  "frozen_prs": [
+    19,
+    32
+  ],
+  "freeze": "ABSOLUTE_NO_READ_MESH_TEST_IMPORT_EXPORT_EDIT",
+  "release_gate": "VERSION_IDENTITY_HOLD",
+  "selection_owner": "C01-00/C01-10 with C01-03 inventory source pin, independent C01-02 review",
+  "eligible_qa_only_environment": "isolated non-door Unity 6000.3.14f1 URP only after owner authorized Windows Unity Hub session",
+  "preliminary_spatial_scope_note": "C01-13 W28 genuine Blender4 run 41730728371 imported curated signed W01 and exercised 16-wall room fixtures with physical exact SHA, but DID NOT produce C01-02 general curated-mesh acceptance nor Unity proof",
+  "never_run_existing_entrypoints": [
+    "C01WallPass19UnitySmoke.RunPass19",
+    "C01WallPrefabBuilder.BuildPass17NativeQaOnly"
+  ],
+  "why_never_run": "Both existing four-wall paths include frozen W04 door opening; a separately reviewed non-door-only import route is necessary",
+  "owner_runbook_for_DIFFERENT_first_3_prop_pilot": "https://github.com/C8LyNn/Model-Test/blob/c01/props-10-showcase-integration/C01InteriorProps/Pass20/UNITY6_WINDOWS_OWNER_RUNBOOK.md",
+  "initial_unity_pilot_scope": "P16-01/P17-02/P18-01, NOT automatically these architecture walls",
+  "original_native_producer_actions": 41346578552,
+  "original_native_producer_artifact": 13098949702,
+  "original_native_archive_sha256": "52bcbcb53d08b587a21bcd582c1e216f640c4346518448537ebbc46cdc8e5e6c",
+  "c01_13_current_curated_w01_spatial_run": 41730728371,
+  "proposed_safe_next_action": "Do not change source; use this manifest to identify a non-door-only QA intake. C01-00/C01-10 select target source SHA explicitly; C01-02 exact selected-source review; actual licensed Unity Editor import/scene/prefab/logs and PlayMode. Never assert automatic promotion.",
+  "w02_candidate_historical_source_to_fbx_normals_max_delta": 0.000002654,
+  "normal_threshold_decision": "C01-02_PENDING",
+  "unity": "UNITY_NOT_RUN_OWNER_ACTION_REQUIRED",
+  "final_release_approved": false,
+  "assets": [
+    {
+      "asset_id": "W01",
+      "owner": "C01-11",
+      "curated_git_lfs": {
+        "original_blend_path": "Assets/C01Architecture/Walls_W01_W04/Blender/W01_FULL_WALL_1M.blend",
+        "original_fbx_path": "Assets/C01Architecture/Walls_W01_W04/FBX/W01_FULL_WALL_1M.fbx",
+        "blend_content_sha256": "80a8999cc0a039eb4f5f907c38c492ec4c4ed49c22a66d44f36fbe14cb1356b2",
+        "fbx_content_sha256": "4260732720f10688e9ee370d2a254b67c9263e3e8241b4da42f08e12fe99632f",
+        "w29_pin_verified_by": "PR22 unchanged head comparison vs W28; same LFS OIDs read in W28",
+        "c01_02_exact_curated_sha_general_mesh_signoff": "NOT_RUN",
+        "limited_actual_spatial_evidence": "C01-13 W28 Actions 41730728371 actual Blender4 signed FBX import and 16-wall fixture, narrower spatial scope only"
+      },
+      "tested_blender_pass17_isolated_candidate": {
+        "source": "historical genuine native Blender4.0.2 Actions run 41346578552, artifact 13098949702",
+        "blend_content_sha256": "7918bea022a05b0676e97f1995a66cccc28745590941240f5c3efe6b4a5006dd",
+        "fbx_content_sha256": "c644e95d548cafbac61cebe000d7b0fb4b584a1fe4527565ba55d4c8e0415a79",
+        "triangle_count": 12,
+        "blender_save_export_reimport": "HISTORIC_PASS",
+        "c01_02_w26_full_byte_static": "SCOPED_PASS",
+        "unity": "NOT_RUN"
+      },
+      "identities_match": false,
+      "geometry_defect_confirmed": false,
+      "repair": "NO_REPAIR_AUTHORIZED",
+      "visual_acceptance": "NOT_UNITY_ACCEPTED",
+      "unity": "NOT_RUN",
+      "release_candidate_status": "BLOCKED_SOURCE_IDENTITY_AND_UNITY"
+    },
+    {
+      "asset_id": "W02",
+      "owner": "C01-11",
+      "curated_git_lfs": {
+        "original_blend_path": "Assets/C01Architecture/Walls_W01_W04/Blender/W02_PANEL_WALL_1M.blend",
+        "original_fbx_path": "Assets/C01Architecture/Walls_W01_W04/FBX/W02_PANEL_WALL_1M.fbx",
+        "blend_content_sha256": "ba135eac38faa8d76f70282b8c1613013b64450a9e4f7b72368ade3df8ae4372",
+        "fbx_content_sha256": "7dfcf0fe84952e607a74845ad193acfbb9f4fc029e7f168a94a7bac2edacb78b",
+        "w29_pin_verified_by": "PR22 unchanged head comparison vs W28; same LFS OIDs read in W28",
+        "c01_02_exact_curated_sha_general_mesh_signoff": "NOT_RUN",
+        "limited_actual_spatial_evidence": "NOT_RUN"
+      },
+      "tested_blender_pass17_isolated_candidate": {
+        "source": "historical genuine native Blender4.0.2 Actions run 41346578552, artifact 13098949702",
+        "blend_content_sha256": "28c71407f49d84d653a4844b82933599bf1a4083783bcd619804cdc75e9ed360",
+        "fbx_content_sha256": "a23f602d8dd61a6dc61ee52af347e472f2e6f6ce546988f50409911d1b11a317",
+        "triangle_count": 572,
+        "blender_save_export_reimport": "HISTORIC_PASS",
+        "c01_02_w26_full_byte_static": "SCOPED_PASS",
+        "unity": "NOT_RUN"
+      },
+      "identities_match": false,
+      "geometry_defect_confirmed": false,
+      "repair": "NO_REPAIR_AUTHORIZED",
+      "visual_acceptance": "NOT_UNITY_ACCEPTED",
+      "unity": "NOT_RUN",
+      "release_candidate_status": "BLOCKED_SOURCE_IDENTITY_AND_UNITY"
+    },
+    {
+      "asset_id": "W03",
+      "owner": "C01-11",
+      "curated_git_lfs": {
+        "original_blend_path": "Assets/C01Architecture/Walls_W01_W04/Blender/W03_CORNER_90_1M.blend",
+        "original_fbx_path": "Assets/C01Architecture/Walls_W01_W04/FBX/W03_CORNER_90_1M.fbx",
+        "blend_content_sha256": "77e1a52db293d4fc6b27b27e151c89865eb4473465bfeafefcc85935b810f9cc",
+        "fbx_content_sha256": "4c268d554d4e5948ea1927e29b0d32fc581a6f9f14f41fd070bf116a8eb7864c",
+        "w29_pin_verified_by": "PR22 unchanged head comparison vs W28; same LFS OIDs read in W28",
+        "c01_02_exact_curated_sha_general_mesh_signoff": "NOT_RUN",
+        "limited_actual_spatial_evidence": "NOT_RUN"
+      },
+      "tested_blender_pass17_isolated_candidate": {
+        "source": "historical genuine native Blender4.0.2 Actions run 41346578552, artifact 13098949702",
+        "blend_content_sha256": "609c862ea8ee85c0b48a87547a37c442ab8840e3c26a8a0f7494dd7e2c7aac07",
+        "fbx_content_sha256": "9dcc8feca9475626e393910b4176d8c2eadf9c645d34e32718a417a10214807a",
+        "triangle_count": 20,
+        "blender_save_export_reimport": "HISTORIC_PASS",
+        "c01_02_w26_full_byte_static": "SCOPED_PASS",
+        "unity": "NOT_RUN"
+      },
+      "identities_match": false,
+      "geometry_defect_confirmed": false,
+      "repair": "NO_REPAIR_AUTHORIZED",
+      "visual_acceptance": "NOT_UNITY_ACCEPTED",
+      "unity": "NOT_RUN",
+      "release_candidate_status": "BLOCKED_SOURCE_IDENTITY_AND_UNITY"
+    }
+  ]
+}

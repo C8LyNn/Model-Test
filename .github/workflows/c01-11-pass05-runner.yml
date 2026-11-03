@@ -1,0 +1,32 @@
+name: C01-11 PASS05 minimal runner-allocation diagnostic
+on:
+  push:
+    branches: [c01/walls-11-wave02-native-export]
+    paths:
+      - '.github/workflows/c01-11-pass05-runner.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  ubuntu-22:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 5
+    steps:
+      - name: Confirm real runner allocation
+        run: |
+          echo "C01_PASS05_RUNNER_ALLOCATED=true"
+          echo "OS=$(uname -a)"
+          echo "Python=$(python3 --version)"
+          echo "runner_name=${RUNNER_NAME}"
+          echo "runner_os=${RUNNER_OS}"
+  ubuntu-24:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Confirm real runner allocation
+        run: |
+          echo "C01_PASS05_RUNNER_ALLOCATED=true"
+          echo "OS=$(uname -a)"
+          echo "Python=$(python3 --version)"
+          echo "runner_name=${RUNNER_NAME}"
+          echo "runner_os=${RUNNER_OS}"

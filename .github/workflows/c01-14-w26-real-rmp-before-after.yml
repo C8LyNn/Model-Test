@@ -1,0 +1,70 @@
+name: C01-14 W26 Real RMP Gap Repair Before After Shaded Wireframe
+on:
+  push:
+    branches:
+      - c01/structures-14-prototypes-w02
+    paths:
+      - .github/workflows/c01-14-w26-real-rmp-before-after.yml
+      - Tools/C01Structural14/blender_pass26_rmp_true_before_after.py
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  native-workbench:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - name: Checkout genuine source BLEND and actual v003 native files via Git LFS
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+          fetch-depth: 1
+      - name: Install Blender 4.x and headless software OpenGL
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends blender python3-numpy xvfb libegl1 libgl1 libgl1-mesa-dri libopengl0
+          blender --version | head -1 | grep -E '^Blender 4\.'
+      - name: Produce real before-after shaded and wireframe from native source meshes
+        shell: bash
+        run: |
+          set -o pipefail
+          python3 -m py_compile Tools/C01Structural14/blender_pass26_rmp_true_before_after.py
+          LIBGL_ALWAYS_SOFTWARE=1 xvfb-run -a blender --background --python Tools/C01Structural14/blender_pass26_rmp_true_before_after.py 2>&1 | tee c01_14_real_blender_preview.log
+          if grep -E 'Traceback \(most recent call last\)|SyntaxError|ModuleNotFoundError|AssertionError|Error: Python:' c01_14_real_blender_preview.log; then
+            echo "FAIL: Blender raised Python exception"; exit 1
+          fi
+      - name: Verify all 6 physical PNG signatures and full SHA report
+        run: |
+          python3 - <<'PY'
+          import json,hashlib,pathlib
+          root=pathlib.Path('Assets/C01StructuralPrototypes/P14/Pass26')
+          d=json.loads((root/'QA/REAL_BLENDER_PASS26_RMP_BEFORE_AFTER.json').read_text())
+          assert d['status']=='REAL_BLENDER_4_WORKBENCH_BEFORE_AFTER_PASS'
+          assert d['png_count']==8 and len(d['previews'])==8
+          for i in d['previews']:
+              p=root/'Previews/Blender'/i['name']
+              data=p.read_bytes()
+              assert data.startswith(b'\x89PNG\r\n\x1a\n') and len(data)>15000
+              assert hashlib.sha256(data).hexdigest()==i['sha256']
+              assert i['render_engine']=='BLENDER_WORKBENCH'
+          print('PASS: 8 true native Blender Workbench RMP before-after shaded/wireframe previews', [x['name'] for x in d['previews']])
+          PY
+      - name: Preserve physical native Blender preview evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-14-W26-RMP-REAL-BLENDER-GAP-AND-SEATED-PREVIEW
+          path: |
+            Assets/C01StructuralPrototypes/P14/Pass26/Previews/Blender/*.png
+            Assets/C01StructuralPrototypes/P14/Pass26/QA/REAL_BLENDER_PASS26_RMP_BEFORE_AFTER.json
+          retention-days: 14
+      - name: Commit preview evidence on existing Draft branch ONLY
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Assets/C01StructuralPrototypes/P14/Pass26/Previews/Blender/
+          git add Assets/C01StructuralPrototypes/P14/Pass26/QA/REAL_BLENDER_PASS26_RMP_BEFORE_AFTER.json
+          if ! git diff --cached --quiet; then
+            git commit -m "C01-14: native Blender4 RMP-01 v002 gap to v003 seated shaded wireframe before-after"
+            git push origin HEAD:c01/structures-14-prototypes-w02
+          fi

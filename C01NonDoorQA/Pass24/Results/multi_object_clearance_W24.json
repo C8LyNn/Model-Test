@@ -1,0 +1,3423 @@
+{
+  "schema": "C01-13-W24-NONDOOR-REAL-FBX-MULTIOBJECT-GRID-PATH-1",
+  "assets": [
+    {
+      "id": "P17-01",
+      "source_SHA256_FBX": "cd6a5787bb7b4c088f0af35382385e4274c85c415c60467f9a22e46fe33ef02c",
+      "meshes": 25,
+      "triangles": 380
+    },
+    {
+      "id": "P18-01",
+      "source_SHA256_FBX": "f541d502ba9eaaf5c7a0a7279c44f71f36dd482e3aed3ba0734058dcf1045f6c",
+      "meshes": 47,
+      "triangles": 980
+    },
+    {
+      "id": "P19-03",
+      "source_SHA256_FBX": "1bd730b2382879d7d9c2f3d67c4b9646b8ca036c04de663e53b3019c403af2df",
+      "meshes": 5,
+      "triangles": 128
+    }
+  ],
+  "fixture_conditions": {
+    "room_m": [
+      4,
+      4
+    ],
+    "corridor_m": [
+      2,
+      4
+    ],
+    "snap_grid_m": 1,
+    "nav_sampling_grid_m": 0.1,
+    "slabs_max_y_m": [
+      0.3,
+      1.0,
+      1.8
+    ],
+    "example_probe_radii_m": [
+      0.1,
+      0.2,
+      0.35
+    ],
+    "floor": "mesh minimum bottom aligned to 0m without changing source pivot",
+    "minimum_required_walkable_width": "DESIGN_THRESHOLD_UNDEFINED",
+    "model_collision": "EXACT_NONCOPLANAR_TRIANGLE_SEGMENT_CROSSING_WITNESSES",
+    "navigation": "SAMPLED_FOOTPRINT_NOT_NAVMESH"
+  },
+  "layout_results": [
+    {
+      "fixture_id": "ROOM_WALL_ADJACENT_3",
+      "area": "ROOM",
+      "placement": [
+        {
+          "asset": "P17-01",
+          "source_FBX_sha256": "cd6a5787bb7b4c088f0af35382385e4274c85c415c60467f9a22e46fe33ef02c",
+          "integer_grid_anchor_xz_m": [
+            1,
+            3
+          ],
+          "yaw_deg": 90
+        },
+        {
+          "asset": "P18-01",
+          "source_FBX_sha256": "f541d502ba9eaaf5c7a0a7279c44f71f36dd482e3aed3ba0734058dcf1045f6c",
+          "integer_grid_anchor_xz_m": [
+            2,
+            1
+          ],
+          "yaw_deg": 0
+        },
+        {
+          "asset": "P19-03",
+          "source_FBX_sha256": "1bd730b2382879d7d9c2f3d67c4b9646b8ca036c04de663e53b3019c403af2df",
+          "integer_grid_anchor_xz_m": [
+            3,
+            3
+          ],
+          "yaw_deg": 90
+        }
+      ],
+      "non_coplanar_actual_triangle_pair_evidence": [
+        {
+          "asset_a": "P17-01",
+          "asset_b": "P18-01",
+          "bvh_triangle_candidates": 0,
+          "exact_non_coplanar_surface_crossing_pairs": 0,
+          "witnesses_xyz_m": [],
+          "unresolved_bvh_candidates": 0,
+          "caution": "Edge/triangle proper crossings proven; coplanar contacts or full containment not certified."
+        },
+        {
+          "asset_a": "P17-01",
+          "asset_b": "P19-03",
+          "bvh_triangle_candidates": 0,
+          "exact_non_coplanar_surface_crossing_pairs": 0,
+          "witnesses_xyz_m": [],
+          "unresolved_bvh_candidates": 0,
+          "caution": "Edge/triangle proper crossings proven; coplanar contacts or full containment not certified."
+        },
+        {
+          "asset_a": "P18-01",
+          "asset_b": "P19-03",
+          "bvh_triangle_candidates": 0,
+          "exact_non_coplanar_surface_crossing_pairs": 0,
+          "witnesses_xyz_m": [],
+          "unresolved_bvh_candidates": 0,
+          "caution": "Edge/triangle proper crossings proven; coplanar contacts or full containment not certified."
+        }
+      ],
+      "fixture_wall_bounds": [
+        {
+          "id": "P17-01",
+          "out_of_fixture_source_vertices": 0,
+          "min_floor_y_m": 0.0,
+          "max_height_y_m": 1.1,
+          "signed_x_wall_m": 0.675,
+          "signed_x_other_m": 2.675,
+          "signed_z_wall_m": 2.2,
+          "signed_z_other_m": 0.2
+        },
+        {
+          "id": "P18-01",
+          "out_of_fixture_source_vertices": 0,
+          "min_floor_y_m": 0.0,
+          "max_height_y_m": 0.907,
+          "signed_x_wall_m": 1.55,
+          "signed_x_other_m": 1.55,
+          "signed_z_wall_m": 0.531,
+          "signed_z_other_m": 2.55
+        },
+        {
+          "id": "P19-03",
+          "out_of_fixture_source_vertices": 0,
+          "min_floor_y_m": 0.0,
+          "max_height_y_m": 0.75,
+          "signed_x_wall_m": 2.675,
+          "signed_x_other_m": 0.675,
+          "signed_z_wall_m": 2.3,
+          "signed_z_other_m": 0.3
+        }
+      ],
+      "vertical_slab_navigation_grid": [
+        {
+          "sampled_height_slab_max_m": 0.3,
+          "projected_actual_FBX_triangle_polygons": 257,
+          "widest_0_1m_grid_route_bottleneck_radius_m": 0.39,
+          "approx_diameter_m": 0.78,
+          "probe_radii_m": {
+            "0.1": {
+              "sampled_connection": true,
+              "interpretation": "ANALYTICAL_RADIUS_PROBE_NOT_OWNER_THRESHOLD"
+            },
+            "0.2": {
+              "sampled_connection": true,
+              "interpretation": "ANALYTICAL_RADIUS_PROBE_NOT_OWNER_THRESHOLD"
+            },
+            "0.35": {
+              "sampled_connection": true,
+              "interpretation": "ANALYTICAL_RADIUS_PROBE_NOT_OWNER_THRESHOLD"
+            }
+          },
+          "route_steps": 60,
+          "route_xz_m": [
+            [
+              0.45,
+              0.45
+            ],
+            [
+              0.55,
+              0.45
+            ],
+            [
+              0.65,
+              0.45
+            ],
+            [
+              0.75,
+              0.45
+            ],
+            [
+              0.85,
+              0.45
+            ],
+            [
+              0.95,
+              0.45
+            ],
+            [
+              1.05,
+              0.45
+            ],
+            [
+              1.05,
+              0.55
+            ],
+            [
+              1.05,
+              0.65
+            ],
+            [
+              1.05,
+              0.75
+            ],
+            [
+              1.05,
+              0.85
+            ],
+            [
+              1.05,
+              0.95
+            ],
+            [
+              1.05,
+              1.05
+            ],
+            [
+              1.05,
+              1.15
+            ],
+            [
+              1.05,
+              1.25
+            ],
+            [
+              1.05,
+              1.35
+            ],
+            [
+              1.05,
+              1.45
+            ],
+            [
+              1.05,
+              1.55
+            ],
+            [
+              1.05,
+              1.65
+            ],
+            [
+              1.05,
+              1.75
+            ],
+            [
+              1.15,
+              1.75
+            ],
+            [
+              1.25,
+              1.75
+            ],
+            [
+              1.25,
+              1.85
+            ],
+            [
+              1.35,
+              1.85
+            ],
+            [
+              1.45,
+              1.85
+            ],
+            [
+              1.55,
+              1.85
+            ],
+            [
+              1.65,
+              1.85
+            ],
+            [
+              1.75,
+              1.85
+            ],
+            [
+              1.85,
+              1.85
+            ],
+            [
+              1.95,
+              1.85
+            ],
+            [
+              2.05,
+              1.85
+            ],
+            [
+              2.15,
+              1.85
+            ],
+            [
+              2.25,
+              1.85
+            ],
+            [
+              2.35,
+              1.85
+            ],
+            [
+              2.45,
+              1.85
+            ],
+            [
+              2.55,
+              1.85
+            ],
+            [
+              2.65,
+              1.85
+            ],
+            [
+              2.75,
+              1.85
+            ],
+            [
+              2.75,
+              1.75
+            ],
+            [
+              2.85,
+              1.75
+            ],
+            [
+              2.85,
+              1.65
+            ],
+            [
+              2.85,
+              1.55
+            ],
+            [
+              2.85,
+              1.45
+            ],
+            [
+              2.85,
+              1.35
+            ],
+            [
+              2.85,
+              1.25
+            ],
+            [
+              2.85,
+              1.15
+            ],
+            [
+              2.85,
+              1.05
+            ],
+            [
+              2.85,
+              0.95
+            ],
+            [
+              2.85,
+              0.85
+            ],
+            [
+              2.85,
+              0.75
+            ],
+            [
+              2.85,
+              0.65
+            ],
+            [
+              2.85,
+              0.55
+            ],
+            [
+              2.85,
+              0.45
+            ],
+            [
+              2.95,
+              0.45
+            ],
+            [
+              3.05,
+              0.45
+            ],
+            [
+              3.15,
+              0.45
+            ],
+            [
+              3.25,
+              0.45
+            ],
+            [
+              3.35,
+              0.45
+            ],
+            [
+              3.45,
+              0.45
+            ],
+            [
+              3.55,
+              0.45
+            ]
+          ],
+          "method": "Conservative 2D projection of actual FBX triangle surfaces clipped to Y slab, sampled 0.10m clearance field, widest 4-neighbor path. NOT Unity NavMesh."
+        },
+        {
+          "sampled_height_slab_max_m": 1.0,
+          "projected_actual_FBX_triangle_polygons": 1408,
+          "widest_0_1m_grid_route_bottleneck_radius_m": 0.35089,
+          "approx_diameter_m": 0.70178,
+          "probe_radii_m": {
+            "0.1": {
+              "sampled_connection": true,
+              "interpretation": "ANALYTICAL_RADIUS_PROBE_NOT_OWNER_THRESHOLD"
+            },
+            "0.2": {
+              "sampled_connection": true,
+              "interpretation": "ANALYTICAL_RADIUS_PROBE_NOT_OWNER_THRESHOLD"
+            },
+            "0.35": {
+              "sampled_connection": true,
+              "interpretation": "ANALYTICAL_RADIUS_PROBE_NOT_OWNER_THRESHOLD"
+            }
+          },
+          "route_steps": 60,
+          "route_xz_m": [
+            [
+              0.45,
+              0.45
+            ],
+            [
+              0.55,
+              0.45
+            ],
+            [
+              0.65,
+              0.45
+            ],
+            [
+              0.75,
+              0.45
+            ],
+            [
+              0.85,
+              0.45
+            ],
+            [
+              0.95,
+              0.45
+            ],
+            [
+              1.05,
+              0.45
+            ],
+            [
+              1.05,
+              0.55
+            ],
+            [
+              1.05,
+              0.65
+            ],
+            [
+              1.05,
+              0.75
+            ],
+            [
+              1.05,
+              0.85
+            ],
+            [
+              1.05,
+              0.95
+            ],
+            [
+              1.05,
+              1.05
+            ],
+            [
+              1.05,
+              1.15
+            ],
+            [
+              1.05,
+              1.25
+            ],
+            [
+              1.05,
+              1.35
+            ],
+            [
+              1.05,
+              1.45
+            ],
+            [
+              1.05,
+              1.55
+            ],
+            [
+              1.05,
+              1.65
+            ],
+            [
+              1.05,
+              1.75
+            ],
+            [
+              1.15,
+              1.75
+            ],
+            [
+              1.25,
+              1.75
+            ],
+            [
+              1.35,
+              1.75
+            ],
+            [
+              1.35,
+              1.85
+            ],
+            [
+              1.45,
+              1.85
+            ],
+            [
+              1.55,
+              1.85
+            ],
+            [
+              1.65,
+              1.85
+            ],
+            [
+              1.75,
+              1.85
+            ],
+            [
+              1.85,
+              1.85
+            ],
+            [
+              1.95,
+              1.85
+            ],
+            [
+              2.05,
+              1.85
+            ],
+            [
+              2.15,
+              1.85
+            ],
+            [
+              2.25,
+              1.85
+            ],
+            [
+              2.35,
+              1.85
+            ],
+            [
+              2.45,
+              1.85
+            ],
+            [
+              2.55,
+              1.85
+            ],
+            [
+              2.65,
+              1.85
+            ],
+            [
+              2.65,
+              1.75
+            ],
+            [
+              2.75,
+              1.75
+            ],
+            [
+              2.75,
+              1.65
+            ],
+            [
+              2.85,
+              1.65
+            ],
+            [
+              2.85,
+              1.55
+            ],
+            [
+              2.85,
+              1.45
+            ],
+            [
+              2.85,
+              1.35
+            ],
+            [
+              2.85,
+              1.25
+            ],
+            [
+              2.85,
+              1.15
+            ],
+            [
+              2.85,
+              1.05
+            ],
+            [
+              2.85,
+              0.95
+            ],
+            [
+              2.85,
+              0.85
+            ],
+            [
+              2.85,
+              0.75
+            ],
+            [
+              2.85,
+              0.65
+            ],
+            [
+              2.85,
+              0.55
+            ],
+            [
+              2.85,
+              0.45
+            ],
+            [
+              2.95,
+              0.45
+            ],
+            [
+              3.05,
+              0.45
+            ],
+            [
+              3.15,
+              0.45
+            ],
+            [
+              3.25,
+              0.45
+            ],
+            [
+              3.35,
+              0.45
+            ],
+            [
+              3.45,
+              0.45
+            ],
+            [
+              3.55,
+              0.45
+            ]
+          ],
+          "method": "Conservative 2D projection of actual FBX triangle surfaces clipped to Y slab, sampled 0.10m clearance field, widest 4-neighbor path. NOT Unity NavMesh."
+        },
+        {
+          "sampled_height_slab_max_m": 1.8,
+          "projected_actual_FBX_triangle_polygons": 1488,
+          "widest_0_1m_grid_route_bottleneck_radius_m": 0.35089,
+          "approx_diameter_m": 0.70178,
+          "probe_radii_m": {
+            "0.1": {
+              "sampled_connection": true,
+              "interpretation": "ANALYTICAL_RADIUS_PROBE_NOT_OWNER_THRESHOLD"
+            },
+            "0.2": {
+              "sampled_connection": true,
+              "interpretation": "ANALYTICAL_RADIUS_PROBE_NOT_OWNER_THRESHOLD"
+            },
+            "0.35": {
+              "sampled_connection": true,
+              "interpretation": "ANALYTICAL_RADIUS_PROBE_NOT_OWNER_THRESHOLD"
+            }
+          },
+          "route_steps": 60,
+          "route_xz_m": [
+            [
+              0.45,
+              0.45
+            ],
+            [
+              0.55,
+              0.45
+            ],
+            [
+              0.65,
+              0.45
+            ],
+            [
+              0.75,
+              0.45
+            ],
+            [
+              0.85,
+              0.45
+            ],
+            [
+              0.95,
+              0.45
+            ],
+            [
+              1.05,
+              0.45
+            ],
+            [
+              1.05,
+              0.55
+            ],
+            [
+              1.05,
+              0.65
+            ],
+            [
+              1.05,
+              0.75
+            ],
+            [
+              1.05,
+              0.85
+            ],
+            [
+              1.05,
+              0.95
+            ],
+            [
+              1.05,
+              1.05
+            ],
+            [
+              1.05,
+              1.15
+            ],
+            [
+              1.05,
+              1.25
+            ],
+            [
+              1.05,
+              1.35
+            ],
+            [
+              1.05,
+              1.45
+            ],
+            [
+              1.05,
+              1.55
+            ],
+            [
+              1.05,
+              1.65
+            ],
+            [
+              1.05,
+              1.75
+            ],
+            [
+              1.15,
+              1.75
+            ],
+            [
+              1.25,
+              1.75
+            ],
+            [
+              1.35,
+              1.75
+            ],
+            [
+              1.35,
+              1.85
+            ],
+            [
+              1.45,
+              1.85
+            ],
+            [
+              1.55,
+              1.85
+            ],
+            [
+              1.65,
+              1.85
+            ],
+            [
+              1.75,
+              1.85
+            ],
+            [
+              1.85,
+              1.85
+            ],
+            [
+              1.95,
+              1.85
+            ],
+            [
+              2.05,
+              1.85
+            ],
+            [
+              2.15,
+              1.85
+            ],
+            [
+              2.25,
+              1.85
+            ],
+            [
+              2.35,
+              1.85
+            ],
+            [
+              2.45,
+              1.85
+            ],
+            [
+              2.55,
+              1.85
+            ],
+            [
+              2.65,
+              1.85
+            ],
+            [
+              2.65,
+              1.75
+            ],
+            [
+              2.75,
+              1.75
+            ],
+            [
+              2.75,
+              1.65
+            ],
+            [
+              2.85,
+              1.65
+            ],
+            [
+              2.85,
+              1.55
+            ],
+            [
+              2.85,
+              1.45
+            ],
+            [
+              2.85,
+              1.35
+            ],
+            [
+              2.85,
+              1.25
+            ],
+            [
+              2.85,
+              1.15
+            ],
+            [
+              2.85,
+              1.05
+            ],
+            [
+              2.85,
+              0.95
+            ],
+            [
+              2.85,
+              0.85
+            ],
+            [
+              2.85,
+              0.75
+            ],
+            [
+              2.85,
+              0.65
+            ],
+            [
+              2.85,
+              0.55
+            ],
+            [
+              2.85,
+              0.45
+            ],
+            [
+              2.95,
+              0.45
+            ],
+            [
+              3.05,
+              0.45
+            ],
+            [
+              3.15,
+              0.45
+            ],
+            [
+              3.25,
+              0.45
+            ],
+            [
+              3.35,
+              0.45
+            ],
+            [
+              3.45,
+              0.45
+            ],
+            [
+              3.55,
+              0.45
+            ]
+          ],
+          "method": "Conservative 2D projection of actual FBX triangle surfaces clipped to Y slab, sampled 0.10m clearance field, widest 4-neighbor path. NOT Unity NavMesh."
+        }
+      ],
+      "total_exact_surface_crossing_pairs": 0,
+      "total_outside_fixture_render_vertices": 0,
+      "disposition": "MEASURED_DESIGN_THRESHOLD_UNDEFINED"
+    },
+    {
+      "fixture_id": "ROOM_CENTER_CROWDED_3",
+      "area": "ROOM",
+      "placement": [
+        {
+          "asset": "P17-01",
+          "source_FBX_sha256": "cd6a5787bb7b4c088f0af35382385e4274c85c415c60467f9a22e46fe33ef02c",
+          "integer_grid_anchor_xz_m": [
+            1,
+            2
+          ],
+          "yaw_deg": 0
+        },
+        {
+          "asset": "P18-01",
+          "source_FBX_sha256": "f541d502ba9eaaf5c7a0a7279c44f71f36dd482e3aed3ba0734058dcf1045f6c",
+          "integer_grid_anchor_xz_m": [
+            2,
+            2
+          ],
+          "yaw_deg": 0
+        },
+        {
+          "asset": "P19-03",
+          "source_FBX_sha256": "1bd730b2382879d7d9c2f3d67c4b9646b8ca036c04de663e53b3019c403af2df",
+          "integer_grid_anchor_xz_m": [
+            3,
+            2
+          ],
+          "yaw_deg": 0
+        }
+      ],
+      "non_coplanar_actual_triangle_pair_evidence": [
+        {
+          "asset_a": "P17-01",
+          "asset_b": "P18-01",
+          "bvh_triangle_candidates": 291,
+          "exact_non_coplanar_surface_crossing_pairs": 291,
+          "witnesses_xyz_m": [
+            {
+              "triangle_a": 57,
+              "triangle_b": 973,
+              "xyz_m": [
+                1.8,
+                0.82,
+                2.325
+              ]
+            },
+            {
+              "triangle_a": 57,
+              "triangle_b": 976,
+              "xyz_m": [
+                1.55,
+                0.868,
+                2.325
+              ]
+            },
+            {
+              "triangle_a": 57,
+              "triangle_b": 54,
+              "xyz_m": [
+                1.8,
+                0.81,
+                2.325
+              ]
+            },
+            {
+              "triangle_a": 57,
+              "triangle_b": 57,
+              "xyz_m": [
+                1.59,
+                0.79155,
+                2.325
+              ]
+            },
+            {
+              "triangle_a": 58,
+              "triangle_b": 973,
+              "xyz_m": [
+                1.675,
+                0.82,
+                1.675
+              ]
+            },
+            {
+              "triangle_a": 58,
+              "triangle_b": 972,
+              "xyz_m": [
+                1.8,
+                0.82,
+                1.675
+              ]
+            },
+            {
+              "triangle_a": 58,
+              "triangle_b": 976,
+              "xyz_m": [
+                1.55,
+                0.82,
+                1.675
+              ]
+            },
+            {
+              "triangle_a": 58,
+              "triangle_b": 977,
+              "xyz_m": [
+                1.55,
+                0.85425,
+                1.675
+              ]
+            }
+          ],
+          "unresolved_bvh_candidates": 0,
+          "caution": "Edge/triangle proper crossings proven; coplanar contacts or full containment not certified."
+        },
+        {
+          "asset_a": "P17-01",
+          "asset_b": "P19-03",
+          "bvh_triangle_candidates": 0,
+          "exact_non_coplanar_surface_crossing_pairs": 0,
+          "witnesses_xyz_m": [],
+          "unresolved_bvh_candidates": 0,
+          "caution": "Edge/triangle proper crossings proven; coplanar contacts or full containment not certified."
+        },
+        {
+          "asset_a": "P18-01",
+          "asset_b": "P19-03",
+          "bvh_triangle_candidates": 167,
+          "exact_non_coplanar_surface_crossing_pairs": 167,
+          "witnesses_xyz_m": [
+            {
+              "triangle_a": 400,
+              "triangle_b": 39,
+              "xyz_m": [
+                2.39,
+                0.0,
+                2.32
+              ]
+            },
+            {
+              "triangle_a": 400,
+              "triangle_b": 41,
+              "xyz_m": [
+                2.33,
+                0.0,
+                2.32
+              ]
+            },
+            {
+              "triangle_a": 400,
+              "triangle_b": 37,
+              "xyz_m": [
+                2.39,
+                0.0,
+                2.26
+              ]
+            },
+            {
+              "triangle_a": 400,
+              "triangle_b": 34,
+              "xyz_m": [
+                2.39,
+                0.0,
+                2.26
+              ]
+            },
+            {
+              "triangle_a": 400,
+              "triangle_b": 32,
+              "xyz_m": [
+                2.39,
+                0.0,
+                2.26
+              ]
+            },
+            {
+              "triangle_a": 400,
+              "triangle_b": 18,
+              "xyz_m": [
+                2.39,
+                0.0,
+                1.74
+              ]
+            },
+            {
+              "triangle_a": 400,
+              "triangle_b": 17,
+              "xyz_m": [
+                2.39,
+                0.0,
+                1.68
+              ]
+            },
+            {
+              "triangle_a": 400,
+              "triangle_b": 26,
+              "xyz_m": [
+                2.33,
+                0.0,
+                2.26
+              ]
+            }
+          ],
+          "unresolved_bvh_candidates": 0,
+          "caution": "Edge/triangle proper crossings proven; coplanar contacts or full containment not certified."
+        }
+      ],
+      "fixture_wall_bounds": [
+        {
+          "id": "P17-01",
+          "out_of_fixture_source_vertices": 0,
+          "min_floor_y_m": 0.0,
+          "max_height_y_m": 1.1,
+          "signed_x_wall_m": 0.2,
+          "signed_x_other_m": 2.2,
+          "signed_z_wall_m": 1.675,
+          "signed_z_other_m": 1.675
+        },
+        {
+          "id": "P18-01",
+          "out_of_fixture_source_vertices": 0,
+          "min_floor_y_m": 0.0,
+          "max_height_y_m": 0.907,
+          "signed_x_wall_m": 1.55,
+          "signed_x_other_m": 1.55,
+          "signed_z_wall_m": 1.531,
+          "signed_z_other_m": 1.55
+        },
+        {
+          "id": "P19-03",
+          "out_of_fixture_source_vertices": 0,
+          "min_floor_y_m": 0.0,
+          "max_height_y_m": 0.75,
+          "signed_x_wall_m": 2.3,
+          "signed_x_other_m": 0.3,
+          "signed_z_wall_m": 1.675,
+          "signed_z_other_m": 1.675
+        }
+      ],
+      "vertical_slab_navigation_grid": [
+        {
+          "sampled_height_slab_max_m": 0.3,
+          "projected_actual_FBX_triangle_polygons": 257,
+          "widest_0_1m_grid_route_bottleneck_radius_m": 0.45,
+          "approx_diameter_m": 0.9,
+          "probe_radii_m": {
+            "0.1": {
+              "sampled_connection": true,
+              "interpretation": "ANALYTICAL_RADIUS_PROBE_NOT_OWNER_THRESHOLD"
+            },
+            "0.2": {
+              "sampled_connection": true,
+              "interpretation": "ANALYTICAL_RADIUS_PROBE_NOT_OWNER_THRESHOLD"
+            },
+            "0.35": {
+              "sampled_connection": true,
+              "interpretation": "ANALYTICAL_RADIUS_PROBE_NOT_OWNER_THRESHOLD"
+            }
+          },
+          "route_steps": 32,
+          "route_xz_m": [
+            [
+              0.45,
+              0.45
+            ],
+            [
+              0.55,
+              0.45
+            ],
+            [
+              0.65,
+              0.45
+            ],
+            [
+              0.75,
+              0.45
+            ],
+            [
+              0.85,
+              0.45
+            ],
+            [
+              0.95,
+              0.45
+            ],
+            [
+              1.05,
+              0.45
+            ],
+            [
+              1.15,
+              0.45
+            ],
+            [
+              1.25,
+              0.45
+            ],
+            [
+              1.35,
+              0.45
+            ],
+            [
+              1.45,
+              0.45
+            ],
+            [
+              1.55,
+              0.45
+            ],
+            [
+              1.65,
+              0.45
+            ],
+            [
+              1.75,
+              0.45
+            ],
+            [
+              1.85,
+              0.45
+            ],
+            [
+              1.95,
+              0.45
+            ],
+            [
+              2.05,
+              0.45
+            ],
+            [
+              2.15,
+              0.45
+            ],
+            [
+              2.25,
+              0.45
+            ],
+            [
+              2.35,
+              0.45
+            ],
+            [
+              2.45,
+              0.45
+            ],
+            [
+              2.55,
+              0.45
+            ],
+            [
+              2.65,
+              0.45
+            ],
+            [
+              2.75,
+              0.45
+            ],
+            [
+              2.85,
+              0.45
+            ],
+            [
+              2.95,
+              0.45
+            ],
+            [
+              3.05,
+              0.45
+            ],
+            [
+              3.15,
+              0.45
+            ],
+            [
+              3.25,
+              0.45
+            ],
+            [
+              3.35,
+              0.45
+            ],
+            [
+              3.45,
+              0.45
+            ],
+            [
+              3.55,
+              0.45
+            ]
+          ],
+          "method": "Conservative 2D projection of actual FBX triangle surfaces clipped to Y slab, sampled 0.10m clearance field, widest 4-neighbor path. NOT Unity NavMesh."
+        },
+        {
+          "sampled_height_slab_max_m": 1.0,
+          "projected_actual_FBX_triangle_polygons": 1408,
+          "widest_0_1m_grid_route_bottleneck_radius_m": 0.45,
+          "approx_diameter_m": 0.9,
+          "probe_radii_m": {
+            "0.1": {
+              "sampled_connection": true,
+              "interpretation": "ANALYTICAL_RADIUS_PROBE_NOT_OWNER_THRESHOLD"
+            },
+            "0.2": {
+              "sampled_connection": true,
+              "interpretation": "ANALYTICAL_RADIUS_PROBE_NOT_OWNER_THRESHOLD"
+            },
+            "0.35": {
+              "sampled_connection": true,
+              "interpretation": "ANALYTICAL_RADIUS_PROBE_NOT_OWNER_THRESHOLD"
+            }
+          },
+          "route_steps": 32,
+          "route_xz_m": [
+            [
+              0.45,
+              0.45
+            ],
+            [
+              0.55,
+              0.45
+            ],
+            [
+              0.65,
+              0.45
+            ],
+            [
+              0.75,
+              0.45
+            ],
+            [
+              0.85,
+              0.45
+            ],
+            [
+              0.95,
+              0.45
+            ],
+            [
+              1.05,
+              0.45
+            ],
+            [
+              1.15,
+              0.45
+            ],
+            [
+              1.25,
+              0.45
+            ],
+            [
+              1.35,
+              0.45
+            ],
+            [
+              1.45,
+              0.45
+            ],
+            [
+              1.55,
+              0.45
+            ],
+            [
+              1.65,
+              0.45
+            ],
+            [
+              1.75,
+              0.45
+            ],
+            [
+              1.85,
+              0.45
+            ],
+            [
+              1.95,
+              0.45
+            ],
+            [
+              2.05,
+              0.45
+            ],
+            [
+              2.15,
+              0.45
+            ],
+            [
+              2.25,
+              0.45
+            ],
+            [
+              2.35,
+              0.45
+            ],
+            [
+              2.45,
+              0.45
+            ],
+            [
+              2.55,
+              0.45
+            ],
+            [
+              2.65,
+              0.45
+            ],
+            [
+              2.75,
+              0.45
+            ],
+            [
+              2.85,
+              0.45
+            ],
+            [
+              2.95,
+              0.45
+            ],
+            [
+              3.05,
+              0.45
+            ],
+            [
+              3.15,
+              0.45
+            ],
+            [
+              3.25,
+              0.45
+            ],
+            [
+              3.35,
+              0.45
+            ],
+            [
+              3.45,
+              0.45
+            ],
+            [
+              3.55,
+              0.45
+            ]
+          ],
+          "method": "Conservative 2D projection of actual FBX triangle surfaces clipped to Y slab, sampled 0.10m clearance field, widest 4-neighbor path. NOT Unity NavMesh."
+        },
+        {
+          "sampled_height_slab_max_m": 1.8,
+          "projected_actual_FBX_triangle_polygons": 1488,
+          "widest_0_1m_grid_route_bottleneck_radius_m": 0.45,
+          "approx_diameter_m": 0.9,
+          "probe_radii_m": {
+            "0.1": {
+              "sampled_connection": true,
+              "interpretation": "ANALYTICAL_RADIUS_PROBE_NOT_OWNER_THRESHOLD"
+            },
+            "0.2": {
+              "sampled_connection": true,
+              "interpretation": "ANALYTICAL_RADIUS_PROBE_NOT_OWNER_THRESHOLD"
+            },
+            "0.35": {
+              "sampled_connection": true,
+              "interpretation": "ANALYTICAL_RADIUS_PROBE_NOT_OWNER_THRESHOLD"
+            }
+          },
+          "route_steps": 32,
+          "route_xz_m": [
+            [
+              0.45,
+              0.45
+            ],
+            [
+              0.55,
+              0.45
+            ],
+            [
+              0.65,
+              0.45
+            ],
+            [
+              0.75,
+              0.45
+            ],
+            [
+              0.85,
+              0.45
+            ],
+            [
+              0.95,
+              0.45
+            ],
+            [
+              1.05,
+              0.45
+            ],
+            [
+              1.15,
+              0.45
+            ],
+            [
+              1.25,
+              0.45
+            ],
+            [
+              1.35,
+              0.45
+            ],
+            [
+              1.45,
+              0.45
+            ],
+            [
+              1.55,
+              0.45
+            ],
+            [
+              1.65,
+              0.45
+            ],
+            [
+              1.75,
+              0.45
+            ],
+            [
+              1.85,
+              0.45
+            ],
+            [
+              1.95,
+              0.45
+            ],
+            [
+              2.05,
+              0.45
+            ],
+            [
+              2.15,
+              0.45
+            ],
+            [
+              2.25,
+              0.45
+            ],
+            [
+              2.35,
+              0.45
+            ],
+            [
+              2.45,
+              0.45
+            ],
+            [
+              2.55,
+              0.45
+            ],
+            [
+              2.65,
+              0.45
+            ],
+            [
+              2.75,
+              0.45
+            ],
+            [
+              2.85,
+              0.45
+            ],
+            [
+              2.95,
+              0.45
+            ],
+            [
+              3.05,
+              0.45
+            ],
+            [
+              3.15,
+              0.45
+            ],
+            [
+              3.25,
+              0.45
+            ],
+            [
+              3.35,
+              0.45
+            ],
+            [
+              3.45,
+              0.45
+            ],
+            [
+              3.55,
+              0.45
+            ]
+          ],
+          "method": "Conservative 2D projection of actual FBX triangle surfaces clipped to Y slab, sampled 0.10m clearance field, widest 4-neighbor path. NOT Unity NavMesh."
+        }
+      ],
+      "total_exact_surface_crossing_pairs": 458,
+      "total_outside_fixture_render_vertices": 0,
+      "disposition": "EXAMPLE_PLACEMENT_GEOMETRY_CROSSING"
+    },
+    {
+      "fixture_id": "CORRIDOR_TWO_SEQUENTIAL_2",
+      "area": "CORRIDOR",
+      "placement": [
+        {
+          "asset": "P17-01",
+          "source_FBX_sha256": "cd6a5787bb7b4c088f0af35382385e4274c85c415c60467f9a22e46fe33ef02c",
+          "integer_grid_anchor_xz_m": [
+            2,
+            5
+          ],
+          "yaw_deg": 90
+        },
+        {
+          "asset": "P19-03",
+          "source_FBX_sha256": "1bd730b2382879d7d9c2f3d67c4b9646b8ca036c04de663e53b3019c403af2df",
+          "integer_grid_anchor_xz_m": [
+            2,
+            7
+          ],
+          "yaw_deg": 90
+        }
+      ],
+      "non_coplanar_actual_triangle_pair_evidence": [
+        {
+          "asset_a": "P17-01",
+          "asset_b": "P19-03",
+          "bvh_triangle_candidates": 0,
+          "exact_non_coplanar_surface_crossing_pairs": 0,
+          "witnesses_xyz_m": [],
+          "unresolved_bvh_candidates": 0,
+          "caution": "Edge/triangle proper crossings proven; coplanar contacts or full containment not certified."
+        }
+      ],
+      "fixture_wall_bounds": [
+        {
+          "id": "P17-01",
+          "out_of_fixture_source_vertices": 0,
+          "min_floor_y_m": 0.0,
+          "max_height_y_m": 1.1,
+          "signed_x_wall_m": 0.675,
+          "signed_x_other_m": 0.675,
+          "signed_z_wall_m": 0.2,
+          "signed_z_other_m": 2.2
+        },
+        {
+          "id": "P19-03",
+          "out_of_fixture_source_vertices": 0,
+          "min_floor_y_m": 0.0,
+          "max_height_y_m": 0.75,
+          "signed_x_wall_m": 0.675,
+          "signed_x_other_m": 0.675,
+          "signed_z_wall_m": 2.3,
+          "signed_z_other_m": 0.3
+        }
+      ],
+      "vertical_slab_navigation_grid": [
+        {
+          "sampled_height_slab_max_m": 0.3,
+          "projected_actual_FBX_triangle_polygons": 99,
+          "widest_0_1m_grid_route_bottleneck_radius_m": 0.33,
+          "approx_diameter_m": 0.66,
+          "probe_radii_m": {
+            "0.1": {
+              "sampled_connection": true,
+              "interpretation": "ANALYTICAL_RADIUS_PROBE_NOT_OWNER_THRESHOLD"
+            },
+            "0.2": {
+              "sampled_connection": true,
+              "interpretation": "ANALYTICAL_RADIUS_PROBE_NOT_OWNER_THRESHOLD"
+            },
+            "0.35": {
+              "sampled_connection": false,
+              "interpretation": "ANALYTICAL_RADIUS_PROBE_NOT_OWNER_THRESHOLD"
+            }
+          },
+          "route_steps": 32,
+          "route_xz_m": [
+            [
+              1.35,
+              4.45
+            ],
+            [
+              1.35,
+              4.55
+            ],
+            [
+              1.35,
+              4.65
+            ],
+            [
+              1.35,
+              4.75
+            ],
+            [
+              1.35,
+              4.85
+            ],
+            [
+              1.35,
+              4.95
+            ],
+            [
+              1.35,
+              5.05
+            ],
+            [
+              1.35,
+              5.15
+            ],
+            [
+              1.35,
+              5.25
+            ],
+            [
+              1.35,
+              5.35
+            ],
+            [
+              1.35,
+              5.45
+            ],
+            [
+              1.35,
+              5.55
+            ],
+            [
+              1.35,
+              5.65
+            ],
+            [
+              1.35,
+              5.75
+            ],
+            [
+              1.35,
+              5.85
+            ],
+            [
+              1.35,
+              5.95
+            ],
+            [
+              1.35,
+              6.05
+            ],
+            [
+              1.35,
+              6.15
+            ],
+            [
+              1.35,
+              6.25
+            ],
+            [
+              1.35,
+              6.35
+            ],
+            [
+              1.35,
+              6.45
+            ],
+            [
+              1.35,
+              6.55
+            ],
+            [
+              1.35,
+              6.65
+            ],
+            [
+              1.35,
+              6.75
+            ],
+            [
+              1.35,
+              6.85
+            ],
+            [
+              1.35,
+              6.95
+            ],
+            [
+              1.35,
+              7.05
+            ],
+            [
+              1.35,
+              7.15
+            ],
+            [
+              1.35,
+              7.25
+            ],
+            [
+              1.35,
+              7.35
+            ],
+            [
+              1.35,
+              7.45
+            ],
+            [
+              1.35,
+              7.55
+            ]
+          ],
+          "method": "Conservative 2D projection of actual FBX triangle surfaces clipped to Y slab, sampled 0.10m clearance field, widest 4-neighbor path. NOT Unity NavMesh."
+        },
+        {
+          "sampled_height_slab_max_m": 1.0,
+          "projected_actual_FBX_triangle_polygons": 428,
+          "widest_0_1m_grid_route_bottleneck_radius_m": 0.325,
+          "approx_diameter_m": 0.65,
+          "probe_radii_m": {
+            "0.1": {
+              "sampled_connection": true,
+              "interpretation": "ANALYTICAL_RADIUS_PROBE_NOT_OWNER_THRESHOLD"
+            },
+            "0.2": {
+              "sampled_connection": true,
+              "interpretation": "ANALYTICAL_RADIUS_PROBE_NOT_OWNER_THRESHOLD"
+            },
+            "0.35": {
+              "sampled_connection": false,
+              "interpretation": "ANALYTICAL_RADIUS_PROBE_NOT_OWNER_THRESHOLD"
+            }
+          },
+          "route_steps": 32,
+          "route_xz_m": [
+            [
+              1.35,
+              4.45
+            ],
+            [
+              1.35,
+              4.55
+            ],
+            [
+              1.35,
+              4.65
+            ],
+            [
+              1.35,
+              4.75
+            ],
+            [
+              1.35,
+              4.85
+            ],
+            [
+              1.35,
+              4.95
+            ],
+            [
+              1.35,
+              5.05
+            ],
+            [
+              1.35,
+              5.15
+            ],
+            [
+              1.35,
+              5.25
+            ],
+            [
+              1.35,
+              5.35
+            ],
+            [
+              1.35,
+              5.45
+            ],
+            [
+              1.35,
+              5.55
+            ],
+            [
+              1.35,
+              5.65
+            ],
+            [
+              1.35,
+              5.75
+            ],
+            [
+              1.35,
+              5.85
+            ],
+            [
+              1.35,
+              5.95
+            ],
+            [
+              1.35,
+              6.05
+            ],
+            [
+              1.35,
+              6.15
+            ],
+            [
+              1.35,
+              6.25
+            ],
+            [
+              1.35,
+              6.35
+            ],
+            [
+              1.35,
+              6.45
+            ],
+            [
+              1.35,
+              6.55
+            ],
+            [
+              1.35,
+              6.65
+            ],
+            [
+              1.35,
+              6.75
+            ],
+            [
+              1.35,
+              6.85
+            ],
+            [
+              1.35,
+              6.95
+            ],
+            [
+              1.35,
+              7.05
+            ],
+            [
+              1.35,
+              7.15
+            ],
+            [
+              1.35,
+              7.25
+            ],
+            [
+              1.35,
+              7.35
+            ],
+            [
+              1.35,
+              7.45
+            ],
+            [
+              1.35,
+              7.55
+            ]
+          ],
+          "method": "Conservative 2D projection of actual FBX triangle surfaces clipped to Y slab, sampled 0.10m clearance field, widest 4-neighbor path. NOT Unity NavMesh."
+        },
+        {
+          "sampled_height_slab_max_m": 1.8,
+          "projected_actual_FBX_triangle_polygons": 508,
+          "widest_0_1m_grid_route_bottleneck_radius_m": 0.325,
+          "approx_diameter_m": 0.65,
+          "probe_radii_m": {
+            "0.1": {
+              "sampled_connection": true,
+              "interpretation": "ANALYTICAL_RADIUS_PROBE_NOT_OWNER_THRESHOLD"
+            },
+            "0.2": {
+              "sampled_connection": true,
+              "interpretation": "ANALYTICAL_RADIUS_PROBE_NOT_OWNER_THRESHOLD"
+            },
+            "0.35": {
+              "sampled_connection": false,
+              "interpretation": "ANALYTICAL_RADIUS_PROBE_NOT_OWNER_THRESHOLD"
+            }
+          },
+          "route_steps": 32,
+          "route_xz_m": [
+            [
+              1.35,
+              4.45
+            ],
+            [
+              1.35,
+              4.55
+            ],
+            [
+              1.35,
+              4.65
+            ],
+            [
+              1.35,
+              4.75
+            ],
+            [
+              1.35,
+              4.85
+            ],
+            [
+              1.35,
+              4.95
+            ],
+            [
+              1.35,
+              5.05
+            ],
+            [
+              1.35,
+              5.15
+            ],
+            [
+              1.35,
+              5.25
+            ],
+            [
+              1.35,
+              5.35
+            ],
+            [
+              1.35,
+              5.45
+            ],
+            [
+              1.35,
+              5.55
+            ],
+            [
+              1.35,
+              5.65
+            ],
+            [
+              1.35,
+              5.75
+            ],
+            [
+              1.35,
+              5.85
+            ],
+            [
+              1.35,
+              5.95
+            ],
+            [
+              1.35,
+              6.05
+            ],
+            [
+              1.35,
+              6.15
+            ],
+            [
+              1.35,
+              6.25
+            ],
+            [
+              1.35,
+              6.35
+            ],
+            [
+              1.35,
+              6.45
+            ],
+            [
+              1.35,
+              6.55
+            ],
+            [
+              1.35,
+              6.65
+            ],
+            [
+              1.35,
+              6.75
+            ],
+            [
+              1.35,
+              6.85
+            ],
+            [
+              1.35,
+              6.95
+            ],
+            [
+              1.35,
+              7.05
+            ],
+            [
+              1.35,
+              7.15
+            ],
+            [
+              1.35,
+              7.25
+            ],
+            [
+              1.35,
+              7.35
+            ],
+            [
+              1.35,
+              7.45
+            ],
+            [
+              1.35,
+              7.55
+            ]
+          ],
+          "method": "Conservative 2D projection of actual FBX triangle surfaces clipped to Y slab, sampled 0.10m clearance field, widest 4-neighbor path. NOT Unity NavMesh."
+        }
+      ],
+      "total_exact_surface_crossing_pairs": 0,
+      "total_outside_fixture_render_vertices": 0,
+      "disposition": "MEASURED_DESIGN_THRESHOLD_UNDEFINED"
+    },
+    {
+      "fixture_id": "CORRIDOR_STAGGERED_CROWDED_3",
+      "area": "CORRIDOR",
+      "placement": [
+        {
+          "asset": "P17-01",
+          "source_FBX_sha256": "cd6a5787bb7b4c088f0af35382385e4274c85c415c60467f9a22e46fe33ef02c",
+          "integer_grid_anchor_xz_m": [
+            2,
+            5
+          ],
+          "yaw_deg": 90
+        },
+        {
+          "asset": "P18-01",
+          "source_FBX_sha256": "f541d502ba9eaaf5c7a0a7279c44f71f36dd482e3aed3ba0734058dcf1045f6c",
+          "integer_grid_anchor_xz_m": [
+            2,
+            6
+          ],
+          "yaw_deg": 0
+        },
+        {
+          "asset": "P19-03",
+          "source_FBX_sha256": "1bd730b2382879d7d9c2f3d67c4b9646b8ca036c04de663e53b3019c403af2df",
+          "integer_grid_anchor_xz_m": [
+            2,
+            7
+          ],
+          "yaw_deg": 90
+        }
+      ],
+      "non_coplanar_actual_triangle_pair_evidence": [
+        {
+          "asset_a": "P17-01",
+          "asset_b": "P18-01",
+          "bvh_triangle_candidates": 551,
+          "exact_non_coplanar_surface_crossing_pairs": 548,
+          "witnesses_xyz_m": [
+            {
+              "triangle_a": 57,
+              "triangle_b": 972,
+              "xyz_m": [
+                1.675,
+                0.82,
+                5.55
+              ]
+            },
+            {
+              "triangle_a": 57,
+              "triangle_b": 973,
+              "xyz_m": [
+                1.675,
+                0.82,
+                5.8
+              ]
+            },
+            {
+              "triangle_a": 57,
+              "triangle_b": 55,
+              "xyz_m": [
+                1.675,
+                0.81,
+                5.675
+              ]
+            },
+            {
+              "triangle_a": 57,
+              "triangle_b": 54,
+              "xyz_m": [
+                1.675,
+                0.81,
+                5.8
+              ]
+            },
+            {
+              "triangle_a": 57,
+              "triangle_b": 48,
+              "xyz_m": [
+                1.675,
+                0.79155,
+                5.59
+              ]
+            },
+            {
+              "triangle_a": 57,
+              "triangle_b": 968,
+              "xyz_m": [
+                1.675,
+                0.868,
+                5.55
+              ]
+            },
+            {
+              "triangle_a": 57,
+              "triangle_b": 969,
+              "xyz_m": [
+                1.675,
+                0.831111,
+                5.55
+              ]
+            },
+            {
+              "triangle_a": 58,
+              "triangle_b": 972,
+              "xyz_m": [
+                2.325,
+                0.82,
+                5.8
+              ]
+            }
+          ],
+          "unresolved_bvh_candidates": 3,
+          "caution": "Edge/triangle proper crossings proven; coplanar contacts or full containment not certified."
+        },
+        {
+          "asset_a": "P17-01",
+          "asset_b": "P19-03",
+          "bvh_triangle_candidates": 0,
+          "exact_non_coplanar_surface_crossing_pairs": 0,
+          "witnesses_xyz_m": [],
+          "unresolved_bvh_candidates": 0,
+          "caution": "Edge/triangle proper crossings proven; coplanar contacts or full containment not certified."
+        },
+        {
+          "asset_a": "P18-01",
+          "asset_b": "P19-03",
+          "bvh_triangle_candidates": 163,
+          "exact_non_coplanar_surface_crossing_pairs": 163,
+          "witnesses_xyz_m": [
+            {
+              "triangle_a": 401,
+              "triangle_b": 39,
+              "xyz_m": [
+                1.68,
+                0.0,
+                6.39
+              ]
+            },
+            {
+              "triangle_a": 401,
+              "triangle_b": 41,
+              "xyz_m": [
+                1.68,
+                0.0,
+                6.33
+              ]
+            },
+            {
+              "triangle_a": 401,
+              "triangle_b": 37,
+              "xyz_m": [
+                1.74,
+                0.0,
+                6.39
+              ]
+            },
+            {
+              "triangle_a": 401,
+              "triangle_b": 34,
+              "xyz_m": [
+                1.74,
+                0.0,
+                6.39
+              ]
+            },
+            {
+              "triangle_a": 401,
+              "triangle_b": 32,
+              "xyz_m": [
+                1.74,
+                0.0,
+                6.39
+              ]
+            },
+            {
+              "triangle_a": 401,
+              "triangle_b": 18,
+              "xyz_m": [
+                2.26,
+                0.0,
+                6.39
+              ]
+            },
+            {
+              "triangle_a": 401,
+              "triangle_b": 17,
+              "xyz_m": [
+                2.32,
+                0.0,
+                6.39
+              ]
+            },
+            {
+              "triangle_a": 401,
+              "triangle_b": 26,
+              "xyz_m": [
+                1.74,
+                0.0,
+                6.33
+              ]
+            }
+          ],
+          "unresolved_bvh_candidates": 0,
+          "caution": "Edge/triangle proper crossings proven; coplanar contacts or full containment not certified."
+        }
+      ],
+      "fixture_wall_bounds": [
+        {
+          "id": "P17-01",
+          "out_of_fixture_source_vertices": 0,
+          "min_floor_y_m": 0.0,
+          "max_height_y_m": 1.1,
+          "signed_x_wall_m": 0.675,
+          "signed_x_other_m": 0.675,
+          "signed_z_wall_m": 0.2,
+          "signed_z_other_m": 2.2
+        },
+        {
+          "id": "P18-01",
+          "out_of_fixture_source_vertices": 0,
+          "min_floor_y_m": 0.0,
+          "max_height_y_m": 0.907,
+          "signed_x_wall_m": 0.55,
+          "signed_x_other_m": 0.55,
+          "signed_z_wall_m": 1.531,
+          "signed_z_other_m": 1.55
+        },
+        {
+          "id": "P19-03",
+          "out_of_fixture_source_vertices": 0,
+          "min_floor_y_m": 0.0,
+          "max_height_y_m": 0.75,
+          "signed_x_wall_m": 0.675,
+          "signed_x_other_m": 0.675,
+          "signed_z_wall_m": 2.3,
+          "signed_z_other_m": 0.3
+        }
+      ],
+      "vertical_slab_navigation_grid": [
+        {
+          "sampled_height_slab_max_m": 0.3,
+          "projected_actual_FBX_triangle_polygons": 257,
+          "widest_0_1m_grid_route_bottleneck_radius_m": 0.25,
+          "approx_diameter_m": 0.5,
+          "probe_radii_m": {
+            "0.1": {
+              "sampled_connection": true,
+              "interpretation": "ANALYTICAL_RADIUS_PROBE_NOT_OWNER_THRESHOLD"
+            },
+            "0.2": {
+              "sampled_connection": true,
+              "interpretation": "ANALYTICAL_RADIUS_PROBE_NOT_OWNER_THRESHOLD"
+            },
+            "0.35": {
+              "sampled_connection": false,
+              "interpretation": "ANALYTICAL_RADIUS_PROBE_NOT_OWNER_THRESHOLD"
+            }
+          },
+          "route_steps": 33,
+          "route_xz_m": [
+            [
+              1.35,
+              4.45
+            ],
+            [
+              1.35,
+              4.55
+            ],
+            [
+              1.35,
+              4.65
+            ],
+            [
+              1.35,
+              4.75
+            ],
+            [
+              1.35,
+              4.85
+            ],
+            [
+              1.35,
+              4.95
+            ],
+            [
+              1.35,
+              5.05
+            ],
+            [
+              1.35,
+              5.15
+            ],
+            [
+              1.35,
+              5.25
+            ],
+            [
+              1.35,
+              5.35
+            ],
+            [
+              1.25,
+              5.35
+            ],
+            [
+              1.25,
+              5.45
+            ],
+            [
+              1.25,
+              5.55
+            ],
+            [
+              1.25,
+              5.65
+            ],
+            [
+              1.25,
+              5.75
+            ],
+            [
+              1.25,
+              5.85
+            ],
+            [
+              1.25,
+              5.95
+            ],
+            [
+              1.25,
+              6.05
+            ],
+            [
+              1.25,
+              6.15
+            ],
+            [
+              1.25,
+              6.25
+            ],
+            [
+              1.25,
+              6.35
+            ],
+            [
+              1.25,
+              6.45
+            ],
+            [
+              1.25,
+              6.55
+            ],
+            [
+              1.25,
+              6.65
+            ],
+            [
+              1.25,
+              6.75
+            ],
+            [
+              1.25,
+              6.85
+            ],
+            [
+              1.25,
+              6.95
+            ],
+            [
+              1.25,
+              7.05
+            ],
+            [
+              1.25,
+              7.15
+            ],
+            [
+              1.25,
+              7.25
+            ],
+            [
+              1.25,
+              7.35
+            ],
+            [
+              1.25,
+              7.45
+            ],
+            [
+              1.25,
+              7.55
+            ]
+          ],
+          "method": "Conservative 2D projection of actual FBX triangle surfaces clipped to Y slab, sampled 0.10m clearance field, widest 4-neighbor path. NOT Unity NavMesh."
+        },
+        {
+          "sampled_height_slab_max_m": 1.0,
+          "projected_actual_FBX_triangle_polygons": 1408,
+          "widest_0_1m_grid_route_bottleneck_radius_m": 0.25,
+          "approx_diameter_m": 0.5,
+          "probe_radii_m": {
+            "0.1": {
+              "sampled_connection": true,
+              "interpretation": "ANALYTICAL_RADIUS_PROBE_NOT_OWNER_THRESHOLD"
+            },
+            "0.2": {
+              "sampled_connection": true,
+              "interpretation": "ANALYTICAL_RADIUS_PROBE_NOT_OWNER_THRESHOLD"
+            },
+            "0.35": {
+              "sampled_connection": false,
+              "interpretation": "ANALYTICAL_RADIUS_PROBE_NOT_OWNER_THRESHOLD"
+            }
+          },
+          "route_steps": 33,
+          "route_xz_m": [
+            [
+              1.35,
+              4.45
+            ],
+            [
+              1.35,
+              4.55
+            ],
+            [
+              1.35,
+              4.65
+            ],
+            [
+              1.35,
+              4.75
+            ],
+            [
+              1.35,
+              4.85
+            ],
+            [
+              1.35,
+              4.95
+            ],
+            [
+              1.35,
+              5.05
+            ],
+            [
+              1.35,
+              5.15
+            ],
+            [
+              1.35,
+              5.25
+            ],
+            [
+              1.35,
+              5.35
+            ],
+            [
+              1.25,
+              5.35
+            ],
+            [
+              1.25,
+              5.45
+            ],
+            [
+              1.25,
+              5.55
+            ],
+            [
+              1.25,
+              5.65
+            ],
+            [
+              1.25,
+              5.75
+            ],
+            [
+              1.25,
+              5.85
+            ],
+            [
+              1.25,
+              5.95
+            ],
+            [
+              1.25,
+              6.05
+            ],
+            [
+              1.25,
+              6.15
+            ],
+            [
+              1.25,
+              6.25
+            ],
+            [
+              1.25,
+              6.35
+            ],
+            [
+              1.25,
+              6.45
+            ],
+            [
+              1.25,
+              6.55
+            ],
+            [
+              1.25,
+              6.65
+            ],
+            [
+              1.25,
+              6.75
+            ],
+            [
+              1.25,
+              6.85
+            ],
+            [
+              1.25,
+              6.95
+            ],
+            [
+              1.25,
+              7.05
+            ],
+            [
+              1.25,
+              7.15
+            ],
+            [
+              1.25,
+              7.25
+            ],
+            [
+              1.25,
+              7.35
+            ],
+            [
+              1.25,
+              7.45
+            ],
+            [
+              1.25,
+              7.55
+            ]
+          ],
+          "method": "Conservative 2D projection of actual FBX triangle surfaces clipped to Y slab, sampled 0.10m clearance field, widest 4-neighbor path. NOT Unity NavMesh."
+        },
+        {
+          "sampled_height_slab_max_m": 1.8,
+          "projected_actual_FBX_triangle_polygons": 1488,
+          "widest_0_1m_grid_route_bottleneck_radius_m": 0.25,
+          "approx_diameter_m": 0.5,
+          "probe_radii_m": {
+            "0.1": {
+              "sampled_connection": true,
+              "interpretation": "ANALYTICAL_RADIUS_PROBE_NOT_OWNER_THRESHOLD"
+            },
+            "0.2": {
+              "sampled_connection": true,
+              "interpretation": "ANALYTICAL_RADIUS_PROBE_NOT_OWNER_THRESHOLD"
+            },
+            "0.35": {
+              "sampled_connection": false,
+              "interpretation": "ANALYTICAL_RADIUS_PROBE_NOT_OWNER_THRESHOLD"
+            }
+          },
+          "route_steps": 33,
+          "route_xz_m": [
+            [
+              1.35,
+              4.45
+            ],
+            [
+              1.35,
+              4.55
+            ],
+            [
+              1.35,
+              4.65
+            ],
+            [
+              1.35,
+              4.75
+            ],
+            [
+              1.35,
+              4.85
+            ],
+            [
+              1.35,
+              4.95
+            ],
+            [
+              1.35,
+              5.05
+            ],
+            [
+              1.35,
+              5.15
+            ],
+            [
+              1.35,
+              5.25
+            ],
+            [
+              1.35,
+              5.35
+            ],
+            [
+              1.25,
+              5.35
+            ],
+            [
+              1.25,
+              5.45
+            ],
+            [
+              1.25,
+              5.55
+            ],
+            [
+              1.25,
+              5.65
+            ],
+            [
+              1.25,
+              5.75
+            ],
+            [
+              1.25,
+              5.85
+            ],
+            [
+              1.25,
+              5.95
+            ],
+            [
+              1.25,
+              6.05
+            ],
+            [
+              1.25,
+              6.15
+            ],
+            [
+              1.25,
+              6.25
+            ],
+            [
+              1.25,
+              6.35
+            ],
+            [
+              1.25,
+              6.45
+            ],
+            [
+              1.25,
+              6.55
+            ],
+            [
+              1.25,
+              6.65
+            ],
+            [
+              1.25,
+              6.75
+            ],
+            [
+              1.25,
+              6.85
+            ],
+            [
+              1.25,
+              6.95
+            ],
+            [
+              1.25,
+              7.05
+            ],
+            [
+              1.25,
+              7.15
+            ],
+            [
+              1.25,
+              7.25
+            ],
+            [
+              1.25,
+              7.35
+            ],
+            [
+              1.25,
+              7.45
+            ],
+            [
+              1.25,
+              7.55
+            ]
+          ],
+          "method": "Conservative 2D projection of actual FBX triangle surfaces clipped to Y slab, sampled 0.10m clearance field, widest 4-neighbor path. NOT Unity NavMesh."
+        }
+      ],
+      "total_exact_surface_crossing_pairs": 711,
+      "total_outside_fixture_render_vertices": 0,
+      "disposition": "EXAMPLE_PLACEMENT_GEOMETRY_CROSSING"
+    },
+    {
+      "fixture_id": "CORRIDOR_CENTRAL_SIDE_GAPS_2",
+      "area": "CORRIDOR",
+      "placement": [
+        {
+          "asset": "P17-01",
+          "source_FBX_sha256": "cd6a5787bb7b4c088f0af35382385e4274c85c415c60467f9a22e46fe33ef02c",
+          "integer_grid_anchor_xz_m": [
+            2,
+            5
+          ],
+          "yaw_deg": 0
+        },
+        {
+          "asset": "P19-03",
+          "source_FBX_sha256": "1bd730b2382879d7d9c2f3d67c4b9646b8ca036c04de663e53b3019c403af2df",
+          "integer_grid_anchor_xz_m": [
+            2,
+            7
+          ],
+          "yaw_deg": 0
+        }
+      ],
+      "non_coplanar_actual_triangle_pair_evidence": [
+        {
+          "asset_a": "P17-01",
+          "asset_b": "P19-03",
+          "bvh_triangle_candidates": 0,
+          "exact_non_coplanar_surface_crossing_pairs": 0,
+          "witnesses_xyz_m": [],
+          "unresolved_bvh_candidates": 0,
+          "caution": "Edge/triangle proper crossings proven; coplanar contacts or full containment not certified."
+        }
+      ],
+      "fixture_wall_bounds": [
+        {
+          "id": "P17-01",
+          "out_of_fixture_source_vertices": 0,
+          "min_floor_y_m": 0.0,
+          "max_height_y_m": 1.1,
+          "signed_x_wall_m": 0.2,
+          "signed_x_other_m": 0.2,
+          "signed_z_wall_m": 0.675,
+          "signed_z_other_m": 2.675
+        },
+        {
+          "id": "P19-03",
+          "out_of_fixture_source_vertices": 0,
+          "min_floor_y_m": 0.0,
+          "max_height_y_m": 0.75,
+          "signed_x_wall_m": 0.3,
+          "signed_x_other_m": 0.3,
+          "signed_z_wall_m": 2.675,
+          "signed_z_other_m": 0.675
+        }
+      ],
+      "vertical_slab_navigation_grid": [
+        {
+          "sampled_height_slab_max_m": 0.3,
+          "projected_actual_FBX_triangle_polygons": 99,
+          "widest_0_1m_grid_route_bottleneck_radius_m": 0.09,
+          "approx_diameter_m": 0.18,
+          "probe_radii_m": {
+            "0.1": {
+              "sampled_connection": false,
+              "interpretation": "ANALYTICAL_RADIUS_PROBE_NOT_OWNER_THRESHOLD"
+            },
+            "0.2": {
+              "sampled_connection": false,
+              "interpretation": "ANALYTICAL_RADIUS_PROBE_NOT_OWNER_THRESHOLD"
+            },
+            "0.35": {
+              "sampled_connection": false,
+              "interpretation": "ANALYTICAL_RADIUS_PROBE_NOT_OWNER_THRESHOLD"
+            }
+          },
+          "route_steps": 33,
+          "route_xz_m": [
+            [
+              1.25,
+              4.45
+            ],
+            [
+              1.25,
+              4.55
+            ],
+            [
+              1.15,
+              4.55
+            ],
+            [
+              1.15,
+              4.65
+            ],
+            [
+              1.15,
+              4.75
+            ],
+            [
+              1.15,
+              4.85
+            ],
+            [
+              1.15,
+              4.95
+            ],
+            [
+              1.15,
+              5.05
+            ],
+            [
+              1.15,
+              5.15
+            ],
+            [
+              1.15,
+              5.25
+            ],
+            [
+              1.15,
+              5.35
+            ],
+            [
+              1.15,
+              5.45
+            ],
+            [
+              1.15,
+              5.55
+            ],
+            [
+              1.15,
+              5.65
+            ],
+            [
+              1.15,
+              5.75
+            ],
+            [
+              1.15,
+              5.85
+            ],
+            [
+              1.15,
+              5.95
+            ],
+            [
+              1.15,
+              6.05
+            ],
+            [
+              1.15,
+              6.15
+            ],
+            [
+              1.15,
+              6.25
+            ],
+            [
+              1.15,
+              6.35
+            ],
+            [
+              1.15,
+              6.45
+            ],
+            [
+              1.15,
+              6.55
+            ],
+            [
+              1.15,
+              6.65
+            ],
+            [
+              1.15,
+              6.75
+            ],
+            [
+              1.15,
+              6.85
+            ],
+            [
+              1.15,
+              6.95
+            ],
+            [
+              1.15,
+              7.05
+            ],
+            [
+              1.15,
+              7.15
+            ],
+            [
+              1.15,
+              7.25
+            ],
+            [
+              1.15,
+              7.35
+            ],
+            [
+              1.15,
+              7.45
+            ],
+            [
+              1.15,
+              7.55
+            ]
+          ],
+          "method": "Conservative 2D projection of actual FBX triangle surfaces clipped to Y slab, sampled 0.10m clearance field, widest 4-neighbor path. NOT Unity NavMesh."
+        },
+        {
+          "sampled_height_slab_max_m": 1.0,
+          "projected_actual_FBX_triangle_polygons": 428,
+          "widest_0_1m_grid_route_bottleneck_radius_m": 0.05,
+          "approx_diameter_m": 0.1,
+          "probe_radii_m": {
+            "0.1": {
+              "sampled_connection": false,
+              "interpretation": "ANALYTICAL_RADIUS_PROBE_NOT_OWNER_THRESHOLD"
+            },
+            "0.2": {
+              "sampled_connection": false,
+              "interpretation": "ANALYTICAL_RADIUS_PROBE_NOT_OWNER_THRESHOLD"
+            },
+            "0.35": {
+              "sampled_connection": false,
+              "interpretation": "ANALYTICAL_RADIUS_PROBE_NOT_OWNER_THRESHOLD"
+            }
+          },
+          "route_steps": 33,
+          "route_xz_m": [
+            [
+              1.15,
+              4.45
+            ],
+            [
+              1.15,
+              4.55
+            ],
+            [
+              1.15,
+              4.65
+            ],
+            [
+              1.05,
+              4.65
+            ],
+            [
+              1.05,
+              4.75
+            ],
+            [
+              1.05,
+              4.85
+            ],
+            [
+              1.05,
+              4.95
+            ],
+            [
+              1.05,
+              5.05
+            ],
+            [
+              1.05,
+              5.15
+            ],
+            [
+              1.05,
+              5.25
+            ],
+            [
+              1.05,
+              5.35
+            ],
+            [
+              1.05,
+              5.45
+            ],
+            [
+              1.05,
+              5.55
+            ],
+            [
+              1.05,
+              5.65
+            ],
+            [
+              1.05,
+              5.75
+            ],
+            [
+              1.05,
+              5.85
+            ],
+            [
+              1.05,
+              5.95
+            ],
+            [
+              1.05,
+              6.05
+            ],
+            [
+              1.05,
+              6.15
+            ],
+            [
+              1.05,
+              6.25
+            ],
+            [
+              1.05,
+              6.35
+            ],
+            [
+              1.05,
+              6.45
+            ],
+            [
+              1.05,
+              6.55
+            ],
+            [
+              1.05,
+              6.65
+            ],
+            [
+              1.05,
+              6.75
+            ],
+            [
+              1.05,
+              6.85
+            ],
+            [
+              1.05,
+              6.95
+            ],
+            [
+              1.05,
+              7.05
+            ],
+            [
+              1.05,
+              7.15
+            ],
+            [
+              1.05,
+              7.25
+            ],
+            [
+              1.05,
+              7.35
+            ],
+            [
+              1.05,
+              7.45
+            ],
+            [
+              1.05,
+              7.55
+            ]
+          ],
+          "method": "Conservative 2D projection of actual FBX triangle surfaces clipped to Y slab, sampled 0.10m clearance field, widest 4-neighbor path. NOT Unity NavMesh."
+        },
+        {
+          "sampled_height_slab_max_m": 1.8,
+          "projected_actual_FBX_triangle_polygons": 508,
+          "widest_0_1m_grid_route_bottleneck_radius_m": 0.05,
+          "approx_diameter_m": 0.1,
+          "probe_radii_m": {
+            "0.1": {
+              "sampled_connection": false,
+              "interpretation": "ANALYTICAL_RADIUS_PROBE_NOT_OWNER_THRESHOLD"
+            },
+            "0.2": {
+              "sampled_connection": false,
+              "interpretation": "ANALYTICAL_RADIUS_PROBE_NOT_OWNER_THRESHOLD"
+            },
+            "0.35": {
+              "sampled_connection": false,
+              "interpretation": "ANALYTICAL_RADIUS_PROBE_NOT_OWNER_THRESHOLD"
+            }
+          },
+          "route_steps": 33,
+          "route_xz_m": [
+            [
+              1.15,
+              4.45
+            ],
+            [
+              1.15,
+              4.55
+            ],
+            [
+              1.15,
+              4.65
+            ],
+            [
+              1.05,
+              4.65
+            ],
+            [
+              1.05,
+              4.75
+            ],
+            [
+              1.05,
+              4.85
+            ],
+            [
+              1.05,
+              4.95
+            ],
+            [
+              1.05,
+              5.05
+            ],
+            [
+              1.05,
+              5.15
+            ],
+            [
+              1.05,
+              5.25
+            ],
+            [
+              1.05,
+              5.35
+            ],
+            [
+              1.05,
+              5.45
+            ],
+            [
+              1.05,
+              5.55
+            ],
+            [
+              1.05,
+              5.65
+            ],
+            [
+              1.05,
+              5.75
+            ],
+            [
+              1.05,
+              5.85
+            ],
+            [
+              1.05,
+              5.95
+            ],
+            [
+              1.05,
+              6.05
+            ],
+            [
+              1.05,
+              6.15
+            ],
+            [
+              1.05,
+              6.25
+            ],
+            [
+              1.05,
+              6.35
+            ],
+            [
+              1.05,
+              6.45
+            ],
+            [
+              1.05,
+              6.55
+            ],
+            [
+              1.05,
+              6.65
+            ],
+            [
+              1.05,
+              6.75
+            ],
+            [
+              1.05,
+              6.85
+            ],
+            [
+              1.05,
+              6.95
+            ],
+            [
+              1.05,
+              7.05
+            ],
+            [
+              1.05,
+              7.15
+            ],
+            [
+              1.05,
+              7.25
+            ],
+            [
+              1.05,
+              7.35
+            ],
+            [
+              1.05,
+              7.45
+            ],
+            [
+              1.05,
+              7.55
+            ]
+          ],
+          "method": "Conservative 2D projection of actual FBX triangle surfaces clipped to Y slab, sampled 0.10m clearance field, widest 4-neighbor path. NOT Unity NavMesh."
+        }
+      ],
+      "total_exact_surface_crossing_pairs": 0,
+      "total_outside_fixture_render_vertices": 0,
+      "disposition": "MEASURED_DESIGN_THRESHOLD_UNDEFINED"
+    }
+  ],
+  "summary": {
+    "real_signed_FBX": 3,
+    "multi_object_layouts": 5,
+    "sampled_slab_scenarios": 15,
+    "surface_crossing_layouts": 2,
+    "out_of_test_bounds_layouts": 0,
+    "unity": "NOT_RUN",
+    "door_or_gate_files_touched": 0,
+    "production_models_reexported": 0
+  },
+  "notes": [
+    "Examples are not approved ship layout or corridors; no doors, doorway/opening or ship changes.",
+    "Real triangle non-coplanar crossings proved; coplanar overlaps/complete containment require supplementary test.",
+    "0.1m cell size and conservative footprint mean sampled path is approximate; radius probes are NOT compliance criteria.",
+    "Samples include all visible geometry in y=[0,slab] rather than game physics colliders.",
+    "Unapproved walkway width owner decision required, no automatic placement acceptance.",
+    "Unity/NavMesh and final physical clearance tests: NOT RUN."
+  ],
+  "disposition": "MEASURED_NONDOOR_MULTIPROP_QA__DESIGN_THRESHOLD_UNDEFINED__UNITY_NOT_RUN"
+}

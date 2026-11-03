@@ -1,0 +1,81 @@
+name: C01-18 W24 Actual CSharp Wheel Logic Offline QA (NOT UNITY)
+on:
+  push:
+    branches: [c01/props-18-cargo]
+    paths:
+      - '.github/workflows/c01-18-w24-offline-wheel-csharp.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  compiled-actual-production-wheel-runtime:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+      - name: Install system Mono C# compiler; NO Unity license or Editor
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y mono-mcs
+          mcs --version
+          mono --version | head -n 1
+      - name: Compile and execute ACTUAL C01CartWheelVisualBearing.cs
+        run: |
+          set -euo pipefail
+          mcs -warnaserror -out:/tmp/C01P1803_W24_OFFLINE.exe \
+            QA/C01-18/Pass24/Wave01/UnityEngine_Offline_Doubles.cs \
+            Assets/C01InteriorProps/C01-18/Runtime/C01CartWheelVisualBearing.cs \
+            QA/C01-18/Pass24/Wave01/P18_03_Offline_Runtime_Tests.cs
+          mono /tmp/C01P1803_W24_OFFLINE.exe | tee /tmp/C01P1803_W24_OFFLINE.log
+          grep -q 'C01_W24_P1803_REAL_CSHARP_OFFLINE_LOGIC_PASS' /tmp/C01P1803_W24_OFFLINE.log
+      - name: Verify original FBX Git LFS immutability and write machine QA
+        run: |
+          python3 - <<'PY'
+          import pathlib,json,re,hashlib
+          r=pathlib.Path('QA/C01-18/Pass24/Wave01')
+          p=pathlib.Path('Assets/C01InteriorProps/C01-18/Models/P18-03.fbx')
+          frozen='f169ab74086ee3853c14b46ac6f6199cd255cfca15d8b7cbef32c3758cde7926'
+          s=p.read_text()
+          assert 'oid sha256:'+frozen in s and 'size 194060' in s
+          log=pathlib.Path('/tmp/C01P1803_W24_OFFLINE.log').read_text()
+          m=re.search(r'C01_W24_P1803_REAL_CSHARP_OFFLINE_LOGIC_PASS checks=(\d+)',log)
+          assert m and int(m.group(1))>=35
+          assert log.count('C01_P1803_W24_PASS ')==int(m.group(1))
+          out={
+           'wave':24,'asset':'P18-03','test_type':'ACTUAL_CSHARP_COMPILED_WITH_OFFLINE_UnityEngine_DOUBLES_NOT_UNITY',
+           'compiler':'Mono mcs actual C01CartWheelVisualBearing.cs',
+           'tests_passed':int(m.group(1)),'tests_failed':0,
+           'tested':'4 real wheel-hub child binding, zero fork/wheel solid colliders, 0.105m rotation physics, forward/reverse travel, sideways/no roll, rotated-cart heading, teleport suppression, manual mode, Awake reload, unexpected collider and broken hub hierarchy rejection',
+           'native_fbx_sha256':frozen,
+           'original_blend_sha256':'ea1b4f5cc5612f8d8ff5c3c585b9b48843659972c2371204b5d3b5c4df3a3b56',
+           'lfs_record_confirmed':True,'native_reexport':False,
+           'independent_W22_hub_fork_contacts':'576/576 actual source-visible intersection; decorative render-only contract, NOT geometry-clear',
+           'unity_editor':'NOT_RUN','unity_playmode':'NOT_RUN',
+           'independent_C01_02':'PENDING',
+           'claude_owned_doors':'FROZEN_NOT_TOUCHED','merge':'NOT_AUTHORIZED',
+           'test_log_sha256':hashlib.sha256(log.encode()).hexdigest(),
+           'source_branch_sha':'${{ github.sha }}'
+          }
+          (r/'P18-03_W24_REAL_CSHARP_MOCK_QA.json').write_text(json.dumps(out,indent=2)+'\n')
+          (r/'P18-03_W24_REAL_CSHARP_MOCK_QA.log').write_text(log)
+          print('W24_C01_18_P18_03_REAL_CSHARP_NOT_UNITY',out['tests_passed'])
+          PY
+      - name: Commit ONLY evidence to source Draft branch
+        run: |
+          set -euo pipefail
+          git add QA/C01-18/Pass24/Wave01/P18-03_W24_REAL_CSHARP_MOCK_QA.json QA/C01-18/Pass24/Wave01/P18-03_W24_REAL_CSHARP_MOCK_QA.log
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'C01-18 W24: compiled CSharp offline wheel runtime QA receipt [skip ci]'
+          git push origin HEAD:c01/props-18-cargo
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: C01-18-W24-P18-03-REAL-CSHARP-NOT-UNITY
+          path: |
+            QA/C01-18/Pass24/Wave01/P18-03_W24_REAL_CSHARP_MOCK_QA.json
+            QA/C01-18/Pass24/Wave01/P18-03_W24_REAL_CSHARP_MOCK_QA.log
+          if-no-files-found: warn
+          retention-days: 21

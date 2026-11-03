@@ -19,7 +19,7 @@ jobs:
       - name: Install actual Blender FBX reader and raster preview tools
         run: |
           sudo apt-get update -qq
-          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y blender git-lfs librsvg2-bin
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y blender git-lfs librsvg2-bin python3-numpy
           git lfs install --local
           blender --version | head -2
       - name: Hydrate pinned non-door console P17-01

@@ -1,0 +1,139 @@
+name: C01-13 W26 signed real-W01-F01 non-door clipping QA
+on:
+  push:
+    branches:
+      - c01/13-nondoor-placement-clipping-wave23
+    paths:
+      - "C01NonDoorQA/Pass26/qa_real_mesh_architecture_contacts.py"
+      - ".github/workflows/c01-13-w26-actual-architecture-clipping.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  actual-signed-architecture:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - name: Checkout ONLY independent QA tooling
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Install actual native Blender importer (no new exports)
+        run: |
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y blender git-lfs python3-numpy
+          git lfs install --local
+          blender --version | head -2
+      - name: Pin unchanged current P17-01 console real FBX
+        uses: actions/checkout@v4
+        with:
+          repository: C8LyNn/Model-Test
+          ref: d37f6cb8355d98324db44ca8eb139681beb7ea9b
+          path: _native/P17-01
+          sparse-checkout: |
+            Assets/C01InteriorProps/Models/P17-01.fbx
+          sparse-checkout-cone-mode: false
+          lfs: true
+          persist-credentials: false
+      - name: Pin unchanged current P18-01 crate real FBX
+        uses: actions/checkout@v4
+        with:
+          repository: C8LyNn/Model-Test
+          ref: 4d167a5e610c2b905360ed472e30960b735ffad5
+          path: _native/P18-01
+          sparse-checkout: |
+            Assets/C01InteriorProps/C01-18/Models/P18-01.fbx
+          sparse-checkout-cone-mode: false
+          lfs: true
+          persist-credentials: false
+      - name: Pin unchanged current P19-03 desk real FBX
+        uses: actions/checkout@v4
+        with:
+          repository: C8LyNn/Model-Test
+          ref: dece710d3672d8eb4ef4183eb3f8657ea6790b21
+          path: _native/P19-03
+          sparse-checkout: |
+            Assets/C01InteriorProps/C01-19/Models/P19-03/P19-03.fbx
+          sparse-checkout-cone-mode: false
+          lfs: true
+          persist-credentials: false
+      - name: Pin ONLY non-door W01 wall FBX (explicit sparse checkout)
+        uses: actions/checkout@v4
+        with:
+          repository: C8LyNn/Model-Test
+          ref: 7e6b159d0742f082e836bc7a4c6b12aee75b312e
+          path: _arch/W01
+          sparse-checkout: |
+            Assets/C01Architecture/Walls_W01_W04/FBX/W01_FULL_WALL_1M.fbx
+          sparse-checkout-cone-mode: false
+          lfs: true
+          persist-credentials: false
+      - name: Pin ONLY non-door F01 original 1m floor FBX
+        uses: actions/checkout@v4
+        with:
+          repository: C8LyNn/Model-Test
+          ref: 91275215a98a8eabb2079025162ee64785953f27
+          path: _arch/F01
+          sparse-checkout: |
+            C01StandaloneKits/FloorCeiling/DetailPass17/FBX/C01_SHI_F01_FLOOR_BASIC_v004.fbx
+          sparse-checkout-cone-mode: false
+          lfs: true
+          persist-credentials: false
+      - name: Byte-verify all five REAL FBX SHA and check Python source
+        run: |
+          python3 -m py_compile C01NonDoorQA/Pass26/qa_real_mesh_architecture_contacts.py
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib
+          names=[
+            ("P17-01","_native/P17-01/Assets/C01InteriorProps/Models/P17-01.fbx","cd6a5787bb7b4c088f0af35382385e4274c85c415c60467f9a22e46fe33ef02c"),
+            ("P18-01","_native/P18-01/Assets/C01InteriorProps/C01-18/Models/P18-01.fbx","f541d502ba9eaaf5c7a0a7279c44f71f36dd482e3aed3ba0734058dcf1045f6c"),
+            ("P19-03","_native/P19-03/Assets/C01InteriorProps/C01-19/Models/P19-03/P19-03.fbx","1bd730b2382879d7d9c2f3d67c4b9646b8ca036c04de663e53b3019c403af2df"),
+            ("W01","_arch/W01/Assets/C01Architecture/Walls_W01_W04/FBX/W01_FULL_WALL_1M.fbx","4260732720f10688e9ee370d2a254b67c9263e3e8241b4da42f08e12fe99632f"),
+            ("F01","_arch/F01/C01StandaloneKits/FloorCeiling/DetailPass17/FBX/C01_SHI_F01_FLOOR_BASIC_v004.fbx","46acac987ca3f8387472b2dc8b611cd871c90cd3e7d4773568c9005c84cb5c09")
+          ]
+          for aid,path,expected in names:
+            b=Path(path).read_bytes()
+            assert b.startswith(b"Kaydara FBX Binary"),("NOT_NATIVE_FBX_OR_LFS_POINTER",aid)
+            assert hashlib.sha256(b).hexdigest()==expected,("SHA_FAIL",aid)
+            print("ACTUAL_SIGNED_FBX_PASS",aid,expected,len(b))
+          PY
+      - name: Actual Blender signed FBX → 16 floor+16 wall tile mesh intersection
+        run: |
+          blender --background --factory-startup --threads 2 --python-exit-code 1 --python C01NonDoorQA/Pass26/qa_real_mesh_architecture_contacts.py -- .
+      - name: Validate exact physical 5-file report
+        run: |
+          python3 - <<'PY'
+          import json,csv
+          from pathlib import Path
+          p=Path("C01NonDoorQA/Pass26/Results/W26_FBX_W01_F01_NONDOOR_CONTACTS.json")
+          x=json.loads(p.read_text())
+          s=x["summary"]
+          assert s["real_physical_FBX_sha_pass"]==5
+          assert s["original_F01_instances"]==16
+          assert s["original_W01_instances"]==16
+          assert s["room_layouts_rechecked"]==3
+          assert s["door_assets_read_or_modified"]==0
+          assert s["producer_sources_changed"]==0
+          assert s["unity6_editor"]=="NOT_RUN"
+          assert s["merge"] is False
+          rows=list(csv.DictReader(Path("C01NonDoorQA/Pass26/Results/W26_FBX_W01_F01_NONDOOR_CONTACTS.csv").open()))
+          assert len(rows)==9,len(rows)
+          print("W26_PHY_REAL_FBX_5__ARCH_MESHES_32__ROOM_LAYOUTS_3__RESULT_ROWS_9_PASS")
+          print("W26_OBSERVED_WALL_CONTACTS",s["actual_W01_strict_crossing_pairs"])
+          print("W26_OBSERVED_FLOOR_CONTACTS",s["actual_F01_strict_crossing_pairs"])
+          PY
+      - name: Upload measurable actual signed original FBX geometric witnesses
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-13-W26-Real-W01-F01-NonDoor-Integration-QA
+          if-no-files-found: error
+          path: C01NonDoorQA/Pass26/Results/
+      - name: Commit only QA JSON + CSV to own existing Draft PR 39
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add C01NonDoorQA/Pass26/Results/
+          if git diff --cached --quiet; then echo "Unchanged QA results"; exit 0; fi
+          git commit -m "C01-13 W26: measured signed F01/W01 physical 1m grid geometry with 3 existing prop placements"
+          git push origin HEAD:c01/13-nondoor-placement-clipping-wave23

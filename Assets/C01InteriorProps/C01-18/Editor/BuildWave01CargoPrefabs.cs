@@ -1,10 +1,13 @@
 #if UNITY_EDITOR
 using System;
+using System.IO;
+using System.Security.Cryptography;
 using UnityEditor;
 using UnityEngine;
 namespace C01.Cargo {
 public static class BuildWave01CargoPrefabs {
  const string Root="Assets/C01InteriorProps/C01-18";
+ const string SignedP1803FbxSha256 = "f169ab74086ee3853c14b46ac6f6199cd255cfca15d8b7cbef32c3758cde7926";
  // PASS17 exact current authoring OBJ usemtl slots, not unreliable name guesses.
  static readonly System.Collections.Generic.Dictionary<string,string> SourceMaterials =
   new System.Collections.Generic.Dictionary<string,string>(StringComparer.Ordinal) {
@@ -180,6 +183,8 @@ public static class BuildWave01CargoPrefabs {
   };
  [MenuItem("Tools/C01/Cargo/Build Wave 01 FBX Prefabs")]
  public static void Build() {
+  // Fail closed before importing or writing a model/prefab.
+  VerifyGenuineP1803BeforeWrites();
   foreach(string id in new[]{"P18-01","P18-02","P18-03"}) {
    string modelPath=Root+"/Models/"+id+".fbx";
    var imported=AssetDatabase.LoadAssetAtPath<GameObject>(modelPath);
@@ -215,13 +220,32 @@ public static class BuildWave01CargoPrefabs {
      throw new InvalidOperationException(id+" FBX fidelity gate failed: "+count+"/"+totalTriangles+"/"+collision+" expected "+expectedParts+"/"+expectedTriangles+"/"+expectedColliders);
     if(id=="P18-03") {
      int wheels=0;
+     var natives = new Transform[4];
+     string[] names = {"Wheel_LB","Wheel_LF","Wheel_RB","Wheel_RF"};
      foreach(var t in root.GetComponentsInChildren<Transform>(true)) {
       if(t.name=="Wheel_LB"||t.name=="Wheel_LF"||t.name=="Wheel_RB"||t.name=="Wheel_RF") {
        if(!t.GetComponent<MeshFilter>())throw new InvalidOperationException("Wheel has no mesh: "+t.name);
+       for (int i=0;i<names.Length;i++)
+        if(t.name==names[i]) {
+         if(natives[i]!=null)throw new InvalidOperationException("Duplicate wheel pivot "+names[i]);
+         natives[i]=t;
+        }
        wheels++;
       }
      }
      if(wheels!=4)throw new InvalidOperationException("Expected four movable wheel mesh pivots, got "+wheels);
+     // All signed FBX metal bearings have real rendered intersections with
+     // fixed forks; they are INTENTIONALLY NON-PHYSICS meshes. Physics on
+     // the cart is delegated to six shelf/upright BoxColliders only.
+     foreach (var m in root.GetComponentsInChildren<MeshFilter>(true)) {
+      string n=m.name;
+      if(n.StartsWith("Wheel_",StringComparison.Ordinal) && m.GetComponent<Collider>()!=null)
+       throw new InvalidOperationException("Invalid solid wheel/fork/hub/axle Collider: "+n);
+     }
+     if(collision!=6)throw new InvalidOperationException("P18-03 requires six static shelf/upright colliders");
+     var visualRoll = root.AddComponent<C01CartWheelVisualBearing>();
+     visualRoll.Configure(natives);
+     if(!visualRoll.IsConfigured)throw new InvalidOperationException("P18-03 visual bearing guard unconfigured");
     }
     var path=Root+"/Prefabs/"+id+".prefab";
     if(!PrefabUtility.SaveAsPrefabAsset(root,path))throw new InvalidOperationException("Prefab save failed "+path);
@@ -229,6 +253,19 @@ public static class BuildWave01CargoPrefabs {
    } finally {UnityEngine.Object.DestroyImmediate(root);}
   }
   AssetDatabase.SaveAssets();AssetDatabase.Refresh();
+ }
+ private static void VerifyGenuineP1803BeforeWrites() {
+  const int signedLength=194060;
+  string p=Root+"/Models/P18-03.fbx";
+  if(!File.Exists(p))throw new FileNotFoundException("Missing signed P18-03 FBX (Git LFS hydration required)",p);
+  using(var fs=File.OpenRead(p))
+  using(var sha=SHA256.Create()) {
+   if(fs.Length!=signedLength)
+    throw new InvalidOperationException("P18-03 binary FBX length differs from immutable signature");
+   string digest=BitConverter.ToString(sha.ComputeHash(fs)).Replace("-","").ToLowerInvariant();
+   if(!string.Equals(digest,SignedP1803FbxSha256,StringComparison.Ordinal))
+    throw new InvalidOperationException("P18-03 true hydrated binary FBX SHA differs: refusing Unity prefab build");
+  }
  }
 }
 }

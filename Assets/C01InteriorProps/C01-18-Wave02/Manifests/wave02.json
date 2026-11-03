@@ -113,7 +113,8 @@
         "depth_tolerance_owner": "C01-01_PENDING",
         "unity": "NOT_RUN",
         "final": "HOLD"
-      }
+      },
+      "w23_status": "SIGNED_REAL_NATIVE_BVH_VISUAL_LOCK_RELEASE_PASS_20MM; runtime SOURCE_FIXED; Unity NOT_RUN / C01-02 W23 + C01-01 acceptance HOLD"
     }
   ],
   "wave19": {
@@ -196,5 +197,79 @@
       "blend_sha_unchanged": true,
       "CI_preflight_rerun": "NOT_RUN_NO_REDUNDANT_GH_ACTIONS"
     }
+  },
+  "wave23": {
+    "owner": "C01-18",
+    "source_fbx_sha256": "858a24db4338804ee3a3a70c310cd4936e3c45f559b9c4ab81c6037add564554",
+    "source_blend_sha256": "5fd990d8153430dd4f1a8893ebef0097465a404d1b2c6bbd77777de695b3e87d",
+    "original_native_geom_parts": 10,
+    "original_native_triangles": 120,
+    "actual_real_blender4_and_reimported_fbx_action": "https://github.com/C8LyNn/Model-Test/actions/runs/41625233773",
+    "actual_artifact_id": 13224673612,
+    "native_bvh_evidence": "https://github.com/C8LyNn/Model-Test/blob/c01/props-18-cargo-wave02/Assets/C01InteriorProps/C01-18-Wave02/QA/Pass23/P18-07_REAL_SIGNED_LATCH_RETRACT_BVH.json",
+    "original_lock_contacts": {
+      "at_0deg_tri_pairs": 13,
+      "at_5deg_tri_pairs": 9,
+      "at_10_to_110deg": 0
+    },
+    "locked_position": "visible original Front_Lock mesh / nontrigger BoxCollider enabled; fixed closed pivot",
+    "unlock_action": "move both visible Front_Lock mesh AND its collider together prior to lid motion; collider.enabled=false after displacement, no renderer hiding",
+    "tested_delta_world_blender_m": [
+      0,
+      -0.02,
+      0
+    ],
+    "tested_delta_original_unity_xyz_m": [
+      0,
+      0,
+      0.02
+    ],
+    "signed_hinge_positions_deg": [
+      0,
+      5,
+      10,
+      15,
+      20,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60,
+      65,
+      70,
+      75,
+      80,
+      85,
+      90,
+      95,
+      100,
+      105,
+      110
+    ],
+    "original_blend_and_fbx_actual_BVH_retracted_unintended_triangle_contacts": 0,
+    "minimum_retract_clearance_by_BVH": "0.015m passes exactly sampled poses; 0.020m selected 0.005m extra translation safety; not proof of exact 5mm Euclidean surface clearance",
+    "runtime_gameplay_script": "Assets/C01InteriorProps/C01-18-Wave02/Runtime/C01ToolBinLatchGate.cs",
+    "prefab_builder": "Assets/C01InteriorProps/C01-18-Wave02/Editor/BuildWave02CargoPrefabs.cs",
+    "runtime_contract": {
+      "locked": "visible engaged latch and collider active, hinge blocked at rest",
+      "unlock": "visible Front_Lock slides 20mm along imported Unity local +Z, then collider deactivates; gate records unlocked",
+      "lid": "movement through 0..110deg only after visible release",
+      "relock": "only when hinge returned to closed 0deg; lock returns to rest and collider enabled"
+    },
+    "C01_02_independent_W22": "STATIC_PASS / LOCK_STATE_MOTION_HOLD (old unlocked test did not move visible mesh)",
+    "C01_02_independent_W23": "PENDING SOURCE REPAIR RUNTIME ACCEPTANCE",
+    "C01_01_depth_variance_mm": 1,
+    "C01_01_tolerance_decision": "PENDING",
+    "actual_Unity6_Editor_compile_playmode": "NOT_RUN / OWNER_ACTION_REQUIRED",
+    "allow_final_approval": false,
+    "native_geometry_edits": 0,
+    "native_FBX_reexports": 0,
+    "new_models": 0,
+    "door_changes": 0,
+    "merge": false,
+    "notes": "Geometry proof is genuine Blender 4 source+FBX reimport. Unity local axis behavior and actual prefab/PlayMode depend on owner licensed editor; source-level code alone must never be represented as Unity success."
   }
 }

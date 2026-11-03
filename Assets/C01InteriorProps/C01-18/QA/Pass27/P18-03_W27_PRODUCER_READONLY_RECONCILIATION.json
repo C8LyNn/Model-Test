@@ -1,0 +1,67 @@
+{
+  "schema": "C01-18-W27-P18-03-PRODUCER-READONLY-1",
+  "issue": 45,
+  "owner": "C01-18",
+  "target": "P18-03",
+  "date": "2026-11-03",
+  "branch": "c01/18-w26-p1803-hub-fork-clearance",
+  "producer_pr": 43,
+  "inspected_head_before_report_commit": "7377d51ee43796609aeb9eac0fa3bc6d4c3f29cf",
+  "read_only_sources": "Latest producer PR43 LFS pointer contents for OBJ/BLEND/FBX, current prefab builder text, W26 native QA receipt and manifest; C01-03 W26 independent native binary parser receipt; no new W27 binary hydration / Blender run",
+  "current_signatures": {
+    "OBJ": {
+      "sha256": "1e6ff7b7d01cbb815e5c0375222877400923c323522936dfa959373a9b05c1e0",
+      "bytes": 343117,
+      "lfs_oid_match": true
+    },
+    "BLEND": {
+      "sha256": "1c8086b048ac1c62a6791bea5df22a22168b5aea4bc17008a2ce233d86ede41e",
+      "bytes": 916908,
+      "lfs_oid_match": true
+    },
+    "FBX": {
+      "sha256": "f932c5fb36624ef91c039b1de04367fff4e99da7c400bbcb4cadd4138f83618f",
+      "bytes": 194156,
+      "lfs_oid_match": true
+    }
+  },
+  "source_and_prefab_contract_checked": {
+    "signed_fbx_full_sha256_exact": true,
+    "expected_native_FBX_length_exact": true,
+    "missing_hydration_rejected": true,
+    "exactly_six_body_boxcollider_guard": true,
+    "any_Wheel_prefix_solid_collider_rejected": true,
+    "four_wheel_named_pivots_guard": true,
+    "original_W26_manifest_exact_current_shas": true,
+    "original_W26_Blend_FBX_QA_exact_current_shas": true,
+    "total_checks": 8,
+    "passed": 8
+  },
+  "native_W26_do_not_rerun": {
+    "run": "https://github.com/C8LyNn/Model-Test/actions/runs/41707987897",
+    "actual_blender_and_reimport": "PASS",
+    "source_and_imported_FBX_eight_hub_to_static_fork_x_gaps_mm": "1.99997..2.00000",
+    "mesh_parts": 63,
+    "triangles": 1780,
+    "owner_only_not_independent": true
+  },
+  "C01_03_independently_checked_native_binary": {
+    "receipt": "https://github.com/C8LyNn/Model-Test/blob/c01/props-03-library-wave02/C01InteriorProps_Library/Pass26/C01_03_W26_P18_03_ACTUAL_NATIVE_OLD_NEW_BINARY_DIFF.json",
+    "true_binary_sha256": "MATCH_2_OF_2_NEW_BLEND_FBX",
+    "eight_FBX_Model_local_translation_changes_mm": 4,
+    "eight_FBX_Geometry_corner_normal_arrays_changed": true,
+    "C01_03_full_3D_narrowphase_unperformed": true,
+    "caveat": "Do not infer a visual normal defect merely from changed FBX normal arrays; exact parent-transform-aware C01-02 shading and indexed 360-degree intersection test required"
+  },
+  "status": {
+    "W27_PRODUCER_SOURCE_GUARDS": "PASS_8_OF_8",
+    "W27_NEW_GEOMETRY_DEFECT": "NOT_CONFIRMED",
+    "W27_REPAIR": "NONE_NOT_AUTHORIZED_BY_NEW_DEFECT",
+    "W27_NEW_NATIVE_EXPORT": "NOT_RUN_AVOID_REDUNDANT_W26_WORK",
+    "INDEPENDENT_C01_02_EXACT_NEW_SHA": "PENDING",
+    "UNITY_6000_3_14F1_URP_EDITOR": "NOT_RUN_OWNER_ACTION_REQUIRED",
+    "RELEASE": "HOLD",
+    "PR": "DRAFT_UNMERGED"
+  },
+  "source_scope": "Existing original P18-03 only. Other P18-01/02/04/05/06/07 untouched. CLAUDE_DOORS_EXTERNAL_HOLD; PR19/32 frozen. No merges, new models or ship changes."
+}

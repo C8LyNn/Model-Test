@@ -34,6 +34,7 @@ jobs:
           git lfs pull --include="C01InteriorProps_Source/Blender/P17-01.blend,Assets/C01InteriorProps/Models/P17-01.fbx"
       - name: Read-only genuine P17-01 Blender and FBX SHA+shaded/wireframe QA
         run: |
+          python3 -m py_compile C01InteriorProps_Source/Tools/w27_real_fbx_bolt_shading.py
           xvfb-run -a blender -b --factory-startup --python-exit-code 1 --python C01InteriorProps_Source/Tools/w27_real_fbx_bolt_shading.py
       - name: Upload original FBX reimport shaded/wireframe proof (no model export)
         if: always()

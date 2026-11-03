@@ -24,7 +24,10 @@
       "CURATED_LAST_NATIVE": 8,
       "MODULAR": 12,
       "MASTER_SOURCE": 10
-    }
+    },
+    "historical_supplement": 9,
+    "all_registered_records_union": 1429,
+    "all_accessible_current_and_versioned_fbx_union": 1418
   },
   "checks": {
     "unique": true,
@@ -43,5 +46,20 @@
     "P1803": "C01-02 W25 radius & render-only source PASS; render hub-fork overlaps 576/576 remain; actual Unity NOT_RUN"
   },
   "workflow": "IDENTIFIED -> PHYSICAL_NATIVE_AUDIT -> DEFECT_CONFIRMED_OR_NO_DEFECT -> OWNER_REPAIR -> BLENDER_SAVE_FBX_EXPORT_REIMPORT -> C01-02_INDEPENDENT_CURRENT_SHA -> REAL_UNITY",
-  "status": "INVENTORY_AND_SCOPED_QA_DONE; GLOBAL_ALL_MESH_PHYSICAL_QA_PENDING; NO_FALSE_PASS"
+  "status": "INVENTORY_AND_SCOPED_QA_DONE; GLOBAL_ALL_MESH_PHYSICAL_QA_PENDING; NO_FALSE_PASS",
+  "coverage_extensions": {
+    "primary_manifest": "Pass26/C01_03_W26_GLOBAL_NONDOOR_ASSET_INVENTORY.csv",
+    "supplement": "Pass26/C01_03_W26_HISTORICAL_SUPERSEDED_NONDOOR_SOURCES.csv",
+    "parallel_secondary": "W26/W26_GLOBAL_NONDOOR_ASSET_AUDIT_1003.csv",
+    "overlap_between_primary_and_secondary_fbx_paths": 1001,
+    "only_in_parallel_secondary_before_supplement": 2,
+    "recovered_in_supplement": [
+      "RAI-01_v002",
+      "RMP-01_v002"
+    ],
+    "additional_primary_fbx_paths_not_in_parallel_secondary": 409,
+    "additional_primary_nondoor_v62_v64": 406,
+    "auxiliary_historical_record_count": 9,
+    "reviewer_note": "1003 and 1420 are different exact model-path universes. Do not add 1003+1420; union with supplement counts 1429 records, no duplicate paths based on verified crosswalk."
+  }
 }

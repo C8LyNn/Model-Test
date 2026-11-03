@@ -14,3 +14,6 @@
 - **UNITY_NOT_RUN / OWNER_ACTION_REQUIRED**; no authorized Editor available from existing integration evidence. Unity 6000.3.14f1 Windows Hub local runbook PR11 only. **0/36 FINAL_APPROVED** and global generated assets all HOLD.
 
 [Global inventory CSV](C01_03_W26_GLOBAL_NONDOOR_ASSET_INVENTORY.csv) · [Canonical 36 JSON](C01_03_W26_CANONICAL_36_QA_RELEASE.json) · [Coverage summary JSON](C01_03_W26_GLOBAL_INDEX_SUMMARY.json)
+
+## W26 crosswalk / no double count
+Also committed a **9-record historical supplement**: 2 legacy structural v002 signed FBX/BLEND, 6 older floor/ceiling native v002/v003 pairs, 1 historical W02 OBJ authoring source. 8 historical pairs 16/16 live LFS pointer SHA256 OIDs/size read, **not** newly hydrated and re-tested Blender geometry. Primary **1420 records** + supplement **9** = **1429 path records across 2 files**, not 1429 unique current meshes. The parallel W26 1003-row C01-03 manifest overlaps our primary **1001/1003** current paths; its 2 other v002 structural paths are exactly in this supplement. Our primary has **409 FBX paths** beyond that 1003 index: 406 V62/V64 and 3 current floor/ceiling v004. Preserve both immutable source manifests but do not sum denominators or imply model QA on generated variants.

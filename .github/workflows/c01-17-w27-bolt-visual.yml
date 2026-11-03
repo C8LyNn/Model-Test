@@ -29,7 +29,7 @@ jobs:
       - name: Install native Blender 4 and headless rendering dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y blender git-lfs xvfb xauth libegl1 libgl1 libopengl0
+          sudo apt-get install -y blender python3-numpy git-lfs xvfb xauth libegl1 libgl1 libopengl0
           git lfs install --local
           git lfs pull --include="C01InteriorProps_Source/Blender/P17-01.blend,Assets/C01InteriorProps/Models/P17-01.fbx"
       - name: Read-only genuine P17-01 Blender and FBX SHA+shaded/wireframe QA

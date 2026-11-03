@@ -54,7 +54,7 @@
     "2/ P19-01 C01-19 producer REAL Blender4 native source+FBX repair completed W29 at FBX SHA 80c7dc228e61b36392914ed36919b39fca58b772286ee569b505cf81ad5c29d1; C01-02 independent NEW SHA visual/narrowphase signoff PENDING. Do not mark repaired SHA visually approved on producer testimony.",
     "3/ P18-07 C01-01 scoped static+1mm size and +20mm latch reservation ACCEPTED W29; still requires current-FBX actual 11-position placement/whole lid clearance by C01-13 and real Unity/PhysX plus HQ corridor width decision.",
     "4/ W01/W02/W03 curated FBX version SHA differs from older Blender independent tested candidate. C01-03/C01-11/C01-10 must choose original/curated exact source before integrated scene claim.",
-    "5/ C01-02+C01-10 final independent 1080p real URP/material/lighting/UV/pivot/collider and visual appearance acceptance not signed; new 3-FBX independent visual workflow in progress at W29 snapshot."
+    "5/ Licensed Unity6 actual 1920x1080 URP GameView render/material/collider/pivot and final independent cross-part visual/gameplay signoff still absent. C01-02 W29 signed native Blender4 1080p shaded/wire images of P15-03/P18-03/P19-03 DO NOT count as Unity visual."
   ],
   "protection": "CLAUDE_DOORS_EXTERNAL_HOLD all D01 D02 and any entrusted doors/gates, PR19 PR32 frozen and not inspected/tested/modified/exported/imported. Ship layout unchanged. Never merge unapproved.",
   "rows": [
@@ -117,12 +117,15 @@
       "INDEPENDENT_QA": "C01-02 W27 independently actual native source BLEND/FBX SHA STATIC_PASS / UV_PASS / MOTION_PASS; 361 critical+46 whole-motion poses in each source and FBX #41717112468",
       "STATIC_ACCEPTANCE": "STATIC_ACCEPTED_SCOPED_CURRENT_SHA",
       "MOTION": "INDEPENDENT_NATIVE_AND_IMPORTED_FBX_HINGE_MOTION_PASS",
-      "VISUAL": "PRODUCER_BLENDER_SHADED_TRUE_WIREFRAME_PRESENT__INDEPENDENT_VISUAL_NOT_ACCEPTED",
+      "VISUAL": "INDEPENDENT_NATIVE_BLENDER4_1920x1080_SHADED_TRUE_WIRE_CAPTURED__ACTUAL_UNITY_URP_GAMEVIEW_NOT_RUN",
       "UNITY": "NOT_RUN_OWNER_ACTION_REQUIRED",
       "UNITY_ACCEPTED": false,
       "RC_STATUS": "BLOCKED",
-      "BLOCKER": "LICENSED_UNITY6000_3_14F1_URP_REAL_IMPORT_VISUAL_PREFAB_EDITMODE_PLAYMODE_NOT_RUN",
-      "PROOF": "https://github.com/C8LyNn/Model-Test/actions/runs/41717112468"
+      "BLOCKER": "LICENSED_UNITY6000_3_14F1_URP_REAL_IMPORT_GAMEVIEW_1080P_PREFAB_EDITMODE_PLAYMODE_NOT_RUN",
+      "PROOF": "https://github.com/C8LyNn/Model-Test/actions/runs/41717112468",
+      "NATIVE_1080P_VISUAL_EVIDENCE": "https://github.com/C8LyNn/Model-Test/actions/runs/41735420957",
+      "INDEPENDENT_NATIVE_VISUAL_CANDIDATE_SHA_PASS": true,
+      "VISUAL_URP_ACCEPTED": false
     },
     {
       "ASSET": "P15-04",
@@ -259,6 +262,24 @@
       "run_id": 41736031650,
       "state_at_read": "IN_PROGRESS__NOT_PASS",
       "scope": "three exact signed changed-current FBX visuals, not an executed Unity test"
+    },
+    "C01_02_independent_native_1920x1080_visual": {
+      "scope": "Native Blender4 original full signed FBX 1920x1080 Workbench shaded + true indexed edge wire on three current repaired SHAs; no new geometry; not Unity URP/actual GameView final",
+      "asset_ids": [
+        "P15-03",
+        "P18-03",
+        "P19-03"
+      ],
+      "initial_action": 41735420957,
+      "focused_p18_corrected_framing_action": 41736031650,
+      "original_resolution": [
+        1920,
+        1080
+      ],
+      "native_current_sha_C01_02_visual_proof_current_P15_03": "https://github.com/C8LyNn/Model-Test/actions/runs/41735420957",
+      "qa_w29_manifest": "https://github.com/C8LyNn/Model-Test/blob/c01/props-02-independent-qa/C01InteriorProps_QA/W29/W29_C01_02_INDEPENDENT_RC_36_PLUS_8.json",
+      "visual_status_P15_03": "INDEPENDENT_NATIVE_1080P_CAPTURED__UNITY_URP_NOT_RUN",
+      "no_source_mesh_modification": true
     }
   }
 }

@@ -1,0 +1,115 @@
+name: C01-13 W25 corrected non-door FBX layouts and true 3D previews
+on:
+  push:
+    branches: [c01/13-nondoor-placement-clipping-wave23]
+    paths:
+      - "C01NonDoorQA/Pass25/qa_real_fbx_corrected_layouts.py"
+      - ".github/workflows/c01-13-w25-corrected-placement.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  three-corrected-real-fbx-placements:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Install actual Blender FBX reader and raster preview tools
+        run: |
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y blender git-lfs librsvg2-bin
+          git lfs install --local
+          blender --version | head -2
+      - name: Hydrate pinned non-door console P17-01
+        uses: actions/checkout@v4
+        with:
+          repository: C8LyNn/Model-Test
+          ref: d37f6cb8355d98324db44ca8eb139681beb7ea9b
+          path: _native/P17-01
+          lfs: true
+          persist-credentials: false
+      - name: Hydrate pinned non-door crate P18-01
+        uses: actions/checkout@v4
+        with:
+          repository: C8LyNn/Model-Test
+          ref: 4d167a5e610c2b905360ed472e30960b735ffad5
+          path: _native/P18-01
+          lfs: true
+          persist-credentials: false
+      - name: Hydrate pinned non-door desk P19-03
+        uses: actions/checkout@v4
+        with:
+          repository: C8LyNn/Model-Test
+          ref: dece710d3672d8eb4ef4183eb3f8657ea6790b21
+          path: _native/P19-03
+          lfs: true
+          persist-credentials: false
+      - name: Verify full physical FBX SHA256 and Python QA syntax
+        run: |
+          python3 -m py_compile C01NonDoorQA/Pass25/qa_real_fbx_corrected_layouts.py
+          python3 - <<'PY'
+          import hashlib
+          from pathlib import Path
+          examples=[
+            ("P17-01","_native/P17-01/Assets/C01InteriorProps/Models/P17-01.fbx","cd6a5787bb7b4c088f0af35382385e4274c85c415c60467f9a22e46fe33ef02c"),
+            ("P18-01","_native/P18-01/Assets/C01InteriorProps/C01-18/Models/P18-01.fbx","f541d502ba9eaaf5c7a0a7279c44f71f36dd482e3aed3ba0734058dcf1045f6c"),
+            ("P19-03","_native/P19-03/Assets/C01InteriorProps/C01-19/Models/P19-03/P19-03.fbx","1bd730b2382879d7d9c2f3d67c4b9646b8ca036c04de663e53b3019c403af2df")]
+          for name,p,expected in examples:
+            content=Path(p).read_bytes()
+            assert content.startswith(b"Kaydara FBX Binary"),"LFS_POINTER_OR_NOT_BINARY "+name
+            real=hashlib.sha256(content).hexdigest()
+            assert real==expected, "STALE_OR_UNKNOWN_PHYSICAL_FBX "+name
+            print("W25_PHYSICAL_SHA_256_OK",name,real,len(content))
+          PY
+      - name: Execute native Blender true mesh contacts and corrected nav candidates
+        run: |
+          blender --background --factory-startup --threads 2 --python-exit-code 1 --python C01NonDoorQA/Pass25/qa_real_fbx_corrected_layouts.py -- .
+      - name: Convert actual FBX triangle top/isometric wireframe to PNG and QA output
+        run: |
+          set -euo pipefail
+          cd C01NonDoorQA/Pass25/Results
+          for f in *.svg; do
+            rsvg-convert --format png --output "$(basename "$f" .svg).png" "$f"
+          done
+          python3 - <<'PY'
+          import json,csv,struct
+          from pathlib import Path
+          j=json.loads(Path("corrected_non_door_layouts_W25.json").read_text())
+          assert j["summary"]["candidate_room_layouts"]==3
+          assert j["summary"]["signed_current_original_FBX"]==3
+          assert j["summary"]["room_crossing_pairs"]==0
+          assert j["summary"]["room_bvh_candidate_pairs"]==0
+          assert j["summary"]["height_slab_cases"]==9
+          assert j["summary"]["doors_touched"]==0
+          assert j["summary"]["producer_files_changed"]==0
+          assert j["summary"]["merge"] is False
+          assert len(list(csv.DictReader(Path("corrected_non_door_layouts_W25.csv").open())))==9
+          for layout in j["valid_room_layouts"]:
+            assert layout["real_FBX_bvh_triangle_pair_candidates"]==0
+            assert len(layout["placement"])==3
+            assert all(row["widest_route_sampled_width_m"]>=0.8 for row in layout["actual_original_triangle_height_slabs"])
+          assert len(list(Path(".").glob("*.svg")))==6
+          pngs=list(Path(".").glob("*.png"))
+          assert len(pngs)==9,[(x.name,x.stat().st_size) for x in pngs]
+          for p in pngs:
+            b=p.read_bytes()
+            assert b.startswith(b"\x89PNG\r\n\x1a\n") and len(b)>5000, (p,len(b))
+            assert struct.unpack(">II",b[16:24])==(1200,800),(p.name,struct.unpack(">II",b[16:24]))
+          print("W25_ACTUAL_FBXS_3_CORRECTED_ROOMS_3_SLABS_9_TRUE_BLENDER_ISOS_3_PNG_9_PASS")
+          PY
+      - name: Upload current actual shaded/iso/wireframe and signed numerical QA
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-13-W25-Corrected-NonDoor-RealFBX-3-Layouts
+          if-no-files-found: error
+          path: C01NonDoorQA/Pass25/Results/
+      - name: Commit only read-only QA results to own existing Draft PR 39
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add C01NonDoorQA/Pass25/Results
+          if git diff --cached --quiet; then echo "Current results already match"; exit 0; fi
+          git commit -m "C01-13 W25: verify 3 real-FBX non-overlap placements and native shaded 3D previews"
+          git push origin HEAD:c01/13-nondoor-placement-clipping-wave23

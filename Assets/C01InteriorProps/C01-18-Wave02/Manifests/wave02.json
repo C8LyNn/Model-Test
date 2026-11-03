@@ -115,7 +115,7 @@
         "final": "HOLD"
       },
       "w23_status": "SIGNED_REAL_NATIVE_BVH_VISUAL_LOCK_RELEASE_PASS_20MM; runtime SOURCE_FIXED; Unity NOT_RUN / C01-02 W23 + C01-01 acceptance HOLD",
-      "w24_status": "REAL_BLENDER_FBX_LATCH_SLIDE_11_POSITIONS_PASS + 45_ACTUAL_CSHARP_OFFLINE_PASS / C01_02_C01_01_UNITY_FINAL_HOLD"
+      "w24_status": "REAL_SIGNED_BLENDER_FBX_SLIDE_11_POSITIONS_0_COLLISIONS_AT_20MM; REAL_OFFLINE_CSHARP_50_OF_50_PASS_EXACT_PARENT_MINUS90X; UNITY_AND_C01_02_NEW_SCRIPT_REVIEW_HOLD"
     }
   ],
   "wave19": {
@@ -325,18 +325,20 @@
       "note": "Dynamic model footprint 361mm while visually released; nominal static depth 340mm, actual static 341mm, C01-01 must approve separately and C01-13 may assess placement/overhang"
     },
     "actual_production_CSharp_offline_Mono": {
-      "action": "https://github.com/C8LyNn/Model-Test/actions/runs/41630291683",
+      "action": "https://github.com/C8LyNn/Model-Test/actions/runs/41631548847",
       "report": "https://github.com/C8LyNn/Model-Test/blob/c01/props-18-cargo-wave02/QA/C01-18/Pass24/Wave02/P18-07_W24_REAL_CSHARP_MOCK_QA.json",
       "compiled_actual_source": "Assets/C01InteriorProps/C01-18-Wave02/Runtime/C01ToolBinLatchGate.cs",
-      "tests_passed": 45,
+      "tests_passed": 50,
       "tests_failed": 0,
       "type": "Real production C# class executed against offline UnityEngine mock; NOT Unity Editor / real PhysX / PlayMode",
       "runtime_state_machine": "LOCKED -> RETRACTING for 0.25s (collider ON, no lid motion) -> UNLOCKED (visible lock +20mm, collider OFF) -> LID 0..110deg -> CLOSED -> RELOCKING 0.25s (collider OFF) -> LOCKED (original visual position, collider ON)",
-      "importer_parent_basis": "Root +Z release converted into Front_Lock parent's local coordinates using TransformVector / InverseTransformVector, tested with 90-degree imported-parent rotation",
-      "failsafe": "External lock visibility/parent tamper forces lid closed and solid collider ON; invalid angle/time inputs rejected"
+      "importer_parent_basis": "Root +Z release converted into Front_Lock parent's local coordinates using TransformVector / InverseTransformVector, tested with 90-degree imported-parent rotation; exact independent FBX -90deg X parent additionally tested explicitly: source-root +Z maps to importer-parent -Y",
+      "failsafe": "External lock visibility/parent tamper forces lid closed and solid collider ON; invalid angle/time inputs rejected",
+      "artifact_id": 13228731995,
+      "independent_C01_02_W24_P0_old_runtime_axis_bug": "C01-02 saw previous fixed local +Z which collides; W24 production root-basis conversion tests exact -90deg X FBX case with 50/50 offline PASS, independent reevaluation needed"
     },
     "producer_gate": "REAL_BLENDER_FBX_STEP_AND_OFFLINE_COMPILED_CSHARP_PASS",
-    "C01_02_latest": "STATIC_PASS / LOCK_STATE_MOTION_HOLD; W24 runtime independent acceptance PENDING",
+    "C01_02_latest": "Independent W24 real FBX static/visual review P18-07: P0 UNITY-LOCAL-AXIS SOURCE_CONTRACT_HOLD on W23 old C# blob 265af...; updated W24 C# root-basis conversion on new Git blob, +50/50 tests, independent NEW exact-source verdict pending",
     "C01_01_locked_static_depth_variance_mm": 1,
     "C01_01_dynamic_slide_extra_depth_mm": 20,
     "C01_01_dimension_and_envelope_signoff": "PENDING (both 341mm locked and 361mm extended rendered envelopes)",
@@ -347,6 +349,17 @@
     "door_and_gate_changes": 0,
     "no_new_asset_ids": true,
     "no_merge": true,
-    "release": "HOLD"
+    "release": "HOLD",
+    "C01_02_exact_signed_parent_rotation_deg_xyz": [
+      -90,
+      0,
+      0
+    ],
+    "C01_02_signed_FBXSHA_parent_local_retract_candidate_m": [
+      0,
+      -0.02,
+      0
+    ],
+    "C01_01_official_tolerance": "C01-02 independently recommends ACCEPT_1MM_NONSTRUCTURAL_P18-07_ONLY; C01-01 formal signoff still pending (also +20mm dynamic footprint)"
   }
 }

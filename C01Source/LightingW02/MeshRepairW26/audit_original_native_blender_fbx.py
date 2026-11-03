@@ -2,12 +2,12 @@
 No exports, saving, mesh repairs, door imports, prefab or Unity claims.
 Output JSON and genuine geometry wireframe SVG to evidence/ only.
 """
-import bpy, bmesh, json, hashlib, math, pathlib, sys
+import bpy, bmesh, json, hashlib, math, pathlib, sys, os
 from mathutils.bvhtree import BVHTree
 
 HERE = pathlib.Path(__file__).resolve().parent
 ROOT = HERE.parents[2]
-W01 = ROOT / "C01Source/Lighting"
+W01 = pathlib.Path(os.environ.get("C01_W01_NATIVE_ROOT",str(ROOT / "C01Source/Lighting")))
 W02 = ROOT / "C01Source/LightingW02"
 MANIFEST = json.loads((W02 / "MeshRepairPASS17/GENUINE_BLENDER_SHA_AND_QA.json").read_text())
 OUT = HERE / "evidence"

@@ -38,6 +38,18 @@ namespace C01.Cargo
             }
         }
 
+        private void Awake()
+        {
+            // Nonserialized runtime caches do NOT survive prefab deserialization.
+            // Reconstruct all original wheel pivots before gameplay uses the guard.
+            try { Configure(wheels); }
+            catch (Exception e)
+            {
+                Debug.LogError("P18-03 visual bearing is not safe to roll: " + e.Message, this);
+                enabled = false;
+            }
+        }
+
         /// <summary>
         /// For visual rolling ONLY. Not a wheel PhysX drive; gameplay should call
         /// this after moving the kinematic cart. Four wheels use local X axle.

@@ -1,0 +1,1318 @@
+{
+  "schema": "C01-13-W26-REAL-FBX-PROP-VS-REAL-W01-F01-1",
+  "real_signed_FBX_sources": [
+    {
+      "id": "P17-01",
+      "sha256": "cd6a5787bb7b4c088f0af35382385e4274c85c415c60467f9a22e46fe33ef02c",
+      "bytes": 63916
+    },
+    {
+      "id": "P18-01",
+      "sha256": "f541d502ba9eaaf5c7a0a7279c44f71f36dd482e3aed3ba0734058dcf1045f6c",
+      "bytes": 140460
+    },
+    {
+      "id": "P19-03",
+      "sha256": "1bd730b2382879d7d9c2f3d67c4b9646b8ca036c04de663e53b3019c403af2df",
+      "bytes": 28796
+    },
+    {
+      "id": "W01",
+      "sha256": "4260732720f10688e9ee370d2a254b67c9263e3e8241b4da42f08e12fe99632f",
+      "bytes": 15452
+    },
+    {
+      "id": "F01",
+      "sha256": "46acac987ca3f8387472b2dc8b611cd871c90cd3e7d4773568c9005c84cb5c09",
+      "bytes": 63164
+    }
+  ],
+  "source_geometry_counts": [
+    {
+      "id": "P17-01",
+      "meshes": 25,
+      "tris": 380
+    },
+    {
+      "id": "P18-01",
+      "meshes": 47,
+      "tris": 980
+    },
+    {
+      "id": "P19-03",
+      "meshes": 5,
+      "tris": 128
+    },
+    {
+      "id": "W01",
+      "meshes": 1,
+      "tris": 12
+    },
+    {
+      "id": "F01",
+      "meshes": 1,
+      "tris": 28
+    }
+  ],
+  "module_signature_and_1m_tiling": {
+    "grid_m": 1,
+    "real_F01_tiles": 16,
+    "real_W01_tiles": 16,
+    "floor_gap_positions_between_1m_tiles": 0,
+    "world_floor_top_y_m": 0,
+    "evidence": "Actual imported 1x1m floor tile dimension & world boxes, not geometry weld or union."
+  },
+  "source_architecture_bounds": {
+    "W01": [
+      [
+        0.0,
+        1.0
+      ],
+      [
+        0.0,
+        3.0
+      ],
+      [
+        -1.3113415775478643e-07,
+        0.20000000298023224
+      ]
+    ],
+    "F01": [
+      [
+        0.0,
+        1.0
+      ],
+      [
+        -0.20000000298023224,
+        4.371138828673793e-08
+      ],
+      [
+        -0.0,
+        1.0
+      ]
+    ]
+  },
+  "analytical_scene": "existing 3 non-door FBX in 4x4m room with 16 physical W01 full-wall modules and 16 physical F01 floor tiles; no doors/openings created or touched",
+  "layouts": [
+    {
+      "layout": "W25_A_UPPER_WALL",
+      "model_results": [
+        {
+          "asset": "P17-01",
+          "anchor": [
+            1,
+            0,
+            3
+          ],
+          "yaw": 0,
+          "real_FBX_sha256": "cd6a5787bb7b4c088f0af35382385e4274c85c415c60467f9a22e46fe33ef02c",
+          "bounds_m": [
+            [
+              0.19999998807907104,
+              1.800000011920929
+            ],
+            [
+              0.0,
+              1.0999999168717567
+            ],
+            [
+              2.6749999821186066,
+              3.3249999582767487
+            ]
+          ],
+          "bottom_to_real_F01_top_m": 0.0,
+          "below_floor_vertices": 0,
+          "W01_walls_actual_triangle": {
+            "bvh_candidates": 0,
+            "strict_surface_crossing_pairs": 0,
+            "witnesses": [],
+            "unresolved_candidates": 0
+          },
+          "F01_floor_actual_triangle": {
+            "bvh_candidates": 34,
+            "strict_surface_crossing_pairs": 33,
+            "witnesses": [
+              {
+                "triangle_a": 7,
+                "triangle_b": 79,
+                "xyz": [
+                  0.62,
+                  0.0,
+                  3.0
+                ]
+              },
+              {
+                "triangle_a": 7,
+                "triangle_b": 82,
+                "xyz": [
+                  1.0,
+                  0.0,
+                  2.72
+                ]
+              },
+              {
+                "triangle_a": 7,
+                "triangle_b": 83,
+                "xyz": [
+                  1.0,
+                  0.0,
+                  3.0
+                ]
+              },
+              {
+                "triangle_a": 7,
+                "triangle_b": 193,
+                "xyz": [
+                  1.0,
+                  0.0,
+                  2.72
+                ]
+              },
+              {
+                "triangle_a": 7,
+                "triangle_b": 192,
+                "xyz": [
+                  1.0,
+                  0.0,
+                  3.0
+                ]
+              },
+              {
+                "triangle_a": 7,
+                "triangle_b": 71,
+                "xyz": [
+                  0.62,
+                  0.0,
+                  3.0
+                ]
+              },
+              {
+                "triangle_a": 7,
+                "triangle_b": 70,
+                "xyz": [
+                  0.62,
+                  0.0,
+                  3.0
+                ]
+              },
+              {
+                "triangle_a": 7,
+                "triangle_b": 63,
+                "xyz": [
+                  0.24,
+                  0.0,
+                  3.0
+                ]
+              },
+              {
+                "triangle_a": 7,
+                "triangle_b": 62,
+                "xyz": [
+                  0.38,
+                  0.0,
+                  3.0
+                ]
+              },
+              {
+                "triangle_a": 1,
+                "triangle_b": 184,
+                "xyz": [
+                  1.76,
+                  0.0,
+                  2.72
+                ]
+              }
+            ],
+            "unresolved_candidates": 1
+          },
+          "actual_floor_contacts_are_allowed": true
+        },
+        {
+          "asset": "P18-01",
+          "anchor": [
+            3,
+            0,
+            1
+          ],
+          "yaw": 90,
+          "real_FBX_sha256": "f541d502ba9eaaf5c7a0a7279c44f71f36dd482e3aed3ba0734058dcf1045f6c",
+          "bounds_m": [
+            [
+              2.550000011920929,
+              3.469000071287155
+            ],
+            [
+              0.0,
+              0.9070000429445528
+            ],
+            [
+              0.550000011920929,
+              1.449999988079071
+            ]
+          ],
+          "bottom_to_real_F01_top_m": 0.0,
+          "below_floor_vertices": 0,
+          "W01_walls_actual_triangle": {
+            "bvh_candidates": 0,
+            "strict_surface_crossing_pairs": 0,
+            "witnesses": [],
+            "unresolved_candidates": 0
+          },
+          "F01_floor_actual_triangle": {
+            "bvh_candidates": 26,
+            "strict_surface_crossing_pairs": 26,
+            "witnesses": [
+              {
+                "triangle_a": 404,
+                "triangle_b": 337,
+                "xyz": [
+                  3.209,
+                  0.0,
+                  0.55
+                ]
+              },
+              {
+                "triangle_a": 404,
+                "triangle_b": 336,
+                "xyz": [
+                  3.131564,
+                  0.0,
+                  0.55
+                ]
+              },
+              {
+                "triangle_a": 404,
+                "triangle_b": 344,
+                "xyz": [
+                  3.45,
+                  0.0,
+                  0.55
+                ]
+              },
+              {
+                "triangle_a": 407,
+                "triangle_b": 372,
+                "xyz": [
+                  3.45,
+                  0.0,
+                  1.45
+                ]
+              },
+              {
+                "triangle_a": 407,
+                "triangle_b": 365,
+                "xyz": [
+                  3.189461,
+                  0.0,
+                  1.45
+                ]
+              },
+              {
+                "triangle_a": 406,
+                "triangle_b": 372,
+                "xyz": [
+                  3.45,
+                  0.0,
+                  1.45
+                ]
+              },
+              {
+                "triangle_a": 405,
+                "triangle_b": 344,
+                "xyz": [
+                  3.45,
+                  0.0,
+                  0.55
+                ]
+              },
+              {
+                "triangle_a": 401,
+                "triangle_b": 336,
+                "xyz": [
+                  3.131564,
+                  0.0,
+                  0.55
+                ]
+              },
+              {
+                "triangle_a": 401,
+                "triangle_b": 240,
+                "xyz": [
+                  2.871025,
+                  0.0,
+                  1.0
+                ]
+              },
+              {
+                "triangle_a": 401,
+                "triangle_b": 250,
+                "xyz": [
+                  3.0,
+                  0.0,
+                  0.777236
+                ]
+              }
+            ],
+            "unresolved_candidates": 0
+          },
+          "actual_floor_contacts_are_allowed": true
+        },
+        {
+          "asset": "P19-03",
+          "anchor": [
+            3,
+            0,
+            3
+          ],
+          "yaw": 0,
+          "real_FBX_sha256": "1bd730b2382879d7d9c2f3d67c4b9646b8ca036c04de663e53b3019c403af2df",
+          "bounds_m": [
+            [
+              2.300000011920929,
+              3.699999988079071
+            ],
+            [
+              0.0,
+              0.7500000013113416
+            ],
+            [
+              2.6749999821186066,
+              3.3249999582767487
+            ]
+          ],
+          "bottom_to_real_F01_top_m": 0.0,
+          "below_floor_vertices": 0,
+          "W01_walls_actual_triangle": {
+            "bvh_candidates": 0,
+            "strict_surface_crossing_pairs": 0,
+            "witnesses": [],
+            "unresolved_candidates": 0
+          },
+          "F01_floor_actual_triangle": {
+            "bvh_candidates": 49,
+            "strict_surface_crossing_pairs": 49,
+            "witnesses": [
+              {
+                "triangle_a": 111,
+                "triangle_b": 401,
+                "xyz": [
+                  3.61,
+                  0.0,
+                  2.74
+                ]
+              },
+              {
+                "triangle_a": 111,
+                "triangle_b": 408,
+                "xyz": [
+                  3.67,
+                  0.0,
+                  2.74
+                ]
+              },
+              {
+                "triangle_a": 73,
+                "triangle_b": 429,
+                "xyz": [
+                  3.61,
+                  0.0,
+                  3.32
+                ]
+              },
+              {
+                "triangle_a": 71,
+                "triangle_b": 436,
+                "xyz": [
+                  3.67,
+                  0.0,
+                  3.32
+                ]
+              },
+              {
+                "triangle_a": 71,
+                "triangle_b": 429,
+                "xyz": [
+                  3.62,
+                  0.0,
+                  3.32
+                ]
+              },
+              {
+                "triangle_a": 69,
+                "triangle_b": 436,
+                "xyz": [
+                  3.67,
+                  0.0,
+                  3.26
+                ]
+              },
+              {
+                "triangle_a": 109,
+                "triangle_b": 408,
+                "xyz": [
+                  3.67,
+                  0.0,
+                  2.68
+                ]
+              },
+              {
+                "triangle_a": 110,
+                "triangle_b": 408,
+                "xyz": [
+                  3.67,
+                  0.0,
+                  2.74
+                ]
+              },
+              {
+                "triangle_a": 108,
+                "triangle_b": 408,
+                "xyz": [
+                  3.67,
+                  0.0,
+                  2.68
+                ]
+              },
+              {
+                "triangle_a": 107,
+                "triangle_b": 401,
+                "xyz": [
+                  3.61,
+                  0.0,
+                  2.68
+                ]
+              }
+            ],
+            "unresolved_candidates": 0
+          },
+          "actual_floor_contacts_are_allowed": true
+        }
+      ],
+      "actual_wall_strict_crossing_pairs": 0,
+      "actual_floor_strict_crossing_pairs": 108,
+      "actual_floor_submersion_vertices": 0,
+      "disposition": "ARCH_INTERFERENCE_WITNESS_REVIEW"
+    },
+    {
+      "layout": "W25_B_LOWER_WALL",
+      "model_results": [
+        {
+          "asset": "P17-01",
+          "anchor": [
+            1,
+            0,
+            1
+          ],
+          "yaw": 180,
+          "real_FBX_sha256": "cd6a5787bb7b4c088f0af35382385e4274c85c415c60467f9a22e46fe33ef02c",
+          "bounds_m": [
+            [
+              0.19999998807907104,
+              1.800000011920929
+            ],
+            [
+              0.0,
+              1.0999999168717567
+            ],
+            [
+              0.6750000417232513,
+              1.3250000178813934
+            ]
+          ],
+          "bottom_to_real_F01_top_m": 0.0,
+          "below_floor_vertices": 0,
+          "W01_walls_actual_triangle": {
+            "bvh_candidates": 0,
+            "strict_surface_crossing_pairs": 0,
+            "witnesses": [],
+            "unresolved_candidates": 0
+          },
+          "F01_floor_actual_triangle": {
+            "bvh_candidates": 64,
+            "strict_surface_crossing_pairs": 64,
+            "witnesses": [
+              {
+                "triangle_a": 6,
+                "triangle_b": 36,
+                "xyz": [
+                  0.38,
+                  0.0,
+                  1.14
+                ]
+              },
+              {
+                "triangle_a": 6,
+                "triangle_b": 37,
+                "xyz": [
+                  0.4136,
+                  0.0,
+                  1.14
+                ]
+              },
+              {
+                "triangle_a": 6,
+                "triangle_b": 29,
+                "xyz": [
+                  0.24,
+                  0.0,
+                  1.14
+                ]
+              },
+              {
+                "triangle_a": 6,
+                "triangle_b": 15,
+                "xyz": [
+                  0.62,
+                  0.0,
+                  1.0
+                ]
+              },
+              {
+                "triangle_a": 6,
+                "triangle_b": 14,
+                "xyz": [
+                  0.62,
+                  0.0,
+                  1.0
+                ]
+              },
+              {
+                "triangle_a": 6,
+                "triangle_b": 7,
+                "xyz": [
+                  0.24,
+                  0.0,
+                  1.0
+                ]
+              },
+              {
+                "triangle_a": 6,
+                "triangle_b": 137,
+                "xyz": [
+                  1.0,
+                  0.0,
+                  0.72
+                ]
+              },
+              {
+                "triangle_a": 6,
+                "triangle_b": 6,
+                "xyz": [
+                  0.38,
+                  0.0,
+                  1.0
+                ]
+              },
+              {
+                "triangle_a": 6,
+                "triangle_b": 26,
+                "xyz": [
+                  1.0,
+                  0.0,
+                  0.72
+                ]
+              },
+              {
+                "triangle_a": 6,
+                "triangle_b": 27,
+                "xyz": [
+                  1.0,
+                  0.0,
+                  1.0
+                ]
+              }
+            ],
+            "unresolved_candidates": 0
+          },
+          "actual_floor_contacts_are_allowed": true
+        },
+        {
+          "asset": "P18-01",
+          "anchor": [
+            3,
+            0,
+            3
+          ],
+          "yaw": 270,
+          "real_FBX_sha256": "f541d502ba9eaaf5c7a0a7279c44f71f36dd482e3aed3ba0734058dcf1045f6c",
+          "bounds_m": [
+            [
+              2.530999928712845,
+              3.449999988079071
+            ],
+            [
+              0.0,
+              0.9070000429445528
+            ],
+            [
+              2.550000011920929,
+              3.449999988079071
+            ]
+          ],
+          "bottom_to_real_F01_top_m": 0.0,
+          "below_floor_vertices": 0,
+          "W01_walls_actual_triangle": {
+            "bvh_candidates": 0,
+            "strict_surface_crossing_pairs": 0,
+            "witnesses": [],
+            "unresolved_candidates": 0
+          },
+          "F01_floor_actual_triangle": {
+            "bvh_candidates": 28,
+            "strict_surface_crossing_pairs": 28,
+            "witnesses": [
+              {
+                "triangle_a": 401,
+                "triangle_b": 324,
+                "xyz": [
+                  2.715005,
+                  0.0,
+                  3.284995
+                ]
+              },
+              {
+                "triangle_a": 401,
+                "triangle_b": 325,
+                "xyz": [
+                  2.810539,
+                  0.0,
+                  3.45
+                ]
+              },
+              {
+                "triangle_a": 401,
+                "triangle_b": 392,
+                "xyz": [
+                  3.081683,
+                  0.0,
+                  2.918317
+                ]
+              },
+              {
+                "triangle_a": 401,
+                "triangle_b": 399,
+                "xyz": [
+                  3.0,
+                  0.0,
+                  3.0
+                ]
+              },
+              {
+                "triangle_a": 400,
+                "triangle_b": 297,
+                "xyz": [
+                  2.868436,
+                  0.0,
+                  2.55
+                ]
+              },
+              {
+                "triangle_a": 400,
+                "triangle_b": 324,
+                "xyz": [
+                  2.715005,
+                  0.0,
+                  3.284995
+                ]
+              },
+              {
+                "triangle_a": 400,
+                "triangle_b": 303,
+                "xyz": [
+                  3.0,
+                  0.0,
+                  3.0
+                ]
+              },
+              {
+                "triangle_a": 400,
+                "triangle_b": 307,
+                "xyz": [
+                  3.0,
+                  0.0,
+                  3.0
+                ]
+              },
+              {
+                "triangle_a": 400,
+                "triangle_b": 306,
+                "xyz": [
+                  3.0,
+                  0.0,
+                  2.777236
+                ]
+              },
+              {
+                "triangle_a": 400,
+                "triangle_b": 317,
+                "xyz": [
+                  2.62,
+                  0.0,
+                  3.120903
+                ]
+              }
+            ],
+            "unresolved_candidates": 0
+          },
+          "actual_floor_contacts_are_allowed": true
+        },
+        {
+          "asset": "P19-03",
+          "anchor": [
+            3,
+            0,
+            1
+          ],
+          "yaw": 0,
+          "real_FBX_sha256": "1bd730b2382879d7d9c2f3d67c4b9646b8ca036c04de663e53b3019c403af2df",
+          "bounds_m": [
+            [
+              2.300000011920929,
+              3.699999988079071
+            ],
+            [
+              0.0,
+              0.7500000013113416
+            ],
+            [
+              0.6749999821186066,
+              1.3249999582767487
+            ]
+          ],
+          "bottom_to_real_F01_top_m": 0.0,
+          "below_floor_vertices": 0,
+          "W01_walls_actual_triangle": {
+            "bvh_candidates": 0,
+            "strict_surface_crossing_pairs": 0,
+            "witnesses": [],
+            "unresolved_candidates": 0
+          },
+          "F01_floor_actual_triangle": {
+            "bvh_candidates": 49,
+            "strict_surface_crossing_pairs": 49,
+            "witnesses": [
+              {
+                "triangle_a": 111,
+                "triangle_b": 352,
+                "xyz": [
+                  3.67,
+                  0.0,
+                  0.74
+                ]
+              },
+              {
+                "triangle_a": 111,
+                "triangle_b": 345,
+                "xyz": [
+                  3.61,
+                  0.0,
+                  0.74
+                ]
+              },
+              {
+                "triangle_a": 73,
+                "triangle_b": 373,
+                "xyz": [
+                  3.61,
+                  0.0,
+                  1.32
+                ]
+              },
+              {
+                "triangle_a": 71,
+                "triangle_b": 373,
+                "xyz": [
+                  3.62,
+                  0.0,
+                  1.32
+                ]
+              },
+              {
+                "triangle_a": 71,
+                "triangle_b": 380,
+                "xyz": [
+                  3.67,
+                  0.0,
+                  1.32
+                ]
+              },
+              {
+                "triangle_a": 69,
+                "triangle_b": 380,
+                "xyz": [
+                  3.67,
+                  0.0,
+                  1.26
+                ]
+              },
+              {
+                "triangle_a": 109,
+                "triangle_b": 352,
+                "xyz": [
+                  3.67,
+                  0.0,
+                  0.68
+                ]
+              },
+              {
+                "triangle_a": 110,
+                "triangle_b": 352,
+                "xyz": [
+                  3.67,
+                  0.0,
+                  0.74
+                ]
+              },
+              {
+                "triangle_a": 108,
+                "triangle_b": 352,
+                "xyz": [
+                  3.67,
+                  0.0,
+                  0.68
+                ]
+              },
+              {
+                "triangle_a": 107,
+                "triangle_b": 352,
+                "xyz": [
+                  3.62,
+                  0.0,
+                  0.68
+                ]
+              }
+            ],
+            "unresolved_candidates": 0
+          },
+          "actual_floor_contacts_are_allowed": true
+        }
+      ],
+      "actual_wall_strict_crossing_pairs": 0,
+      "actual_floor_strict_crossing_pairs": 141,
+      "actual_floor_submersion_vertices": 0,
+      "disposition": "ARCH_INTERFERENCE_WITNESS_REVIEW"
+    },
+    {
+      "layout": "W25_C_DIAGONAL_WALL",
+      "model_results": [
+        {
+          "asset": "P17-01",
+          "anchor": [
+            1,
+            0,
+            1
+          ],
+          "yaw": 0,
+          "real_FBX_sha256": "cd6a5787bb7b4c088f0af35382385e4274c85c415c60467f9a22e46fe33ef02c",
+          "bounds_m": [
+            [
+              0.19999998807907104,
+              1.800000011920929
+            ],
+            [
+              0.0,
+              1.0999999168717567
+            ],
+            [
+              0.6749999821186066,
+              1.3249999582767487
+            ]
+          ],
+          "bottom_to_real_F01_top_m": 0.0,
+          "below_floor_vertices": 0,
+          "W01_walls_actual_triangle": {
+            "bvh_candidates": 0,
+            "strict_surface_crossing_pairs": 0,
+            "witnesses": [],
+            "unresolved_candidates": 0
+          },
+          "F01_floor_actual_triangle": {
+            "bvh_candidates": 34,
+            "strict_surface_crossing_pairs": 33,
+            "witnesses": [
+              {
+                "triangle_a": 7,
+                "triangle_b": 15,
+                "xyz": [
+                  0.62,
+                  0.0,
+                  1.0
+                ]
+              },
+              {
+                "triangle_a": 7,
+                "triangle_b": 14,
+                "xyz": [
+                  0.62,
+                  0.0,
+                  1.0
+                ]
+              },
+              {
+                "triangle_a": 7,
+                "triangle_b": 7,
+                "xyz": [
+                  0.24,
+                  0.0,
+                  1.0
+                ]
+              },
+              {
+                "triangle_a": 7,
+                "triangle_b": 137,
+                "xyz": [
+                  1.0,
+                  0.0,
+                  0.72
+                ]
+              },
+              {
+                "triangle_a": 7,
+                "triangle_b": 6,
+                "xyz": [
+                  0.38,
+                  0.0,
+                  1.0
+                ]
+              },
+              {
+                "triangle_a": 7,
+                "triangle_b": 26,
+                "xyz": [
+                  1.0,
+                  0.0,
+                  0.72
+                ]
+              },
+              {
+                "triangle_a": 7,
+                "triangle_b": 27,
+                "xyz": [
+                  1.0,
+                  0.0,
+                  1.0
+                ]
+              },
+              {
+                "triangle_a": 7,
+                "triangle_b": 136,
+                "xyz": [
+                  1.0,
+                  0.0,
+                  1.0
+                ]
+              },
+              {
+                "triangle_a": 7,
+                "triangle_b": 23,
+                "xyz": [
+                  0.62,
+                  0.0,
+                  1.0
+                ]
+              },
+              {
+                "triangle_a": 1,
+                "triangle_b": 128,
+                "xyz": [
+                  1.76,
+                  0.0,
+                  0.72
+                ]
+              }
+            ],
+            "unresolved_candidates": 1
+          },
+          "actual_floor_contacts_are_allowed": true
+        },
+        {
+          "asset": "P18-01",
+          "anchor": [
+            1,
+            0,
+            3
+          ],
+          "yaw": 180,
+          "real_FBX_sha256": "f541d502ba9eaaf5c7a0a7279c44f71f36dd482e3aed3ba0734058dcf1045f6c",
+          "bounds_m": [
+            [
+              0.550000011920929,
+              1.449999988079071
+            ],
+            [
+              0.0,
+              0.9070000429445528
+            ],
+            [
+              2.550000011920929,
+              3.469000071287155
+            ]
+          ],
+          "bottom_to_real_F01_top_m": 0.0,
+          "below_floor_vertices": 0,
+          "W01_walls_actual_triangle": {
+            "bvh_candidates": 0,
+            "strict_surface_crossing_pairs": 0,
+            "witnesses": [],
+            "unresolved_candidates": 0
+          },
+          "F01_floor_actual_triangle": {
+            "bvh_candidates": 46,
+            "strict_surface_crossing_pairs": 46,
+            "witnesses": [
+              {
+                "triangle_a": 404,
+                "triangle_b": 204,
+                "xyz": [
+                  1.45,
+                  0.0,
+                  3.45
+                ]
+              },
+              {
+                "triangle_a": 404,
+                "triangle_b": 205,
+                "xyz": [
+                  1.45,
+                  0.0,
+                  3.284995
+                ]
+              },
+              {
+                "triangle_a": 404,
+                "triangle_b": 176,
+                "xyz": [
+                  1.45,
+                  0.0,
+                  2.918317
+                ]
+              },
+              {
+                "triangle_a": 404,
+                "triangle_b": 183,
+                "xyz": [
+                  1.45,
+                  0.0,
+                  3.0
+                ]
+              },
+              {
+                "triangle_a": 407,
+                "triangle_b": 93,
+                "xyz": [
+                  0.55,
+                  0.0,
+                  3.45
+                ]
+              },
+              {
+                "triangle_a": 407,
+                "triangle_b": 71,
+                "xyz": [
+                  0.55,
+                  0.0,
+                  3.0
+                ]
+              },
+              {
+                "triangle_a": 407,
+                "triangle_b": 64,
+                "xyz": [
+                  0.55,
+                  0.0,
+                  2.918317
+                ]
+              },
+              {
+                "triangle_a": 406,
+                "triangle_b": 93,
+                "xyz": [
+                  0.55,
+                  0.0,
+                  3.45
+                ]
+              },
+              {
+                "triangle_a": 405,
+                "triangle_b": 204,
+                "xyz": [
+                  1.45,
+                  0.0,
+                  3.45
+                ]
+              },
+              {
+                "triangle_a": 401,
+                "triangle_b": 204,
+                "xyz": [
+                  1.38,
+                  0.0,
+                  3.284995
+                ]
+              }
+            ],
+            "unresolved_candidates": 0
+          },
+          "actual_floor_contacts_are_allowed": true
+        },
+        {
+          "asset": "P19-03",
+          "anchor": [
+            3,
+            0,
+            3
+          ],
+          "yaw": 0,
+          "real_FBX_sha256": "1bd730b2382879d7d9c2f3d67c4b9646b8ca036c04de663e53b3019c403af2df",
+          "bounds_m": [
+            [
+              2.300000011920929,
+              3.699999988079071
+            ],
+            [
+              0.0,
+              0.7500000013113416
+            ],
+            [
+              2.6749999821186066,
+              3.3249999582767487
+            ]
+          ],
+          "bottom_to_real_F01_top_m": 0.0,
+          "below_floor_vertices": 0,
+          "W01_walls_actual_triangle": {
+            "bvh_candidates": 0,
+            "strict_surface_crossing_pairs": 0,
+            "witnesses": [],
+            "unresolved_candidates": 0
+          },
+          "F01_floor_actual_triangle": {
+            "bvh_candidates": 49,
+            "strict_surface_crossing_pairs": 49,
+            "witnesses": [
+              {
+                "triangle_a": 111,
+                "triangle_b": 401,
+                "xyz": [
+                  3.61,
+                  0.0,
+                  2.74
+                ]
+              },
+              {
+                "triangle_a": 111,
+                "triangle_b": 408,
+                "xyz": [
+                  3.67,
+                  0.0,
+                  2.74
+                ]
+              },
+              {
+                "triangle_a": 73,
+                "triangle_b": 429,
+                "xyz": [
+                  3.61,
+                  0.0,
+                  3.32
+                ]
+              },
+              {
+                "triangle_a": 71,
+                "triangle_b": 436,
+                "xyz": [
+                  3.67,
+                  0.0,
+                  3.32
+                ]
+              },
+              {
+                "triangle_a": 71,
+                "triangle_b": 429,
+                "xyz": [
+                  3.62,
+                  0.0,
+                  3.32
+                ]
+              },
+              {
+                "triangle_a": 69,
+                "triangle_b": 436,
+                "xyz": [
+                  3.67,
+                  0.0,
+                  3.26
+                ]
+              },
+              {
+                "triangle_a": 109,
+                "triangle_b": 408,
+                "xyz": [
+                  3.67,
+                  0.0,
+                  2.68
+                ]
+              },
+              {
+                "triangle_a": 110,
+                "triangle_b": 408,
+                "xyz": [
+                  3.67,
+                  0.0,
+                  2.74
+                ]
+              },
+              {
+                "triangle_a": 108,
+                "triangle_b": 408,
+                "xyz": [
+                  3.67,
+                  0.0,
+                  2.68
+                ]
+              },
+              {
+                "triangle_a": 107,
+                "triangle_b": 401,
+                "xyz": [
+                  3.61,
+                  0.0,
+                  2.68
+                ]
+              }
+            ],
+            "unresolved_candidates": 0
+          },
+          "actual_floor_contacts_are_allowed": true
+        }
+      ],
+      "actual_wall_strict_crossing_pairs": 0,
+      "actual_floor_strict_crossing_pairs": 128,
+      "actual_floor_submersion_vertices": 0,
+      "disposition": "ARCH_INTERFERENCE_WITNESS_REVIEW"
+    }
+  ],
+  "limits": [
+    "Only canonical P17-01/P18-01/P19-03 placement candidates, NOT entire 36-model production QA.",
+    "W01/F01 are genuine existing assets outside 36, with exact pinned native FBX SHA.",
+    "A 4x4 wall-ring is a QA test fixture, NOT a claim about complete ship layout or door clearance.",
+    "Genuine intentional coplanar floor support is NOT an unwanted intersection.",
+    "Strict noncoplanar triangle crossing cannot rule out all co-planar z-fighting or containment.",
+    "This is read-only Blender FBX placement QA, not final C01-02 release, Unity physics, NavMesh or PlayMode."
+  ],
+  "summary": {
+    "real_physical_FBX_sha_pass": 5,
+    "original_F01_instances": 16,
+    "original_W01_instances": 16,
+    "room_layouts_rechecked": 3,
+    "actual_W01_strict_crossing_pairs": 0,
+    "actual_F01_strict_crossing_pairs": 377,
+    "actual_floor_submerged_vertices": 0,
+    "door_assets_read_or_modified": 0,
+    "producer_sources_changed": 0,
+    "unity6_editor": "NOT_RUN",
+    "independent_c01_02_release": "PENDING",
+    "merge": false
+  },
+  "status": "REAL_NONDOOR_ARCHITECTURE_CONTACT_AUDIT__UNITY_NOT_RUN__OWNER_QA_PENDING"
+}

@@ -1,0 +1,47 @@
+{
+  "schema": "C01-03-W26-ALL-ACCESSIBLE-NONDOOR-INVENTORY",
+  "date": "2026-11-03",
+  "versioned_generated_source": "codex/c01-compact-decks",
+  "versioned_generated_head": "e6ea04ebcc249188d9fabd7cb7ac0b1ffc4711fb",
+  "library_baseline": "e029ad5339964b496b8627ea0137564845f52492",
+  "counts": {
+    "total": 1420,
+    "canonical": 36,
+    "curated": 8,
+    "generated": 1366,
+    "masters": 10,
+    "door_or_ambiguous_excluded_from_register": 87,
+    "missing_OBJ_counterparts": 36,
+    "provisional_owner_triage": 103,
+    "version_counts": {
+      "3": 76,
+      "4": 167,
+      "5": 334,
+      "6": 371,
+      "62": 36,
+      "64": 370,
+      "CURRENT_CANONICAL": 36,
+      "CURATED_LAST_NATIVE": 8,
+      "MODULAR": 12,
+      "MASTER_SOURCE": 10
+    }
+  },
+  "checks": {
+    "unique": true,
+    "canonical36": true,
+    "curated8": true,
+    "scope_no_door": true,
+    "sha36": true,
+    "allHold": true,
+    "noUnity": true
+  },
+  "SHA_boundary": "Curated 36+8 have prior signed original BLEND/FBX full SHA256 provenance; 16 current legacy LFS OIDs readback. Generated variants only Git blob SHA1, full-byte FBX SHA256 NOT MEASURED.",
+  "excluded_policy": "D01/D02 and entrusted door/gate/hatch/airlock/W04 assets forbidden; G_ and SILL_ quarantined as ambiguous; frozen PR #19/#32 untouched. No door byte inspection.",
+  "current_specific_QA": {
+    "P1805": "C01-02 W25 native released 23/23 PASS and source builder PASS; Unity NOT_RUN",
+    "P1807": "C01-02 W25 source axis contract PASS; depth 0.341m/swept 0.361m C01-01 decision PENDING",
+    "P1803": "C01-02 W25 radius & render-only source PASS; render hub-fork overlaps 576/576 remain; actual Unity NOT_RUN"
+  },
+  "workflow": "IDENTIFIED -> PHYSICAL_NATIVE_AUDIT -> DEFECT_CONFIRMED_OR_NO_DEFECT -> OWNER_REPAIR -> BLENDER_SAVE_FBX_EXPORT_REIMPORT -> C01-02_INDEPENDENT_CURRENT_SHA -> REAL_UNITY",
+  "status": "INVENTORY_AND_SCOPED_QA_DONE; GLOBAL_ALL_MESH_PHYSICAL_QA_PENDING; NO_FALSE_PASS"
+}

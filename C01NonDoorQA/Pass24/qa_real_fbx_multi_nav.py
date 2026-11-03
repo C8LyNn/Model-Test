@@ -140,6 +140,28 @@ def clearance_grid(area,fp):
         field.append(row)
     return field
 
+def centerline_probe(area,footprints_at_height):
+    """Independent straight walking-centerline obstruction check on REAL triangle projections.
+    It is not the alternative-route result and is not an approved agent width.
+    """
+    x0,x1,z0,z1=AREAS[area]
+    # Sample only the matching interior start-to-goal section, not the walls themselves.
+    start=0.5;length=(x1-x0-1.) if area=="ROOM" else (z1-z0-1.)
+    n=int(round(length/.05))+1
+    hits=[]
+    for i in range(n):
+        along=start+i*length/(n-1)
+        x,z=(x0+along,(z0+z1)/2.) if area=="ROOM" else ((x0+x1)/2.,z0+along)
+        for poly,box in footprints_at_height:
+            if box[0]-1e-8<=x<=box[1]+1e-8 and box[2]-1e-8<=z<=box[3]+1e-8:
+                if dist_to_poly((x,z),poly)<=1e-8:
+                    hits.append((x,z));break
+    return {"sample_step_m":0.05,"sample_count":n,
+        "sampled_occupied_centers":len(hits),
+        "centerline_geometrically_free_at_sample_points":len(hits)==0,
+        "occupied_sample_points_xz_m":[[round(x,4),round(z,4)] for x,z in hits[:10]],
+        "description":"Straight centerline independently tested against actual 0..height FBX triangle projections; not the route-around-object result."}
+
 def widest_path(field,area):
     nz=len(field);nx=len(field[0])
     # Analytical planes half a metre inside the fixture; no door/opening assumptions.
@@ -313,6 +335,7 @@ def main():
                 "approx_diameter_m":round(2*radius,5),
                 "probe_radii_m":probe,
                 "route_steps":len(path),"route_xz_m":[[round(x,3),round(z,3)] for x,z in path],
+                "straight_centerline":centerline_probe(fixture["area"],polys),
                 "method":"Conservative 2D projection of actual FBX triangle surfaces clipped to Y slab, sampled 0.10m clearance field, widest 4-neighbor path. NOT Unity NavMesh."})
         crossing=sum(p["exact_non_coplanar_surface_crossing_pairs"] for p in pairs)
         boundaries=sum(z["out_of_fixture_source_vertices"] for z in wall)
@@ -337,6 +360,8 @@ def main():
               "probe_r_0_1_connected":lvl["probe_radii_m"]["0.1"]["sampled_connection"],
               "probe_r_0_2_connected":lvl["probe_radii_m"]["0.2"]["sampled_connection"],
               "probe_r_0_35_connected":lvl["probe_radii_m"]["0.35"]["sampled_connection"],
+              "centerline_occupied_grid_samples":lvl["straight_centerline"]["sampled_occupied_centers"],
+              "centerline_sampled_clear":lvl["straight_centerline"]["centerline_geometrically_free_at_sample_points"],
               "surface_cross_pairs":crossing,"out_of_fixture_vertices":boundaries,
               "status":verdict})
         if fixture["id"] in ("ROOM_WALL_ADJACENT_3","ROOM_CENTER_CROWDED_3",
@@ -368,6 +393,7 @@ def main():
        "Real triangle non-coplanar crossings proved; coplanar overlaps/complete containment require supplementary test.",
        "0.1m cell size and conservative footprint mean sampled path is approximate; radius probes are NOT compliance criteria.",
        "Samples include all visible geometry in y=[0,slab] rather than game physics colliders.",
+       "Straight centerline can be blocked even when a separate alternate route exists; both are reported independently.",
        "Unapproved walkway width owner decision required, no automatic placement acceptance.",
        "Unity/NavMesh and final physical clearance tests: NOT RUN."],
       "disposition":"MEASURED_NONDOOR_MULTIPROP_QA__DESIGN_THRESHOLD_UNDEFINED__UNITY_NOT_RUN"}

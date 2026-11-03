@@ -1,0 +1,110 @@
+name: C01-13 W24 real-FBX multi-prop clearance and sampled path QA
+on:
+  push:
+    branches:
+      - c01/13-nondoor-placement-clipping-wave23
+    paths:
+      - "C01NonDoorQA/Pass24/qa_real_fbx_multi_nav.py"
+      - ".github/workflows/c01-13-w24-nondoor-multi-nav-qa.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  actual-nondoor-multi-prop:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Install actual Blender importer and SVG-to-PNG renderer
+        run: |
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y blender git-lfs python3-numpy librsvg2-bin
+          git lfs install --local
+          blender --version | head -2
+          rsvg-convert --version
+      - name: Hydrate IMMUTABLE non-door console P17-01 FBX
+        uses: actions/checkout@v4
+        with:
+          repository: C8LyNn/Model-Test
+          ref: d37f6cb8355d98324db44ca8eb139681beb7ea9b
+          path: _native/P17-01
+          lfs: true
+          persist-credentials: false
+      - name: Hydrate IMMUTABLE non-door crate P18-01 FBX
+        uses: actions/checkout@v4
+        with:
+          repository: C8LyNn/Model-Test
+          ref: 4d167a5e610c2b905360ed472e30960b735ffad5
+          path: _native/P18-01
+          lfs: true
+          persist-credentials: false
+      - name: Hydrate IMMUTABLE non-door desk P19-03 FBX
+        uses: actions/checkout@v4
+        with:
+          repository: C8LyNn/Model-Test
+          ref: dece710d3672d8eb4ef4183eb3f8657ea6790b21
+          path: _native/P19-03
+          lfs: true
+          persist-credentials: false
+      - name: Compile Python and independently verify 3 full FBX SHA hashes
+        run: |
+          python3 -m py_compile C01NonDoorQA/Pass24/qa_real_fbx_multi_nav.py
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib
+          cases=[
+            ("P17-01","_native/P17-01/Assets/C01InteriorProps/Models/P17-01.fbx","cd6a5787bb7b4c088f0af35382385e4274c85c415c60467f9a22e46fe33ef02c"),
+            ("P18-01","_native/P18-01/Assets/C01InteriorProps/C01-18/Models/P18-01.fbx","f541d502ba9eaaf5c7a0a7279c44f71f36dd482e3aed3ba0734058dcf1045f6c"),
+            ("P19-03","_native/P19-03/Assets/C01InteriorProps/C01-19/Models/P19-03/P19-03.fbx","1bd730b2382879d7d9c2f3d67c4b9646b8ca036c04de663e53b3019c403af2df")]
+          for name,path,digest in cases:
+            b=Path(path).read_bytes()
+            assert b.startswith(b"Kaydara FBX Binary"), "MISSING_HYDRATED_BINARY_FBX "+name
+            assert hashlib.sha256(b).hexdigest()==digest, "SHA_FAIL "+name
+            print("W24_ACTUAL_FULL_BINARY_SHA_PASS",name,digest,len(b))
+          PY
+      - name: ACTUAL Blender FBX multi-object triangle and sampled path calculation
+        run: |
+          blender --background --factory-startup --threads 2 --python-exit-code 1 --python C01NonDoorQA/Pass24/qa_real_fbx_multi_nav.py -- .
+      - name: Convert true source triangle SVG to physical PNG top and isometric
+        run: |
+          set -euo pipefail
+          cd C01NonDoorQA/Pass24/Results
+          for f in *.svg; do
+            rsvg-convert --format png --output "$(basename "$f" .svg).png" "$f"
+          done
+          python3 - <<'PY'
+          from pathlib import Path
+          import json,csv,struct
+          x=json.loads(Path("multi_object_clearance_W24.json").read_text())
+          assert x["summary"]["real_signed_FBX"]==3
+          assert x["summary"]["multi_object_layouts"]==5
+          assert x["summary"]["sampled_slab_scenarios"]==15
+          assert x["summary"]["door_or_gate_files_touched"]==0
+          assert x["summary"]["production_models_reexported"]==0
+          assert len(list(csv.DictReader(Path("multi_object_clearance_W24.csv").open())))==15
+          svgs=list(Path(".").glob("*.svg"))
+          pngs=list(Path(".").glob("*.png"))
+          assert len(svgs)==6 and len(pngs)==6, (len(svgs),len(pngs))
+          for p in pngs:
+            b=p.read_bytes()
+            assert b[:8]==b"\x89PNG\r\n\x1a\n" and len(b)>5000, (p,len(b))
+            w,h=struct.unpack(">II",b[16:24])
+            assert (w,h)==(1200,800),(p,w,h)
+          print("W24_5_LAYOUTS_15_SLABS_3_PHYSICAL_FBX_6_ACTUAL_TRIANGLE_PNG_PASS")
+          PY
+      - name: Upload physical W24 measurement artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-13-W24-Real-FBX-Multi-Prop-Nav-QA
+          if-no-files-found: error
+          path: C01NonDoorQA/Pass24/Results/
+      - name: Commit ONLY source-derived QA results on C01-13 Draft branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add C01NonDoorQA/Pass24/Results/
+          if git diff --cached --quiet; then echo "No changed result bytes"; exit 0; fi
+          git commit -m "C01-13 W24: measured actual non-door multi-prop crossing and 3-height navigation with PNG proof"
+          git push origin HEAD:c01/13-nondoor-placement-clipping-wave23

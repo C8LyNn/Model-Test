@@ -1,0 +1,93 @@
+name: C01-18 W25 Real P18-05 Production CSharp Mono QA (NOT UNITY)
+on:
+  push:
+    branches: [c01/props-18-cargo-wave02]
+    paths: ['.github/workflows/c01-18-w25-p1805-compiled-runtime-offline.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  actual-production-source-compiled-offline:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+      - name: Install offline Mono compiler (NOT Unity)
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y mono-mcs
+          mcs --version
+      - name: Compile actual P18-05 production CSharp with explicitly fake Unity API
+        run: |
+          set -euo pipefail
+          mcs -warnaserror -out:/tmp/C01_P1805_W25_CSHARP_OFFLINE.exe \
+            QA/C01-18/Pass24/Wave02/UnityEngine_Offline_Doubles.cs \
+            Assets/C01InteriorProps/C01-18-Wave02/Runtime/C01EquipmentCaseLatchGate.cs \
+            QA/C01-18/Pass25/Wave02/P18_05_Offline_Production_Runtime_Tests.cs
+          mono /tmp/C01_P1805_W25_CSHARP_OFFLINE.exe | tee /tmp/C01_P1805_W25_CSHARP_OFFLINE.log
+          grep -q 'C01_W25_P1805_ACTUAL_PRODUCTION_CSHARP_OFFLINE_PASS' /tmp/C01_P1805_W25_CSHARP_OFFLINE.log
+          grep -q 'actual real FBX -90X' /tmp/C01_P1805_W25_CSHARP_OFFLINE.log || \
+            grep -q 'original real FBX -90X' /tmp/C01_P1805_W25_CSHARP_OFFLINE.log
+      - name: Verify original native FBX SHA and scope of ONLY P18-05 prefab-builder
+        run: |
+          python3 - <<'PY'
+          import pathlib,json,re,hashlib
+          fb=pathlib.Path('Assets/C01InteriorProps/C01-18-Wave02/Models/P18-05.fbx').read_text()
+          digest='58e33516ead13e35e8a48228045c67bd53d6caf8de01883a11625fa2961957e5'
+          assert 'oid sha256:'+digest in fb and 'size 41388' in fb
+          p=pathlib.Path('Assets/C01InteriorProps/C01-18-Wave02/Editor/BuildPass25P1805Only.cs').read_text()
+          for needle in [
+           'VerifyOriginalPhysicalFBXBeforeAnyWrites();',
+           'if (f.Length != 41388)',digest,
+           'P18-05.prefab',
+           'meshes.Length != 10','triangles != 120',
+           'GetComponentsInChildren<Collider>(true).Length != 2',
+           'PrefabUtility.UnpackPrefabInstance(imported',
+           'obj.SetParent(hinge, true)',
+           'gate.Configure(hinge, latchL, latchR, lid.GetComponent<BoxCollider>(), movingHandles);'
+          ]:assert needle in p,needle
+          assert 'P18-04.prefab' not in p and 'P18-06.prefab' not in p and 'P18-07.prefab' not in p
+          log=pathlib.Path('/tmp/C01_P1805_W25_CSHARP_OFFLINE.log').read_text()
+          match=re.search('C01_W25_P1805_ACTUAL_PRODUCTION_CSHARP_OFFLINE_PASS checks=(\\d+)',log)
+          assert match,int(log.count('C01_P1805_W25_OFFLINE_PASS '))
+          count=int(match.group(1))
+          assert count>=45 and log.count('C01_P1805_W25_OFFLINE_PASS ')==count
+          out={
+           'wave':25,'asset':'P18-05','status':'ACTUAL_PRODUCTION_CSHARP_COMPILED_AND_EXECUTED_AGAINST_OFFLINE_UNITY_MOCK',
+           'original_blend_SHA256':'5f98b9e34f346df3ef133e30243aee5b26dc45032c415d643490d00dbdd22f21',
+           'original_binary_fbx_SHA256':digest,'physical_binary_hydration':'NOT_THIS_OFFLINE_MOCK_RUN',
+           'LFS_pointer_immutable':True,'original_binary_41388_bytes':True,
+           'tests_passed':count,'tests_failed':0,
+           'builder_source_guard_anchors':10,
+           'runtime_source':'Assets/C01InteriorProps/C01-18-Wave02/Runtime/C01EquipmentCaseLatchGate.cs',
+           'actual_compiler':'Mono mcs, authentic production class plus explicit fake UnityEngine',
+           'tested':'actual original lid+3 moving handles; two visually retracted 8mm latches; root-axis parent -90X and identity; staged 0.20s latch then 0.15s hinge 2mm; signed -X 0..110 open and return; 0-angle relock; visual/fail closed tamper; two physical body colliders',
+           'renderer_and_prefab_actual_Unity6':'NOT_RUN','Unity_PlayMode':'NOT_RUN','FBX_importer_Unity':'NOT_RUN','independent_C01_02':'PENDING',
+           'no_new_models':True,'doors_FROZEN':True,'merge':False,
+           'log_sha256':hashlib.sha256(log.encode()).hexdigest(),
+           'source_head_sha':'${{ github.sha }}'
+          }
+          folder=pathlib.Path('QA/C01-18/Pass25/Wave02')
+          (folder/'P18-05_W25_ACTUAL_CSHARP_OFFLINE_QA.json').write_text(json.dumps(out,indent=2)+'\n')
+          (folder/'P18-05_W25_ACTUAL_CSHARP_OFFLINE_QA.log').write_text(log)
+          print('C01_W25_P1805_CSHARP_NOT_UNITY_QA_OK',count)
+          PY
+      - name: Commit only scoped P18-05 test evidence (log intentionally force-added)
+        run: |
+          set -euo pipefail
+          git add -f QA/C01-18/Pass25/Wave02/P18-05_W25_ACTUAL_CSHARP_OFFLINE_QA.json QA/C01-18/Pass25/Wave02/P18-05_W25_ACTUAL_CSHARP_OFFLINE_QA.log
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'C01-18 W25: executed real source CSharp offline P18-05 staged opening tests [skip ci]'
+          git push origin HEAD:c01/props-18-cargo-wave02
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: C01-18-W25-P1805-ACTUAL-COMPILED-CSHARP-NOT-UNITY
+          path: |
+            QA/C01-18/Pass25/Wave02/P18-05_W25_ACTUAL_CSHARP_OFFLINE_QA.json
+            QA/C01-18/Pass25/Wave02/P18-05_W25_ACTUAL_CSHARP_OFFLINE_QA.log
+          if-no-files-found: warn
+          retention-days: 21

@@ -183,7 +183,13 @@ try:
   adjusted=w.copy();adjusted.z=target
   local=stripe.matrix_world.inverted_safe()@adjusted
   assert abs((stripe.matrix_world@local).z-target)<1e-7
-  stripe.data.vertices[ix].co=local
+  # Local XY must remain BITWISE identical; tiny Blender matrix-inverse
+  # numerical noise (~1.49e-8m Y) must never alter a non-target axis.
+  # World vertical direction is axis-aligned under this source's native
+  # current object transform; only original stripe local Z may change.
+  assert abs(float(stripe.matrix_world[0][2]))<1e-6 and abs(float(stripe.matrix_world[1][2]))<1e-6
+  stripe.data.vertices[ix].co.z=local.z
+  assert abs((stripe.matrix_world@stripe.data.vertices[ix].co).z-target)<1e-7
   report["modified_mesh_vertex_indices"].append(ix)
  stripe.data.update()
  after=measure(objs)

@@ -36,6 +36,11 @@ C01_P1807_W24_PASS rotated FBX parent unlock request
 C01_P1807_W24_PASS rotated FBX lock-parent translation converted, not local +Z actual=-0.02
 C01_P1807_W24_PASS rotated FBX lock retains original local Z actual=0.225
 C01_P1807_W24_PASS rotated parent reaches exact release pose
+C01_P1807_W24_PASS actual -90deg X FBX parent accepts release request
+C01_P1807_W24_PASS actual -90deg X FBX parent maps root +Z to local -Y, 20mm actual=-0.185
+C01_P1807_W24_PASS actual -90deg X parent does not incorrectly use local +Z actual=0.225
+C01_P1807_W24_PASS actual -90deg X parent reaches full visible unlock
+C01_P1807_W24_PASS actual -90deg X converted lock permits 5deg lid only after release
 C01_P1807_W24_PASS tamper fixture unlock accepted
 C01_P1807_W24_PASS tamper fixture opens lid
 C01_P1807_W24_PASS invisible lock fails closed and disables controller
@@ -43,4 +48,4 @@ C01_P1807_W24_PASS invisible lock fails to solid collider
 C01_P1807_W24_PASS failsafe returns lid to closed actual=0
 C01_P1807_W24_PASS external angular tamper fixture begins retract
 C01_P1807_W24_PASS hinge kept closed during retract actual=0
-C01_W24_P1807_REAL_CSHARP_OFFLINE_LOGIC_PASS checks=45 UNITY_EDITOR=NOT_RUN FBX_HASH_UNCHANGED
+C01_W24_P1807_REAL_CSHARP_OFFLINE_LOGIC_PASS checks=50 UNITY_EDITOR=NOT_RUN FBX_HASH_UNCHANGED

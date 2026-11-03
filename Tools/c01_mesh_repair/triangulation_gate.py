@@ -18,7 +18,9 @@ from pathlib import Path
 import bpy
 from mathutils import Vector
 
-EPS_AREA2 = 1e-12
+# Threshold applies to triangle AREA (m²), not squared cross-product length (m^4).
+# Old EPS_AREA2 compared quantities with different units and falsely failed tiny valid triangles.
+EPS_TRIANGLE_AREA_M2 = 1e-12
 DOT_MIN = 0.999
 POSITION_QUANT = 5
 
@@ -61,13 +63,14 @@ def polygon_tessellation(mesh_obj):
         a, b, c = coords
         cross = (b - a).cross(c - a)
         squared = cross.length_squared
-        if not math.isfinite(squared) or squared < EPS_AREA2:
+        triangle_area_m2 = 0.5 * math.sqrt(squared) if math.isfinite(squared) and squared >= 0 else float("nan")
+        if not math.isfinite(triangle_area_m2) or triangle_area_m2 < EPS_TRIANGLE_AREA_M2:
             zero_tri += 1
         else:
             alignment = cross.normalized().dot(face.normal)
             if not math.isfinite(alignment) or alignment < DOT_MIN:
                 neg_tri += 1
-        face_triangle_area[face.index] += math.sqrt(squared) / 2 if squared >= 0 else 0
+        face_triangle_area[face.index] += triangle_area_m2 if math.isfinite(triangle_area_m2) else 0.0
         face_triangle_counts[face.index] += 1
         corners = [point(transform @ mesh.vertices[i].co) for i in triangle.vertices]
         out[tuple(sorted(corners))] += 1
@@ -75,7 +78,7 @@ def polygon_tessellation(mesh_obj):
             math.isfinite(float(v)) for loop in triangle.loops for v in uvs.data[loop].uv
         ):
             bad_uv += 1
-        area += math.sqrt(squared) / 2 if squared >= 0 else 0
+        area += triangle_area_m2 if math.isfinite(triangle_area_m2) else 0.0
     mismatch_area = 0
     for face in mesh.polygons:
         # A triangulated polygon must have exactly N-2 nondegenerate triangles.

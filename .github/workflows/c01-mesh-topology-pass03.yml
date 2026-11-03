@@ -1,9 +1,10 @@
 name: C01-01 PASS03 Actual Blender Mesh Audit
 on:
+  # Exactly one expensive native Blender workflow for standards code changes.
+  # Docs-only commits must not re-run known real producer Blender/FBX tests.
   push:
     branches:
       - c01/standards-mesh-topology-pass03
-  pull_request:
     paths:
       - 'Tools/c01_mesh_repair/**'
       - 'Tests/c01_mesh_repair/**'
@@ -30,7 +31,7 @@ jobs:
         run: python3 -m unittest discover -s Tests/c01_mesh_repair -p test_compare_reports.py -v
       - name: Execute five REAL Blender runtime fixture tests
         run: blender --background --factory-startup --python-exit-code 13 --python Tests/c01_mesh_repair/test_topology_blender.py
-      - name: Run five native Blender PASS04 triangulation fixture tests
+      - name: Run seven native Blender triangulation fixture tests
         run: blender --background --factory-startup --python-exit-code 13 --python Tests/c01_mesh_repair/test_triangulation_blender.py
 
   six-producer-sources:

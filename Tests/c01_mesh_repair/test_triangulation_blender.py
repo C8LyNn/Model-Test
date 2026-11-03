@@ -77,6 +77,23 @@ def test_degenerate_face_detected():
     assert data["zero_area_triangles"]==1,data
 
 
+def test_tiny_positive_area_triangle_is_not_degenerate():
+    reset()
+    # 0.02 mm² is well below the old, incorrectly squared 0.5 mm² cutoff.
+    obj=create("TinyValid",[(0,0,0),(0.0002,0,0),(0,0.0002,0)],[(0,1,2)])
+    data=gate.polygon_tessellation(obj)
+    assert data["zero_area_triangles"]==0,data
+    assert data["triangles"]==1,data
+
+
+def test_subthreshold_area_triangle_is_degenerate():
+    reset()
+    # 0.5e-12 m² is genuinely below the normative 1e-12 m² threshold.
+    obj=create("NearZero",[(0,0,0),(0.000001,0,0),(0,0.000001,0)],[(0,1,2)])
+    data=gate.polygon_tessellation(obj)
+    assert data["zero_area_triangles"]==1,data
+
+
 def test_no_uv_fails_stream():
     reset()
     mesh=bpy.data.meshes.new("NoUV")

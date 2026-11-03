@@ -1,11 +1,11 @@
 {
-  "schema": "C01_03_W26_GLOBAL_NONDOOR_1003_RECORD_AUDIT_V1",
+  "schema": "C01_03_W26_GLOBAL_NONDOOR_1012_RECORD_AUDIT_V2",
   "date": "2026-11-03",
   "repo": "C8LyNn/Model-Test",
   "role": "C01-03_ASSET_LIBRARY",
   "draft_PR": 27,
   "branch": "c01/props-03-library-wave02",
-  "asset_denominators": "36 tracked signed P15-P19 interior props plus 967 additional separately path-versioned non-door FBX files, of which 948 are older/current generated ship variants; ship variants are not proven unique authored meshes, only distinct repository asset paths.",
+  "asset_denominators": "36 P15–P19 props + 3 standalone walls + 12 legacy modular FBX + 4 ramp/railing version snapshots + 948 ship V3–V6 non-door generator FBX paths + 9 standalone F01/F02/C01 v002/v003/v004 signed FBX snapshots = 1012 paths. Paths not necessarily unique mesh geometry. Claude gates remain excluded; 18 lift sills quarantined.",
   "strict_freeze": {
     "claude_delegated_door_or_gate_models": "COMPLETELY_OUT_OF_SCOPE_UNTOUCHED_NOT_TESTED",
     "old_prs": [
@@ -23,7 +23,8 @@
     "tree_commit_snapshots": {
       "ship": "15a6aa18eb45a2e11c78dd1aec97ae13ee6a57a3",
       "wall": "7e6b159d0742f082e836bc7a4c6b12aee75b312e",
-      "structural": "d8dec92974921855db7def9e67c19884f29f9fbe"
+      "structural": "d8dec92974921855db7def9e67c19884f29f9fbe",
+      "floor": "1e4fedc8570336d2cf9de017cab0a6f170ff6077"
     },
     "source_generation_blender_pointer_oid": {
       "C01ShipV3": {
@@ -43,7 +44,9 @@
         "sha": "8a5cf20539ccfa55429accb242d885b3d0f4501c8459ba21ff321e56435096fd"
       }
     },
-    "source_W25_independent_review": "https://github.com/C8LyNn/Model-Test/blob/c01/props-02-independent-qa/C01InteriorProps_QA/DETAIL_PASS25/W25_INDEPENDENT_SIGNED_FBX_SOURCE_QA.md"
+    "source_W25_independent_review": "https://github.com/C8LyNn/Model-Test/blob/c01/props-02-independent-qa/C01InteriorProps_QA/DETAIL_PASS25/W25_INDEPENDENT_SIGNED_FBX_SOURCE_QA.md",
+    "W26_floor_producer_real_Blender": "https://github.com/C8LyNn/Model-Test/actions/runs/41707857851",
+    "W26_floor_producer_signed_artifact": 13267576174
   },
   "limits": [
     "This inventory lists separate FBX paths (including historical generations), not unique meshes or inspected native geometry. Counts are not number of completed mesh QA results.",
@@ -53,7 +56,7 @@
   ],
   "status_pipeline": "INVENTORIED -> ORIGINAL_BINARY_VERIFIED -> MESH_AUDITED -> DEFECT_CONFIRMED_OR_NO_DEFECT -> REPAIRED_IF_NEEDED -> C01_02_EXACT_SHA_ACCEPTED -> UNITY_EDITOR_REAL_PASS",
   "stats": {
-    "total": 1003,
+    "total": 1012,
     "cohorts": {
       "P15_P19": 36,
       "ARCH_W01_W03": 3,
@@ -62,7 +65,10 @@
       "SHIP_GENERATED_C01ShipV3": 76,
       "SHIP_GENERATED_C01ShipV4": 167,
       "SHIP_GENERATED_C01ShipV5": 334,
-      "SHIP_GENERATED_C01ShipV6": 371
+      "SHIP_GENERATED_C01ShipV6": 371,
+      "STANDALONE_FLOOR_CEILING_V002": 3,
+      "STANDALONE_FLOOR_CEILING_V003": 3,
+      "STANDALONE_FLOOR_CEILING_V004": 3
     },
     "ship": {
       "eligible": 948,
@@ -91,7 +97,7 @@
         }
       }
     },
-    "sha256_per_fbx_verified_pointer": 59,
+    "sha256_per_fbx_verified_pointer": 68,
     "FBX_SHA_UNKNOWN": 944,
     "original_physical_proof_prop36": 36,
     "unity_editors_actual": 0,
@@ -103,19 +109,20 @@
     "release_approved": 0
   },
   "invariants": {
-    "total_1003": true,
     "unique": true,
     "ship_948": true,
     "gate_42": true,
     "sill_18": true,
     "cohorts": true,
-    "sha_known_59": true,
     "unknown_944": true,
     "all_git_location": true,
     "no_gate_or_sill": true,
     "no_doors_by_name": true,
     "all_release_hold": true,
-    "QA_exact_changed": true
+    "QA_exact_changed": true,
+    "total_1012": true,
+    "sha_known_68": true,
+    "standalone_v002_v003_v004_3_each": true
   },
   "high_priority_evidence": [
     {
@@ -153,6 +160,12 @@
       "independent": "32 of 708 abrupt bolt normal candidates; shaded evidence pending",
       "owner": "C01-17/02",
       "next": "Real preview before any forced normal recalculation"
+    },
+    {
+      "id": "F01/F02/C01_STANDALONE_v004",
+      "independent": "C01-12 PRODUCER only REAL BLENDER 4.0.2 3 of 3 SOURCE+FBX and 4x4m room+2x4m corridor actual sample seam PASS; independent C01-02 NOT RUN",
+      "owner": "C01-12",
+      "next": "C01-02 exact-source independent v004 signoff; C01-10 licensed Unity6 prefab/scene/PlayMode"
     }
   ],
   "rows_preview": [

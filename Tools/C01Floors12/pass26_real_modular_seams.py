@@ -82,6 +82,14 @@ def point_in_triangle(p,abc,tolerance=1e-9):
     v=((c[1]-a[1])*(p[0]-c[0])+(a[0]-c[0])*(p[1]-c[1]))/det
     return u>=-tolerance and v>=-tolerance and u+v<=1+tolerance
 
+def strictly_inside(p,abc,tolerance=1e-7):
+    a,b,c=abc
+    det=(b[1]-c[1])*(a[0]-c[0])+(c[0]-b[0])*(a[1]-c[1])
+    if abs(det)<1e-12:return False
+    u=((b[1]-c[1])*(p[0]-c[0])+(c[0]-b[0])*(p[1]-c[1]))/det
+    v=((c[1]-a[1])*(p[0]-c[0])+(a[0]-c[0])*(p[1]-c[1]))/det
+    return u>tolerance and v>tolerance and u+v<1-tolerance
+
 def coverage(tris,axis,plane,low,high,step0=31,step1=11):
     polys=on_plane(tris,axis,plane)
     assert polys,(axis,plane,"no actual outer side triangles")
@@ -91,8 +99,11 @@ def coverage(tris,axis,plane,low,high,step0=31,step1=11):
         for j in range(step1):
             v=low[1]+(j+.5)/step1*(high[1]-low[1])
             n=sum(point_in_triangle((u,v),t[0]) for t in polys)
+            strictly=sum(strictly_inside((u,v),t[0]) for t in polys)
             if n==0:holes.append((u,v))
-            if n>1:overdraw.append((u,v,n))
+            # Two adjacent triangles may BOTH include a shared edge; only
+            # two STRICT interiors prove genuine planar overdraw.
+            if strictly>1:overdraw.append((u,v,strictly))
     assert not holes,(axis,plane,"physical side holes",holes[:12])
     assert not overdraw,(axis,plane,"same-surface double covering",overdraw[:12])
     return {"planar_triangles":len(polys),"interior_samples":step0*step1,

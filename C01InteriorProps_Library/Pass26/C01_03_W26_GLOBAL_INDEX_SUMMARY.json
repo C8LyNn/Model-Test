@@ -30,13 +30,21 @@
     "all_accessible_current_and_versioned_fbx_union": 1418,
     "canonical_current_source_full_SHA36": 36,
     "new_W26_native_producer_versions": 3,
-    "canonical_independent_new_SHA_pending": [
+    "canonical_independent_new_SHA_pending": [],
+    "global_generated_full_physical_QA_done_by_this_C01_03_turn": 0,
+    "final_release_approved": 0,
+    "canonical_independent_new_SHA_pass": [
       "P15-03",
       "P18-03",
       "P19-03"
     ],
-    "global_generated_full_physical_QA_done_by_this_C01_03_turn": 0,
-    "final_release_approved": 0
+    "current_exact_independent_sha_matches_canonical_36": 36,
+    "curated_architecture_exact_independent_sha_matches": 5,
+    "curated_architecture_candidate_sha_mismatch": [
+      "W01",
+      "W02",
+      "W03"
+    ]
   },
   "checks": {
     "unique": true,
@@ -51,7 +59,11 @@
     "still_1420_plus9_unchanged": true,
     "doors_still_excluded": true,
     "release_0": true,
-    "c01_02_crosswalk_33_current_3_new_pending": true
+    "c01_02_crosswalk_33_current_3_new_pending": true,
+    "W28_36_current_independent_exact_SHA": true,
+    "W28_8_architecture_5_exact_3_candidate_mismatch": true,
+    "W28_actual_Unity_run_zero": true,
+    "W28_no_door_models_or_merge": true
   },
   "SHA_boundary": "36 currently tracked BLEND+FBX source SHA256 values in Pass26 canonical JSON; W26 P15-03/P18-03/P19-03 are NEW producer original signed SHA from three isolated PRs, independent exact SHA pending. 1420 generated/curated versioned FILE PATHS are NOT 1420 distinct audited meshes. Most generated ship variants have Git blob SHA1 metadata only; no new full-byte content SHA256 claimed.",
   "excluded_policy": "D01/D02 and entrusted door/gate/hatch/airlock/W04 assets forbidden; G_ and SILL_ quarantined as ambiguous; frozen PR #19/#32 untouched. No door byte inspection.",
@@ -95,5 +107,41 @@
     "original_old_36_inverted_polygon_normal_corners": 0,
     "Unity_Editor": "NOT_RUN",
     "finalApproved": 0
+  },
+  "W28_current_acceptance_status": {
+    "independent_receipt": "C01InteriorProps_QA/W27/W27_EXECUTED_EXACT_SHA_ACCEPTANCE.md",
+    "independent_receipt_blob": "e996b2735551033b030e69a3260c6800e4e836b3",
+    "action_first": {
+      "run": 41717112468,
+      "status": "P15-03_P19-03_PASS__P18-03_TESTER_FALSE_FAIL"
+    },
+    "action_corrected": {
+      "run": 41717691683,
+      "status": "P18-03_INDEPENDENT_REAL_SOURCE_FBX_PASS"
+    },
+    "canonical_current_36_exact_SHA_coverage": 36,
+    "canonical_three_new_repaired_sha_status": "STATIC_UV_PASS_3_OF_3;MOTION_PASS_2_OF_2_WHERE_APPLICABLE",
+    "architecture_8_curated_exact_C01_02_evidence": 5,
+    "architecture_QA_candidate_not_equal_to_curated": [
+      "W01",
+      "W02",
+      "W03"
+    ],
+    "architecture_basis": "W26 independent FBX polygon QA original W01/W02/W03 candidate FBX SHA differs from curated library exact current SHA",
+    "versioned_path_records_unmodified": 1420,
+    "historical_supplement_records_unmodified": 9,
+    "owner_dimensional_decision_P18_07": "PENDING_STATIC_0_341M_VS_0_340M;SWEPT_0_361M",
+    "new_mesh_edits_C01_03": 0,
+    "actual_unity_editor_runs": 0,
+    "release_approved": 0,
+    "release_hold": 36,
+    "integrity_files": [
+      "C01InteriorProps_Library/Pass26/C01_03_W26_CANONICAL_36_QA_RELEASE.json",
+      "C01InteriorProps_Library/Pass28/C01_03_W28_CANONICAL_36_STATUS.csv",
+      "C01InteriorProps_Library/Pass28/C01_03_W28_ARCHITECTURE_8_STATUS.csv"
+    ],
+    "protected": "CLAUDE_DOORS_EXTERNAL_HOLD_NOT_READ_OR_EDITED",
+    "no_new_models": true,
+    "no_merge": true
   }
 }

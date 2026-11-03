@@ -126,5 +126,38 @@
     },
     "no_reexport": "all real native BLEND FBX unchanged",
     "no_merge": true
+  },
+  "wave23": {
+    "owner": "C01-18",
+    "door_handoff": "CLAUDE_DOORS_EXTERNAL_HOLD; no D01/D02 work, edits, exports or QA reruns",
+    "P18-03": {
+      "native_blend_sha256": "ea1b4f5cc5612f8d8ff5c3c585b9b48843659972c2371204b5d3b5c4df3a3b56",
+      "native_fbx_sha256": "f169ab74086ee3853c14b46ac6f6199cd255cfca15d8b7cbef32c3758cde7926",
+      "independent_W22": "STATIC_PASS / ASSEMBLY_MOTION_HOLD",
+      "evidence": "https://github.com/C8LyNn/Model-Test/blob/c01/props-02-independent-qa/C01InteriorProps_QA/DETAIL_PASS22/W22_NATIVE_INDEPENDENT_QA_FINDINGS.md",
+      "physical_contacts": "8 rotating metallic hubs vs 8 fixed fork cheeks, actual FBX 576/576 angular positions have 29-33 triangle crossings, original 2mm axial intersect; 8 hubs vs axle at rest ~84 triangle contacts each",
+      "intended_render_semantics": "decorative open-view metallic wheel bearing, not collision-driven solid mechanical contact; visual overlap remains visible / must pass human visual QA",
+      "physics_static_colliders": [
+        "Cart_Shelf_0",
+        "Cart_Shelf_1",
+        "Cart_Upright_-0.44_-0.29",
+        "Cart_Upright_-0.44_0.29",
+        "Cart_Upright_0.44_-0.29",
+        "Cart_Upright_0.44_0.29"
+      ],
+      "physics_no_colliders": "all Wheel_*, Wheel_*_Hub_In/Out, Wheel_*_ForkInner/Outer, Wheel_*_Axle and Wheel_*_AxleFastener are purely render meshes; no mutual solid PhysX simulation",
+      "generator": "Assets/C01InteriorProps/C01-18/Editor/BuildWave01CargoPrefabs.cs",
+      "runtime": "Assets/C01InteriorProps/C01-18/Runtime/C01CartWheelVisualBearing.cs",
+      "default_geometry_and_hierarchy": "original four imported wheel pivots and 8 wheel-child metal hubs preserved",
+      "wheel_radius_m": 0.105,
+      "dynamics": "visual rolling explicitly called by gameplay with signed translation, no WheelCollider, no implicit physics wheel or self-contact simulation",
+      "preflight_sha_before_writes": true,
+      "compiled_in_Unity": "NOT_RUN",
+      "unity_playmode": "NOT_RUN",
+      "independent_final": "HOLD",
+      "native_mesh_changes": 0,
+      "fbx_reexports": 0
+    },
+    "policy": "No new model IDs/doors/ship geometry/merge, original native SHA unchanged"
   }
 }

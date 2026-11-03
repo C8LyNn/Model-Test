@@ -4,7 +4,7 @@
   "date_utc": "2026-11-03",
   "repo": "https://github.com/C8LyNn/Model-Test",
   "HQ": "https://github.com/C8LyNn/Model-Test/issues/36",
-  "context": "Producer scoped P19 eight-model register for C01-03/00 global audit coordination; not claiming worldwide / 36 complete",
+  "context": "Producer scoped P19 eight-model register for C01-03/00 global audit coordination; not claiming worldwide / 36 complete; P19-03 row records original baseline and separately current repaired signed binaries",
   "claude_doors": "EXCLUDED_UNREAD_UNMODIFIED_UNTESTED_UNEXPORTED",
   "definition_of_done_flow": "AUDITED -> DEFECT_CONFIRMED/NO_ACTIONABLE_DEFECT -> REPAIRED(if warranted) -> INDEPENDENT_C01_02 -> REAL_UNITY_EDITOR",
   "actually_completed": {
@@ -17,14 +17,17 @@
     "actual_missing_uv0_meshes": 0,
     "actual_zero_area_faces": 0,
     "real_high_order_ngons": 10,
-    "exact_current_replacement_native_sha_after_p1903": "NOT_YET_PRODUCED",
+    "exact_current_replacement_native_sha_after_p1903": "4a1ad590e79515b0a699f0fb643d9999b4d1726bd68fce97505f401bb8375967",
     "blender_w01_action": "https://github.com/C8LyNn/Model-Test/actions/runs/41707817149",
     "blender_w02_action": "https://github.com/C8LyNn/Model-Test/actions/runs/41707823517",
     "targeted_p1903_action": "https://github.com/C8LyNn/Model-Test/actions/runs/41709447234",
-    "new_repair_native_files_committed": 0,
-    "independent_new_qa": "PENDING",
+    "new_repair_native_files_committed": 2,
+    "independent_new_qa": "P19-03_NEW_EXACT_SHA_PENDING_C01_02",
     "licensed_unity": "NOT_RUN",
-    "merges": 0
+    "merges": 0,
+    "blender_targeted_repair_action": "https://github.com/C8LyNn/Model-Test/actions/runs/41709447234",
+    "producer_repair_validated_by_readback": true,
+    "blender_w01_producer_head": "e053a786ffe8f08e5121c3ae5aa0f974a629660d"
   },
   "assets": [
     {
@@ -111,11 +114,38 @@
         "duplicate_geometric_faces": 0,
         "tj_screen_candidates": 0
       },
-      "classification": "TEN_REAL_HIGH_ORDER_NGONS_CONFIRMED__TARGETED_NATIVE_TRIANGULATION_EXECUTION_QUEUED",
-      "new_W26_native_repair": "ACTION_41709447234_QUEUED_NO_NEW_SHA_YET",
-      "independent_c01_02_new_sha": "PENDING_IF_PRODUCER_CHANGES",
+      "classification": "TEN_ORIGINAL_NGONS_CLOSED_IN_NEW_NATIVE_BLENDER_SOURCE_AND_FBX__NEW_EXACT_SHA_C01_02_INDEPENDENT_HOLD",
+      "new_W26_native_repair": "REPAIRED_PRODUCER_REAL_BLENDER_PASS__CURRENT_NEW_SHA__INDEPENDENT_QA_PENDING",
+      "independent_c01_02_new_sha": "PENDING_GENUINE_NEW_FBXSHA_RETEST",
       "real_unity_6_urp": "NOT_RUN",
-      "final_approval": "HOLD"
+      "final_approval": "HOLD",
+      "current_producer_blend_sha256": "ce43931f9116fe3aef6f795c98e505665c921e6c1080c7d61c5cd518e7f7f5b8",
+      "current_producer_fbx_sha256": "4a1ad590e79515b0a699f0fb643d9999b4d1726bd68fce97505f401bb8375967",
+      "native_blend_size_bytes": 907792,
+      "native_fbx_size_bytes": 29308,
+      "current_source_after_repair_counts": {
+        "meshes": 5,
+        "vertices": 72,
+        "triangle_equivalents": 128,
+        "ngons": 0,
+        "missing_uv0_meshes": 0,
+        "degenerate_faces": 0
+      },
+      "repair_changes": {
+        "old_ngons": 10,
+        "new_ngons": 0,
+        "moved_vertices": 0,
+        "vertex_count_before_after": "72/72",
+        "triangulated_face_count": 10,
+        "geometry_bbox_shift_m": 0,
+        "fbx_reimport_bbox_delta_m": 2.9802322387695312e-8,
+        "uv0_sets_unchanged": true,
+        "pivot_parent_and_world_transform_unchanged": true,
+        "result": "PRODUCER_NATIVE_BLENDER_PASS__INDEPENDENT_C01_02_PENDING"
+      },
+      "repair_action": "https://github.com/C8LyNn/Model-Test/actions/runs/41709447234",
+      "repair_proof": "https://github.com/C8LyNn/Model-Test/blob/c01/props-19-furniture/Assets/C01InteriorProps/C01-19/QA/PASS26/P19-03_NGON_REPAIR/REPAIR_AND_ROUNDTRIP.json",
+      "producer_pr15_commit_repair": "e053a786ffe8f08e5121c3ae5aa0f974a629660d"
     },
     {
       "id": "P19-04",

@@ -85,7 +85,8 @@
       "source_obj_sha256": "4446cfc77a6c4a9de4cf7c172ae06395b9dad9e39941566046d952eab0f16a6a",
       "native_blend_sha256": "ea1b4f5cc5612f8d8ff5c3c585b9b48843659972c2371204b5d3b5c4df3a3b56",
       "native_fbx_sha256": "f169ab74086ee3853c14b46ac6f6199cd255cfca15d8b7cbef32c3758cde7926",
-      "independent_QA": "C01-02 REAL FBX STATIC_PASS wheel rest and rubber sweep 2mm clearance; rotating hub/fork material interference classification HOLD / Unity NOT_RUN"
+      "independent_QA": "C01-02 REAL FBX STATIC_PASS wheel rest and rubber sweep 2mm clearance; rotating hub/fork material interference classification HOLD / Unity NOT_RUN",
+      "w24_status": "VISUAL_BEARING_SOURCE_ANIMATED_39_OFFLINE_CSHARP_TESTS_PASS_NOT_UNITY; C01-02+UNITY HOLD"
     }
   ],
   "detail_pass": 17,
@@ -159,5 +160,32 @@
       "fbx_reexports": 0
     },
     "policy": "No new model IDs/doors/ship geometry/merge, original native SHA unchanged"
+  },
+  "wave24": {
+    "owner": "C01-18",
+    "source_scope": "Existing Draft #18 P18-03 visually animated hub, no model export",
+    "model": "P18-03",
+    "FBX_SHA256": "f169ab74086ee3853c14b46ac6f6199cd255cfca15d8b7cbef32c3758cde7926",
+    "BLEND_SHA256": "ea1b4f5cc5612f8d8ff5c3c585b9b48843659972c2371204b5d3b5c4df3a3b56",
+    "exact_source_branch": "c01/props-18-cargo",
+    "QA_independent_latest": "C01-02 W23 STATIC_PASS / RENDER_MATING_REVIEW + UNITY_PHYSX_HOLD, 576/576 independent FBX hub-fork intersections",
+    "geometry": "all 63 original meshes/1780 triangles remain unmodified; 8 original rotating hub meshes parent to 4 native rubber wheels",
+    "physics_policy": "Only 2 shelf + 4 upright BoxColliders; no Wheel_*, hub, fork or axle collider, no WheelCollider. These are visual-only decorative bearings with 2mm genuine overlapping rendered solids, not physically-clear joints.",
+    "runtime_source": "Assets/C01InteriorProps/C01-18/Runtime/C01CartWheelVisualBearing.cs",
+    "runtime_change": "Automatic visual wheel rotation from root FORWARD translation; signed reversible 0.105m wheel radius, sideways motion/pure rotation no wheel movement, >2m/frame teleport ignored, manual fallback if auto disabled, stable rest-pose-relative quaternion wheel rotations preserving both hub children",
+    "source_validation": "Actual real C# production runtime compiled and executed with offline UnityEngine doubles in CI; 39/39 deterministic checks PASS, not Unity",
+    "source_CSharp_run_id": 41630296188,
+    "source_CSharp_evidence": "https://github.com/C8LyNn/Model-Test/blob/c01/props-18-cargo/QA/C01-18/Pass24/Wave01/P18-03_W24_REAL_CSHARP_MOCK_QA.json",
+    "C01_02_latest_commit_recheck": "PENDING",
+    "Unity_6000_3_14f1_Editor": "NOT_RUN",
+    "Unity_PhysX_PlayMode": "NOT_RUN",
+    "C01_01_owner_clearance": "NOT_REQUIRED_FOR_MODEL_STATIC; gameplay/render acceptance PENDING",
+    "world_geometry_verified_previously": "https://github.com/C8LyNn/Model-Test/actions/runs/41537598153",
+    "owner_freeze": "ALL CLAUDE DELEGATED D01/D02/DOORS AND GATES FROZEN NOT TOUCHED",
+    "original_native_modifications": 0,
+    "FBX_exports": 0,
+    "models_added": 0,
+    "merge": false,
+    "release": "HOLD"
   }
 }

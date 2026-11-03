@@ -44,7 +44,9 @@ assert abs(max(float(p.x) for p in dv)-4)<1e-5 and abs(min(float(p.x) for p in d
 assert abs(max(float(p.y) for p in dv)-0)<1e-5 and abs(min(float(p.y) for p in dv)+1)<1e-5
 assert sorted(round(float(p.z-p.x*.25),5) for p in dv)==[-.2]*4+[0.0]*4
 proxy=meshes['COL_RampDeck']
-assert sorted(tuple(round(float(x),7) for x in proxy.matrix_world @ v.co) for v in proxy.data.vertices)==sorted(tuple(round(float(x),7) for x in dv)
+def exact_world_vertex_signature(ob):
+ return sorted(tuple(round(float(x),7) for x in (ob.matrix_world @ v.co)) for v in ob.data.vertices)
+assert exact_world_vertex_signature(proxy)==exact_world_vertex_signature(deck),'deck collider moved'
 # Directly change only the 16 real *bottom* strip vertices. No top vertices moved.
 witness=[]
 for i in range(1,5):

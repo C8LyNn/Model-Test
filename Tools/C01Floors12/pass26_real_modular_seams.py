@@ -222,6 +222,9 @@ for x in (1,2):
         layout.append({"id":"F02" if (x+y)%4==0 else "F01","x":x,"y":y+1,"zone":"corridor"})
 assert len(layout)==24
 objects=[stage(c["id"],c["x"],c["y"]) for c in layout]
+# Blender does not eagerly evaluate matrix_world after scripted root movement.
+# Use freshly evaluated scene transforms for ACTUAL world-space bounds & edge previews.
+bpy.context.view_layer.update()
 # Measure positive *volumetric* overlaps: snapped shared faces are not collisions.
 aabbs=[]
 for o in objects:
@@ -289,6 +292,7 @@ previews["floor_top"]=screenshot("W26_F01_F02_4x4_ROOM_2x4_CORRIDOR_TOP", (2,0,1
 previews["floor_isometric_wire"]=screenshot("W26_F01_F02_4x4_ROOM_2x4_CORRIDOR_ISO_WIREFRAME",(8,-11,10),(2,0,0),12,True)
 for o in objects:bpy.data.objects.remove(o,do_unlink=True)
 ceilings=[stage("C01",x,y+1) for x in range(4) for y in range(4)]
+bpy.context.view_layer.update()
 previews["ceiling_underside"]=screenshot("W26_C01_4x4_CEILING_UNDERSIDE_WIREFRAME",(2,-4,-4),(2,2,3),7.5,True)
 for o in ceilings:bpy.data.objects.remove(o,do_unlink=True)
 

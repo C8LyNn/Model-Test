@@ -28,8 +28,9 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          python3 -m py_compile Tools/C01Structural14/blender_pass23_rmp_strip_mount_fix.py
           LIBGL_ALWAYS_SOFTWARE=1 xvfb-run -a blender --background --python Tools/C01Structural14/blender_pass23_rmp_strip_mount_fix.py 2>&1 | tee c01_14_w23_rmp_blender_native.log
-          if grep -E 'Traceback \(most recent call last\)|AssertionError|ModuleNotFoundError|Error: Python:' c01_14_w23_rmp_blender_native.log; then
+          if grep -E 'Traceback \(most recent call last\)|AssertionError|SyntaxError|ModuleNotFoundError|Error: Python:' c01_14_w23_rmp_blender_native.log; then
             echo "FAIL Blender Python exception"; exit 1
           fi
       - name: Independently verify created file signatures exact receipt and intended mesh topology

@@ -226,7 +226,7 @@ for i in range(len(objects)):
         if all(v>=-TOL for v in intersection) and sum(abs(v)<=TOL for v in intersection)==1 and sum(v>TOL for v in intersection)==2:
             contacts.append([i,j])
 assert not vol_intersections,("unexpected room/corridor tile solid penetration",vol_intersections[:10])
-assert len(contacts)==31,(len(contacts),"expected 4x4 + 2x4 nearest-neighbor adjacency") # room 24, corridor 10, bridge 2 =>36? validated below
+assert len(contacts)==36,(len(contacts),"expected 4x4 room (24) + 2x4 corridor (10) + 2 seam joins")
 
 def screenshot(name,where,target,ortho,wire=False,ceiling=False):
     scene=bpy.context.scene

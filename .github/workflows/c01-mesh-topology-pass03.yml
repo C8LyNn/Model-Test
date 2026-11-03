@@ -1,0 +1,278 @@
+name: C01-01 PASS03 Actual Blender Mesh Audit
+on:
+  # Exactly one expensive native Blender workflow for standards code changes.
+  # Docs-only commits must not re-run known real producer Blender/FBX tests.
+  push:
+    branches:
+      - c01/standards-mesh-topology-pass03
+    paths:
+      - 'Tools/c01_mesh_repair/**'
+      - 'Tests/c01_mesh_repair/**'
+      - '.github/workflows/c01-mesh-topology-pass03.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+
+jobs:
+  native-fixture-tests:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install actual Blender
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y blender python3-numpy
+          blender --version | head -n 2
+          blender --background --python-exit-code 13 --python-expr 'import numpy; print("NUMPY_OK", numpy.__version__)'
+      - name: Compile audit source
+        run: python3 -m py_compile Tools/c01_mesh_repair/topology_audit.py Tests/c01_mesh_repair/test_topology_blender.py Tools/c01_mesh_repair/compare_topology_reports.py Tests/c01_mesh_repair/test_compare_reports.py Tools/c01_mesh_repair/triangulation_gate.py Tests/c01_mesh_repair/test_triangulation_blender.py
+      - name: Compare report safety tests (10/10)
+        run: python3 -m unittest discover -s Tests/c01_mesh_repair -p test_compare_reports.py -v
+      - name: Execute five REAL Blender runtime fixture tests
+        run: blender --background --factory-startup --python-exit-code 13 --python Tests/c01_mesh_repair/test_topology_blender.py
+      - name: Run seven native Blender triangulation fixture tests
+        run: blender --background --factory-startup --python-exit-code 13 --python Tests/c01_mesh_repair/test_triangulation_blender.py
+
+  six-producer-sources:
+    needs: native-fixture-tests
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: standards
+          lfs: false
+      - uses: actions/checkout@v4
+        with:
+          ref: c01/props-17-wave02
+          path: source17
+          lfs: true
+      - uses: actions/checkout@v4
+        with:
+          ref: c01/props-18-cargo-wave02
+          path: source18
+          lfs: true
+      - uses: actions/checkout@v4
+        with:
+          ref: c01/props-19-furniture-wave02
+          path: source19
+          lfs: true
+      - name: Install actual Blender
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y blender python3-numpy
+          blender --version | head -n 2
+          blender --background --python-exit-code 13 --python-expr 'import numpy; print("NUMPY_OK", numpy.__version__)'
+      - name: Capture producer commit identities
+        run: |
+          mkdir -p reports
+          {
+            echo "C01-01 PASS03 P0 source branch revisions"
+            for d in source17 source18 source19; do
+              printf '%s ' "$d"
+              git -C "$d" rev-parse HEAD
+            done
+          } | tee reports/producer_source_revisions.txt
+      - name: Audit six ORIGINAL .blend source meshes (READ ONLY)
+        shell: bash
+        run: |
+          set -euo pipefail
+          paths=(
+            "P17-04|source17/C01InteriorProps_W02/Blender/P17-04.blend"
+            "P17-05|source17/C01InteriorProps_W02/Blender/P17-05.blend"
+            "P18-04|source18/Assets/C01InteriorProps/C01-18-Wave02/Sources/P18-04.blend"
+            "P18-05|source18/Assets/C01InteriorProps/C01-18-Wave02/Sources/P18-05.blend"
+            "P19-07|source19/Assets/C01InteriorProps/C01-19-W02/Models/P19-07/P19-07.blend"
+            "P19-08|source19/Assets/C01InteriorProps/C01-19-W02/Models/P19-08/P19-08.blend"
+          )
+          for entry in "${paths[@]}"; do
+            asset="${entry%%|*}"
+            file="${entry#*|}"
+            test -s "$file"
+            magic="$(head -c 7 "$file")"
+            if [[ "$magic" != "BLENDER" ]]; then
+              echo "::error::Source $asset is not native hydrated .blend at $file"
+              exit 3
+            fi
+            mkdir -p "reports/$asset"
+            blender --background "$file" --python-exit-code 13 --python standards/Tools/c01_mesh_repair/topology_audit.py -- --asset-id "$asset" --stage BEFORE --out "reports/$asset/mesh_topology_before.json"
+          done
+      - name: Re-import six existing binary FBX exports into native Blender
+        shell: bash
+        run: |
+          set -euo pipefail
+          entries=(
+            "P17-04|source17/C01InteriorProps_W02/Blender/P17-04.blend|source17/Assets/C01InteriorProps/W02/Models/P17-04.fbx"
+            "P17-05|source17/C01InteriorProps_W02/Blender/P17-05.blend|source17/Assets/C01InteriorProps/W02/Models/P17-05.fbx"
+            "P18-04|source18/Assets/C01InteriorProps/C01-18-Wave02/Sources/P18-04.blend|source18/Assets/C01InteriorProps/C01-18-Wave02/Models/P18-04.fbx"
+            "P18-05|source18/Assets/C01InteriorProps/C01-18-Wave02/Sources/P18-05.blend|source18/Assets/C01InteriorProps/C01-18-Wave02/Models/P18-05.fbx"
+            "P19-07|source19/Assets/C01InteriorProps/C01-19-W02/Models/P19-07/P19-07.blend|source19/Assets/C01InteriorProps/C01-19-W02/Models/P19-07/P19-07.fbx"
+            "P19-08|source19/Assets/C01InteriorProps/C01-19-W02/Models/P19-08/P19-08.blend|source19/Assets/C01InteriorProps/C01-19-W02/Models/P19-08/P19-08.fbx"
+          )
+          failed=0
+          for entry in "${entries[@]}"; do
+            IFS='|' read -r asset file fbx <<< "$entry"
+            if ! blender --background "$file" --python-exit-code 13 --python standards/Tools/c01_mesh_repair/inspect_existing_fbx.py -- --asset-id "$asset" --fbx "$fbx" --out "reports/$asset/fbx_import_blender.json"; then
+              echo "::error::Real Blender FBX import/geometry difference on $asset"
+              failed=1
+            fi
+          done
+          exit "$failed"
+      - name: Upload actual FBX importer reports (including failures)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-01-PASS03-SIX-FBX-NATIVE-BLENDER-REIMPORT
+          path: reports/
+          if-no-files-found: warn
+      - name: Guarded repair candidates only when source still has detected split surfaces
+        shell: bash
+        run: |
+          set -euo pipefail
+          for id in P17-04 P17-05; do
+            if [[ "$id" == "P17-04" ]]; then
+              file=source17/C01InteriorProps_W02/Blender/P17-04.blend
+            else
+              file=source17/C01InteriorProps_W02/Blender/P17-05.blend
+            fi
+            if python3 - "$id" <<'PY'
+          import json,sys
+          aid=sys.argv[1]
+          d=json.load(open(f"reports/{aid}/mesh_topology_before.json"))
+          issues=d["totals"]
+          if issues.get("boundary_edges",0) or issues.get("colocated_vertex_candidates",0):
+              print("ORIGINAL_SOURCE_NEEDS_SAFE_REPAIR",aid)
+              sys.exit(0)
+          print("SOURCE_ALREADY_CLEAN_NO_REPAIR_CREATED",aid)
+          sys.exit(1)
+          PY
+            then
+              blender --background "$file" --python-exit-code 13 --python standards/Tools/c01_mesh_repair/safe_box_weld_candidate.py -- --asset-id "$id" --output-dir "repaired/$id"
+              test -s "repaired/$id/REPAIR_AND_FBX_ROUNDTRIP.json"
+            fi
+          done
+      - name: Upload repaired COPIES + native FBX reimport evidence (pending owner/QA)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-01-PASS03-P17-04-05-REPAIR-CANDIDATES
+          path: repaired/
+          if-no-files-found: warn
+      - name: Publish measured original source audits (not repaired models)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-01-PASS03-SIX-ORIGINAL-BLEND-AUDITS
+          path: reports/
+          if-no-files-found: warn
+
+  historical-repair-proof:
+    needs: native-fixture-tests
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: standards
+          lfs: false
+      - uses: actions/checkout@v4
+        with:
+          ref: fbef546fe446fe6845be4eb76a75b0e6916723eb
+          path: damaged-original17
+          lfs: true
+      - name: Install actual Blender
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y blender python3-numpy
+      - name: Repair ONLY exact detached-face boxes in historical production .blend
+        shell: bash
+        run: |
+          set -euo pipefail
+          for asset in P17-04 P17-05; do
+            blender --background "damaged-original17/C01InteriorProps_W02/Blender/$asset.blend" --python-exit-code 13 --python standards/Tools/c01_mesh_repair/safe_box_weld_candidate.py -- --asset-id "$asset" --output-dir "historical_repaired/$asset"
+            test -s "historical_repaired/$asset/REPAIR_AND_FBX_ROUNDTRIP.json"
+            python3 standards/Tools/c01_mesh_repair/compare_topology_reports.py "historical_repaired/$asset/mesh_topology_before.json" "historical_repaired/$asset/mesh_topology_after.json" --repair-claimed --output "historical_repaired/$asset/TOPOLOGY_CHANGE_REVIEW.json"
+          done
+      - name: Publish real historical repaired native BLEND + FBX + before-after proof
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-01-PASS03-P17-04-05-HISTORICAL-REPAIR-PROOF
+          path: historical_repaired/
+          if-no-files-found: warn
+
+
+  p19-five-producer-triangulation-gate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: standards
+          lfs: false
+      - uses: actions/checkout@v4
+        with:
+          ref: c01/props-19-furniture-wave02
+          path: producer19
+          lfs: true
+      - uses: actions/checkout@v4
+        with:
+          ref: c01/props-19-furniture
+          path: producer19w01
+          lfs: true
+      - name: Install native Blender and FBX dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y blender python3-numpy
+          blender --background --python-exit-code 13 --python-expr 'import numpy; print("NUMPY_OK")'
+      - name: Pin source SHA and verify hydrated native model bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p reports
+          git -C producer19 rev-parse HEAD > reports/PRODUCER19_W02_COMMIT_SHA.txt
+          git -C producer19w01 rev-parse HEAD > reports/PRODUCER19_W01_COMMIT_SHA.txt
+          for asset in P19-01 P19-02 P19-05 P19-07 P19-08; do
+            if [[ "$asset" == "P19-01" || "$asset" == "P19-02" ]]; then
+              root="producer19w01/Assets/C01InteriorProps/C01-19/Models/$asset"
+            else
+              root="producer19/Assets/C01InteriorProps/C01-19-W02/Models/$asset"
+            fi
+            test -s "$root/$asset.blend"
+            test -s "$root/$asset.fbx"
+            if [[ "$(head -c 7 "$root/$asset.blend")" != "BLENDER" ]]; then
+              echo "::error::$asset native Blender bytes missing (LFS pointer?)"
+              exit 1
+            fi
+            if [[ "$(head -c 18 "$root/$asset.fbx")" != "Kaydara FBX Binary" ]]; then
+              echo "::error::$asset not binary Blender FBX"
+              exit 1
+            fi
+          done
+      - name: Measure five real P19 source and imported FBX; reject ambiguous n-gon source
+        shell: bash
+        run: |
+          set -euo pipefail
+          failed=0
+          for asset in P19-01 P19-02 P19-05 P19-07 P19-08; do
+            if [[ "$asset" == "P19-01" || "$asset" == "P19-02" ]]; then
+              root="producer19w01/Assets/C01InteriorProps/C01-19/Models/$asset"
+            else
+              root="producer19/Assets/C01InteriorProps/C01-19-W02/Models/$asset"
+            fi
+            mkdir -p "reports/$asset"
+            if ! blender --background "$root/$asset.blend" --python-exit-code 13 --python standards/Tools/c01_mesh_repair/triangulation_gate.py -- --asset-id "$asset" --fbx "$root/$asset.fbx" --out "reports/$asset/native_triangulation_gate.json" --require-explicit-triangles; then
+              echo "::error::$asset explicit source and FBX triangulation not accepted"
+              failed=1
+            fi
+          done
+          echo "failed=$failed" >> reports/P19_GATE_STATUS.txt
+          exit "$failed"
+      - name: Upload REAL five-model native source and binary FBX evidence, even on FAIL
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-01-PASS05-P19-FIVE-REAL-TRIANGULATION-GATE
+          path: reports/
+          if-no-files-found: error

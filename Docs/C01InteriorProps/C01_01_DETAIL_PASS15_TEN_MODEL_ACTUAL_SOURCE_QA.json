@@ -1,0 +1,391 @@
+{
+  "schema": "C01-01-DETAIL-PASS15-INDEPENDENT-AUTHORED-SOURCE-QA-v1",
+  "date": "2026-10-30",
+  "owner": "C01-01 ASSET STANDARDS & PIPELINE",
+  "verification_kind": "EXECUTED_ON_ACTUAL_GITHUB_FILE_BYTE_CONTENT_NOT_LFS_POINTER_METADATA",
+  "sources": {
+    "P16_W01_producer": "c01/props-16-lighting",
+    "P16_W02_producer": "c01/props-16-lighting-wave02",
+    "P18_W01_producer": "c01/props-18-cargo"
+  },
+  "sha_method": "Actual retrieved UTF-8 OBJ file content SHA-256 from independently implemented SHA256 function with known-answer test SHA256('abc') PASS; Git blob SHA-1 separately obtained from GitHub. P16 uses an original and a separate details OBJ, never treat these hashes as a combined file hash.",
+  "executed_checks": [
+    "Per-object OBJ vertices, UV0 and vertex-normal face-corner indices in bounds and present",
+    "Face triangulation fan zero-area threshold cross-product length 1e-10 in metres squared; no degenerates in the audited cuboid and cylinder objects",
+    "Per-object deduplicated triangle vertex-index multiset",
+    "Per-object undirected edge incidence exactly two and directed opposite winding",
+    "Each face-corner supplied normal agrees in sign with oriented triangle geometric cross product",
+    "Per-asset triangle and independent mesh-component accounting",
+    "P16 added detail AABB zero-gap contact graph connected to at least one original authored mesh part; BROADPHASE ONLY",
+    "P16-06 moving rotor bolt AABB overlaps original ROTOR geometry; original moving/group name preserved",
+    "Prior independently verified P18-01/02/03 source contact source SHA unchanged relative to PASS14"
+  ],
+  "model_results": {
+    "P16-01": {
+      "files": {
+        "original": {
+          "path": "C01Source/Lighting/OBJ/P16-01.obj",
+          "sha256": "6fea70ce09f16db7ae09e3dde33a4189c83dfa015a07b42b39097842a35c7732",
+          "git_blob_sha1": "5b64b4c6e208f72ebb8640b428411206e4c05896"
+        },
+        "detail": {
+          "path": "C01Source/Lighting/DetailsPASS12/P16-01_detail.obj",
+          "sha256": "b28d52e6ea6237129f14be70720d8bb7de65d9bf8d1d847b71ed743d9e3e299c",
+          "git_blob_sha1": "d32eab80d6a3ebdf9c3dd7fe81cc516754a64509"
+        }
+      },
+      "original_triangles": 60,
+      "current_source_triangles": 220,
+      "triangle_growth_factor": 3.667,
+      "independent_mesh_parts": 12,
+      "source_vertices": 134,
+      "invalid_vertex_indices": 0,
+      "missing_face_corner_UV0": 0,
+      "missing_face_corner_normals": 0,
+      "zero_area_triangles": 0,
+      "duplicate_indexed_triangles": 0,
+      "open_indexed_edges": 0,
+      "nonmanifold_indexed_edges": 0,
+      "inconsistent_pair_winding_edges": 0,
+      "face_corner_normal_orientation_failures": 0,
+      "P16_details_AABB_connected_to_original": "ALL (broadphase only)",
+      "source_indexed_topology": "PASS",
+      "native_blender_fbx": "NOT_RUN",
+      "unity": "NOT_RUN"
+    },
+    "P16-02": {
+      "files": {
+        "original": {
+          "path": "C01Source/Lighting/OBJ/P16-02.obj",
+          "sha256": "bc18ddcaddffd29ebe1bba90ce85e5193b0b6c111daf26fb38e3f8e5eea8386c",
+          "git_blob_sha1": "87227771c0a356b494fbc5fb0d9311679c6a4c14"
+        },
+        "detail": {
+          "path": "C01Source/Lighting/DetailsPASS12/P16-02_detail.obj",
+          "sha256": "9d3b434b44388c1214702528de4f8a94245d309c6ffbd62b42f2012df13e1a1a",
+          "git_blob_sha1": "c7d73e53395720a5d6a13d4d2151032d34770053"
+        }
+      },
+      "original_triangles": 60,
+      "current_source_triangles": 220,
+      "triangle_growth_factor": 3.667,
+      "independent_mesh_parts": 12,
+      "source_vertices": 134,
+      "invalid_vertex_indices": 0,
+      "missing_face_corner_UV0": 0,
+      "missing_face_corner_normals": 0,
+      "zero_area_triangles": 0,
+      "duplicate_indexed_triangles": 0,
+      "open_indexed_edges": 0,
+      "nonmanifold_indexed_edges": 0,
+      "inconsistent_pair_winding_edges": 0,
+      "face_corner_normal_orientation_failures": 0,
+      "P16_details_AABB_connected_to_original": "ALL (broadphase only)",
+      "source_indexed_topology": "PASS",
+      "native_blender_fbx": "NOT_RUN",
+      "unity": "NOT_RUN"
+    },
+    "P16-03": {
+      "files": {
+        "original": {
+          "path": "C01Source/Lighting/OBJ/P16-03.obj",
+          "sha256": "cd6a5deaadfce8e46dfb9c577c2d3691957fc8a9fde6951aba1ba93c826e5d05",
+          "git_blob_sha1": "947f69388cf205dfd20252390c767949ae7b81cb"
+        },
+        "detail": {
+          "path": "C01Source/Lighting/DetailsPASS12/P16-03_detail.obj",
+          "sha256": "493d8cf699acd50e3705c83d8dd716210c2fac6f15bd90d407a2818e3a7161d8",
+          "git_blob_sha1": "0a3b454b1c053fe52b949be113705b5dc0846e79"
+        }
+      },
+      "original_triangles": 60,
+      "current_source_triangles": 220,
+      "triangle_growth_factor": 3.667,
+      "independent_mesh_parts": 12,
+      "source_vertices": 134,
+      "invalid_vertex_indices": 0,
+      "missing_face_corner_UV0": 0,
+      "missing_face_corner_normals": 0,
+      "zero_area_triangles": 0,
+      "duplicate_indexed_triangles": 0,
+      "open_indexed_edges": 0,
+      "nonmanifold_indexed_edges": 0,
+      "inconsistent_pair_winding_edges": 0,
+      "face_corner_normal_orientation_failures": 0,
+      "P16_details_AABB_connected_to_original": "ALL (broadphase only)",
+      "source_indexed_topology": "PASS",
+      "native_blender_fbx": "NOT_RUN",
+      "unity": "NOT_RUN"
+    },
+    "P16-04": {
+      "files": {
+        "original": {
+          "path": "C01Source/LightingW02/OBJ/P16-04.obj",
+          "sha256": "a17c14a15064322574475d14ee3aa059ecb8a7768bbe369bdfe21558460735df",
+          "git_blob_sha1": "16588a4ecf65fd0b7143bf875e40fd5586c436ef"
+        },
+        "detail": {
+          "path": "C01Source/LightingW02/DetailsPASS12/P16-04_detail.obj",
+          "sha256": "23e5d8cc90006181abc05c62aa058fe4f1c225aefe5419555a1869d638b3de5d",
+          "git_blob_sha1": "aa2ab0ff5b4ba17de696433a2f1aa3c95b6f5ab2"
+        }
+      },
+      "original_triangles": 84,
+      "current_source_triangles": 324,
+      "triangle_growth_factor": 3.857,
+      "independent_mesh_parts": 19,
+      "source_vertices": 200,
+      "invalid_vertex_indices": 0,
+      "missing_face_corner_UV0": 0,
+      "missing_face_corner_normals": 0,
+      "zero_area_triangles": 0,
+      "duplicate_indexed_triangles": 0,
+      "open_indexed_edges": 0,
+      "nonmanifold_indexed_edges": 0,
+      "inconsistent_pair_winding_edges": 0,
+      "face_corner_normal_orientation_failures": 0,
+      "P16_details_AABB_connected_to_original": "ALL (broadphase only)",
+      "source_indexed_topology": "PASS",
+      "native_blender_fbx": "NOT_RUN",
+      "unity": "NOT_RUN"
+    },
+    "P16-05": {
+      "files": {
+        "original": {
+          "path": "C01Source/LightingW02/OBJ/P16-05.obj",
+          "sha256": "17f941ce500a582022966356ee203db4e0d6dd0951774f765486a28d864c99e8",
+          "git_blob_sha1": "54dd26d7253008958615ec00e1cf6259e7e9e353"
+        },
+        "detail": {
+          "path": "C01Source/LightingW02/DetailsPASS12/P16-05_detail.obj",
+          "sha256": "16cf0949eac48b675183d685028ed5035d945f5f63ca937ad479c6e10a0eb0c3",
+          "git_blob_sha1": "ab7f9d8587edf110f563766c945dcbffdff89207"
+        }
+      },
+      "original_triangles": 84,
+      "current_source_triangles": 280,
+      "triangle_growth_factor": 3.333,
+      "independent_mesh_parts": 15,
+      "source_vertices": 170,
+      "invalid_vertex_indices": 0,
+      "missing_face_corner_UV0": 0,
+      "missing_face_corner_normals": 0,
+      "zero_area_triangles": 0,
+      "duplicate_indexed_triangles": 0,
+      "open_indexed_edges": 0,
+      "nonmanifold_indexed_edges": 0,
+      "inconsistent_pair_winding_edges": 0,
+      "face_corner_normal_orientation_failures": 0,
+      "P16_details_AABB_connected_to_original": "ALL (broadphase only)",
+      "source_indexed_topology": "PASS",
+      "native_blender_fbx": "NOT_RUN",
+      "unity": "NOT_RUN"
+    },
+    "P16-06": {
+      "files": {
+        "original": {
+          "path": "C01Source/LightingW02/OBJ/P16-06.obj",
+          "sha256": "8a14a45d4a8b777f371bb86a338baf4521d151e594469e3bc260b513919eecca",
+          "git_blob_sha1": "e0bd4b2f998162293fc660d6c5c5002e3fcf4a07"
+        },
+        "detail": {
+          "path": "C01Source/LightingW02/DetailsPASS12/P16-06_detail.obj",
+          "sha256": "0e0d466c52fbe432bee9c756f07e5a3db69ed1445de67852b95c8de824f05742",
+          "git_blob_sha1": "b6ba4fcffd7e262de758aebbd33326ea55b500a3"
+        }
+      },
+      "original_triangles": 108,
+      "current_source_triangles": 324,
+      "triangle_growth_factor": 3,
+      "independent_mesh_parts": 19,
+      "source_vertices": 200,
+      "invalid_vertex_indices": 0,
+      "missing_face_corner_UV0": 0,
+      "missing_face_corner_normals": 0,
+      "zero_area_triangles": 0,
+      "duplicate_indexed_triangles": 0,
+      "open_indexed_edges": 0,
+      "nonmanifold_indexed_edges": 0,
+      "inconsistent_pair_winding_edges": 0,
+      "face_corner_normal_orientation_failures": 0,
+      "P16_details_AABB_connected_to_original": "ALL (broadphase only)",
+      "source_indexed_topology": "PASS",
+      "native_blender_fbx": "NOT_RUN",
+      "unity": "NOT_RUN"
+    },
+    "P16-07": {
+      "files": {
+        "original": {
+          "path": "C01Source/LightingW02/OBJ/P16-07.obj",
+          "sha256": "880ed34b69e2314249b332033e43b647563e3da298527f061e7178a79ae3f2a4",
+          "git_blob_sha1": "a028a38a5ee8810a00ed684c3b9bc9d3c7119b4e"
+        },
+        "detail": {
+          "path": "C01Source/LightingW02/DetailsPASS12/P16-07_detail.obj",
+          "sha256": "6c8fce6858aeb95cc902a38c5e4e2b4a45b0e999cbdc7a7ff8b1e311217fd766",
+          "git_blob_sha1": "e21758b78fce32b1d9872bc6297406756fec8da5"
+        }
+      },
+      "original_triangles": 60,
+      "current_source_triangles": 208,
+      "triangle_growth_factor": 3.467,
+      "independent_mesh_parts": 11,
+      "source_vertices": 126,
+      "invalid_vertex_indices": 0,
+      "missing_face_corner_UV0": 0,
+      "missing_face_corner_normals": 0,
+      "zero_area_triangles": 0,
+      "duplicate_indexed_triangles": 0,
+      "open_indexed_edges": 0,
+      "nonmanifold_indexed_edges": 0,
+      "inconsistent_pair_winding_edges": 0,
+      "face_corner_normal_orientation_failures": 0,
+      "P16_details_AABB_connected_to_original": "ALL (broadphase only)",
+      "source_indexed_topology": "PASS",
+      "native_blender_fbx": "NOT_RUN",
+      "unity": "NOT_RUN"
+    },
+    "P18-01": {
+      "files": {
+        "source": {
+          "path": "Assets/C01InteriorProps/C01-18/Models/P18-01.obj",
+          "sha256": "6d1cbedba52d975594c4d1c4c1addcf14f752ee7118a521a3e63c880e8044b06",
+          "git_blob_sha1": "051ab09222a354f1c64f7c682442529b6f4d54ee"
+        }
+      },
+      "original_triangles": 180,
+      "current_source_triangles": 684,
+      "triangle_growth_factor": 3.8,
+      "independent_mesh_parts": 37,
+      "source_vertices": 416,
+      "invalid_vertex_indices": 0,
+      "missing_face_corner_UV0": 0,
+      "missing_face_corner_normals": 0,
+      "zero_area_triangles": 0,
+      "duplicate_indexed_triangles": 0,
+      "open_indexed_edges": 0,
+      "nonmanifold_indexed_edges": 0,
+      "inconsistent_pair_winding_edges": 0,
+      "face_corner_normal_orientation_failures": 0,
+      "source_indexed_topology": "PASS",
+      "native_blender_fbx": "NOT_RUN",
+      "unity": "NOT_RUN"
+    },
+    "P18-02": {
+      "files": {
+        "source": {
+          "path": "Assets/C01InteriorProps/C01-18/Models/P18-02.obj",
+          "sha256": "dc9434a32b7de2235d80a374cc04778b657e39c8f98d88b288bdad40fbf6af2c",
+          "git_blob_sha1": "349fd2307eca8d2334cb8c8cbeb5f43ff9408d4b"
+        }
+      },
+      "original_triangles": 204,
+      "current_source_triangles": 1012,
+      "triangle_growth_factor": 4.961,
+      "independent_mesh_parts": 47,
+      "source_vertices": 600,
+      "invalid_vertex_indices": 0,
+      "missing_face_corner_UV0": 0,
+      "missing_face_corner_normals": 0,
+      "zero_area_triangles": 0,
+      "duplicate_indexed_triangles": 0,
+      "open_indexed_edges": 0,
+      "nonmanifold_indexed_edges": 0,
+      "inconsistent_pair_winding_edges": 0,
+      "face_corner_normal_orientation_failures": 0,
+      "source_indexed_topology": "PASS",
+      "native_blender_fbx": "NOT_RUN",
+      "unity": "NOT_RUN"
+    },
+    "P18-03": {
+      "files": {
+        "source": {
+          "path": "Assets/C01InteriorProps/C01-18/Models/P18-03.obj",
+          "sha256": "22513002afb38d2d3f4a13ef429a41c9a04928528b3cffef87613d51351c1901",
+          "git_blob_sha1": "e6440810d917df3c978505ce79f084ba1f98086c"
+        }
+      },
+      "original_triangles": 348,
+      "current_source_triangles": 1532,
+      "triangle_growth_factor": 4.402,
+      "independent_mesh_parts": 53,
+      "source_vertices": 872,
+      "invalid_vertex_indices": 0,
+      "missing_face_corner_UV0": 0,
+      "missing_face_corner_normals": 0,
+      "zero_area_triangles": 0,
+      "duplicate_indexed_triangles": 0,
+      "open_indexed_edges": 0,
+      "nonmanifold_indexed_edges": 0,
+      "inconsistent_pair_winding_edges": 0,
+      "face_corner_normal_orientation_failures": 0,
+      "source_indexed_topology": "PASS",
+      "native_blender_fbx": "NOT_RUN",
+      "unity": "NOT_RUN"
+    }
+  },
+  "p16_detail_connectivity": {
+    "added_detail_parts": 57,
+    "reached_from_original_source_mesh_via_transitive_positive_or_zero_gap_AABB_contact": 57,
+    "zero_neighbor_parts": 0,
+    "not_directly_overlapping_original_but_connected_via_other_detail_parts": 6,
+    "by_model": {
+      "P16-01": 7,
+      "P16-02": 7,
+      "P16-03": 7,
+      "P16-04": 12,
+      "P16-05": 8,
+      "P16-06": 10,
+      "P16-07": 6
+    },
+    "note": "Zero AABB distance can arise from contact or intersection; broadphase only. Does NOT certify actual triangle intersection, material penetration, rotor animation or elimination of coplanar same-facing faces.",
+    "P16_06_rotor_detail_names": [
+      "P16-06_ROTOR_Steel_DETAIL_RotorHubBolt_L_B",
+      "P16-06_ROTOR_Steel_DETAIL_RotorHubBolt_L_F",
+      "P16-06_ROTOR_Steel_DETAIL_RotorHubBolt_R_B",
+      "P16-06_ROTOR_Steel_DETAIL_RotorHubBolt_R_F"
+    ],
+    "rotor_bolt_static_screen": "4/4 bolts AABB-overlap original ROTOR Steel_4 and ROTOR DarkPanel_6; do not weld to STATIC"
+  },
+  "aggregate": {
+    "unique_existing_model_ids": 10,
+    "individual_actual_OBJ_source_files": 17,
+    "independent_mesh_part_groups": 237,
+    "authoring_source_triangles": 5024,
+    "original_authoring_triangles": 1248,
+    "detail_added_triangles": 3776,
+    "original_component_count": 92,
+    "added_component_count": 145,
+    "all_indexed_topology_error_counts": 0,
+    "source_topology_pass_models": 10,
+    "source_only_findings": "PASS_TARGETED_TOPOLOGY_AND_BROADPHASE_CONTACT",
+    "possible_renderer_count_upper_bound_if_all_parts_imported_separately": 237,
+    "renderer_count_not_measured_in_Unity": true,
+    "unity_batching_or_LOD_optimization_require_profile": true
+  },
+  "known_unresolved": {
+    "P19_07": "SOURCE_GEOMETRIC_VERTEX_ON_EDGE_CASES_16_NEED_REAL_BLENDER_VIEW; DO_NOT_AUTOWELD",
+    "P17_02": "REAL_BINARY_FBX_CANDIDATE_ONLY_NOT_BLENDER_EXPORTED_NATIVE",
+    "P16": "NO_NEW_SOURCE_MATCHING_NATIVE_BLEND_AND_BLENDER_BINARY_FBX_YET",
+    "all36": "NO_INDEPENDENT_FULL_RELEASE_APPROVAL"
+  },
+  "critical_limitations": [
+    "PASS is ONLY for parsed indexed geometry in these 17 authored OBJ sources, not all 36 final FBX",
+    "Triangulation via fan exact for inspected convex source polygons but Blender triangulation must still be checked for arbitrary n-gons",
+    "AABB graph cannot prove real triangle contact, rule out internal penetrations or distinguish valid rotation clearance",
+    "Some independent moving child meshes are intentionally separate; do not globally weld or combine across static/rotor/pivots",
+    "True Blender save/export/reimport, SHA-locked final FBX C01-02 independent gate, and Unity 6 URP importer/profiling are NOT RUN"
+  ],
+  "release": {
+    "blender4x_native_save": "NOT_RUN",
+    "blender_exported_binary_fbx": "NOT_RUN",
+    "blender_fbx_reimport": "NOT_RUN",
+    "real_blender_shaded_and_wireframe_after": "NOT_RUN",
+    "independent_36_fbx_release_QA": "0/36_FULL_APPROVED_LAST_VERIFIED",
+    "unity_6_urp": "NOT_RUN",
+    "model_geometry_edited_by_C01_01": 0,
+    "new_models": 0,
+    "unauthorized_merge": 0,
+    "blocker": "NEEDS_OWNER_ACTION: C01 Actions allocation pre-runner or authorized Windows Blender4+GitLFS"
+  }
+}

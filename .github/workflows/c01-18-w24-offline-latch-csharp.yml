@@ -1,0 +1,81 @@
+name: C01-18 W24 Actual CSharp Latch Logic Offline QA (NOT UNITY)
+on:
+  push:
+    branches: [c01/props-18-cargo-wave02]
+    paths:
+      - '.github/workflows/c01-18-w24-offline-latch-csharp.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  actual-csharp-compiled-mock-harness:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+      - name: Install system Mono C# compiler and runtime, not Unity
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y mono-mcs
+          mcs --version
+          mono --version | head -n 1
+      - name: Compile actual unchanged target Unity C# class with offline doubles
+        run: |
+          set -euo pipefail
+          mcs -warnaserror -out:/tmp/C01P1807_W24_OFFLINE.exe \
+            QA/C01-18/Pass24/Wave02/UnityEngine_Offline_Doubles.cs \
+            Assets/C01InteriorProps/C01-18-Wave02/Runtime/C01ToolBinLatchGate.cs \
+            QA/C01-18/Pass24/Wave02/P18_07_Offline_Runtime_Tests.cs
+          mono /tmp/C01P1807_W24_OFFLINE.exe | tee /tmp/C01P1807_W24_OFFLINE.log
+          grep -q 'C01_W24_P1807_REAL_CSHARP_OFFLINE_LOGIC_PASS' /tmp/C01P1807_W24_OFFLINE.log
+          grep -q 'actual -90deg X FBX parent maps root +Z to local -Y' /tmp/C01P1807_W24_OFFLINE.log
+      - name: Immutable signed FBX LFS pointer and typed C# runtime QA record
+        run: |
+          python3 - <<'PY'
+          import pathlib,json,re,hashlib
+          r=pathlib.Path('QA/C01-18/Pass24/Wave02')
+          p=pathlib.Path('Assets/C01InteriorProps/C01-18-Wave02/Models/P18-07.fbx')
+          original='858a24db4338804ee3a3a70c310cd4936e3c45f559b9c4ab81c6037add564554'
+          s=p.read_text()
+          assert f'oid sha256:{original}' in s and 'size 41484' in s
+          log=pathlib.Path('/tmp/C01P1807_W24_OFFLINE.log').read_text()
+          m=re.search(r'C01_W24_P1807_REAL_CSHARP_OFFLINE_LOGIC_PASS checks=(\d+)',log)
+          assert m and int(m.group(1)) >= 35
+          assert log.count('C01_P1807_W24_PASS ') == int(m.group(1))
+          out={
+           'wave':24,'asset':'P18-07','test_type':'ACTUAL_CSHARP_COMPILED_WITH_OFFLINE_UnityEngine_DOUBLES_NOT_UNITY',
+           'compiler':'Mono mcs; real production C01ToolBinLatchGate.cs compiled as-is',
+           'tests_passed':int(m.group(1)),'tests_failed':0,
+           'C01_02_W24_P0_FBX_PARENT_MINUS90X_COVERED':True,
+           'tested':'lock initial state, retract 40/100%, collider gating, 5/110deg lid, relock only fully closed, invalid inputs, imported rotated parent conversion, tamper fail closed, external hinge force corrected',
+           'native_fbx_sha256':original,'lfs_record_confirmed':True,
+           'original_blend_sha256':'5fd990d8153430dd4f1a8893ebef0097465a404d1b2c6bbd77777de695b3e87d',
+           'native_reexport':False,'unity_editor':'NOT_RUN','unity_playmode':'NOT_RUN',
+           'independent_C01_02':'PENDING','depth_1mm_C01_01':'PENDING',
+           'claude_owned_doors':'FROZEN_NOT_TOUCHED','merge':'NOT_AUTHORIZED',
+           'test_log_sha256':hashlib.sha256(log.encode()).hexdigest(),
+           'source_branch_sha':'${{ github.sha }}'
+          }
+          (r/'P18-07_W24_REAL_CSHARP_MOCK_QA.json').write_text(json.dumps(out,indent=2)+'\n')
+          (r/'P18-07_W24_REAL_CSHARP_MOCK_QA.log').write_text(log)
+          print('W24_C01_18_P18_07_REAL_CSHARP_NOT_UNITY',out['tests_passed'])
+          PY
+      - name: Commit only QA receipt to existing isolated Draft branch
+        run: |
+          set -euo pipefail
+          git add -f QA/C01-18/Pass24/Wave02/P18-07_W24_REAL_CSHARP_MOCK_QA.json QA/C01-18/Pass24/Wave02/P18-07_W24_REAL_CSHARP_MOCK_QA.log
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'C01-18 W24: executable real CSharp offline latch QA proof [skip ci]'
+          git push origin HEAD:c01/props-18-cargo-wave02
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: C01-18-W24-P18-07-REAL-CSHARP-NOT-UNITY
+          path: |
+            QA/C01-18/Pass24/Wave02/P18-07_W24_REAL_CSHARP_MOCK_QA.json
+            QA/C01-18/Pass24/Wave02/P18-07_W24_REAL_CSHARP_MOCK_QA.log
+          if-no-files-found: warn
+          retention-days: 21

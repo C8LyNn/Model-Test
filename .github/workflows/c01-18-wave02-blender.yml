@@ -1,0 +1,75 @@
+name: C01-18 Wave02 Real Blender Models
+on:
+  # Manual dispatch only: bulk exporter rebuilds ALL four W02 models.
+  # PASS20 P18-07-only native repair is independently SHA-gated in targeted workflow.
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  actual-model-build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+      - name: Install real Blender and NumPy
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y blender python3-numpy
+          blender --version
+      - name: Produce Blender native meshes, binary FBX and 12 renders
+        run: |
+          blender -b --python Assets/C01InteriorProps/C01-18-Wave02/Sources/build_wave02.py -- "$PWD/Assets/C01InteriorProps/C01-18-Wave02"
+      - name: Verify real file signatures and QA report
+        run: |
+          set -euo pipefail
+          d=Assets/C01InteriorProps/C01-18-Wave02
+          for id in P18-04 P18-05 P18-06 P18-07; do
+            test -s "$d/Sources/$id.blend"
+            test -s "$d/Models/$id.fbx"
+            test "$(head -c 7 "$d/Sources/$id.blend")" = "BLENDER"
+            head -c 18 "$d/Models/$id.fbx" | grep -a 'Kaydara FBX Binary'
+            for view in front side iso; do
+              test -s "$d/Previews/${id}_${view}.png"
+              test "$(xxd -p -l 8 "$d/Previews/${id}_${view}.png")" = "89504e470d0a1a0a"
+            done
+          done
+          python3 - <<'PY'
+          import json
+          p='Assets/C01InteriorProps/C01-18-Wave02/QA/BlenderBuildReport.json'
+          j=json.load(open(p))
+          assert len(j)==4
+          for k,v in j.items():
+            assert v['blender_fbx_roundtrip']=='PASS', (k,v)
+            assert not v['parts_missing_uv'] and not v['parts_missing_polygons']
+            assert v['triangles']>20
+            print(k, v['bounds_WDH'],v['triangles'],v['mesh_parts'], 'PASS')
+          PY
+      - name: Commit native Blender, binary FBX, previews and QA on isolated branch
+        run: |
+          set -euo pipefail
+          git lfs install --local
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Assets/C01InteriorProps/C01-18-Wave02/Sources/*.blend
+          git add Assets/C01InteriorProps/C01-18-Wave02/Models/*.fbx
+          git add Assets/C01InteriorProps/C01-18-Wave02/Previews/*.png
+          git add Assets/C01InteriorProps/C01-18-Wave02/QA/*.json
+          if git diff --cached --quiet; then echo 'Existing native files unchanged'; else git commit -m "C01-18 Wave02: commit four native models and verified renders [skip ci]"; git push origin HEAD:c01/props-18-cargo-wave02; fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: C01-18-Wave02-Real-Blend-FBX-Previews
+          path: |
+            Assets/C01InteriorProps/C01-18-Wave02/Sources/*.blend
+            Assets/C01InteriorProps/C01-18-Wave02/Models/*.fbx
+            Assets/C01InteriorProps/C01-18-Wave02/Previews/*.png
+            Assets/C01InteriorProps/C01-18-Wave02/QA/*.json
+            Assets/C01InteriorProps/C01-18-Wave02/Sources/*.py
+            Assets/C01InteriorProps/C01-18-Wave02/Editor/*.cs
+            Assets/C01InteriorProps/C01-18-Wave02/Editor/*.meta
+            Assets/C01InteriorProps/C01-18-Wave02/Models/*.meta
+            Assets/C01InteriorProps/C01-18-Wave02/Manifests/*.json
+            Assets/C01InteriorProps/C01-18-Wave02/README.md
+          if-no-files-found: error
+          retention-days: 21

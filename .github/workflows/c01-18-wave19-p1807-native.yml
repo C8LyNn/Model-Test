@@ -1,0 +1,115 @@
+name: C01-18 W19 P18-07 Native Correction Only
+on:
+  push:
+    branches: [c01/props-18-cargo-wave02]
+    paths:
+      - '.github/workflows/c01-18-wave19-p1807-native.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: c01-18-wave19-p1807-native
+  cancel-in-progress: false
+jobs:
+  correct-original-p1807:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Checkout exact producer PR branch with hydrated Git LFS sources
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+          persist-credentials: true
+      - name: Install Blender 4.x and verify exact source
+        shell: bash
+        run: |
+          set -euo pipefail
+          git lfs install --local
+          git lfs pull --include="Assets/C01InteriorProps/C01-18-Wave02/Sources/P18-07.blend" --exclude=""
+          sudo apt-get update -qq
+          sudo apt-get install -y blender python3-numpy
+          blender --version | grep -E '^Blender 4\.'
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib
+          root=Path("Assets/C01InteriorProps/C01-18-Wave02")
+          old=root/"Sources"/"P18-07.blend"
+          assert old.read_bytes()[:8]==b"BLENDER-", "LFS source NOT hydrated"
+          assert hashlib.sha256(old.read_bytes()).hexdigest()=="302a6832594702c7eff11a486d9e581c159993ff7b7f5c5abe124bf29edbc8d8", "Unexpected source: stop, no overwrite"
+          for k in ("P18-04","P18-05","P18-06"):
+              p=root/"Models"/(k+".fbx")
+              assert p.exists(), "Sibling asset absent: "+k
+          print("C01_W19_SOURCE_NATIVE_PIN_PASS")
+          PY
+      - name: Apply exact 1mm Front_Lock correction to authentic Blender native source
+        shell: bash
+        run: |
+          set -euo pipefail
+          root="$PWD/Assets/C01InteriorProps/C01-18-Wave02"
+          blender -b --factory-startup --python-exit-code 1 --python "$root/Tools/pass08_native_p1807.py" -- "$root"
+      - name: Promote only audited P18-07 producer binaries; preserve all siblings
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib,json,os,shutil
+          from pathlib import Path
+          root=Path("Assets/C01InteriorProps/C01-18-Wave02")
+          q=root/"QA"/"Pass08"/"Native"
+          r=json.loads((q/"PASS08_NATIVE_RESULT.json").read_text())
+          assert r["status"]=="REAL_BLENDER_FBX_ROUNDTRIP_PASS"
+          assert r["parts_before_after"]==[10,10]
+          assert r["triangles_before_after"]==[120,120]
+          srcblend=q/"P18-07_PASS08.blend";srcfbx=q/"P18-07_PASS08.fbx"
+          assert srcblend.read_bytes()[:8]==b"BLENDER-"
+          assert srcfbx.read_bytes().startswith(b"Kaydara FBX Binary  ")
+          def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+          assert sha(srcblend)==r["new_blend_sha256"]
+          assert sha(srcfbx)==r["new_binary_fbx_sha256"]
+          targetblend=root/"Sources"/"P18-07.blend"
+          targetfbx=root/"Models"/"P18-07.fbx"
+          shutil.copyfile(srcblend,targetblend)
+          shutil.copyfile(srcfbx,targetfbx)
+          assert sha(targetblend)==r["new_blend_sha256"]
+          assert sha(targetfbx)==r["new_binary_fbx_sha256"]
+          release=root/"QA"/"Pass19"
+          release.mkdir(parents=True,exist_ok=True)
+          result={"wave":"W19","asset_id":"P18-07",
+           "status":"PRODUCER_BLENDER_ROUNDTRIP_PASS_INDEPENDENT_QA_HOLD",
+           "source_blend_sha256_before":r["source_blend_sha256"],
+           "native_blend_sha256":sha(targetblend),"binary_fbx_sha256":sha(targetfbx),
+           "native_blend_bytes":targetblend.stat().st_size,"binary_fbx_bytes":targetfbx.stat().st_size,
+           "model_mesh_parts":10,"triangles":120,
+           "source_change":"Only Front_Lock location Blender -Y by 0.001 m to Unity +Z; other part mesh data, UV/materials and empty pivot transforms preserved; explicit source assertion in Blender",
+           "old_front_plane_unity_z_m":r["before_lock_front_z_m"],
+           "new_front_plane_unity_z_m":r["after_lock_front_z_m"],
+           "full_triangle_self_intersection_QA":"NOT_RUN",
+           "hinge_full_sweep":"NOT_RUN","C01_02":"NOT_RUN","Unity6_URP":"NOT_RUN",
+           "canonical_producer_native_updated":True,"merge":"HOLD",
+           "run_id":os.environ.get("GITHUB_RUN_ID"),"run_sha":os.environ.get("GITHUB_SHA")}
+          (release/"P18-07_NATIVE_PRODUCER_RESULT.json").write_text(json.dumps(result,indent=2)+"\n")
+          print("C01_W19_P18_07_NATIVE_PROMOTION_EVIDENCE",json.dumps(result))
+          PY
+      - name: Commit ONLY P18-07 native BLEND/FBX and exact SHA on own isolated branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          d=Assets/C01InteriorProps/C01-18-Wave02
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$d/Sources/P18-07.blend" "$d/Models/P18-07.fbx" "$d/QA/Pass19/P18-07_NATIVE_PRODUCER_RESULT.json"
+          changed="$(git diff --cached --name-only)"
+          test "$(printf '%s\n' "$changed" | grep -c '^Assets/C01InteriorProps/C01-18-Wave02/' || true)" -eq 3
+          ! printf '%s\n' "$changed" | grep -E 'P18-0[456]\.(blend|fbx)'
+          git commit -m "C01-18 W19: real Blender 4 P18-07 lock clearance and native binary FBX [skip ci]"
+          git push origin "HEAD:c01/props-18-cargo-wave02"
+      - name: Preserve actual native QA artifact for independent C01-02
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-18-W19-P18-07-AUTHENTIC-BLENDER-FBX
+          path: |
+            Assets/C01InteriorProps/C01-18-Wave02/Sources/P18-07.blend
+            Assets/C01InteriorProps/C01-18-Wave02/Models/P18-07.fbx
+            Assets/C01InteriorProps/C01-18-Wave02/QA/Pass19/P18-07_NATIVE_PRODUCER_RESULT.json
+          if-no-files-found: error
+          retention-days: 21

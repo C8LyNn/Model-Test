@@ -1,0 +1,43 @@
+name: C01-18 PASS03 coplanar intersection screening w02
+on:
+  workflow_dispatch:
+  push:
+    branches: [c01/props-18-cargo-wave02]
+    paths:
+      - 'Assets/C01InteriorProps/C01-18-Wave02/Repair/mesh_overlap_screen.py'
+      - '.github/workflows/c01-18-pass03-w02-overlap.yml'
+permissions:
+  contents: write
+jobs:
+  inspect-real-source:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - name: Install Blender
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y blender python3-numpy
+          git lfs pull
+      - name: BVH and coplanar surface candidate audit on original sources
+        run: |
+          blender -b --python Assets/C01InteriorProps/C01-18-Wave02/Repair/mesh_overlap_screen.py -- "$PWD/Assets/C01InteriorProps/C01-18-Wave02" P18-04 P18-05 P18-06 P18-07
+      - name: Persist audit in existing PR branch
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Assets/C01InteriorProps/C01-18-Wave02/QA/Pass03/*/mesh_overlap_review.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'C01-18 PASS03: record actual Blender overlap-screen evidence [skip ci]'
+            git fetch origin c01/props-18-cargo-wave02
+            git rebase origin/c01/props-18-cargo-wave02
+            git push origin HEAD:c01/props-18-cargo-wave02
+          fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: C01-18-PASS03-w02-OverlapReview
+          path: Assets/C01InteriorProps/C01-18-Wave02/QA/Pass03/*/mesh_overlap_review.json
+          retention-days: 30

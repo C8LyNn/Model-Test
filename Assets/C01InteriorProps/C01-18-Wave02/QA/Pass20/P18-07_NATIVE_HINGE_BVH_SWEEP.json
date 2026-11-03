@@ -1,0 +1,691 @@
+{
+  "C01_02_independent_motion": "NOT_RUN",
+  "Unity6_URP": "NOT_RUN",
+  "asset": "P18-07",
+  "binary_fbx_reimport": {
+    "angles_tested": 23,
+    "blocking_contact_pairs": {
+      "Bin_Lid / Bin_Chassis": [
+        0
+      ],
+      "Bin_Lid / Front_Lock": [
+        0,
+        5
+      ],
+      "Bin_Lid / Handle_Grip": [
+        20,
+        25,
+        35,
+        40,
+        45
+      ],
+      "Bin_Lid / Handle_Post_L": [
+        0,
+        5,
+        10,
+        15,
+        20,
+        25,
+        30,
+        35
+      ],
+      "Bin_Lid / Handle_Post_R": [
+        0,
+        5,
+        10,
+        15,
+        20,
+        25,
+        30,
+        35
+      ],
+      "Lid_Label / Handle_Grip": [
+        15,
+        20,
+        25
+      ],
+      "Lid_Label / Handle_Post_L": [
+        10,
+        15
+      ],
+      "Lid_Label / Handle_Post_R": [
+        10,
+        15
+      ]
+    },
+    "caveat": "Surface BVH triangle overlap may report touching surfaces; do not infer 3D penetration without a subsequent narrowphase and physical unlocked-latch state. Opening side -X only; Unity PhysX NOT RUN.",
+    "fixed_parts": [
+      "Base_Stiffener",
+      "Bin_Chassis",
+      "Front_Lock",
+      "Grip_Rail_-0.23",
+      "Grip_Rail_0.23",
+      "Handle_Grip",
+      "Handle_Post_L",
+      "Handle_Post_R"
+    ],
+    "front_face_lid_unity_z_m": 0.16999998688697815,
+    "front_face_lock_unity_z_m": 0.17099998891353607,
+    "front_plane_outward_offset_mm": 1.0000020265579224,
+    "hinge_blender_world_xyz": [
+      0.0,
+      0.17000001668930054,
+      0.23000000417232513
+    ],
+    "mesh_parts": 10,
+    "motion_disposition": "PRODUCER_BVH_CONTACTS_REVIEW",
+    "moving_parts": [
+      "Bin_Lid",
+      "Lid_Label"
+    ],
+    "opening_axis": "Blender -X (Unity rear X-axis), 0\u2192110 degrees",
+    "pose_samples": [
+      {
+        "detected_world_triangle_BVH_pairs": [
+          {
+            "moving": "Bin_Lid",
+            "stationary": "Bin_Chassis",
+            "triangle_pairs": 10
+          },
+          {
+            "moving": "Bin_Lid",
+            "stationary": "Front_Lock",
+            "triangle_pairs": 13
+          },
+          {
+            "moving": "Bin_Lid",
+            "stationary": "Handle_Post_L",
+            "triangle_pairs": 8
+          },
+          {
+            "moving": "Bin_Lid",
+            "stationary": "Handle_Post_R",
+            "triangle_pairs": 8
+          }
+        ],
+        "opening_angle_degrees": 0
+      },
+      {
+        "detected_world_triangle_BVH_pairs": [
+          {
+            "moving": "Bin_Lid",
+            "stationary": "Front_Lock",
+            "triangle_pairs": 9
+          },
+          {
+            "moving": "Bin_Lid",
+            "stationary": "Handle_Post_L",
+            "triangle_pairs": 8
+          },
+          {
+            "moving": "Bin_Lid",
+            "stationary": "Handle_Post_R",
+            "triangle_pairs": 8
+          }
+        ],
+        "opening_angle_degrees": 5
+      },
+      {
+        "detected_world_triangle_BVH_pairs": [
+          {
+            "moving": "Bin_Lid",
+            "stationary": "Handle_Post_L",
+            "triangle_pairs": 8
+          },
+          {
+            "moving": "Bin_Lid",
+            "stationary": "Handle_Post_R",
+            "triangle_pairs": 8
+          },
+          {
+            "moving": "Lid_Label",
+            "stationary": "Handle_Post_L",
+            "triangle_pairs": 11
+          },
+          {
+            "moving": "Lid_Label",
+            "stationary": "Handle_Post_R",
+            "triangle_pairs": 11
+          }
+        ],
+        "opening_angle_degrees": 10
+      },
+      {
+        "detected_world_triangle_BVH_pairs": [
+          {
+            "moving": "Bin_Lid",
+            "stationary": "Handle_Post_L",
+            "triangle_pairs": 15
+          },
+          {
+            "moving": "Bin_Lid",
+            "stationary": "Handle_Post_R",
+            "triangle_pairs": 15
+          },
+          {
+            "moving": "Lid_Label",
+            "stationary": "Handle_Grip",
+            "triangle_pairs": 19
+          },
+          {
+            "moving": "Lid_Label",
+            "stationary": "Handle_Post_L",
+            "triangle_pairs": 7
+          },
+          {
+            "moving": "Lid_Label",
+            "stationary": "Handle_Post_R",
+            "triangle_pairs": 8
+          }
+        ],
+        "opening_angle_degrees": 15
+      },
+      {
+        "detected_world_triangle_BVH_pairs": [
+          {
+            "moving": "Bin_Lid",
+            "stationary": "Handle_Grip",
+            "triangle_pairs": 10
+          },
+          {
+            "moving": "Bin_Lid",
+            "stationary": "Handle_Post_L",
+            "triangle_pairs": 8
+          },
+          {
+            "moving": "Bin_Lid",
+            "stationary": "Handle_Post_R",
+            "triangle_pairs": 8
+          },
+          {
+            "moving": "Lid_Label",
+            "stationary": "Handle_Grip",
+            "triangle_pairs": 14
+          }
+        ],
+        "opening_angle_degrees": 20
+      },
+      {
+        "detected_world_triangle_BVH_pairs": [
+          {
+            "moving": "Bin_Lid",
+            "stationary": "Handle_Grip",
+            "triangle_pairs": 9
+          },
+          {
+            "moving": "Bin_Lid",
+            "stationary": "Handle_Post_L",
+            "triangle_pairs": 8
+          },
+          {
+            "moving": "Bin_Lid",
+            "stationary": "Handle_Post_R",
+            "triangle_pairs": 8
+          },
+          {
+            "moving": "Lid_Label",
+            "stationary": "Handle_Grip",
+            "triangle_pairs": 7
+          }
+        ],
+        "opening_angle_degrees": 25
+      },
+      {
+        "detected_world_triangle_BVH_pairs": [
+          {
+            "moving": "Bin_Lid",
+            "stationary": "Handle_Post_L",
+            "triangle_pairs": 8
+          },
+          {
+            "moving": "Bin_Lid",
+            "stationary": "Handle_Post_R",
+            "triangle_pairs": 8
+          }
+        ],
+        "opening_angle_degrees": 30
+      },
+      {
+        "detected_world_triangle_BVH_pairs": [
+          {
+            "moving": "Bin_Lid",
+            "stationary": "Handle_Grip",
+            "triangle_pairs": 9
+          },
+          {
+            "moving": "Bin_Lid",
+            "stationary": "Handle_Post_L",
+            "triangle_pairs": 7
+          },
+          {
+            "moving": "Bin_Lid",
+            "stationary": "Handle_Post_R",
+            "triangle_pairs": 7
+          }
+        ],
+        "opening_angle_degrees": 35
+      },
+      {
+        "detected_world_triangle_BVH_pairs": [
+          {
+            "moving": "Bin_Lid",
+            "stationary": "Handle_Grip",
+            "triangle_pairs": 9
+          }
+        ],
+        "opening_angle_degrees": 40
+      },
+      {
+        "detected_world_triangle_BVH_pairs": [
+          {
+            "moving": "Bin_Lid",
+            "stationary": "Handle_Grip",
+            "triangle_pairs": 9
+          }
+        ],
+        "opening_angle_degrees": 45
+      },
+      {
+        "detected_world_triangle_BVH_pairs": [],
+        "opening_angle_degrees": 50
+      },
+      {
+        "detected_world_triangle_BVH_pairs": [],
+        "opening_angle_degrees": 55
+      },
+      {
+        "detected_world_triangle_BVH_pairs": [],
+        "opening_angle_degrees": 60
+      },
+      {
+        "detected_world_triangle_BVH_pairs": [],
+        "opening_angle_degrees": 65
+      },
+      {
+        "detected_world_triangle_BVH_pairs": [],
+        "opening_angle_degrees": 70
+      },
+      {
+        "detected_world_triangle_BVH_pairs": [],
+        "opening_angle_degrees": 75
+      },
+      {
+        "detected_world_triangle_BVH_pairs": [],
+        "opening_angle_degrees": 80
+      },
+      {
+        "detected_world_triangle_BVH_pairs": [],
+        "opening_angle_degrees": 85
+      },
+      {
+        "detected_world_triangle_BVH_pairs": [],
+        "opening_angle_degrees": 90
+      },
+      {
+        "detected_world_triangle_BVH_pairs": [],
+        "opening_angle_degrees": 95
+      },
+      {
+        "detected_world_triangle_BVH_pairs": [],
+        "opening_angle_degrees": 100
+      },
+      {
+        "detected_world_triangle_BVH_pairs": [],
+        "opening_angle_degrees": 105
+      },
+      {
+        "detected_world_triangle_BVH_pairs": [],
+        "opening_angle_degrees": 110
+      }
+    ],
+    "test": "actual_blender_reimported_binary_fbx",
+    "triangles": 120
+  },
+  "binary_fbx_sha256": "38d93a5c2dc9f1511e568925998d7ea42c26dffc1f14e99cdaae80f1501273da",
+  "final_release": "HOLD",
+  "max_front_offset_difference_mm": 0.0,
+  "no_geometry_or_export_changes": true,
+  "owner": "C01-18",
+  "source": {
+    "angles_tested": 23,
+    "blocking_contact_pairs": {
+      "Bin_Lid / Bin_Chassis": [
+        0
+      ],
+      "Bin_Lid / Front_Lock": [
+        0,
+        5
+      ],
+      "Bin_Lid / Handle_Grip": [
+        20,
+        25,
+        35,
+        40,
+        45
+      ],
+      "Bin_Lid / Handle_Post_L": [
+        0,
+        5,
+        10,
+        15,
+        20,
+        25,
+        30,
+        35
+      ],
+      "Bin_Lid / Handle_Post_R": [
+        0,
+        5,
+        10,
+        15,
+        20,
+        25,
+        30,
+        35
+      ],
+      "Lid_Label / Handle_Grip": [
+        15,
+        20,
+        25
+      ],
+      "Lid_Label / Handle_Post_L": [
+        10,
+        15
+      ],
+      "Lid_Label / Handle_Post_R": [
+        10,
+        15
+      ]
+    },
+    "caveat": "Surface BVH triangle overlap may report touching surfaces; do not infer 3D penetration without a subsequent narrowphase and physical unlocked-latch state. Opening side -X only; Unity PhysX NOT RUN.",
+    "fixed_parts": [
+      "Base_Stiffener",
+      "Bin_Chassis",
+      "Front_Lock",
+      "Grip_Rail_-0.23",
+      "Grip_Rail_0.23",
+      "Handle_Grip",
+      "Handle_Post_L",
+      "Handle_Post_R"
+    ],
+    "front_face_lid_unity_z_m": 0.17000000178813934,
+    "front_face_lock_unity_z_m": 0.17100000381469727,
+    "front_plane_outward_offset_mm": 1.0000020265579224,
+    "hinge_blender_world_xyz": [
+      0.0,
+      0.17000000178813934,
+      0.23000000417232513
+    ],
+    "mesh_parts": 10,
+    "motion_disposition": "PRODUCER_BVH_CONTACTS_REVIEW",
+    "moving_parts": [
+      "Bin_Lid",
+      "Lid_Label"
+    ],
+    "opening_axis": "Blender -X (Unity rear X-axis), 0\u2192110 degrees",
+    "pose_samples": [
+      {
+        "detected_world_triangle_BVH_pairs": [
+          {
+            "moving": "Bin_Lid",
+            "stationary": "Bin_Chassis",
+            "triangle_pairs": 10
+          },
+          {
+            "moving": "Bin_Lid",
+            "stationary": "Front_Lock",
+            "triangle_pairs": 13
+          },
+          {
+            "moving": "Bin_Lid",
+            "stationary": "Handle_Post_L",
+            "triangle_pairs": 8
+          },
+          {
+            "moving": "Bin_Lid",
+            "stationary": "Handle_Post_R",
+            "triangle_pairs": 8
+          }
+        ],
+        "opening_angle_degrees": 0
+      },
+      {
+        "detected_world_triangle_BVH_pairs": [
+          {
+            "moving": "Bin_Lid",
+            "stationary": "Front_Lock",
+            "triangle_pairs": 9
+          },
+          {
+            "moving": "Bin_Lid",
+            "stationary": "Handle_Post_L",
+            "triangle_pairs": 8
+          },
+          {
+            "moving": "Bin_Lid",
+            "stationary": "Handle_Post_R",
+            "triangle_pairs": 8
+          }
+        ],
+        "opening_angle_degrees": 5
+      },
+      {
+        "detected_world_triangle_BVH_pairs": [
+          {
+            "moving": "Bin_Lid",
+            "stationary": "Handle_Post_L",
+            "triangle_pairs": 8
+          },
+          {
+            "moving": "Bin_Lid",
+            "stationary": "Handle_Post_R",
+            "triangle_pairs": 8
+          },
+          {
+            "moving": "Lid_Label",
+            "stationary": "Handle_Post_L",
+            "triangle_pairs": 11
+          },
+          {
+            "moving": "Lid_Label",
+            "stationary": "Handle_Post_R",
+            "triangle_pairs": 11
+          }
+        ],
+        "opening_angle_degrees": 10
+      },
+      {
+        "detected_world_triangle_BVH_pairs": [
+          {
+            "moving": "Bin_Lid",
+            "stationary": "Handle_Post_L",
+            "triangle_pairs": 15
+          },
+          {
+            "moving": "Bin_Lid",
+            "stationary": "Handle_Post_R",
+            "triangle_pairs": 15
+          },
+          {
+            "moving": "Lid_Label",
+            "stationary": "Handle_Grip",
+            "triangle_pairs": 19
+          },
+          {
+            "moving": "Lid_Label",
+            "stationary": "Handle_Post_L",
+            "triangle_pairs": 7
+          },
+          {
+            "moving": "Lid_Label",
+            "stationary": "Handle_Post_R",
+            "triangle_pairs": 8
+          }
+        ],
+        "opening_angle_degrees": 15
+      },
+      {
+        "detected_world_triangle_BVH_pairs": [
+          {
+            "moving": "Bin_Lid",
+            "stationary": "Handle_Grip",
+            "triangle_pairs": 10
+          },
+          {
+            "moving": "Bin_Lid",
+            "stationary": "Handle_Post_L",
+            "triangle_pairs": 8
+          },
+          {
+            "moving": "Bin_Lid",
+            "stationary": "Handle_Post_R",
+            "triangle_pairs": 8
+          },
+          {
+            "moving": "Lid_Label",
+            "stationary": "Handle_Grip",
+            "triangle_pairs": 14
+          }
+        ],
+        "opening_angle_degrees": 20
+      },
+      {
+        "detected_world_triangle_BVH_pairs": [
+          {
+            "moving": "Bin_Lid",
+            "stationary": "Handle_Grip",
+            "triangle_pairs": 9
+          },
+          {
+            "moving": "Bin_Lid",
+            "stationary": "Handle_Post_L",
+            "triangle_pairs": 8
+          },
+          {
+            "moving": "Bin_Lid",
+            "stationary": "Handle_Post_R",
+            "triangle_pairs": 8
+          },
+          {
+            "moving": "Lid_Label",
+            "stationary": "Handle_Grip",
+            "triangle_pairs": 7
+          }
+        ],
+        "opening_angle_degrees": 25
+      },
+      {
+        "detected_world_triangle_BVH_pairs": [
+          {
+            "moving": "Bin_Lid",
+            "stationary": "Handle_Post_L",
+            "triangle_pairs": 8
+          },
+          {
+            "moving": "Bin_Lid",
+            "stationary": "Handle_Post_R",
+            "triangle_pairs": 8
+          }
+        ],
+        "opening_angle_degrees": 30
+      },
+      {
+        "detected_world_triangle_BVH_pairs": [
+          {
+            "moving": "Bin_Lid",
+            "stationary": "Handle_Grip",
+            "triangle_pairs": 9
+          },
+          {
+            "moving": "Bin_Lid",
+            "stationary": "Handle_Post_L",
+            "triangle_pairs": 7
+          },
+          {
+            "moving": "Bin_Lid",
+            "stationary": "Handle_Post_R",
+            "triangle_pairs": 7
+          }
+        ],
+        "opening_angle_degrees": 35
+      },
+      {
+        "detected_world_triangle_BVH_pairs": [
+          {
+            "moving": "Bin_Lid",
+            "stationary": "Handle_Grip",
+            "triangle_pairs": 9
+          }
+        ],
+        "opening_angle_degrees": 40
+      },
+      {
+        "detected_world_triangle_BVH_pairs": [
+          {
+            "moving": "Bin_Lid",
+            "stationary": "Handle_Grip",
+            "triangle_pairs": 9
+          }
+        ],
+        "opening_angle_degrees": 45
+      },
+      {
+        "detected_world_triangle_BVH_pairs": [],
+        "opening_angle_degrees": 50
+      },
+      {
+        "detected_world_triangle_BVH_pairs": [],
+        "opening_angle_degrees": 55
+      },
+      {
+        "detected_world_triangle_BVH_pairs": [],
+        "opening_angle_degrees": 60
+      },
+      {
+        "detected_world_triangle_BVH_pairs": [],
+        "opening_angle_degrees": 65
+      },
+      {
+        "detected_world_triangle_BVH_pairs": [],
+        "opening_angle_degrees": 70
+      },
+      {
+        "detected_world_triangle_BVH_pairs": [],
+        "opening_angle_degrees": 75
+      },
+      {
+        "detected_world_triangle_BVH_pairs": [],
+        "opening_angle_degrees": 80
+      },
+      {
+        "detected_world_triangle_BVH_pairs": [],
+        "opening_angle_degrees": 85
+      },
+      {
+        "detected_world_triangle_BVH_pairs": [],
+        "opening_angle_degrees": 90
+      },
+      {
+        "detected_world_triangle_BVH_pairs": [],
+        "opening_angle_degrees": 95
+      },
+      {
+        "detected_world_triangle_BVH_pairs": [],
+        "opening_angle_degrees": 100
+      },
+      {
+        "detected_world_triangle_BVH_pairs": [],
+        "opening_angle_degrees": 105
+      },
+      {
+        "detected_world_triangle_BVH_pairs": [],
+        "opening_angle_degrees": 110
+      }
+    ],
+    "test": "real_authoring_blend",
+    "triangles": 120
+  },
+  "source_blend_sha256": "ca81b1b5b03354f6988657324f2f30b28ff1b785529388fb692469ffb2d3f9c3",
+  "source_fbx_pair_agreement": true,
+  "wave": "W20"
+}

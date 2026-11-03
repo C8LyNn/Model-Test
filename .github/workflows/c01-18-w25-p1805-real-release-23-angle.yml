@@ -1,0 +1,60 @@
+name: C01-18 W25 REAL P18-05 Released Latch Lifted Hinge Native QA
+on:
+  push:
+    branches: [c01/props-18-cargo-wave02]
+    paths: ['.github/workflows/c01-18-w25-p1805-real-release-23-angle.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  signed-real-native-mesh-motion:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - name: Hydrate only real signed existing P18-05 BLEND+binary FBX
+        run: |
+          set -euo pipefail
+          git lfs install --local
+          git lfs pull --include='Assets/C01InteriorProps/C01-18-Wave02/Sources/P18-05.blend,Assets/C01InteriorProps/C01-18-Wave02/Models/P18-05.fbx' --exclude=''
+          sudo apt-get update -qq
+          sudo apt-get install -y blender python3-numpy
+          blender --version | grep -E '^Blender 4\.'
+      - name: Execute authentic Blender4 8mm latch 2mm lift and full 23-angle sweep on original Blender & imported FBX
+        run: |
+          set -euo pipefail
+          root="$PWD/Assets/C01InteriorProps/C01-18-Wave02"
+          blender -b --factory-startup --python-exit-code 1 \
+            --python "$root/Tools/pass25_p1805_real_release_motion_acceptance.py" -- "$root"
+          python3 - <<'PY'
+          import json,pathlib
+          p=pathlib.Path('Assets/C01InteriorProps/C01-18-Wave02/QA/Pass25/P18-05_SIGNED_REAL_BLENDER_FBX_RELEASE_LIFT_HINGE_ACCEPTANCE.json')
+          a=json.loads(p.read_text())
+          assert a['source_and_fbx_actual_zero_motion_contacts']
+          assert a['native_reexports']==0 and a['no_native_geometry_change']
+          for k in ['physical_BLENDER','physical_FBX_import']:
+            z=a[k]
+            assert len(z['opened_0_to_minus110deg'])==23
+            assert all(x['total_triangle_pairs']==0 for x in z['opened_0_to_minus110deg'])
+            assert z['lid_lift_0_to_2mm'][-1]['total_triangle_pairs']==0
+          print('C01_W25_P1805_ORIGINAL_REAL_BLENDER_FBX_23x2_MOTION_PASS')
+          PY
+      - name: Commit only new read-only QA JSON on own Draft branch
+        run: |
+          set -euo pipefail
+          p=Assets/C01InteriorProps/C01-18-Wave02/QA/Pass25/P18-05_SIGNED_REAL_BLENDER_FBX_RELEASE_LIFT_HINGE_ACCEPTANCE.json
+          git add "$p"
+          test "$(git diff --cached --name-only)" = "$p"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'C01-18 W25: signed authentic original Blender+FBX released P18-05 hinge clearance evidence [skip ci]'
+          git push origin HEAD:c01/props-18-cargo-wave02
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: C01-18-W25-P18-05-BINARY-RELEASE-HINGE-23-POSES
+          path: Assets/C01InteriorProps/C01-18-Wave02/QA/Pass25/P18-05_SIGNED_REAL_BLENDER_FBX_RELEASE_LIFT_HINGE_ACCEPTANCE.json
+          if-no-files-found: warn
+          retention-days: 21

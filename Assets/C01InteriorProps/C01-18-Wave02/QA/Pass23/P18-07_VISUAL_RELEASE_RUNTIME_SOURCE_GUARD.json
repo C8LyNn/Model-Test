@@ -1,0 +1,64 @@
+{
+  "wave": 23,
+  "owner": "C01-18",
+  "id": "P18-07",
+  "original_blend_sha256": "5fd990d8153430dd4f1a8893ebef0097465a404d1b2c6bbd77777de695b3e87d",
+  "original_fbx_sha256": "858a24db4338804ee3a3a70c310cd4936e3c45f559b9c4ab81c6037add564554",
+  "native_parts": 10,
+  "native_triangles": 120,
+  "real_blender4_and_imported_FBX_execution": "https://github.com/C8LyNn/Model-Test/actions/runs/41625233773",
+  "real_artifact_id": 13224673612,
+  "real_geometry_json": "https://github.com/C8LyNn/Model-Test/blob/c01/props-18-cargo-wave02/Assets/C01InteriorProps/C01-18-Wave02/QA/Pass23/P18-07_REAL_SIGNED_LATCH_RETRACT_BVH.json",
+  "actual_blender_sweep": {
+    "tested_axis_offsets": 151,
+    "source_clear_offsets": 42,
+    "FBX_reimport_clear_offsets": 42,
+    "chosen_unity_local_retract_m": [
+      0,
+      0,
+      0.02
+    ],
+    "equivalent_blender_world_m": [
+      0,
+      -0.02,
+      0
+    ],
+    "source_vs_imported_FBX_collision_pairs_after_retract": 0,
+    "angle_samples": 23,
+    "range_deg": [
+      0,
+      110
+    ],
+    "moving_parts": [
+      "Bin_Lid",
+      "Lid_Label",
+      "Handle_Post_L",
+      "Handle_Post_R",
+      "Handle_Grip"
+    ],
+    "original_locked_hit_pair_count_0deg": 13,
+    "original_locked_hit_pair_count_5deg": 9
+  },
+  "source_checks": {
+    "total": 24,
+    "passed": 24,
+    "result": "PASS: source-level GitHub blob literal/structural readback only; NOT Unity compilation",
+    "files": [
+      "Assets/C01InteriorProps/C01-18-Wave02/Runtime/C01ToolBinLatchGate.cs",
+      "Assets/C01InteriorProps/C01-18-Wave02/Editor/BuildWave02CargoPrefabs.cs"
+    ],
+    "readback_blob_runtime": "265afca618b76fa587e2450c733b36638da20e5e",
+    "readback_blob_editor": "c357af4016a179371943cd4b67fc50caff478727",
+    "control_flow": "visible Front_Lock moves +20mm Unity local Z before collider disabling and lid movement; LOCKED keeps lid closed; relock only 0deg",
+    "default_state": "locked visible mesh, active collider, closed lid",
+    "max_lid_angle_deg": 110,
+    "guards": "signed FBX full SHA/size, 10 mesh /4 colliders /5 correct hinge children, visible lock MeshRenderer, finite angle, relock only closed, restore locked state on external tamper"
+  },
+  "scope": "No edits to native .blend/.fbx, no geometry export, no D01/D02/gates/doors, no merge",
+  "independent_C01_02_W22": "STATIC_PASS / LOCK_STATE_MOTION_HOLD (preceded real visible release)",
+  "independent_new_runtime_release": "PENDING C01-02 actual Unity import and visual motion acceptance",
+  "owner_C01_01_depth_tolerance": "0.341 actual vs 0.340 nominal = +1mm; PENDING",
+  "Unity_6000_3_14f1_Editor_compile": "NOT_RUN",
+  "Unity_prefab_editmode_playmode": "NOT_RUN",
+  "release": "HOLD"
+}

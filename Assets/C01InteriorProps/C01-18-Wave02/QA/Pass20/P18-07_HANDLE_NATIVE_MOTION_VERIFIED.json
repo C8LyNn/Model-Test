@@ -1,0 +1,87 @@
+{
+  "C01_02_independent": "NOT_RUN",
+  "Unity6": "NOT_RUN",
+  "asset": "P18-07",
+  "binary_fbx_sha256": "858a24db4338804ee3a3a70c310cd4936e3c45f559b9c4ab81c6037add564554",
+  "change": "Move existing Handle_Post_L, Handle_Post_R, Handle_Grip under existing Toolbox_LidHinge; preserve original mesh geometry, UV, materials, rest-frame world transforms and hinge pivot",
+  "fbx": {
+    "contact_witnesses": [
+      {
+        "angle_deg": 0,
+        "gate": "INTENTIONAL_CLOSED_SEAM",
+        "moving": "Bin_Lid",
+        "static": "Bin_Chassis",
+        "triangle_pairs": 10
+      },
+      {
+        "angle_deg": 0,
+        "gate": "ENGAGED_LATCH_REVIEW",
+        "moving": "Bin_Lid",
+        "static": "Front_Lock",
+        "triangle_pairs": 13
+      },
+      {
+        "angle_deg": 5,
+        "gate": "ENGAGED_LATCH_REVIEW",
+        "moving": "Bin_Lid",
+        "static": "Front_Lock",
+        "triangle_pairs": 9
+      }
+    ],
+    "moving_parts": [
+      "Bin_Lid",
+      "Lid_Label",
+      "Handle_Post_L",
+      "Handle_Post_R",
+      "Handle_Grip"
+    ],
+    "positions_tested": 23,
+    "stage": "real_binary_fbx_reimport",
+    "unexpected_contacts": []
+  },
+  "fbx_source_motion_agreement": true,
+  "full_3D_latch_unlock": "NOT_IMPLEMENTED; engaged lock seam at rest and 5 degrees requires separate review",
+  "modified_mesh_parts": 10,
+  "native_blend_sha256": "5fd990d8153430dd4f1a8893ebef0097465a404d1b2c6bbd77777de695b3e87d",
+  "new_binary_fbx_bytes": 41484,
+  "new_native_blend_bytes": 533680,
+  "promotion": "PRODUCER_NATIVE_BINARY_UPDATED_INDEPENDENT_QA_HOLD",
+  "source": {
+    "contact_witnesses": [
+      {
+        "angle_deg": 0,
+        "gate": "INTENTIONAL_CLOSED_SEAM",
+        "moving": "Bin_Lid",
+        "static": "Bin_Chassis",
+        "triangle_pairs": 10
+      },
+      {
+        "angle_deg": 0,
+        "gate": "ENGAGED_LATCH_REVIEW",
+        "moving": "Bin_Lid",
+        "static": "Front_Lock",
+        "triangle_pairs": 13
+      },
+      {
+        "angle_deg": 5,
+        "gate": "ENGAGED_LATCH_REVIEW",
+        "moving": "Bin_Lid",
+        "static": "Front_Lock",
+        "triangle_pairs": 9
+      }
+    ],
+    "moving_parts": [
+      "Bin_Lid",
+      "Lid_Label",
+      "Handle_Post_L",
+      "Handle_Post_R",
+      "Handle_Grip"
+    ],
+    "positions_tested": 23,
+    "stage": "modified_authentic_blend",
+    "unexpected_contacts": []
+  },
+  "source_blend_old_sha256": "ca81b1b5b03354f6988657324f2f30b28ff1b785529388fb692469ffb2d3f9c3",
+  "triangles": 120,
+  "wave": "W20"
+}

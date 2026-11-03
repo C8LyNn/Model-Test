@@ -1,0 +1,162 @@
+{
+  "title": "C01-18 PASS04 exact binary FBX indexed topology audit",
+  "issue": 33,
+  "parent_issue": 30,
+  "origin": "actual hydrated binary FBX bytes from producer PASS03 archival ZIP, verified against current Git LFS SHA256 oid",
+  "producing_branch": "c01/props-18-cargo-wave02",
+  "producer_commit_before_report": "95b8ef34b6ec61931473e390e9d351f1d46943fa",
+  "tests": "custom parser on v7400 binary FBX Objects/Geometry, original FBX PolygonVertexIndex, Vertices, LayerElementNormal, LayerElementUV; triangulation fan area/convexity, edge-use count/manifold, winding, duplicate faces, UV index bounds and nonunit normals; no OBJ/mock/reconstruction used",
+  "limitations": [
+    "does not execute Blender anew in PASS04: hosted CI runner jobs failed before first step; producer PASS03 source Blender export/import previously PASS",
+    "T-junction/cross-object contact candidates are not automatically faults",
+    "No Unity 6 URP run",
+    "Independent C01-02 verification pending"
+  ],
+  "previous_blender_roundtrip_run": "https://github.com/C8LyNn/Model-Test/actions/runs/41089810123",
+  "per_model": [
+    {
+      "id": "P18-04",
+      "source_blend_sha256": "4a0531a877df0cbbcc2078b02297efccd966611e736bf70480a7572c6602ec52",
+      "binary_fbx_sha256": "233253cea4a872052ef87c33f79c08794885dacac4caadf276e95701d0a70803",
+      "V_E_F_triangles_before": [
+        192,
+        288,
+        114,
+        348
+      ],
+      "V_E_F_triangles_after": [
+        192,
+        288,
+        114,
+        348
+      ],
+      "mesh_parts": 9,
+      "local_edits_pass03": 0,
+      "crosspart_coplanar_candidates_before": 2,
+      "crosspart_coplanar_candidates_after": 2,
+      "ngons_gt4": 10,
+      "actual_normal_corners_checked": 576,
+      "zero_area_fan_triangles": 0,
+      "invalid_polygon_indices": 0,
+      "duplicate_indexed_faces": 0,
+      "boundary_edges": 0,
+      "edges_gt2_uses": 0,
+      "inconsistent_winding_edges": 0,
+      "invalid_uv_indices": 0,
+      "missing_uv_or_normals": 0,
+      "inverted_corner_normals": 0,
+      "result": "BINARY_INDEX_PASS",
+      "blender_source_pass04": "NOT_RUN",
+      "unity": "NOT_RUN",
+      "independent_qa": "PENDING"
+    },
+    {
+      "id": "P18-05",
+      "source_blend_sha256": "5f98b9e34f346df3ef133e30243aee5b26dc45032c415d643490d00dbdd22f21",
+      "binary_fbx_sha256": "58e33516ead13e35e8a48228045c67bd53d6caf8de01883a11625fa2961957e5",
+      "V_E_F_triangles_before": [
+        80,
+        120,
+        60,
+        120
+      ],
+      "V_E_F_triangles_after": [
+        80,
+        120,
+        60,
+        120
+      ],
+      "mesh_parts": 10,
+      "local_edits_pass03": 1,
+      "crosspart_coplanar_candidates_before": 6,
+      "crosspart_coplanar_candidates_after": 4,
+      "ngons_gt4": 0,
+      "actual_normal_corners_checked": 240,
+      "zero_area_fan_triangles": 0,
+      "invalid_polygon_indices": 0,
+      "duplicate_indexed_faces": 0,
+      "boundary_edges": 0,
+      "edges_gt2_uses": 0,
+      "inconsistent_winding_edges": 0,
+      "invalid_uv_indices": 0,
+      "missing_uv_or_normals": 0,
+      "inverted_corner_normals": 0,
+      "result": "BINARY_INDEX_PASS",
+      "blender_source_pass04": "NOT_RUN",
+      "unity": "NOT_RUN",
+      "independent_qa": "PENDING"
+    },
+    {
+      "id": "P18-06",
+      "source_blend_sha256": "b78b0975b222419af184ea88ed9f2d54e766d11f34ddaed319bd16723c225e3f",
+      "binary_fbx_sha256": "e83be5fac79ba0d4baf57f9a4c6050a978383da4f3bd95d046b38462fbabb220",
+      "V_E_F_triangles_before": [
+        88,
+        132,
+        66,
+        132
+      ],
+      "V_E_F_triangles_after": [
+        88,
+        132,
+        66,
+        132
+      ],
+      "mesh_parts": 11,
+      "local_edits_pass03": 1,
+      "crosspart_coplanar_candidates_before": 6,
+      "crosspart_coplanar_candidates_after": 6,
+      "ngons_gt4": 0,
+      "actual_normal_corners_checked": 264,
+      "zero_area_fan_triangles": 0,
+      "invalid_polygon_indices": 0,
+      "duplicate_indexed_faces": 0,
+      "boundary_edges": 0,
+      "edges_gt2_uses": 0,
+      "inconsistent_winding_edges": 0,
+      "invalid_uv_indices": 0,
+      "missing_uv_or_normals": 0,
+      "inverted_corner_normals": 0,
+      "result": "BINARY_INDEX_PASS",
+      "blender_source_pass04": "NOT_RUN",
+      "unity": "NOT_RUN",
+      "independent_qa": "PENDING"
+    },
+    {
+      "id": "P18-07",
+      "source_blend_sha256": "302a6832594702c7eff11a486d9e581c159993ff7b7f5c5abe124bf29edbc8d8",
+      "binary_fbx_sha256": "56c19c7ea12fe2713ae30b72ecf8771613f794d4a2e8c4da18c41cb9dd825e08",
+      "V_E_F_triangles_before": [
+        80,
+        120,
+        60,
+        120
+      ],
+      "V_E_F_triangles_after": [
+        80,
+        120,
+        60,
+        120
+      ],
+      "mesh_parts": 10,
+      "local_edits_pass03": 3,
+      "crosspart_coplanar_candidates_before": 7,
+      "crosspart_coplanar_candidates_after": 5,
+      "ngons_gt4": 0,
+      "actual_normal_corners_checked": 240,
+      "zero_area_fan_triangles": 0,
+      "invalid_polygon_indices": 0,
+      "duplicate_indexed_faces": 0,
+      "boundary_edges": 0,
+      "edges_gt2_uses": 0,
+      "inconsistent_winding_edges": 0,
+      "invalid_uv_indices": 0,
+      "missing_uv_or_normals": 0,
+      "inverted_corner_normals": 0,
+      "result": "BINARY_INDEX_PASS",
+      "blender_source_pass04": "NOT_RUN",
+      "unity": "NOT_RUN",
+      "independent_qa": "PENDING"
+    }
+  ]
+}

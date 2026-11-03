@@ -1,0 +1,555 @@
+{
+  "wave": "02",
+  "owner": "C01-18",
+  "unity": "6000.3.14f1",
+  "urp": "17.3.0",
+  "source_file": "Sources/build_wave02.py",
+  "native_blend": "Native Blender originals tracked in Git LFS; for changed P18-07 W19 native Blender4 save/export/reimport PASS",
+  "fbx": "Binary FBX 7400 tracked in Git LFS; P18-07 W19 source correction generated with real Blender4",
+  "prefab": "Unity Editor builder; NOT RUN until actual Unity import",
+  "qa_approval": "BLOCKED",
+  "units": "1m",
+  "axis": "Unity Y-up",
+  "assets": [
+    {
+      "id": "P18-04",
+      "name": "Transport cylinder",
+      "dimensions_WDH": [
+        0.56,
+        0.56,
+        1.08
+      ],
+      "pivot": "floor center",
+      "colliders": [
+        "Floor_Foot",
+        "Pressure_Shell",
+        "Transport_Socket"
+      ],
+      "priority": "P1"
+    },
+    {
+      "id": "P18-05",
+      "name": "Lockable equipment case",
+      "dimensions_WDH": [
+        0.68,
+        0.46,
+        0.34
+      ],
+      "pivot": "floor center; Lid_HingePivot [0,0.2,-0.2]",
+      "colliders": [
+        "Case_Bottom",
+        "Case_Lid"
+      ],
+      "priority": "P1",
+      "w24_independent": {
+        "owner": "C01-02",
+        "immutable_binary_FBX_sha256": "58e33516ead13e35e8a48228045c67bd53d6caf8de01883a11625fa2961957e5",
+        "evidence": "https://github.com/C8LyNn/Model-Test/issues/36#issuecomment-6603066528",
+        "status": "STATIC_PASS / NEW P1 HINGE_START_MOTION_HOLD",
+        "native_source_mesh_count": 10,
+        "native_triangle_count": 120,
+        "signed_correct_opening_direction": "negative local hinge X, 0..-110deg / 5deg sampled",
+        "lid_to_fixed_triangle_intersections": {
+          "0deg": 40,
+          "-5deg": 43,
+          "-10deg": 21,
+          "-15deg": 3,
+          "-20deg_through_-110deg": 0
+        },
+        "actionable_decision": "C01-18 to design explicit moving latch / clip release before lid motion OR physically repair only confirmed native interference after independent authorization; don't blindly reexport full correct W02 batch",
+        "blender_reexport": "NOT_RUN",
+        "unity_Editor": "NOT_RUN",
+        "release": "HOLD"
+      },
+      "w25_status": "INDEPENDENT_C01_02_SIGNED_NATIVE_RELEASED_HINGE_23_OF_23_PASS + SOURCE_RUNTIME_PREFAB_BUILDER_CONTRACT_PASS / REAL_UNITY6_NOT_RUN / RELEASE_HOLD",
+      "w25_independent_C01_02": "INDEPENDENT_SAME_SHA_SIGNED_NATIVE_MOTION_CLEAR_REPARENTED_HANDLE_8MM_LATCH_2MM_LIFT; exact source blobs accepted; Unity NOT_RUN"
+    },
+    {
+      "id": "P18-06",
+      "name": "Hazardous sample container",
+      "dimensions_WDH": [
+        0.66,
+        0.58,
+        0.78
+      ],
+      "pivot": "floor center",
+      "colliders": [
+        "Reinforced_Base",
+        "Sample_Vault",
+        "Safety_Lid"
+      ],
+      "priority": "P1"
+    },
+    {
+      "id": "P18-07",
+      "name": "Portable tool bin",
+      "dimensions_WDH": [
+        0.56,
+        0.34,
+        0.38
+      ],
+      "pivot": "floor center; Toolbox_LidHinge [0,0.23,-0.17]",
+      "colliders": [
+        "Base_Stiffener",
+        "Bin_Chassis",
+        "Bin_Lid",
+        "Front_Lock"
+      ],
+      "priority": "P1",
+      "nominal_dimensions_WDH": [
+        0.56,
+        0.34,
+        0.38
+      ],
+      "measured_dimensions_WDH": [
+        0.56,
+        0.341,
+        0.38
+      ],
+      "measured_depth_delta_from_nominal_m": 0.001,
+      "native_blend_sha256": "5fd990d8153430dd4f1a8893ebef0097465a404d1b2c6bbd77777de695b3e87d",
+      "native_binary_fbx_sha256": "858a24db4338804ee3a3a70c310cd4936e3c45f559b9c4ab81c6037add564554",
+      "w19_status": "PRODUCER_NATIVE_BLENDER_FBX_ROUNDTRIP_PASS; independent motion QA and Unity Editor NOT RUN",
+      "w20_status": "REAL_BLENDER_FBX_HANDLE_HINGE_PIVOT_FIX_PASS; C01-02 final PENDING; Unity NOT RUN; engaged latch contact 0 and 5 degrees REVIEW",
+      "moving_parts": [
+        "Bin_Lid",
+        "Lid_Label",
+        "Handle_Post_L",
+        "Handle_Post_R",
+        "Handle_Grip"
+      ],
+      "independent_C01_02_W21": {
+        "sha256_fbx": "858a24db4338804ee3a3a70c310cd4936e3c45f559b9c4ab81c6037add564554",
+        "gate": "STATIC_PASS_LOCKED_LATCH_MOTION_HOLD",
+        "binary_artifact": 13184427833,
+        "real_native_evidence": "https://github.com/C8LyNn/Model-Test/actions/runs/41536767833",
+        "actual_independent_qa": "https://github.com/C8LyNn/Model-Test/blob/c01/props-02-independent-qa/C01InteriorProps_QA/DETAIL_PASS21/W21_INDEPENDENT_FBX_QA_HANDOFF.md",
+        "hinge": "Toolbox_LidHinge; five actual moving mesh children verified",
+        "locked_contact": {
+          "0_degrees": 13,
+          "5_degrees": 9,
+          "10_to_110_degrees": 0
+        },
+        "nominal_depth_m": 0.34,
+        "actual_depth_m": 0.341,
+        "depth_tolerance_owner": "C01-01_PENDING",
+        "unity": "NOT_RUN",
+        "final": "HOLD"
+      },
+      "w23_status": "SIGNED_REAL_NATIVE_BVH_VISUAL_LOCK_RELEASE_PASS_20MM; runtime SOURCE_FIXED; Unity NOT_RUN / C01-02 W23 + C01-01 acceptance HOLD",
+      "w24_status": "REAL_SIGNED_BLENDER_FBX_SLIDE_11_POSITIONS_0_COLLISIONS_AT_20MM; REAL_OFFLINE_CSHARP_50_OF_50_PASS_EXACT_PARENT_MINUS90X; UNITY_AND_C01_02_NEW_SCRIPT_REVIEW_HOLD"
+    }
+  ],
+  "wave19": {
+    "focus_asset": "P18-07",
+    "modified_only": "P18-07 BLEND and FBX; P18-04/05/06 native outputs unchanged",
+    "run_id": 41531265944,
+    "run_url": "https://github.com/C8LyNn/Model-Test/actions/runs/41531265944",
+    "artifact_id": 13182237560,
+    "commit": "1d6a24fc5c83112f5594139dd85b2521f33de912",
+    "blender_roundtrip": "PRODUCER_PASS",
+    "C01_02": "PENDING",
+    "Unity6": "NOT_RUN",
+    "release": "HOLD"
+  },
+  "wave20": {
+    "model": "P18-07",
+    "native_blend_sha256": "5fd990d8153430dd4f1a8893ebef0097465a404d1b2c6bbd77777de695b3e87d",
+    "native_fbx_sha256": "858a24db4338804ee3a3a70c310cd4936e3c45f559b9c4ab81c6037add564554",
+    "actions_url": "https://github.com/C8LyNn/Model-Test/actions/runs/41536767833",
+    "artifact_id": 13184427833,
+    "disposition": "PRODUCER_SOURCE_AND_BINARY_FBX_MOTION_PASS_WITH_ENGAGED_LATCH_REVIEW",
+    "source_and_imported_fbx_23_angle_pose_agreement": true,
+    "mesh_parts": 10,
+    "triangles": 120,
+    "geometry_changed": false,
+    "moving_hinge_parts": [
+      "Bin_Lid",
+      "Lid_Label",
+      "Handle_Post_L",
+      "Handle_Post_R",
+      "Handle_Grip"
+    ],
+    "resting_closed_contacts": [
+      "Bin_Lid/Bin_Chassis closed seam 0°",
+      "Bin_Lid/Front_Lock engaged latch 0° and 5°"
+    ],
+    "independent_C01_02": "NOT_RUN",
+    "Unity6": "NOT_RUN",
+    "release": "HOLD"
+  },
+  "wave22": {
+    "scope": "C01-18 existing P18-07 only, no new asset or geometry export",
+    "fbx_sha256": "858a24db4338804ee3a3a70c310cd4936e3c45f559b9c4ab81c6037add564554",
+    "blend_sha256": "5fd990d8153430dd4f1a8893ebef0097465a404d1b2c6bbd77777de695b3e87d",
+    "current_producer_source_branch": "c01/props-18-cargo-wave02",
+    "C01_02_independent": "STATIC_PASS / LOCKED_LATCH_MOTION_HOLD; native FBX 13 triangle contacts at 0deg, 9 at 5deg; 0 at >=10deg",
+    "C01_02_evidence": "https://github.com/C8LyNn/Model-Test/blob/c01/props-02-independent-qa/C01InteriorProps_QA/DETAIL_PASS21/W21_INDEPENDENT_FBX_QA_HANDOFF.md",
+    "actual_producer_unlocked_motion_evidence": "https://github.com/C8LyNn/Model-Test/actions/runs/41540397981",
+    "locked_lid_runtime_contract": {
+      "default_state": "LOCKED; only request opening after authenticated unlocked action",
+      "locked_behavior": "block opening and retain hinge rest angle; never rotate locked lid into Front_Lock",
+      "unlock_transition": "complete unlock BEFORE lid rotation; disable or retract ONLY Front_Lock blocking collider, then allow movement",
+      "unlocked_behavior": "full 0..110deg tested geometry; source and FBX BVH zero unexpected intersections with lock collider excluded",
+      "relock_transition": "only permit reengagement after lid fully closes to 0deg and movement has stopped",
+      "acceptance_tests": "must run as actual Unity Editor/PlayMode when C01-10 owner license available; never claim gameplay PASS from Blender collision-state toggling"
+    },
+    "C01_01_depth_delta_mm": 1,
+    "C01_01_tolerance_signoff": "PENDING",
+    "C01_02_full_motion_approval": "HOLD",
+    "Unity6_editor": "NOT_RUN",
+    "release": "HOLD",
+    "no_reexport": "P18-04/05/06/07 original native BLEND and FBX SHA unchanged in W22",
+    "prefab_source_correction": {
+      "actual_issue": "Existing W02 Unity builder previously did not create Front_Lock collider, so locked-vs-unlocked physical latch policy could not be represented in generated prefab",
+      "added_existing_part_to_collider_plan": "Front_Lock",
+      "required_p1807_exact_meshes": 10,
+      "required_p1807_exact_colliders": 4,
+      "prefab_script": "Assets/C01InteriorProps/C01-18-Wave02/Editor/BuildWave02CargoPrefabs.cs",
+      "latch_state_script": "Assets/C01InteriorProps/C01-18-Wave02/Runtime/C01ToolBinLatchGate.cs",
+      "signed_binary_fbx_preflight_before_any_prefab_writes": "SHA256 858a24db4338804ee3a3a70c310cd4936e3c45f559b9c4ab81c6037add564554; exact 41484 bytes",
+      "static_source_guard_checks": "13/13 PASS; NOT a Unity compilation",
+      "runtime_locked_state": "Front_Lock solid BoxCollider enabled, false unlock state, hinge movement blocked",
+      "runtime_unlock_state": "Front_Lock collider disabled only after TryUnlock; hinge movement via TrySetOpeningDegrees up to 110 degrees",
+      "runtime_relock_state": "only when lid localRotation returned to closed within 0.1 degrees",
+      "unity_editor_compile": "NOT_RUN_LICENSE_OWNER_ACTION_REQUIRED",
+      "real_import_prefab_playmode": "NOT_RUN",
+      "first_unity_validation": "Verify physical hinge axis and exact rotation sign in Unity 6000.3.14f1 URP, runtime locking, 3D collision/colliders and no SaveAsPrefabAsset side effects before claiming PASS",
+      "geometry_changes": 0,
+      "fbx_sha_unchanged": true,
+      "blend_sha_unchanged": true,
+      "CI_preflight_rerun": "NOT_RUN_NO_REDUNDANT_GH_ACTIONS"
+    }
+  },
+  "wave23": {
+    "owner": "C01-18",
+    "source_fbx_sha256": "858a24db4338804ee3a3a70c310cd4936e3c45f559b9c4ab81c6037add564554",
+    "source_blend_sha256": "5fd990d8153430dd4f1a8893ebef0097465a404d1b2c6bbd77777de695b3e87d",
+    "original_native_geom_parts": 10,
+    "original_native_triangles": 120,
+    "actual_real_blender4_and_reimported_fbx_action": "https://github.com/C8LyNn/Model-Test/actions/runs/41625233773",
+    "actual_artifact_id": 13224673612,
+    "native_bvh_evidence": "https://github.com/C8LyNn/Model-Test/blob/c01/props-18-cargo-wave02/Assets/C01InteriorProps/C01-18-Wave02/QA/Pass23/P18-07_REAL_SIGNED_LATCH_RETRACT_BVH.json",
+    "original_lock_contacts": {
+      "at_0deg_tri_pairs": 13,
+      "at_5deg_tri_pairs": 9,
+      "at_10_to_110deg": 0
+    },
+    "locked_position": "visible original Front_Lock mesh / nontrigger BoxCollider enabled; fixed closed pivot",
+    "unlock_action": "move both visible Front_Lock mesh AND its collider together prior to lid motion; collider.enabled=false after displacement, no renderer hiding",
+    "tested_delta_world_blender_m": [
+      0,
+      -0.02,
+      0
+    ],
+    "tested_delta_original_unity_xyz_m": [
+      0,
+      0,
+      0.02
+    ],
+    "signed_hinge_positions_deg": [
+      0,
+      5,
+      10,
+      15,
+      20,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60,
+      65,
+      70,
+      75,
+      80,
+      85,
+      90,
+      95,
+      100,
+      105,
+      110
+    ],
+    "original_blend_and_fbx_actual_BVH_retracted_unintended_triangle_contacts": 0,
+    "minimum_retract_clearance_by_BVH": "0.015m passes exactly sampled poses; 0.020m selected 0.005m extra translation safety; not proof of exact 5mm Euclidean surface clearance",
+    "runtime_gameplay_script": "Assets/C01InteriorProps/C01-18-Wave02/Runtime/C01ToolBinLatchGate.cs",
+    "prefab_builder": "Assets/C01InteriorProps/C01-18-Wave02/Editor/BuildWave02CargoPrefabs.cs",
+    "runtime_contract": {
+      "locked": "visible engaged latch and collider active, hinge blocked at rest",
+      "unlock": "visible Front_Lock slides 20mm along imported Unity local +Z, then collider deactivates; gate records unlocked",
+      "lid": "movement through 0..110deg only after visible release",
+      "relock": "only when hinge returned to closed 0deg; lock returns to rest and collider enabled"
+    },
+    "C01_02_independent_W22": "STATIC_PASS / LOCK_STATE_MOTION_HOLD (old unlocked test did not move visible mesh)",
+    "C01_02_independent_W23": "PENDING SOURCE REPAIR RUNTIME ACCEPTANCE",
+    "C01_01_depth_variance_mm": 1,
+    "C01_01_tolerance_decision": "PENDING",
+    "actual_Unity6_Editor_compile_playmode": "NOT_RUN / OWNER_ACTION_REQUIRED",
+    "allow_final_approval": false,
+    "native_geometry_edits": 0,
+    "native_FBX_reexports": 0,
+    "new_models": 0,
+    "door_changes": 0,
+    "merge": false,
+    "notes": "Geometry proof is genuine Blender 4 source+FBX reimport. Unity local axis behavior and actual prefab/PlayMode depend on owner licensed editor; source-level code alone must never be represented as Unity success."
+  },
+  "wave24": {
+    "owner": "C01-18",
+    "asset": "P18-07",
+    "original_binary_fbx_sha256": "858a24db4338804ee3a3a70c310cd4936e3c45f559b9c4ab81c6037add564554",
+    "original_blend_sha256": "5fd990d8153430dd4f1a8893ebef0097465a404d1b2c6bbd77777de695b3e87d",
+    "original_native_mesh_parts": 10,
+    "original_triangles": 120,
+    "actual_signed_Blender4_and_FBX_source_step_execution": {
+      "run": "https://github.com/C8LyNn/Model-Test/actions/runs/41630768388",
+      "report": "https://github.com/C8LyNn/Model-Test/blob/c01/props-18-cargo-wave02/Assets/C01InteriorProps/C01-18-Wave02/QA/Pass24/P18-07_REAL_BLENDER_FBX_20MM_SLIDE_ENVELOPE.json",
+      "incremental_slide_positions_mm": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16,
+        18,
+        20
+      ],
+      "lock_lid_triangle_intersection_pairs": [
+        13,
+        13,
+        13,
+        11,
+        11,
+        11,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "source_vs_imported_binary_FBX_exact_contact_parity": true,
+      "slide_20mm_other_static_intersections": 0,
+      "geometry_dynamic_bounds_closed_xyz_m": [
+        0.560000002,
+        0.380000025,
+        0.341000006
+      ],
+      "geometry_dynamic_bounds_released_xyz_m": [
+        0.560000002,
+        0.380000025,
+        0.361000001
+      ],
+      "visual_latch_extension_m": 0.02,
+      "note": "Dynamic model footprint 361mm while visually released; nominal static depth 340mm, actual static 341mm, C01-01 must approve separately and C01-13 may assess placement/overhang"
+    },
+    "actual_production_CSharp_offline_Mono": {
+      "action": "https://github.com/C8LyNn/Model-Test/actions/runs/41631548847",
+      "report": "https://github.com/C8LyNn/Model-Test/blob/c01/props-18-cargo-wave02/QA/C01-18/Pass24/Wave02/P18-07_W24_REAL_CSHARP_MOCK_QA.json",
+      "compiled_actual_source": "Assets/C01InteriorProps/C01-18-Wave02/Runtime/C01ToolBinLatchGate.cs",
+      "tests_passed": 50,
+      "tests_failed": 0,
+      "type": "Real production C# class executed against offline UnityEngine mock; NOT Unity Editor / real PhysX / PlayMode",
+      "runtime_state_machine": "LOCKED -> RETRACTING for 0.25s (collider ON, no lid motion) -> UNLOCKED (visible lock +20mm, collider OFF) -> LID 0..110deg -> CLOSED -> RELOCKING 0.25s (collider OFF) -> LOCKED (original visual position, collider ON)",
+      "importer_parent_basis": "Root +Z release converted into Front_Lock parent's local coordinates using TransformVector / InverseTransformVector, tested with 90-degree imported-parent rotation; exact independent FBX -90deg X parent additionally tested explicitly: source-root +Z maps to importer-parent -Y",
+      "failsafe": "External lock visibility/parent tamper forces lid closed and solid collider ON; invalid angle/time inputs rejected",
+      "artifact_id": 13228731995,
+      "independent_C01_02_W24_P0_old_runtime_axis_bug": "C01-02 saw previous fixed local +Z which collides; W24 production root-basis conversion tests exact -90deg X FBX case with 50/50 offline PASS, independent reevaluation needed"
+    },
+    "producer_gate": "REAL_BLENDER_FBX_STEP_AND_OFFLINE_COMPILED_CSHARP_PASS",
+    "C01_02_latest": "Independent W24 real FBX static/visual review P18-07: P0 UNITY-LOCAL-AXIS SOURCE_CONTRACT_HOLD on W23 old C# blob 265af...; updated W24 C# root-basis conversion on new Git blob, +50/50 tests, independent NEW exact-source verdict pending",
+    "C01_01_locked_static_depth_variance_mm": 1,
+    "C01_01_dynamic_slide_extra_depth_mm": 20,
+    "C01_01_dimension_and_envelope_signoff": "PENDING (both 341mm locked and 361mm extended rendered envelopes)",
+    "Unity_Editor": "NOT_RUN / OWNER_ACTION_REQUIRED",
+    "Unity_PlayMode": "NOT_RUN",
+    "no_native_FBX_or_BLEND_change": true,
+    "native_exports": 0,
+    "door_and_gate_changes": 0,
+    "no_new_asset_ids": true,
+    "no_merge": true,
+    "release": "HOLD",
+    "C01_02_exact_signed_parent_rotation_deg_xyz": [
+      -90,
+      0,
+      0
+    ],
+    "C01_02_signed_FBXSHA_parent_local_retract_candidate_m": [
+      0,
+      -0.02,
+      0
+    ],
+    "C01_01_official_tolerance": "C01-02 independently recommends ACCEPT_1MM_NONSTRUCTURAL_P18-07_ONLY; C01-01 formal signoff still pending (also +20mm dynamic footprint)",
+    "P18_05_scoped_independent_new_motion_HOLD": "P18-05 same original FBX SHA 58e33516... has physical hinge 40/43/21/3 contact pairs at 0/-5/-10/-15, then 0 after -20. Separate from P18-07 and requires targeted mechanical resolution; no unrelated model reexport."
+  },
+  "wave25": {
+    "owner": "C01-18",
+    "role": "CARGO & MOVABLE OBJECTS",
+    "model": "P18-05",
+    "current_original_binary_FBX_sha256": "58e33516ead13e35e8a48228045c67bd53d6caf8de01883a11625fa2961957e5",
+    "current_original_blend_SHA256": "5f98b9e34f346df3ef133e30243aee5b26dc45032c415d643490d00dbdd22f21",
+    "original_binary_FBX_size_bytes": 41388,
+    "original_native_blend_size_bytes": 536352,
+    "actual_original_solid_3D_meshed_parts": 10,
+    "actual_original_triangles": 120,
+    "original_geometry_modified": false,
+    "native_reexports": 0,
+    "confirmed_independent_W24_failure": "C01-02 actual original signed FBX 40/43/21/3 lid→fixed face intersections at 0/-5/-10/-15, then 0 after -20; old 3 handle meshes parent fixed, latches engaged",
+    "real_blender4_original_FBX_and_native_motion": {
+      "mode": "Original physical BLEND authenticated, original binary FBX hydrated/imported in Blender4; actual world triangle BVHTree against all Case_Bottom/Foot/Latches, original unchanged geometries",
+      "successful_actual_run": "https://github.com/C8LyNn/Model-Test/actions/runs/41634630338",
+      "JSON": "https://github.com/C8LyNn/Model-Test/blob/c01/props-18-cargo-wave02/Assets/C01InteriorProps/C01-18-Wave02/QA/Pass25/P18-05_SIGNED_REAL_BLENDER_FBX_RELEASE_LIFT_HINGE_ACCEPTANCE.json",
+      "discovery_run": "https://github.com/C8LyNn/Model-Test/actions/runs/41634071887",
+      "step1": "original two visible Front_Latch_L/R parts slide 8mm outward authored Unity prefab root +Z / physical Blender world -Y while lid locked/closed",
+      "step2": "original Case_Lid, Lid_Accent, and existing original Carry_Handle_Rail/Stem_L/Stem_R rigidly move together; hinge world Unity +Y lift 2mm after full latch disengagement",
+      "step3": "original hinge -X 0..110deg every 5deg with fully retracted latches and 2mm lift",
+      "source_open_positions_23": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "imported_FBX_open_positions_23": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "latch_release_0_to_8mm_contacts_native": [
+        24,
+        24,
+        24,
+        24,
+        24,
+        4,
+        4,
+        4,
+        4
+      ],
+      "latch_release_0_to_8mm_contacts_FBX": [
+        22,
+        22,
+        22,
+        22,
+        22,
+        2,
+        2,
+        2,
+        2
+      ],
+      "lift_0_to_2mm_contacts_native": [
+        4,
+        0,
+        0,
+        0,
+        0
+      ],
+      "lift_0_to_2mm_contacts_FBX": [
+        2,
+        0,
+        0,
+        0,
+        0
+      ],
+      "caveat": "Closed engaged latch is intentionally mating with lid and lid/case coplanar seam before lift; release phase contains contacts; zero unintentional during fully disengaged opening only. Raw per-pose source & FBX baselines differ at rest due to coplanarity/native BVH epsilon; never claim identical baseline collision counts."
+    },
+    "Unity_prefab_source_prep": {
+      "changed_runtime": "Assets/C01InteriorProps/C01-18-Wave02/Runtime/C01EquipmentCaseLatchGate.cs",
+      "changed_isolated_builder": "Assets/C01InteriorProps/C01-18-Wave02/Editor/BuildPass25P1805Only.cs",
+      "generic_W02_builder_route": "Assets/C01InteriorProps/C01-18-Wave02/Editor/BuildWave02CargoPrefabs.cs",
+      "immutable_41388_byte_binary_SHA_preflight_before_asset_writes": true,
+      "builder_persists": "ONLY original P18-05.prefab, not P18-04,06,07; original FBX untouched; 10 meshes/120T/2 colliders, 3 handle meshes reparented preserving rest transform",
+      "moving_handle_parts": [
+        "Carry_Handle_Rail",
+        "Carry_Handle_Stem_L",
+        "Carry_Handle_Stem_R"
+      ],
+      "moving_latch_parts": [
+        "Front_Latch_L",
+        "Front_Latch_R"
+      ],
+      "collider_contract": "Case_Bottom + Case_Lid only; no new solid latch collisions",
+      "state_machine": "LOCKED -> RELEASING_LATCHES (.20s 8mm original visible meshes) -> LIFTING_LID (.15s 2mm whole moving hinge assembly) -> UNLOCKED [-X 0..110deg] -> CLOSED -> LOWERING_LID (.15s) -> RELOCKING_LATCHES (.20s) -> LOCKED",
+      "signed_FBX_import_parent_coordinate": "original -90deg X, root +Z mapped to FBX local -Y, root +Y mapped to FBX local +Z using TransformVector and InverseTransformVector",
+      "source_case_tested_in_actual_Unity6": false
+    },
+    "source_offline_CSharp_mono": {
+      "status": "REAL_PRODUCTION_CLASS_COMPILED_AND_EXECUTED_WITH_FAKE_UNITY_API_NOT_UNITY",
+      "run": "https://github.com/C8LyNn/Model-Test/actions/runs/41635651030",
+      "report": "https://github.com/C8LyNn/Model-Test/blob/c01/props-18-cargo-wave02/QA/C01-18/Pass25/Wave02/P18-05_W25_ACTUAL_CSHARP_OFFLINE_QA.json",
+      "tested_conditions": 59,
+      "passed": 59,
+      "failed": 0,
+      "note": "Actual signed asset native geometry measured separately in Blender; mock runtime validates C# sequence only, NOT real Unity physics or graphics."
+    },
+    "independent_C01_02_W25": "SIGNED_NATIVE_RELEASED_HINGE_23_OF_23_PASS / SOURCE_RUNTIME_AND_PREFAB_BUILDER_CONTRACT_PASS / UNITY_NOT_RUN",
+    "C01_01_W25": "NO_NEW_OWNER_DIMENSION_CHANGE_PROPOSED; review transient +8mm latch & +2mm lid movement as needed",
+    "Unity6_6000_3_14f1_Editor": "NOT_RUN / OWNER_ACTION_REQUIRED",
+    "Unity6_URP_scene_prefab_playmode": "NOT_RUN",
+    "final_model_release": "HOLD_UNTIL_LICENSED_UNITY",
+    "owner_freeze": "DOORS_CLAUDE_EXTERNAL_HOLD. No D01 D02 or other doors/gates asset tests/changes/exports.",
+    "new_model_ids": 0,
+    "ship_layout_changes": 0,
+    "unauthorized_merges": 0,
+    "independent_original_binary_and_source_evidence": {
+      "source": "https://github.com/C8LyNn/Model-Test/issues/36#issuecomment-6603866248",
+      "report": "https://github.com/C8LyNn/Model-Test/blob/c01/props-02-independent-qa/C01InteriorProps_QA/DETAIL_PASS25/W25_INDEPENDENT_SIGNED_FBX_SOURCE_QA.md",
+      "delta_gate_csv": "https://github.com/C8LyNn/Model-Test/blob/c01/props-02-independent-qa/C01InteriorProps_QA/DETAIL_PASS25/W25_CHANGED_QA_GATES.csv",
+      "QA_zip_SHA256": "3f1c1039276765a5a8cb10a5d5c6d57d94e01061c27c2d130154ab007ab907ef",
+      "independent_PR13_head_at_report": "f59b928f04616aa958030bcbde002f4f55902650",
+      "exact_producer_runtime_blob_SHA": "1c30eca2e50c0e20056ef998c8d81d0f26465b4e",
+      "exact_producer_isolated_builder_blob_SHA": "1014dcbad012a250e590d432e8e71ec0ce988602",
+      "exact_producer_legacy_route_blob_SHA": "e9c4512fa74ba23e2eeba4814b7d27af6eb7f5a5",
+      "independent_23_angles_clear": 23,
+      "independent_negative_controls": "original fixed handles 20/26/18 intersections at 0/-5/-10; incorrectly moving latches with lid 20 latch/body crossings at 0/-5",
+      "accept_scope": "Only after 8mm original two visible latch retract plus 2mm true hinge lift and 3 original handle meshes following lid; original unreleased hinge remains colliding as independently measured W24",
+      "Unity6_importer_playmode": "NOT_RUN"
+    },
+    "other_existing_models": {
+      "P18_07": "C01-02 W25 independently closed W24 P0 axis source warning: original -90degX signed FBX parent correct root->parent conversion; 20mm retract 0/23 contacts; source axis/native released clearance PASS, Unity NOT_RUN; 341mm static / 361mm dynamic depth formal C01-01 PENDING",
+      "P18_03": "C01-02 W25 independent signed FBX wheel 0.105m radius X and four visual wheels source gate PASS, original 576/576 hub/fork visual crossings, game-view clipping and Unity PhysX NOT_RUN",
+      "source": "https://github.com/C8LyNn/Model-Test/issues/36#issuecomment-6603866248"
+    }
+  }
+}

@@ -1,0 +1,155 @@
+{
+  "project": "C01 3D Asset Factory",
+  "specialist": "C01-18 CARGO",
+  "wave": "PASS09",
+  "branch": "c01/props-18-cargo-wave02",
+  "scope": [
+    "P18-04",
+    "P18-05",
+    "P18-06",
+    "P18-07"
+  ],
+  "classification": "ACTUAL BLENDER PRODUCER SOURCE GENERATOR SYNCED TO VALIDATED EXISTING PASS03 NATIVE MESH; NATIVE BLEND/FBX NOT REBUILT",
+  "edited_file": "Sources/build_wave02.py",
+  "source_git_blob_sha": "e78c6021a6b753c6d506176190ddcf0ac7adfc04",
+  "real_existing_fbx_ground_truth": {
+    "method": "Actual hydrated Blender 4.0.2 binary FBX 7400 original PASS03 archive; verified SHA256; parsed full Objects/Geometry+Connections world transforms and geometry vertices, compared axis-aligned native bounds with new generator dimensions",
+    "validated_parts": 5,
+    "matched_native_bound_parts": [
+      {
+        "model": "P18-05",
+        "part": "Case_Bottom",
+        "bounds_min_cm": [
+          -34,
+          2.8,
+          -20
+        ],
+        "bounds_max_cm": [
+          34,
+          20,
+          20
+        ],
+        "new_box_unity_y_m": 0.114,
+        "new_size_y_m": 0.172
+      },
+      {
+        "model": "P18-06",
+        "part": "Safety_Lid",
+        "bounds_min_cm": [
+          -33,
+          70,
+          -29
+        ],
+        "bounds_max_cm": [
+          33,
+          77,
+          29
+        ],
+        "new_box_unity_y_m": 0.735,
+        "new_size_y_m": 0.07
+      },
+      {
+        "model": "P18-07",
+        "part": "Bin_Chassis",
+        "bounds_min_cm": [
+          -27,
+          7,
+          -15.5
+        ],
+        "bounds_max_cm": [
+          27,
+          23,
+          15.5
+        ],
+        "new_box_unity_y_m": 0.15,
+        "new_size_y_m": 0.16
+      },
+      {
+        "model": "P18-07",
+        "part": "Handle_Post_L",
+        "bounds_min_cm": [
+          -14.9,
+          28,
+          -2
+        ],
+        "bounds_max_cm": [
+          -11.1,
+          35.4,
+          2
+        ],
+        "new_box_unity_y_m": 0.317,
+        "new_size_y_m": 0.074
+      },
+      {
+        "model": "P18-07",
+        "part": "Handle_Post_R",
+        "bounds_min_cm": [
+          11.1,
+          28,
+          -2
+        ],
+        "bounds_max_cm": [
+          14.9,
+          35.4,
+          2
+        ],
+        "new_box_unity_y_m": 0.317,
+        "new_size_y_m": 0.074
+      }
+    ]
+  },
+  "P18-07_lock_source_Pass08": {
+    "source_unity_z_m": 0.165,
+    "old_native_export_unity_z_m": 0.164,
+    "correction_m": 0.001,
+    "status": "AUTHORED_SOURCE_ONLY; NATIVE NOT RUN"
+  },
+  "previous_native_blend_sha256": {
+    "P18-04": "4a0531a877df0cbbcc2078b02297efccd966611e736bf70480a7572c6602ec52",
+    "P18-05": "5f98b9e34f346df3ef133e30243aee5b26dc45032c415d643490d00dbdd22f21",
+    "P18-06": "b78b0975b222419af184ea88ed9f2d54e766d11f34ddaed319bd16723c225e3f",
+    "P18-07": "302a6832594702c7eff11a486d9e581c159993ff7b7f5c5abe124bf29edbc8d8"
+  },
+  "previous_native_binary_fbx_sha256": {
+    "P18-04": "233253cea4a872052ef87c33f79c08794885dacac4caadf276e95701d0a70803",
+    "P18-05": "58e33516ead13e35e8a48228045c67bd53d6caf8de01883a11625fa2961957e5",
+    "P18-06": "e83be5fac79ba0d4baf57f9a4c6050a978383da4f3bd95d046b38462fbabb220",
+    "P18-07": "56c19c7ea12fe2713ae30b72ecf8771613f794d4a2e8c4da18c41cb9dd825e08"
+  },
+  "per_model_gates": {
+    "P18-04": {
+      "actual_generator_geometry": "PASS_SOURCE_BOUND_CHECK_OR_PRESERVED",
+      "new_native_blend": "NOT_RUN",
+      "new_binary_fbx": "NOT_RUN",
+      "blender_reimport": "NOT_RUN",
+      "unity": "NOT_RUN",
+      "independent_qa": "BLOCKED"
+    },
+    "P18-05": {
+      "actual_generator_geometry": "PASS_SOURCE_BOUND_CHECK_OR_PRESERVED",
+      "new_native_blend": "NOT_RUN",
+      "new_binary_fbx": "NOT_RUN",
+      "blender_reimport": "NOT_RUN",
+      "unity": "NOT_RUN",
+      "independent_qa": "BLOCKED"
+    },
+    "P18-06": {
+      "actual_generator_geometry": "PASS_SOURCE_BOUND_CHECK_OR_PRESERVED",
+      "new_native_blend": "NOT_RUN",
+      "new_binary_fbx": "NOT_RUN",
+      "blender_reimport": "NOT_RUN",
+      "unity": "NOT_RUN",
+      "independent_qa": "BLOCKED"
+    },
+    "P18-07": {
+      "actual_generator_geometry": "PASS_SOURCE_BOUND_CHECK_OR_PRESERVED",
+      "new_native_blend": "NOT_RUN",
+      "new_binary_fbx": "NOT_RUN",
+      "blender_reimport": "NOT_RUN",
+      "unity": "NOT_RUN",
+      "independent_qa": "BLOCKED"
+    }
+  },
+  "root_cause_status": "GitHub Actions ubuntu job no runner allocated; exact private repo-level cause unknown. Cross-project B01 public repo CI evidence shows eligible runner worked in B01, but no cross-project source or permission transfer.",
+  "caveat": "Old native FBX is 1mm behind current P18-07 lock authoring source, so must never be misrepresented as PASS09 updated model."
+}

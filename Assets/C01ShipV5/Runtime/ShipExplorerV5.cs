@@ -15,6 +15,8 @@ namespace C01.Ship.V5
         public bool walking;
         public int selectedDeck = 1;
         public float walkSpeed = 5, overviewSpeed = 20;
+        public float sprintMultiplier = 1.4f, walkingFieldOfView = 65f;
+        public bool scaleAwareOverviewControls;
         public float climbHeight = 6f;
         bool roofs, labels = true, mouseCaptured;
         int lastDeck = 1;
@@ -90,7 +92,7 @@ namespace C01.Ship.V5
                 if (walking)
                 {
                     view.orthographic = false;
-                    view.fieldOfView = 65;
+                    view.fieldOfView = walkingFieldOfView;
                 }
                 if (walking && player != null)
                 {
@@ -319,16 +321,33 @@ namespace C01.Ship.V5
                 if (keyboard != null && keyboard.spaceKey.wasPressedThisFrame && player.isGrounded) verticalSpeed = Mathf.Sqrt(-2f * Physics.gravity.y * 1.1f);
                 verticalSpeed = Mathf.Max(-30, verticalSpeed + Physics.gravity.y * Time.deltaTime);
                 var direction = player.transform.right * axes.x + player.transform.forward * axes.y;
-                float speed = keyboard != null && keyboard.leftShiftKey.isPressed ? walkSpeed * 1.4f : walkSpeed;
+                float speed = keyboard != null && keyboard.leftShiftKey.isPressed ? walkSpeed * sprintMultiplier : walkSpeed;
                 player.Move((direction * speed + Vector3.up * verticalSpeed) * Time.deltaTime);
             }
             else
             {
                 var forward = Vector3.ProjectOnPlane(view.transform.forward, Vector3.up).normalized;
                 var right = Vector3.ProjectOnPlane(view.transform.right, Vector3.up).normalized;
-                view.transform.position += (right * axes.x + forward * axes.y) * overviewSpeed * Time.deltaTime;
-                if (mouse != null) view.transform.position += view.transform.forward * mouse.scroll.ReadValue().y * .04f;
+                view.transform.position += (right * axes.x + forward * axes.y) * OverviewPanSpeed() * Time.deltaTime;
+                if (mouse != null) ApplyOverviewScroll(mouse.scroll.ReadValue().y);
             }
+        }
+
+        public float OverviewPanSpeed()
+        {
+            return scaleAwareOverviewControls && view != null && view.orthographic
+                ? overviewSpeed * Mathf.Clamp(view.orthographicSize / 39f, .4f, 6f) : overviewSpeed;
+        }
+
+        public void ApplyOverviewScroll(float scroll)
+        {
+            if (view == null || walking) return;
+            if (scaleAwareOverviewControls && view.orthographic)
+            {
+                float factor = Mathf.Exp(Mathf.Clamp(-scroll * .0015f, -10f, 10f));
+                view.orthographicSize = Mathf.Clamp(view.orthographicSize * factor, 4.5f, Mathf.Max(200f, overviewSize * 8f));
+            }
+            else view.transform.position += view.transform.forward * scroll * .04f;
         }
 
         void OnGUI()

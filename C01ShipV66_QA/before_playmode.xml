@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="2" result="Failed(Child)" total="2" passed="0" failed="2" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-11-03 22:22:36Z" end-time="2026-11-03 22:23:05Z" duration="29,844469">
+  <test-suite type="TestSuite" id="1126" name="Model Test" fullname="Model Test" runstate="Runnable" testcasecount="81" result="Failed" site="Child" start-time="2026-11-03 22:22:36Z" end-time="2026-11-03 22:23:05Z" duration="29.844469" total="2" passed="0" failed="2" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1122" name="C01ShipV66.PlayTests.dll" fullname="C:/Users/kubap/Desktop/C01_GeneralPolish_Work/Library/ScriptAssemblies/C01ShipV66.PlayTests.dll" runstate="Runnable" testcasecount="2" result="Failed" site="Child" start-time="2026-11-03 22:22:36Z" end-time="2026-11-03 22:23:05Z" duration="29.837513" total="2" passed="0" failed="2" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="48872" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestFixture" id="1119" name="ShipV66ScaleTests" fullname="ShipV66ScaleTests" classname="ShipV66ScaleTests" runstate="Runnable" testcasecount="2" result="Failed" site="Child" start-time="2026-11-03 22:22:36Z" end-time="2026-11-03 22:23:05Z" duration="29.836122" total="2" passed="0" failed="2" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-case id="1120" name="HumanScalePlayerHasComfortableWalkingSpeed" fullname="ShipV66ScaleTests.HumanScalePlayerHasComfortableWalkingSpeed" methodname="HumanScalePlayerHasComfortableWalkingSpeed" classname="ShipV66ScaleTests" runstate="Runnable" seed="1029021520" result="Failed" start-time="2026-11-03 22:22:36Z" end-time="2026-11-03 22:22:49Z" duration="13.921874" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[  Expected: 2.5f +/- 0.00100000005f
+  But was:  5.0f
+]]></message>
+            <stack-trace><![CDATA[at ShipV66ScaleTests+<HumanScalePlayerHasComfortableWalkingSpeed>d__0.MoveNext () [0x000cc] in C:\Users\kubap\Desktop\C01_GeneralPolish_Work\Assets\C01ShipV66\Tests\PlayMode\ShipV66ScaleTests.cs:18
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@aebcb98460c6\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+          </failure>
+        </test-case>
+        <test-case id="1121" name="WalkingCameraHasSuitableFieldOfView" fullname="ShipV66ScaleTests.WalkingCameraHasSuitableFieldOfView" methodname="WalkingCameraHasSuitableFieldOfView" classname="ShipV66ScaleTests" runstate="Runnable" seed="1474306303" result="Failed" start-time="2026-11-03 22:22:49Z" end-time="2026-11-03 22:23:05Z" duration="15.903846" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[  Expected: 75.0f +/- 0.00100000005f
+  But was:  65.0f
+]]></message>
+            <stack-trace><![CDATA[at ShipV66ScaleTests+<WalkingCameraHasSuitableFieldOfView>d__1.MoveNext () [0x0007b] in C:\Users\kubap\Desktop\C01_GeneralPolish_Work\Assets\C01ShipV66\Tests\PlayMode\ShipV66ScaleTests.cs:28
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@aebcb98460c6\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+          </failure>
+          <output><![CDATA[Saving results to: C:/Users/kubap/AppData/LocalLow/DefaultCompany/Model Test\TestResults.xml
+]]></output>
+        </test-case>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

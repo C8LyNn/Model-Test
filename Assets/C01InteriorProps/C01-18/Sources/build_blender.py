@@ -4,7 +4,13 @@ Imports OBJ polygon meshes, saves .blend and exports binary FBX. NOT RUN in auth
 import bpy,sys,pathlib
 root=pathlib.Path(sys.argv[sys.argv.index('--')+1]) if '--' in sys.argv else pathlib.Path(__file__).resolve().parents[1]
 (root/'Sources').mkdir(parents=True,exist_ok=True)
-for name in ('P18-01','P18-02','P18-03'):
+model_ids = ('P18-01','P18-02','P18-03')
+if '--only' in sys.argv:
+ index = sys.argv.index('--only')
+ if index+1 >= len(sys.argv) or sys.argv[index+1] not in model_ids:
+  raise SystemExit('Expected --only P18-01|P18-02|P18-03')
+ model_ids = (sys.argv[index+1],)
+for name in model_ids:
  bpy.ops.wm.read_factory_settings(use_empty=True)
  bpy.context.scene.unit_settings.system='METRIC'
  bpy.ops.wm.obj_import(filepath=str(root/'Models'/(name+'.obj')))

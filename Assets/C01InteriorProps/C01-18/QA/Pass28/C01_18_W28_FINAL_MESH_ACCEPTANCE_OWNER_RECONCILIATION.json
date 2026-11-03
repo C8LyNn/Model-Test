@@ -1,0 +1,134 @@
+{
+  "schema": "C01-18-W28-SEVEN-REAL-NONDOOR-ASSET-SHA-OWNER-RECONCILIATION",
+  "date": "2026-11-03",
+  "phase": "W28 final mesh acceptance; producer C01-18 only; no final release",
+  "repo": "C8LyNn/Model-Test",
+  "owner": "C01-18",
+  "previous_issue": "https://github.com/C8LyNn/Model-Test/issues/45",
+  "HQ": "https://github.com/C8LyNn/Model-Test/issues/36",
+  "source_C01_03": {
+    "pr": 27,
+    "registry": "C01InteriorProps_Library/Pass26/C01_03_W26_CANONICAL_36_QA_RELEASE.json",
+    "git_blob_sha1": "8f0db6c3069cb519ab47cd7dd677d8908623a0e1",
+    "canonical_count": 36,
+    "release_approved": 0
+  },
+  "source_C01_02": {
+    "pr": 13,
+    "report": "C01InteriorProps_QA/W28/W28_INDEPENDENT_FINAL_MESH_ACCEPTANCE_HANDOFF.md",
+    "git_blob_sha1": "2095460a469438380793ce5a9f46040a9d3516bb",
+    "blender_independent_P18_run": 41717691683,
+    "original_W26_producer_run": 41707987897
+  },
+  "own_draft_prs": {
+    "pr18_head": "6f178a17a566294ef0be7654b2dee516062bb9b1",
+    "pr26_head": "2c7a88083f513b9cb8d6fabcb7e65013cda0d144",
+    "pr43_before_receipt_head": "82e3269da37b4edc672b219905ddce7b027fcceb",
+    "draft_unmerged": true
+  },
+  "live_7x2_LFS_pointer_SHA_size_preflight": "14 of 14 ORIGINAL current branch LFS OID+size records fetched directly and matched C01-03 ledger; not new 14-file binary hydration or Blender test",
+  "rows": [
+    {
+      "asset": "P18-01",
+      "FBX_SHA256": "f541d502ba9eaaf5c7a0a7279c44f71f36dd482e3aed3ba0734058dcf1045f6c",
+      "BLEND_SHA256": "d8a525acdb0eb7dcfd7b37fb31117b42a53bb655a6543282adac3dff857900a1",
+      "owner_pr": 18,
+      "DEFECT": "W26 original same-facing crate shell↔4 corner decorations (12 face pairs) geometric coplanarity; real visible z-fight NOT confirmed",
+      "REPAIR": "NONE_W28_NO_NEW_DEFECT",
+      "BLENDER_QA": "prior original genuine Blender/FBX roundtrip PASS (unchanged SHA)",
+      "INDEPENDENT_QA": "PREVIOUS_EXACT_SHA_STATIC_SCOPED; LID_DYNAMIC_AND_VISUAL_REVIEW_UNRESOLVED",
+      "UNITY": "NOT_RUN_OWNER_ACTION_REQUIRED",
+      "STATUS": "HOLD_NOT_FINAL",
+      "REMAINING": "genuine visuals only if independent shows material shading fault; Unity Editor"
+    },
+    {
+      "asset": "P18-02",
+      "FBX_SHA256": "e962c47fc60d84fb0d06d69f7aec3eead745705be002b7eb0abf11c5da452558",
+      "BLEND_SHA256": "49b3697ff01efe0497f12703421f05fedb4e9a29636626bf72d1e57493a369d5",
+      "owner_pr": 18,
+      "DEFECT": "NO_NEW_CONFIRMED_DEFECT; real original OBJ contains mounted label backplates, not unsupported label from older minimal part_spec",
+      "REPAIR": "NONE_W28",
+      "BLENDER_QA": "prior original genuine Blender/FBX roundtrip PASS (unchanged SHA)",
+      "INDEPENDENT_QA": "PRIOR_ORIGINAL_STATIC_SHA_AUDIT; FINAL_ASSEMBLY_VISUAL_REVIEW_PENDING",
+      "UNITY": "NOT_RUN_OWNER_ACTION_REQUIRED",
+      "STATUS": "HOLD_NOT_FINAL",
+      "REMAINING": "Unity editor/visual final"
+    },
+    {
+      "asset": "P18-03",
+      "FBX_SHA256": "f932c5fb36624ef91c039b1de04367fff4e99da7c400bbcb4cadd4138f83618f",
+      "BLEND_SHA256": "1c8086b048ac1c62a6791bea5df22a22168b5aea4bc17008a2ce233d86ede41e",
+      "owner_pr": 43,
+      "DEFECT": "W26 original hub↔fork eight axle overlaps removed; W28 no regression",
+      "REPAIR": "W26 original 272 vertex positions, 8 hub shifts ±4mm; 63 parts/1780T invariant. W28 no new repair",
+      "BLENDER_QA": "REAL_NATIVE_BLENDER4_FBX_ROUNDTRIP_PASS_RUN_41707987897",
+      "INDEPENDENT_QA": "C01_02_W27_EXACT_SHA_STATIC_PASS_UV_PASS_MOTION_PASS_RUN_41717691683; 8 interfaces x73 poses x2=1168, 0 BVH contacts, ~2mm clearance",
+      "UNITY": "NOT_RUN_OWNER_ACTION_REQUIRED",
+      "STATUS": "HOLD_NOT_FINAL",
+      "REMAINING": "INDEPENDENT_RENDERED_VISUAL_SHADING_PENDING; UNITY_EDITOR_PHYSX_NOT_RUN"
+    },
+    {
+      "asset": "P18-04",
+      "FBX_SHA256": "233253cea4a872052ef87c33f79c08794885dacac4caadf276e95701d0a70803",
+      "BLEND_SHA256": "4a0531a877df0cbbcc2078b02297efccd966611e736bf70480a7572c6602ec52",
+      "owner_pr": 26,
+      "DEFECT": "NO_NEW_CONFIRMED_DEFECT",
+      "REPAIR": "NONE_W28",
+      "BLENDER_QA": "prior Blender4 FBX native roundtrip on unchanged signed binary",
+      "INDEPENDENT_QA": "PRIOR_EXACT_SHA_STATIC_INDEXED_PASS; visual Unity gate open",
+      "UNITY": "NOT_RUN_OWNER_ACTION_REQUIRED",
+      "STATUS": "HOLD_NOT_FINAL",
+      "REMAINING": "Unity Editor"
+    },
+    {
+      "asset": "P18-05",
+      "FBX_SHA256": "58e33516ead13e35e8a48228045c67bd53d6caf8de01883a11625fa2961957e5",
+      "BLEND_SHA256": "5f98b9e34f346df3ef133e30243aee5b26dc45032c415d643490d00dbdd22f21",
+      "owner_pr": 26,
+      "DEFECT": "old closed latch/lid/handle mechanical crossings already corrected in runtime source; no new W28 source SHA or mesh defect",
+      "REPAIR": "W25 runtime staged 8mm latch retract + 2mm hinge/handle lift; ORIGINAL_BLENDER_FBX_UNCHANGED",
+      "BLENDER_QA": "REAL_ORIGINAL_BLENDER4_FBX_REIMPORT_MOTION_RUN_41634630338_SUCCESS",
+      "INDEPENDENT_QA": "PRIOR_INDEPENDENT_W25_RELEASED_MOTION_23_OF_23_PASS; no new W28 error",
+      "UNITY": "NOT_RUN_OWNER_ACTION_REQUIRED",
+      "STATUS": "HOLD_NOT_FINAL",
+      "REMAINING": "Unity Editor imported pivot/latch/PhysX PlayMode"
+    },
+    {
+      "asset": "P18-06",
+      "FBX_SHA256": "e83be5fac79ba0d4baf57f9a4c6050a978383da4f3bd95d046b38462fbabb220",
+      "BLEND_SHA256": "b78b0975b222419af184ea88ed9f2d54e766d11f34ddaed319bd16723c225e3f",
+      "owner_pr": 26,
+      "DEFECT": "NO_NEW_CONFIRMED_DEFECT",
+      "REPAIR": "NONE_W28",
+      "BLENDER_QA": "prior Blender4 FBX native roundtrip on unchanged signed binary",
+      "INDEPENDENT_QA": "PRIOR_EXACT_SHA_STATIC_INDEXED_PASS; visual Unity gate open",
+      "UNITY": "NOT_RUN_OWNER_ACTION_REQUIRED",
+      "STATUS": "HOLD_NOT_FINAL",
+      "REMAINING": "Unity Editor"
+    },
+    {
+      "asset": "P18-07",
+      "FBX_SHA256": "858a24db4338804ee3a3a70c310cd4936e3c45f559b9c4ab81c6037add564554",
+      "BLEND_SHA256": "5fd990d8153430dd4f1a8893ebef0097465a404d1b2c6bbd77777de695b3e87d",
+      "owner_pr": 26,
+      "DEFECT": "FORMAL_C01_01_SCOPED_DIMENSION_DECISION_PENDING; 0.341m static vs nominal 0.340m; swept 0.361m; historic lid↔frontlock contact resolved by source axis fix",
+      "REPAIR": "NONE_W28_NO_GEOMETRY_CHANGE; W24 source-only Front_Lock axis fix retained",
+      "BLENDER_QA": "REAL_SIGNED_NATIVE_FBX_SOURCE_AND_SWEEP_RUN_41630768388_SUCCESS",
+      "INDEPENDENT_QA": "PRIOR_STATIC_INDEXED_AND_RELEASED_23_OF_23_MOTION_EVIDENCE; C01_01_POLICY_NOT_ACCEPTED_YET",
+      "UNITY": "NOT_RUN_OWNER_ACTION_REQUIRED",
+      "STATUS": "HOLD_NOT_FINAL",
+      "REMAINING": "C01-01 explicit +1mm scoped acceptance or measured rejection; C01-13 0.361m placement; Unity Editor"
+    }
+  ],
+  "parent_gates": {
+    "P18_03_new_independent_static_uv_motion": "PASS",
+    "P18_03_independent_rendered_visual": "NOT_APPROVED",
+    "P18_07_owner_dimensional_standard": "PENDING",
+    "Unity6_6000_3_14f1_URP": "NOT_RUN",
+    "canonical_36_final_approved": 0,
+    "PR19_32": "FROZEN_NO_TOUCH"
+  },
+  "note": "No W28 native model edits, BLEND/FBX reexports or new CI; reuse successful W26/W27 actual native and independent exact-SHA evidence. W28 original full 36 ledger and four-target evidence belong to C01-03/C01-02, not to C01-18.",
+  "freeze": "CLAUDE_DOORS_EXTERNAL_HOLD / no D01 D02 W04 doors or gates tested touched imported exported / PR19 PR32 not modified",
+  "no_merge": true
+}

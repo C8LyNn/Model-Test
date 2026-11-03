@@ -81,11 +81,11 @@
       "blender": "PASS - real CI Blender 4.0.2 save",
       "fbx_unity_import": "NOT RUN",
       "prefab_unity_import": "NOT RUN",
-      "blender_fbx_roundtrip": "PASS - real CI Blender 4.0.2 binary FBX 7400 reimport",
-      "source_obj_sha256": "4446cfc77a6c4a9de4cf7c172ae06395b9dad9e39941566046d952eab0f16a6a",
-      "native_blend_sha256": "ea1b4f5cc5612f8d8ff5c3c585b9b48843659972c2371204b5d3b5c4df3a3b56",
-      "native_fbx_sha256": "f169ab74086ee3853c14b46ac6f6199cd255cfca15d8b7cbef32c3758cde7926",
-      "independent_QA": "C01-02 REAL FBX STATIC_PASS wheel rest and rubber sweep 2mm clearance; rotating hub/fork material interference classification HOLD / Unity NOT_RUN",
+      "blender_fbx_roundtrip": "W26 actual Blender 4 native FBX roundtrip and 8/8 hub/fork 2mm clearance PASS",
+      "source_obj_sha256": "1e6ff7b7d01cbb815e5c0375222877400923c323522936dfa959373a9b05c1e0",
+      "native_blend_sha256": "1c8086b048ac1c62a6791bea5df22a22168b5aea4bc17008a2ce233d86ede41e",
+      "native_fbx_sha256": "f932c5fb36624ef91c039b1de04367fff4e99da7c400bbcb4cadd4138f83618f",
+      "independent_QA": "W26 newly generated signed native FBX; C01-02 independent exact-SHA retest PENDING",
       "w24_status": "VISUAL_BEARING_SOURCE_ANIMATED_39_OFFLINE_CSHARP_TESTS_PASS_NOT_UNITY; C01-02+UNITY HOLD"
     }
   ],
@@ -187,5 +187,29 @@
     "models_added": 0,
     "merge": false,
     "release": "HOLD"
+  },
+  "wave26": {
+    "owner": "C01-18",
+    "model": "P18-03",
+    "scope": "original eight hub mesh vertex X positions only",
+    "baseline_native": {
+      "source_obj_sha256": "4446cfc77a6c4a9de4cf7c172ae06395b9dad9e39941566046d952eab0f16a6a",
+      "native_blend_sha256": "ea1b4f5cc5612f8d8ff5c3c585b9b48843659972c2371204b5d3b5c4df3a3b56",
+      "native_fbx_sha256": "f169ab74086ee3853c14b46ac6f6199cd255cfca15d8b7cbef32c3758cde7926"
+    },
+    "new_native": {
+      "source_obj_sha256": "1e6ff7b7d01cbb815e5c0375222877400923c323522936dfa959373a9b05c1e0",
+      "native_blend_sha256": "1c8086b048ac1c62a6791bea5df22a22168b5aea4bc17008a2ce233d86ede41e",
+      "native_fbx_sha256": "f932c5fb36624ef91c039b1de04367fff4e99da7c400bbcb4cadd4138f83618f"
+    },
+    "new_binary_fbx_size": 194156,
+    "sha_guard": "BuildWave01CargoPrefabs.cs updated to exact new real FBX byte SHA and length",
+    "producer_actual_blender_fbx": "PASS see Assets/C01InteriorProps/C01-18/QA/Pass26/P18-03_W26_REAL_BLENDER_FBX_QA.json",
+    "independent_C01_02": "PENDING",
+    "real_Unity_6_URP": "NOT_RUN",
+    "doors": "EXTERNAL_CLAUDE_FREEZE",
+    "original_P18_01_P18_02": "UNMODIFIED",
+    "release": "DRAFT_HOLD",
+    "merge": "NONE"
   }
 }

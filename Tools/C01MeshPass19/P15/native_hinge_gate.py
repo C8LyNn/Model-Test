@@ -155,24 +155,35 @@ def render_true_mesh_wire_from_actual_signed_fbx():
         bpy.ops.render.render(write_still=True)
         receipt("genuine_workbench_image_"+name,path.is_file() and path.stat().st_size>1000)
     snap("P15-03_POST_UV_SHADED.png")
-    mat=bpy.data.materials.new("C01_PASS26_TEMP_VISIBLE_BLACK_TRI_EDGE")
-    mat.diffuse_color=(.015,.015,.018,1)
-    overlay=[]
+    # Actual source-geometry indexed vertex/edge pairs. Render stable thin
+    # world-space curves instead of Wireframe modifiers, which can create
+    # spurious long spikes on skinny triangles in QA-only render geometry.
+    black=bpy.data.materials.new("C01_PASS26_TEMP_TRUE_EDGE_BLACK")
+    black.diffuse_color=(.008,.008,.012,1)
+    curves=bpy.data.curves.new("C01_PASS26_TEMP_TRUE_FBX_EDGE_CURVES","CURVE")
+    curves.dimensions="3D"
+    curves.resolution_u=1
+    curves.bevel_depth=.0010
+    curves.bevel_resolution=0
+    count=0
     for obj in meshes:
-        wire=obj.copy()
-        wire.data=obj.data.copy()
-        bpy.context.scene.collection.objects.link(wire)
-        wire.name="C01_PASS26_TEMP_WIRE_"+obj.name
-        wire.data.materials.clear()
-        wire.data.materials.append(mat)
-        wire.modifiers.new("C01_TEMP_REAL_TRIANGULATION","TRIANGULATE")
-        edge=wire.modifiers.new("C01_TEMP_TRUE_TRIANGLE_EDGE_TUBES","WIREFRAME")
-        edge.thickness=.0018;edge.offset=1;edge.use_replace=True
-        overlay.append(wire)
+        for e in obj.data.edges:
+            p0=obj.matrix_world @ obj.data.vertices[e.vertices[0]].co
+            p1=obj.matrix_world @ obj.data.vertices[e.vertices[1]].co
+            if (p1-p0).length<1e-8:continue
+            spl=curves.splines.new("POLY")
+            spl.points.add(1)
+            spl.points[0].co=(*p0,1)
+            spl.points[1].co=(*p1,1)
+            count+=1
+    line_obj=bpy.data.objects.new("C01_PASS26_TEMP_FBX_TRUE_INDEXED_EDGES",curves)
+    bpy.context.scene.collection.objects.link(line_obj)
+    curves.materials.append(black)
     bpy.context.view_layer.update()
+    receipt("real_indexed_edge_wire_overlay_nonempty",count>=600,{"exact_mesh_edges":count})
     snap("P15-03_POST_UV_REAL_TRIANGLE_WIREFRAME.png")
-    # Source originals are not saved and the overlays are never exported.
-    for obj in overlay:bpy.data.objects.remove(obj,do_unlink=True)
+    bpy.data.objects.remove(line_obj,do_unlink=True)
+    bpy.data.curves.remove(curves)
     bpy.data.objects.remove(cam,do_unlink=True)
 
 def main():

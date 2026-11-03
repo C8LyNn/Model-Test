@@ -1,7 +1,10 @@
 import bpy, json, math
 from mathutils import Vector
 from pathlib import Path
+import sys
 R=Path(__file__).resolve().parents[2]
+sys.path.insert(0,str(R/'Tools/C01MeshPass26/P15'))
+from uv_layout import layout_custom_mesh_uv
 BASE=R/'Assets/C01InteriorProps/P15'
 S=json.loads((BASE/'Sources/geometry_spec.json').read_text(encoding='utf-8'))
 BL=BASE/'Sources/Blender';FBX=BASE/'Models/FBX';PRE=BASE/'Previews/Blender'
@@ -79,14 +82,8 @@ def c01_detail13_custom_primitive(p):
     data=bpy.data.meshes.new(p["name"]+"_MESH")
     data.from_pydata(verts,[],faces)
     data.update()
-    uv=data.uv_layers.new(name="UVMap")
-    for face in data.polygons:
-        for lid in face.loop_indices:
-            v=data.vertices[data.loops[lid].vertex_index].co
-            if shape=="hollow_cylinder":
-                uv.data[lid].uv=((math.atan2(v.y,v.x)/(2*math.pi))%1.0,(v.z/p["depth"])+.5)
-            else:
-                uv.data[lid].uv=(v.x/max(p["size"][0],1e-8)+.5,v.z/max(p["size"][1],1e-8)+.5)
+    # PASS26: correct UV0 for true side faces and annular caps without moving any vertices.
+    layout_custom_mesh_uv(data,shape,p)
     o=bpy.data.objects.new(p["name"],data)
     bpy.context.collection.objects.link(o)
     return o

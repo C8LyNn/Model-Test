@@ -1,12 +1,5 @@
-name: C01-15 real Blender sources FBX previews
+name: C01-15 real Blender sources FBX previews (MANUAL ONLY - W26 preserve existing native)
 on:
-  push:
-    branches:
-      - c01/props-15-installations
-    paths:
-      - .github/workflows/c01-props15-build.yml
-      - Tools/C01Props15/**
-      - Assets/C01InteriorProps/P15/Sources/geometry_spec.json
   workflow_dispatch:
 permissions:
   contents: write

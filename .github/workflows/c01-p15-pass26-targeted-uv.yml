@@ -1,0 +1,89 @@
+name: C01-15 PASS26 targeted original P15-03 UV0 repair (real Blender FBX)
+on:
+  push:
+    branches: [c01/props-15-installations]
+    paths:
+      - .github/workflows/c01-p15-pass26-targeted-uv.yml
+      - Tools/C01MeshPass26/P15/**
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: c01-p15-pass26-single-author
+  cancel-in-progress: false
+jobs:
+  original-native-targeted-uv-repair:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+      - name: Hydrate ONLY genuine signed original P15-03 BLEND and 3 FBX from LFS
+        shell: bash
+        run: |
+          set -euo pipefail
+          git lfs install --local
+          git config lfs.https://github.com/C8LyNn/Model-Test.git/info/lfs.locksverify false
+          git lfs pull --include="Assets/C01InteriorProps/P15/Sources/Blender/P15-03.blend,Assets/C01InteriorProps/P15/Models/FBX/P15-03.fbx,Assets/C01InteriorProps/P15/Models/FBX/P15-03_Body.fbx,Assets/C01InteriorProps/P15/Models/FBX/P15-03_Door.fbx" --exclude=""
+      - name: Install actual Blender4 FBX importer and renderer
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends blender python3-numpy xvfb libegl1 libgl1 libgl1-mesa-dri libopengl0
+          blender --version | head -4
+      - name: Signed BLEND 3-part UV repair, real 3 FBX exports, Blender FBX import, before after PNG
+        shell: bash
+        run: |
+          set -o pipefail
+          mkdir -p Assets/C01InteriorProps/P15/QA/Pass26
+          LIBGL_ALWAYS_SOFTWARE=1 xvfb-run -a blender --background --python Tools/C01MeshPass26/P15/repair_uv.py 2>&1 | tee Assets/C01InteriorProps/P15/QA/Pass26/Blender4_PASS26.log
+      - name: Verify 120-to-0 real UV correction and preserved original geometry
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json,pathlib
+          p=pathlib.Path("Assets/C01InteriorProps/P15/QA/Pass26")
+          x=json.loads((p/"P15-03_PASS26_REAL_UV0_REPAIR.json").read_text())
+          assert x["result"]=="PRODUCER_REAL_BLENDER_AND_FBX_UV_REPAIR_PASS_INDEPENDENT_QA_PENDING"
+          assert x["real_FBX_before_uvbad"]==120 and x["real_FBX_after_uvbad"]==0
+          assert x["source_mesh_stats_before"]["triangles"]==672 and x["source_mesh_stats_after"]["triangles"]==672
+          assert len(x["previews"])==4
+          print("C01-15 W26 real Blender UV0 120->0; 34 meshes and 672 tris preserved")
+          PY
+      - name: Upload actual repaired BLEND and all original variants of FBX with true before after evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-15-PASS26-P15-03-REAL-BLENDER-FBX-UV-REPAIR
+          path: |
+            Assets/C01InteriorProps/P15/QA/Pass26/
+            Assets/C01InteriorProps/P15/Sources/Blender/P15-03.blend
+            Assets/C01InteriorProps/P15/Models/FBX/P15-03.fbx
+            Assets/C01InteriorProps/P15/Models/FBX/P15-03_Body.fbx
+            Assets/C01InteriorProps/P15/Models/FBX/P15-03_Door.fbx
+          if-no-files-found: warn
+          retention-days: 14
+      - name: Commit only P15-03 repaired 4 signed binaries and QA to original Draft PR16
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROOT=Assets/C01InteriorProps/P15
+          tar -cf "$RUNNER_TEMP/c01_pass26_targeted_native.tar" \
+             "$ROOT/Sources/Blender/P15-03.blend" \
+             "$ROOT/Models/FBX/P15-03.fbx" \
+             "$ROOT/Models/FBX/P15-03_Body.fbx" \
+             "$ROOT/Models/FBX/P15-03_Door.fbx" \
+             "$ROOT/QA/Pass26/"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin c01/props-15-installations
+          GIT_LFS_SKIP_SMUDGE=1 git reset --hard FETCH_HEAD
+          tar -xf "$RUNNER_TEMP/c01_pass26_targeted_native.tar"
+          git lfs install --local
+          git add "$ROOT/Sources/Blender/P15-03.blend" "$ROOT/Models/FBX/P15-03.fbx" \
+                  "$ROOT/Models/FBX/P15-03_Body.fbx" "$ROOT/Models/FBX/P15-03_Door.fbx" "$ROOT/QA/Pass26/"
+          if ! git diff --cached --quiet; then
+            git commit -m "C01-15 W26: targeted original P15-03 UV repair and FBX roundtrip"
+            git push origin HEAD:c01/props-15-installations
+          fi

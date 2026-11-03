@@ -1,12 +1,13 @@
 {
-  "schema": "C01-03-W26-36-CANONICAL-EXACT-SHA-QA",
+  "schema": "C01-03_W26_CANONICAL_36_SHA_WITH_P18_03_NEW_UNMERGED_PRODUCER_CANDIDATE_V2",
   "source_W25_sha1": "88fb52912d5a347e526c8652c669a337c10811c6",
   "independent_W25_sha1": "e713bbc79f3afbb9fafb48ebc5729e976c4274c5",
   "producer_PR26_verified_2c7a": "2c7a88083f513b9cb8d6fabcb7e65013cda0d144",
   "counts": {
     "all": 36,
     "all_hold": 36,
-    "release_approved": 0
+    "release_approved": 0,
+    "producer_new_signed_native_candids_pending_independent": 1
   },
   "unity": "NOT_RUN_OWNER_ACTION_REQUIRED",
   "doors": "CLAUDE_DOORS_EXTERNAL_HOLD",
@@ -613,27 +614,45 @@
       "id": "P18-03",
       "tier": "CANONICAL_P15_P19",
       "identity_path": "Assets/C01InteriorProps/C01-18/Models/P18-03.fbx",
-      "version": "CURRENT_CANONICAL",
-      "branch": "C01-03_W25_SOURCE_REFERENCED_PRODUCER_PR18",
-      "producer_pr": 18,
-      "producer_head": "6f178a17a566294ef0be7654b2dee516062bb9b1",
+      "version": "W26_ISOLATED_NATIVE_REPAIR_CANDIDATE_NOT_MERGED",
+      "branch": "c01/18-w26-p1803-hub-fork-clearance",
+      "producer_pr": 43,
+      "producer_head": "7377d51ee43796609aeb9eac0fa3bc6d4c3f29cf",
       "owner": "C01-18",
       "source_blend_path": "Assets/C01InteriorProps/C01-18/Sources/P18-03.blend",
-      "blend_SHA256": "ea1b4f5cc5612f8d8ff5c3c585b9b48843659972c2371204b5d3b5c4df3a3b56",
+      "blend_SHA256": "1c8086b048ac1c62a6791bea5df22a22168b5aea4bc17008a2ce233d86ede41e",
       "fbx_path": "Assets/C01InteriorProps/C01-18/Models/P18-03.fbx",
-      "fbx_SHA256": "f169ab74086ee3853c14b46ac6f6199cd255cfca15d8b7cbef32c3758cde7926",
-      "fbx_GitSHA1": "",
+      "fbx_SHA256": "f932c5fb36624ef91c039b1de04367fff4e99da7c400bbcb4cadd4138f83618f",
+      "fbx_GitSHA1": "b8e5a13c9967046b2b128b066ad9da7cf16bc35f",
       "obj_path": "",
       "obj_GitSHA1": "",
-      "identity_grade": "PRIOR_FULL_BYTE_BLEND_FBX_SHA_VERIFIED_NATIVE; W26_NO_NEW_EXPORT",
-      "audit_state": "C01-02_W25_ORIGINAL_FBX_AND_CURRENT_SOURCE_REVIEW",
-      "defect_state": "RENDER_ONLY_HUB_FORK_INTERSECTIONS_576_OF_576_VISUAL_REVIEW",
-      "repair_state": "ORIGINAL_GEOMETRY_UNCHANGED_SOURCE_4_WHEEL_VISUAL_ROLL_LOCAL_X_0.105M",
-      "independent_QA": "SCOPED_RENDER_ONLY_SOURCE_CONTRACT_PASS_NOT_PHYSX",
+      "identity_grade": "W26_REAL_BLENDER4_SIGNED_NATIVE_FBX_FULL_BYTE_SHA_MATCH_ACTUAL_ARTIFACT_13266241194; INDEPENDENT_C01_02_NEW_SHA_NOT_RUN",
+      "audit_state": "C01-03_W26_ACTUAL_NEW_NATIVE_BINARY_INDEX_UV_NORMALS_SCOPED_PASS; PRODUCER_8_OF_8_HUB_GAPS_ROUNDTRIP_PASS; C01_02_CURRENT_NEW_SHA_PENDING",
+      "defect_state": "OLDER_576_OF_576_HUB_FORK_INTERSECTIONS_REPAIRED_PRODUCER_STAGED; C01_02_NEW_SHA_HIERARCHICAL_NARROWPHASE_AND_SHADED_NORMS_REVIEW_PENDING",
+      "repair_state": "NATIVE_W26_OBJ_272_VERTEX_X_POSITION_ADJUSTMENTS; FBX_8_HUB_MODEL_LOCAL_X_TRANSLATIONS_PLUS_MINUS_4MM; 63_MESHES_AND_1780_TRIS_PRESERVED",
+      "independent_QA": "PENDING_C01_02_EXACT_NEW_FBX_SHA_F932C5FB; OLD_C01_02_RENDER_ONLY_CONTRACT_WAS_FOR_SUPERSEDED_F169AB74",
       "unity": "NOT_RUN_OWNER_ACTION_REQUIRED",
       "release": "HOLD",
-      "next_action": "C01-02 actual shaded z-fighting witness and C01-10 Unity 4 wheel rolling/6 solid body colliders",
-      "qa_link": "C01InteriorProps_QA/DETAIL_PASS25/W25_INDEPENDENT_SIGNED_FBX_SOURCE_QA.md"
+      "next_action": "C01-02 independently hydrate new full signed P18-03 FBX+BLEND and verify 8 hub/fork clearances with full hierarchy, normal stream differences/shaded before-after, UV0 and motion; C01-10 true Unity6 imported 4-wheel rolling, 6 body colliders PhysX/Game View",
+      "qa_link": "C01InteriorProps_Library/Pass26/C01_03_W26_P18_03_ACTUAL_NATIVE_OLD_NEW_BINARY_DIFF.json",
+      "old_native_sha_pair": {
+        "fbx_sha256": "f169ab74086ee3853c14b46ac6f6199cd255cfca15d8b7cbef32c3758cde7926",
+        "blend_sha256": "ea1b4f5cc5612f8d8ff5c3c585b9b48843659972c2371204b5d3b5c4df3a3b56",
+        "producer_head": "6f178a17a566294ef0be7654b2dee516062bb9b1",
+        "branch": "C01-03_W25_SOURCE_REFERENCED_PRODUCER_PR18"
+      },
+      "producer_w26_native_evidence": {
+        "original_actions_run": 41707987897,
+        "original_artifact_id": 13266241194,
+        "ZIP_sha256": "18fbd3778b6124ba30824687fcf0b5960640adb258218f19ac73690af61c5b81",
+        "crc": "PASS",
+        "full_binary_SHA2_2": "PASS",
+        "qa_producer_json": "Assets/C01InteriorProps/C01-18/QA/Pass26/P18-03_W26_REAL_BLENDER_FBX_QA.json",
+        "producer_reported_min_gap_mm": 1.99997,
+        "mesh_count": 63,
+        "triangle_count": 1780,
+        "independent_repair_gap_qa": "NOT_RUN"
+      }
     },
     {
       "id": "P18-04",
@@ -947,5 +966,24 @@
       "next_action": "C01-01/02 precision and visual review",
       "qa_link": "C01InteriorProps_QA/DETAIL_PASS25/W25_INDEPENDENT_SIGNED_FBX_SOURCE_QA.md"
     }
-  ]
+  ],
+  "current_W26_P18_03": {
+    "sha": "f932c5fb36624ef91c039b1de04367fff4e99da7c400bbcb4cadd4138f83618f",
+    "blend": "1c8086b048ac1c62a6791bea5df22a22168b5aea4bc17008a2ce233d86ede41e",
+    "producer_PR": 43,
+    "head": "7377d51ee43796609aeb9eac0fa3bc6d4c3f29cf",
+    "independent_C01_02": "PENDING_NEW_SHA",
+    "exact_repo_LFS_readback": "2_OF_2",
+    "Unity": "NOT_RUN",
+    "release": "HOLD"
+  },
+  "W26_C01_03_integrity_checks": {
+    "n36": true,
+    "unique36": true,
+    "allSourceFBXSHA64": true,
+    "currentP1803": true,
+    "oldP1803Archived": true,
+    "allhold": true,
+    "noDoorIDs": true
+  }
 }

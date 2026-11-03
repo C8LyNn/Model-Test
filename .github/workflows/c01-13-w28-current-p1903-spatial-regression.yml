@@ -1,0 +1,140 @@
+name: C01-13 W28 actual current P19-03 non-door spatial regression
+on:
+  push:
+    branches: [c01/13-nondoor-placement-clipping-wave23]
+    paths:
+      - C01NonDoorQA/Pass28/retest_current_p1903_room_and_arch.py
+      - .github/workflows/c01-13-w28-current-p1903-spatial-regression.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  actual-current-source-fbx-room-and-architecture:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Real Blender4 and headless Workbench dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y blender git-lfs python3-numpy librsvg2-bin xvfb libegl1 libgl1-mesa-dri libgl1
+          git lfs install --local
+          blender --version | head -2
+      - name: Existing signed P17-01 only
+        uses: actions/checkout@v4
+        with:
+          repository: C8LyNn/Model-Test
+          ref: d37f6cb8355d98324db44ca8eb139681beb7ea9b
+          path: _native/P17-01
+          sparse-checkout: Assets/C01InteriorProps/Models/P17-01.fbx
+          sparse-checkout-cone-mode: false
+          lfs: true
+          persist-credentials: false
+      - name: Existing signed P18-01 only
+        uses: actions/checkout@v4
+        with:
+          repository: C8LyNn/Model-Test
+          ref: 4d167a5e610c2b905360ed472e30960b735ffad5
+          path: _native/P18-01
+          sparse-checkout: Assets/C01InteriorProps/C01-18/Models/P18-01.fbx
+          sparse-checkout-cone-mode: false
+          lfs: true
+          persist-credentials: false
+      - name: NEW exact SHA P19-03 from producer Draft PR15 only
+        uses: actions/checkout@v4
+        with:
+          repository: C8LyNn/Model-Test
+          ref: e053a786ffe8f08e5121c3ae5aa0f974a629660d
+          path: _native/P19-03
+          sparse-checkout: Assets/C01InteriorProps/C01-19/Models/P19-03/P19-03.fbx
+          sparse-checkout-cone-mode: false
+          lfs: true
+          persist-credentials: false
+      - name: Existing signed W01 wall FBX only (NO doors or W04)
+        uses: actions/checkout@v4
+        with:
+          repository: C8LyNn/Model-Test
+          ref: 7e6b159d0742f082e836bc7a4c6b12aee75b312e
+          path: _arch/W01
+          sparse-checkout: Assets/C01Architecture/Walls_W01_W04/FBX/W01_FULL_WALL_1M.fbx
+          sparse-checkout-cone-mode: false
+          lfs: true
+          persist-credentials: false
+      - name: Existing signed F01 floor FBX only
+        uses: actions/checkout@v4
+        with:
+          repository: C8LyNn/Model-Test
+          ref: 91275215a98a8eabb2079025162ee64785953f27
+          path: _arch/F01
+          sparse-checkout: C01StandaloneKits/FloorCeiling/DetailPass17/FBX/C01_SHI_F01_FLOOR_BASIC_v004.fbx
+          sparse-checkout-cone-mode: false
+          lfs: true
+          persist-credentials: false
+      - name: Independent byte SHA256 original actual FBX preflight
+        run: |
+          python3 -m py_compile C01NonDoorQA/Pass28/retest_current_p1903_room_and_arch.py
+          python3 - <<'PY'
+          import hashlib
+          from pathlib import Path
+          cases=[
+          ("P17-01","_native/P17-01/Assets/C01InteriorProps/Models/P17-01.fbx","cd6a5787bb7b4c088f0af35382385e4274c85c415c60467f9a22e46fe33ef02c"),
+          ("P18-01","_native/P18-01/Assets/C01InteriorProps/C01-18/Models/P18-01.fbx","f541d502ba9eaaf5c7a0a7279c44f71f36dd482e3aed3ba0734058dcf1045f6c"),
+          ("P19-03","_native/P19-03/Assets/C01InteriorProps/C01-19/Models/P19-03/P19-03.fbx","4a1ad590e79515b0a699f0fb643d9999b4d1726bd68fce97505f401bb8375967"),
+          ("W01","_arch/W01/Assets/C01Architecture/Walls_W01_W04/FBX/W01_FULL_WALL_1M.fbx","4260732720f10688e9ee370d2a254b67c9263e3e8241b4da42f08e12fe99632f"),
+          ("F01","_arch/F01/C01StandaloneKits/FloorCeiling/DetailPass17/FBX/C01_SHI_F01_FLOOR_BASIC_v004.fbx","46acac987ca3f8387472b2dc8b611cd871c90cd3e7d4773568c9005c84cb5c09")]
+          for name,path,sha in cases:
+            b=Path(path).read_bytes()
+            assert b.startswith(b"Kaydara FBX Binary"),("LFS_POINTER_NOT_HYDRATED",name)
+            assert hashlib.sha256(b).hexdigest()==sha,("WRONG_FULL_SHA",name)
+            print("W28_ACTUAL_SHA_PASS",name,sha,len(b))
+          PY
+      - name: Actual Blender 4 W25 3 rooms + W26 physical walls and floor ONLY new P19 SHA
+        run: |
+          LIBGL_ALWAYS_SOFTWARE=1 xvfb-run -a -s "-screen 0 1280x900x24" blender --background --factory-startup --threads 2 --python-exit-code 1 --python C01NonDoorQA/Pass28/retest_current_p1903_room_and_arch.py -- .
+      - name: Convert real original triangles to preview PNG and verify strict W28 output
+        run: |
+          set -euo pipefail
+          cd C01NonDoorQA/Pass28/Results/rooms
+          for f in *.svg; do
+            rsvg-convert --format png --output "$(basename "$f" .svg).png" "$f"
+          done
+          cd ../../../../
+          python3 - <<'PY'
+          import json,struct,csv
+          from pathlib import Path
+          root=Path("C01NonDoorQA/Pass28/Results")
+          d=json.loads((root/"W28_CURRENT_P19_03_SIGNED_SPATIAL_REGRESSION.json").read_text())
+          s=d["summary"]
+          assert s["real_hydrated_original_binary_FBX_sha256_verified"]==5
+          assert s["current_new_source_triangle_BVH_overlap_candidates"]==0
+          assert s["current_new_source_wall_strict_crossings"]==0
+          assert s["current_new_source_vertices_below_floor"]==0
+          assert s["all_nine_vertical_slab_routes_remeasured"]==9
+          assert not s["doors_or_gates_read_modified_tested"] and not s["merge"]
+          for p in ("rooms/corrected_non_door_layouts_W25.csv","architecture/W26_FBX_W01_F01_NONDOOR_CONTACTS.csv"):
+            assert len(list(csv.DictReader((root/p).open())))==9,p
+          svgs=list((root/"rooms").glob("*.svg"))
+          pngs=list((root/"rooms").glob("*.png"))
+          assert len(svgs)==6 and len(pngs)==9,(len(svgs),len(pngs))
+          for p in pngs:
+            b=p.read_bytes()
+            assert b.startswith(b"\x89PNG\r\n\x1a\n") and len(b)>5000,p
+            assert struct.unpack(">II",b[16:24])==(1200,800),p
+          print("W28_PHYSICAL_NEW_SHA_5_FBX_3_ROOM_3_ARCH_9_PNG_REGR_PASS")
+          PY
+      - name: Upload original current signed W28 evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-13-W28-P19-03-NEW-SHA-NONDoor-Spatial-Regression
+          if-no-files-found: error
+          path: C01NonDoorQA/Pass28/Results/
+      - name: Commit ONLY independent spatial QA proof to existing isolated Draft PR39
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add C01NonDoorQA/Pass28/Results/
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "C01-13 W28: actual new-P19-03 signed native FBX 3-room W01/F01 regression evidence"
+          git push origin HEAD:c01/13-nondoor-placement-clipping-wave23

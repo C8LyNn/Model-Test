@@ -30,6 +30,7 @@ jobs:
             QA/C01-18/Pass24/Wave02/P18_07_Offline_Runtime_Tests.cs
           mono /tmp/C01P1807_W24_OFFLINE.exe | tee /tmp/C01P1807_W24_OFFLINE.log
           grep -q 'C01_W24_P1807_REAL_CSHARP_OFFLINE_LOGIC_PASS' /tmp/C01P1807_W24_OFFLINE.log
+          grep -q 'actual -90deg X FBX parent maps root +Z to local -Y' /tmp/C01P1807_W24_OFFLINE.log
       - name: Immutable signed FBX LFS pointer and typed C# runtime QA record
         run: |
           python3 - <<'PY'
@@ -47,6 +48,7 @@ jobs:
            'wave':24,'asset':'P18-07','test_type':'ACTUAL_CSHARP_COMPILED_WITH_OFFLINE_UnityEngine_DOUBLES_NOT_UNITY',
            'compiler':'Mono mcs; real production C01ToolBinLatchGate.cs compiled as-is',
            'tests_passed':int(m.group(1)),'tests_failed':0,
+           'C01_02_W24_P0_FBX_PARENT_MINUS90X_COVERED':True,
            'tested':'lock initial state, retract 40/100%, collider gating, 5/110deg lid, relock only fully closed, invalid inputs, imported rotated parent conversion, tamper fail closed, external hinge force corrected',
            'native_fbx_sha256':original,'lfs_record_confirmed':True,
            'original_blend_sha256':'5fd990d8153430dd4f1a8893ebef0097465a404d1b2c6bbd77777de695b3e87d',

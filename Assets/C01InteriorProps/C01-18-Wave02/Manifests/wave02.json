@@ -40,7 +40,27 @@
         "Case_Bottom",
         "Case_Lid"
       ],
-      "priority": "P1"
+      "priority": "P1",
+      "w24_independent": {
+        "owner": "C01-02",
+        "immutable_binary_FBX_sha256": "58e33516ead13e35e8a48228045c67bd53d6caf8de01883a11625fa2961957e5",
+        "evidence": "https://github.com/C8LyNn/Model-Test/issues/36#issuecomment-6603066528",
+        "status": "STATIC_PASS / NEW P1 HINGE_START_MOTION_HOLD",
+        "native_source_mesh_count": 10,
+        "native_triangle_count": 120,
+        "signed_correct_opening_direction": "negative local hinge X, 0..-110deg / 5deg sampled",
+        "lid_to_fixed_triangle_intersections": {
+          "0deg": 40,
+          "-5deg": 43,
+          "-10deg": 21,
+          "-15deg": 3,
+          "-20deg_through_-110deg": 0
+        },
+        "actionable_decision": "C01-18 to design explicit moving latch / clip release before lid motion OR physically repair only confirmed native interference after independent authorization; don't blindly reexport full correct W02 batch",
+        "blender_reexport": "NOT_RUN",
+        "unity_Editor": "NOT_RUN",
+        "release": "HOLD"
+      }
     },
     {
       "id": "P18-06",
@@ -360,6 +380,7 @@
       -0.02,
       0
     ],
-    "C01_01_official_tolerance": "C01-02 independently recommends ACCEPT_1MM_NONSTRUCTURAL_P18-07_ONLY; C01-01 formal signoff still pending (also +20mm dynamic footprint)"
+    "C01_01_official_tolerance": "C01-02 independently recommends ACCEPT_1MM_NONSTRUCTURAL_P18-07_ONLY; C01-01 formal signoff still pending (also +20mm dynamic footprint)",
+    "P18_05_scoped_independent_new_motion_HOLD": "P18-05 same original FBX SHA 58e33516... has physical hinge 40/43/21/3 contact pairs at 0/-5/-10/-15, then 0 after -20. Separate from P18-07 and requires targeted mechanical resolution; no unrelated model reexport."
   }
 }

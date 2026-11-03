@@ -22,5 +22,27 @@ namespace C01.InteriorProps.Pass29 {
     }finally{if(g!=null)Object.Destroy(g);}
    }
   }
+  [UnityTest]public IEnumerator NonDoorMovingSubpartTransformSmokeNotAuthoredPhysics() {
+   foreach(string id in new[]{"P15-03","P18-03"}) {
+    string hint=id=="P15-03"?"DoorSkin":"Wheel_";
+    var p=Resources.Load<GameObject>("W29QA/"+id);
+    Assert.NotNull(p,id+" original prefab missing");
+    var go=Object.Instantiate(p);
+    try {
+     yield return null;
+     var t=go.GetComponentsInChildren<Transform>(true).FirstOrDefault(x=>
+       x!=go.transform&&x.name.IndexOf(hint,System.StringComparison.OrdinalIgnoreCase)>=0);
+     Assert.NotNull(t,id+" original movable named subpart missing");
+     var old=t.localRotation;
+     t.localRotation=old*Quaternion.AngleAxis(10f,Vector3.right);
+     Physics.SyncTransforms();
+     yield return new WaitForFixedUpdate();
+     Assert.Greater(Quaternion.Angle(old,t.localRotation),9.9f);
+     t.localRotation=old;
+     // QA-only transform smoke; authored pivot axes, animation, joint contacts,
+     // actual cabinet swing and wheel PhysX remain NOT_APPROVED.
+    }finally{if(go!=null)Object.Destroy(go);}
+   }
+  }
  }
 }

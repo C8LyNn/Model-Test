@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="2" result="Failed(Child)" total="2" passed="1" failed="1" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-11-03 17:17:14Z" end-time="2026-11-03 17:17:48Z" duration="34,0603392">
+  <test-suite type="TestSuite" id="1105" name="Model Test" fullname="Model Test" runstate="Runnable" testcasecount="65" result="Failed" site="Child" start-time="2026-11-03 17:17:14Z" end-time="2026-11-03 17:17:48Z" duration="34.060339" total="2" passed="1" failed="1" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1101" name="C01ShipV64.PlayTests.dll" fullname="C:/Users/kubap/Desktop/C01_GeneralPolish_Work/Library/ScriptAssemblies/C01ShipV64.PlayTests.dll" runstate="Runnable" testcasecount="10" result="Failed" site="Child" start-time="2026-11-03 17:17:14Z" end-time="2026-11-03 17:17:48Z" duration="34.053105" total="2" passed="1" failed="1" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="50748" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestFixture" id="1089" name="ShipV64DimensionsTests" fullname="ShipV64DimensionsTests" classname="ShipV64DimensionsTests" runstate="Runnable" testcasecount="2" result="Failed" site="Child" start-time="2026-11-03 17:17:14Z" end-time="2026-11-03 17:17:48Z" duration="34.051681" total="2" passed="1" failed="1" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-case id="1090" name="CorridorWidthsRoomHeightsAndLiftStopsMatchNewGrid" fullname="ShipV64DimensionsTests.CorridorWidthsRoomHeightsAndLiftStopsMatchNewGrid" methodname="CorridorWidthsRoomHeightsAndLiftStopsMatchNewGrid" classname="ShipV64DimensionsTests" runstate="Runnable" seed="172897787" result="Failed" start-time="2026-11-03 17:17:14Z" end-time="2026-11-03 17:17:26Z" duration="11.895053" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[  branch y=0
+  Expected: 2.70000005f +/- 0.0399999991f
+  But was:  2.85799932f
+]]></message>
+            <stack-trace><![CDATA[at ShipV64DimensionsTests+<CorridorWidthsRoomHeightsAndLiftStopsMatchNewGrid>d__0.MoveNext () [0x003af] in C:\Users\kubap\Desktop\C01_GeneralPolish_Work\Assets\C01ShipV64\Tests\PlayMode\ShipV64DimensionsTests.cs:40
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@aebcb98460c6\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+          </failure>
+        </test-case>
+        <test-case id="1091" name="SectorStairsVentAndLadderReachThreeMetreLanding" fullname="ShipV64DimensionsTests.SectorStairsVentAndLadderReachThreeMetreLanding" methodname="SectorStairsVentAndLadderReachThreeMetreLanding" classname="ShipV64DimensionsTests" runstate="Runnable" seed="536767028" result="Passed" start-time="2026-11-03 17:17:26Z" end-time="2026-11-03 17:17:48Z" duration="22.146061" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[Saving results to: C:/Users/kubap/AppData/LocalLow/DefaultCompany/Model Test\TestResults.xml
+]]></output>
+        </test-case>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

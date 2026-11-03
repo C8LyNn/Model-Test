@@ -23,7 +23,25 @@
   "new_evidence": {
     "P18_05": {
       "fbx_sha": "58e33516ead13e35e8a48228045c67bd53d6caf8de01883a11625fa2961957e5",
-      "independent": "40 contacts 0°, 43 contacts -5°, 21 contacts -10°, 3 contacts -15°, 0 contacts -20° to -110° (5° sampled). Source geometry STATIC PASS / HINGE_MOTION_FAIL. These are strict triangle intersections; some closed rest contacts may be intended. No new accepted fix in current producer PR26."
+      "independent": "UNCHANGED: C01-02 W24 original signed FBX strictly intersects at 0° 40, -5° 43, -10° 21, -15° 3; no same-SHA functional fix independent retest as of this commit.",
+      "producer_w25_new_real_native_search": {
+        "report_path": "Assets/C01InteriorProps/C01-18-Wave02/QA/Pass25/P18-05_ORIGINAL_NATIVE_BLENDER_FBX_HINGE_RELEASE_SEARCH.json",
+        "producer_source_commit": "5a90dab4d98ec600b95a56ee0d4006d24b87fa66",
+        "source_git_blob_sha1": "8da0c77173ed01b44f75def9b29d61e1ef60550a",
+        "action_run": 41634071887,
+        "original_native_sha_unchanged": true,
+        "candidates_searched": 45,
+        "fbx_verified_zero_contact_candidates": 10,
+        "best_example": {
+          "group": "handle",
+          "latch_retract_mm": 8,
+          "lid_lift_mm": 2,
+          "fbx_zero_contacts_23_angles": true
+        },
+        "baseline_parity": false,
+        "implemented_final_runtime": false,
+        "independent_new_sha_or_state_acceptance": "NOT_RUN"
+      }
     },
     "P18_07": {
       "fbx_sha": "858a24db4338804ee3a3a70c310cd4936e3c45f559b9c4ab81c6037add564554",
@@ -36,7 +54,7 @@
     }
   },
   "pending_actions": {
-    "C01_18": "Fix P18-05 after strict physical evidence, preserve signed correct P18-03/P18-07 native bytes.",
+    "C01_18": "P18-05 W25 actual native + FBX search candidate 8mm latch retract +2mm lid lift: baseline parity false, reconcile witness setup, implement only if physically and mechanically validated; preserve original FBX until proven geometry change.",
     "C01_02": "Recheck current producer P18-07 source axis and any new P18-05 repair, classify P18-03 visual contract without inventing Unity.",
     "C01_01": "Formal P18-07 dimension and operating swept envelope; corridor clear-width proposal is not an accepted threshold.",
     "C01_10": "Only authorized Windows Unity Hub 6000.3.14f1 activation and existing PR11 isolated local runner; do not rerun blocked license CI."
@@ -63,7 +81,8 @@
     "P1807_no_false_axis_PASS": true,
     "p1803_source_only": true,
     "unity_zero": true,
-    "final_zero": true
+    "final_zero": true,
+    "P18_05_producer_only_not_pass": true
   },
   "rows": [
     {
@@ -605,11 +624,29 @@
       "independent_motion": "TRIANGLE_INTERSECTIONS_0DEG_40_NEG5_43_NEG10_21_NEG15_3_NEG20_TO_NEG110_ZERO",
       "independent_contract": "STATIC_INDEXED_PASS__HINGE_START_MOTION_FAIL_CURRENT_FBX_SHA",
       "producer_latest_head": "5a90dab4d98ec600b95a56ee0d4006d24b87fa66",
-      "producer_new_source_status": "NO_POST_W24_SOURCE_FIX_OR_NEW_SIGNED_NATIVE_CONFIRMED",
-      "exact_owner_blocker": "C01-18 targeted fix and genuine BLEND/FBX motion proof; C01-02 current same/new SHA independent retest; Unity PlayMode NOT_RUN.",
+      "producer_new_source_status": "PR26_NEW_W25_PRODUCER_REAL_BLENDER_PLUS_FBX_HINGE_45_CANDIDATE_SEARCH_10_FBX_ZERO_CONTACT_CANDIDATES__BASELINE_PARITY_FALSE__NOT_IMPLEMENTED__INDEPENDENT_C01_02_PENDING",
+      "exact_owner_blocker": "Current C01-02 W24 independent motion FAIL remains for signed native FBX. New C01-18 W25 8mm latch retract+2mm lift is producer-only proposed motion; baseline parity false; need reconcile actual named face witnesses, implement validated release and independently recheck before Unity.",
       "real_unity6_editor": "NOT_RUN_OWNER_ACTION_REQUIRED",
       "prefab_scene_EditorLog_EditMode_PlayMode": "NOT_RUN",
-      "final_release": "HOLD"
+      "final_release": "HOLD",
+      "producer_w25_candidate": {
+        "report_path": "Assets/C01InteriorProps/C01-18-Wave02/QA/Pass25/P18-05_ORIGINAL_NATIVE_BLENDER_FBX_HINGE_RELEASE_SEARCH.json",
+        "producer_source_commit": "5a90dab4d98ec600b95a56ee0d4006d24b87fa66",
+        "source_git_blob_sha1": "8da0c77173ed01b44f75def9b29d61e1ef60550a",
+        "action_run": 41634071887,
+        "original_native_sha_unchanged": true,
+        "candidates_searched": 45,
+        "fbx_verified_zero_contact_candidates": 10,
+        "best_example": {
+          "group": "handle",
+          "latch_retract_mm": 8,
+          "lid_lift_mm": 2,
+          "fbx_zero_contacts_23_angles": true
+        },
+        "baseline_parity": false,
+        "implemented_final_runtime": false,
+        "independent_new_sha_or_state_acceptance": "NOT_RUN"
+      }
     },
     {
       "id": "P18-06",

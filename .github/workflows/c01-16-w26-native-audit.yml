@@ -1,0 +1,54 @@
+name: C01-16 W26 original native Blender+FBX mesh audit (NON-DOOR ONLY)
+on:
+  push:
+    branches:
+      - 'c01/props-16-lighting-wave02'
+    paths:
+      - '.github/workflows/c01-16-w26-native-audit.yml'
+      - 'C01Source/LightingW02/MeshRepairW26/audit_original_native_blender_fbx.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  physical-p16-fbx-audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 28
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - name: Install original Blender and hydrate real source binary files
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y blender git-lfs python3-numpy
+          git lfs pull
+          blender --version
+      - name: Hydrate W01 original binaries in an isolated read-only PR12 worktree
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin c01/props-16-lighting:refs/remotes/origin/c01/props-16-lighting
+          git worktree add --detach "$RUNNER_TEMP/c01-w01-native" refs/remotes/origin/c01/props-16-lighting
+          git -C "$RUNNER_TEMP/c01-w01-native" lfs pull
+          python3 - <<'PY'
+          import pathlib,os
+          base=pathlib.Path(os.environ["RUNNER_TEMP"])/"c01-w01-native"/"C01Source"/"Lighting"
+          for a in ("P16-01","P16-02","P16-03"):
+              assert (base/"Blender"/(a+".blend")).read_bytes().startswith(b"BLENDER-")
+              assert (base/"FBX"/(a+".fbx")).read_bytes().startswith(b"Kaydara FBX Binary")
+          print("W01_ORIGINAL_BINARY_GIT_LFS_HYDRATED_6_OF_6")
+          PY
+      - name: Execute read-only 7-pair native BLEND and FBX import static topology/UV/geometry checks
+        shell: bash
+        run: |
+          set -euo pipefail
+          C01_W01_NATIVE_ROOT="$RUNNER_TEMP/c01-w01-native/C01Source/Lighting" blender --background --factory-startup --python-exit-code 1 --python C01Source/LightingW02/MeshRepairW26/audit_original_native_blender_fbx.py
+      - name: Upload actual QA JSON and 7 genuine source FBX wireframe SVG previews
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-16-W26-ORIGINAL-NATIVE-MESH-QA
+          if-no-files-found: warn
+          path: C01Source/LightingW02/MeshRepairW26/evidence/

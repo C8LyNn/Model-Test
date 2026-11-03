@@ -1,0 +1,129 @@
+{
+  "schema": "C01-16-PASS17-GENUINE-BLENDER-NATIVE-RECEIPTS",
+  "date": "2026-11-01",
+  "source_issue": "https://github.com/C8LyNn/Model-Test/issues/36",
+  "pr12": "https://github.com/C8LyNn/Model-Test/pull/12",
+  "pr28": "https://github.com/C8LyNn/Model-Test/pull/28",
+  "workflow_w01": {
+    "run": 41348140241,
+    "artifact_id": 13099778112,
+    "status": "success"
+  },
+  "workflow_w02": {
+    "run": 41348144803,
+    "artifact_id": 13100396298,
+    "status": "success"
+  },
+  "method": "Run exact real blender 4.0.2 -b --factory-startup --python existing authoring source and verify native BLENDER-/FBX signature, per-file SHA, actual FBX reimport, topology counters and global AABB",
+  "workflow_fixed": "Replace LFS-blocked rebase after generated native outputs with regular protected fast-forward git push (no force)",
+  "all_7": {
+    "parts": 116,
+    "triangles": 2052,
+    "blender_exported": 7,
+    "fbx_reimport_pass": 7
+  },
+  "models": [
+    {
+      "id": "P16-01",
+      "blend_sha256": "755950af76f12f755826d7475b87d6dc0981da7df0dc099320da7a84668c6e5b",
+      "fbx_sha256": "c0a782a17a0047e0d578a41e42ac714c0fa0f86c7c4960f4bc10e21a24a278fd",
+      "part_count": 12,
+      "triangles": 220,
+      "fbx_bytes": 48380,
+      "blender_version": "4.0.2",
+      "roundtrip": "PASS",
+      "aabb_delta_m": 0,
+      "unity": "NOT_RUN",
+      "independent_qa": "PENDING"
+    },
+    {
+      "id": "P16-02",
+      "blend_sha256": "db3d7a9f2e29091d9f4dd8cf1d3546674df85b481e8f036384ce14106b2e5155",
+      "fbx_sha256": "4174d99840156680985f294efb5b67ff147af797e14c12fd7f3bdcf6008f14ed",
+      "part_count": 12,
+      "triangles": 220,
+      "fbx_bytes": 48332,
+      "blender_version": "4.0.2",
+      "roundtrip": "PASS",
+      "aabb_delta_m": 0,
+      "unity": "NOT_RUN",
+      "independent_qa": "PENDING"
+    },
+    {
+      "id": "P16-03",
+      "blend_sha256": "9c89ea268348f3c79762a7a96626982c78e7628ecd7e14ced9b15c998bae0758",
+      "fbx_sha256": "83795e93013a11e14d8840ee0dae3e8da9e05ae67d7ce1fabf185961afe4fede",
+      "part_count": 12,
+      "triangles": 220,
+      "fbx_bytes": 48332,
+      "blender_version": "4.0.2",
+      "roundtrip": "PASS",
+      "aabb_delta_m": 0,
+      "unity": "NOT_RUN",
+      "independent_qa": "PENDING"
+    },
+    {
+      "id": "P16-04",
+      "blend_sha256": "e7cb0dafa5e366afeee66f62978fda98d294b0700bdd03416e60cd81cb69c0d5",
+      "fbx_sha256": "0cfe95f759f96fe8725101bbac7ad2dfacfbd78487e6f7bccedf274f76755edc",
+      "part_count": 27,
+      "triangles": 452,
+      "fbx_bytes": 90108,
+      "blender_version": "4.0.2",
+      "roundtrip": "PASS",
+      "aabb_delta_m": 0,
+      "unity": "NOT_RUN",
+      "independent_qa": "PENDING"
+    },
+    {
+      "id": "P16-05",
+      "blend_sha256": "d2bcb8dc17e20f758e1c776c8b205cf2c475484e77119ec8c072c26d1f533581",
+      "fbx_sha256": "1dd40422afcc3ea63cf80fd6ca1941776aab0d4a83f254b5645d19aaa3f017f0",
+      "part_count": 19,
+      "triangles": 344,
+      "fbx_bytes": 68988,
+      "blender_version": "4.0.2",
+      "roundtrip": "PASS",
+      "aabb_delta_m": 0,
+      "unity": "NOT_RUN",
+      "independent_qa": "PENDING"
+    },
+    {
+      "id": "P16-06",
+      "blend_sha256": "becb4d8aa083b672472cf0a76e93b132e0d407fa5dcf0e14e18ec21b6679b9d5",
+      "fbx_sha256": "15ca9f7b417721b235243973c8ceaf6747822849c11c69a69b3255fbe4fc827c",
+      "part_count": 23,
+      "triangles": 388,
+      "fbx_bytes": 80092,
+      "blender_version": "4.0.2",
+      "roundtrip": "PASS",
+      "aabb_delta_m": 0,
+      "unity": "NOT_RUN",
+      "independent_qa": "PENDING"
+    },
+    {
+      "id": "P16-07",
+      "blend_sha256": "0eb8d9e828ca993683411bf9525eb2bd394d62eb3c8c53659e83d953ee395703",
+      "fbx_sha256": "a2bbd175960d086049f1fea22ae358c7af6804cc2067f267e91c1daa76d0e1d9",
+      "part_count": 11,
+      "triangles": 208,
+      "fbx_bytes": 45852,
+      "blender_version": "4.0.2",
+      "roundtrip": "PASS",
+      "aabb_delta_m": 0,
+      "unity": "NOT_RUN",
+      "independent_qa": "PENDING"
+    }
+  ],
+  "interactive_preview": {
+    "file": "C01-16_PASS17_INTERACTIVE_REAL_OBJ.html",
+    "inputs": "exact original PASS16 composed OBJ triangles; 7 models; no obsolete FBX",
+    "status": "delivered locally, not Unity screenshot"
+  },
+  "not_yet_done": [
+    "independent C01-02 validation of signed exact FBX and blend",
+    "Unity 6 URP prefab import and test",
+    "full non-coplanar collision audit"
+  ],
+  "new_geometry_this_wave": false
+}

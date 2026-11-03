@@ -1,0 +1,177 @@
+{
+  "schema": "C01-16-PASS16-SOURCE-REFERENCE-BINARY-QA-1",
+  "date": "2026-10-30",
+  "owner": "C01-16 LIGHTING & SIGNALS",
+  "repo": "C8LyNn/Model-Test",
+  "issue": 36,
+  "producer_pr": 28,
+  "producer_branch": "c01/props-16-lighting-wave02",
+  "pr_head_before_report_commit": "c048014e2e6c72c42196e2ae4335249851331c7f",
+  "reference_register": "C01Source/LightingW02/References/DETAIL_PASS16_CONSTRUCTION_SOURCES.md",
+  "reference_ids": [
+    "R16-A",
+    "R16-B",
+    "R16-C",
+    "R16-D",
+    "R16-E"
+  ],
+  "model_ids_preserved": true,
+  "new_asset_ids": 0,
+  "total_models": 7,
+  "changed_models": 3,
+  "unchanged_models": 4,
+  "new_static_mesh_parts": 8,
+  "new_vertex_count": 96,
+  "new_edges_count": 240,
+  "new_triangles": 160,
+  "global_mesh_parts_after": 116,
+  "global_vertices_after": 1258,
+  "global_edges_after": 3078,
+  "global_triangles_after": 2052,
+  "mechanical_validation": "Eight convex closed hexagonal prisms placed strictly within PASS15 support radial cross-sections; axial slab intersections 2.0..2.7 mm. Verified from actual before/after composed OBJ source polygons/boxes, positive-volume physical contact; no floating parts.",
+  "topology_validation": "Independent per-part indexed edge symmetry; each edge used twice with opposite winding; valid nondegenerate UV0 and normals; distinct object names and no duplicate indexed faces. Source coplanar clip-on-clip projected intersections screened on all 3 changed models; zero same/opposite facing overlap within 1e-9 m2.",
+  "geometry_qa_self": "PASS_LOCAL_SOURCE_ONLY",
+  "genuine_blender_blend_count": 0,
+  "genuine_blender_fbx_exports": 0,
+  "blender_roundtrip": "NOT_RUN",
+  "independent_c01_02_final": "PENDING",
+  "unity_6_urp": "NOT_RUN",
+  "exporter_script": "C01Source/LightingW02/MeshRepairPASS04/ci_pass04_native.py",
+  "exporter_script_updated": true,
+  "exporter_runtime_executed": false,
+  "custom_binary_fbx": "Seven genuine FBX7400 binary files, authored offline with direct Python emitter, checked by separate node decoder and exact OBJ XYZ/UV/normal/material/rotor links 7/7 PASS_STATIC; NOT native Blender, NOT releasable",
+  "package": {
+    "name": "C01-16_DETAIL_PASS16_DELIVERY.zip",
+    "size_bytes": 1192514,
+    "files": 141,
+    "sha256": "759face6afd24aefc12cd2d74ec4f28b3cde8048c9ae5e0872db3492d9e07a71"
+  },
+  "models": [
+    {
+      "id": "P16-01",
+      "parts_before": 12,
+      "parts_after": 12,
+      "triangles_before": 220,
+      "triangles_after": 220,
+      "composed_source_sha256": "0264d7505dd45961bdd084723ad2049576efa354c1f6a2062e93cd41774f1e4c",
+      "binary_fbx_candidate_sha256": "66267484e172f2f1ea07300da08df0068a9867065af0e5e9ab0a41a085ec45e4"
+    },
+    {
+      "id": "P16-02",
+      "parts_before": 12,
+      "parts_after": 12,
+      "triangles_before": 220,
+      "triangles_after": 220,
+      "composed_source_sha256": "3318c047d27694a24e98f8741d875886afa90da983184a332622f6e06b733ae5",
+      "binary_fbx_candidate_sha256": "3eb4d3bacd56e3c8bba3144a60448b37d2a68b6e23c8c4ae7c6ac200e5960997"
+    },
+    {
+      "id": "P16-03",
+      "parts_before": 12,
+      "parts_after": 12,
+      "triangles_before": 220,
+      "triangles_after": 220,
+      "composed_source_sha256": "9f694862a60994ef75bd6c90212406503a549b5eed2f6b50fa386e760ba9ad1a",
+      "binary_fbx_candidate_sha256": "72cdb12b3927fbdd89695c0a8244d0c18733431da49780a18f7e7823dc44a138"
+    },
+    {
+      "id": "P16-04",
+      "parts_before": 23,
+      "parts_after": 27,
+      "triangles_before": 372,
+      "triangles_after": 452,
+      "composed_source_sha256": "018192f6a0484ff612169044067b0e80c9a0ef24f82642508adcdc730728a05c",
+      "source_details16_sha256": "220cdcbe31d7437e9b99b3a56fd24a4caff887aaab23fd2e75dfd4539503e2cd",
+      "source_details16_git_blob": "98b1d097871eeb0203999e80b542bee9a300be5f",
+      "binary_fbx_candidate_sha256": "23f62d75830663384e2623e278a9dadb4499561fdc906dd9f7f5672aab5be51c",
+      "bolt_positions_m": [
+        [
+          -0.56,
+          -0.1163,
+          -0.332
+        ],
+        [
+          -0.56,
+          -0.1163,
+          0.332
+        ],
+        [
+          0.56,
+          -0.1163,
+          -0.332
+        ],
+        [
+          0.56,
+          -0.1163,
+          0.332
+        ]
+      ],
+      "support": "existing PASS15 DiffuserRetainer_*",
+      "fastener_to_support_axial_embed_mm": 2.7,
+      "minimum_radial_clearance_in_support_mm": 18.5
+    },
+    {
+      "id": "P16-05",
+      "parts_before": 17,
+      "parts_after": 19,
+      "triangles_before": 304,
+      "triangles_after": 344,
+      "composed_source_sha256": "f8c835295b2a6c54288dbc22640b973bc4baca5d8181898343f54024b69a3766",
+      "source_details16_sha256": "de9a3df21dfed8cd94a66d06520dd188aadb0b306f623d3fe1a7b6edab5e63f1",
+      "source_details16_git_blob": "a3a4c9dcc7c6e0655204fc03d70d9619d291888a",
+      "binary_fbx_candidate_sha256": "e30b035f0da90c5ab9be45b2d71f6ae0929eb7055d4f9725b41141677a352ef6",
+      "bolt_positions_m": [
+        [
+          -0.32,
+          -0.076,
+          -0.006
+        ],
+        [
+          -0.32,
+          0.076,
+          -0.006
+        ]
+      ],
+      "support": "existing PASS15 ServiceCoverLip_N/P",
+      "fastener_to_support_axial_embed_mm": 2,
+      "minimum_radial_clearance_in_support_mm": 2.5
+    },
+    {
+      "id": "P16-06",
+      "parts_before": 21,
+      "parts_after": 23,
+      "triangles_before": 348,
+      "triangles_after": 388,
+      "composed_source_sha256": "db5461d529f16b5346f2474dec73ab1eeeb0872d6a1c2de7ca1305d4df6b4633",
+      "source_details16_sha256": "ae94bc41df6cca17d95c5b21f8ae76457b63f695f5d94816eb3efd98dc269581",
+      "source_details16_git_blob": "7b14d7a82e24be136095b436f343cb3ba113fc98",
+      "binary_fbx_candidate_sha256": "eed250e405122f790637e5f20f0fedeb3d6f4df80ea2cbe55f663423369206be",
+      "bolt_positions_m": [
+        [
+          -0.126,
+          -0.09,
+          0.036
+        ],
+        [
+          0.126,
+          -0.09,
+          0.036
+        ]
+      ],
+      "support": "existing PASS15 SuspensionRodSeat_L/R",
+      "fastener_to_support_axial_embed_mm": 2,
+      "minimum_radial_clearance_in_support_mm": 7.938,
+      "rotor_parts_before_and_after": 8
+    },
+    {
+      "id": "P16-07",
+      "parts_before": 11,
+      "parts_after": 11,
+      "triangles_before": 208,
+      "triangles_after": 208,
+      "composed_source_sha256": "e69a83342deb8572a2ab182c828bd323c2eaaaacbb72cccc969ff76496c3a996",
+      "binary_fbx_candidate_sha256": "df0be91ab2526092eec6f6ae0edfa00a68ea0be5cadca5bee660bc657774178f"
+    }
+  ],
+  "blocker": "No Blender/bpy/Unity on this container; C01 private GitHub Actions latest checked jobs runner_id 0, steps 0; precise root cause unknown. NEEDS_OWNER_ACTION."
+}

@@ -1,0 +1,87 @@
+{
+  "schema": "C01-16-DETAIL-PASS15-GITHUB-SOURCE-QA-1",
+  "owner": "C01-16 LIGHTING & SIGNALS",
+  "issue": 36,
+  "existing_draft_pr": 28,
+  "head_before_report": "604b6b9afb41ff9988cc2eea05c1d02034b2070e",
+  "project": "C01",
+  "scope": "P16-01..07 ONLY",
+  "new_model_ids": 0,
+  "changed_models": 3,
+  "added_independent_functional_meshes": 8,
+  "added_triangles": 96,
+  "final_whole_wave": {
+    "parts": 72,
+    "triangles": 1232
+  },
+  "source_method": "Actual versioned OBJ written to this existing PR and matching local read-back Git blobs; per-solid source closed edge manifold, valid UV0 loop mapping and normals, no degenerate faces; projected triangle-plane cross-part contact audit and AABB attachment checks",
+  "changed_mesh_QA": "PASS (3/3)",
+  "source_previews": "Local software shaded z-buffer and wireframe BEFORE/AFTER; NOT Blender render",
+  "exporter_change": "Fixed historical base-only pre-export count bug. W01 compares all PASS12 parts; W02 imports PASS15 source and compares all PASS12+15 parts.",
+  "real_native_blender": {
+    "blend_created": 0,
+    "fbx_exported_in_blender": 0,
+    "fbx_reimported": 0,
+    "status": "NOT_RUN",
+    "blocker": "No Blender/bpy in runtime, current C01 GitHub-hosted jobs fail before runner assignment"
+  },
+  "unity_6_urp": "NOT_RUN",
+  "independent_c01_02_final": "PENDING",
+  "local_binary_candidates": "Seven genuine binary FBX 7400 candidate files generated and parsed 7/7 PASS as local self-check; never Blender-origin; not safe to replace canonical FBX",
+  "binary_candidate_zip": "C01-16_DETAIL_PASS15_DELIVERY.zip",
+  "binary_candidate_zip_size_bytes": 872533,
+  "binary_candidate_zip_sha256": "146760b027df5f1ce7f2477bc4b773d2bec1f3d452a376cff44dbb28b8cae019",
+  "global_totals_all_7": {
+    "parts": 108,
+    "vertices": 1162,
+    "edges": 2838,
+    "triangles": 1892
+  },
+  "models": [
+    {
+      "id": "P16-04",
+      "new_parts": 4,
+      "added_triangles": 48,
+      "parts": 23,
+      "triangles": 372,
+      "new_detail_obj_sha256": "e939e95ebec16e9922e9aac6c4063d765cf7dcd3930e4d9ac54e81d4a29e45d3",
+      "new_detail_git_blob_sha1": "f1e3a83176b717563e13955121f1bd2c67f7f097",
+      "binary_candidate_sha256": "550c95b1e82a6c3e322be3c26281acf86a573e2df07bee89e407d8067a25c22f",
+      "full_composed_local_obj_sha256": "d4f0f0e7ddce1d0812a73203590d7ddca132b50e202cdf0ce2a5b8c23f36f5a9",
+      "static_source_QA": "PASS",
+      "blender": "NOT_RUN"
+    },
+    {
+      "id": "P16-05",
+      "new_parts": 2,
+      "added_triangles": 24,
+      "parts": 17,
+      "triangles": 304,
+      "new_detail_obj_sha256": "aaf082f77f9794f5b4395e66cf88e35a37f55381e731ca51a7db0743eb586ae5",
+      "new_detail_git_blob_sha1": "477cf125bcd850734f77fa177d80482388465fa3",
+      "binary_candidate_sha256": "54edca3360fea398ad723c5f89c01369e5ca33b5a9ab43d956a25f74fe96ddac",
+      "full_composed_local_obj_sha256": "74bf78a00afd6c38e8275a3bb1c933da2b3709977a645462b267d4ebb04ee3a5",
+      "static_source_QA": "PASS",
+      "blender": "NOT_RUN"
+    },
+    {
+      "id": "P16-06",
+      "new_parts": 2,
+      "added_triangles": 24,
+      "parts": 21,
+      "triangles": 348,
+      "new_detail_obj_sha256": "12438d9684ac0e03e68982d5fe3a11d19e795245532f46d4c737f6a562c68557",
+      "new_detail_git_blob_sha1": "9a3f77ebd170cacac2c21673e9dfa509dd09d8b3",
+      "binary_candidate_sha256": "5689a672ec19ae18214e1945aaff0c26737d745396b622dc18364873f79c930a",
+      "full_composed_local_obj_sha256": "7751c6d34e39febbdefb27dbd2ef3f6a98dad0829fdc86bc42fc33f50586f88e",
+      "static_source_QA": "PASS",
+      "blender": "NOT_RUN"
+    },
+    {
+      "id": "P16-07",
+      "new_parts": 0,
+      "triangles": 208,
+      "parts": 11
+    }
+  ]
+}

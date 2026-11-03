@@ -1,0 +1,288 @@
+{
+  "id": "P19-01",
+  "result": "PASS_STATIC_PARTS_AFTER_LOCAL_CLEANUP",
+  "changes": [
+    {
+      "action": "BOOLEAN_UNION_STATIC_SAME_MATERIAL",
+      "target": "Leg_-0.44_-0.975",
+      "removed_part": "Long_Rail_-0.445",
+      "overlap_volume_m3": 0.000486,
+      "location": [
+        -0.4449999928474426,
+        0.9749999940395355,
+        0.47999998927116394
+      ]
+    },
+    {
+      "action": "BOOLEAN_UNION_STATIC_SAME_MATERIAL",
+      "target": "Leg_-0.44_-0.975",
+      "removed_part": "Leg_-0.44_0.975",
+      "overlap_volume_m3": 0.003307499,
+      "location": [
+        -0.4399999976158142,
+        -0.9749999940395355,
+        0.26249998807907104
+      ]
+    },
+    {
+      "action": "BOOLEAN_UNION_STATIC_SAME_MATERIAL",
+      "target": "Leg_-0.44_-0.975",
+      "removed_part": "Cross_Rail_-1.02",
+      "overlap_volume_m3": 0.00042,
+      "location": [
+        -0.4399999976158142,
+        1.0199999809265137,
+        0.48500001430511475
+      ]
+    },
+    {
+      "action": "BOOLEAN_UNION_STATIC_SAME_MATERIAL",
+      "target": "Leg_-0.44_-0.975",
+      "removed_part": "Leg_0.44_-0.975",
+      "overlap_volume_m3": 0.003307497,
+      "location": [
+        0.439999982714653,
+        0.9749999940395355,
+        0.26249998807907104
+      ]
+    },
+    {
+      "action": "BOOLEAN_UNION_STATIC_SAME_MATERIAL",
+      "target": "Leg_-0.44_-0.975",
+      "removed_part": "Leg_0.44_0.975",
+      "overlap_volume_m3": 0.003307499,
+      "location": [
+        0.4399999976158142,
+        -0.9749999940395355,
+        0.26249998807907104
+      ]
+    },
+    {
+      "action": "BOOLEAN_UNION_STATIC_SAME_MATERIAL",
+      "target": "Leg_-0.44_-0.975",
+      "removed_part": "Long_Rail_0.445",
+      "overlap_volume_m3": 0.012600003,
+      "location": [
+        0.4449999928474426,
+        0.0,
+        0.48500001430511475
+      ]
+    },
+    {
+      "action": "BOOLEAN_UNION_STATIC_SAME_MATERIAL",
+      "target": "Leg_-0.44_-0.975",
+      "removed_part": "Cross_Rail_1.02",
+      "overlap_volume_m3": 0.005699996,
+      "location": [
+        0.0,
+        -1.0199999809265137,
+        0.48500001430511475
+      ]
+    }
+  ],
+  "exceptions": [
+    {
+      "classification": "INTENTIONAL_SEPARATE_COMPONENT",
+      "reason": "preserve material boundaries or movable hierarchy",
+      "overlap": {
+        "a": "Leg_-0.44_-0.975",
+        "b": "Headboard",
+        "volume_m3": 0.017084985,
+        "same_material": false,
+        "moving": false,
+        "center": [
+          0.0,
+          -1.0199999809265137,
+          0.36750001460313797
+        ]
+      }
+    },
+    {
+      "classification": "INTENTIONAL_SEPARATE_COMPONENT",
+      "reason": "preserve material boundaries or movable hierarchy",
+      "overlap": {
+        "a": "Mattress",
+        "b": "Mattress_Accent_Stripe",
+        "volume_m3": 0.000747,
+        "same_material": false,
+        "moving": false,
+        "center": [
+          0.0,
+          0.8500000238418579,
+          0.6449999809265137
+        ]
+      }
+    }
+  ],
+  "unresolved": [
+    {
+      "name": "Leg_-0.44_-0.975",
+      "vertices": 123,
+      "edges": 190,
+      "faces": 67,
+      "triangles": 246,
+      "components": 1,
+      "loose_vertices": 0,
+      "degenerate_faces": 1,
+      "duplicate_faces": 0,
+      "duplicate_coordinate_vertices": 14,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "zero_edges": 15,
+      "inconsistent_winding_candidates": 0,
+      "self_intersection_candidates": 0,
+      "uv_layers": 1,
+      "material": "M_C01_STEEL",
+      "moving": false
+    }
+  ],
+  "fbx_roundtrip": {
+    "result": "PASS",
+    "bounds_max_error_m": 3.3080674199936766e-08,
+    "triangles": 254,
+    "imported_meshes": 4,
+    "uv0_meshes": 4
+  },
+  "parts": [
+    {
+      "name": "Leg_-0.44_-0.975",
+      "vertices": 109,
+      "edges": 169,
+      "faces": 60,
+      "triangles": 218,
+      "components": 1,
+      "loose_vertices": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "duplicate_coordinate_vertices": 0,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "zero_edges": 0,
+      "inconsistent_winding_candidates": 0,
+      "self_intersection_candidates": 0,
+      "uv_layers": 1,
+      "material": "M_C01_STEEL",
+      "moving": false
+    },
+    {
+      "name": "Mattress",
+      "vertices": 8,
+      "edges": 12,
+      "faces": 6,
+      "triangles": 12,
+      "components": 1,
+      "loose_vertices": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "duplicate_coordinate_vertices": 0,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "zero_edges": 0,
+      "inconsistent_winding_candidates": 0,
+      "self_intersection_candidates": 0,
+      "uv_layers": 1,
+      "material": "M_C01_FABRIC",
+      "moving": false
+    },
+    {
+      "name": "Mattress_Accent_Stripe",
+      "vertices": 8,
+      "edges": 12,
+      "faces": 6,
+      "triangles": 12,
+      "components": 1,
+      "loose_vertices": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "duplicate_coordinate_vertices": 0,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "zero_edges": 0,
+      "inconsistent_winding_candidates": 0,
+      "self_intersection_candidates": 0,
+      "uv_layers": 1,
+      "material": "M_C01_ACCENT",
+      "moving": false
+    },
+    {
+      "name": "Headboard",
+      "vertices": 8,
+      "edges": 12,
+      "faces": 6,
+      "triangles": 12,
+      "components": 1,
+      "loose_vertices": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "duplicate_coordinate_vertices": 0,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "zero_edges": 0,
+      "inconsistent_winding_candidates": 0,
+      "self_intersection_candidates": 0,
+      "uv_layers": 1,
+      "material": "M_C01_DARK",
+      "moving": false
+    }
+  ],
+  "totals": {
+    "vertices": 133,
+    "edges": 205,
+    "faces": 78,
+    "triangles": 254,
+    "loose_vertices": 0,
+    "degenerate_faces": 0,
+    "duplicate_faces": 0,
+    "duplicate_coordinate_vertices": 0,
+    "boundary_edges": 0,
+    "nonmanifold_edges": 0,
+    "zero_edges": 0,
+    "inconsistent_winding_candidates": 0
+  },
+  "bounding_xyz_blender": [
+    [
+      -0.4749999940395355,
+      -1.0500000715255737,
+      0.0
+    ],
+    [
+      0.4750000238418579,
+      1.0499999523162842,
+      0.6500000357627869
+    ]
+  ],
+  "interpart_overlaps": [
+    {
+      "a": "Leg_-0.44_-0.975",
+      "b": "Headboard",
+      "volume_m3": 0.017084985,
+      "same_material": false,
+      "moving": false,
+      "center": [
+        0.0,
+        -1.0199999809265137,
+        0.36750001460313797
+      ]
+    },
+    {
+      "a": "Mattress",
+      "b": "Mattress_Accent_Stripe",
+      "volume_m3": 0.000747,
+      "same_material": false,
+      "moving": false,
+      "center": [
+        0.0,
+        0.8500000238418579,
+        0.6449999809265137
+      ]
+    }
+  ],
+  "cleanup": {
+    "type": "ZERO_EDGE_ENDPOINT_WELD_AND_DEGENERATE_DISSOLVE",
+    "mesh": "Leg_-0.44_-0.975",
+    "zero_edges_before": 15,
+    "zero_edges_after": 0,
+    "degenerate_faces_before": 1,
+    "degenerate_faces_after": 0
+  }
+}

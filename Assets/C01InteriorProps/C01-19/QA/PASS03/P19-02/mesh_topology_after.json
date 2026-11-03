@@ -1,0 +1,247 @@
+{
+  "id": "P19-02",
+  "result": "PASS_STATIC_PARTS_AFTER_LOCAL_CLEANUP",
+  "changes": [
+    {
+      "action": "BOOLEAN_UNION_STATIC_SAME_MATERIAL",
+      "target": "Back",
+      "removed_part": "Bottom",
+      "overlap_volume_m3": 0.001169999,
+      "location": [
+        0.0,
+        -0.25999998301267624,
+        0.029999999329447746
+      ]
+    },
+    {
+      "action": "BOOLEAN_UNION_STATIC_SAME_MATERIAL",
+      "target": "Back",
+      "removed_part": "Top",
+      "overlap_volume_m3": 0.021449978,
+      "location": [
+        0.0,
+        -1.4901161193847656e-08,
+        1.7699999809265137
+      ]
+    },
+    {
+      "action": "BOOLEAN_UNION_STATIC_SAME_MATERIAL",
+      "target": "Back",
+      "removed_part": "Side_-0.31",
+      "overlap_volume_m3": 0.02969997,
+      "location": [
+        -0.3100000023841858,
+        -1.4901161193847656e-08,
+        0.8999999761581421
+      ]
+    },
+    {
+      "action": "BOOLEAN_UNION_STATIC_SAME_MATERIAL",
+      "target": "Back",
+      "removed_part": "Side_0.31",
+      "overlap_volume_m3": 0.02969997,
+      "location": [
+        0.3100000023841858,
+        -1.4901161193847656e-08,
+        0.8999999761581421
+      ]
+    }
+  ],
+  "exceptions": [
+    {
+      "classification": "INTENTIONAL_SEPARATE_COMPONENT",
+      "reason": "preserve material boundaries or movable hierarchy",
+      "overlap": {
+        "a": "Back",
+        "b": "Shelf",
+        "volume_m3": 0.008849991,
+        "same_material": false,
+        "moving": false,
+        "center": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      }
+    }
+  ],
+  "unresolved": [
+    {
+      "name": "Back",
+      "vertices": 114,
+      "edges": 195,
+      "faces": 83,
+      "triangles": 224,
+      "components": 1,
+      "loose_vertices": 0,
+      "degenerate_faces": 5,
+      "duplicate_faces": 0,
+      "duplicate_coordinate_vertices": 26,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "zero_edges": 33,
+      "inconsistent_winding_candidates": 0,
+      "self_intersection_candidates": 0,
+      "uv_layers": 1,
+      "material": "M_C01_STEEL.001",
+      "moving": false
+    }
+  ],
+  "fbx_roundtrip": {
+    "result": "PASS",
+    "bounds_max_error_m": 1.1920928955078125e-07,
+    "triangles": 216,
+    "imported_meshes": 5,
+    "uv0_meshes": 5
+  },
+  "parts": [
+    {
+      "name": "Back",
+      "vertices": 86,
+      "edges": 146,
+      "faces": 62,
+      "triangles": 168,
+      "components": 1,
+      "loose_vertices": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "duplicate_coordinate_vertices": 0,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "zero_edges": 0,
+      "inconsistent_winding_candidates": 0,
+      "self_intersection_candidates": 0,
+      "uv_layers": 1,
+      "material": "M_C01_STEEL.001",
+      "moving": false
+    },
+    {
+      "name": "Shelf",
+      "vertices": 8,
+      "edges": 12,
+      "faces": 6,
+      "triangles": 12,
+      "components": 1,
+      "loose_vertices": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "duplicate_coordinate_vertices": 0,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "zero_edges": 0,
+      "inconsistent_winding_candidates": 0,
+      "self_intersection_candidates": 0,
+      "uv_layers": 1,
+      "material": "M_C01_DARK.001",
+      "moving": false
+    },
+    {
+      "name": "Door_Leaf",
+      "vertices": 8,
+      "edges": 12,
+      "faces": 6,
+      "triangles": 12,
+      "components": 1,
+      "loose_vertices": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "duplicate_coordinate_vertices": 0,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "zero_edges": 0,
+      "inconsistent_winding_candidates": 0,
+      "self_intersection_candidates": 0,
+      "uv_layers": 1,
+      "material": "M_C01_DARK.001",
+      "moving": true
+    },
+    {
+      "name": "Door_Handle",
+      "vertices": 8,
+      "edges": 12,
+      "faces": 6,
+      "triangles": 12,
+      "components": 1,
+      "loose_vertices": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "duplicate_coordinate_vertices": 0,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "zero_edges": 0,
+      "inconsistent_winding_candidates": 0,
+      "self_intersection_candidates": 0,
+      "uv_layers": 1,
+      "material": "M_C01_ACCENT.001",
+      "moving": true
+    },
+    {
+      "name": "Vent_Upper",
+      "vertices": 8,
+      "edges": 12,
+      "faces": 6,
+      "triangles": 12,
+      "components": 1,
+      "loose_vertices": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "duplicate_coordinate_vertices": 0,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "zero_edges": 0,
+      "inconsistent_winding_candidates": 0,
+      "self_intersection_candidates": 0,
+      "uv_layers": 1,
+      "material": "M_C01_ACCENT.001",
+      "moving": true
+    }
+  ],
+  "totals": {
+    "vertices": 118,
+    "edges": 194,
+    "faces": 86,
+    "triangles": 216,
+    "loose_vertices": 0,
+    "degenerate_faces": 0,
+    "duplicate_faces": 0,
+    "duplicate_coordinate_vertices": 0,
+    "boundary_edges": 0,
+    "nonmanifold_edges": 0,
+    "zero_edges": 0,
+    "inconsistent_winding_candidates": 0
+  },
+  "bounding_xyz_blender": [
+    [
+      -0.6100000143051147,
+      -0.2750000059604645,
+      0.0
+    ],
+    [
+      0.32499998807907104,
+      0.5109999775886536,
+      2.6399998664855957
+    ]
+  ],
+  "interpart_overlaps": [
+    {
+      "a": "Back",
+      "b": "Shelf",
+      "volume_m3": 0.008849991,
+      "same_material": false,
+      "moving": false,
+      "center": [
+        0.0,
+        0.0,
+        1.0
+      ]
+    }
+  ],
+  "cleanup": {
+    "type": "ZERO_EDGE_ENDPOINT_WELD_AND_DEGENERATE_DISSOLVE",
+    "mesh": "Back",
+    "zero_edges_before": 33,
+    "zero_edges_after": 0,
+    "degenerate_faces_before": 5,
+    "degenerate_faces_after": 0
+  }
+}

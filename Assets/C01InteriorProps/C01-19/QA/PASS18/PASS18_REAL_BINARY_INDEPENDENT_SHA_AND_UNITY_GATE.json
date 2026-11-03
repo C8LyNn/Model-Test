@@ -1,0 +1,111 @@
+{
+  "owner": "C01-19",
+  "stage": "DETAIL_PASS18_NATIVE_RELEASE_PREFLIGHT",
+  "date": "2026-11-01",
+  "pull_request": 15,
+  "source": "ACTUAL downloaded successful Blender 4.0.2 Actions artifacts, not historical or reconstructed assets",
+  "native_producer_run": 41346465283,
+  "sha_verification": "ALL 8/8 `.blend` and 8/8 `.fbx` SHA-256 exact match with live Git LFS pointers on branches #15/#29, physically SHA measured and GitHub pointer read",
+  "whole_C01_19_independent_indexed_stats": {
+    "models": 8,
+    "static_pass": 5,
+    "geometry_review_or_hold": 3,
+    "incorrect_vertex_indices": 0,
+    "boundary_edges": 0,
+    "nonmanifold_edges": 0,
+    "bad_edge_windings": 0,
+    "broken_UV0_indexing": 0,
+    "opposing_corner_normals": 0,
+    "exact_zero_area_triangles": 0
+  },
+  "additional_real_blender_run": {
+    "model": "P19-07",
+    "run_id": 41352494944,
+    "conclusion": "SUCCESS",
+    "artifact_id": 13101753068,
+    "artifact_sha256": "8deec3279cb0b44f9752fbbc184641e785a9641d1578f362572922ffbf2527f8",
+    "version": "4.0.2",
+    "source_geometry_changed": false,
+    "mesh_parts": 6,
+    "triangles": 252,
+    "manifold_edges_bad": 0,
+    "zero_area_faces": 0,
+    "UV0_mesh_parts": 6,
+    "vertex_on_edge_candidates_native_BMesh": 17,
+    "FBX_reimport": "PASS"
+  },
+  "geometry_caveats": {
+    "P19_01": "2 positive but micro triangle areas approximately 6.99e-12 and 2.43e-11 m²; 3 vertex-on-edge screening relations. Not exact degenerate.",
+    "P19_07": "18 candidate relations in separately decoded physical FBX, 17 in real native Blender world-space BMesh, source unchanged. Could represent contact partition instead of fatal surface defect; no auto-weld.",
+    "P19_08": "2 vertex-on-edge near 99.992% fraction at support edges, not proved to be defects."
+  },
+  "scope_limitations": [
+    "Within-a-single-mesh co-planar triangle overlap test 0 positive pairs using normalized plane grouping; not full scene dynamic z-fighting or triangle BVH.",
+    "Source normals, UV indexes, manifoldness measured independently from binary FBX; actual detailed 3 P19-01/02/05 Blender roundtrip confirmed in original PASS17 producer CI.",
+    "This receipt is producer-owned QA preflight, NOT independent C01-02 release signoff.",
+    "Unity6 URP executable/editor was not available in current runtime; no prefab/material/physics test conducted."
+  ],
+  "artifact_delivery": {
+    "filename": "C01-19_DETAIL_PASS18_REAL_BLENDER_INDEPENDENT_QA_AND_UNITY_HANDOFF.zip",
+    "sha256": "e374eb92abb074c01ec61bb1dd77d1db8fba9a211cf822dad9bcb07455d275be",
+    "bytes": 9687345,
+    "contained_real_blend": 8,
+    "contained_real_binary_fbx": 8,
+    "contained_actual_blender_png": 15,
+    "contained_interactive_html": 1,
+    "availability": "user-downloadable in PASS18 ChatGPT conversation (not a new release commit)"
+  },
+  "models": [
+    {
+      "id": "P19-01",
+      "blend": "a8883117ec9e59b93cb988970c09d6cdaf496b8a73957a60aa3ca503f8be420f",
+      "fbx": "e2e0bb9e095c1daed87e407814e88f8788cf503ab705d3e34513879038bcd559",
+      "parts": 4,
+      "tri": 470,
+      "state": "REVIEW",
+      "tiny": 2,
+      "tj": 3,
+      "independent_approval": "PENDING",
+      "Unity6_URP": "NOT_RUN"
+    },
+    {
+      "id": "P19-02",
+      "blend": "ff0448b34e70ab65380889dfc1d46e426d88873684e831775306cfca28e1a99f",
+      "fbx": "b0d68ce917a938b4bdaa32f4b2d48dcab5275c752c141260cabd3d82a5c9374f",
+      "parts": 5,
+      "tri": 292,
+      "state": "STATIC_INDEXED_PASS",
+      "tiny": 0,
+      "tj": 0,
+      "independent_approval": "PENDING",
+      "Unity6_URP": "NOT_RUN"
+    },
+    {
+      "id": "P19-03",
+      "blend": "3652b4f738783e3fab0940311d77b5cd9e6435a23ef60c2c7249f209fa4b11cd",
+      "fbx": "1bd730b2382879d7d9c2f3d67c4b9646b8ca036c04de663e53b3019c403af2df",
+      "parts": 5,
+      "tri": 128,
+      "state": "STATIC_INDEXED_PASS",
+      "tiny": 0,
+      "tj": 0,
+      "independent_approval": "PENDING",
+      "Unity6_URP": "NOT_RUN"
+    },
+    {
+      "id": "P19-04",
+      "blend": "8690c61df28d2126e6d84cba00326f6d47fa54f6be56edcedcda4c816b283b70",
+      "fbx": "a8ef74e3972e58b8964d8fd17f121b3cb4977c5c98c9b5ad0928630e77258469",
+      "parts": 9,
+      "tri": 108,
+      "state": "STATIC_INDEXED_PASS",
+      "tiny": 0,
+      "tj": 0,
+      "independent_approval": "PENDING",
+      "Unity6_URP": "NOT_RUN"
+    }
+  ],
+  "gate": "RELEASE_HOLD_UNTIL_C01_02_AND_UNITY",
+  "merge": false,
+  "model_bytes_modified_in_PASS18": false
+}

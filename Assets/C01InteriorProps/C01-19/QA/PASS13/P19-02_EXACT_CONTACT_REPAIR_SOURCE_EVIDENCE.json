@@ -1,0 +1,52 @@
+{
+  "owner": "C01-19",
+  "task": "DETAIL_PASS13",
+  "issue": "https://github.com/C8LyNn/Model-Test/issues/36",
+  "asset_id": "P19-02",
+  "original_model_identity_preserved": true,
+  "new_model_created": false,
+  "mesh": "Cube.012",
+  "observed_defect": "Actual PASS12 indexed triangles on existing support plane and added component endcap were co-planar, producing 2D projected overlap area >0. This is not an inferred bounding-box contact.",
+  "original_exact_coplanar_overlap_mm2": 1979.992,
+  "after_exact_coplanar_overlap_mm2": 0,
+  "repair": "Moved only newly added mounting interface vertices 2mm into existing metal. Hidden internal insertion eliminates same-plane duplicate faces and preserves original external silhouette.",
+  "affected_detail_vertices": 12,
+  "repair_details": [
+    "lower hinge plate internal side insertion +2mm",
+    "upper hinge plate internal side insertion +2mm",
+    "frame latch receiver internal side insertion +2mm"
+  ],
+  "totals_after": {
+    "vertices": 166,
+    "edges": 438,
+    "faces": 292,
+    "triangles": 292,
+    "mesh_objects": 5
+  },
+  "files": {
+    "previous_pass12_native_blend_sha256": "6479553d44b5c9671b5a49fad926318d1f5c2bf347856b21ceb15c0769968150",
+    "previous_pass12_binary_fbx_sha256": "21add715ea5d6683833057c854ee10ad923fa764dbaac74178c1adb0342ad6f6",
+    "new_pass13_NATIVE_blend_sha256": "5d2090c073b0071bfaebd4a7a9b2bae59f988535680594122b8a70fdd815c4f2",
+    "new_pass13_BINARY_fbx_sha256": "19a387f2dac9c528ff6f3ca363db741103add8b6f3dcf1402f01a105fc95f37a"
+  },
+  "actual_bytes_delivery": {
+    "path": "ChatGPT C01-19 PASS13 downloadable ZIP",
+    "filename": "C01-19_DETAIL_PASS13_CONTACT_REPAIR_BLEND_FBX_QA.zip",
+    "sha256": "6cdd71767dfbbc4c15bf25d031b3cce95dcbe2f0f5ee1e99a6656d080762c3c6",
+    "git_lfs_producer_mesh_paths_updated": false
+  },
+  "checks": {
+    "actual_BLENDER_v400_mesh_DNA_reparse": "PASS",
+    "actual_Kaydara_binary_FBX_7400_geometry_reparse": "PASS",
+    "independent_indexed_UV0_material_pivot_invariant": "PASS",
+    "closed_manifold_winding_and_zero_degenerate_source_meshes": "PASS",
+    "exact_original_vs_new_coplanar_polygon_overlap": "PASS",
+    "AABB_silhouette_and_old_vertices_preserved": "PASS",
+    "actual_Blender_4x_app_open_save": "NOT_RUN",
+    "actual_Blender_4x_export_FBX_reimport": "NOT_RUN",
+    "independent_C01_02": "PENDING",
+    "Unity_6_URP": "NOT_RUN"
+  },
+  "approval": "BLOCKED_NEEDS_OWNER_ACTION",
+  "safe_to_merge": false
+}

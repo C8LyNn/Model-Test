@@ -1,0 +1,71 @@
+name: C01-19 PASS20 P19-01 Blender Micro-Sliver Surgical Fix
+on:
+  push:
+    branches: [c01/props-19-furniture]
+    paths:
+      - 'Assets/C01InteriorProps/C01-19/Source/pass20_surgical_p19_01.py'
+      - '.github/workflows/c01-19-pass20-micro-sliver.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: c01-19-pass20-p1901-\${{ github.ref_name }}
+  cancel-in-progress: false
+jobs:
+  real-blender:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - name: Install genuine Blender 4.x and Git LFS
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends blender python3-numpy git-lfs xvfb xauth libegl1 libgl1 libgl1-mesa-dri libopengl0
+          blender --version | head -3
+          git lfs install --local
+          git lfs pull
+      - name: P19-01 actual native edge flips, save, FBX export, import roundtrip and Workbench views
+        run: |
+          LIBGL_ALWAYS_SOFTWARE=1 xvfb-run -a blender -b --factory-startup --python-exit-code 1 --python Assets/C01InteriorProps/C01-19/Source/pass20_surgical_p19_01.py
+      - name: Exact binary signatures, numerical evidence and thumbnails gate
+        run: |
+          python3 - <<'PY'
+          import pathlib,json,hashlib
+          root=pathlib.Path('Assets/C01InteriorProps/C01-19')
+          folder=root/'QA/PASS20/P19-01'
+          d=json.loads((folder/'PASS20_REAL_NATIVE_EDGE_FLIP_RECEIPT.json').read_text())
+          assert d['triangles']==470 and d['old_mesh_count']==d['new_mesh_count']==4
+          assert len(d['slivers_before'])==1 and sorted(d['slivers_before'][0]['indices'])==[3,106,107]
+          assert len(d['patches'])==2 and len(d['slivers_after'])==0
+          assert d['fbx_reimport']['micro_sliver_faces']==0
+          for ext,key,header in [('.blend','new_blend_sha256',b'BLENDER-v400'),('.fbx','new_fbx_sha256',b'Kaydara FBX Binary')]:
+            p=root/'Models/P19-01'/('P19-01'+ext)
+            b=p.read_bytes()
+            assert b.startswith(header) and hashlib.sha256(b).hexdigest()==d[key],p
+          for n in ['BEFORE_REAL_BLENDER_SHADED.png','BEFORE_REAL_BLENDER_WIREFRAME.png','AFTER_REAL_BLENDER_SHADED.png','AFTER_REAL_BLENDER_WIREFRAME.png']:
+            assert (folder/n).stat().st_size>1000,n
+          print('P19-01_W20_PASS',d['new_blend_sha256'],d['new_fbx_sha256'],flush=True)
+          PY
+      - name: Upload actual native QA artifact, even if a gate fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-19-PASS20-P19-01-REAL-NATIVE-CANDIDATE
+          if-no-files-found: warn
+          path: |
+            Assets/C01InteriorProps/C01-19/Models/P19-01/P19-01.blend
+            Assets/C01InteriorProps/C01-19/Models/P19-01/P19-01.fbx
+            Assets/C01InteriorProps/C01-19/QA/PASS20/P19-01/
+      - name: Commit surgical fixed native model only to existing Draft producer branch
+        if: success()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add Assets/C01InteriorProps/C01-19/Models/P19-01/P19-01.blend
+          git add Assets/C01InteriorProps/C01-19/Models/P19-01/P19-01.fbx
+          git add Assets/C01InteriorProps/C01-19/QA/PASS20/P19-01
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'fix(C01-19 W20): native Blender two diagonal flips eliminate P19-01 micro-slivers'
+          git push origin "HEAD:$GITHUB_REF_NAME"

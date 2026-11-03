@@ -1,0 +1,68 @@
+{
+  "wave": "C01-19 DETAIL PASS15",
+  "issue": "#36",
+  "asset": "P19-01",
+  "owner": "C01-19",
+  "user_target": "existing low table underframe functional detail",
+  "actual_mesh_edit": "YES, physical candidate BLENDER-v400 Mesh DNA and matching FBX7400 files delivered in ZIP; native Blender application NOT RUN",
+  "original_native_blend_sha256": "3d761f394d40f234c9aa4a1bc90eae90d43b47bdc22942015cd904bc05c34541",
+  "new_native_blend_candidate_sha256": "d26c37f1fc5abf21d1d59132605bb182c3834dca5636abf8b8a414c04f5fdfd8",
+  "original_binary_fbx_sha256": "9dc4d6b724c4a5a4b45a04412dc5a61fe732fa1b4423a9f0c27889053960163b",
+  "new_binary_fbx_candidate_sha256": "ec4b8403559318a89cf729296f5d1b13ed776ae42b8970d80f0332ce43909ff4",
+  "downloadable_user_zip": "C01-19_DETAIL_PASS15_P19-01_REAL_NATIVE_FBX_CANDIDATES.zip",
+  "zip_sha256": "403bd3f7f83791ba9f9604112ec6bd8605eaa1ce82ff55e1baaf94bf4ed206fe",
+  "asset_counts": {
+    "vertices_before": 133,
+    "vertices_after": 197,
+    "triangles_before": 254,
+    "triangles_after": 358,
+    "mesh_objects_before": 4,
+    "mesh_objects_after": 4
+  },
+  "geometry_change": {
+    "new_components": [
+      "rear crossmember",
+      "front crossmember",
+      "rear left screw",
+      "rear right screw",
+      "front left screw",
+      "front right screw"
+    ],
+    "new_vertices": 64,
+    "new_triangles": 104,
+    "original_vertices_triangles_uv_materials_pivots": "UNCHANGED",
+    "old_AABB": "UNCHANGED",
+    "uncontrolled_weld": "NONE",
+    "new_model_IDs": "NONE"
+  },
+  "mechanical_qa": {
+    "crossmember_end_contacts": "2/2 rails, EACH touches both original side legs: 10 triangle crossings per leg, 20 per rail",
+    "fastener_seating": "4/4 screws cross corresponding crossmember surface 12 points each",
+    "disconnected_new_parts": 0
+  },
+  "static_qa": {
+    "native_blend_binary_readback": "PASS",
+    "FBX7400_parser_reparse": "PASS",
+    "source_fbx_triangles_positions_UV_parity": "PASS",
+    "original_4_mesh_objects_and_parent_material_blocks": "PRESERVED",
+    "all_closed_watertight_winding": "PASS",
+    "degenerate_triangles": 0,
+    "duplicate_indexed_triangles": 0,
+    "new_outward_corner_normals": "PASS",
+    "new_vs_old_source_coplanar_triangle_overlap_pairs": 0,
+    "new_vs_old_source_projected_coplanar_area_m2": 0,
+    "exact_plane_test_scope": "Only existing source frame Cube.001 vs the six new components; does not prove all scene/Unity z-fighting is absent"
+  },
+  "runtime_gates": {
+    "Blender_4_load_save": "NOT RUN",
+    "Blender_FBX_export_reimport": "NOT RUN",
+    "Blender_Workbench_real_render": "NOT RUN",
+    "independent_C01_02": "PENDING",
+    "Unity_6_URP": "NOT RUN"
+  },
+  "other_assets": "P19-02/P19-05 PASS14 attachments kept unchanged; P19-07 has 16 same-component vertex-on-edge geometric candidates: HOLD, do not weld.",
+  "release": "CANDIDATE ONLY / NEEDS_OWNER_ACTION; physical binary assets are in downloadable user ZIP, NOT yet pushed to producer Models LFS paths. Do not merge",
+  "notes": "STATIC shaded/wireframe are derived from real Mesh DNA, not Blender application renders.",
+  "zip_bytes": 704104,
+  "zip_entries": 16
+}

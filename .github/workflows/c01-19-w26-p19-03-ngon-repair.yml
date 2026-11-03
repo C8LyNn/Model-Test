@@ -1,0 +1,79 @@
+name: C01-19 W26 P19-03 surgical existing n-gon triangulation
+on:
+  push:
+    branches: [c01/props-19-furniture]
+    paths:
+      - 'Assets/C01InteriorProps/C01-19/Source/pass26_p19_03_ngon_surgical_repair.py'
+      - '.github/workflows/c01-19-w26-p19-03-ngon-repair.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: c01-19-w26-p1903-repair
+  cancel-in-progress: false
+jobs:
+  genuine-blender-native-repair:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+      - name: Install real Blender4 and hydrate only existing P19-03 native binaries
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends blender python3-numpy git-lfs xvfb xauth libegl1 libgl1 libgl1-mesa-dri libopengl0
+          blender --version | head -3
+          git lfs install --local
+          git lfs pull --include="Assets/C01InteriorProps/C01-19/Models/P19-03/**" --exclude=""
+      - name: Actual exact-signed Blender source surgical 10 n-gon face fix, save original, export FBX, physically reimport and render before-after
+        run: |
+          LIBGL_ALWAYS_SOFTWARE=1 xvfb-run -a blender -b --factory-startup --python-exit-code 1 --python Assets/C01InteriorProps/C01-19/Source/pass26_p19_03_ngon_surgical_repair.py
+      - name: Verify actual native binary new SHA, topology delta, UV, previews and real FBX reimport
+        run: |
+          python3 - <<'PY'
+          import json,hashlib,pathlib
+          root=pathlib.Path('Assets/C01InteriorProps/C01-19')
+          qa=root/'QA/PASS26/P19-03_NGON_REPAIR'
+          q=json.loads((qa/'REPAIR_AND_ROUNDTRIP.json').read_text())
+          assert q['asset_id']=='P19-03'
+          assert q['before']['ngons']==10 and q['after']['ngons']==0
+          for key in ('before','after','reimported_current_fbx'):
+              p=q[key];assert p['meshes']==5 and p['verts']==72 and p['tris']==128
+              assert p['uv0_meshes']==5 and p['zero_areas']==0
+          assert q['unchanged_exact_vertex_positions'] and q['unchanged_pivots_hierarchy'] and q['unchanged_UV0_corner_value_sets']
+          assert q['max_bbox_shift_m']<1e-7 and q['reimport_bbox_delta_m']<1e-4
+          for ext,key,magic in [('.blend','new_blend_sha256',b'BLENDER-v400'),('.fbx','new_fbx_sha256',b'Kaydara FBX Binary')]:
+              p=root/'Models/P19-03'/('P19-03'+ext)
+              b=p.read_bytes()
+              assert b.startswith(magic) and hashlib.sha256(b).hexdigest()==q[key]
+          for name in q['preview_files']:
+              p=qa/name
+              assert p.stat().st_size>1000 and p.read_bytes()[:8]==b'\x89PNG\r\n\x1a\n'
+          print('W26_P19_03_REAL_BLENDER_REPAIR_VERIFIED',q['new_blend_sha256'],q['new_fbx_sha256'])
+          PY
+      - name: Upload actual signed BEFORE and AFTER native binaries and screenshots, including on QA gate failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-19-W26-P19-03-ACTUAL-BLENDER-FBX-REPAIR
+          if-no-files-found: warn
+          path: |
+            Assets/C01InteriorProps/C01-19/Models/P19-03/P19-03.blend
+            Assets/C01InteriorProps/C01-19/Models/P19-03/P19-03.fbx
+            Assets/C01InteriorProps/C01-19/QA/PASS26/P19-03_NGON_REPAIR/
+      - name: Commit only existing P19-03 native plus exact QA evidence to own Draft PR15
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- Assets/C01InteriorProps/C01-19/Models/P19-03/P19-03.blend
+          git add -- Assets/C01InteriorProps/C01-19/Models/P19-03/P19-03.fbx
+          git add -- Assets/C01InteriorProps/C01-19/QA/PASS26/P19-03_NGON_REPAIR
+          if git diff --cached --quiet; then exit 0; fi
+          git diff --cached --name-only | tee /tmp/c01-19-w26-changes
+          if grep -Ev '^Assets/C01InteriorProps/C01-19/(Models/P19-03/P19-03\.(blend|fbx)|QA/PASS26/P19-03_NGON_REPAIR/.*)$' /tmp/c01-19-w26-changes; then
+             echo 'FAIL CLOSED: unexpected staged model or door'; exit 1
+          fi
+          git commit -m 'fix(C01-19 W26): real Blender P19-03 precise n-gon topology to indexed faces with original UV/geometry'
+          git push origin "HEAD:$GITHUB_REF_NAME"

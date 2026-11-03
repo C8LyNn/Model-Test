@@ -1,0 +1,44 @@
+name: C01-19 W01 Native Blender and FBX
+on:
+  push:
+    branches:
+      - c01/props-19-furniture
+    paths:
+      - 'Assets/C01InteriorProps/C01-19/Source/parts.json'
+      - 'Assets/C01InteriorProps/C01-19/Source/blender_export.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  blender-native:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - name: Install native Blender
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y blender git-lfs python3-numpy xvfb xauth libegl1 libgl1 libopengl0
+          git lfs install --local
+      - name: Generate real .blend and binary FBX
+        run: xvfb-run -a blender -b --factory-startup --python-exit-code 1 --python Assets/C01InteriorProps/C01-19/Source/blender_export.py
+      - name: Validate native files and UV OBJ stream
+        run: python3 Assets/C01InteriorProps/C01-19/QA/validate_native.py
+      - name: Upload native 4-model evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-19-W01-native-blend-fbx
+          if-no-files-found: error
+          path: |
+            Assets/C01InteriorProps/C01-19/Models/*/*.blend
+            Assets/C01InteriorProps/C01-19/Models/*/*.fbx
+            Assets/C01InteriorProps/C01-19/QA/blender_native_validation.json
+      - name: Commit binary files through Git LFS
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Assets/C01InteriorProps/C01-19/Models/*/*.blend Assets/C01InteriorProps/C01-19/Models/*/*.fbx Assets/C01InteriorProps/C01-19/QA/blender_native_validation.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "build(C01-19): native Blender sources and binary FBX via LFS"
+          git push origin HEAD:c01/props-19-furniture

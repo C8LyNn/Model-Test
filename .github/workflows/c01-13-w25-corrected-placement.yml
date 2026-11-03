@@ -19,7 +19,7 @@ jobs:
       - name: Install actual Blender FBX reader and raster preview tools
         run: |
           sudo apt-get update -qq
-          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y blender git-lfs librsvg2-bin python3-numpy
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y blender git-lfs librsvg2-bin python3-numpy xvfb libegl1 libgl1-mesa-dri libgl1-mesa-glx
           git lfs install --local
           blender --version | head -2
       - name: Hydrate pinned non-door console P17-01
@@ -65,7 +65,7 @@ jobs:
           PY
       - name: Execute native Blender true mesh contacts and corrected nav candidates
         run: |
-          blender --background --factory-startup --threads 2 --python-exit-code 1 --python C01NonDoorQA/Pass25/qa_real_fbx_corrected_layouts.py -- .
+          LIBGL_ALWAYS_SOFTWARE=1 xvfb-run -a -s "-screen 0 1280x900x24" blender --background --factory-startup --threads 2 --python-exit-code 1 --python C01NonDoorQA/Pass25/qa_real_fbx_corrected_layouts.py -- .
       - name: Convert actual FBX triangle top/isometric wireframe to PNG and QA output
         run: |
           set -euo pipefail

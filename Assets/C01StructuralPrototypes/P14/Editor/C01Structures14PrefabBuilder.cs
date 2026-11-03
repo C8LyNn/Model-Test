@@ -8,7 +8,7 @@ public static class C01Structures14PrefabBuilder
     [MenuItem("Tools/C01/Structures 14/Build reference prefabs")]
     public static void Build()
     {
-        // This ONLY stages signed latest RAI v003 + unchanged RMP v002 under
+        // This ONLY stages signed latest RAI v003 + repaired RMP v003 under
         // Pass19/UnityQA; it enforces true binary SHA256, mesh and URP checks.
         // No actual Unity prefab PASS is claimed unless Unity executes it.
         C01Structures14Pass19SignedUnityQa.RunSignedQaOnly();

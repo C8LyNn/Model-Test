@@ -42,10 +42,10 @@ public static class C01Structures14Pass19SignedUnityQa
             20,424),
         new SignedInput(
             "RMP-01",
-            Root+"/Pass03/FBX/C01_14_RMP-01_v002.fbx",
-            Root+"/Pass03/Sources/C01_14_RMP-01_v002.blend",
-            "97f0b125313057f4ecf601dd60a02b4d3f0d55b87c1713d71a0adbedcc6d1443",
-            "7cba127139253a34b0575b0c55f10112395acb790b9716e1a248a3bcc8812cfa",
+            Root+"/Pass23/Native/C01_14_RMP-01_PASS23_v003.fbx",
+            Root+"/Pass23/Native/C01_14_RMP-01_PASS23_v003.blend",
+            "3b47d12a5a32c286c9e35a8f7198c0820d7fef5e9325823a2cfabdc12559c417",
+            "9c5a262813aeeb3a875a162008f120543c8a722ddda477e7af0f813091ec2e40",
             6,72)
     };
 
@@ -199,7 +199,7 @@ public static class C01Structures14Pass19SignedUnityQa
         finally {UnityEngine.Object.DestroyImmediate(root);}
     }
 
-    [MenuItem("Tools/C01/Structures 14/QA Only/Build signed PASS19 native prefabs")]
+    [MenuItem("Tools/C01/Structures 14/QA Only/Build signed PASS23 native prefabs")]
     public static void RunSignedQaOnly()
     {
         if(!Application.unityVersion.StartsWith("6000.",StringComparison.Ordinal))

@@ -22,8 +22,8 @@ NATIVE={
   "fbx": ("Pass17/Native/C01_14_RAI-01_DETAIL17.fbx","f0c8fd590d7752431c869be2f9807209b7632d87a77ab619049c90f60f0ff1fe"),
   "meshes":20,"triangles":424},
  "RMP-01": {
-  "blend": ("Pass03/Sources/C01_14_RMP-01_v002.blend","7cba127139253a34b0575b0c55f10112395acb790b9716e1a248a3bcc8812cfa"),
-  "fbx": ("Pass03/FBX/C01_14_RMP-01_v002.fbx","97f0b125313057f4ecf601dd60a02b4d3f0d55b87c1713d71a0adbedcc6d1443"),
+  "blend": ("Pass23/Native/C01_14_RMP-01_PASS23_v003.blend","9c5a262813aeeb3a875a162008f120543c8a722ddda477e7af0f813091ec2e40"),
+  "fbx": ("Pass23/Native/C01_14_RMP-01_PASS23_v003.fbx","3b47d12a5a32c286c9e35a8f7198c0820d7fef5e9325823a2cfabdc12559c417"),
   "meshes":6,"triangles":72},
 }
 

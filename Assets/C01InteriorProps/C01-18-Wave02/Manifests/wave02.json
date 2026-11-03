@@ -61,7 +61,8 @@
         "unity_Editor": "NOT_RUN",
         "release": "HOLD"
       },
-      "w25_status": "PRODUCER_NATIVE_SIGNED_REAL_BLENDER_FBX_RELEASED_HINGE_23_OF_23_CLEAR_IN_BOTH + REAL_CSHARP_OFFLINE_59_OF_59_PASS; C01_02_INDEPENDENT_HOLD / UNITY_NOT_RUN / NO_NATIVE_EXPORT"
+      "w25_status": "INDEPENDENT_C01_02_SIGNED_NATIVE_RELEASED_HINGE_23_OF_23_PASS + SOURCE_RUNTIME_PREFAB_BUILDER_CONTRACT_PASS / REAL_UNITY6_NOT_RUN / RELEASE_HOLD",
+      "w25_independent_C01_02": "INDEPENDENT_SAME_SHA_SIGNED_NATIVE_MOTION_CLEAR_REPARENTED_HANDLE_8MM_LATCH_2MM_LIFT; exact source blobs accepted; Unity NOT_RUN"
     },
     {
       "id": "P18-06",
@@ -522,14 +523,33 @@
       "failed": 0,
       "note": "Actual signed asset native geometry measured separately in Blender; mock runtime validates C# sequence only, NOT real Unity physics or graphics."
     },
-    "independent_C01_02_W25": "PENDING_NEW_EXACT_HEAD_ACCEPTANCE",
+    "independent_C01_02_W25": "SIGNED_NATIVE_RELEASED_HINGE_23_OF_23_PASS / SOURCE_RUNTIME_AND_PREFAB_BUILDER_CONTRACT_PASS / UNITY_NOT_RUN",
     "C01_01_W25": "NO_NEW_OWNER_DIMENSION_CHANGE_PROPOSED; review transient +8mm latch & +2mm lid movement as needed",
     "Unity6_6000_3_14f1_Editor": "NOT_RUN / OWNER_ACTION_REQUIRED",
     "Unity6_URP_scene_prefab_playmode": "NOT_RUN",
-    "final_model_release": "HOLD",
+    "final_model_release": "HOLD_UNTIL_LICENSED_UNITY",
     "owner_freeze": "DOORS_CLAUDE_EXTERNAL_HOLD. No D01 D02 or other doors/gates asset tests/changes/exports.",
     "new_model_ids": 0,
     "ship_layout_changes": 0,
-    "unauthorized_merges": 0
+    "unauthorized_merges": 0,
+    "independent_original_binary_and_source_evidence": {
+      "source": "https://github.com/C8LyNn/Model-Test/issues/36#issuecomment-6603866248",
+      "report": "https://github.com/C8LyNn/Model-Test/blob/c01/props-02-independent-qa/C01InteriorProps_QA/DETAIL_PASS25/W25_INDEPENDENT_SIGNED_FBX_SOURCE_QA.md",
+      "delta_gate_csv": "https://github.com/C8LyNn/Model-Test/blob/c01/props-02-independent-qa/C01InteriorProps_QA/DETAIL_PASS25/W25_CHANGED_QA_GATES.csv",
+      "QA_zip_SHA256": "3f1c1039276765a5a8cb10a5d5c6d57d94e01061c27c2d130154ab007ab907ef",
+      "independent_PR13_head_at_report": "f59b928f04616aa958030bcbde002f4f55902650",
+      "exact_producer_runtime_blob_SHA": "1c30eca2e50c0e20056ef998c8d81d0f26465b4e",
+      "exact_producer_isolated_builder_blob_SHA": "1014dcbad012a250e590d432e8e71ec0ce988602",
+      "exact_producer_legacy_route_blob_SHA": "e9c4512fa74ba23e2eeba4814b7d27af6eb7f5a5",
+      "independent_23_angles_clear": 23,
+      "independent_negative_controls": "original fixed handles 20/26/18 intersections at 0/-5/-10; incorrectly moving latches with lid 20 latch/body crossings at 0/-5",
+      "accept_scope": "Only after 8mm original two visible latch retract plus 2mm true hinge lift and 3 original handle meshes following lid; original unreleased hinge remains colliding as independently measured W24",
+      "Unity6_importer_playmode": "NOT_RUN"
+    },
+    "other_existing_models": {
+      "P18_07": "C01-02 W25 independently closed W24 P0 axis source warning: original -90degX signed FBX parent correct root->parent conversion; 20mm retract 0/23 contacts; source axis/native released clearance PASS, Unity NOT_RUN; 341mm static / 361mm dynamic depth formal C01-01 PENDING",
+      "P18_03": "C01-02 W25 independent signed FBX wheel 0.105m radius X and four visual wheels source gate PASS, original 576/576 hub/fork visual crossings, game-view clipping and Unity PhysX NOT_RUN",
+      "source": "https://github.com/C8LyNn/Model-Test/issues/36#issuecomment-6603866248"
+    }
   }
 }

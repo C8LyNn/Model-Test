@@ -1,0 +1,175 @@
+{
+  "schema": "C01-18-DETAIL-PASS15-SOURCE-GATE-1",
+  "owner": "C01-18",
+  "date": "2026-10-30",
+  "parent_issue": 36,
+  "source_branch": "c01/props-18-cargo",
+  "before_commit": "681fc52d2159ac774abf1f48efd7b89965d1afe8",
+  "scope": "3 already-existing authored OBJ meshes only; 12 newly authored functional sub-mesh parts, no new asset/model IDs, no vessel changes or merge",
+  "result": "PRODUCER_STATIC_OBJ_QA_PASS; NATIVE_BLENDER_EXPORT_NOT_RUN; INDEPENDENT_QA_PENDING",
+  "design_logic": [
+    "P18-01: four steel hinge-pin captive end collars near the two existing hinges; Blender script parents each new retainer to original hinge pin, preserves hinge pivot",
+    "P18-02: four minimal triangular rear load-support gussets at two crossmember levels, physically support both original rear bars against original uprights",
+    "P18-03: four low-poly six-flat crown/fork captive bolts (one per existing wheel), keep rubber wheels, four separate pivots, hubs, axles and floor clearance"
+  ],
+  "quantitative": {
+    "P18_01": {
+      "id": "P18-01",
+      "source_file": "Assets/C01InteriorProps/C01-18/Models/P18-01.obj",
+      "source_sha256": "5fb7ee496d6ed0d2e9f439629b9d9ed4774ca862290f04e13dc70239e44ec39d",
+      "blob_sha": "732a23a5c1c18fc39fb2e257e4de8c0a558c5e5f",
+      "before_parts": 37,
+      "before_triangles": 684,
+      "after_parts": 41,
+      "V": 504,
+      "E": 968,
+      "F": 546,
+      "T": 844,
+      "added_parts": 4,
+      "added_triangles": 160,
+      "part_names": [
+        "RearHinge_L_Retainer_L",
+        "RearHinge_L_Retainer_R",
+        "RearHinge_R_Retainer_L",
+        "RearHinge_R_Retainer_R"
+      ],
+      "contacts": {
+        "pin_overlap_axial_m": 0.005,
+        "leaf_overlap_axial_m": 0.0015
+      },
+      "old_native_blend_LFS_sha256": "d9e3037b754edd952473170ec0924b4849eec1aa2afc193c2151c9bf079b3a42",
+      "old_native_fbx_LFS_sha256": "84851387b58aeadc7f2ace49201077d847cfd294f82acfb2d0a7dce3e471a939"
+    },
+    "P18_02": {
+      "id": "P18-02",
+      "source_file": "Assets/C01InteriorProps/C01-18/Models/P18-02.obj",
+      "source_sha256": "37f81ce82235689980e86febdc4ea0f8bbfd5f9296e4462d156295f2c2297699",
+      "blob_sha": "26894eb7c5fbbd1c25239905fc3ba228f9925a15",
+      "before_parts": 47,
+      "before_triangles": 1012,
+      "after_parts": 51,
+      "V": 624,
+      "E": 1208,
+      "F": 686,
+      "T": 1044,
+      "added_parts": 4,
+      "added_triangles": 32,
+      "part_names": [
+        "BackSupport_0.60_Gusset_L",
+        "BackSupport_0.60_Gusset_R",
+        "BackSupport_1.48_Gusset_L",
+        "BackSupport_1.48_Gusset_R"
+      ],
+      "contacts": {
+        "each_gusset_crossmember_overlap_m": [
+          0.06,
+          0.0215,
+          0.0125
+        ],
+        "each_gusset_upright_overlap_m": [
+          0.047,
+          0.092,
+          0.02
+        ]
+      },
+      "old_native_blend_LFS_sha256": "5b4cc6a8a73624ddc6521842146cdbc6cc4e7a579522e5122ce669e93c585b09",
+      "old_native_fbx_LFS_sha256": "5ba3faf85a3ea57f755eeb51d0db832c1ce37aa64721d710a22db509f2c6d03f"
+    },
+    "P18_03": {
+      "id": "P18-03",
+      "source_file": "Assets/C01InteriorProps/C01-18/Models/P18-03.obj",
+      "source_sha256": "39aba96fa20eb28f698b68b7daf435e96cabe15c0af2bb70e9db6392e2cd1aa2",
+      "blob_sha": "e1e1b3444d00ff5ba0ba205ad1291e5968688f6e",
+      "before_parts": 53,
+      "before_triangles": 1532,
+      "after_parts": 57,
+      "V": 928,
+      "E": 1996,
+      "F": 1182,
+      "T": 1628,
+      "added_parts": 4,
+      "added_triangles": 96,
+      "part_names": [
+        "Wheel_LB_CrownBolt",
+        "Wheel_LF_CrownBolt",
+        "Wheel_RB_CrownBolt",
+        "Wheel_RF_CrownBolt"
+      ],
+      "contacts": {
+        "bolt_crown_overlap_m": [
+          0.018,
+          0.0155884,
+          0.0045
+        ],
+        "bolt_fork_overlap_m": [
+          0.01,
+          0.0155884,
+          0.0095
+        ],
+        "bolt_rubber_aabb_vertical_separation_m": 0.0092058,
+        "original_wheel_ground_contact_y_m": 0,
+        "old_48_tire_post_intersections_remaining_fixed": "Source original parts retained byte-for-byte since PASS14"
+      },
+      "old_native_blend_LFS_sha256": "a33b23ad173f56a545aa57ae2d81e24afa27928f497835596350e06772e343fc",
+      "old_native_fbx_LFS_sha256": "639fc09c39b804b9bf83de75a4096cdefe1229f58549662ee777537c19c5e165"
+    }
+  },
+  "aggregate": {
+    "parts_before": 137,
+    "parts_after": 149,
+    "V": 2056,
+    "E": 4172,
+    "F": 2414,
+    "T_before": 3228,
+    "T_after": 3516,
+    "added_tris": 288,
+    "added_percent": 8.92
+  },
+  "static_QA": {
+    "models_checked": 3,
+    "results": "PASS 3/3 on exact final Github OBJ content",
+    "original_37_plus_47_plus_53_meshes": "SOURCE OBJECT RECORDS EXACTLY PRESERVED relative to PASS14 (full text prefix test 3/3 PASS)",
+    "new_closed_manifold_meshes": 12,
+    "all_invalid_vertex_indices": 0,
+    "invalid_uv0_indices": 0,
+    "invalid_normal_indices": 0,
+    "zero_area_triangle_fans": 0,
+    "duplicate_faces": 0,
+    "unexpected_boundary_edges": 0,
+    "nonmanifold_edges": 0,
+    "shared_edge_winding_errors": 0,
+    "polygon_vertex_normal_disagreement": 0,
+    "all_cross_mesh_same_facing_coplanar_projected_overlap_area_m2": 0,
+    "all_cross_mesh_same_facing_overlap_triangle_pairs": 0,
+    "all_new_parts_positive_support_AABB": 12,
+    "cart_new_bolt_rubber_gap": "4/4 >=9.2mm vertical in source AABB",
+    "full_swept_motion_and_oblique_face_collision": "NOT_RUN",
+    "method": "Direct actual authored source OBJ indexed topology, 3-axis solid AABB contacts, 3D same-oriented coincident plane triangle-clip area scan over every cross-group triangle in all 3 actual after OBJ files"
+  },
+  "builder": {
+    "file": "Assets/C01InteriorProps/C01-18/Sources/build_blender.py",
+    "source_sha256": "351370ca1e5430a703922d57cc96c088e60345282c169347e1a5f09fa99854d9",
+    "git_blob_sha": "4c9496d118cc60e652bba8c875d9b92e29284c51",
+    "changes": "Fixed pre-existing fatal unconditional wheel presence assertion for crate/rack, maintained 4 movable wheel/hub parent chains, parented four crown bolts to original rigid caster crowns and four retainer collars to original hinge pins with matrix_world preserved, fail-closed expected parts/tris and FBX reimport counts",
+    "actual_blender_application_execution": "NOT RUN"
+  },
+  "preview": {
+    "file": "C01-18_DETAIL_PASS15_SHADED_WIREFRAME.zip",
+    "sha256": "c3b55d5536c590982c39f39724f8eb80703abf4e0105840c197f1964afdcdbed",
+    "zip_crc": "PASS",
+    "images": 6,
+    "images_kind": "OFFLINE SHADED/WIREFRAME technical reconstruction of archived original OBJ and numeric change parameters. NOT actual Blender screenshot or current final GitHub OBJ snapshot."
+  },
+  "native_status": {
+    "original_native_blend_git_lfs_unchanged": true,
+    "original_binary_fbx_git_lfs_unchanged": true,
+    "new_native_saved_blend": "NOT RUN",
+    "new_binary_fbx_export": "NOT RUN",
+    "new_blender_fbx_reimport": "NOT RUN",
+    "independent_C01_02": "PENDING (new exact native bytes unavailable)",
+    "unity6_urp": "NOT RUN",
+    "latest_actions_run": 41130649896,
+    "actions_run_conclusion": "failure before runner allocation, runner_id=0, steps=0",
+    "blocker": "NEEDS_OWNER_ACTION: restore private C01 hosted runner or use authorized Windows Blender4.x+Git LFS; do not promote OBJ source-only to release; do not merge"
+  }
+}

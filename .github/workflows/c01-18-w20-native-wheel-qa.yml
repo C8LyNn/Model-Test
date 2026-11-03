@@ -1,0 +1,64 @@
+name: C01-18 W20 Real Native P18-03 Wheels and Hub Spin QA
+on:
+  push:
+    branches: [c01/props-18-cargo]
+    paths:
+      - '.github/workflows/c01-18-w20-native-wheel-qa.yml'
+      - 'Assets/C01InteriorProps/C01-18/Tools/pass20_real_native_wheels.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: c01-18-w20-native-wheel-motion
+  cancel-in-progress: false
+jobs:
+  inspect-unchanged-real-native:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+          persist-credentials: true
+      - name: Install Blender 4 and hydrate authentic P18-03 binary
+        run: |
+          set -euo pipefail
+          git lfs install --local
+          git lfs pull --include='Assets/C01InteriorProps/C01-18/Sources/P18-03.blend,Assets/C01InteriorProps/C01-18/Models/P18-03.fbx' --exclude=''
+          sudo apt-get update -qq
+          sudo apt-get install -y blender python3-numpy
+          blender --version | grep -E '^Blender 4\.'
+      - name: Run real Blender source and genuine FBX reimport rolling geometry BVH
+        run: |
+          set -euo pipefail
+          root="$PWD/Assets/C01InteriorProps/C01-18"
+          blender -b --factory-startup --python-exit-code 1 --python "$root/Tools/pass20_real_native_wheels.py" -- "$root"
+          python3 - <<'PY'
+          import json
+          p="Assets/C01InteriorProps/C01-18/QA/Pass20/P18-03_REAL_NATIVE_WHEEL_HUB_MOTION_QA.json"
+          q=json.load(open(p))
+          assert q["blender_fbx_rubber_clear_agreement"]
+          assert q["source"]["mesh_parts"]==q["fbx"]["mesh_parts"]==63
+          assert q["source"]["triangles"]==q["fbx"]["triangles"]==1780
+          assert all(r["angles_tested"]==72 for r in q["fbx"]["wheels"].values())
+          print("C01_W20_PRODUCER_REAL_WHEELS",q["nonbearing_rubber_clear"])
+          PY
+      - name: Commit measured QA only — source FBX untouched
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          f=Assets/C01InteriorProps/C01-18/QA/Pass20/P18-03_REAL_NATIVE_WHEEL_HUB_MOTION_QA.json
+          git add "$f"
+          if git diff --cached --quiet; then echo 'Unchanged QA'; else
+            test "$(git diff --cached --name-only)" = "$f"
+            git commit -m 'C01-18 W20: real native P18-03 wheel/hub motion geometry QA [skip ci]'
+            git push origin 'HEAD:c01/props-18-cargo'
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: C01-18-W20-P18-03-REAL-NATIVE-WHEEL-QA
+          path: Assets/C01InteriorProps/C01-18/QA/Pass20/P18-03_REAL_NATIVE_WHEEL_HUB_MOTION_QA.json
+          if-no-files-found: warn
+          retention-days: 21

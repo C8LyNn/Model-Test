@@ -1,0 +1,40 @@
+C01_P1803_W24_PASS all 4 original wheel pivots bound
+C01_P1803_W24_PASS auto visual rolling enabled by default
+C01_P1803_W24_PASS six static body BoxColliders; zero wheel hub/fork colliders
+C01_P1803_W24_PASS rubber wheel mesh present 0
+C01_P1803_W24_PASS inner rotating hub child 0
+C01_P1803_W24_PASS outer rotating hub child 0
+C01_P1803_W24_PASS rubber wheel mesh present 1
+C01_P1803_W24_PASS inner rotating hub child 1
+C01_P1803_W24_PASS outer rotating hub child 1
+C01_P1803_W24_PASS rubber wheel mesh present 2
+C01_P1803_W24_PASS inner rotating hub child 2
+C01_P1803_W24_PASS outer rotating hub child 2
+C01_P1803_W24_PASS rubber wheel mesh present 3
+C01_P1803_W24_PASS inner rotating hub child 3
+C01_P1803_W24_PASS outer rotating hub child 3
+C01_P1803_W24_PASS manual NaN wheel travel rejected
+C01_P1803_W24_PASS manual infinite travel rejected
+C01_P1803_W24_PASS 105mm forward travel gives 57.296deg wheel rotation actual=57.29578
+C01_P1803_W24_PASS all 4 wheels rotate equally 0 actual=57.29578
+C01_P1803_W24_PASS all 4 wheels rotate equally 1 actual=57.29578
+C01_P1803_W24_PASS all 4 wheels rotate equally 2 actual=57.29578
+C01_P1803_W24_PASS all 4 wheels rotate equally 3 actual=57.29578
+C01_P1803_W24_PASS inner metal hub follows actual wheel rotation
+C01_P1803_W24_PASS backward 105mm cancels forward roll actual=0
+C01_P1803_W24_PASS sideways cart translation does not rotate rolling wheels actual=0
+C01_P1803_W24_PASS pure cart heading rotation does not roll actual=0
+C01_P1803_W24_PASS rolling along ROTATED root forward auto-computes correct distance actual=57.29577
+C01_P1803_W24_PASS large teleport does NOT spin wheels actual=57.29577
+C01_P1803_W24_PASS explicit signed reverse travel supported
+C01_P1803_W24_PASS manual reverse cancels roll actual=-1.144409E-05
+C01_P1803_W24_PASS manual mode disables auto translation spin actual=-1.144409E-05
+C01_P1803_W24_PASS manual mode still allows caller-directed rolling
+C01_P1803_W24_PASS manual path uses original 105mm wheel radius actual=57.29577
+C01_P1803_W24_PASS Awake recreates wheel/hub references after save
+C01_P1803_W24_PASS Awake rest pose becomes newly sampled authored pose actual=0
+C01_P1803_W24_PASS W24 phantom fork collider REJECTED even though it is fixed sibling
+C01_P1803_W24_PASS late phantom fork collider injection detected before rolling
+C01_P1803_W24_PASS late phantom collider FAIL-CLOSE disables visual rolling component
+C01_P1803_W24_PASS hub no longer parented to wheel is refused
+C01_W24_P1803_REAL_CSHARP_OFFLINE_LOGIC_PASS checks=39 UNITY_EDITOR=NOT_RUN FBX_HASH_UNCHANGED

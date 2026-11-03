@@ -1,0 +1,56 @@
+{
+  "title": "C01-18 PASS05 real final FBX cross-object contact screen",
+  "date": "2026-10-30",
+  "branch": "c01/props-18-cargo",
+  "repo": "C8LyNn/Model-Test",
+  "original_source": "Actual post-PASS03 BLEND/FBX model bytes; signed full binary FBX SHA matches current Git LFS pointer",
+  "methods": "Binary FBX 7400 Objects/Geometry+Connections transforms, polygon face normals, 3D face-plane test, polygon clipping and vertex-on-edge test; original meshes only",
+  "units": "area in cm²; FBX exporter uses centimeters",
+  "numeric_contact_cutoff_cm2": 0.01,
+  "overall_status": "PRODUCER_GEOMETRY_CHECK_COMPLETE_WITH_REVIEW_CANDIDATES; INDEPENDENT_QA_BLOCKED",
+  "new_native_blender_run": "NOT_RUN - no Blender executable in local environment; GitHub hosted runners not assigned",
+  "unity": "NOT_RUN",
+  "source_repair_pass05": "NO NEW EDITS - original meshes not modified without validated Blender source change",
+  "historical_blender_fbx_ci": 41090212132,
+  "models": [
+    {
+      "id": "P18-01",
+      "blend_sha256": "d9e3037b754edd952473170ec0924b4849eec1aa2afc193c2151c9bf079b3a42",
+      "fbx_sha256": "84851387b58aeadc7f2ace49201077d847cfd294f82acfb2d0a7dce3e471a939",
+      "within_mesh_vertex_on_edge_candidates": 0,
+      "cross_mesh_vertex_on_edge_candidates": 8,
+      "coplanar_face_pairs_unfiltered": 12,
+      "coplanar_face_pairs_filtered": 12,
+      "meaningful_same_facing_pairs": 12,
+      "source_new_repairs": 0,
+      "classification": "REVIEW_REQUIRED",
+      "note": "Four Corner_* meshes share same-facing external face areas with Crate_Shell: 12 face pairs, approx 100.82 cm² total. Candidate Z-fighting; Blender/Unity visual review required."
+    },
+    {
+      "id": "P18-02",
+      "blend_sha256": "5b4cc6a8a73624ddc6521842146cdbc6cc4e7a579522e5122ce669e93c585b09",
+      "fbx_sha256": "5ba3faf85a3ea57f755eeb51d0db832c1ce37aa64721d710a22db509f2c6d03f",
+      "within_mesh_vertex_on_edge_candidates": 0,
+      "cross_mesh_vertex_on_edge_candidates": 24,
+      "coplanar_face_pairs_unfiltered": 20,
+      "coplanar_face_pairs_filtered": 18,
+      "meaningful_same_facing_pairs": 0,
+      "source_new_repairs": 0,
+      "classification": "REVIEW_REQUIRED",
+      "note": "Substantive contacts only between opposed-facing shelf decks and front/rear lips. Six lip mesh changes retained from PASS03. Two microscopic numeric contacts excluded."
+    },
+    {
+      "id": "P18-03",
+      "blend_sha256": "a33b23ad173f56a545aa57ae2d81e24afa27928f497835596350e06772e343fc",
+      "fbx_sha256": "639fc09c39b804b9bf83de75a4096cdefe1229f58549662ee777537c19c5e165",
+      "within_mesh_vertex_on_edge_candidates": 0,
+      "cross_mesh_vertex_on_edge_candidates": 0,
+      "coplanar_face_pairs_unfiltered": 0,
+      "coplanar_face_pairs_filtered": 0,
+      "meaningful_same_facing_pairs": 0,
+      "source_new_repairs": 0,
+      "classification": "REVIEW_REQUIRED",
+      "note": "No cross-part contact candidates observed."
+    }
+  ]
+}

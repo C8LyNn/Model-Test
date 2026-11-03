@@ -1,0 +1,358 @@
+{
+  "schema": "C01-18_DETAIL_PASS17_PRODUCER_EVIDENCE_V1",
+  "date": "2026-11-01",
+  "branch": "c01/props-18-cargo",
+  "repo": "C8LyNn/Model-Test",
+  "issue": 36,
+  "pr": 18,
+  "owner": "C01-18 — CARGO & MOVABLE OBJECTS",
+  "scope": "Three existing asset IDs only; append-only authored real OBJ geometry. No ship edits, new asset IDs or merge.",
+  "status": "PRODUCER_SOURCE_AND_NATIVE_ROUNDTRIP_PASS_INDEPENDENT_QA_HOLD",
+  "source_triangles_total": 4044,
+  "source_parts_total": 169,
+  "added_parts": 10,
+  "added_triangles": 280,
+  "changes": "4 lid-keeper bolt heads; 4 rack post-foot octagonal base shoes; 2 cart handle frame/grip clamp brackets.",
+  "source_validation": {
+    "execution": "ACTUAL producer static indexed OBJ parser, plus point-in-solid ray crossing and new-face coplanar screening",
+    "per_asset": {
+      "index_errors": 0,
+      "missing_uv0": 0,
+      "invalid_normals": 0,
+      "degenerate_triangles": 0,
+      "duplicated_faces": 0,
+      "boundary_edges": 0,
+      "non_manifold_edges": 0,
+      "winding_errors": 0
+    },
+    "new_parts_true_volume_shared_witness_count": 10,
+    "witness_rule": "Each named new solid and its named original support separately contain the same 3D test point by triangle-ray parity on actual indexed source faces. This is a positive internal-volume overlap witness, not a complete moving-part collision test.",
+    "witnesses": [
+      {
+        "asset": "P18-01",
+        "parts": [
+          "FrontLatch_L_KeeperScrew_A",
+          "FrontLatch_L_KeeperScrew_B",
+          "FrontLatch_R_KeeperScrew_A",
+          "FrontLatch_R_KeeperScrew_B"
+        ],
+        "supports": [
+          "FrontLatch_L_UpperKeeper",
+          "FrontLatch_L_UpperKeeper",
+          "FrontLatch_R_UpperKeeper",
+          "FrontLatch_R_UpperKeeper"
+        ],
+        "shared_points_m": [
+          [
+            -0.3,
+            0.866,
+            -0.457
+          ],
+          [
+            -0.26,
+            0.866,
+            -0.457
+          ],
+          [
+            0.26,
+            0.866,
+            -0.457
+          ],
+          [
+            0.3,
+            0.866,
+            -0.457
+          ]
+        ],
+        "passed": 4
+      },
+      {
+        "asset": "P18-02",
+        "parts": [
+          "Rack_FootPlate_LB",
+          "Rack_FootPlate_LF",
+          "Rack_FootPlate_RB",
+          "Rack_FootPlate_RF"
+        ],
+        "supports": [
+          "Rack_Post_-1.015_-0.365",
+          "Rack_Post_-1.015_0.365",
+          "Rack_Post_1.015_-0.365",
+          "Rack_Post_1.015_0.365"
+        ],
+        "shared_points_m": [
+          [
+            -1.015,
+            0.009,
+            -0.365
+          ],
+          [
+            -1.015,
+            0.009,
+            0.365
+          ],
+          [
+            1.015,
+            0.009,
+            -0.365
+          ],
+          [
+            1.015,
+            0.009,
+            0.365
+          ]
+        ],
+        "passed": 4
+      },
+      {
+        "asset": "P18-03",
+        "parts": [
+          "Cart_HandleClamp_L",
+          "Cart_HandleClamp_R"
+        ],
+        "supports": [
+          "Cart_Handle_Post_-0.44",
+          "Cart_Handle_Post_0.44"
+        ],
+        "shared_points_m": [
+          [
+            -0.44,
+            1.15,
+            0.29
+          ],
+          [
+            0.44,
+            1.15,
+            0.29
+          ]
+        ],
+        "passed": 2
+      }
+    ],
+    "same_facing_coplanar_new_vs_old_projected_bbox_candidates": 0,
+    "coplanar_scope": "For every newly added original-face polygon against all earlier original-face polygons in the same asset: equal-facing normals, shared plane tolerance 1e-7 m, 2D projected axis-aligned overlap test. Zero broadphase candidate does NOT clear all original old-to-old contacts or opposite-facing mating planes.",
+    "wheels_y_up_min_m": {
+      "Wheel_LB": 0,
+      "Wheel_LF": 0,
+      "Wheel_RB": 0,
+      "Wheel_RF": 0
+    },
+    "wheels_axle_center_y_m": {
+      "Wheel_LB": 0.105,
+      "Wheel_LF": 0.105,
+      "Wheel_RB": 0.105,
+      "Wheel_RF": 0.105
+    },
+    "source_mesh_original_part_geometry": "Prior PASS16 original faces retained as append-only geometric prefix, plus new named independent solids. No moving wheel/hub/fork source coordinates intentionally changed.",
+    "materials": "Four existing source material names preserved: STEEL, DARK, RUBBER, CAUTION."
+  },
+  "native_roundtrip": {
+    "status": "PASS_GITHUB_ACTIONS_WITH_LOGS",
+    "run_url": "https://github.com/C8LyNn/Model-Test/actions/runs/41344872313",
+    "run_id": 41344872313,
+    "run_head_sha": "5769d0326a1bc4bdcfa892de0f95d912ab30b55a",
+    "native_commit_sha": "03f97354e47645ee80422115d29c67ef48808679",
+    "artifact_id": 13099325067,
+    "artifact_name": "C01-18-native-blender-fbx",
+    "artifact_zip_sha256_from_actions_log": "24ecf87d774e9ff3de87f22f34a59564a4668f926c7813b9f3ae2ea0b35683b0",
+    "blender": "4.0.2",
+    "fbx_version": "7400",
+    "binary_signature_check": "PASS: Kaydara FBX Binary x3",
+    "export": "PASS: 3 actual .blend saved; 3 binary FBX exported; 6 Git LFS objects pushed by CI",
+    "reimport": "PASS: Blender FBX roundtrip 47/980, 59/1284, 63/1780 and UV0 presence per builder's assertions",
+    "normals_and_transforms": "Basic polygon normal presence and hierarchy authoring script checks; full independent sampled tangent/normal fidelity and animated clearance NOT RUN",
+    "file_integrity": "Actual Git LFS SHA256 oids and byte sizes read from final branch pointers; native contents not independently downloaded in this chat."
+  },
+  "visual_previews": {
+    "interactive_html": "Assets/C01InteriorProps/C01-18/QA/Pass17/C01_18_REAL_OBJ_INTERACTIVE_BEFORE_AFTER.html",
+    "source_static_svg": [
+      "Assets/C01InteriorProps/C01-18/QA/Pass17/P18-01_SOURCE_BEFORE_AFTER_SHADED_WIREFRAME.svg",
+      "Assets/C01InteriorProps/C01-18/QA/Pass17/P18-02_SOURCE_BEFORE_AFTER_SHADED_WIREFRAME.svg",
+      "Assets/C01InteriorProps/C01-18/QA/Pass17/P18-03_SOURCE_BEFORE_AFTER_SHADED_WIREFRAME.svg"
+    ],
+    "origin": "Full exact authored OBJ vertex positions and polygon faces, tri-fan indexed, old original prefix only for BEFORE and complete source for AFTER. No stale FBX, primitives or procedural proxy.",
+    "browser_execution": "NOT RUN — generated HTML and source SVG in GitHub; standalone browser render not executed in this environment.",
+    "blender_native_shaded_wireframe_capture": "NOT RUN — the SVG is source-indexed projected preview, not Blender viewport screenshots."
+  },
+  "acceptance": {
+    "producer_static_qa": "PASS",
+    "producer_native_export_and_blender_roundtrip": "PASS",
+    "independent_C01_02_final_native_mesh_and_contacts": "NOT RUN",
+    "C01_10_unity6_urp_real_prefabs": "NOT RUN",
+    "animation_and_contact_clearance": "NOT RUN",
+    "global_same_and_opposite_facing_coplanar_and_tri_triangle_intersections": "NOT RUN",
+    "merge": "HOLD"
+  },
+  "assets": [
+    {
+      "id": "P18-01",
+      "model": "cargo crate",
+      "before": {
+        "parts": 43,
+        "triangles": 868,
+        "sha256": "a3f05396b78419f39e30f78eabecb1e39eb0403b171be945621329a311df0858"
+      },
+      "after": {
+        "parts": 47,
+        "vertices": 584,
+        "polygons": 598,
+        "triangles": 980,
+        "uv_entries": 2356,
+        "normal_entries": 2356,
+        "sha256": "4fd8fc54e37f9941142aed85559ecef077cdfc97e2326b153dfb2ca91fa7b566",
+        "git_blob": "7dc5c975e39ff6eb9be093b77e8720b7c26a89ab",
+        "aabb_m": [
+          [
+            -0.45,
+            0.45
+          ],
+          [
+            0,
+            0.907
+          ],
+          [
+            -0.469,
+            0.45
+          ]
+        ]
+      },
+      "added": [
+        "FrontLatch_L_KeeperScrew_A",
+        "FrontLatch_L_KeeperScrew_B",
+        "FrontLatch_R_KeeperScrew_A",
+        "FrontLatch_R_KeeperScrew_B"
+      ],
+      "native": {
+        "blend": {
+          "sha256": "d8a525acdb0eb7dcfd7b37fb31117b42a53bb655a6543282adac3dff857900a1",
+          "bytes": 750924
+        },
+        "fbx": {
+          "sha256": "f541d502ba9eaaf5c7a0a7279c44f71f36dd482e3aed3ba0734058dcf1045f6c",
+          "bytes": 140460
+        }
+      }
+    },
+    {
+      "id": "P18-02",
+      "model": "industrial rack",
+      "before": {
+        "parts": 55,
+        "triangles": 1172,
+        "sha256": "edceacf8b3494da686186632b27c6a0885f95f401e9598830c7be33927eeff0b"
+      },
+      "after": {
+        "parts": 59,
+        "vertices": 760,
+        "polygons": 822,
+        "triangles": 1284,
+        "uv_entries": 3132,
+        "normal_entries": 3132,
+        "sha256": "b7ee7803f625c2ec48901a0ad6739248e22a59ac56d7dada5e20847604e4d2fc",
+        "git_blob": "fe96d137d0ac6de5b4c53820cade6cce89ccf2b9",
+        "aabb_m": [
+          [
+            -1.081,
+            1.081
+          ],
+          [
+            0,
+            2.1
+          ],
+          [
+            -0.431,
+            0.431
+          ]
+        ]
+      },
+      "added": [
+        "Rack_FootPlate_LB",
+        "Rack_FootPlate_LF",
+        "Rack_FootPlate_RB",
+        "Rack_FootPlate_RF"
+      ],
+      "native": {
+        "blend": {
+          "sha256": "49b3697ff01efe0497f12703421f05fedb4e9a29636626bf72d1e57493a369d5",
+          "bytes": 832948
+        },
+        "fbx": {
+          "sha256": "e962c47fc60d84fb0d06d69f7aec3eead745705be002b7eb0abf11c5da452558",
+          "bytes": 174540
+        }
+      }
+    },
+    {
+      "id": "P18-03",
+      "model": "cargo cart",
+      "before": {
+        "parts": 61,
+        "triangles": 1724,
+        "sha256": "a67e5d708538f738bc6363ffe14a177217b506bfbbab8224f420b063ef09f1aa"
+      },
+      "after": {
+        "parts": 63,
+        "vertices": 1016,
+        "polygons": 1274,
+        "triangles": 1780,
+        "uv_entries": 4484,
+        "normal_entries": 4484,
+        "sha256": "4446cfc77a6c4a9de4cf7c172ae06395b9dad9e39941566046d952eab0f16a6a",
+        "git_blob": "2aaea1148ca37d8835c1298fadf1010b7ebf7875",
+        "aabb_m": [
+          [
+            -0.5,
+            0.5
+          ],
+          [
+            0,
+            1.2
+          ],
+          [
+            -0.35,
+            0.35
+          ]
+        ]
+      },
+      "added": [
+        "Cart_HandleClamp_L",
+        "Cart_HandleClamp_R"
+      ],
+      "native": {
+        "blend": {
+          "sha256": "ea1b4f5cc5612f8d8ff5c3c585b9b48843659972c2371204b5d3b5c4df3a3b56",
+          "bytes": 916908
+        },
+        "fbx": {
+          "sha256": "f169ab74086ee3853c14b46ac6f6199cd255cfca15d8b7cbef32c3758cde7926",
+          "bytes": 194060
+        }
+      }
+    }
+  ],
+  "unity_preparation": {
+    "status": "SOURCE_BUILDER_UPDATED_UNITY_RUNTIME_NOT_RUN",
+    "editor_script": "Assets/C01InteriorProps/C01-18/Editor/BuildWave01CargoPrefabs.cs",
+    "mapped_source_groups": 169,
+    "material_lookup": "Exact id/name keys read from actual authored OBJ usemtl (STEEL/DARK/RUBBER/CAUTION), no wheel-prefix guessing",
+    "bug_fixed": "Prior t.name.StartsWith('Wheel_') counted all hub/fork/axle accessory meshes; now explicitly counts only Wheel_LB/Wheel_LF/Wheel_RB/Wheel_RF",
+    "strict_mesh_parts_expected": {
+      "P18-01": 47,
+      "P18-02": 59,
+      "P18-03": 63
+    },
+    "strict_triangle_expected": {
+      "P18-01": 980,
+      "P18-02": 1284,
+      "P18-03": 1780
+    },
+    "strict_collision_parts_expected": {
+      "P18-01": 1,
+      "P18-02": 7,
+      "P18-03": 6
+    },
+    "checked_in_prefab_yaml": "HISTORICAL: not regenerated; requires Unity6 import / menu command",
+    "unity_editor_compile": "NOT RUN",
+    "unity6_urp_import_and_actual_prefab": "NOT RUN"
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "wave": "C01 DETAIL PASS19 WAVE19",
+  "role": "C01-18",
+  "scope": "P18-03 — four moving rubber wheels only; no source changes or native reexport",
+  "model": "P18-03",
+  "source_obj_path": "Assets/C01InteriorProps/C01-18/Models/P18-03.obj",
+  "source_obj_git_blob": "2aaea1148ca37d8835c1298fadf1010b7ebf7875",
+  "source_obj_sha256": "4446cfc77a6c4a9de4cf7c172ae06395b9dad9e39941566046d952eab0f16a6a",
+  "native_blend_sha256": "ea1b4f5cc5612f8d8ff5c3c585b9b48843659972c2371204b5d3b5c4df3a3b56",
+  "native_fbx_sha256": "f169ab74086ee3853c14b46ac6f6199cd255cfca15d8b7cbef32c3758cde7926",
+  "native_source_provenance": "Real Blender4.0.2 FBX from existing successful run https://github.com/C8LyNn/Model-Test/actions/runs/41344872313; unchanged hashes; no redundant export",
+  "method": "ACTUAL mesh vertices extracted from producer OBJ. For each rubber wheel (26 indexed mesh vertices; 48 triangles), compute AABB of wheel rotated about actual X axle through its real bbox center by 0..355 degrees every 5 degrees (72 positions), then compare x/y/z interval overlap with every 12 relevant fixed structural parts (decks, four frame uprights, corresponding wheel fork inner/outer/crown, anchor, gusset and anchor retainer). Full AABB disjoint => exact triangles cannot intersect at sampled pose. Continuous 360 spin additionally bounded by maximum radial source vertex distance (<=0.105m): wheel Y never exceeds axleY+0.105m=0.210m, near upright bottom Y=0.212m; fork disjoint X gap >=9mm and crown Y gap >=6mm.",
+  "samples_per_wheel": 72,
+  "step_degrees": 5,
+  "mesh_vertices_per_wheel": 26,
+  "triangles_per_wheel": 48,
+  "verified_axes": "X-parallel axle, source Y up; 4 independent wheel pivots and 8 wheel hub child objects preserved in existing FBX",
+  "findings": {
+    "all_swept_rubber_wheel_vs_frame_AABB_tests_disjoint": true,
+    "total_sampled_pair_tests": 3456,
+    "minimum_outer_wheel_vs_upright_separation_mm": 2,
+    "minimum_outer_wheel_vs_fork_inner_outer_gap_mm": 9,
+    "minimum_outer_wheel_vs_fork_crown_separation_mm": 6,
+    "minimum_outer_wheel_vs_lower_shelf_separation_mm": 42.5,
+    "ground_contact_rest_y_m": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "axle_y_m": [
+      0.105,
+      0.105,
+      0.105,
+      0.105
+    ],
+    "rubber_to_rigid_external_12_targets": "4×12 target structural AABB disjoint per 72 poses; 0 broadphase overlap cases",
+    "movement_scope_caveats": "Rubber-wheel spin only; does not simulate caster swivel, whole-cart travel over terrain, flex, wheel-hub-to-axle/fastener contact, two-sided material rendering or Unity physics. Hub-to-axle contacts intentionally expected; require independent review rather than false 'zero intersections'.",
+    "minimum_clearance_is_design_slim": "2mm gap close to upright; review deformation/contact margin in actual Unity and manufacturing-style tolerance."
+  },
+  "per_wheel": [
+    {
+      "id": "Wheel_LB",
+      "center": [
+        -0.39,
+        0.105,
+        -0.245
+      ],
+      "sampled_poses": 72,
+      "rigid_targets": 12,
+      "minimum_sep_mm": 2,
+      "overlaps": 0
+    },
+    {
+      "id": "Wheel_LF",
+      "center": [
+        -0.39,
+        0.105,
+        0.245
+      ],
+      "sampled_poses": 72,
+      "rigid_targets": 12,
+      "minimum_sep_mm": 2,
+      "overlaps": 0
+    },
+    {
+      "id": "Wheel_RB",
+      "center": [
+        0.39,
+        0.105,
+        -0.245
+      ],
+      "sampled_poses": 72,
+      "rigid_targets": 12,
+      "minimum_sep_mm": 2,
+      "overlaps": 0
+    },
+    {
+      "id": "Wheel_RF",
+      "center": [
+        0.39,
+        0.105,
+        0.245
+      ],
+      "sampled_poses": 72,
+      "rigid_targets": 12,
+      "minimum_sep_mm": 2,
+      "overlaps": 0
+    }
+  ],
+  "disposition": {
+    "producer_wheel_sweep_source": "PASS for tested spin-vs-rigid frame geometry",
+    "producer_mesh_repair": "NO_CHANGE: no demonstrated geometry collision requiring repair",
+    "new_blend_export": "NOT_RUN: unchanged asset; existing exact native is valid",
+    "C01_02_independent": "PENDING",
+    "Unity6_URP": "NOT_RUN",
+    "all_36_release": "HOLD"
+  },
+  "owner_action": "C01-02 independently confirm exact native FBX SHA physical mesh hierarchy and actual 360° wheel+hub rotation, fork and axle contact; C01-10 verify Unity spin/colliders/materials; only repair if independently proven defect."
+}

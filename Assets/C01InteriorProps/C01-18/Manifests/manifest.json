@@ -1,0 +1,191 @@
+{
+  "package": "C01-18",
+  "version": "0.1.17",
+  "issue": 6,
+  "assets": [
+    {
+      "id": "P18-01",
+      "dims_xyz": [
+        0.9,
+        0.907,
+        0.919
+      ],
+      "triangles": 980,
+      "parts": 47,
+      "collider_parts": [
+        "Crate_Shell"
+      ],
+      "moving_parts": [
+        "Upper_Lid (requires motion review)"
+      ],
+      "blender": "PASS - real CI Blender 4.0.2 save",
+      "fbx_unity_import": "NOT RUN",
+      "prefab_unity_import": "NOT RUN",
+      "blender_fbx_roundtrip": "PASS - real CI Blender 4.0.2 binary FBX 7400 reimport",
+      "source_obj_sha256": "4fd8fc54e37f9941142aed85559ecef077cdfc97e2326b153dfb2ca91fa7b566",
+      "native_blend_sha256": "d8a525acdb0eb7dcfd7b37fb31117b42a53bb655a6543282adac3dff857900a1",
+      "native_fbx_sha256": "f541d502ba9eaaf5c7a0a7279c44f71f36dd482e3aed3ba0734058dcf1045f6c",
+      "independent_QA": "C01-02 REAL FBX STATIC_PASS; lid hinge dynamic NOT_RUN; Unity NOT_RUN / final HOLD"
+    },
+    {
+      "id": "P18-02",
+      "dims_xyz": [
+        2.162,
+        2.1,
+        0.862
+      ],
+      "triangles": 1284,
+      "parts": 59,
+      "collider_parts": [
+        "Rack_Post_-1.015_-0.365",
+        "Rack_Post_-1.015_0.365",
+        "Rack_Post_1.015_-0.365",
+        "Rack_Post_1.015_0.365",
+        "Shelf_0_Deck",
+        "Shelf_1_Deck",
+        "Shelf_2_Deck"
+      ],
+      "moving_parts": [],
+      "blender": "PASS - real CI Blender 4.0.2 save",
+      "fbx_unity_import": "NOT RUN",
+      "prefab_unity_import": "NOT RUN",
+      "blender_fbx_roundtrip": "PASS - real CI Blender 4.0.2 binary FBX 7400 reimport",
+      "source_obj_sha256": "b7ee7803f625c2ec48901a0ad6739248e22a59ac56d7dada5e20847604e4d2fc",
+      "native_blend_sha256": "49b3697ff01efe0497f12703421f05fedb4e9a29636626bf72d1e57493a369d5",
+      "native_fbx_sha256": "e962c47fc60d84fb0d06d69f7aec3eead745705be002b7eb0abf11c5da452558",
+      "independent_QA": "C01-02 REAL FBX STATIC_PASS; full assembly and Unity NOT_RUN / final HOLD"
+    },
+    {
+      "id": "P18-03",
+      "dims_xyz": [
+        1,
+        1.2,
+        0.7
+      ],
+      "triangles": 1780,
+      "parts": 63,
+      "collider_parts": [
+        "Cart_Shelf_0",
+        "Cart_Shelf_1",
+        "Cart_Upright_-0.44_-0.29",
+        "Cart_Upright_-0.44_0.29",
+        "Cart_Upright_0.44_-0.29",
+        "Cart_Upright_0.44_0.29"
+      ],
+      "moving_parts": [
+        "Wheel_LB",
+        "Wheel_LF",
+        "Wheel_RB",
+        "Wheel_RF"
+      ],
+      "blender": "PASS - real CI Blender 4.0.2 save",
+      "fbx_unity_import": "NOT RUN",
+      "prefab_unity_import": "NOT RUN",
+      "blender_fbx_roundtrip": "PASS - real CI Blender 4.0.2 binary FBX 7400 reimport",
+      "source_obj_sha256": "4446cfc77a6c4a9de4cf7c172ae06395b9dad9e39941566046d952eab0f16a6a",
+      "native_blend_sha256": "ea1b4f5cc5612f8d8ff5c3c585b9b48843659972c2371204b5d3b5c4df3a3b56",
+      "native_fbx_sha256": "f169ab74086ee3853c14b46ac6f6199cd255cfca15d8b7cbef32c3758cde7926",
+      "independent_QA": "C01-02 REAL FBX STATIC_PASS wheel rest and rubber sweep 2mm clearance; rotating hub/fork material interference classification HOLD / Unity NOT_RUN",
+      "w24_status": "VISUAL_BEARING_SOURCE_ANIMATED_39_OFFLINE_CSHARP_TESTS_PASS_NOT_UNITY; C01-02+UNITY HOLD"
+    }
+  ],
+  "detail_pass": 17,
+  "native_build": {
+    "status": "PASS",
+    "blender": "4.0.2",
+    "github_actions_run_id": 41344872313,
+    "git_commit": "03f97354e47645ee80422115d29c67ef48808679",
+    "independent_QA": "Exact-current-SHA C01-02 physical STATIC_PASS all P18-01/02/03; P18-03 8 hub/fork positive-inside-common-volume producer witnesses C01-02 classification PENDING",
+    "unity6_prefab_build": "NOT RUN"
+  },
+  "wave22": {
+    "owner": "C01-18",
+    "scope": "P18-01/02/03 original native files unchanged, metadata only",
+    "P18_01": {
+      "fbx_sha256": "f541d502ba9eaaf5c7a0a7279c44f71f36dd482e3aed3ba0734058dcf1045f6c",
+      "independent": "STATIC_PASS / LID_HINGE_DYNAMIC_HOLD",
+      "unity_editor": "NOT_RUN"
+    },
+    "P18_02": {
+      "fbx_sha256": "e962c47fc60d84fb0d06d69f7aec3eead745705be002b7eb0abf11c5da452558",
+      "independent": "STATIC_PASS / UNITY_FINAL_HOLD",
+      "unity_editor": "NOT_RUN"
+    },
+    "P18_03": {
+      "fbx_sha256": "f169ab74086ee3853c14b46ac6f6199cd255cfca15d8b7cbef32c3758cde7926",
+      "blend_sha256": "ea1b4f5cc5612f8d8ff5c3c585b9b48843659972c2371204b5d3b5c4df3a3b56",
+      "physical_blender_fbx_producer_motion_run": "https://github.com/C8LyNn/Model-Test/actions/runs/41537598153",
+      "physical_producer_qa": "https://github.com/C8LyNn/Model-Test/blob/c01/props-18-cargo/Assets/C01InteriorProps/C01-18/QA/Pass20/P18-03_REAL_NATIVE_WHEEL_HUB_MOTION_QA.json",
+      "source_positive_interior_overlap_witness": "https://github.com/C8LyNn/Model-Test/issues/8#issuecomment-6590499102",
+      "independent_C01_02_reference": "https://github.com/C8LyNn/Model-Test/blob/c01/props-02-independent-qa/C01InteriorProps_QA/DETAIL_PASS21/W21_36_EXACT_SHA_C01_02_QA_GATES.csv",
+      "rubber_vs_nonbearing_frame": "PRODUCER_BLENDER_AND_FBX_4x72_CLEAR; C01-02_STATIC_WHEEL_SWEEP_PASS",
+      "hub_fork_moving_and_fixed": "8 pairs, 2mm positive axial solid volume overlap each by original OBJ ray-parity; potential bearing interference vs intended mating requires independent C01-02 exact binary FBX classification",
+      "hub_fork_final_C01_02": "HOLD_PENETRATION_VS_INTENTIONAL_ASSEMBLY_CLASSIFICATION",
+      "do_not_repair_until": "C01-02 assigns source-supported actionable FAIL on actual FBX SHA",
+      "unity_physics": "NOT_RUN",
+      "final": "HOLD"
+    },
+    "no_reexport": "all real native BLEND FBX unchanged",
+    "no_merge": true
+  },
+  "wave23": {
+    "owner": "C01-18",
+    "door_handoff": "CLAUDE_DOORS_EXTERNAL_HOLD; no D01/D02 work, edits, exports or QA reruns",
+    "P18-03": {
+      "native_blend_sha256": "ea1b4f5cc5612f8d8ff5c3c585b9b48843659972c2371204b5d3b5c4df3a3b56",
+      "native_fbx_sha256": "f169ab74086ee3853c14b46ac6f6199cd255cfca15d8b7cbef32c3758cde7926",
+      "independent_W22": "STATIC_PASS / ASSEMBLY_MOTION_HOLD",
+      "evidence": "https://github.com/C8LyNn/Model-Test/blob/c01/props-02-independent-qa/C01InteriorProps_QA/DETAIL_PASS22/W22_NATIVE_INDEPENDENT_QA_FINDINGS.md",
+      "physical_contacts": "8 rotating metallic hubs vs 8 fixed fork cheeks, actual FBX 576/576 angular positions have 29-33 triangle crossings, original 2mm axial intersect; 8 hubs vs axle at rest ~84 triangle contacts each",
+      "intended_render_semantics": "decorative open-view metallic wheel bearing, not collision-driven solid mechanical contact; visual overlap remains visible / must pass human visual QA",
+      "physics_static_colliders": [
+        "Cart_Shelf_0",
+        "Cart_Shelf_1",
+        "Cart_Upright_-0.44_-0.29",
+        "Cart_Upright_-0.44_0.29",
+        "Cart_Upright_0.44_-0.29",
+        "Cart_Upright_0.44_0.29"
+      ],
+      "physics_no_colliders": "all Wheel_*, Wheel_*_Hub_In/Out, Wheel_*_ForkInner/Outer, Wheel_*_Axle and Wheel_*_AxleFastener are purely render meshes; no mutual solid PhysX simulation",
+      "generator": "Assets/C01InteriorProps/C01-18/Editor/BuildWave01CargoPrefabs.cs",
+      "runtime": "Assets/C01InteriorProps/C01-18/Runtime/C01CartWheelVisualBearing.cs",
+      "default_geometry_and_hierarchy": "original four imported wheel pivots and 8 wheel-child metal hubs preserved",
+      "wheel_radius_m": 0.105,
+      "dynamics": "visual rolling explicitly called by gameplay with signed translation, no WheelCollider, no implicit physics wheel or self-contact simulation",
+      "preflight_sha_before_writes": true,
+      "compiled_in_Unity": "NOT_RUN",
+      "unity_playmode": "NOT_RUN",
+      "independent_final": "HOLD",
+      "native_mesh_changes": 0,
+      "fbx_reexports": 0
+    },
+    "policy": "No new model IDs/doors/ship geometry/merge, original native SHA unchanged"
+  },
+  "wave24": {
+    "owner": "C01-18",
+    "source_scope": "Existing Draft #18 P18-03 visually animated hub, no model export",
+    "model": "P18-03",
+    "FBX_SHA256": "f169ab74086ee3853c14b46ac6f6199cd255cfca15d8b7cbef32c3758cde7926",
+    "BLEND_SHA256": "ea1b4f5cc5612f8d8ff5c3c585b9b48843659972c2371204b5d3b5c4df3a3b56",
+    "exact_source_branch": "c01/props-18-cargo",
+    "QA_independent_latest": "C01-02 W23 STATIC_PASS / RENDER_MATING_REVIEW + UNITY_PHYSX_HOLD, 576/576 independent FBX hub-fork intersections",
+    "geometry": "all 63 original meshes/1780 triangles remain unmodified; 8 original rotating hub meshes parent to 4 native rubber wheels",
+    "physics_policy": "Only 2 shelf + 4 upright BoxColliders; no Wheel_*, hub, fork or axle collider, no WheelCollider. These are visual-only decorative bearings with 2mm genuine overlapping rendered solids, not physically-clear joints.",
+    "runtime_source": "Assets/C01InteriorProps/C01-18/Runtime/C01CartWheelVisualBearing.cs",
+    "runtime_change": "Automatic visual wheel rotation from root FORWARD translation; signed reversible 0.105m wheel radius, sideways motion/pure rotation no wheel movement, >2m/frame teleport ignored, manual fallback if auto disabled, stable rest-pose-relative quaternion wheel rotations preserving both hub children",
+    "source_validation": "Actual real C# production runtime compiled and executed with offline UnityEngine doubles in CI; 39/39 deterministic checks PASS, not Unity",
+    "source_CSharp_run_id": 41630296188,
+    "source_CSharp_evidence": "https://github.com/C8LyNn/Model-Test/blob/c01/props-18-cargo/QA/C01-18/Pass24/Wave01/P18-03_W24_REAL_CSHARP_MOCK_QA.json",
+    "C01_02_latest_commit_recheck": "PENDING",
+    "Unity_6000_3_14f1_Editor": "NOT_RUN",
+    "Unity_PhysX_PlayMode": "NOT_RUN",
+    "C01_01_owner_clearance": "NOT_REQUIRED_FOR_MODEL_STATIC; gameplay/render acceptance PENDING",
+    "world_geometry_verified_previously": "https://github.com/C8LyNn/Model-Test/actions/runs/41537598153",
+    "owner_freeze": "ALL CLAUDE DELEGATED D01/D02/DOORS AND GATES FROZEN NOT TOUCHED",
+    "original_native_modifications": 0,
+    "FBX_exports": 0,
+    "models_added": 0,
+    "merge": false,
+    "release": "HOLD"
+  }
+}

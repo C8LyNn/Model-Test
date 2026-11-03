@@ -1,0 +1,64 @@
+{
+  "wave": 23,
+  "owner": "C01-18",
+  "model": "P18-03",
+  "status": "PRODUCER_SOURCE_COLLIDER_POLICY_FIXED__UNITY_NOT_RUN__INDEPENDENT_MOTION_HOLD",
+  "sources": {
+    "branch": "c01/props-18-cargo",
+    "original_physical_blend_sha256": "ea1b4f5cc5612f8d8ff5c3c585b9b48843659972c2371204b5d3b5c4df3a3b56",
+    "original_binary_fbx_sha256": "f169ab74086ee3853c14b46ac6f6199cd255cfca15d8b7cbef32c3758cde7926",
+    "source_level_git_blob_editor": "98a442540df361c2d18a40f26bc18cb80ad2d7d4",
+    "source_level_git_blob_runtime": "35ce0a6eaad74c61305a4448f4137955bd7620fa",
+    "manifest_git_blob": "d143564df98fdd03232a86bb22455e7c9734de8a"
+  },
+  "independent_W22_C01_02": {
+    "status": "STATIC_PASS / ASSEMBLY_MOTION_HOLD",
+    "real_FBX_rotation_samples": 576,
+    "penetrating_samples": 576,
+    "penetrating_triangle_pairs_per_sample": "29-33",
+    "metal_hubs": 8,
+    "rigid_forks": 8,
+    "hub_axle_overlap": "8/8 at rest, ~84 triangle pairs per pair",
+    "rubber_frame": "scoped 2mm clearance PASS",
+    "evidence": "https://github.com/C8LyNn/Model-Test/blob/c01/props-02-independent-qa/C01InteriorProps_QA/DETAIL_PASS22/W22_NATIVE_INDEPENDENT_QA_FINDINGS.md"
+  },
+  "P18_03_model_policy": {
+    "original_render_meshes": 63,
+    "original_triangles": 1780,
+    "original_moving_wheels": 4,
+    "original_render_hubs": 8,
+    "rubber_radius_m": 0.105,
+    "solid_collider_parts": [
+      "Cart_Shelf_0",
+      "Cart_Shelf_1",
+      "Cart_Upright_-0.44_-0.29",
+      "Cart_Upright_-0.44_0.29",
+      "Cart_Upright_0.44_-0.29",
+      "Cart_Upright_0.44_0.29"
+    ],
+    "no_physx_collider_names": "all Wheel_* parts including original moving rubber wheels + metal hubs and stationary fork/axle are render-only; no interpenetrating solid collision at the bearing",
+    "rolling": "controlled manually from gameplay signed travel meters, requires actual Unity axis validation",
+    "native_mesh_modified": false,
+    "reexports": 0
+  },
+  "code_source_guard_readback": {
+    "result": "20/20 PASS",
+    "test_type": "actual GitHub blob source-level literal/structure checks, NOT compilation or PlayMode",
+    "details": [
+      "Signed FBX size 194060 and SHA preflight before prefab writes",
+      "authored original 63 meshes/1780T",
+      "six shelf/upright colliders only",
+      "4 original named wheel pivots",
+      "all Wheel_* are forbidden to have colliders",
+      "runtime wheel visual component rejects missing/duplicate and colliding wheel pivots",
+      "runtime Awake reconstructs nonserialized wheel caches",
+      "finite traveled distance gate",
+      "original real BLEND/FBX LFS OIDs unchanged",
+      "independent C01-02 HOLD, final Unity NOT_RUN"
+    ]
+  },
+  "hard_freeze": "D01,D02 and any door/gate delegated to Claude: NO edits/retests/reexports",
+  "unity_editor": "NOT_RUN",
+  "full_motion_approved": false,
+  "no_merge": true
+}

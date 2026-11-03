@@ -1,0 +1,168 @@
+{
+  "project": "C01 — 3D Asset Factory",
+  "role": "C01-18 — cargo / movable objects",
+  "issue": 36,
+  "pass": "DETAIL_PASS14",
+  "date": "2026-10-30",
+  "release_status": "SOURCE_REPAIRS_EXECUTED; NATIVE_BLENDER_FBX_EXPORT_BLOCKED; NEEDS_OWNER_ACTION",
+  "source_commit_before": "9dc58f654d1799208dda3334b9b9ecf9eae33a76",
+  "edited_models": [
+    {
+      "id": "P18-01",
+      "source": "Assets/C01InteriorProps/C01-18/Models/P18-01.obj",
+      "sha256": "6d1cbedba52d975594c4d1c4c1addcf14f752ee7118a521a3e63c880e8044b06",
+      "git_blob_sha": "051ab09222a354f1c64f7c682442529b6f4d54ee",
+      "old_git_blob": "c0f9d6b5131c987e1c484ce4eb83ac2115e1d7f7",
+      "existing_vertex_coordinate_changes": 68,
+      "changed_parts": 9,
+      "changes": [
+        "8 existing TrimBacker solids: original length endpoints ±0.335m to ±0.334m along their long X/Z axis; external colored trim untouched",
+        "Lower_Rim four original top vertices Y=0.080→0.092m; Crate_Shell lower plane Y=0.090m => 0.002m positive vertical overlap without changing floor y=0"
+      ],
+      "repair_proof": {
+        "coplanar_original_pairs_before": 8,
+        "triangle_pairs_before": 48,
+        "projected_same_facing_area_before_m2": 0.002496,
+        "after_pairs": 0,
+        "after_triangle_pairs": 0,
+        "after_projected_area_m2": 0,
+        "rim_gap_before_m": 0.01,
+        "rim_embed_after_m": 0.002
+      },
+      "geometry": {
+        "mesh_objects": 37,
+        "vertices": 416,
+        "edges": 768,
+        "polygons": 426,
+        "triangles": 684
+      },
+      "native_old_git_lfs_blend_sha256": "d9e3037b754edd952473170ec0924b4849eec1aa2afc193c2151c9bf079b3a42",
+      "native_old_git_lfs_fbx_sha256": "84851387b58aeadc7f2ace49201077d847cfd294f82acfb2d0a7dce3e471a939"
+    },
+    {
+      "id": "P18-02",
+      "source": "Assets/C01InteriorProps/C01-18/Models/P18-02.obj",
+      "sha256": "dc9434a32b7de2235d80a374cc04778b657e39c8f98d88b288bdad40fbf6af2c",
+      "git_blob_sha": "349fd2307eca8d2334cb8c8cbeb5f43ff9408d4b",
+      "old_git_blob": "9a81151c93006cd2a52d0e5541fe1d3c2cbc2011",
+      "existing_vertex_coordinate_changes": 16,
+      "changed_parts": 2,
+      "changes": [
+        "Back_Support_0.6 and Back_Support_1.48 existing cuboid X bounds ±0.950→±0.985m, 35mm extension at each end",
+        "Rack_Post inner face at abs(X)=0.980m => 5mm positive penetration of both real rear supports with two fixed posts"
+      ],
+      "repair_proof": {
+        "old_end_gap_each_side_m": 0.03,
+        "new_positive_support_post_embed_m": 0.005,
+        "detached_supports_before": 2,
+        "after": 0
+      },
+      "geometry": {
+        "mesh_objects": 47,
+        "vertices": 600,
+        "edges": 1172,
+        "polygons": 666,
+        "triangles": 1012
+      },
+      "native_old_git_lfs_blend_sha256": "5b4cc6a8a73624ddc6521842146cdbc6cc4e7a579522e5122ce669e93c585b09",
+      "native_old_git_lfs_fbx_sha256": "5ba3faf85a3ea57f755eeb51d0db832c1ce37aa64721d710a22db509f2c6d03f"
+    },
+    {
+      "id": "P18-03",
+      "source": "Assets/C01InteriorProps/C01-18/Models/P18-03.obj",
+      "sha256": "22513002afb38d2d3f4a13ef429a41c9a04928528b3cffef87613d51351c1901",
+      "git_blob_sha": "e6440810d917df3c978505ce79f084ba1f98086c",
+      "old_git_blob": "df5a68c87fd49597c79bbb6f70735f32543489bf",
+      "existing_vertex_coordinate_changes": 48,
+      "changed_parts": 8,
+      "changes": [
+        "All four original Cart_Shelf_Lip blocks translated 7mm down: 5mm previous air gap closed with 2mm into current shelf deck",
+        "All four original Cart_Upright lower end caps Y=0.145→0.212m; top end caps unchanged Y=0.975m, creating ~2mm vertical clearance from rubber wheel top Y=0.210m",
+        "Existing wheel meshes/pivots, hubs, axles, forks, brackets and four wheel floor contacts unchanged"
+      ],
+      "repair_proof": {
+        "lip_gap_before_m": 0.005,
+        "lip_embed_after_m": 0.002,
+        "upper_before_upright_bottom_m": 0.145,
+        "upper_after_upright_bottom_m": 0.212,
+        "actual_triangle_triangle_intersections_before_per_wheel": [
+          11,
+          11,
+          13,
+          13
+        ],
+        "after_per_wheel": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "wheel_ground_contact": "4/4 at Y=0"
+      },
+      "geometry": {
+        "mesh_objects": 53,
+        "vertices": 872,
+        "edges": 1876,
+        "polygons": 1110,
+        "triangles": 1532
+      },
+      "native_old_git_lfs_blend_sha256": "a33b23ad173f56a545aa57ae2d81e24afa27928f497835596350e06772e343fc",
+      "native_old_git_lfs_fbx_sha256": "639fc09c39b804b9bf83de75a4096cdefe1229f58549662ee777537c19c5e165"
+    }
+  ],
+  "source_spec": {
+    "path": "Assets/C01InteriorProps/C01-18/Sources/part_spec.json",
+    "sha256": "98960bbbf13037c8f0a6e5d221a633fc633f76ee1abec7e05bd51c8dfbe07c80",
+    "git_blob_sha": "da4f0af8ccfb6ab059df421a1010dbc7c3572908",
+    "number_existing_entries_synced": 11
+  },
+  "verified_source_QA": {
+    "scope": "Complete indexed source OBJ geometry of exact latest GitHub PR branch, independent V/E/F/topology parser + same-facing coplanar triangle clipping + wheel-upright segment/triangle narrowphase and AABB connectivity",
+    "models": 3,
+    "mesh_objects": 137,
+    "triangles": 3228,
+    "invalid_vertex_references": 0,
+    "invalid_uv0_references": 0,
+    "invalid_normal_references": 0,
+    "degenerate_tris": 0,
+    "duplicate_face_indices": 0,
+    "open_edges": 0,
+    "nonmanifold_edges": 0,
+    "inconsistent_shared_edge_winding": 0,
+    "same_facing_coplanar_cross_mesh_area_m2_all_pairs": {
+      "P18-01": 0,
+      "P18-02": 0,
+      "P18-03": 0
+    },
+    "zero_aabb_contact_group_count": {
+      "P18-01": 0,
+      "P18-02": 0,
+      "P18-03": 0
+    },
+    "limits": "AABB connection graph is broad phase; no guarantee every physical triangle contact/collision has been evaluated. Same-facing coplanar screen excludes unlike-facing surfaces, near-coplanar issues and runtime shading. Source QA not independent C01-02 nor Blender/Unity approval."
+  },
+  "native_and_runtime": {
+    "latest_source_blend": "STALE (PASS03 LFS oid unchanged)",
+    "latest_binary_fbx": "STALE (PASS03 LFS oid unchanged)",
+    "blender4_open_save": "NOT RUN",
+    "blender4_binary_fbx_export": "NOT RUN",
+    "blender4_fbx_reimport": "NOT RUN",
+    "c01_02_independent_36_model_QA": "NOT RUN",
+    "unity6_urp_prefab_import": "NOT RUN",
+    "github_runner_test": {
+      "run_id": 41126694963,
+      "conclusion": "failure",
+      "runner_id": 0,
+      "step_count": 0,
+      "diagnosis": "Failed before runner allocation; exact cause unknown"
+    }
+  },
+  "guards": [
+    "Existing Draft PR #18 only",
+    "Do not merge",
+    "No new models",
+    "Do not touch ship",
+    "No automatic welding"
+  ],
+  "next_action": "Restore Model-Test private GitHub Actions runners or run actual Blender 4.x with Git LFS on authorized Windows, then native save/export/reimport exact SHA and full C01-02/Unity QA before any merge."
+}

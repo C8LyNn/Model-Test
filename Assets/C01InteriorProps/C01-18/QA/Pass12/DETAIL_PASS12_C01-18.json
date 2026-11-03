@@ -1,0 +1,145 @@
+{
+  "pass": "C01 DETAIL PASS 12",
+  "date": "2026-10-30",
+  "role": "C01-18 CARGO & MOVABLE OBJECTS",
+  "source_model_format": "Actual existing authored OBJ source meshes committed to producer branch; 3 existing IDs, NOT new models",
+  "native_blend_binary_fbx": "NOT_RUN: no Blender 4.x available; current Git LFS BLEND/FBX still old PASS03 (or binary-PASS10 quarantined candidates kept offline)",
+  "independent_C01_02": "PENDING",
+  "unity_6_urp": "NOT_RUN",
+  "conclusion": "AUTHORING_GEOMETRY_SOURCE_CHANGED_AND_STATIC_INDEXED_QA_PASS; RELEASE_BLOCKED",
+  "models": [
+    {
+      "id": "P18-03",
+      "priority": 1,
+      "source": "Assets/C01InteriorProps/C01-18/Models/P18-03.obj",
+      "source_sha256": "3996be33105a17163d4c8a753012aca891c1b19b156abf32ddab02d8fbca50e0",
+      "git_blob": "df5a68c87fd49597c79bbb6f70735f32543489bf",
+      "before": {
+        "parts": 17,
+        "V": 208,
+        "F": 270,
+        "T": 348
+      },
+      "after": {
+        "parts": 53,
+        "V": 872,
+        "E": 1876,
+        "F": 1110,
+        "T": 1532
+      },
+      "added_parts": 36,
+      "added_triangles": 1184,
+      "mechanical_fix": "Retain four existing individually movable wheels at x=±0.39, z=±0.245, axle y=0.105m, floor y=0.000; fit both fork jaw plates, rigid crown, upright-anchored bracket, diagonal gusset, through-axle, two hub caps and one axle fastener per wheel; axle parallel X. Hub children parent to original wheel in Blender build script; fork and axle remain fixed. Checked no inadvertent original wheel translation.",
+      "touch_points": [
+        "ForkOuter to Cart_Upright: overlapping positive-volume contact",
+        "ForkCrown to both fork arms and Anchor",
+        "Anchor connects shelf/adjacent upright",
+        "Hub cap inner faces overlap wheel end faces slightly for mechanical integration"
+      ],
+      "purposeful_materials": [
+        "STEEL",
+        "DARK"
+      ]
+    },
+    {
+      "id": "P18-02",
+      "priority": 2,
+      "source": "Assets/C01InteriorProps/C01-18/Models/P18-02.obj",
+      "source_sha256": "d37f3347dabf84bf315b27b1d24bc517dda77265bb60da2c086d28bdcf3e3472",
+      "git_blob": "2878f4c20a5dc8a51fe31659662f9835b5e451f2",
+      "before": {
+        "parts": 17,
+        "V": 136,
+        "F": 102,
+        "T": 204
+      },
+      "after": {
+        "parts": 47,
+        "V": 600,
+        "E": 1172,
+        "F": 666,
+        "T": 1012
+      },
+      "added_parts": 30,
+      "added_triangles": 808,
+      "mechanical_fix": "Two top labels previously 50mm unsupported above top deck now backed by shelf-intersecting bracket plates and 4 visible through-fasteners; 12 structural load brackets at shelf/post connections; 12 lip bolts at retained folded edges.",
+      "touch_points": [
+        "Each label backplate overlaps its own label depth by ~1mm and shelf slab by >0mm",
+        "Each of 12 shelf brackets simultaneously intersects shelf underside and post envelope",
+        "All lip bolts have partial insertion into existing lips"
+      ]
+    },
+    {
+      "id": "P18-01",
+      "priority": 3,
+      "source": "Assets/C01InteriorProps/C01-18/Models/P18-01.obj",
+      "source_sha256": "7e353b62210df2cdefc03e85a11c109dcf4ca5d51b776c2ab45452ae8239be79",
+      "git_blob": "3147fbc11da4ad2c4cac9f4c8a520d921d1cd6b7",
+      "before": {
+        "parts": 15,
+        "V": 120,
+        "F": 90,
+        "T": 180
+      },
+      "after": {
+        "parts": 37,
+        "V": 416,
+        "E": 768,
+        "F": 426,
+        "T": 684
+      },
+      "added_parts": 22,
+      "added_triangles": 504,
+      "mechanical_fix": "8 reinforcement/backing rails now join existing floating colored trims to crate shell; 2 hinges (leaf+pin), 2 front latches (anchor+lever+fastener), 4 lid corner service bolts. Previous cap plane source repair preserved.",
+      "touch_points": [
+        "Backing rails overlap trim backside and shell side by 2–8mm",
+        "Rear hinge leaves cross lid and body seam",
+        "Front latch backing crosses body/front lever",
+        "Service bolts inserted into lid and latch plates"
+      ]
+    }
+  ],
+  "static_indexed_qa": {
+    "count": 3,
+    "results": "PASS",
+    "defects": {
+      "invalid_vertex_uv_normal_indices": 0,
+      "zero_area_triangle_fans": 0,
+      "duplicate_faces": 0,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "winding_edges": 0,
+      "inconsistent_face_normal_records": 0
+    },
+    "total_parts_before": 49,
+    "total_parts_after": 137,
+    "total_triangles_before": 732,
+    "total_triangles_after": 3228,
+    "original_meshes_preserved": true,
+    "notes": "Static OBJ-level QA only, not independent QA, Blender application save, FBX exporter or Unity import."
+  },
+  "preview_evidence": {
+    "kind": "Offline source-derived geometric previews (original archived OBJ + exact authored additional shape parameters); not Blender screenshots",
+    "files": [
+      {
+        "id": "P18-03",
+        "file": "P18-03_BEFORE_AFTER_OFFLINE.png",
+        "sha256": "ba414409f87a5960985c51cb901e760c067e57f3ed768c80f8e9d20ed20169c5"
+      },
+      {
+        "id": "P18-02",
+        "file": "P18-02_BEFORE_AFTER_OFFLINE.png",
+        "sha256": "b56851960c248d619a1a5d9a907c043c445747a6cb0e54c9b40c4a3384fe0fe9"
+      },
+      {
+        "id": "P18-01",
+        "file": "P18-01_BEFORE_AFTER_OFFLINE.png",
+        "sha256": "ad30f1db7a25655ab775c7937d8d9dc2c2b9d64e720f529a65f367d019deee6a"
+      }
+    ]
+  },
+  "environment_blocker": "NEEDS_OWNER_ACTION: restore eligible GitHub Actions runner for private Model-Test repository or execute existing Blender source-to-FBX exporter on actual Windows PC with Blender 4.x and Git LFS; account payment/budgets not altered",
+  "no_merge": true,
+  "no_new_model_ID": true,
+  "ship_architecture_untouched": true
+}

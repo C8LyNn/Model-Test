@@ -15,6 +15,7 @@ namespace C01.Ship.V5
         public bool walking;
         public int selectedDeck = 1;
         public float walkSpeed = 5, overviewSpeed = 20;
+        public float climbHeight = 6f;
         bool roofs, labels = true, mouseCaptured;
         int lastDeck = 1;
         float pitch, verticalSpeed;
@@ -236,7 +237,7 @@ namespace C01.Ship.V5
                 var p = ladder.transform.position;
                 var front = p + new Vector3(.4f, 0, .55f);
                 var delta = player.transform.position - front; delta.y = 0;
-                if (delta.magnitude > 1.25f || player.transform.position.y < p.y-.1f || player.transform.position.y > p.y+6.3f) continue;
+                if (delta.magnitude > 1.25f || player.transform.position.y < p.y-.1f || player.transform.position.y > p.y+climbHeight+.3f) continue;
                 climbBase = p.y; climbFront = front; climbing = true; exitingClimb = false; verticalSpeed = 0; return true;
             }
             return false;
@@ -256,11 +257,11 @@ namespace C01.Ship.V5
             }
             // At the upper landing lift the capsule over the last rung before moving out.
             var horizontal = Vector3.ProjectOnPlane(climbFront - pos, Vector3.up);
-            if (pos.y > climbBase + 5.8f && pos.y < climbBase + 6.1f && (input >= 0 || horizontal.magnitude > .04f))
-            { player.Move(Vector3.up * Mathf.Min(2f * dt, climbBase + 6.12f - pos.y)); return; }
+            if (pos.y > climbBase + climbHeight - .2f && pos.y < climbBase + climbHeight + .1f && (input >= 0 || horizontal.magnitude > .04f))
+            { player.Move(Vector3.up * Mathf.Min(2f * dt, climbBase + climbHeight + .12f - pos.y)); return; }
             if (horizontal.magnitude > .04f) { player.Move(Vector3.ClampMagnitude(horizontal, 2f * dt)); return; }
-            if (input > 0 && pos.y >= climbBase + 6.1f) { exitingClimb = true; return; }
-            float next = Mathf.Clamp(pos.y + Mathf.Clamp(input,-1,1) * 2f * dt, climbBase + .02f, climbBase + 6.15f);
+            if (input > 0 && pos.y >= climbBase + climbHeight + .1f) { exitingClimb = true; return; }
+            float next = Mathf.Clamp(pos.y + Mathf.Clamp(input,-1,1) * 2f * dt, climbBase + .02f, climbBase + climbHeight + .15f);
             var flags = player.Move(Vector3.up * (next - pos.y));
             if (input < 0 && ((flags & CollisionFlags.Below) != 0 || player.transform.position.y <= climbBase + .10f))
             { climbing = false; verticalSpeed = 0; }

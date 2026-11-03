@@ -1,0 +1,93 @@
+{
+  "schema": "C01-03-W26-P18-03-PHYSICAL-FBX-NATIVE-OLD-NEW-EXACT-SHA-v1",
+  "recorded_on": "2026-11-03",
+  "asset_id": "P18-03",
+  "observed_producer_pr": 43,
+  "observed_producer_head": "7377d51ee43796609aeb9eac0fa3bc6d4c3f29cf",
+  "producer_run_id": 41707987897,
+  "original_actions_artifact_id": 13266241194,
+  "original_artifact_ZIP_sha256": "18fbd3778b6124ba30824687fcf0b5960640adb258218f19ac73690af61c5b81",
+  "original_artifact_CRC": "PASS_ALL_EIGHT_ENTRIES",
+  "original_blend_new_sha256": "1c8086b048ac1c62a6791bea5df22a22168b5aea4bc17008a2ce233d86ede41e",
+  "original_blend_new_size_bytes": 916908,
+  "blender_signature": "BLENDER-v400",
+  "binary_fbx_new_sha256": "f932c5fb36624ef91c039b1de04367fff4e99da7c400bbcb4cadd4138f83618f",
+  "binary_fbx_new_size_bytes": 194156,
+  "fbx_signature": "Kaydara FBX Binary v7400",
+  "latest_PR43_git_LFS_OID_match": "2_OF_2_NEW_FULL_NATIVE_HASHES",
+  "superseded_original_FBX_SHA256": "f169ab74086ee3853c14b46ac6f6199cd255cfca15d8b7cbef32c3758cde7926",
+  "superseded_original_BLENDER_SHA256": "ea1b4f5cc5612f8d8ff5c3c585b9b48843659972c2371204b5d3b5c4df3a3b56",
+  "source_OBJ_new_sha256_producer": "1e6ff7b7d01cbb815e5c0375222877400923c323522936dfa959373a9b05c1e0",
+  "original_signed_native_comparison": {
+    "independent_raw_binary_FBX7400_parser": "executed on old and new physically hydrated GitHub Actions originals",
+    "mesh_Geometry_count_old_new": [
+      63,
+      63
+    ],
+    "diagnostic_triangle_fan_equivalent_old_new": [
+      1780,
+      1780
+    ],
+    "unique_mesh_local_vertex_positions_old_new": [
+      1016,
+      1016
+    ],
+    "geometry_vertex_arrays_modified": 0,
+    "mesh_polygon_vertex_index_arrays_modified": 0,
+    "mesh_UV0_and_UVIndex_arrays_modified": 0,
+    "mesh_corner_normals_arrays_modified": 8,
+    "normals_changed_names": [
+      "Wheel_LB_Hub_In",
+      "Wheel_LB_Hub_Out",
+      "Wheel_LF_Hub_In",
+      "Wheel_LF_Hub_Out",
+      "Wheel_RB_Hub_In",
+      "Wheel_RB_Hub_Out",
+      "Wheel_RF_Hub_In",
+      "Wheel_RF_Hub_Out"
+    ],
+    "raw_fbx_Model_local_translation_changes": 8,
+    "other_55_Model_transform_properties_unchanged": true,
+    "moved_hub_Model_names": [
+      "Wheel_LB_Hub_In",
+      "Wheel_LB_Hub_Out",
+      "Wheel_LF_Hub_In",
+      "Wheel_LF_Hub_Out",
+      "Wheel_RB_Hub_In",
+      "Wheel_RB_Hub_Out",
+      "Wheel_RF_Hub_In",
+      "Wheel_RF_Hub_Out"
+    ],
+    "hub_node_translation_X_change_magnitude_m": 0.004,
+    "old_inner_hub_local_X_m_approx": -0.034,
+    "new_inner_hub_local_X_m_approx": -0.03,
+    "old_outer_hub_local_X_m_approx": 0.034,
+    "new_outer_hub_local_X_m_approx": 0.03,
+    "negative_index_or_empty_mesh_errors": 0,
+    "degenerate_triangle_errors": 0,
+    "missing_UV0_streams": 0,
+    "missing_corner_normal_streams": 0,
+    "all_model_mesh_identities_preserved": true
+  },
+  "producer_original_Blender_and_reimport_3D_qa": {
+    "source": "Assets/C01InteriorProps/C01-18/QA/Pass26/P18-03_W26_REAL_BLENDER_FBX_QA.json",
+    "result": "PRODUCER_BLENDER_FBX_ROUNDTRIP_PASS",
+    "reported_8_hub_fork_axial_clearances_mm_range": [
+      1.99997,
+      2
+    ],
+    "source_obj_vertices_changed": 272,
+    "original_mesh_parts_kept": 63,
+    "original_tris_kept": 1780,
+    "actual_before_after_Blender_shaded_and_wire_png": 5
+  },
+  "scope_boundary_and_followup": {
+    "scope": "C01-03 source registrar physically compared new vs old FBX files. Not a C01-02 full 3D contact/pivot/normals/shading acceptance.",
+    "coordinate_caveat": "Source OBJ 272 vertex X edits appear in final FBX as 8 changed Model/Lcl Translation X values; all 63 FBX Geometry local Vertices arrays are identical. Independent raw-FBX Model+Geometry-only X gap estimates without complete ancestor hierarchy are invalid: do not call them 2mm clearance verification.",
+    "normal_change": "Eight hub normal streams differ; C01-02 should classify old/new shading in current original FBX and native Blender before/after wire/shaded views; this is REVIEW not confirmed shading defect.",
+    "independent_C01_02_exact_NEW_FBX_SHA": "PENDING",
+    "actual_Unity_6000_3_14f1_editor": "NOT_RUN_OWNER_ACTION_REQUIRED",
+    "final_release": "HOLD",
+    "no_action": "No automatic weld, remesh, decimate or producer source edit by C01-03."
+  }
+}

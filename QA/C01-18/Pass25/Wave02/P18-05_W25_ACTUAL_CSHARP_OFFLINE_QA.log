@@ -1,0 +1,60 @@
+C01_P1805_W25_OFFLINE_PASS original prefab starts engaged LOCKED
+C01_P1805_W25_OFFLINE_PASS two original bottom/lid solid colliders only
+C01_P1805_W25_OFFLINE_PASS three original handle meshes follow true lid pivot
+C01_P1805_W25_OFFLINE_PASS locked lid cannot open even 5deg
+C01_P1805_W25_OFFLINE_PASS cannot relock closed original latch
+C01_P1805_W25_OFFLINE_PASS unlock begins real visual release phase
+C01_P1805_W25_OFFLINE_PASS unlock is staged, not instant 8mm teleport
+C01_P1805_W25_OFFLINE_PASS cannot double-unlock
+C01_P1805_W25_OFFLINE_PASS hinge cannot move while visible latches retract
+C01_P1805_W25_OFFLINE_PASS NaN timespan does not advance latch actual=0 expected=0
+C01_P1805_W25_OFFLINE_PASS 0.1s of 0.2s latch release is 50 percent actual=0.5 expected=0.5
+C01_P1805_W25_OFFLINE_PASS original real FBX -90X translates root +Z to latch-parent LOCAL -Y half 4mm actual=-0.212 expected=-0.212
+C01_P1805_W25_OFFLINE_PASS both original latches slide identically actual=-0.212 expected=-0.212
+C01_P1805_W25_OFFLINE_PASS latch does not incorrectly travel local +Z actual=0.19 expected=0.19
+C01_P1805_W25_OFFLINE_PASS half-retracted latch still mechanically engaged
+C01_P1805_W25_OFFLINE_PASS lid remains closed at half latch release
+C01_P1805_W25_OFFLINE_PASS 8mm FRONT latch fully disengaged actual=-0.216 expected=-0.216
+C01_P1805_W25_OFFLINE_PASS both 8mm FRONT latches fully disengaged actual=-0.216 expected=-0.216
+C01_P1805_W25_OFFLINE_PASS visible release complete but lid still must lift 2mm
+C01_P1805_W25_OFFLINE_PASS lid cannot rotate before hinge pre-lift
+C01_P1805_W25_OFFLINE_PASS source-root Unity +Y lifts through actual -90deg X import parent LOCAL +Z actual=0.201 expected=0.201
+C01_P1805_W25_OFFLINE_PASS 1mm lift midway remains gated
+C01_P1805_W25_OFFLINE_PASS 2mm true root UP lid clearance fully attained actual=0.202 expected=0.202
+C01_P1805_W25_OFFLINE_PASS ready to open only AFTER both physical transformations
+C01_P1805_W25_OFFLINE_PASS visible original latch renderer still visible and retracted
+C01_P1805_W25_OFFLINE_PASS true signed local -X angle 5deg allowed
+C01_P1805_W25_OFFLINE_PASS local -X hinge signed 5deg not positive opposite path actual=4.99997 expected=5
+C01_P1805_W25_OFFLINE_PASS cannot relock while 5deg open
+C01_P1805_W25_OFFLINE_PASS original 110deg limit allowed
+C01_P1805_W25_OFFLINE_PASS beyond 110deg refused
+C01_P1805_W25_OFFLINE_PASS wrong-signed opening refused
+C01_P1805_W25_OFFLINE_PASS NaN lid angle refused
+C01_P1805_W25_OFFLINE_PASS Infinity angle refused
+C01_P1805_W25_OFFLINE_PASS cannot reengage while lid 110deg open
+C01_P1805_W25_OFFLINE_PASS only after real zero-angle can we relock
+C01_P1805_W25_OFFLINE_PASS closed lid begins staged lowering/relock
+C01_P1805_W25_OFFLINE_PASS relock cannot teleport
+C01_P1805_W25_OFFLINE_PASS lid cannot reopen during lowering
+C01_P1805_W25_OFFLINE_PASS lower lid halfway 1mm actual=0.201 expected=0.201
+C01_P1805_W25_OFFLINE_PASS lower stage continues
+C01_P1805_W25_OFFLINE_PASS hinge returns original signed FBX pivot height actual=0.2 expected=0.2
+C01_P1805_W25_OFFLINE_PASS latches must re-engage before LOCKED
+C01_P1805_W25_OFFLINE_PASS half relock 4mm re-engagement actual=-0.212 expected=-0.212
+C01_P1805_W25_OFFLINE_PASS still engaged in relock transition
+C01_P1805_W25_OFFLINE_PASS final locked state only after full latch return
+C01_P1805_W25_OFFLINE_PASS original left latch CLOSED rest pose restored actual=-0.208 expected=-0.208
+C01_P1805_W25_OFFLINE_PASS original right latch CLOSED rest pose restored actual=-0.208 expected=-0.208
+C01_P1805_W25_OFFLINE_PASS original hinge full rest position restored actual=0.2 expected=0.2
+C01_P1805_W25_OFFLINE_PASS original lid collider remains physically present
+C01_P1805_W25_OFFLINE_PASS identity importer root supported
+C01_P1805_W25_OFFLINE_PASS identity importer release goes local +Z, no hard-coded FBX -Y actual=0.198 expected=0.198
+C01_P1805_W25_OFFLINE_PASS identity importer hinge root +Y matches parent local +Y actual=-0.198 expected=-0.198
+C01_P1805_W25_OFFLINE_PASS identity imported case ready to open
+C01_P1805_W25_OFFLINE_PASS external hierarchy tamper fixture begins
+C01_P1805_W25_OFFLINE_PASS original handle parent external tamper disables gate FAIL-CLOSED
+C01_P1805_W25_OFFLINE_PASS tamper fails to physical closed latch pose actual=-0.208 expected=-0.208
+C01_P1805_W25_OFFLINE_PASS hidden latch fixture begins
+C01_P1805_W25_OFFLINE_PASS latch renderer hidden externally forces safe closed state
+C01_P1805_W25_OFFLINE_PASS builder would reject signed FBX handle that fails to follow lid
+C01_W25_P1805_ACTUAL_PRODUCTION_CSHARP_OFFLINE_PASS checks=59 REAL_UNITY_NOT_RUN ORIGINAL_SIGNED_FBX_IMMUTABLE

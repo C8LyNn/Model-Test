@@ -1,0 +1,59 @@
+name: C01-18 W24 Signed Real Blender FBX 20mm Latch Slide Envelope
+on:
+  push:
+    branches: [c01/props-18-cargo-wave02]
+    paths:
+      - '.github/workflows/c01-18-w24-real-latch-slide-envelope-qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  original-blender4-native-vs-fbx-readonly:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - name: Hydrate exact signed real BLEND and binary FBX and install Blender4
+        run: |
+          set -euo pipefail
+          git lfs install --local
+          git lfs pull --include='Assets/C01InteriorProps/C01-18-Wave02/Sources/P18-07.blend,Assets/C01InteriorProps/C01-18-Wave02/Models/P18-07.fbx' --exclude=''
+          sudo apt-get update -qq
+          sudo apt-get install -y blender python3-numpy
+          blender --version | grep -E '^Blender 4\.'
+      - name: Actual source and imported FBX sliding lock 0..20mm, real triangle contacts
+        run: |
+          set -euo pipefail
+          base="$PWD/Assets/C01InteriorProps/C01-18-Wave02"
+          blender -b --factory-startup --python-exit-code 1 \
+            --python "$base/Tools/pass24_real_latch_full_slide_qa.py" -- "$base"
+          python3 - <<'PY'
+          import json,pathlib
+          p=pathlib.Path('Assets/C01InteriorProps/C01-18-Wave02/QA/Pass24/P18-07_REAL_BLENDER_FBX_20MM_SLIDE_ENVELOPE.json')
+          z=json.loads(p.read_text())
+          assert z['summary']['real_blend_and_reimport_fbx_sample_contact_parity']
+          assert z['summary']['original_locked_lid_triangle_pairs']==13
+          assert z['summary']['fully_retracted_20mm_triangle_pairs']==0
+          assert len(z['source_blend'])==len(z['reimported_binary_fbx'])==11
+          assert z['native_reexports']==0
+          print('C01_18_W24_NATIVE_FBXSHA_PINNED_SLIDE_11_POSES_SUCCESS',z['summary'])
+          PY
+      - name: Commit ONLY read-only genuine geometry result, not native models
+        run: |
+          set -euo pipefail
+          p=Assets/C01InteriorProps/C01-18-Wave02/QA/Pass24/P18-07_REAL_BLENDER_FBX_20MM_SLIDE_ENVELOPE.json
+          git add "$p"
+          test "$(git diff --cached --name-only)" = "$p"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'C01-18 W24: actual BLEND and FBX 20mm lock slide geometry clearance evidence [skip ci]'
+          git push origin HEAD:c01/props-18-cargo-wave02
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: C01-18-W24-REAL-P18-07-BLEND-FBX-LATCH-SLIDE-BOUNDS
+          path: Assets/C01InteriorProps/C01-18-Wave02/QA/Pass24/P18-07_REAL_BLENDER_FBX_20MM_SLIDE_ENVELOPE.json
+          if-no-files-found: warn
+          retention-days: 21

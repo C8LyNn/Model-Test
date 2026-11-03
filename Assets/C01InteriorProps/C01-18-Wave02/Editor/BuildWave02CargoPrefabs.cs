@@ -18,6 +18,14 @@ public static class BuildWave02CargoPrefabs {
   if(!AssetDatabase.IsValidFolder(matDir)) AssetDatabase.CreateFolder(Root,"Materials");
   if(!AssetDatabase.IsValidFolder(prefabDir))AssetDatabase.CreateFolder(Root,"Prefabs");
   foreach(string id in IDs) {
+   // W25 scoped mechanical defect: NEVER overwrite the repaired P18-05
+   // with the old locked-static generic prefab. Route only that original
+   // existing model to its exact-SHA-pinned dedicated W25 authoring code.
+   // Other already-good W02 FBX imports/build logic are left unchanged.
+   if(id=="P18-05") {
+    BuildPass25P1805Only.Build();
+    continue;
+   }
    string path=Root+"/Models/"+id+".fbx";
    GameObject source=AssetDatabase.LoadAssetAtPath<GameObject>(path);
    if(!source) throw new InvalidOperationException("Missing imported FBX (extract CI build archive): "+path);

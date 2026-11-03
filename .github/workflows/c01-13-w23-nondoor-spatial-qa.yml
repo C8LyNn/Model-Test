@@ -1,0 +1,97 @@
+name: C01-13 W23 non-door actual-FBX placement QA
+on:
+  push:
+    branches:
+      - c01/13-nondoor-placement-clipping-wave23
+    paths:
+      - "C01NonDoorQA/Pass23/qa_real_fbx_placement.py"
+      - ".github/workflows/c01-13-w23-nondoor-spatial-qa.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  non-door-physical-qa:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - name: Checkout ONLY isolated C01-13 QA code
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Install actual Blender FBX importer and LFS
+        run: |
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y blender git-lfs python3-numpy
+          git lfs install --local
+          blender --version | head -2
+      - name: Checkout pinned C01-17 producer (P17-01, no door meshes)
+        uses: actions/checkout@v4
+        with:
+          repository: C8LyNn/Model-Test
+          ref: d37f6cb8355d98324db44ca8eb139681beb7ea9b
+          path: _native/P17-01
+          lfs: true
+          persist-credentials: false
+      - name: Checkout pinned C01-18 producer (P18-01 crate)
+        uses: actions/checkout@v4
+        with:
+          repository: C8LyNn/Model-Test
+          ref: 4d167a5e610c2b905360ed472e30960b735ffad5
+          path: _native/P18-01
+          lfs: true
+          persist-credentials: false
+      - name: Checkout pinned C01-19 producer (P19-03 desk)
+        uses: actions/checkout@v4
+        with:
+          repository: C8LyNn/Model-Test
+          ref: dece710d3672d8eb4ef4183eb3f8657ea6790b21
+          path: _native/P19-03
+          lfs: true
+          persist-credentials: false
+      - name: Compile QA Python source and preflight real FBX SHA
+        run: |
+          python3 -m py_compile C01NonDoorQA/Pass23/qa_real_fbx_placement.py
+          python3 - <<'PY'
+          import hashlib
+          from pathlib import Path
+          cases=[
+            ("P17-01","_native/P17-01/Assets/C01InteriorProps/Models/P17-01.fbx","cd6a5787bb7b4c088f0af35382385e4274c85c415c60467f9a22e46fe33ef02c"),
+            ("P18-01","_native/P18-01/Assets/C01InteriorProps/C01-18/Models/P18-01.fbx","f541d502ba9eaaf5c7a0a7279c44f71f36dd482e3aed3ba0734058dcf1045f6c"),
+            ("P19-03","_native/P19-03/Assets/C01InteriorProps/C01-19/Models/P19-03/P19-03.fbx","1bd730b2382879d7d9c2f3d67c4b9646b8ca036c04de663e53b3019c403af2df")]
+          for name,file,digest in cases:
+            b=Path(file).read_bytes()
+            assert b.startswith(b"Kaydara FBX Binary"), ("NO_REAL_FBX",name)
+            assert hashlib.sha256(b).hexdigest()==digest, ("SHA_MISMATCH",name)
+            print("PINNED_NATIVE_FBX_PASS",name,digest,len(b))
+          PY
+      - name: Execute actual Blender world-triangle spatial clipping and placement QA
+        run: |
+          blender --background --factory-startup --threads 2 --python-exit-code 1 --python C01NonDoorQA/Pass23/qa_real_fbx_placement.py -- .
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("C01NonDoorQA/Pass23/Results/non_door_placement_W23.json")
+          r=json.loads(p.read_text())
+          assert r["counts"]["real_FBX_SHA_verified"]==3
+          assert r["counts"]["cardinal_rotation_scenarios"]==24
+          assert len(r["example_room_BVH_triangle_candidates"])==3
+          assert all(x["doors_touched"]==0 for x in [r])
+          for svg in ("room_top_actual_FBX.svg","room_iso_actual_FBX.svg","corridor_top_actual_FBX.svg"):
+            t=(p.parent/svg).read_text()
+            assert t.startswith("<svg ") and "ACTUAL FBX" in t
+          print("ACTUAL_FBXS_3__PLACEMENT_24__BVH_PAIRS_3__NO_DOORS__PASS")
+          PY
+      - name: Upload measured real-FBX results and true triangle preview SVG
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-13-W23-Actual-FBX-NonDoor-Placement-QA
+          if-no-files-found: error
+          path: C01NonDoorQA/Pass23/Results/
+      - name: Commit exact measured JSON CSV SVG to NEW isolated Draft branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add C01NonDoorQA/Pass23/Results/
+          if git diff --cached --quiet; then echo "Results already current"; exit 0; fi
+          git commit -m "C01-13 W23: measured actual non-door FBX spatial clearance QA and previews"
+          git push origin HEAD:c01/13-nondoor-placement-clipping-wave23

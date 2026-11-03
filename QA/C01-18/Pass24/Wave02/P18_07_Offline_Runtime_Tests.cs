@@ -29,13 +29,15 @@ class P1807OfflineRuntimeTests
         public BoxCollider collider;
         public MeshRenderer renderer;
         public C01ToolBinLatchGate gate;
-        public Fixture(bool rotateImported=false)
+        public Fixture(bool rotateImported=false, bool rotateMinus90X=false)
         {
             root=new GameObject("P18_07");
             imported=new GameObject("P18-07_FBX");
             imported.transform.parent=root.transform;
             if(rotateImported)
                 imported.transform.localRotation=Quaternion.AngleAxis(90f,Vector3.up);
+            if(rotateMinus90X)
+                imported.transform.localRotation=Quaternion.AngleAxis(-90f,Vector3.right);
             lid=new GameObject("Bin_Lid");
             GameObject h=new GameObject("Toolbox_LidHinge");
             h.transform.parent=imported.transform;
@@ -100,6 +102,20 @@ class P1807OfflineRuntimeTests
         Near(g.lockObj.transform.localPosition.x,-.020f,"rotated FBX lock-parent translation converted, not local +Z");
         Near(g.lockObj.transform.localPosition.z,.225f,"rotated FBX lock retains original local Z");
         Check(g.gate.IsLockVisiblyReleased,"rotated parent reaches exact release pose");
+        // C01-02 W24 independent P0: actual FBX parent is -90deg X.
+        // Correct 20mm authored-root +Z must become FBX parent-LOCAL -Y.
+        // Old W23 hard-coded local +Z was WRONG and remains geometry HOLD.
+        var fx=new Fixture(false,true);
+        Check(fx.gate.TryUnlock(),"actual -90deg X FBX parent accepts release request");
+        fx.gate.Tick(.25f);
+        Near(fx.lockObj.transform.localPosition.y,-.165f-.020f,
+            "actual -90deg X FBX parent maps root +Z to local -Y, 20mm");
+        Near(fx.lockObj.transform.localPosition.z,.225f,
+            "actual -90deg X parent does not incorrectly use local +Z");
+        Check(fx.gate.IsLockVisiblyReleased,
+            "actual -90deg X parent reaches full visible unlock");
+        Check(fx.gate.TrySetOpeningDegrees(5f),
+            "actual -90deg X converted lock permits 5deg lid only after release");
         var h=new Fixture();
         Check(h.gate.TryUnlock(),"tamper fixture unlock accepted");
         h.gate.Tick(.25f);

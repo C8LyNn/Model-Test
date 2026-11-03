@@ -1,0 +1,90 @@
+{
+  "schema": "C01-03-DETAIL-PASS17-INDEPENDENT-MANIFEST-INVARIANTS",
+  "date": "2026-11-01",
+  "registry_path": "C01InteriorProps_Library/Pass17/LIVE_ASSET_REGISTRY_36_NATIVE_CANDIDATES.json",
+  "registry_git_blob_sha1": "388d0e602feeca2ef9072d7cc49fea29b26de606",
+  "source_evidence_level": "GitHub exact source bytes and binary LFS OIDs; full hydrated FBX bytes not fetched by C01-03",
+  "checks": {
+    "36 existing IDs": true,
+    "all unique IDs": true,
+    "P15..P19 family 7/7/7/7/8": true,
+    "6 candidates have hashes": true,
+    "candidate owner commits exact": true,
+    "P15 source 0.1.6": true,
+    "P18 169 parts 4044 tris": true,
+    "P18 OBJ 3 source hashes": true,
+    "no other native candidates promoted": true,
+    "0 approvals": true,
+    "Unity not run 36": true,
+    "no blender BEFORE/AFTER certified": true,
+    "source provenance 10": true,
+    "no duplicate ids from previous pass": true,
+    "P17-01 guide remains source fix": true
+  },
+  "passed": 15,
+  "failed": 0,
+  "producer_evidence": {
+    "P15": {
+      "head": "0d6452290e94e0017f6ca847afc1244fd936f7af",
+      "run_id": 41344475164,
+      "outcome": "SUCCESS",
+      "blender": "4.0.2",
+      "native_roundtrip_checks": "25/25 PRODUCER PASS",
+      "LFS_17_of_17": "OIDS_AND_SIZE_MATCH_PRODUCER_MANIFEST",
+      "note": "3 real .blend, 5 FBX, 9 Blender preview PNG; native BEFORE not delivered"
+    },
+    "P18": {
+      "head": "03f97354e47645ee80422115d29c67ef48808679",
+      "run_id": 41344872313,
+      "outcome": "SUCCESS",
+      "blender": "4.0.2",
+      "native_roundtrip_checks": "3/3 PRODUCER PASS",
+      "LFS_6_of_6": "OIDS_AT_FINAL_PRODUCER_HEAD",
+      "source_parts": [
+        47,
+        59,
+        63
+      ],
+      "source_triangles": [
+        980,
+        1284,
+        1780
+      ],
+      "note": "3 real .blend, 3 FBX; 3/3 verified source OBJ index from exact HEAD; no independent C01-02 hydrated binary audit"
+    }
+  },
+  "interactive_preview": {
+    "path": "C01InteriorProps_Library/Pass17/C01_DETAIL_PASS17_REAL_SOURCE_INTERACTIVE_VIEWER.html",
+    "models": 7,
+    "source_before_3": [
+      "P18-01",
+      "P18-02",
+      "P18-03"
+    ],
+    "source_after_4": [
+      "P18-01",
+      "P18-02",
+      "P18-03",
+      "P17-01"
+    ],
+    "external_libraries": 0,
+    "geometry_proxy_models": 0,
+    "source_index_qa": "7/7",
+    "browser_execution": "NOT_RUN",
+    "Blender_render": "NOT_RUN"
+  },
+  "release": {
+    "C01_02_final_approved": 0,
+    "unity_6_runs": 0,
+    "ship_structure_changed": false,
+    "new_model_ids": 0,
+    "merge": false,
+    "overall": "36/36 BLOCKED"
+  },
+  "blockers": [
+    "C01-02 independently hydrate and audit exact FBX bytes plus attachments/swept contact",
+    "C01-10 actual Unity6 URP import, prefab/pivots/material/collision tests",
+    "Blender shaded+wireframe before/after not yet produced for all latest models",
+    "P17 and remaining P16/P19 latest-native exports not demonstrated"
+  ]
+}

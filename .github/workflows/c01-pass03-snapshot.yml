@@ -1,0 +1,107 @@
+name: C01 Pass03 Pinned Source Byte Snapshots
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'C01InteriorProps_Library/Pass03/**'
+      - '.github/workflows/c01-pass03-snapshot.yml'
+jobs:
+  capture-baseline:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - label: P15-W1
+            sha: fa337ef7e942fb21c0ff879c4813ffcfc2526d41
+            assets: "P15-01 P15-02 P15-03"
+            sparse: |
+              Assets/C01InteriorProps/P15
+          - label: P15-W2
+            sha: d8b38194a81fd305caa2ae9c3ecd6d22f46cf011
+            assets: "P15-04 P15-05 P15-06 P15-07"
+            sparse: |
+              Assets/C01InteriorProps/P15Wave02
+          - label: P16-W1
+            sha: 054d84731737698fbdbdee2d387c4fff1b2a6673
+            assets: "P16-01 P16-02 P16-03"
+            sparse: |
+              C01Source/Lighting
+          - label: P16-W2
+            sha: 78f9bd55af8c16dbe72d01b9b2a13279499eaacb
+            assets: "P16-04 P16-05 P16-06 P16-07"
+            sparse: |
+              C01Source/LightingW02
+          - label: P17-W1
+            sha: e3b7f2fac2be98f3b450aeb2ec2ac9f050e4e206
+            assets: "P17-01 P17-02 P17-03"
+            sparse: |
+              C01InteriorProps_Source/Blender
+              Assets/C01InteriorProps/Models
+          - label: P17-W2
+            sha: f7bf7dd93bc6dc60189b7a652cb375e962e61328
+            assets: "P17-04 P17-05 P17-06 P17-07"
+            sparse: |
+              C01InteriorProps_W02/Blender
+              Assets/C01InteriorProps/W02/Models
+          - label: P18-W1
+            sha: bfe7d5d8a6aac11b563a9c2b84c9fcf4d67bdcd5
+            assets: "P18-01 P18-02 P18-03"
+            sparse: |
+              Assets/C01InteriorProps/C01-18
+          - label: P18-W2
+            sha: e2fdde1c213ecb65b3ca1800c635e41e939e90e2
+            assets: "P18-04 P18-05 P18-06 P18-07"
+            sparse: |
+              Assets/C01InteriorProps/C01-18-Wave02
+          - label: P19-W1
+            sha: 9ae76a717eb5edeb5edcd3f5e27d8696f5d715ed
+            assets: "P19-01 P19-02 P19-03 P19-04"
+            sparse: |
+              Assets/C01InteriorProps/C01-19
+          - label: P19-W2
+            sha: cae85cce223418d77a0334a48e5fbdc7984a688b
+            assets: "P19-05 P19-06 P19-07 P19-08"
+            sparse: |
+              Assets/C01InteriorProps/C01-19-W02
+    steps:
+      - name: Checkout registry PR
+        uses: actions/checkout@v4
+        with:
+          path: library
+      - name: Checkout pinned real Git LFS producer files
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ matrix.sha }}
+          lfs: true
+          path: producer
+          sparse-checkout: ${{ matrix.sparse }}
+      - name: Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate static registry schema
+        run: python library/C01InteriorProps_Library/Pass03/validate_pass03.py validate
+      - name: Registry unit tests (not mesh QA)
+        run: python -m unittest discover -s library/C01InteriorProps_Library/Pass03/tests -v
+      - name: Capture actual BEFORE file SHA256; never confer QA PASS
+        shell: bash
+        run: |
+          set -e
+          for asset in ${{ matrix.assets }}; do
+            set +e
+            python library/C01InteriorProps_Library/Pass03/validate_pass03.py capture --asset "$asset" --checkout producer --output "reports/${asset}.json"
+            status=$?
+            set -e
+            if [ "$status" -eq 2 ]; then
+              echo "BLOCKED: missing native file or unresolved path for $asset"
+            elif [ "$status" -ne 0 ]; then
+              exit "$status"
+            fi
+          done
+      - name: Store machine-readable receipts
+        uses: actions/upload-artifact@v4
+        with:
+          name: c01-pass03-before-${{ matrix.label }}
+          path: reports/*.json
+          if-no-files-found: error

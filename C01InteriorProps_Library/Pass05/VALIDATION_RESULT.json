@@ -1,0 +1,44 @@
+{
+  "tool": "C01-03 connector JS validation of actual GitHub PASS05 ledgers",
+  "release_status": "BLOCKED",
+  "checks_pass": 14,
+  "checks_total": 14,
+  "checks": {
+    "unique_36": true,
+    "source_families": true,
+    "all_36_provenances": true,
+    "immutable_before": true,
+    "exact_source_commits": true,
+    "qa_hydrated_22": true,
+    "qa_sha_22_match": true,
+    "p15_expected_only": true,
+    "p16_ascii_only": true,
+    "five_p19_qa_fail": true,
+    "no_full_qa_approved": true,
+    "no_runtime_claims": true,
+    "unique_producer_metrics": true,
+    "baseline_and_candidate_distinct": true
+  },
+  "summary": {
+    "total": 36,
+    "source_producer_v_e_f_t": 36,
+    "source_current_qa_fbx_sha_locked": 22,
+    "source_lfs_pointer_only": 7,
+    "lighting_ascii_only_no_blend": 7,
+    "independent_qa_static_fbx_indexed_pass": 22,
+    "independent_qa_static_triangulation_fail": 5,
+    "independent_fully_approved": 0,
+    "unity_6_urp": "NOT_RUN",
+    "blender_independent": "NOT_RUN",
+    "github_actions_retry": "FAILED_ZERO_RUNNERS_ZERO_STEPS"
+  },
+  "manifest_git_blob_sha": "a403c12de7c068bf38b4639158aabf6b2cce8fdd",
+  "source_provenance_blob_sha": [
+    "cf46d419732a5c75d4b4149b7c28a5f6c11abb0f",
+    "383951f4fe1f19d8c787bf7a93938a6ad358c528",
+    "a055460d720ac23c8036c67e9b29cc1215e6dd57",
+    "151dd3ea87ef589321389c7366252bf4ddcee224",
+    "9a1c944e3967345aab6bbc6e59eb1eafa7a00083"
+  ],
+  "note": "No Blender/Unity tests executed. JS validation checks registry claims and provenance consistency only."
+}

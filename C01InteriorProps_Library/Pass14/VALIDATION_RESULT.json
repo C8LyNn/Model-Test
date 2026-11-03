@@ -1,0 +1,41 @@
+{
+  "schema": "C01-03-PASS14-VERIFY-ACTUAL-MANIFEST",
+  "source_manifest_blob_SHA1": "1fc5ae608a8e88415265898fc23bf883794e99b6",
+  "other_proof_blobs": [
+    "721d90b169c8f3d0aa8cdf2059bb387c3571a4d2",
+    "80f8e2ca1dc5bbfe9f190806e6a8016a80fb53f1",
+    "e23c158a0c952dddaa45cf319ae101468b67bb2d",
+    "2bc30ef0d38b872e5c0fe32e13e73bd9cbff81dc",
+    "2a779b03ff6c57f883a6b1e0e925ce845bfb4d93"
+  ],
+  "tests": {
+    "unique_36_asset_IDs": true,
+    "families_7_7_7_7_8": true,
+    "all_producer_head_sha_40hex": true,
+    "genuine_11_current_OBJ_GLTF_source_receipts": true,
+    "genuine_P15_spec_0_1_3": true,
+    "total_12_authored_current_source_SHA": true,
+    "P16_7_detail_SHA_complete": true,
+    "P18_3_same_SHA_in_receipt": true,
+    "P18_3_closed_topology_sources": true,
+    "P16_7_closed_topology_sources": true,
+    "P18_7_previous_detached_contacts_now_cleared": true,
+    "P18_01_8_coplanar_removed": true,
+    "P18_03_48_metal_intersections_removed": true,
+    "P18_03_4_wheels_ground": true,
+    "P17_contact_source_PASS": true,
+    "P15_spec_SHA_consistency": true,
+    "five_P19_candidate_sha_quarantined": true,
+    "P19_07_visual_QA_hold": true,
+    "offline_P17_fbx_not_promoted": true,
+    "no_fake_blender_success": true,
+    "no_fake_Unity_success": true,
+    "none_36_independent_final_approved": true,
+    "all_36_release_blocked": true,
+    "no_new_asset_IDs": true
+  },
+  "passed": 24,
+  "failed": 0,
+  "scope": "Only SHA, manifest integrity, actual authored source geometry; independent full FBX and Blender NOT RUN",
+  "gate": "RELEASE_BLOCKED_NEEDS_OWNER_ACTION"
+}

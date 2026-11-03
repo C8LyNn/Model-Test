@@ -1,0 +1,131 @@
+{
+  "schema": "C01-PASS09-SOURCE-HEAD-ADVANCE-1",
+  "policy": "Previous revisions remain immutable; source edit is not a Blender-saved source nor a Blender-exported FBX; G0 source only, final QA BLOCKED",
+  "source": "Read actual GitHub UTF8 content for new HEADs and inspect per-object ordered vertex differences + generator lines",
+  "models_current_changed": [
+    {
+      "id": "P18-01",
+      "family": "C01-18",
+      "source_type": "REAL_OBJ",
+      "path": "Assets/C01InteriorProps/C01-18/Models/P18-01.obj",
+      "before": {
+        "commit": "41d5f6a46bf9c4f6fb9a86f331a6214ec590387a",
+        "sha256": "4d11ae70dfa0fb7ae0e2084e86d684d49fa6921f694db1db9eff8a9b7225fe8b",
+        "git_blob": "665b940dd9ba1ab9c7a1339a8a395bdc35fe72b9"
+      },
+      "after": {
+        "commit": "baa7040a5c0be09809abb2495b282c9972ea341c",
+        "sha256": "e7eae0ca915d265d8f41676b3e6d390de5396e4eaa9ef72ded0d5ad8d92a0283",
+        "git_blob": "c6178ec0fe38d582eacddab4c342085f2a88afe1"
+      },
+      "change": {
+        "kind": "GEOMETRY_VERTICES",
+        "modified_vertices": 32,
+        "delta_by_part": [
+          {
+            "name": "Corner_LB",
+            "vertices": 8,
+            "delta_y_at_top_m": -0.001,
+            "delta_y_at_bottom_m": 0.001
+          },
+          {
+            "name": "Corner_LF",
+            "vertices": 8,
+            "delta_y_at_top_m": -0.001,
+            "delta_y_at_bottom_m": 0.001
+          },
+          {
+            "name": "Corner_RB",
+            "vertices": 8,
+            "delta_y_at_top_m": -0.001,
+            "delta_y_at_bottom_m": 0.001
+          },
+          {
+            "name": "Corner_RF",
+            "vertices": 8,
+            "delta_y_at_top_m": -0.001,
+            "delta_y_at_bottom_m": 0.001
+          }
+        ],
+        "vertices": 120,
+        "faces": 90,
+        "quads": 90,
+        "triangles": 180,
+        "UV0_and_vertex_normals_unchanged": true,
+        "faces_indices_unchanged": true
+      },
+      "native_blend_rebuilt": false,
+      "native_binary_fbx_rebuilt": false,
+      "unity": "NOT_RUN",
+      "qa": "BLOCKED"
+    },
+    {
+      "id": "P18-02",
+      "family": "C01-18",
+      "source_type": "REAL_OBJ",
+      "path": "Assets/C01InteriorProps/C01-18/Models/P18-02.obj",
+      "before": {
+        "commit": "41d5f6a46bf9c4f6fb9a86f331a6214ec590387a",
+        "sha256": "12f1e8150104c4ce89fecfa1af349933a44ac1e8bef833e9a1a30b4284c51559",
+        "git_blob": "6200a15fdf29a23d4e2106359fdaed347b1656fd"
+      },
+      "after": {
+        "commit": "baa7040a5c0be09809abb2495b282c9972ea341c",
+        "sha256": "d8623bb0fe51388fe25ead63703b0868dac2549c32b14cb20f1757aa41e541a2",
+        "git_blob": "ec17212a2d60d1b39216c869b0a9706defa76c4d"
+      },
+      "change": {
+        "kind": "GEOMETRY_VERTICES",
+        "modified_vertices": 48,
+        "parts": 6,
+        "delta_z_m": 0.003,
+        "vertices": 136,
+        "faces": 102,
+        "quads": 102,
+        "triangles": 204,
+        "UV0_and_vertex_normals_unchanged": true,
+        "faces_indices_unchanged": true
+      },
+      "native_blend_rebuilt": false,
+      "native_binary_fbx_rebuilt": false,
+      "unity": "NOT_RUN",
+      "qa": "BLOCKED"
+    }
+  ],
+  "producer_source_generator": {
+    "path": "Assets/C01InteriorProps/C01-18-Wave02/Sources/build_wave02.py",
+    "before": {
+      "commit": "ce5f80db7121f435b09e3bed17d7daa93b4147c8",
+      "sha256": "bb68b7f0a8a5187dd2712de7eb615bbaff0ea601b94c13500841eb1314a69fdd",
+      "git_blob": "8b6690d1274534f2ef358329a2d0c90cea82c0b8"
+    },
+    "after": {
+      "commit": "8331081c1fed7bb7885570b7b8d9965827355965",
+      "sha256": "430766db66a207034e2997fb29834d6947056ed1f7b43dfa6aefd6135d83b564",
+      "git_blob": "e78c6021a6b753c6d506176190ddcf0ac7adfc04"
+    },
+    "changed_source_lines": 5,
+    "affected_assets": [
+      "P18-05",
+      "P18-06",
+      "P18-07"
+    ],
+    "preserved_recent_P18_07_generator_lock_fix": true
+  },
+  "companion_spec": {
+    "path": "Assets/C01InteriorProps/C01-18/Sources/part_spec.json",
+    "before": {
+      "commit": "41d5f6a46bf9c4f6fb9a86f331a6214ec590387a",
+      "sha256": "b424a35750159046cb9b8891fabe99a5e4795120caee0907c795bb81330958cd",
+      "git_blob": "515d118bda76620bcc6b9b8891fabe99a5e4795120caee0907c795bb81330958cd"
+    },
+    "after": {
+      "commit": "baa7040a5c0be09809abb2495b282c9972ea341c",
+      "sha256": "a10184fbdb6aebc4cb6bc680e5dda8fc528f5713570934cb3d9952b801d3b774",
+      "git_blob": "3222abeca671f4e849823f2098a11c5946ad67c5"
+    }
+  },
+  "blender_execution": "NOT_RUN",
+  "actual_unity": "NOT_RUN",
+  "independent_final_QA": "BLOCKED"
+}

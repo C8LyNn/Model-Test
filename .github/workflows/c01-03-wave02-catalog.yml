@@ -1,0 +1,38 @@
+name: C01-03 Wave02 Catalog
+
+on:
+  pull_request:
+    paths:
+      - 'C01InteriorProps_Library/Wave02/**'
+      - '.github/workflows/c01-03-wave02-catalog.yml'
+  push:
+    branches:
+      - 'c01/props-03-library-wave02'
+  workflow_dispatch:
+
+jobs:
+  check-manifest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout catalog
+        uses: actions/checkout@v4
+      - name: Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate exact 20 IDs, dependency DAG and missing-file truthfulness
+        run: python C01InteriorProps_Library/Wave02/validate_wave02.py audit
+      - name: Unit tests (metadata only, not Blender/Unity)
+        run: python -m unittest discover -s C01InteriorProps_Library/Wave02/tests -v
+      - name: Confirm Wave02 release blocked without independent QA
+        shell: bash
+        run: |
+          set +e
+          python C01InteriorProps_Library/Wave02/validate_wave02.py release
+          code=$?
+          set -e
+          if [ "$code" -ne 2 ]; then
+            echo "Unexpected release gate status: $code"
+            exit 1
+          fi
+          echo "Wave02 release correctly blocked without QA"

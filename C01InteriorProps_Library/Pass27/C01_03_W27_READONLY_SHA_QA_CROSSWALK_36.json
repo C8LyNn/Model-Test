@@ -1,0 +1,653 @@
+{
+  "schema": "C01-03_W27_READONLY_SHA_QA_CROSSWALK_V1",
+  "date": "2026-11-03",
+  "issue": "https://github.com/C8LyNn/Model-Test/issues/45",
+  "purpose": "W27 metadata and exact-SHA evidence reconciliation only; DOES NOT update the 36-row W26 release authority until independent W27 signed verdict",
+  "w26_authoritative_release": "C01InteriorProps_Library/Pass26/C01_03_W26_CANONICAL_36_QA_RELEASE.json",
+  "w26_release_git_blob_sha1": "78dcfe0c7345806ceb8b5b6179bb7c5154289b50",
+  "w26_independent_original_44": "C01InteriorProps_QA/GLOBAL_MESH_W26/W26_44_SIGNED_FBX_INDEPENDENT_POLYGON_QA.csv",
+  "w26_independent_44_git_blob_sha1": "bc184f3db943aef422b5d85d7d3bd9d8d03829ab",
+  "w26_44_scope": "C01MeshQA/W26/NONDOOR_BASELINE_44.csv",
+  "w26_44_scope_blob_sha1": "64d2d320fb5ded5a4d0c0c1ad27f043a903510e1",
+  "testing_performed_by_C01_03_in_W27": "GitHub current producer branch HEAD metadata readback: 6/6 Git LFS BLEND+FBX pointer OIDs and sizes; W26 C01-02 44-row original SHA crosswalk; NO newly run Blender, full-byte hydration, independent geometry, Unity or visual tests",
+  "source_integrity_rule": "LFS pointer SHA256 OID != new full-byte physical SHA rehash in W27; prior W26 producer and selective physical receipts retained, not rerun",
+  "counts": {
+    "canonical_unique": 36,
+    "scoped_physical_logical": 44,
+    "additional_architecture_unique": 8,
+    "versioned_primary_paths": 1420,
+    "historical_supplement_paths": 9,
+    "versioned_paths_not_unique_approved_models": true,
+    "previous_w26_independent_original_same_current_sha": 33,
+    "previous_w26_independent_old_sha_superseded_for_three": 3,
+    "w27_new_independent_sha_signoffs": 0,
+    "unity_real_editor_pass": 0,
+    "final_approved": 0,
+    "release_hold": 36
+  },
+  "protected": "CLAUDE_DOORS_EXTERNAL_HOLD; D01/D02 / all external doors/gates / W04 / PR19/PR32 never inspected/edited/exported/merged",
+  "producer_heads_verified": {
+    "P15-03": {
+      "pr": 16,
+      "head": "7eef12868dd214852e44adf72d4b76200c382487"
+    },
+    "P18-03": {
+      "pr": 43,
+      "head": "7377d51ee43796609aeb9eac0fa3bc6d4c3f29cf"
+    },
+    "P19-03": {
+      "pr": 15,
+      "head": "e053a786ffe8f08e5121c3ae5aa0f974a629660d"
+    }
+  },
+  "current_six_signed_lfs_pointers": [
+    {
+      "id": "P15-03",
+      "type": "blend",
+      "oid": "e787a9455baa08d5e6b198b4c47d236376b240e08781792020b93be899ca38de",
+      "size_bytes": 661300,
+      "git_pointer_blob_sha1": "047f5f9d4a602dd119c9e871e0a0602b7efb6ac4"
+    },
+    {
+      "id": "P15-03",
+      "type": "fbx",
+      "oid": "ea25d2d7b47baa50fdca3000b101c65b19ba252994553ee6fe6691ca89d5c149",
+      "size_bytes": 102252,
+      "git_pointer_blob_sha1": "a909404fc213897af709ec8290468098cb7e0c85"
+    },
+    {
+      "id": "P18-03",
+      "type": "blend",
+      "oid": "1c8086b048ac1c62a6791bea5df22a22168b5aea4bc17008a2ce233d86ede41e",
+      "size_bytes": 916908,
+      "git_pointer_blob_sha1": "7f3efae036936d30063780e715b17b18859e4228"
+    },
+    {
+      "id": "P18-03",
+      "type": "fbx",
+      "oid": "f932c5fb36624ef91c039b1de04367fff4e99da7c400bbcb4cadd4138f83618f",
+      "size_bytes": 194156,
+      "git_pointer_blob_sha1": "b8e5a13c9967046b2b128b066ad9da7cf16bc35f"
+    },
+    {
+      "id": "P19-03",
+      "type": "blend",
+      "oid": "ce43931f9116fe3aef6f795c98e505665c921e6c1080c7d61c5cd518e7f7f5b8",
+      "size_bytes": 907792,
+      "git_pointer_blob_sha1": "7baf979b57994e45836d5a0ce31929e902bc733f"
+    },
+    {
+      "id": "P19-03",
+      "type": "fbx",
+      "oid": "4a1ad590e79515b0a699f0fb643d9999b4d1726bd68fce97505f401bb8375967",
+      "size_bytes": 29308,
+      "git_pointer_blob_sha1": "17e48064cbd8ffbba463c80f1efdd692938000cf"
+    }
+  ],
+  "pending_independent_new_sha": [
+    "P15-03",
+    "P18-03",
+    "P19-03"
+  ],
+  "targeted_reviews": [
+    {
+      "id": "P19-07",
+      "status": "8_ZERO_UV_MICROPOLYGONS_AND_17_18_VERTEX_NEAR_EDGE_CANDIDATES_VISUAL_WITNESS_PENDING"
+    },
+    {
+      "id": "P19-08",
+      "status": "2_ENDPOINT_NEAR_EDGE_PRECISION_CANDIDATES_0.0039MM_VISUAL_WITNESS_PENDING"
+    },
+    {
+      "id": "P17-01",
+      "status": "32_HARD_NORMAL_CORNERS_ZERO_INVERTED_VISUAL_WITNESS_PENDING"
+    },
+    {
+      "id": "P18-07",
+      "status": "C01_01_STATIC_0.341M_VS_0.340M_AND_DYNAMIC_0.361M_ENVELOPE_DECISION_PENDING"
+    },
+    {
+      "id": "P19-01",
+      "status": "MICROSCOPIC_UV_POLYGON_REVIEW_ONLY_NO_NEW_DEFECT_EVIDENCE"
+    }
+  ],
+  "read_only_36_crosswalk": [
+    {
+      "id": "P15-01",
+      "owner": "C01-15",
+      "producer_pr": 16,
+      "producer_head_W26": "49e1e4b5cc1a4783b55e7ed113c8a4a57665f721",
+      "blend_sha256": "d91783a2be0b13fcaec8477eb73cc2bb4717be17be6cf6bad329a89dd88ae4c0",
+      "fbx_sha256": "bff1a07223b61762e4dcb27df7ff4c91dae11d42e0695163fe17bedc6b314c5a",
+      "w26_independent_original_fbx_sha256": "bff1a07223b61762e4dcb27df7ff4c91dae11d42e0695163fe17bedc6b314c5a",
+      "w27_independent_exact_sha_gate": "W26_INDEPENDENT_SAME_SHA_SCOPED_STATIC_EVIDENCE_CARRIED_FORWARD_NOT_FINAL",
+      "w27_unity_gate": "UNITY_NOT_RUN_OWNER_ACTION_REQUIRED",
+      "w27_release": "HOLD",
+      "technical_review": "STATIC_INDEXED_PASS_UNITY_HOLD"
+    },
+    {
+      "id": "P15-02",
+      "owner": "C01-15",
+      "producer_pr": 16,
+      "producer_head_W26": "49e1e4b5cc1a4783b55e7ed113c8a4a57665f721",
+      "blend_sha256": "2244f6d72ba7bb8fc336b033ccbf89d07a60eaee96e4d448b6e61f6da8c165c3",
+      "fbx_sha256": "470fdbdfad19d6b94ee227fc546053548b709da31115fd928f07790780066590",
+      "w26_independent_original_fbx_sha256": "470fdbdfad19d6b94ee227fc546053548b709da31115fd928f07790780066590",
+      "w27_independent_exact_sha_gate": "W26_INDEPENDENT_SAME_SHA_SCOPED_STATIC_EVIDENCE_CARRIED_FORWARD_NOT_FINAL",
+      "w27_unity_gate": "UNITY_NOT_RUN_OWNER_ACTION_REQUIRED",
+      "w27_release": "HOLD",
+      "technical_review": "STATIC_INDEXED_PASS_UNITY_HOLD"
+    },
+    {
+      "id": "P15-03",
+      "owner": "C01-15",
+      "producer_pr": 16,
+      "producer_head_W26": "7eef12868dd214852e44adf72d4b76200c382487",
+      "blend_sha256": "e787a9455baa08d5e6b198b4c47d236376b240e08781792020b93be899ca38de",
+      "fbx_sha256": "ea25d2d7b47baa50fdca3000b101c65b19ba252994553ee6fe6691ca89d5c149",
+      "w26_independent_original_fbx_sha256": "7be76765763308deb8c0fa9d4c11cec8c74b60777e0199a160ebab088c59189d",
+      "w27_independent_exact_sha_gate": "INDEPENDENT_NEW_SHA_PENDING",
+      "w27_unity_gate": "UNITY_NOT_RUN_OWNER_ACTION_REQUIRED",
+      "w27_release": "HOLD",
+      "technical_review": "PENDING_C01_02_W27_EXACT_NEW_FBX_SHA_ea25d2d7"
+    },
+    {
+      "id": "P15-04",
+      "owner": "C01-15",
+      "producer_pr": 25,
+      "producer_head_W26": "c3d6bfe7a1a6c2cfb21368416e4ee4c88da5355f",
+      "blend_sha256": "54a4b2efdfe0cc3766ff1a04ce3bca24f1adcdf2e8d7812058fc000e297393cd",
+      "fbx_sha256": "58252505554c65354f9ebce7e3264868d3ff7a57c850d16323e71e6356c5ce04",
+      "w26_independent_original_fbx_sha256": "58252505554c65354f9ebce7e3264868d3ff7a57c850d16323e71e6356c5ce04",
+      "w27_independent_exact_sha_gate": "W26_INDEPENDENT_SAME_SHA_SCOPED_STATIC_EVIDENCE_CARRIED_FORWARD_NOT_FINAL",
+      "w27_unity_gate": "UNITY_NOT_RUN_OWNER_ACTION_REQUIRED",
+      "w27_release": "HOLD",
+      "technical_review": "INDEPENDENT_STATIC_TOPOLOGY_PASS_UNITY_HOLD"
+    },
+    {
+      "id": "P15-05",
+      "owner": "C01-15",
+      "producer_pr": 25,
+      "producer_head_W26": "c3d6bfe7a1a6c2cfb21368416e4ee4c88da5355f",
+      "blend_sha256": "4f30880643a17d97c9f7cfca4cd0a219e12fff6f8868fa1ba31017e9083f2c01",
+      "fbx_sha256": "5d254249234c100ca2e7c0b4d65fe8ed8bc366f275d4718b4d90bac416d3da5e",
+      "w26_independent_original_fbx_sha256": "5d254249234c100ca2e7c0b4d65fe8ed8bc366f275d4718b4d90bac416d3da5e",
+      "w27_independent_exact_sha_gate": "W26_INDEPENDENT_SAME_SHA_SCOPED_STATIC_EVIDENCE_CARRIED_FORWARD_NOT_FINAL",
+      "w27_unity_gate": "UNITY_NOT_RUN_OWNER_ACTION_REQUIRED",
+      "w27_release": "HOLD",
+      "technical_review": "INDEPENDENT_STATIC_TOPOLOGY_PASS_UNITY_HOLD"
+    },
+    {
+      "id": "P15-06",
+      "owner": "C01-15",
+      "producer_pr": 25,
+      "producer_head_W26": "c3d6bfe7a1a6c2cfb21368416e4ee4c88da5355f",
+      "blend_sha256": "644b1fab278bf1694fc6eb61b6a1cfe0f4bcfce204ecfd25a6b4cb13221a82aa",
+      "fbx_sha256": "e48b943e7926a3d62e3f956f1b1bc59218dbe310837d179dfbbfee435001f448",
+      "w26_independent_original_fbx_sha256": "e48b943e7926a3d62e3f956f1b1bc59218dbe310837d179dfbbfee435001f448",
+      "w27_independent_exact_sha_gate": "W26_INDEPENDENT_SAME_SHA_SCOPED_STATIC_EVIDENCE_CARRIED_FORWARD_NOT_FINAL",
+      "w27_unity_gate": "UNITY_NOT_RUN_OWNER_ACTION_REQUIRED",
+      "w27_release": "HOLD",
+      "technical_review": "INDEPENDENT_STATIC_TOPOLOGY_PASS_UNITY_HOLD"
+    },
+    {
+      "id": "P15-07",
+      "owner": "C01-15",
+      "producer_pr": 25,
+      "producer_head_W26": "c3d6bfe7a1a6c2cfb21368416e4ee4c88da5355f",
+      "blend_sha256": "00a456375c5fd731f811d61d1ae171330a5291d5669ae9fdcc752b174b72aa6e",
+      "fbx_sha256": "ffc0211cc73a2056b815f3a494c24ab97d3c808d7ad9eb5b472472c555fb47f2",
+      "w26_independent_original_fbx_sha256": "ffc0211cc73a2056b815f3a494c24ab97d3c808d7ad9eb5b472472c555fb47f2",
+      "w27_independent_exact_sha_gate": "W26_INDEPENDENT_SAME_SHA_SCOPED_STATIC_EVIDENCE_CARRIED_FORWARD_NOT_FINAL",
+      "w27_unity_gate": "UNITY_NOT_RUN_OWNER_ACTION_REQUIRED",
+      "w27_release": "HOLD",
+      "technical_review": "STATIC_PASS"
+    },
+    {
+      "id": "P16-01",
+      "owner": "C01-16",
+      "producer_pr": 12,
+      "producer_head_W26": "41b92d6efdf69da56f079a03454ab796ce3c7696",
+      "blend_sha256": "755950af76f12f755826d7475b87d6dc0981da7df0dc099320da7a84668c6e5b",
+      "fbx_sha256": "c0a782a17a0047e0d578a41e42ac714c0fa0f86c7c4960f4bc10e21a24a278fd",
+      "w26_independent_original_fbx_sha256": "c0a782a17a0047e0d578a41e42ac714c0fa0f86c7c4960f4bc10e21a24a278fd",
+      "w27_independent_exact_sha_gate": "W26_INDEPENDENT_SAME_SHA_SCOPED_STATIC_EVIDENCE_CARRIED_FORWARD_NOT_FINAL",
+      "w27_unity_gate": "UNITY_NOT_RUN_OWNER_ACTION_REQUIRED",
+      "w27_release": "HOLD",
+      "technical_review": "PENDING / PENDING"
+    },
+    {
+      "id": "P16-02",
+      "owner": "C01-16",
+      "producer_pr": 12,
+      "producer_head_W26": "41b92d6efdf69da56f079a03454ab796ce3c7696",
+      "blend_sha256": "db3d7a9f2e29091d9f4dd8cf1d3546674df85b481e8f036384ce14106b2e5155",
+      "fbx_sha256": "4174d99840156680985f294efb5b67ff147af797e14c12fd7f3bdcf6008f14ed",
+      "w26_independent_original_fbx_sha256": "4174d99840156680985f294efb5b67ff147af797e14c12fd7f3bdcf6008f14ed",
+      "w27_independent_exact_sha_gate": "W26_INDEPENDENT_SAME_SHA_SCOPED_STATIC_EVIDENCE_CARRIED_FORWARD_NOT_FINAL",
+      "w27_unity_gate": "UNITY_NOT_RUN_OWNER_ACTION_REQUIRED",
+      "w27_release": "HOLD",
+      "technical_review": "PENDING / PENDING"
+    },
+    {
+      "id": "P16-03",
+      "owner": "C01-16",
+      "producer_pr": 12,
+      "producer_head_W26": "41b92d6efdf69da56f079a03454ab796ce3c7696",
+      "blend_sha256": "9c89ea268348f3c79762a7a96626982c78e7628ecd7e14ced9b15c998bae0758",
+      "fbx_sha256": "83795e93013a11e14d8840ee0dae3e8da9e05ae67d7ce1fabf185961afe4fede",
+      "w26_independent_original_fbx_sha256": "83795e93013a11e14d8840ee0dae3e8da9e05ae67d7ce1fabf185961afe4fede",
+      "w27_independent_exact_sha_gate": "W26_INDEPENDENT_SAME_SHA_SCOPED_STATIC_EVIDENCE_CARRIED_FORWARD_NOT_FINAL",
+      "w27_unity_gate": "UNITY_NOT_RUN_OWNER_ACTION_REQUIRED",
+      "w27_release": "HOLD",
+      "technical_review": "PENDING / PENDING"
+    },
+    {
+      "id": "P16-04",
+      "owner": "C01-16",
+      "producer_pr": 28,
+      "producer_head_W26": "79524a2a578ab23d5433a10f7cc9a2b01dca9f30",
+      "blend_sha256": "e7cb0dafa5e366afeee66f62978fda98d294b0700bdd03416e60cd81cb69c0d5",
+      "fbx_sha256": "0cfe95f759f96fe8725101bbac7ad2dfacfbd78487e6f7bccedf274f76755edc",
+      "w26_independent_original_fbx_sha256": "0cfe95f759f96fe8725101bbac7ad2dfacfbd78487e6f7bccedf274f76755edc",
+      "w27_independent_exact_sha_gate": "W26_INDEPENDENT_SAME_SHA_SCOPED_STATIC_EVIDENCE_CARRIED_FORWARD_NOT_FINAL",
+      "w27_unity_gate": "UNITY_NOT_RUN_OWNER_ACTION_REQUIRED",
+      "w27_release": "HOLD",
+      "technical_review": "PENDING / PENDING"
+    },
+    {
+      "id": "P16-05",
+      "owner": "C01-16",
+      "producer_pr": 28,
+      "producer_head_W26": "79524a2a578ab23d5433a10f7cc9a2b01dca9f30",
+      "blend_sha256": "d2bcb8dc17e20f758e1c776c8b205cf2c475484e77119ec8c072c26d1f533581",
+      "fbx_sha256": "1dd40422afcc3ea63cf80fd6ca1941776aab0d4a83f254b5645d19aaa3f017f0",
+      "w26_independent_original_fbx_sha256": "1dd40422afcc3ea63cf80fd6ca1941776aab0d4a83f254b5645d19aaa3f017f0",
+      "w27_independent_exact_sha_gate": "W26_INDEPENDENT_SAME_SHA_SCOPED_STATIC_EVIDENCE_CARRIED_FORWARD_NOT_FINAL",
+      "w27_unity_gate": "UNITY_NOT_RUN_OWNER_ACTION_REQUIRED",
+      "w27_release": "HOLD",
+      "technical_review": "PENDING / PENDING"
+    },
+    {
+      "id": "P16-06",
+      "owner": "C01-16",
+      "producer_pr": 28,
+      "producer_head_W26": "79524a2a578ab23d5433a10f7cc9a2b01dca9f30",
+      "blend_sha256": "becb4d8aa083b672472cf0a76e93b132e0d407fa5dcf0e14e18ec21b6679b9d5",
+      "fbx_sha256": "15ca9f7b417721b235243973c8ceaf6747822849c11c69a69b3255fbe4fc827c",
+      "w26_independent_original_fbx_sha256": "15ca9f7b417721b235243973c8ceaf6747822849c11c69a69b3255fbe4fc827c",
+      "w27_independent_exact_sha_gate": "W26_INDEPENDENT_SAME_SHA_SCOPED_STATIC_EVIDENCE_CARRIED_FORWARD_NOT_FINAL",
+      "w27_unity_gate": "UNITY_NOT_RUN_OWNER_ACTION_REQUIRED",
+      "w27_release": "HOLD",
+      "technical_review": "INDEPENDENT_SCOPED_STATIC_AND_PREVIOUS_MOTION_EVIDENCE__UNITY_HOLD"
+    },
+    {
+      "id": "P16-07",
+      "owner": "C01-16",
+      "producer_pr": 28,
+      "producer_head_W26": "79524a2a578ab23d5433a10f7cc9a2b01dca9f30",
+      "blend_sha256": "0eb8d9e828ca993683411bf9525eb2bd394d62eb3c8c53659e83d953ee395703",
+      "fbx_sha256": "a2bbd175960d086049f1fea22ae358c7af6804cc2067f267e91c1daa76d0e1d9",
+      "w26_independent_original_fbx_sha256": "a2bbd175960d086049f1fea22ae358c7af6804cc2067f267e91c1daa76d0e1d9",
+      "w27_independent_exact_sha_gate": "W26_INDEPENDENT_SAME_SHA_SCOPED_STATIC_EVIDENCE_CARRIED_FORWARD_NOT_FINAL",
+      "w27_unity_gate": "UNITY_NOT_RUN_OWNER_ACTION_REQUIRED",
+      "w27_release": "HOLD",
+      "technical_review": "PENDING / PENDING"
+    },
+    {
+      "id": "P17-01",
+      "owner": "C01-17",
+      "producer_pr": 17,
+      "producer_head_W26": "d37f6cb8355d98324db44ca8eb139681beb7ea9b",
+      "blend_sha256": "7e7fb3911d7f0d061dfa202804a42b18ef0d99510f95e6cc1b6b42d0c53c17eb",
+      "fbx_sha256": "cd6a5787bb7b4c088f0af35382385e4274c85c415c60467f9a22e46fe33ef02c",
+      "w26_independent_original_fbx_sha256": "cd6a5787bb7b4c088f0af35382385e4274c85c415c60467f9a22e46fe33ef02c",
+      "w27_independent_exact_sha_gate": "W26_INDEPENDENT_SAME_SHA_SCOPED_STATIC_EVIDENCE_CARRIED_FORWARD_NOT_FINAL",
+      "w27_unity_gate": "UNITY_NOT_RUN_OWNER_ACTION_REQUIRED",
+      "w27_release": "HOLD",
+      "technical_review": "URP_SHADED_REVIEW_PENDING"
+    },
+    {
+      "id": "P17-02",
+      "owner": "C01-17",
+      "producer_pr": 17,
+      "producer_head_W26": "d37f6cb8355d98324db44ca8eb139681beb7ea9b",
+      "blend_sha256": "9039029aece72ad4416ebe162c55141c8a3123572142423235e61e7865d1d756",
+      "fbx_sha256": "db49121a520f16ca636626795550b83e8a4df94ded56a7ccb76308520bb7c3f6",
+      "w26_independent_original_fbx_sha256": "db49121a520f16ca636626795550b83e8a4df94ded56a7ccb76308520bb7c3f6",
+      "w27_independent_exact_sha_gate": "W26_INDEPENDENT_SAME_SHA_SCOPED_STATIC_EVIDENCE_CARRIED_FORWARD_NOT_FINAL",
+      "w27_unity_gate": "UNITY_NOT_RUN_OWNER_ACTION_REQUIRED",
+      "w27_release": "HOLD",
+      "technical_review": "PENDING / PENDING"
+    },
+    {
+      "id": "P17-03",
+      "owner": "C01-17",
+      "producer_pr": 17,
+      "producer_head_W26": "d37f6cb8355d98324db44ca8eb139681beb7ea9b",
+      "blend_sha256": "fb651c56224e4b390ed86feba74de6af56436dd37cb5d141fb084dc8f7e7852a",
+      "fbx_sha256": "32d460d54a396d3171b639ef7656eb30fbae2c79023cdb510abeefe0428021f8",
+      "w26_independent_original_fbx_sha256": "32d460d54a396d3171b639ef7656eb30fbae2c79023cdb510abeefe0428021f8",
+      "w27_independent_exact_sha_gate": "W26_INDEPENDENT_SAME_SHA_SCOPED_STATIC_EVIDENCE_CARRIED_FORWARD_NOT_FINAL",
+      "w27_unity_gate": "UNITY_NOT_RUN_OWNER_ACTION_REQUIRED",
+      "w27_release": "HOLD",
+      "technical_review": "STATIC_PASS_MOTION_91_OF_91_PASS"
+    },
+    {
+      "id": "P17-04",
+      "owner": "C01-17",
+      "producer_pr": 23,
+      "producer_head_W26": "05cb633b9427a1804e473aabb9ec497e1f193584",
+      "blend_sha256": "33809376bbde7dbd585c03fac718bc690947aef9ae46ff8b6b40ea9dca6cefde",
+      "fbx_sha256": "f0c7f316ff0861873dde1e808dfbf13f709022d4427e60a77e706f37947d6fcd",
+      "w26_independent_original_fbx_sha256": "f0c7f316ff0861873dde1e808dfbf13f709022d4427e60a77e706f37947d6fcd",
+      "w27_independent_exact_sha_gate": "W26_INDEPENDENT_SAME_SHA_SCOPED_STATIC_EVIDENCE_CARRIED_FORWARD_NOT_FINAL",
+      "w27_unity_gate": "UNITY_NOT_RUN_OWNER_ACTION_REQUIRED",
+      "w27_release": "HOLD",
+      "technical_review": "PENDING / PENDING"
+    },
+    {
+      "id": "P17-05",
+      "owner": "C01-17",
+      "producer_pr": 23,
+      "producer_head_W26": "05cb633b9427a1804e473aabb9ec497e1f193584",
+      "blend_sha256": "3707060640a772e92b74ca7d20fd5bd040e3fa50770d01a157d61a590acfb3d4",
+      "fbx_sha256": "ee2f4dfb9e0af327633c24ff3e665df3a5aaff91a05634a84cadfb4d0b04c4f2",
+      "w26_independent_original_fbx_sha256": "ee2f4dfb9e0af327633c24ff3e665df3a5aaff91a05634a84cadfb4d0b04c4f2",
+      "w27_independent_exact_sha_gate": "W26_INDEPENDENT_SAME_SHA_SCOPED_STATIC_EVIDENCE_CARRIED_FORWARD_NOT_FINAL",
+      "w27_unity_gate": "UNITY_NOT_RUN_OWNER_ACTION_REQUIRED",
+      "w27_release": "HOLD",
+      "technical_review": "PENDING / PENDING"
+    },
+    {
+      "id": "P17-06",
+      "owner": "C01-17",
+      "producer_pr": 23,
+      "producer_head_W26": "05cb633b9427a1804e473aabb9ec497e1f193584",
+      "blend_sha256": "4920e42306234d0c396bfdf64cd97b5ab024896a04c0477618cbf9a6ae64eb14",
+      "fbx_sha256": "718d59780e304186a82c600685fe6a15875b4f30e928ec2a859803c841d8fefe",
+      "w26_independent_original_fbx_sha256": "718d59780e304186a82c600685fe6a15875b4f30e928ec2a859803c841d8fefe",
+      "w27_independent_exact_sha_gate": "W26_INDEPENDENT_SAME_SHA_SCOPED_STATIC_EVIDENCE_CARRIED_FORWARD_NOT_FINAL",
+      "w27_unity_gate": "UNITY_NOT_RUN_OWNER_ACTION_REQUIRED",
+      "w27_release": "HOLD",
+      "technical_review": "PENDING / PENDING"
+    },
+    {
+      "id": "P17-07",
+      "owner": "C01-17",
+      "producer_pr": 23,
+      "producer_head_W26": "05cb633b9427a1804e473aabb9ec497e1f193584",
+      "blend_sha256": "0eebee6672e4e666d57b4b20b08f36ffda0e2a404463e5faa4c1217d8270bb3f",
+      "fbx_sha256": "e870c9bb2527743b193a9aaf49edc5732fa9d855e1354aa4c6f7b1eb9af5ca3e",
+      "w26_independent_original_fbx_sha256": "e870c9bb2527743b193a9aaf49edc5732fa9d855e1354aa4c6f7b1eb9af5ca3e",
+      "w27_independent_exact_sha_gate": "W26_INDEPENDENT_SAME_SHA_SCOPED_STATIC_EVIDENCE_CARRIED_FORWARD_NOT_FINAL",
+      "w27_unity_gate": "UNITY_NOT_RUN_OWNER_ACTION_REQUIRED",
+      "w27_release": "HOLD",
+      "technical_review": "PENDING / PENDING"
+    },
+    {
+      "id": "P18-01",
+      "owner": "C01-18",
+      "producer_pr": 18,
+      "producer_head_W26": "b681c29b5f186bce6b6cc7afb57383a7b4bf967e",
+      "blend_sha256": "d8a525acdb0eb7dcfd7b37fb31117b42a53bb655a6543282adac3dff857900a1",
+      "fbx_sha256": "f541d502ba9eaaf5c7a0a7279c44f71f36dd482e3aed3ba0734058dcf1045f6c",
+      "w26_independent_original_fbx_sha256": "f541d502ba9eaaf5c7a0a7279c44f71f36dd482e3aed3ba0734058dcf1045f6c",
+      "w27_independent_exact_sha_gate": "W26_INDEPENDENT_SAME_SHA_SCOPED_STATIC_EVIDENCE_CARRIED_FORWARD_NOT_FINAL",
+      "w27_unity_gate": "UNITY_NOT_RUN_OWNER_ACTION_REQUIRED",
+      "w27_release": "HOLD",
+      "technical_review": "INDEPENDENT_SCOPED_STATIC_AND_PREVIOUS_MOTION_EVIDENCE__UNITY_HOLD"
+    },
+    {
+      "id": "P18-02",
+      "owner": "C01-18",
+      "producer_pr": 18,
+      "producer_head_W26": "b681c29b5f186bce6b6cc7afb57383a7b4bf967e",
+      "blend_sha256": "49b3697ff01efe0497f12703421f05fedb4e9a29636626bf72d1e57493a369d5",
+      "fbx_sha256": "e962c47fc60d84fb0d06d69f7aec3eead745705be002b7eb0abf11c5da452558",
+      "w26_independent_original_fbx_sha256": "e962c47fc60d84fb0d06d69f7aec3eead745705be002b7eb0abf11c5da452558",
+      "w27_independent_exact_sha_gate": "W26_INDEPENDENT_SAME_SHA_SCOPED_STATIC_EVIDENCE_CARRIED_FORWARD_NOT_FINAL",
+      "w27_unity_gate": "UNITY_NOT_RUN_OWNER_ACTION_REQUIRED",
+      "w27_release": "HOLD",
+      "technical_review": "PENDING / PENDING"
+    },
+    {
+      "id": "P18-03",
+      "owner": "C01-18",
+      "producer_pr": 43,
+      "producer_head_W26": "7377d51ee43796609aeb9eac0fa3bc6d4c3f29cf",
+      "blend_sha256": "1c8086b048ac1c62a6791bea5df22a22168b5aea4bc17008a2ce233d86ede41e",
+      "fbx_sha256": "f932c5fb36624ef91c039b1de04367fff4e99da7c400bbcb4cadd4138f83618f",
+      "w26_independent_original_fbx_sha256": "f169ab74086ee3853c14b46ac6f6199cd255cfca15d8b7cbef32c3758cde7926",
+      "w27_independent_exact_sha_gate": "INDEPENDENT_NEW_SHA_PENDING",
+      "w27_unity_gate": "UNITY_NOT_RUN_OWNER_ACTION_REQUIRED",
+      "w27_release": "HOLD",
+      "technical_review": "PENDING_C01_02_W27_EXACT_NEW_FBX_SHA_f932c5fb"
+    },
+    {
+      "id": "P18-04",
+      "owner": "C01-18",
+      "producer_pr": 26,
+      "producer_head_W26": "afab18bfb89edc8411d67116510991ca521d413e",
+      "blend_sha256": "4a0531a877df0cbbcc2078b02297efccd966611e736bf70480a7572c6602ec52",
+      "fbx_sha256": "233253cea4a872052ef87c33f79c08794885dacac4caadf276e95701d0a70803",
+      "w26_independent_original_fbx_sha256": "233253cea4a872052ef87c33f79c08794885dacac4caadf276e95701d0a70803",
+      "w27_independent_exact_sha_gate": "W26_INDEPENDENT_SAME_SHA_SCOPED_STATIC_EVIDENCE_CARRIED_FORWARD_NOT_FINAL",
+      "w27_unity_gate": "UNITY_NOT_RUN_OWNER_ACTION_REQUIRED",
+      "w27_release": "HOLD",
+      "technical_review": "STATIC_INDEXED_PASS_UNITY_HOLD"
+    },
+    {
+      "id": "P18-05",
+      "owner": "C01-18",
+      "producer_pr": 26,
+      "producer_head_W26": "5a90dab4d98ec600b95a56ee0d4006d24b87fa66",
+      "blend_sha256": "5f98b9e34f346df3ef133e30243aee5b26dc45032c415d643490d00dbdd22f21",
+      "fbx_sha256": "58e33516ead13e35e8a48228045c67bd53d6caf8de01883a11625fa2961957e5",
+      "w26_independent_original_fbx_sha256": "58e33516ead13e35e8a48228045c67bd53d6caf8de01883a11625fa2961957e5",
+      "w27_independent_exact_sha_gate": "W26_INDEPENDENT_SAME_SHA_SCOPED_STATIC_EVIDENCE_CARRIED_FORWARD_NOT_FINAL",
+      "w27_unity_gate": "UNITY_NOT_RUN_OWNER_ACTION_REQUIRED",
+      "w27_release": "HOLD",
+      "technical_review": "SIGNED_FBX_RELEASED_MOTION_23_OF_23_PASS_AND_RUNTIME_PREFAB_SOURCE_PASS"
+    },
+    {
+      "id": "P18-06",
+      "owner": "C01-18",
+      "producer_pr": 26,
+      "producer_head_W26": "afab18bfb89edc8411d67116510991ca521d413e",
+      "blend_sha256": "b78b0975b222419af184ea88ed9f2d54e766d11f34ddaed319bd16723c225e3f",
+      "fbx_sha256": "e83be5fac79ba0d4baf57f9a4c6050a978383da4f3bd95d046b38462fbabb220",
+      "w26_independent_original_fbx_sha256": "e83be5fac79ba0d4baf57f9a4c6050a978383da4f3bd95d046b38462fbabb220",
+      "w27_independent_exact_sha_gate": "W26_INDEPENDENT_SAME_SHA_SCOPED_STATIC_EVIDENCE_CARRIED_FORWARD_NOT_FINAL",
+      "w27_unity_gate": "UNITY_NOT_RUN_OWNER_ACTION_REQUIRED",
+      "w27_release": "HOLD",
+      "technical_review": "STATIC_INDEXED_PASS_UNITY_HOLD"
+    },
+    {
+      "id": "P18-07",
+      "owner": "C01-18",
+      "producer_pr": 26,
+      "producer_head_W26": "5a90dab4d98ec600b95a56ee0d4006d24b87fa66",
+      "blend_sha256": "5fd990d8153430dd4f1a8893ebef0097465a404d1b2c6bbd77777de695b3e87d",
+      "fbx_sha256": "858a24db4338804ee3a3a70c310cd4936e3c45f559b9c4ab81c6037add564554",
+      "w26_independent_original_fbx_sha256": "858a24db4338804ee3a3a70c310cd4936e3c45f559b9c4ab81c6037add564554",
+      "w27_independent_exact_sha_gate": "W26_INDEPENDENT_SAME_SHA_SCOPED_STATIC_EVIDENCE_CARRIED_FORWARD_NOT_FINAL",
+      "w27_unity_gate": "UNITY_NOT_RUN_OWNER_ACTION_REQUIRED",
+      "w27_release": "HOLD",
+      "technical_review": "SOURCE_AXIS_CONTRACT_PASS_NATIVE_FULLY_RETRACTED_23_OF_23_PASS"
+    },
+    {
+      "id": "P19-01",
+      "owner": "C01-19",
+      "producer_pr": 15,
+      "producer_head_W26": "dece710d3672d8eb4ef4183eb3f8657ea6790b21",
+      "blend_sha256": "b4c695f3731ba1cfc575134f41ac795faedbf23ec4cfb58daaeb8bc44b8d8e98",
+      "fbx_sha256": "f3b9f806f4dcaafe00f24ac22b0805bf06a49d4216cb1339460ed1be9b26a2f2",
+      "w26_independent_original_fbx_sha256": "f3b9f806f4dcaafe00f24ac22b0805bf06a49d4216cb1339460ed1be9b26a2f2",
+      "w27_independent_exact_sha_gate": "W26_INDEPENDENT_SAME_SHA_SCOPED_STATIC_EVIDENCE_CARRIED_FORWARD_NOT_FINAL",
+      "w27_unity_gate": "UNITY_NOT_RUN_OWNER_ACTION_REQUIRED",
+      "w27_release": "HOLD",
+      "technical_review": "STATIC_PASS"
+    },
+    {
+      "id": "P19-02",
+      "owner": "C01-19",
+      "producer_pr": 15,
+      "producer_head_W26": "dece710d3672d8eb4ef4183eb3f8657ea6790b21",
+      "blend_sha256": "ff0448b34e70ab65380889dfc1d46e426d88873684e831775306cfca28e1a99f",
+      "fbx_sha256": "b0d68ce917a938b4bdaa32f4b2d48dcab5275c752c141260cabd3d82a5c9374f",
+      "w26_independent_original_fbx_sha256": "b0d68ce917a938b4bdaa32f4b2d48dcab5275c752c141260cabd3d82a5c9374f",
+      "w27_independent_exact_sha_gate": "W26_INDEPENDENT_SAME_SHA_SCOPED_STATIC_EVIDENCE_CARRIED_FORWARD_NOT_FINAL",
+      "w27_unity_gate": "UNITY_NOT_RUN_OWNER_ACTION_REQUIRED",
+      "w27_release": "HOLD",
+      "technical_review": "PENDING / PENDING"
+    },
+    {
+      "id": "P19-03",
+      "owner": "C01-19",
+      "producer_pr": 15,
+      "producer_head_W26": "e053a786ffe8f08e5121c3ae5aa0f974a629660d",
+      "blend_sha256": "ce43931f9116fe3aef6f795c98e505665c921e6c1080c7d61c5cd518e7f7f5b8",
+      "fbx_sha256": "4a1ad590e79515b0a699f0fb643d9999b4d1726bd68fce97505f401bb8375967",
+      "w26_independent_original_fbx_sha256": "1bd730b2382879d7d9c2f3d67c4b9646b8ca036c04de663e53b3019c403af2df",
+      "w27_independent_exact_sha_gate": "INDEPENDENT_NEW_SHA_PENDING",
+      "w27_unity_gate": "UNITY_NOT_RUN_OWNER_ACTION_REQUIRED",
+      "w27_release": "HOLD",
+      "technical_review": "PENDING_C01_02_W27_EXACT_NEW_FBX_SHA_4a1ad590"
+    },
+    {
+      "id": "P19-04",
+      "owner": "C01-19",
+      "producer_pr": 15,
+      "producer_head_W26": "dece710d3672d8eb4ef4183eb3f8657ea6790b21",
+      "blend_sha256": "8690c61df28d2126e6d84cba00326f6d47fa54f6be56edcedcda4c816b283b70",
+      "fbx_sha256": "a8ef74e3972e58b8964d8fd17f121b3cb4977c5c98c9b5ad0928630e77258469",
+      "w26_independent_original_fbx_sha256": "a8ef74e3972e58b8964d8fd17f121b3cb4977c5c98c9b5ad0928630e77258469",
+      "w27_independent_exact_sha_gate": "W26_INDEPENDENT_SAME_SHA_SCOPED_STATIC_EVIDENCE_CARRIED_FORWARD_NOT_FINAL",
+      "w27_unity_gate": "UNITY_NOT_RUN_OWNER_ACTION_REQUIRED",
+      "w27_release": "HOLD",
+      "technical_review": "PENDING / PENDING"
+    },
+    {
+      "id": "P19-05",
+      "owner": "C01-19",
+      "producer_pr": 29,
+      "producer_head_W26": "f4b1067a77596e91196f94d6513ee0afea83295e",
+      "blend_sha256": "7905086e87660461d46e6d633b16fc655142939ac4cbc0df0c670067da9314b2",
+      "fbx_sha256": "d07b4884cfe1de2c48a96dc9407c2eccdfbdbdf703551c71ae195bd3fd8c9d87",
+      "w26_independent_original_fbx_sha256": "d07b4884cfe1de2c48a96dc9407c2eccdfbdbdf703551c71ae195bd3fd8c9d87",
+      "w27_independent_exact_sha_gate": "W26_INDEPENDENT_SAME_SHA_SCOPED_STATIC_EVIDENCE_CARRIED_FORWARD_NOT_FINAL",
+      "w27_unity_gate": "UNITY_NOT_RUN_OWNER_ACTION_REQUIRED",
+      "w27_release": "HOLD",
+      "technical_review": "PENDING / PENDING"
+    },
+    {
+      "id": "P19-06",
+      "owner": "C01-19",
+      "producer_pr": 29,
+      "producer_head_W26": "f4b1067a77596e91196f94d6513ee0afea83295e",
+      "blend_sha256": "08f0ed1791beb7c4c4e37ffb1dc3016ebeddf0b94e5e63eb491ec934c51ac4bd",
+      "fbx_sha256": "61e371d97c7ff5d17dbc8c5673c8edf489df0b8bdb1b4337396f41f8d4f477ea",
+      "w26_independent_original_fbx_sha256": "61e371d97c7ff5d17dbc8c5673c8edf489df0b8bdb1b4337396f41f8d4f477ea",
+      "w27_independent_exact_sha_gate": "W26_INDEPENDENT_SAME_SHA_SCOPED_STATIC_EVIDENCE_CARRIED_FORWARD_NOT_FINAL",
+      "w27_unity_gate": "UNITY_NOT_RUN_OWNER_ACTION_REQUIRED",
+      "w27_release": "HOLD",
+      "technical_review": "PENDING / PENDING"
+    },
+    {
+      "id": "P19-07",
+      "owner": "C01-19",
+      "producer_pr": 29,
+      "producer_head_W26": "f4b1067a77596e91196f94d6513ee0afea83295e",
+      "blend_sha256": "a6dc5d3287dc1b4842de35f6a3e1c8e7c885fd8c161016c11243ed2c760dbc28",
+      "fbx_sha256": "eb579a85355756c0d803f58ec96fac509e33788d8142390349aebbffdba50e81",
+      "w26_independent_original_fbx_sha256": "eb579a85355756c0d803f58ec96fac509e33788d8142390349aebbffdba50e81",
+      "w27_independent_exact_sha_gate": "W26_INDEPENDENT_SAME_SHA_SCOPED_STATIC_EVIDENCE_CARRIED_FORWARD_NOT_FINAL",
+      "w27_unity_gate": "UNITY_NOT_RUN_OWNER_ACTION_REQUIRED",
+      "w27_release": "HOLD",
+      "technical_review": "VISUAL_WITNESS_NOT_RUN"
+    },
+    {
+      "id": "P19-08",
+      "owner": "C01-19",
+      "producer_pr": 29,
+      "producer_head_W26": "f4b1067a77596e91196f94d6513ee0afea83295e",
+      "blend_sha256": "9f878a0c1f9fb28e9b9748801e16a18319da4391dac8062285f80c1f8c5c81c5",
+      "fbx_sha256": "9de76d296482e2d302b5b0a14c30692dbdb6adacd90fcd4e022da9ab35ec658c",
+      "w26_independent_original_fbx_sha256": "9de76d296482e2d302b5b0a14c30692dbdb6adacd90fcd4e022da9ab35ec658c",
+      "w27_independent_exact_sha_gate": "W26_INDEPENDENT_SAME_SHA_SCOPED_STATIC_EVIDENCE_CARRIED_FORWARD_NOT_FINAL",
+      "w27_unity_gate": "UNITY_NOT_RUN_OWNER_ACTION_REQUIRED",
+      "w27_release": "HOLD",
+      "technical_review": "TOLERANCE_REVIEW_PENDING"
+    }
+  ],
+  "read_only_8_architecture_scope": [
+    {
+      "id": "W01",
+      "fbx_sha256": "4260732720f10688e9ee370d2a254b67c9263e3e8241b4da42f08e12fe99632f",
+      "blend_sha256": "80a8999cc0a039eb4f5f907c38c492ec4c4ed49c22a66d44f36fbe14cb1356b2",
+      "source": "W26_44_LOGICAL_BASELINE; W26_INDEPENDENT_STATIC_44; W27_NO_NEW_TEST",
+      "scope": "OUTSIDE_CANONICAL_36",
+      "release": "HOLD"
+    },
+    {
+      "id": "W02",
+      "fbx_sha256": "7dfcf0fe84952e607a74845ad193acfbb9f4fc029e7f168a94a7bac2edacb78b",
+      "blend_sha256": "ba135eac38faa8d76f70282b8c1613013b64450a9e4f7b72368ade3df8ae4372",
+      "source": "W26_44_LOGICAL_BASELINE; W26_INDEPENDENT_STATIC_44; W27_NO_NEW_TEST",
+      "scope": "OUTSIDE_CANONICAL_36",
+      "release": "HOLD"
+    },
+    {
+      "id": "W03",
+      "fbx_sha256": "4c268d554d4e5948ea1927e29b0d32fc581a6f9f14f41fd070bf116a8eb7864c",
+      "blend_sha256": "77e1a52db293d4fc6b27b27e151c89865eb4473465bfeafefcc85935b810f9cc",
+      "source": "W26_44_LOGICAL_BASELINE; W26_INDEPENDENT_STATIC_44; W27_NO_NEW_TEST",
+      "scope": "OUTSIDE_CANONICAL_36",
+      "release": "HOLD"
+    },
+    {
+      "id": "F01",
+      "fbx_sha256": "46acac987ca3f8387472b2dc8b611cd871c90cd3e7d4773568c9005c84cb5c09",
+      "blend_sha256": "ea75f1c8b4f039b3d58569b483955b24f5d891df4f1f543180fb7af16f136525",
+      "source": "W26_44_LOGICAL_BASELINE; W26_INDEPENDENT_STATIC_44; W27_NO_NEW_TEST",
+      "scope": "OUTSIDE_CANONICAL_36",
+      "release": "HOLD"
+    },
+    {
+      "id": "F02",
+      "fbx_sha256": "229d88a2471fb27e48e62a7c81396f935b45e6ae548ce9d2540908ef63932782",
+      "blend_sha256": "073eed0c5f150a09067c9797bff6be6af90a5596ae99ed8d71359039ea5113de",
+      "source": "W26_44_LOGICAL_BASELINE; W26_INDEPENDENT_STATIC_44; W27_NO_NEW_TEST",
+      "scope": "OUTSIDE_CANONICAL_36",
+      "release": "HOLD"
+    },
+    {
+      "id": "C01",
+      "fbx_sha256": "632135269d3ac8893a273b364e23aac088c09494011d1d79dc2ca511394344e6",
+      "blend_sha256": "70715084bd5917b10916d33d5ff2224cd79878677e19e39b312b207d1cc82fb6",
+      "source": "W26_44_LOGICAL_BASELINE; W26_INDEPENDENT_STATIC_44; W27_NO_NEW_TEST",
+      "scope": "OUTSIDE_CANONICAL_36",
+      "release": "HOLD"
+    },
+    {
+      "id": "RAI-01",
+      "fbx_sha256": "f0c8fd590d7752431c869be2f9807209b7632d87a77ab619049c90f60f0ff1fe",
+      "blend_sha256": "715bd015029b6f4cfc4126b4b6e0e944cd03c2719f70ceb719d5912baa3e0e42",
+      "source": "W26_44_LOGICAL_BASELINE; W26_INDEPENDENT_STATIC_44; W27_NO_NEW_TEST",
+      "scope": "OUTSIDE_CANONICAL_36",
+      "release": "HOLD"
+    },
+    {
+      "id": "RMP-01",
+      "fbx_sha256": "3b47d12a5a32c286c9e35a8f7198c0820d7fef5e9325823a2cfabdc12559c417",
+      "blend_sha256": "9c5a262813aeeb3a875a162008f120543c8a722ddda477e7af0f813091ec2e40",
+      "source": "W26_44_LOGICAL_BASELINE; W26_INDEPENDENT_STATIC_44; W27_NO_NEW_TEST",
+      "scope": "OUTSIDE_CANONICAL_36",
+      "release": "HOLD"
+    }
+  ],
+  "independent_next_action": "C01-02 must publish exact newest BLEND+FBX tested physical result/UV/MOTION/visual evidence before C01-03 changes per-ID acceptance",
+  "unity_next_action": "C01-10 / owner Windows licensed Unity 6000.3.14f1 URP Editor; until then OWNER_ACTION_REQUIRED",
+  "no_unauthorized_merge": true
+}

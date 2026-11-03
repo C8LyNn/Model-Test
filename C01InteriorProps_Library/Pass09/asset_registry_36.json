@@ -1,0 +1,1157 @@
+{
+  "schema": "C01-ASSET-LIBRARY-PASS09-2",
+  "issue": "https://github.com/C8LyNn/Model-Test/issues/33",
+  "owner": "C01-03",
+  "previous_manifest_blob": "d033af9088fbde9d57d5682f298f16be6e67aef2",
+  "independent_QA_manifest_blob": "f5b0a927426268aaea88626964229e5da37f7eeb",
+  "source_evidence_blobs": {
+    "P18_stage1": "49167fe1d884200f242d4c78dc6667c2a79367c6",
+    "P18_latest": "17c283fd0f0c33fa76b76a7f1d150cf924eac5fd",
+    "P17_offline": "cde06b898ac6e491914f8ab43133a3cd0836f523",
+    "P19_offline": "620dc24861909a9e1b11d70863c969ecbe64e710"
+  },
+  "producer_heads": {
+    "12": "c971ee9ddad081a4b92b730ddb85fd21835f31b7",
+    "15": "a1cddd876158a457e12c9c56c8e30fc4ed2fef9c",
+    "16": "be1369816a28f1d45a0f4671f4a0d306426c26f1",
+    "17": "85732482b075bcfab68e5d660d26318dfe9c630d",
+    "18": "ecfac25934a98985eca8222060e190f8d5cecd5c",
+    "23": "fe94a5ad2deda25c25b6c3e6794bd402ed2a948f",
+    "25": "4008e725086b834b0af2f8fa471d1196703701d3",
+    "26": "bf288192f917d0fbeb0cac8d318b1a4c299cb029",
+    "28": "67b23619edb3bbe27b5102f14a98e492595f65a9",
+    "29": "c84dc1a9d7ec9ed7464cc801888e483fff424e7f"
+  },
+  "summary": {
+    "total": 36,
+    "source_changed_7": 7,
+    "real_OBJ_source_changed": 3,
+    "real_glTF_source_changed": 1,
+    "source_generator_affected_assets": 3,
+    "quarantined_offline_candidates": 6,
+    "independently_hydrated_previous_FBX": 22,
+    "preflight_export_fail": 5,
+    "final_independent_approved": 0,
+    "all_blocked": 36,
+    "new_native_Blender_saved_models": 0,
+    "new_real_binary_FBX_export_models": 0,
+    "actual_Blender_roundtrip": 0,
+    "actual_Unity_6_URP": 0,
+    "actions": "NEEDS_OWNER_ACTION"
+  },
+  "release_rule": "Actual Blender-saved revised .blend + Blender-exported binary FBX, independent current SHA C01-02 QA, actual Unity 6 URP acceptance, owner authorization; edited OBJ/glTF/Python source and offline candidates NOT approved",
+  "assets": [
+    {
+      "id": "P15-01",
+      "owner": "C01-15",
+      "producer_pr": 16,
+      "head_commit_sha": "be1369816a28f1d45a0f4671f4a0d306426c26f1",
+      "immutable_original": {
+        "blend_sha256": "9d467364e439441fe9d5b3f58c1efae3afb1ff85056b5423c93f594313f54fac",
+        "fbx_sha256": "c8a65812910af6e40177f336d4568d71abd0b29cb5816c8a65ca0943ab9b9a2d",
+        "commit": "fa337ef7e942fb21c0ff879c4813ffcfc2526d41"
+      },
+      "previous_independent_real_binary_fbx_sha256": null,
+      "previous_QA_source_class": "NO_HYDRATED_CURRENT_BINARY",
+      "editable_source_after": null,
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "NOT_RUN",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED"
+    },
+    {
+      "id": "P15-02",
+      "owner": "C01-15",
+      "producer_pr": 16,
+      "head_commit_sha": "be1369816a28f1d45a0f4671f4a0d306426c26f1",
+      "immutable_original": {
+        "blend_sha256": "1916c0cbcf20bfdc5f1a4326d35c6021aee4e8ce3ad56818b3c99c7d2258a4f0",
+        "fbx_sha256": "982f41120d2860d6d0ad7815c75850e2af4be61559f864fc0f332b8379a21c66",
+        "commit": "fa337ef7e942fb21c0ff879c4813ffcfc2526d41"
+      },
+      "previous_independent_real_binary_fbx_sha256": null,
+      "previous_QA_source_class": "NO_HYDRATED_CURRENT_BINARY",
+      "editable_source_after": null,
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "NOT_RUN",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED"
+    },
+    {
+      "id": "P15-03",
+      "owner": "C01-15",
+      "producer_pr": 16,
+      "head_commit_sha": "be1369816a28f1d45a0f4671f4a0d306426c26f1",
+      "immutable_original": {
+        "blend_sha256": "71e06ba27e7c710b0916b0a2d1dba9ae093aa9813ff9e088205cd3d85020ec28",
+        "fbx_sha256": "f693ac90278a216375ca86ff9f204545a462aa414817777695ef37d1a492a657",
+        "commit": "fa337ef7e942fb21c0ff879c4813ffcfc2526d41"
+      },
+      "previous_independent_real_binary_fbx_sha256": null,
+      "previous_QA_source_class": "NO_HYDRATED_CURRENT_BINARY",
+      "editable_source_after": null,
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "NOT_RUN",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED"
+    },
+    {
+      "id": "P15-04",
+      "owner": "C01-15",
+      "producer_pr": 25,
+      "head_commit_sha": "4008e725086b834b0af2f8fa471d1196703701d3",
+      "immutable_original": {
+        "blend_sha256": "e834db9a60091d70578eef7028ef4becb799d22f07db2eb45c4cd376a360db3c",
+        "fbx_sha256": "aa5194ac645f822b7838331439d6e092fdc3990fe5ff067e0fc3f4446b560e29",
+        "commit": "d8b38194a81fd305caa2ae9c3ecd6d22f46cf011"
+      },
+      "previous_independent_real_binary_fbx_sha256": null,
+      "previous_QA_source_class": "NO_HYDRATED_CURRENT_BINARY",
+      "editable_source_after": null,
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "NOT_RUN",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED"
+    },
+    {
+      "id": "P15-05",
+      "owner": "C01-15",
+      "producer_pr": 25,
+      "head_commit_sha": "4008e725086b834b0af2f8fa471d1196703701d3",
+      "immutable_original": {
+        "blend_sha256": "478534dce23d194e278a2a43805270bc1d4b39da58cbe99a488f5d39d72aba0b",
+        "fbx_sha256": "20788839b7deeef62312c03a90e3ff518ad9a8cc2fa7ac1318c7844fb6e79777",
+        "commit": "d8b38194a81fd305caa2ae9c3ecd6d22f46cf011"
+      },
+      "previous_independent_real_binary_fbx_sha256": null,
+      "previous_QA_source_class": "NO_HYDRATED_CURRENT_BINARY",
+      "editable_source_after": null,
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "NOT_RUN",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED"
+    },
+    {
+      "id": "P15-06",
+      "owner": "C01-15",
+      "producer_pr": 25,
+      "head_commit_sha": "4008e725086b834b0af2f8fa471d1196703701d3",
+      "immutable_original": {
+        "blend_sha256": "39ecc494434d3064247844ffa08c44d3f59378b4081f3822ccab36f2b6abfc94",
+        "fbx_sha256": "32d7f7bd1b6173f85d5bb6e993151737b3dc4fb62c8418cb933f5fd2a6d6f77c",
+        "commit": "d8b38194a81fd305caa2ae9c3ecd6d22f46cf011"
+      },
+      "previous_independent_real_binary_fbx_sha256": null,
+      "previous_QA_source_class": "NO_HYDRATED_CURRENT_BINARY",
+      "editable_source_after": null,
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "NOT_RUN",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED"
+    },
+    {
+      "id": "P15-07",
+      "owner": "C01-15",
+      "producer_pr": 25,
+      "head_commit_sha": "4008e725086b834b0af2f8fa471d1196703701d3",
+      "immutable_original": {
+        "blend_sha256": "d5d9234a298b54c74a247c629f7296a58ba1e4ec6486b77edaed10905f7f4a62",
+        "fbx_sha256": "9a814967043aedf487c24d1ded75faf3230328997f70bb320cae90b2388e5ee8",
+        "commit": "d8b38194a81fd305caa2ae9c3ecd6d22f46cf011"
+      },
+      "previous_independent_real_binary_fbx_sha256": null,
+      "previous_QA_source_class": "NO_HYDRATED_CURRENT_BINARY",
+      "editable_source_after": null,
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "NOT_RUN",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED"
+    },
+    {
+      "id": "P16-01",
+      "owner": "C01-16",
+      "producer_pr": 12,
+      "head_commit_sha": "c971ee9ddad081a4b92b730ddb85fd21835f31b7",
+      "immutable_original": {
+        "blend_sha256": null,
+        "fbx_sha256": "8a3453701d7e1d9c0739f8dc0190e33e206a34bdcac76e6d3d33c4e5d9bb5158",
+        "commit": "054d84731737698fbdbdee2d387c4fff1b2a6673"
+      },
+      "previous_independent_real_binary_fbx_sha256": null,
+      "previous_QA_source_class": "NO_HYDRATED_CURRENT_BINARY",
+      "editable_source_after": null,
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "NOT_RUN",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED"
+    },
+    {
+      "id": "P16-02",
+      "owner": "C01-16",
+      "producer_pr": 12,
+      "head_commit_sha": "c971ee9ddad081a4b92b730ddb85fd21835f31b7",
+      "immutable_original": {
+        "blend_sha256": null,
+        "fbx_sha256": "30dd6bb3ac4a5333b271efa16f83c27a124ce2ea5cbd5d52d14a203cd022b80f",
+        "commit": "054d84731737698fbdbdee2d387c4fff1b2a6673"
+      },
+      "previous_independent_real_binary_fbx_sha256": null,
+      "previous_QA_source_class": "NO_HYDRATED_CURRENT_BINARY",
+      "editable_source_after": null,
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "NOT_RUN",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED"
+    },
+    {
+      "id": "P16-03",
+      "owner": "C01-16",
+      "producer_pr": 12,
+      "head_commit_sha": "c971ee9ddad081a4b92b730ddb85fd21835f31b7",
+      "immutable_original": {
+        "blend_sha256": null,
+        "fbx_sha256": "f9e6866a94f1b6097da0a8fb4051f92580213df620554f781c5b5660bfa2f6e0",
+        "commit": "054d84731737698fbdbdee2d387c4fff1b2a6673"
+      },
+      "previous_independent_real_binary_fbx_sha256": null,
+      "previous_QA_source_class": "NO_HYDRATED_CURRENT_BINARY",
+      "editable_source_after": null,
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "NOT_RUN",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED"
+    },
+    {
+      "id": "P16-04",
+      "owner": "C01-16",
+      "producer_pr": 28,
+      "head_commit_sha": "67b23619edb3bbe27b5102f14a98e492595f65a9",
+      "immutable_original": {
+        "blend_sha256": null,
+        "fbx_sha256": "6961a40396d4417b78498b49070ea9864903744bcf69f30037aba00c13a9bdb1",
+        "commit": "78f9bd55af8c16dbe72d01b9b2a13279499eaacb"
+      },
+      "previous_independent_real_binary_fbx_sha256": null,
+      "previous_QA_source_class": "NO_HYDRATED_CURRENT_BINARY",
+      "editable_source_after": null,
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "NOT_RUN",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED"
+    },
+    {
+      "id": "P16-05",
+      "owner": "C01-16",
+      "producer_pr": 28,
+      "head_commit_sha": "67b23619edb3bbe27b5102f14a98e492595f65a9",
+      "immutable_original": {
+        "blend_sha256": null,
+        "fbx_sha256": "a173ef91b8376768ddb8d45505018af60e30fef6f1e5a7ffca976b2a2df2fe95",
+        "commit": "78f9bd55af8c16dbe72d01b9b2a13279499eaacb"
+      },
+      "previous_independent_real_binary_fbx_sha256": null,
+      "previous_QA_source_class": "NO_HYDRATED_CURRENT_BINARY",
+      "editable_source_after": null,
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "NOT_RUN",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED"
+    },
+    {
+      "id": "P16-06",
+      "owner": "C01-16",
+      "producer_pr": 28,
+      "head_commit_sha": "67b23619edb3bbe27b5102f14a98e492595f65a9",
+      "immutable_original": {
+        "blend_sha256": null,
+        "fbx_sha256": "15ee8ed8576e31433c6342ff587b1eaa7878c56af13143ebfdf06ac4a8772f19",
+        "commit": "78f9bd55af8c16dbe72d01b9b2a13279499eaacb"
+      },
+      "previous_independent_real_binary_fbx_sha256": null,
+      "previous_QA_source_class": "NO_HYDRATED_CURRENT_BINARY",
+      "editable_source_after": null,
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "NOT_RUN",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED"
+    },
+    {
+      "id": "P16-07",
+      "owner": "C01-16",
+      "producer_pr": 28,
+      "head_commit_sha": "67b23619edb3bbe27b5102f14a98e492595f65a9",
+      "immutable_original": {
+        "blend_sha256": null,
+        "fbx_sha256": "2ee60ac814b270b174d6b8941fdff4b4a83157653d896bde5ecbbe4f97af6fe9",
+        "commit": "78f9bd55af8c16dbe72d01b9b2a13279499eaacb"
+      },
+      "previous_independent_real_binary_fbx_sha256": null,
+      "previous_QA_source_class": "NO_HYDRATED_CURRENT_BINARY",
+      "editable_source_after": null,
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "NOT_RUN",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED"
+    },
+    {
+      "id": "P17-01",
+      "owner": "C01-17",
+      "producer_pr": 17,
+      "head_commit_sha": "85732482b075bcfab68e5d660d26318dfe9c630d",
+      "immutable_original": {
+        "blend_sha256": "24e488fb85fbb70ba8b14c5144a5bf8d95ab9da1b4dc193b1e47d6ccb8ff19f4",
+        "fbx_sha256": "6d4f9646a5711b97fb6f601ca0e57f7e222bb0231aaaa483ee5896a89f67c933",
+        "commit": "e3b7f2fac2be98f3b450aeb2ec2ac9f050e4e206"
+      },
+      "previous_independent_real_binary_fbx_sha256": "fca67dad3e35e7070575c7d7d141fab3e6756eecb0d618d325ec36266eca2772",
+      "previous_QA_source_class": "PINNED_PASS03_ACTIONS_ARTIFACT",
+      "editable_source_after": null,
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "PASS",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED"
+    },
+    {
+      "id": "P17-02",
+      "owner": "C01-17",
+      "producer_pr": 17,
+      "head_commit_sha": "85732482b075bcfab68e5d660d26318dfe9c630d",
+      "immutable_original": {
+        "blend_sha256": "f1522097191dc4af727fcef9da0208547f106e34fd4843d9437f46f144d9983e",
+        "fbx_sha256": "b6c3d875baf025b3a51dfdcbe0ebb89b1376b81f5da25f0d402cb84e7480bced",
+        "commit": "e3b7f2fac2be98f3b450aeb2ec2ac9f050e4e206"
+      },
+      "previous_independent_real_binary_fbx_sha256": "af858385a0abae9c623ee4002bcf22bcbc401b5687024acd8df142eb1b848147",
+      "previous_QA_source_class": "PINNED_PASS03_ACTIONS_ARTIFACT",
+      "editable_source_after": null,
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "PASS",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED"
+    },
+    {
+      "id": "P17-03",
+      "owner": "C01-17",
+      "producer_pr": 17,
+      "head_commit_sha": "85732482b075bcfab68e5d660d26318dfe9c630d",
+      "immutable_original": {
+        "blend_sha256": "e9166617f6b194afbab01a59f4c2f13eccd1d62c2b9f058bfe989132a98667a3",
+        "fbx_sha256": "d307c04dd37792d1c69404124eb532617dfd86540dd029696edfbd5159180f3f",
+        "commit": "e3b7f2fac2be98f3b450aeb2ec2ac9f050e4e206"
+      },
+      "previous_independent_real_binary_fbx_sha256": "749c0a6e3df59e927fc448e01ae233504b46d0caed1d6ecd1768be8c926a412c",
+      "previous_QA_source_class": "PINNED_PASS03_ACTIONS_ARTIFACT",
+      "editable_source_after": null,
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "PASS",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED"
+    },
+    {
+      "id": "P17-04",
+      "owner": "C01-17",
+      "producer_pr": 23,
+      "head_commit_sha": "fe94a5ad2deda25c25b6c3e6794bd402ed2a948f",
+      "immutable_original": {
+        "blend_sha256": "deec97aa786e3f2e6ce4f1f1eaaeb034da52bb9c3b8d8163e9836e50304f96f3",
+        "fbx_sha256": "0b58f14caa2f6a4151430fd4457607061f6e5ad3a31978073f87e2301cb264c8",
+        "commit": "f7bf7dd93bc6dc60189b7a652cb375e962e61328"
+      },
+      "previous_independent_real_binary_fbx_sha256": "093be5df6e600764528c68368441e5c83a2cc020def2f5e4b03c99cbc659b968",
+      "previous_QA_source_class": "PINNED_PASS03_ACTIONS_ARTIFACT",
+      "editable_source_after": null,
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "PASS",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED"
+    },
+    {
+      "id": "P17-05",
+      "owner": "C01-17",
+      "producer_pr": 23,
+      "head_commit_sha": "fe94a5ad2deda25c25b6c3e6794bd402ed2a948f",
+      "immutable_original": {
+        "blend_sha256": "6b85a1e6b81b0aaf790cce83560658f4970062f853ed59337749c29993b427a3",
+        "fbx_sha256": "b2ff6601d45e936ede795696e53aaf88c4805e4519222f59ecef86f720df73ac",
+        "commit": "f7bf7dd93bc6dc60189b7a652cb375e962e61328"
+      },
+      "previous_independent_real_binary_fbx_sha256": "3fa314481f87d66f9a878936028b809cd78440d781146a058594e28f3f4e1740",
+      "previous_QA_source_class": "PINNED_PASS03_ACTIONS_ARTIFACT",
+      "editable_source_after": {
+        "type": "GLTF_EDIT",
+        "path": "Assets/C01InteriorProps/W02/Models/P17-05.gltf",
+        "sha256": "cc4b0e9a7b7a78c461baca467f0ca433b81c0c60d14895531af9ddf556371378",
+        "git_blob": "abb88f40afa5502130fad4bb2f1f9abb46fe3ac8",
+        "producer_commit": "fe94a5ad2deda25c25b6c3e6794bd402ed2a948f",
+        "edit": "LowerDisplayRail Z 0.120→0.121m; actual JSON source changed; not reexported"
+      },
+      "offline_candidate": {
+        "kind": "OFFLINE_BINARY_FIELD_PATCH_NOT_BLENDER_SAVED",
+        "blend_sha256": "16ad0dffa17f5918e64b009086d16efc7c998703b14f2d43f6fa258bb084d440",
+        "fbx_sha256": "c2b8f049de4e84697980e53d0f443a77b19ce930ea6b159a10fb5b3df8695c71",
+        "source_report_blob_sha1": "cde06b898ac6e491914f8ab43133a3cd0836f523",
+        "can_promote": false
+      },
+      "qa": {
+        "real_fbx_static": "PASS",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED"
+    },
+    {
+      "id": "P17-06",
+      "owner": "C01-17",
+      "producer_pr": 23,
+      "head_commit_sha": "fe94a5ad2deda25c25b6c3e6794bd402ed2a948f",
+      "immutable_original": {
+        "blend_sha256": "38f62e537827182911285e70d3906ee907c105cb8313b6fb6e87713d7e00780e",
+        "fbx_sha256": "13c0922b4d2999a5e980aa31c74f27921061a3795c256e840222f5ac5028b472",
+        "commit": "f7bf7dd93bc6dc60189b7a652cb375e962e61328"
+      },
+      "previous_independent_real_binary_fbx_sha256": "d9fcaf1a5b0f77ef375b96bdbf17d9a4731156c13880a26647aa481ee59723fb",
+      "previous_QA_source_class": "PINNED_PASS03_ACTIONS_ARTIFACT",
+      "editable_source_after": null,
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "PASS",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED"
+    },
+    {
+      "id": "P17-07",
+      "owner": "C01-17",
+      "producer_pr": 23,
+      "head_commit_sha": "fe94a5ad2deda25c25b6c3e6794bd402ed2a948f",
+      "immutable_original": {
+        "blend_sha256": "d46758573f8bcd0dad8f267d62475516bcbbe9c9ee30bbc86756050b24ee668e",
+        "fbx_sha256": "12dc7c6cdde19792feaf6bfd8d9ef2f6aa80bb9848df424dccf0ab6f67ed46ea",
+        "commit": "f7bf7dd93bc6dc60189b7a652cb375e962e61328"
+      },
+      "previous_independent_real_binary_fbx_sha256": "c9e4b221c96ddb9ecd137946ec6043a6c11af21934ad21699c5dedfa1b750285",
+      "previous_QA_source_class": "PINNED_PASS03_ACTIONS_ARTIFACT",
+      "editable_source_after": null,
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "PASS",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED"
+    },
+    {
+      "id": "P18-01",
+      "owner": "C01-18",
+      "producer_pr": 18,
+      "head_commit_sha": "ecfac25934a98985eca8222060e190f8d5cecd5c",
+      "immutable_original": {
+        "blend_sha256": "d9e3037b754edd952473170ec0924b4849eec1aa2afc193c2151c9bf079b3a42",
+        "fbx_sha256": "0cb6d656008cbdedbc30ef0dca3fe5003136035b87a54b9668b49c35b19b974b",
+        "commit": "bfe7d5d8a6aac11b563a9c2b84c9fcf4d67bdcd5"
+      },
+      "previous_independent_real_binary_fbx_sha256": "84851387b58aeadc7f2ace49201077d847cfd294f82acfb2d0a7dce3e471a939",
+      "previous_QA_source_class": "PINNED_PASS03_ACTIONS_ARTIFACT",
+      "editable_source_after": {
+        "type": "OBJ_QUAD_PLUS_PART_GAP_FIX",
+        "path": "Assets/C01InteriorProps/C01-18/Models/P18-01.obj",
+        "sha256": "e7eae0ca915d265d8f41676b3e6d390de5396e4eaa9ef72ded0d5ad8d92a0283",
+        "git_blob": "c6178ec0fe38d582eacddab4c342085f2a88afe1",
+        "producer_commit": "ecfac25934a98985eca8222060e190f8d5cecd5c",
+        "version_history": [
+          {
+            "sha256": "b7fa124373546348de4bf4aa6b147c0157970a585fa75fb8142ff3c6d70c5f38",
+            "stage": "ORIGINAL_TRIANGLES"
+          },
+          {
+            "sha256": "4d11ae70dfa0fb7ae0e2084e86d684d49fa6921f694db1db9eff8a9b7225fe8b",
+            "stage": "PLANAR_QUADS"
+          },
+          {
+            "sha256": "e7eae0ca915d265d8f41676b3e6d390de5396e4eaa9ef72ded0d5ad8d92a0283",
+            "stage": "TARGETED_VERTEX_SOURCE_FIX"
+          }
+        ],
+        "metrics": {
+          "vertices": 120,
+          "faces": 90,
+          "triangles": 180,
+          "changed_vertices": 32
+        },
+        "edit": "Existing corner/lip geometry selectively offset; actual UV and face indices preserved; native BLEND/FBX not re-exported"
+      },
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "PASS",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED"
+    },
+    {
+      "id": "P18-02",
+      "owner": "C01-18",
+      "producer_pr": 18,
+      "head_commit_sha": "ecfac25934a98985eca8222060e190f8d5cecd5c",
+      "immutable_original": {
+        "blend_sha256": "2e84ca8c96b1cd1b9e1a93bf8600e556ca2b772b38d5bc94bc68614c4f1ffdb3",
+        "fbx_sha256": "45d40d65356808212812e10084d2f0df232e6922e9117e381baa9f4010875894",
+        "commit": "bfe7d5d8a6aac11b563a9c2b84c9fcf4d67bdcd5"
+      },
+      "previous_independent_real_binary_fbx_sha256": "5ba3faf85a3ea57f755eeb51d0db832c1ce37aa64721d710a22db509f2c6d03f",
+      "previous_QA_source_class": "PINNED_PASS03_ACTIONS_ARTIFACT",
+      "editable_source_after": {
+        "type": "OBJ_QUAD_PLUS_PART_GAP_FIX",
+        "path": "Assets/C01InteriorProps/C01-18/Models/P18-02.obj",
+        "sha256": "d8623bb0fe51388fe25ead63703b0868dac2549c32b14cb20f1757aa41e541a2",
+        "git_blob": "ec17212a2d60d1b39216c869b0a9706defa76c4d",
+        "producer_commit": "ecfac25934a98985eca8222060e190f8d5cecd5c",
+        "version_history": [
+          {
+            "sha256": "d58bd4b7f80e3a1c90c004d5727b82f955734b4b0d7cbd2521c2e3689370d8c6",
+            "stage": "ORIGINAL_TRIANGLES"
+          },
+          {
+            "sha256": "12f1e8150104c4ce89fecfa1af349933a44ac1e8bef833e9a1a30b4284c51559",
+            "stage": "PLANAR_QUADS"
+          },
+          {
+            "sha256": "d8623bb0fe51388fe25ead63703b0868dac2549c32b14cb20f1757aa41e541a2",
+            "stage": "TARGETED_VERTEX_SOURCE_FIX"
+          }
+        ],
+        "metrics": {
+          "vertices": 136,
+          "faces": 102,
+          "triangles": 204,
+          "changed_vertices": 48
+        },
+        "edit": "Existing corner/lip geometry selectively offset; actual UV and face indices preserved; native BLEND/FBX not re-exported"
+      },
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "PASS",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED"
+    },
+    {
+      "id": "P18-03",
+      "owner": "C01-18",
+      "producer_pr": 18,
+      "head_commit_sha": "ecfac25934a98985eca8222060e190f8d5cecd5c",
+      "immutable_original": {
+        "blend_sha256": "a33b23ad173f56a545aa57ae2d81e24afa27928f497835596350e06772e343fc",
+        "fbx_sha256": "8957641fd68260852f29fc2aaf8019682e07dd99470f1c441db57837347d7619",
+        "commit": "bfe7d5d8a6aac11b563a9c2b84c9fcf4d67bdcd5"
+      },
+      "previous_independent_real_binary_fbx_sha256": "639fc09c39b804b9bf83de75a4096cdefe1229f58549662ee777537c19c5e165",
+      "previous_QA_source_class": "PINNED_PASS03_ACTIONS_ARTIFACT",
+      "editable_source_after": {
+        "type": "OBJ_QUAD_CLEANUP",
+        "path": "Assets/C01InteriorProps/C01-18/Models/P18-03.obj",
+        "sha256": "4565e7f3c38c154a28b8494c163619bbfa0883371dfe66515b6ee36d66743ef8",
+        "git_blob": "901959fa24658c9beb1439fc06805f3feb8aa069",
+        "producer_commit": "ecfac25934a98985eca8222060e190f8d5cecd5c",
+        "version_history": [
+          {
+            "sha256": "bbea81996da5eec81dcef72ac9b38a4df1d40c46c80d04f0570aac5aa8d97c50",
+            "stage": "ORIGINAL_TRIANGLES"
+          },
+          {
+            "sha256": "4565e7f3c38c154a28b8494c163619bbfa0883371dfe66515b6ee36d66743ef8",
+            "stage": "PLANAR_QUADS"
+          }
+        ],
+        "metrics": {
+          "vertices": 208,
+          "faces": 270,
+          "triangles": 348,
+          "quads": 78
+        },
+        "edit": "Exact triangulation-equivalent quad authored source, native BLEND/FBX not re-exported"
+      },
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "PASS",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED"
+    },
+    {
+      "id": "P18-04",
+      "owner": "C01-18",
+      "producer_pr": 26,
+      "head_commit_sha": "bf288192f917d0fbeb0cac8d318b1a4c299cb029",
+      "immutable_original": {
+        "blend_sha256": "4a0531a877df0cbbcc2078b02297efccd966611e736bf70480a7572c6602ec52",
+        "fbx_sha256": "97298f0b49058f84eb2b746f8ac50af73f056f8bea43f11dde24fe9e550d1742",
+        "commit": "e2fdde1c213ecb65b3ca1800c635e41e939e90e2"
+      },
+      "previous_independent_real_binary_fbx_sha256": "233253cea4a872052ef87c33f79c08794885dacac4caadf276e95701d0a70803",
+      "previous_QA_source_class": "PINNED_PASS03_ACTIONS_ARTIFACT",
+      "editable_source_after": null,
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "PASS_WITH_NGONS",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED"
+    },
+    {
+      "id": "P18-05",
+      "owner": "C01-18",
+      "producer_pr": 26,
+      "head_commit_sha": "bf288192f917d0fbeb0cac8d318b1a4c299cb029",
+      "immutable_original": {
+        "blend_sha256": "495260c299fa9afea63516549d50bcf3a581e1f3735409602e56859b41d23c5e",
+        "fbx_sha256": "2f4dbc8e7077e15b12f37f9fca64a0bc08e3ebde05776e602542e6efb648295e",
+        "commit": "e2fdde1c213ecb65b3ca1800c635e41e939e90e2"
+      },
+      "previous_independent_real_binary_fbx_sha256": "58e33516ead13e35e8a48228045c67bd53d6caf8de01883a11625fa2961957e5",
+      "previous_QA_source_class": "PINNED_PASS03_ACTIONS_ARTIFACT",
+      "editable_source_after": {
+        "type": "BLENDER_PYTHON_PRODUCER_SOURCE",
+        "path": "Assets/C01InteriorProps/C01-18-Wave02/Sources/build_wave02.py",
+        "sha256": "430766db66a207034e2997fb29834d6947056ed1f7b43dfa6aefd6135d83b564",
+        "git_blob": "e78c6021a6b753c6d506176190ddcf0ac7adfc04",
+        "producer_commit": "bf288192f917d0fbeb0cac8d318b1a4c299cb029",
+        "edit": "Producer box bounds synchronised to old actual native FBX reference; NOT new .blend/FBX export",
+        "source_sync_to_old_binary": true
+      },
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "PASS_WITH_NGONS",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED"
+    },
+    {
+      "id": "P18-06",
+      "owner": "C01-18",
+      "producer_pr": 26,
+      "head_commit_sha": "bf288192f917d0fbeb0cac8d318b1a4c299cb029",
+      "immutable_original": {
+        "blend_sha256": "b6819748f8ae88c21e0c93bee4dfdb00badb4ec78898b65e52eec4e9cce9aef8",
+        "fbx_sha256": "3bb79ebca800dd175aba71e02a9628db328da009abcd0414c43e4040dbc6d36f",
+        "commit": "e2fdde1c213ecb65b3ca1800c635e41e939e90e2"
+      },
+      "previous_independent_real_binary_fbx_sha256": "e83be5fac79ba0d4baf57f9a4c6050a978383da4f3bd95d046b38462fbabb220",
+      "previous_QA_source_class": "PINNED_PASS03_ACTIONS_ARTIFACT",
+      "editable_source_after": {
+        "type": "BLENDER_PYTHON_PRODUCER_SOURCE",
+        "path": "Assets/C01InteriorProps/C01-18-Wave02/Sources/build_wave02.py",
+        "sha256": "430766db66a207034e2997fb29834d6947056ed1f7b43dfa6aefd6135d83b564",
+        "git_blob": "e78c6021a6b753c6d506176190ddcf0ac7adfc04",
+        "producer_commit": "bf288192f917d0fbeb0cac8d318b1a4c299cb029",
+        "edit": "Producer box bounds synchronised to old actual native FBX reference; NOT new .blend/FBX export",
+        "source_sync_to_old_binary": true
+      },
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "PASS_WITH_NGONS",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED"
+    },
+    {
+      "id": "P18-07",
+      "owner": "C01-18",
+      "producer_pr": 26,
+      "head_commit_sha": "bf288192f917d0fbeb0cac8d318b1a4c299cb029",
+      "immutable_original": {
+        "blend_sha256": "f0fabddd21df84c49eba175522bbe17eeba389555dde7ffef39a7726cbd985c5",
+        "fbx_sha256": "68fb04e6572cfa54866a0a9bd7fb6da11d44408d7a946b26cb4cc78b9bc96873",
+        "commit": "e2fdde1c213ecb65b3ca1800c635e41e939e90e2"
+      },
+      "previous_independent_real_binary_fbx_sha256": "56c19c7ea12fe2713ae30b72ecf8771613f794d4a2e8c4da18c41cb9dd825e08",
+      "previous_QA_source_class": "PINNED_PASS03_ACTIONS_ARTIFACT",
+      "editable_source_after": {
+        "type": "BLENDER_PYTHON_PRODUCER_SOURCE",
+        "path": "Assets/C01InteriorProps/C01-18-Wave02/Sources/build_wave02.py",
+        "sha256": "430766db66a207034e2997fb29834d6947056ed1f7b43dfa6aefd6135d83b564",
+        "git_blob": "e78c6021a6b753c6d506176190ddcf0ac7adfc04",
+        "producer_commit": "bf288192f917d0fbeb0cac8d318b1a4c299cb029",
+        "edit": "Front_Lock moved +1mm from 0.164 to 0.165m, overlapping visible planes separated",
+        "source_sync_to_old_binary": false
+      },
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "PASS_WITH_NGONS",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED"
+    },
+    {
+      "id": "P19-01",
+      "owner": "C01-19",
+      "producer_pr": 15,
+      "head_commit_sha": "a1cddd876158a457e12c9c56c8e30fc4ed2fef9c",
+      "immutable_original": {
+        "blend_sha256": "a504773f8348e5f2b9619cf4fc3d0664d4e354b237dd0159dce8486bdc35bd22",
+        "fbx_sha256": "1670b2c7566539de49d70d4222bdc4c04ef947607d1abe05ac70f783a82f0581",
+        "commit": "9ae76a717eb5edeb5edcd3f5e27d8696f5d715ed"
+      },
+      "previous_independent_real_binary_fbx_sha256": "47b4d6f2017626b6084584fbf0bad907505eb9e194703032d83af5315c1a4009",
+      "previous_QA_source_class": "PINNED_PASS03_ACTIONS_ARTIFACT",
+      "editable_source_after": null,
+      "offline_candidate": {
+        "kind": "OFFLINE_FBX_POLYGON_REPAIR_NOT_BLENDER_SAVED",
+        "blend_sha256": null,
+        "fbx_sha256": "9dc4d6b724c4a5a4b45a04412dc5a61fe732fa1b4423a9f0c27889053960163b",
+        "source_report_blob_sha1": "620dc24861909a9e1b11d70863c969ecbe64e710",
+        "can_promote": false
+      },
+      "qa": {
+        "real_fbx_static": "FAIL_EXPORT_PREFLIGHT",
+        "independent_final": "FAIL_PREFLIGHT",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED"
+    },
+    {
+      "id": "P19-02",
+      "owner": "C01-19",
+      "producer_pr": 15,
+      "head_commit_sha": "a1cddd876158a457e12c9c56c8e30fc4ed2fef9c",
+      "immutable_original": {
+        "blend_sha256": "3c3ef13129b7fbf598f4ece35a76ee3068fa26fee464937baffbefb66fb19b80",
+        "fbx_sha256": "9612c4488ed147ad7359f9809009739ea317e22959c3871856757fe88dacc6d5",
+        "commit": "9ae76a717eb5edeb5edcd3f5e27d8696f5d715ed"
+      },
+      "previous_independent_real_binary_fbx_sha256": "a42a57d168164cea335de3c9ee175a3074edca4a48b707a14beadbea16a8b6d8",
+      "previous_QA_source_class": "PINNED_PASS03_ACTIONS_ARTIFACT",
+      "editable_source_after": null,
+      "offline_candidate": {
+        "kind": "PASS05_OFFLINE_TRIANGULATED_FBX_NOT_BLENDER_SAVED",
+        "blend_sha256": null,
+        "fbx_sha256": "8371d9bacedb1dec4ed9edb038e14b76f62dc1fe4eadba801d318ccbbce11837",
+        "can_promote": false
+      },
+      "qa": {
+        "real_fbx_static": "FAIL_EXPORT_PREFLIGHT",
+        "independent_final": "FAIL_PREFLIGHT",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED"
+    },
+    {
+      "id": "P19-03",
+      "owner": "C01-19",
+      "producer_pr": 15,
+      "head_commit_sha": "a1cddd876158a457e12c9c56c8e30fc4ed2fef9c",
+      "immutable_original": {
+        "blend_sha256": "5c3422e71ee66f0260a3ea986d74ada6267ed7ee7f0cac446c31dc7586dd6455",
+        "fbx_sha256": "ee6f0d38e281d534af62902bc47fd89267e0c39b9e49b4ef6f35af71a6f2abb8",
+        "commit": "9ae76a717eb5edeb5edcd3f5e27d8696f5d715ed"
+      },
+      "previous_independent_real_binary_fbx_sha256": "872688775a1f373090867a466b21be441d8962b16b2a47703cc50c12220f1891",
+      "previous_QA_source_class": "PINNED_PASS03_ACTIONS_ARTIFACT",
+      "editable_source_after": null,
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "PASS_WITH_NGONS",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED"
+    },
+    {
+      "id": "P19-04",
+      "owner": "C01-19",
+      "producer_pr": 15,
+      "head_commit_sha": "a1cddd876158a457e12c9c56c8e30fc4ed2fef9c",
+      "immutable_original": {
+        "blend_sha256": "d58dc1905055b6d25888e0ccaeaa3e61b1b6a4757ba58976f31ab10665c2287d",
+        "fbx_sha256": "74ee2044132b47e995f537b2850e150711e8cb8ee47fcbbde38f42ed16808592",
+        "commit": "9ae76a717eb5edeb5edcd3f5e27d8696f5d715ed"
+      },
+      "previous_independent_real_binary_fbx_sha256": "529c1886bf8d727699db72578f01da9f6226981e02738a1b9fcd24ade489bc9b",
+      "previous_QA_source_class": "PINNED_PASS03_ACTIONS_ARTIFACT",
+      "editable_source_after": null,
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "PASS_WITH_NGONS",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED"
+    },
+    {
+      "id": "P19-05",
+      "owner": "C01-19",
+      "producer_pr": 29,
+      "head_commit_sha": "c84dc1a9d7ec9ed7464cc801888e483fff424e7f",
+      "immutable_original": {
+        "blend_sha256": "a7c50a8ea1f41a7e590b1af7bf1dae83a49e0d049dcd7270cbe02690a88b3d8c",
+        "fbx_sha256": "e591b1d228ab2224109cc2bd79db411428c2b2d38846b45f595db4af8d377ba2",
+        "commit": "cae85cce223418d77a0334a48e5fbdc7984a688b"
+      },
+      "previous_independent_real_binary_fbx_sha256": "64156363cb5007831c243aeea50d5e59c862cc98b27cb12dd2f8af5b3c019892",
+      "previous_QA_source_class": "PINNED_PASS03_ACTIONS_ARTIFACT",
+      "editable_source_after": null,
+      "offline_candidate": {
+        "kind": "PASS05_OFFLINE_TRIANGULATED_FBX_NOT_BLENDER_SAVED",
+        "blend_sha256": null,
+        "fbx_sha256": "7b04a8b2f9fb7306b1e169f18bba25a322dd4ba726decbe1ecb69d5994f6f1b1",
+        "can_promote": false
+      },
+      "qa": {
+        "real_fbx_static": "FAIL_EXPORT_PREFLIGHT",
+        "independent_final": "FAIL_PREFLIGHT",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED"
+    },
+    {
+      "id": "P19-06",
+      "owner": "C01-19",
+      "producer_pr": 29,
+      "head_commit_sha": "c84dc1a9d7ec9ed7464cc801888e483fff424e7f",
+      "immutable_original": {
+        "blend_sha256": "2fe00dd31c76da2fa7f82a3c8107d7802c106026e26d62ded6bef23d4b4d9dab",
+        "fbx_sha256": "9644a9e123696cd271649c62481bbbff150eb0734079a7a62af090d4f490a469",
+        "commit": "cae85cce223418d77a0334a48e5fbdc7984a688b"
+      },
+      "previous_independent_real_binary_fbx_sha256": "d773f2d3c0fe9743a0ad619353766b669386997769eb8a59487b58295c7c3a7d",
+      "previous_QA_source_class": "PINNED_PASS03_ACTIONS_ARTIFACT",
+      "editable_source_after": null,
+      "offline_candidate": null,
+      "qa": {
+        "real_fbx_static": "PASS_WITH_NGONS",
+        "independent_final": "BLOCKED",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED"
+    },
+    {
+      "id": "P19-07",
+      "owner": "C01-19",
+      "producer_pr": 29,
+      "head_commit_sha": "c84dc1a9d7ec9ed7464cc801888e483fff424e7f",
+      "immutable_original": {
+        "blend_sha256": "8d99c6286c6e28182742e69293eb393dc30c6abe9bb50fa77dee3a77fae9928a",
+        "fbx_sha256": "2c180a3607c49b43c48a14e4cf58f2b825f44b56e2e86cc02b17e6d96d6c8d43",
+        "commit": "cae85cce223418d77a0334a48e5fbdc7984a688b"
+      },
+      "previous_independent_real_binary_fbx_sha256": "88b32fe2f5ddf981eecdc0469088f4e23e07c4c605a1db7bb9689a0b6011d585",
+      "previous_QA_source_class": "PINNED_PASS03_ACTIONS_ARTIFACT",
+      "editable_source_after": null,
+      "offline_candidate": {
+        "kind": "PASS05_OFFLINE_TRIANGULATED_FBX_NOT_BLENDER_SAVED",
+        "blend_sha256": null,
+        "fbx_sha256": "d9e832d4df2623b70842209944c1615d7aba7af6f042e16bf7720b4a95e9a3e1",
+        "can_promote": false
+      },
+      "qa": {
+        "real_fbx_static": "FAIL_EXPORT_PREFLIGHT",
+        "independent_final": "FAIL_PREFLIGHT",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED"
+    },
+    {
+      "id": "P19-08",
+      "owner": "C01-19",
+      "producer_pr": 29,
+      "head_commit_sha": "c84dc1a9d7ec9ed7464cc801888e483fff424e7f",
+      "immutable_original": {
+        "blend_sha256": "5b00c434831ef27f87e03b7716916b31893f8eb4f8733b7c95cc543510a27ce9",
+        "fbx_sha256": "65bc32a8f280941b24e8070a706e5733b30fde25d042f4cdd4398022e2edaf44",
+        "commit": "cae85cce223418d77a0334a48e5fbdc7984a688b"
+      },
+      "previous_independent_real_binary_fbx_sha256": "cbbea5435f8326e06fb5f43237986594df044c0e3ff94100fc44f856dce35ae2",
+      "previous_QA_source_class": "PINNED_PASS03_ACTIONS_ARTIFACT",
+      "editable_source_after": null,
+      "offline_candidate": {
+        "kind": "PASS05_OFFLINE_TRIANGULATED_FBX_NOT_BLENDER_SAVED",
+        "blend_sha256": null,
+        "fbx_sha256": "c740c5de71443f2b01f20cb48f76f37e61fda53ddfd5c5a9d7d263d511772e11",
+        "can_promote": false
+      },
+      "qa": {
+        "real_fbx_static": "FAIL_EXPORT_PREFLIGHT",
+        "independent_final": "FAIL_PREFLIGHT",
+        "blender_runtime": "NOT_RUN",
+        "unity": "NOT_RUN",
+        "signed_new_binary_sha256": null
+      },
+      "new_real_blender_saved_sha256": null,
+      "new_real_blender_fbx_sha256": null,
+      "blender_roundtrip": "NOT_RUN",
+      "unity6": "NOT_RUN",
+      "release": "BLOCKED"
+    }
+  ]
+}

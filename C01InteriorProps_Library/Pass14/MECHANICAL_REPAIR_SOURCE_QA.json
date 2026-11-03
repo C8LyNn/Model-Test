@@ -1,0 +1,118 @@
+{
+  "schema": "C01-03-DETAIL-PASS14-AUTHENTIC-OBJ-GLTF-MECHANICAL-SOURCE-QA",
+  "task": "https://github.com/C8LyNn/Model-Test/issues/36",
+  "scope": "Existing model IDs only, source data from immutable GitHub refs; NOT native Blender or Unity execution.",
+  "refs": {
+    "p18_commit": "996b8e8f8deb86e2a59f1468fb8b318a7815cfa7",
+    "p18_latest_producer_report_commit": "681fc52d2159ac774abf1f48efd7b89965d1afe8",
+    "p17": "cdcc18428d2fb52c2c60826fc8af9a70f51c82f9",
+    "qa": "1be36b4f4f55825ef15620483514a1d27cf6577b"
+  },
+  "independent_obj_source_QA": {
+    "P18-01": {
+      "source_path": "Assets/C01InteriorProps/C01-18/Models/P18-01.obj",
+      "git_blob_sha1": "051ab09222a354f1c64f7c682442529b6f4d54ee",
+      "source_SHA256": "6d1cbedba52d975594c4d1c4c1addcf14f752ee7118a521a3e63c880e8044b06",
+      "original_disconnected": [
+        "Lower_Rim"
+      ],
+      "before_gap_mm": 10,
+      "after_positive_overlap_mm": 2,
+      "positive_broadphase_disconnected_part_count": 0,
+      "original_eight_trim_backer_same_facing_coplanar_area_m2": 0.002496,
+      "after_eight_trim_backer_same_facing_coplanar_area_m2": 0,
+      "after_hits_from_true_triangles": 0,
+      "source_geometry_indexed_QA": "PASS"
+    },
+    "P18-02": {
+      "source_path": "Assets/C01InteriorProps/C01-18/Models/P18-02.obj",
+      "git_blob_sha1": "349fd2307eca8d2334cb8c8cbeb5f43ff9408d4b",
+      "source_SHA256": "dc9434a32b7de2235d80a374cc04778b657e39c8f98d88b288bdad40fbf6af2c",
+      "original_disconnected": [
+        "Back_Support_0.6",
+        "Back_Support_1.48"
+      ],
+      "before_gap_mm_each": 30,
+      "after_post_positive_overlap_mm_each": 5,
+      "positive_broadphase_disconnected_part_count": 0,
+      "source_geometry_indexed_QA": "PASS"
+    },
+    "P18-03": {
+      "source_path": "Assets/C01InteriorProps/C01-18/Models/P18-03.obj",
+      "git_blob_sha1": "e6440810d917df3c978505ce79f084ba1f98086c",
+      "source_SHA256": "22513002afb38d2d3f4a13ef429a41c9a04928528b3cffef87613d51351c1901",
+      "original_disconnected": [
+        "Cart_Shelf_Lip_0_-0.48",
+        "Cart_Shelf_Lip_0_0.48",
+        "Cart_Shelf_Lip_1_-0.48",
+        "Cart_Shelf_Lip_1_0.48"
+      ],
+      "before_gap_mm_each": 5,
+      "after_lip_embed_mm_each": 2,
+      "positive_broadphase_disconnected_part_count": 0,
+      "strict_noncoplanar_real_indexed_wheel_upright_triangle_intersections": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "before_independently_confirmed_wheel_upright_triangle_intersections": [
+        11,
+        11,
+        13,
+        13
+      ],
+      "ground_contacts_4wheels_y_min_m": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "fixed_upright_bases_y_m": [
+        0.212,
+        0.212,
+        0.212,
+        0.212
+      ],
+      "wheel_upper_Y_m": 0.21,
+      "wheel_crown_clearance_mm": 2,
+      "source_geometry_indexed_QA": "PASS"
+    }
+  },
+  "cross_source_topology": {
+    "tested_original_OBJ_files": 10,
+    "source_indexed_QA_PASS": 10,
+    "source_indexed_QA_FAIL": 0,
+    "source_P18_parts_total": 137,
+    "source_P18_triangles_total": 3228,
+    "invalid_vertex_UV_normal_corners": 0,
+    "degenerate_triangles": 0,
+    "per_object_nonmanifold_edges": 0,
+    "orientation_conflicts": 0,
+    "evidence_file": "Pass14/ACTUAL_10_OBJ_TOPOLOGY_STATIC_QA.json"
+  },
+  "source_P17_02": {
+    "git_blob_sha1": "d80a67af140e434b983104aaec0078f9cf5bd66f",
+    "source_SHA256": "a9995704a70776b49f2bd6916a50cf222a4ab40b370a0a9e258b63bdc4429786",
+    "source_after_current_38_parts_triangles_536": true,
+    "actual_screw_attachment_source_QA": "PASS_4_OF_4",
+    "Keybed_Housing_source_seating_mm": 0.5,
+    "independent_C01_02_source_QA": "PASS",
+    "native_blender_after": "NOT_RUN"
+  },
+  "method": {
+    "AABB": "Grouped actual per-object vertex coordinates from authentic OBJ 'v' lines; positive overlap >1e-9 metres in XYZ determines broadphase edge. AABB disjoint rigorously proves non-contact, AABB overlap alone DOES NOT guarantee triangle contact.",
+    "wheel_triangle": "True source face vertices from indexed OBJ; on each of 4 wheel-upright pairs all 3 edges of each triangle tested as segment-vs-opposing-triangle in both directions; exclude coplanar parallel and tangencies; counted strict triangle crossings.",
+    "trim_triangle": "All eight known formerly coplanar Trim↔TrimBacker object pairs: require same-plane, same-facing triangle normals; project onto dominant coordinate plane and perform 2D convex triangle clipping with positive polygon area.",
+    "source_indexed": "Every original OBJ triangle checked for valid v/vt/vn references, actual triangle area, per-object undirected-edge degree and consistent shared-edge winding.",
+    "scope_limit": "This QA is static source geometry only. It does not prove absence of all near-coplanar surfaces, visually acceptable normals, dynamic movement, Blender FBX parity or Unity prefabs."
+  },
+  "current_signoff": "PASS_SOURCE_TARGETED_GEOMETRY_ONLY",
+  "independent_C01_02": "PASS_SCOPED_SOURCE_REPAIR_THREE_P18_FROM_GITHUB_QA_PASS14",
+  "new_saved_in_Blender_4x_blend": "NOT_RUN",
+  "new_blender_exported_and_reimported_binary_fbx": "NOT_RUN",
+  "real_Unity6_URP": "NOT_RUN",
+  "release": "BLOCKED",
+  "no_new_model_ids": true,
+  "no_unauthorized_merge": true
+}

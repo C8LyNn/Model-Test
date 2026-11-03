@@ -1,0 +1,57 @@
+{
+  "schema": "C01-03-W19-PHYSICAL-3-UNITY-STAGING-v1",
+  "date": "2026-11-02",
+  "source": "Original Actions workflow artifact physically downloaded and ZIP/FBX bytes reread by C01-03 in this turn",
+  "run_id": 41531591861,
+  "artifact_id": 13182701367,
+  "archive_name": "C01-10_W19_staged_three_fbx.zip",
+  "zip_size": 53230,
+  "zip_sha256": "a2eac5d111578f315f2385fff7267a7ae0bd197bcf15550e1866d754a4a5bbcf",
+  "zip_crc": "PASS",
+  "files": [
+    {
+      "id": "P16-01",
+      "path": "Assets/C01InteriorProps/Pass04Incoming/P16-01/P16-01.fbx",
+      "byte_size": 48380,
+      "fbx_sha256": "c0a782a17a0047e0d578a41e42ac714c0fa0f86c7c4960f4bc10e21a24a278fd",
+      "same_as_w19_native": true,
+      "fbx_binary_version": 7400
+    },
+    {
+      "id": "P17-02",
+      "path": "Assets/C01InteriorProps/Pass04Incoming/P17-02/P17-02.fbx",
+      "byte_size": 77420,
+      "fbx_sha256": "db49121a520f16ca636626795550b83e8a4df94ded56a7ccb76308520bb7c3f6",
+      "same_as_w19_native": true,
+      "fbx_binary_version": 7400
+    },
+    {
+      "id": "P18-01",
+      "path": "Assets/C01InteriorProps/Pass04Incoming/P18-01/P18-01.fbx",
+      "byte_size": 140460,
+      "fbx_sha256": "f541d502ba9eaaf5c7a0a7279c44f71f36dd482e3aed3ba0734058dcf1045f6c",
+      "same_as_w19_native": true,
+      "fbx_binary_version": 7400
+    }
+  ],
+  "stage_files": [
+    "C01InteriorProps_QA/PASS04/staged_sources.csv",
+    "C01InteriorProps_QA/PASS19/ACTUAL_STAGED_THREE_SHA_RECEIPT.json"
+  ],
+  "check": {
+    "zip_crc": true,
+    "three_real_fbx_native_magic": true,
+    "three_full_sha_against_native_matrix": true,
+    "three_equal_original_export_sha": true
+  },
+  "workflow": {
+    "stage_job": "SUCCESS",
+    "unity_editor_job": "SKIPPED",
+    "license_gate": "FAIL_RELEASE_GATE",
+    "reason": "Unity CI license unavailable",
+    "prefabs_imported": 0,
+    "playmode": "NOT_RUN",
+    "real_Unity_Editor": "NOT_RUN"
+  },
+  "no_authorization_to_merge": true
+}

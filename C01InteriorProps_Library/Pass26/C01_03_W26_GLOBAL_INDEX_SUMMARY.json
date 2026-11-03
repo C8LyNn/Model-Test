@@ -1,5 +1,5 @@
 {
-  "schema": "C01-03-W26-ALL-ACCESSIBLE-NONDOOR-INVENTORY",
+  "schema": "C01-03-W26-ALL-ACCESSIBLE-NONDOOR-INVENTORY-THREE-NATIVE-REPAIRS-INDEPENDENT-PENDING-v2",
   "date": "2026-11-03",
   "versioned_generated_source": "codex/c01-compact-decks",
   "versioned_generated_head": "e6ea04ebcc249188d9fabd7cb7ac0b1ffc4711fb",
@@ -27,7 +27,16 @@
     },
     "historical_supplement": 9,
     "all_registered_records_union": 1429,
-    "all_accessible_current_and_versioned_fbx_union": 1418
+    "all_accessible_current_and_versioned_fbx_union": 1418,
+    "canonical_current_source_full_SHA36": 36,
+    "new_W26_native_producer_versions": 3,
+    "canonical_independent_new_SHA_pending": [
+      "P15-03",
+      "P18-03",
+      "P19-03"
+    ],
+    "global_generated_full_physical_QA_done_by_this_C01_03_turn": 0,
+    "final_release_approved": 0
   },
   "checks": {
     "unique": true,
@@ -36,22 +45,29 @@
     "scope_no_door": true,
     "sha36": true,
     "allHold": true,
-    "noUnity": true
+    "noUnity": true,
+    "current_36_logical_sha_inventory": true,
+    "three_current_native_candidate_sha_changes_pending_independent": true,
+    "still_1420_plus9_unchanged": true,
+    "doors_still_excluded": true,
+    "release_0": true
   },
-  "SHA_boundary": "Curated 36+8 have prior signed original BLEND/FBX full SHA256 provenance; 16 current legacy LFS OIDs readback. Generated variants only Git blob SHA1, full-byte FBX SHA256 NOT MEASURED.",
+  "SHA_boundary": "36 currently tracked BLEND+FBX source SHA256 values in Pass26 canonical JSON; W26 P15-03/P18-03/P19-03 are NEW producer original signed SHA from three isolated PRs, independent exact SHA pending. 1420 generated/curated versioned FILE PATHS are NOT 1420 distinct audited meshes. Most generated ship variants have Git blob SHA1 metadata only; no new full-byte content SHA256 claimed.",
   "excluded_policy": "D01/D02 and entrusted door/gate/hatch/airlock/W04 assets forbidden; G_ and SILL_ quarantined as ambiguous; frozen PR #19/#32 untouched. No door byte inspection.",
   "current_specific_QA": {
     "P1805": "C01-02 W25 native released 23/23 PASS and source builder PASS; Unity NOT_RUN",
     "P1807": "C01-02 W25 source axis contract PASS; depth 0.341m/swept 0.361m C01-01 decision PENDING",
-    "P1803": "C01-02 W25 radius & render-only source PASS; render hub-fork overlaps 576/576 remain; actual Unity NOT_RUN"
+    "P1803": "W26 producer PR43 real Blender4 source+FBX new SHA f932c5fb36624ef91c039b1de04367fff4e99da7c400bbcb4cadd4138f83618f. 8 hubs new model Lcl Translation X +/-4mm and producer reports 2mm axial gap; C01-03 real FBX basic indexed/UV0/normals/triangles full-byte SHA and diff PASS, 8 normal arrays changed, C01-02 independent current new SHA geometry/shading QA PENDING. Unity NOT_RUN.",
+    "P1503": "W26 producer PR16 corrected 120/672 collapsed UV triangles to 0 on new signed FBX ea25d2d7b47baa50fdca3000b101c65b19ba252994553ee6fe6691ca89d5c149. Earlier W19 BVH had inverted AABB broadphase and historic motion PASS revoked. Producer new 361+46 BVH PASS; C01-02 exact-SHA reinspection PENDING. Internal DoorSkin named part: C01-00 must confirm it is not Claude delegated before any C01-03 physical geometry testing. Unity NOT_RUN.",
+    "P1903": "W26 producer PR15 Blender+FBX signed new FBX 4a1ad590e79515b0a699f0fb643d9999b4d1726bd68fce97505f401bb8375967. Ten original >4 vertex n-gons corrected with triangulation; 5 existing meshes/72 vertices/128 tris preserved; C01-02 exact new SHA PENDING, Unity NOT_RUN."
   },
   "workflow": "IDENTIFIED -> PHYSICAL_NATIVE_AUDIT -> DEFECT_CONFIRMED_OR_NO_DEFECT -> OWNER_REPAIR -> BLENDER_SAVE_FBX_EXPORT_REIMPORT -> C01-02_INDEPENDENT_CURRENT_SHA -> REAL_UNITY",
-  "status": "INVENTORY_AND_SCOPED_QA_DONE; GLOBAL_ALL_MESH_PHYSICAL_QA_PENDING; NO_FALSE_PASS",
+  "status": "GLOBAL_INVENTORY_1420_PLUS_HISTORICAL9_PINNED; THREE_NEW_SIGNED_NATIVE_REPAIRS_TRACKED; C01_02_NEW_SHA_PENDING; UNITY_NOT_RUN",
   "coverage_extensions": {
     "primary_manifest": "Pass26/C01_03_W26_GLOBAL_NONDOOR_ASSET_INVENTORY.csv",
     "supplement": "Pass26/C01_03_W26_HISTORICAL_SUPERSEDED_NONDOOR_SOURCES.csv",
-    "parallel_secondary": "W26/W26_GLOBAL_NONDOOR_ASSET_AUDIT_1003.csv",
-    "overlap_between_primary_and_secondary_fbx_paths": 1001,
+    "parallel_secondary": "W26 1012-row temporary secondary candidate snapshot SUPERSEDED_BY Pass26 authoritative 1420+9 inventory; do not add denominators and do not use superseded SHA baseline.",
+    "overlap_between_primary_and_secondary_fbx_paths": "previously documented against first 1003-row temporary snapshot; after retirement no independent secondary denominator",
     "only_in_parallel_secondary_before_supplement": 2,
     "recovered_in_supplement": [
       "RAI-01_v002",
@@ -60,6 +76,6 @@
     "additional_primary_fbx_paths_not_in_parallel_secondary": 409,
     "additional_primary_nondoor_v62_v64": 406,
     "auxiliary_historical_record_count": 9,
-    "reviewer_note": "1003 and 1420 are different exact model-path universes. Do not add 1003+1420; union with supplement counts 1429 records, no duplicate paths based on verified crosswalk."
+    "reviewer_note": "Authoritative current C01-03 sources: Pass26 1420-row primary + 9-row historical supplement + exact 36-row canonical release JSON; W26 one-off parallel secondary retired to avoid duplicate/stale SHA. Generated V3-V64 snapshots only Git metadata/historical."
   }
 }

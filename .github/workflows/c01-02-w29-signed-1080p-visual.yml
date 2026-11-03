@@ -19,25 +19,11 @@ jobs:
           path: qa
           lfs: false
           persist-credentials: false
-      - name: Checkout pinned current producer P15-03 only
-        uses: actions/checkout@v4
-        with:
-          path: qa/producers/p15
-          ref: 880c3c6eaa199da3490a4ca66413a247bd08e78e
-          lfs: false
-          persist-credentials: false
       - name: Checkout pinned current producer P18-03 only
         uses: actions/checkout@v4
         with:
           path: qa/producers/p18
           ref: e39232b52ca57759b654a3db9a39aa8f4ad3bd07
-          lfs: false
-          persist-credentials: false
-      - name: Checkout pinned current producer P19-03 only
-        uses: actions/checkout@v4
-        with:
-          path: qa/producers/p19
-          ref: e053a786ffe8f08e5121c3ae5aa0f974a629660d
           lfs: false
           persist-credentials: false
       - name: Install real Blender4 and only required offscreen dependencies
@@ -49,11 +35,11 @@ jobs:
         working-directory: qa
         run: |
           set -euo pipefail
-          git -C producers/p15 lfs pull --include="Assets/C01InteriorProps/P15/Sources/Blender/P15-03.blend,Assets/C01InteriorProps/P15/Models/FBX/P15-03.fbx" --exclude=""
           git -C producers/p18 lfs pull --include="Assets/C01InteriorProps/C01-18/Sources/P18-03.blend,Assets/C01InteriorProps/C01-18/Models/P18-03.fbx" --exclude=""
-          git -C producers/p19 lfs pull --include="Assets/C01InteriorProps/C01-19/Models/P19-03/P19-03.blend,Assets/C01InteriorProps/C01-19/Models/P19-03/P19-03.fbx" --exclude=""
-      - name: Render independent actual existing FBX at exactly 1920 x 1080 with true indexed wire
+      - name: Render focused P18-03 only with projection-aware full-carriage framing (visual script correction)
         working-directory: qa
+        env:
+          C01_W29_TARGET: P18-03
         run: |
           set -o pipefail
           xvfb-run -a blender -b --factory-startup -t 2 --python C01InteriorProps_QA/W29/w29_1080p_signed_visual.py 2>&1 | tee c01_w29_visual_1080p.log

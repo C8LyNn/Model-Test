@@ -3,7 +3,7 @@
 No source edits; excludes D01/D02, W04, all Claude-assigned ship doors and gates.
 Does NOT claim Unity URP/PhysX or subjective visual PASS.
 """
-import bpy,pathlib,hashlib,json,sys,traceback
+import bpy,pathlib,hashlib,json,sys,traceback,os
 from mathutils import Vector
 ROOT=pathlib.Path(__file__).resolve().parents[2]
 PROD=ROOT/"producers"
@@ -32,6 +32,13 @@ def camera(scene,meshes,scale=1.8,orientation=(1.35,-1.8,1.10)):
     camdata.type="ORTHO";camdata.ortho_scale=max(.10,dim*scale)
     cam.location=m+Vector(orientation)*max(dim,.15)
     cam.rotation_euler=(m-cam.location).to_track_quat("-Z","Y").to_euler()
+    bpy.context.view_layer.update()
+    local=cam.matrix_world.inverted()
+    projected=[local@(o.matrix_world@v.co) for o in meshes for v in o.data.vertices]
+    span_x=max(v.x for v in projected)-min(v.x for v in projected)
+    span_y=max(v.y for v in projected)-min(v.y for v in projected)
+    aspect=scene.render.resolution_x/scene.render.resolution_y
+    camdata.ortho_scale=max(.10,span_x,span_y*aspect)*1.25
     scene.camera=cam;return cam
 def original_edges(scene,meshes,scale):
     cr=bpy.data.curves.new("W29_TEMP_ORIGINAL_FBX_TRUE_INDEXED_EDGES","CURVE")
@@ -58,7 +65,10 @@ def take(scene,id,suffix):
 def main():
     if bpy.app.version[0]!=4:raise RuntimeError("Blender4 only")
     res=[]
+    target=os.environ.get('C01_W29_TARGET','all')
+    if target!='all' and target not in SPECS:raise RuntimeError('Unknown target '+target)
     for id, spec in SPECS.items():
+      if target!='all' and id!=target:continue
       lane,blend_path,fbx_path,blendsha,fbxsha,count,tricount,macro=spec
       row={"asset":id,"status":"INCOMPLETE","unity":"NOT_RUN","visual_signoff":"NOT_RUN__HUMAN_AND_URP_STILL_REQUIRED"}
       try:

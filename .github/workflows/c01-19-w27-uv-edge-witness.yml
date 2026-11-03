@@ -1,0 +1,79 @@
+name: C01-19 W27 P19-07-08 signed UV and true wire visual QA
+on:
+  push:
+    branches: [c01/props-19-furniture-wave02]
+    paths:
+      - 'Assets/C01InteriorProps/C01-19-W02/Source/pass27_focused_uv_material_wire_witness.py'
+      - '.github/workflows/c01-19-w27-uv-edge-witness.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: c01-19-w27-focused-qa
+  cancel-in-progress: false
+jobs:
+  actual-blender-signed-original-UV-visual:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+      - name: Install real Blender and hydrate signed P19-07/08 native only
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends blender python3-numpy git-lfs xvfb xauth libegl1 libgl1 libgl1-mesa-dri libopengl0
+          git lfs install --local
+          git lfs pull --include="Assets/C01InteriorProps/C01-19-W02/Models/P19-07/**,Assets/C01InteriorProps/C01-19-W02/Models/P19-08/**" --exclude=""
+          blender --version | head -3
+      - name: Real signed BLEND and original FBX imported geometry, UV polygon/material and physical edge previews
+        run: |
+          LIBGL_ALWAYS_SOFTWARE=1 xvfb-run -a blender -b --factory-startup --python-exit-code 1 --python Assets/C01InteriorProps/C01-19-W02/Source/pass27_focused_uv_material_wire_witness.py
+      - name: Validate full native SHA, real indexed UV/edge witnesses and distinct shaded/wire previews
+        run: |
+          python3 - <<'PY'
+          import pathlib,hashlib,json
+          root=pathlib.Path("Assets/C01InteriorProps/C01-19-W02")
+          d=json.loads((root/"QA/PASS27/W27_SUMMARY.json").read_text())
+          assert len(d["models"])==2 and d["real_blender"] and d["geometry_edits"]==0 and d["exports"]==0
+          assert {m["asset"] for m in d["models"]}=={"P19-07","P19-08"}
+          for m in d["models"]:
+              folder=root/"Models"/m["asset"]
+              assert hashlib.sha256((folder/(m["asset"]+".blend")).read_bytes()).hexdigest()==m["blend_sha"]
+              assert hashlib.sha256((folder/(m["asset"]+".fbx")).read_bytes()).hexdigest()==m["fbx_sha"]
+              p=root/"QA/PASS27"/m["asset"]
+              detailed=json.loads((p/"W27_TARGETED_REAL_NATIVE_UV_AND_EDGE_WITNESS.json").read_text())
+              t=detailed["actual_reimported_signed_fbx"]["totals"]
+              assert t["zero_uv_area_faces_positive_3d"]>=0
+              assert m["raw_zero_uv_area_polygons_any_3d"]>=t["zero_uv_area_faces_positive_3d"]
+              assert t["tj_near_edge_candidates"]==(17 if m["asset"]=="P19-07" else 2)
+              assert t["boundary_edges"]==0 and t["nonmanifold_edges"]==0
+              assert len(m["previews"])==4
+              for name in m["previews"]:
+                  img=p/name
+                  assert img.stat().st_size>1000 and img.read_bytes()[:8]==b"\x89PNG\r\n\x1a\n"
+              def sh(n):return hashlib.sha256((p/n).read_bytes()).hexdigest()
+              assert sh(m["previews"][0])!=sh(m["previews"][1])
+              assert sh(m["previews"][2])!=sh(m["previews"][3])
+              print("W27_NATIVE_UV_FBX_VERIFIED",m["asset"],m["fbx_sha"],m["signed_fbx_uv_faces"],m["image_textures_on_collapsed_faces"],flush=True)
+          PY
+      - name: Preserve actual binary SHA and preview evidence as artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-19-W27-FOCUSED-UV-TRUE-WIRE-ORIGINAL-FBX
+          if-no-files-found: warn
+          path: Assets/C01InteriorProps/C01-19-W02/QA/PASS27/
+      - name: Commit QA JSON and preview only in existing Draft PR29 (no models or doors)
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- Assets/C01InteriorProps/C01-19-W02/QA/PASS27/
+          if git diff --cached --quiet; then exit 0; fi
+          git diff --cached --name-only | tee /tmp/c01_w27_changes
+          if grep -Ev '^Assets/C01InteriorProps/C01-19-W02/QA/PASS27/' /tmp/c01_w27_changes; then
+            echo "SCOPE ERROR: unauthorized staged path"; exit 1
+          fi
+          git commit -m "test(C01-19 W27): real signed P19-07/08 UV0 and true FBX edge material witness"
+          git push origin "HEAD:$GITHUB_REF_NAME"

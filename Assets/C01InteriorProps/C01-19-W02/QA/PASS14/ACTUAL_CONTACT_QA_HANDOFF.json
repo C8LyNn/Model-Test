@@ -1,0 +1,63 @@
+{
+  "issue": "https://github.com/C8LyNn/Model-Test/issues/36",
+  "owner": "C01-19",
+  "pass": "DETAIL_PASS14",
+  "delivery_zip": "C01-19_DETAIL_PASS14_FINAL_CONTACT_QA_CANDIDATES.zip",
+  "delivery_zip_sha256": "ccc4b4c97c882b8702906f4338a036394da151ae0b39b5ae01383c0d224eb3b3",
+  "scope": "Existing assets only; unchanged binary candidate bytes from PASS10 and PASS13; in user ZIP, not promoted to PR Git LFS Models",
+  "engine_gates": {
+    "actual_blender_4_load_save": "NOT_RUN",
+    "blender_fbx_export_reimport": "NOT_RUN",
+    "independent_c01_02": "PENDING",
+    "unity_6_urp": "NOT_RUN"
+  },
+  "release_approved": false,
+  "PR": 29,
+  "verification": {
+    "source_format": "Blender 4.0 binary, direct decoded DNA mesh topology",
+    "export_format": "Kaydara Binary FBX 7400, independent indexed triangles positions and UV0",
+    "manifold_winding_zero_degenerate_all_in_scope": "PASS",
+    "triangles_and_uv0_source_export_parity": "PASS",
+    "mechanical_contact_support_P19_02_P19_05": "PASS",
+    "P19_07_visual_classification": "HOLD"
+  },
+  "models": [
+    {
+      "id": "P19-05",
+      "blend_sha256": "e658615784e35984297008f8927280998cd8364f7070aa05b31e76cd95dda5bc",
+      "fbx_sha256": "a8b0d703062bdc8665ef7f8106ff7a5034f476103c41b0edde51f965480653ca",
+      "triangles": 252,
+      "vertices": 152,
+      "vertex_on_edge_candidates": 0,
+      "source_host_attachment": {
+        "part_count": 6,
+        "connected_via_triangle_crossings": 6,
+        "intersections_per_detail": [
+          20,
+          20,
+          12,
+          12,
+          12,
+          12
+        ]
+      }
+    },
+    {
+      "id": "P19-07",
+      "blend_sha256": "345f9ca60508efed1d8d8b989011c0cc015d85877ec7ca1e01f8c9094d93faae",
+      "fbx_sha256": "d9e832d4df2623b70842209944c1615d7aba7af6f042e16bf7720b4a95e9a3e1",
+      "triangles": 252,
+      "vertices": 136,
+      "vertex_on_edge_candidates": 16,
+      "review": "Cube.019 source geometric vertex-on-edge candidates near edges [27,35] and [12,16], all within one connected mesh, min checked triangle area 2.235e-10 m²; no blind welding; Blender visual inspection required"
+    },
+    {
+      "id": "P19-08",
+      "blend_sha256": "900169ca7b587100fc9d3e1cfade3de6da7209cfef8c6531c5ccdd1bc4115766",
+      "fbx_sha256": "c740c5de71443f2b01f20cb48f76f37e61fda53ddfd5c5a9d7d263d511772e11",
+      "triangles": 282,
+      "vertices": 149,
+      "vertex_on_edge_candidates": 0
+    }
+  ]
+}

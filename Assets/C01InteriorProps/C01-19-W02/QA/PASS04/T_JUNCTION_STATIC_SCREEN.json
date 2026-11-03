@@ -1,0 +1,35 @@
+{
+  "classification": "SOURCE_BINARY_FBX_VERTEX_ON_EDGE_INTERIOR_CANDIDATE_SCREEN",
+  "runtime": "LOCAL_PYTHON_ACTUAL_FBX_7400",
+  "not_a_confirmed_topology_defect": true,
+  "transform": "Model OO hierarchy and FBX model Lcl Translation/Rotation/Scaling, omits common root similarity transformation",
+  "distance_tolerance": 0.00001,
+  "note": "Geometric vertex on an unrelated mesh edge; independent material/moving-object and actual topology context needed. Do not auto-weld.",
+  "models": [
+    {
+      "id": "P19-05",
+      "candidate_count": 0,
+      "within_same_mesh": 0,
+      "across_separate_mesh_parts": 0
+    },
+    {
+      "id": "P19-06",
+      "candidate_count": 4,
+      "within_same_mesh": 0,
+      "across_separate_mesh_parts": 4
+    },
+    {
+      "id": "P19-07",
+      "candidate_count": 16,
+      "within_same_mesh": 8,
+      "across_separate_mesh_parts": 8
+    },
+    {
+      "id": "P19-08",
+      "candidate_count": 2,
+      "within_same_mesh": 2,
+      "across_separate_mesh_parts": 0
+    }
+  ],
+  "evidence": "Detailed coordinate examples in local standalone artifact ZIP; original FBX SHAs in SOURCE_FBX_AUDIT.json"
+}

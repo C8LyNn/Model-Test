@@ -1,0 +1,112 @@
+{
+  "schema": "C01-19/W21/exact-lfs-pointer-gate/v1",
+  "as_of": "2026-11-02",
+  "owner": "C01-19 — FURNITURE & ENVIRONMENT PROPS",
+  "dispatch": "https://github.com/C8LyNn/Model-Test/issues/36#issuecomment-6590403311",
+  "prs": {
+    "wave01": {
+      "number": 15,
+      "branch": "c01/props-19-furniture",
+      "head_seen": "dece710d3672d8eb4ef4183eb3f8657ea6790b21"
+    },
+    "wave02": {
+      "number": 29,
+      "branch": "c01/props-19-furniture-wave02",
+      "head_seen": "076bd1fc618f4313cb4c3b3cce19eba150cf41da"
+    }
+  },
+  "method": "Read current on-branch Git LFS pointer text of all 8 .blend + all 8 .fbx using GitHub contents API and compare exact SHA-256 OIDs to previously documented physical Blender/FBX artifact evidence. This W21 pass DOES NOT rehydrate binary bytes, run Blender or Unity, or issue independent C01-02 approval.",
+  "verified_lfs_pointer_pairs": 8,
+  "verified_lfs_pointers": 16,
+  "byte_level_rerun_in_w21": false,
+  "blender_executed_in_w21": false,
+  "unity_editor_executed_in_w21": false,
+  "native_models_changed_in_w21": 0,
+  "unconfirmed_defects_modified_in_w21": 0,
+  "redundant_exports_in_w21": 0,
+  "new_asset_ids": 0,
+  "authorizations": "NO MERGE / NO SHIP EDITS",
+  "models": [
+    {
+      "id": "P19-01",
+      "pr": 15,
+      "blend": "b4c695f3731ba1cfc575134f41ac795faedbf23ec4cfb58daaeb8bc44b8d8e98",
+      "fbx": "f3b9f806f4dcaafe00f24ac22b0805bf06a49d4216cb1339460ed1be9b26a2f2",
+      "producer_evidence": {
+        "action": 41537471598,
+        "artifact": 13184379191
+      },
+      "finding": "W20 real Blender edge flip; producer and independent source-binary before/after report 2 microtriangles -> 0; current exact-SHA C01-02 signoff outstanding",
+      "c01_02_current_sha": "PENDING",
+      "disposition": "HOLD_INDEPENDENT_CURRENT_SHA_QA_AND_UNITY"
+    },
+    {
+      "id": "P19-02",
+      "pr": 15,
+      "blend": "ff0448b34e70ab65380889dfc1d46e426d88873684e831775306cfca28e1a99f",
+      "fbx": "b0d68ce917a938b4bdaa32f4b2d48dcab5275c752c141260cabd3d82a5c9374f",
+      "c01_02": "W20 STATIC_PASS; Unity NOT_RUN",
+      "disposition": "HOLD_FINAL_UNITY"
+    },
+    {
+      "id": "P19-03",
+      "pr": 15,
+      "blend": "3652b4f738783e3fab0940311d77b5cd9e6435a23ef60c2c7249f209fa4b11cd",
+      "fbx": "1bd730b2382879d7d9c2f3d67c4b9646b8ca036c04de663e53b3019c403af2df",
+      "c01_02": "W20 STATIC_PASS; Unity NOT_RUN",
+      "disposition": "HOLD_FINAL_UNITY"
+    },
+    {
+      "id": "P19-04",
+      "pr": 15,
+      "blend": "8690c61df28d2126e6d84cba00326f6d47fa54f6be56edcedcda4c816b283b70",
+      "fbx": "a8ef74e3972e58b8964d8fd17f121b3cb4977c5c98c9b5ad0928630e77258469",
+      "c01_02": "W20 STATIC_PASS; Unity NOT_RUN",
+      "disposition": "HOLD_FINAL_UNITY"
+    },
+    {
+      "id": "P19-05",
+      "pr": 29,
+      "blend": "7905086e87660461d46e6d633b16fc655142939ac4cbc0df0c670067da9314b2",
+      "fbx": "d07b4884cfe1de2c48a96dc9407c2eccdfbdbdf703551c71ae195bd3fd8c9d87",
+      "c01_02": "W20 STATIC_PASS; Unity NOT_RUN",
+      "disposition": "HOLD_FINAL_UNITY"
+    },
+    {
+      "id": "P19-06",
+      "pr": 29,
+      "blend": "08f0ed1791beb7c4c4e37ffb1dc3016ebeddf0b94e5e63eb491ec934c51ac4bd",
+      "fbx": "61e371d97c7ff5d17dbc8c5673c8edf489df0b8bdb1b4337396f41f8d4f477ea",
+      "c01_02": "W20 STATIC_PASS; Unity NOT_RUN",
+      "disposition": "HOLD_FINAL_UNITY"
+    },
+    {
+      "id": "P19-07",
+      "pr": 29,
+      "blend": "a6dc5d3287dc1b4842de35f6a3e1c8e7c885fd8c161016c11243ed2c760dbc28",
+      "fbx": "eb579a85355756c0d803f58ec96fac509e33788d8142390349aebbffdba50e81",
+      "finding": "Physical FBX 18 vertex-on-edge candidate relations; real Blender BMesh PASS18 17 candidates; all 8 unique suspect vertices inside one connected component Cube.019; zero source position edits, no independent visible-shading crack / z-fighting classification",
+      "c01_02": "W20 T_JUNCTION_HOLD; needs exact SHA severity, face/UV/seam visual determination",
+      "disposition": "HOLD_QA_CLASSIFICATION_NO_GEOMETRY_CHANGE"
+    },
+    {
+      "id": "P19-08",
+      "pr": 29,
+      "blend": "9f878a0c1f9fb28e9b9748801e16a18319da4391dac8062285f80c1f8c5c81c5",
+      "fbx": "9de76d296482e2d302b5b0a14c30692dbdb6adacd90fcd4e022da9ab35ec658c",
+      "finding": "Two near endpoint geometric vertex-edge candidates; t about 0.999922, distance 0.0039 mm; no known actual visual defect",
+      "c01_02": "W20 TOLERANCE_REVIEW; needs explicit severity/tolerance acceptance",
+      "disposition": "HOLD_QA_CLASSIFICATION_NO_GEOMETRY_CHANGE"
+    }
+  ],
+  "release": {
+    "independent_final_approved": 0,
+    "unity_6_urp": "NOT_RUN",
+    "ship_modification": false,
+    "merge": false
+  },
+  "required_reviews": [
+    "C01-02 independent same exact SHA QA for P19-01 new exporter, P19-07 T-junction visual classification, P19-08 endpoint tolerance",
+    "C01-10 real licensed Unity 6.0.3.14f1 Editor run on three centrally selected FBX before release"
+  ]
+}

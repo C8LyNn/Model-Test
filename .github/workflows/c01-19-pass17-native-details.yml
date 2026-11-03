@@ -1,0 +1,79 @@
+name: C01-19 PASS17 Blender Actual Detailed Native FBX
+on:
+  push:
+    branches: [c01/props-19-furniture, c01/props-19-furniture-wave02]
+    paths:
+      - 'Assets/C01InteriorProps/C01-19/Source/pass17_actual_native_detail.py'
+      - 'Assets/C01InteriorProps/C01-19-W02/Source/pass17_actual_native_detail.py'
+      - '.github/workflows/c01-19-pass17-native-details.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: c01-19-pass17-${{ github.ref_name }}
+  cancel-in-progress: false
+jobs:
+  blender-detail:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      C01_ROOT: ${{ endsWith(github.ref_name, 'wave02') && 'Assets/C01InteriorProps/C01-19-W02' || 'Assets/C01InteriorProps/C01-19' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - name: Install real Blender 4.x and Git LFS
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends blender python3-numpy git-lfs xvfb xauth libegl1 libgl1 libgl1-mesa-dri libopengl0
+          blender --version | head -3
+          git lfs install --local
+          git lfs pull
+      - name: Native Blender edit actual three existing assets, render and roundtrip binary FBX
+        run: LIBGL_ALWAYS_SOFTWARE=1 xvfb-run -a blender -b --factory-startup --python-exit-code 1 --python "$C01_ROOT/Source/pass17_actual_native_detail.py"
+      - name: Verify exact physical source and exporter output SHA and geometry
+        run: |
+          python3 - <<'PY'
+          import pathlib,json,hashlib,os
+          root=pathlib.Path(os.environ['C01_ROOT'])
+          arr=json.loads((root/'QA/PASS17/SUMMARY.json').read_text())['models']
+          expect={'P19-05':(7,152,252)} if 'W02' in str(root) else {'P19-01':(4,269,470),'P19-02':(5,166,292)}
+          assert set(x['id'] for x in arr)==set(expect)
+          for x in arr:
+              mid=x['id'];n,v,t=expect[mid]
+              assert (x['model_mesh_count'],x['vertex_count'],x['triangle_count'])==(n,v,t)
+              assert x['FBX_reimport']=='PASS' and x['manifold_per_mesh']=='PASS'
+              assert x['source_export_bbox_error_m']<.0001
+              p=root/'Models'/mid
+              blend=p/(mid+'.blend');fbx=p/(mid+'.fbx')
+              assert blend.read_bytes().startswith(b'BLENDER-v4')
+              assert fbx.read_bytes().startswith(b'Kaydara FBX Binary')
+              assert hashlib.sha256(blend.read_bytes()).hexdigest()==x['real_blender_saved_blend_sha256']
+              assert hashlib.sha256(fbx.read_bytes()).hexdigest()==x['real_blender_exported_fbx_sha256']
+              for suffix in ['BEFORE_SHADED_BLENDER.png','BEFORE_WIREFRAME_BLENDER.png','AFTER_SHADED_BLENDER.png','AFTER_WIREFRAME_BLENDER.png']:
+                  assert (root/'QA/PASS17'/mid/suffix).stat().st_size>1000
+              print('REAL_BLENDER4_PASS17_OK',mid,n,v,t,flush=True)
+          PY
+      - name: Artifact actual Blender source FBX renders QA
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-19-PASS17-REAL-BLENDER-DRAFT-ASSETS
+          if-no-files-found: warn
+          path: |
+            ${{ env.C01_ROOT }}/Models/P19-*/*.blend
+            ${{ env.C01_ROOT }}/Models/P19-*/*.fbx
+            ${{ env.C01_ROOT }}/QA/PASS17/**
+      - name: Commit only authentic detailed sources and evidence to existing Draft
+        if: success()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          if [ "$GITHUB_REF_NAME" = 'c01/props-19-furniture-wave02' ]; then IDS='P19-05'; else IDS='P19-01 P19-02'; fi
+          for MID in $IDS; do
+            git add "$C01_ROOT/Models/$MID/$MID.blend" "$C01_ROOT/Models/$MID/$MID.fbx"
+          done
+          git add "$C01_ROOT/QA/PASS17"
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'feat(C01-19 PASS17): actual Blender native mechanical detail source and FBX QA'
+          git push origin "HEAD:$GITHUB_REF_NAME"

@@ -1,0 +1,52 @@
+name: C01-19 PASS18 REAL Blender Independent Geometry Preflight
+on:
+  push:
+    branches: [c01/props-19-furniture-wave02]
+    paths:
+      - 'Assets/C01InteriorProps/C01-19-W02/Source/pass18_native_mesh_review.py'
+      - '.github/workflows/c01-19-pass18-real-qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: c01-19-pass18-real-qa-${{ github.ref_name }}
+  cancel-in-progress: false
+jobs:
+  native-geometry-preflight:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - name: Install actual Blender 4.x and Git LFS
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends blender python3-numpy git-lfs xvfb xauth libegl1 libgl1 libgl1-mesa-dri libopengl0
+          blender --version | head -3
+          git lfs install --local
+          git lfs pull
+      - name: Actual BLEND open, BMesh inspection, workbench screenshots and real FBX reimport (no producer edits)
+        run: |
+          LIBGL_ALWAYS_SOFTWARE=1 xvfb-run -a blender -b --factory-startup --python-exit-code 1 --python Assets/C01InteriorProps/C01-19-W02/Source/pass18_native_mesh_review.py
+      - name: QA receipt/artifact checks
+        run: |
+          python3 - <<'PY'
+          import json,pathlib,hashlib
+          root=pathlib.Path('Assets/C01InteriorProps/C01-19-W02')
+          r=json.loads((root/'QA/PASS18/P19-07/P19-07_PASS18_REAL_BLENDER_REVIEW.json').read_text())
+          assert r['id']=='P19-07' and r['source_geometry_modified'] is False
+          assert r['FBX_4x_reimport']=={'objects':6,'triangles':252,'uv0_parts':6}
+          for ext,k in [('.blend','blend_sha256'),('.fbx','fbx_sha256')]:
+            p=root/'Models/P19-07'/('P19-07'+ext)
+            assert hashlib.sha256(p.read_bytes()).hexdigest()==r[k]
+          for fn in r['screenshots']:assert (root/'QA/PASS18/P19-07'/fn).stat().st_size>1000
+          print('PASS18_REAL_BLENDER_MEASUREMENT',r['tj_count'],r['blend_sha256'],r['fbx_sha256'])
+          PY
+      - name: Upload true Blender 4.x QA only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-19-PASS18-REAL-P19-07-GEOMETRY-QA
+          if-no-files-found: warn
+          path: Assets/C01InteriorProps/C01-19-W02/QA/PASS18/P19-07/

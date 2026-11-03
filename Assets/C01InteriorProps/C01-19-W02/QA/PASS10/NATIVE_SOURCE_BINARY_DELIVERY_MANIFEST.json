@@ -1,0 +1,66 @@
+{
+  "stage": "PASS10_REAL_BINARY_NATIVE_SOURCE_REPAIR_STAGED",
+  "scope": "C01-19 PR #29",
+  "date": "2026-10-30",
+  "caveats": [
+    "ACTUAL modified .blend files are produced and verified via independent binary SDNA + numeric mesh inspection, but delivered as ChatGPT ZIP attachment, NOT yet committed to Git LFS in producer branch.",
+    "New native files built by editing existing Blender 4.0 Mesh DNA geometry layers without running Blender application. Direct binary source topology PASS; Blender application loader/re-save remains NOT RUN.",
+    "Matching binary FBX candidates have exact triangle/UV/vertex parity but were not exported from modified .blend in a Blender process.",
+    "No production Models/.blend or Models/.fbx paths replaced; independent C01-02 and Unity 6 acceptance NOT RUN; all PRs remain Draft."
+  ],
+  "artifact_zip": "C01-19_PASS10_REAL_NATIVE_BLEND_AND_FBX_CANDIDATES.zip",
+  "artifact_zip_sha256": "fb27f08304b5351f9da3cb558e9db5206e3c8dab3798aa50776e652d17f4ae93",
+  "model_records": [
+    {
+      "id": "P19-05",
+      "original_blend_sha256": "a308fe19455a68d7452060a33d6a8f5e807e648468d7ddc148913b731dffc86b",
+      "new_native_blend_sha256": "3180b9c32472bfb0127e2c9e443d625ba73e9b6771c1d02e89425f639d30e2c0",
+      "candidate_binary_fbx_sha256": "7b04a8b2f9fb7306b1e169f18bba25a322dd4ba726decbe1ecb69d5994f6f1b1",
+      "source_vertices": 88,
+      "after_triangulation_edges": 222,
+      "source_and_export_triangles": 148,
+      "mesh_parts": 7,
+      "native_file_actual_binary_write": "PASS",
+      "native_SDna_polygon_and_UV_reparse": "PASS",
+      "independent_polygon_area_volume_winding_material_QA": "PASS",
+      "Blender_4_application_open": "NOT_RUN",
+      "Blender_FBX_export_reimport": "NOT_RUN",
+      "C01_02": "PENDING",
+      "Unity6": "NOT_RUN"
+    },
+    {
+      "id": "P19-07",
+      "original_blend_sha256": "d850c158fcb121a43e1885a56f1d07fdc396a0bea63ebef3b4d64086bde2aca7",
+      "new_native_blend_sha256": "345f9ca60508efed1d8d8b989011c0cc015d85877ec7ca1e01f8c9094d93faae",
+      "candidate_binary_fbx_sha256": "d9e832d4df2623b70842209944c1615d7aba7af6f042e16bf7720b4a95e9a3e1",
+      "source_vertices": 136,
+      "after_triangulation_edges": 378,
+      "source_and_export_triangles": 252,
+      "mesh_parts": 6,
+      "native_file_actual_binary_write": "PASS",
+      "native_SDna_polygon_and_UV_reparse": "PASS",
+      "independent_polygon_area_volume_winding_material_QA": "PASS",
+      "Blender_4_application_open": "NOT_RUN",
+      "Blender_FBX_export_reimport": "NOT_RUN",
+      "C01_02": "PENDING",
+      "Unity6": "NOT_RUN"
+    },
+    {
+      "id": "P19-08",
+      "original_blend_sha256": "cb1d0e75f6b1d1a4d8e8936aee0c5fee190a7d3a6ac97e1539b25add4ecb81ff",
+      "new_native_blend_sha256": "900169ca7b587100fc9d3e1cfade3de6da7209cfef8c6531c5ccdd1bc4115766",
+      "candidate_binary_fbx_sha256": "c740c5de71443f2b01f20cb48f76f37e61fda53ddfd5c5a9d7d263d511772e11",
+      "source_vertices": 149,
+      "after_triangulation_edges": 423,
+      "source_and_export_triangles": 282,
+      "mesh_parts": 6,
+      "native_file_actual_binary_write": "PASS",
+      "native_SDna_polygon_and_UV_reparse": "PASS",
+      "independent_polygon_area_volume_winding_material_QA": "PASS",
+      "Blender_4_application_open": "NOT_RUN",
+      "Blender_FBX_export_reimport": "NOT_RUN",
+      "C01_02": "PENDING",
+      "Unity6": "NOT_RUN"
+    }
+  ]
+}

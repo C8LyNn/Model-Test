@@ -1,0 +1,302 @@
+{
+  "schema": "C01-19-W26-current-native-eight-model-qa-register/v1",
+  "owner": "C01-19 FURNITURE & ENVIRONMENT PROPS",
+  "date_utc": "2026-11-03",
+  "repo": "https://github.com/C8LyNn/Model-Test",
+  "HQ": "https://github.com/C8LyNn/Model-Test/issues/36",
+  "context": "Producer scoped P19 eight-model register for C01-03/00 global audit coordination; not claiming worldwide / 36 complete; P19-03 row records original baseline and separately current repaired signed binaries",
+  "claude_doors": "EXCLUDED_UNREAD_UNMODIFIED_UNTESTED_UNEXPORTED",
+  "definition_of_done_flow": "AUDITED -> DEFECT_CONFIRMED/NO_ACTIONABLE_DEFECT -> REPAIRED(if warranted) -> INDEPENDENT_C01_02 -> REAL_UNITY_EDITOR",
+  "actually_completed": {
+    "signed_original_native_pairs_sha_asserted_in_Blender": 8,
+    "real_BLENDER_original_and_FBX_reimport": 8,
+    "native_measured_meshes": 49,
+    "native_measured_vertices": 1072,
+    "native_measured_tri_equivalent": 1868,
+    "actual_nonmanifold_edges": 0,
+    "actual_missing_uv0_meshes": 0,
+    "actual_zero_area_faces": 0,
+    "real_high_order_ngons": 10,
+    "exact_current_replacement_native_sha_after_p1903": "4a1ad590e79515b0a699f0fb643d9999b4d1726bd68fce97505f401bb8375967",
+    "blender_w01_action": "https://github.com/C8LyNn/Model-Test/actions/runs/41707817149",
+    "blender_w02_action": "https://github.com/C8LyNn/Model-Test/actions/runs/41707823517",
+    "targeted_p1903_action": "https://github.com/C8LyNn/Model-Test/actions/runs/41709447234",
+    "new_repair_native_files_committed": 2,
+    "independent_new_qa": "P19-03_NEW_EXACT_SHA_PENDING_C01_02",
+    "licensed_unity": "NOT_RUN",
+    "merges": 0,
+    "blender_targeted_repair_action": "https://github.com/C8LyNn/Model-Test/actions/runs/41709447234",
+    "producer_repair_validated_by_readback": true,
+    "blender_w01_producer_head": "e053a786ffe8f08e5121c3ae5aa0f974a629660d"
+  },
+  "assets": [
+    {
+      "id": "P19-01",
+      "owner": "C01-19",
+      "producer_draft_pr": 15,
+      "producer_branch": "c01/props-19-furniture",
+      "original_signed_blend_sha256": "b4c695f3731ba1cfc575134f41ac795faedbf23ec4cfb58daaeb8bc44b8d8e98",
+      "original_signed_fbx_sha256": "f3b9f806f4dcaafe00f24ac22b0805bf06a49d4216cb1339460ed1be9b26a2f2",
+      "real_w26_blender_action_run": 41707817149,
+      "original_FBX_reimport_test": "EXECUTED_GENUINE_BLENDER",
+      "native_audit_evidence": "https://github.com/C8LyNn/Model-Test/blob/c01/props-19-furniture/Assets/C01InteriorProps/C01-19/QA/PASS26/P19-01/REAL_W26_NATIVE_AUDIT.json",
+      "native_counts": {
+        "meshes": 4,
+        "vertices": 269,
+        "indexed_triangle_equivalents": 470
+      },
+      "measured_flags": {
+        "nonmanifold_edges": 0,
+        "boundary_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "uv0_missing": 0,
+        "duplicate_geometric_faces": 0,
+        "tj_screen_candidates": 1
+      },
+      "classification": "PRIOR_C01_02_STATIC_PASS__P19_01_SLIVER_REPAIR_CLOSED",
+      "new_W26_native_repair": "NOT_REQUIRED_WITH_CURRENT_EVIDENCE",
+      "independent_c01_02_new_sha": "PENDING_IF_PRODUCER_CHANGES",
+      "real_unity_6_urp": "NOT_RUN",
+      "final_approval": "HOLD"
+    },
+    {
+      "id": "P19-02",
+      "owner": "C01-19",
+      "producer_draft_pr": 15,
+      "producer_branch": "c01/props-19-furniture",
+      "original_signed_blend_sha256": "ff0448b34e70ab65380889dfc1d46e426d88873684e831775306cfca28e1a99f",
+      "original_signed_fbx_sha256": "b0d68ce917a938b4bdaa32f4b2d48dcab5275c752c141260cabd3d82a5c9374f",
+      "real_w26_blender_action_run": 41707817149,
+      "original_FBX_reimport_test": "EXECUTED_GENUINE_BLENDER",
+      "native_audit_evidence": "https://github.com/C8LyNn/Model-Test/blob/c01/props-19-furniture/Assets/C01InteriorProps/C01-19/QA/PASS26/P19-02/REAL_W26_NATIVE_AUDIT.json",
+      "native_counts": {
+        "meshes": 5,
+        "vertices": 166,
+        "indexed_triangle_equivalents": 292
+      },
+      "measured_flags": {
+        "nonmanifold_edges": 0,
+        "boundary_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "uv0_missing": 0,
+        "duplicate_geometric_faces": 0,
+        "tj_screen_candidates": 0
+      },
+      "classification": "PRIOR_EXACT_SHA_SCOPED_STATIC_PASS",
+      "new_W26_native_repair": "NOT_REQUIRED_WITH_CURRENT_EVIDENCE",
+      "independent_c01_02_new_sha": "PENDING_IF_PRODUCER_CHANGES",
+      "real_unity_6_urp": "NOT_RUN",
+      "final_approval": "HOLD"
+    },
+    {
+      "id": "P19-03",
+      "owner": "C01-19",
+      "producer_draft_pr": 15,
+      "producer_branch": "c01/props-19-furniture",
+      "original_signed_blend_sha256": "3652b4f738783e3fab0940311d77b5cd9e6435a23ef60c2c7249f209fa4b11cd",
+      "original_signed_fbx_sha256": "1bd730b2382879d7d9c2f3d67c4b9646b8ca036c04de663e53b3019c403af2df",
+      "real_w26_blender_action_run": 41707817149,
+      "original_FBX_reimport_test": "EXECUTED_GENUINE_BLENDER",
+      "native_audit_evidence": "https://github.com/C8LyNn/Model-Test/blob/c01/props-19-furniture/Assets/C01InteriorProps/C01-19/QA/PASS26/P19-03/REAL_W26_NATIVE_AUDIT.json",
+      "native_counts": {
+        "meshes": 5,
+        "vertices": 72,
+        "indexed_triangle_equivalents": 128
+      },
+      "measured_flags": {
+        "nonmanifold_edges": 0,
+        "boundary_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 10,
+        "uv0_missing": 0,
+        "duplicate_geometric_faces": 0,
+        "tj_screen_candidates": 0
+      },
+      "classification": "TEN_ORIGINAL_NGONS_CLOSED_IN_NEW_NATIVE_BLENDER_SOURCE_AND_FBX__NEW_EXACT_SHA_C01_02_INDEPENDENT_HOLD",
+      "new_W26_native_repair": "REPAIRED_PRODUCER_REAL_BLENDER_PASS__CURRENT_NEW_SHA__INDEPENDENT_QA_PENDING",
+      "independent_c01_02_new_sha": "PENDING_GENUINE_NEW_FBXSHA_RETEST",
+      "real_unity_6_urp": "NOT_RUN",
+      "final_approval": "HOLD",
+      "current_producer_blend_sha256": "ce43931f9116fe3aef6f795c98e505665c921e6c1080c7d61c5cd518e7f7f5b8",
+      "current_producer_fbx_sha256": "4a1ad590e79515b0a699f0fb643d9999b4d1726bd68fce97505f401bb8375967",
+      "native_blend_size_bytes": 907792,
+      "native_fbx_size_bytes": 29308,
+      "current_source_after_repair_counts": {
+        "meshes": 5,
+        "vertices": 72,
+        "triangle_equivalents": 128,
+        "ngons": 0,
+        "missing_uv0_meshes": 0,
+        "degenerate_faces": 0
+      },
+      "repair_changes": {
+        "old_ngons": 10,
+        "new_ngons": 0,
+        "moved_vertices": 0,
+        "vertex_count_before_after": "72/72",
+        "triangulated_face_count": 10,
+        "geometry_bbox_shift_m": 0,
+        "fbx_reimport_bbox_delta_m": 2.9802322387695312e-8,
+        "uv0_sets_unchanged": true,
+        "pivot_parent_and_world_transform_unchanged": true,
+        "result": "PRODUCER_NATIVE_BLENDER_PASS__INDEPENDENT_C01_02_PENDING"
+      },
+      "repair_action": "https://github.com/C8LyNn/Model-Test/actions/runs/41709447234",
+      "repair_proof": "https://github.com/C8LyNn/Model-Test/blob/c01/props-19-furniture/Assets/C01InteriorProps/C01-19/QA/PASS26/P19-03_NGON_REPAIR/REPAIR_AND_ROUNDTRIP.json",
+      "producer_pr15_commit_repair": "e053a786ffe8f08e5121c3ae5aa0f974a629660d"
+    },
+    {
+      "id": "P19-04",
+      "owner": "C01-19",
+      "producer_draft_pr": 15,
+      "producer_branch": "c01/props-19-furniture",
+      "original_signed_blend_sha256": "8690c61df28d2126e6d84cba00326f6d47fa54f6be56edcedcda4c816b283b70",
+      "original_signed_fbx_sha256": "a8ef74e3972e58b8964d8fd17f121b3cb4977c5c98c9b5ad0928630e77258469",
+      "real_w26_blender_action_run": 41707817149,
+      "original_FBX_reimport_test": "EXECUTED_GENUINE_BLENDER",
+      "native_audit_evidence": "https://github.com/C8LyNn/Model-Test/blob/c01/props-19-furniture/Assets/C01InteriorProps/C01-19/QA/PASS26/P19-04/REAL_W26_NATIVE_AUDIT.json",
+      "native_counts": {
+        "meshes": 9,
+        "vertices": 72,
+        "indexed_triangle_equivalents": 108
+      },
+      "measured_flags": {
+        "nonmanifold_edges": 0,
+        "boundary_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "uv0_missing": 0,
+        "duplicate_geometric_faces": 0,
+        "tj_screen_candidates": 0
+      },
+      "classification": "PRIOR_EXACT_SHA_SCOPED_STATIC_PASS",
+      "new_W26_native_repair": "NOT_REQUIRED_WITH_CURRENT_EVIDENCE",
+      "independent_c01_02_new_sha": "PENDING_IF_PRODUCER_CHANGES",
+      "real_unity_6_urp": "NOT_RUN",
+      "final_approval": "HOLD"
+    },
+    {
+      "id": "P19-05",
+      "owner": "C01-19",
+      "producer_draft_pr": 29,
+      "producer_branch": "c01/props-19-furniture-wave02",
+      "original_signed_blend_sha256": "7905086e87660461d46e6d633b16fc655142939ac4cbc0df0c670067da9314b2",
+      "original_signed_fbx_sha256": "d07b4884cfe1de2c48a96dc9407c2eccdfbdbdf703551c71ae195bd3fd8c9d87",
+      "real_w26_blender_action_run": 41707823517,
+      "original_FBX_reimport_test": "EXECUTED_GENUINE_BLENDER",
+      "native_audit_evidence": "https://github.com/C8LyNn/Model-Test/blob/c01/props-19-furniture-wave02/Assets/C01InteriorProps/C01-19-W02/QA/PASS26/P19-05/REAL_W26_NATIVE_AUDIT.json",
+      "native_counts": {
+        "meshes": 7,
+        "vertices": 152,
+        "indexed_triangle_equivalents": 252
+      },
+      "measured_flags": {
+        "nonmanifold_edges": 0,
+        "boundary_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "uv0_missing": 0,
+        "duplicate_geometric_faces": 0,
+        "tj_screen_candidates": 0
+      },
+      "classification": "PRIOR_EXACT_SHA_SCOPED_STATIC_PASS",
+      "new_W26_native_repair": "NOT_REQUIRED_WITH_CURRENT_EVIDENCE",
+      "independent_c01_02_new_sha": "PENDING_IF_PRODUCER_CHANGES",
+      "real_unity_6_urp": "NOT_RUN",
+      "final_approval": "HOLD"
+    },
+    {
+      "id": "P19-06",
+      "owner": "C01-19",
+      "producer_draft_pr": 29,
+      "producer_branch": "c01/props-19-furniture-wave02",
+      "original_signed_blend_sha256": "08f0ed1791beb7c4c4e37ffb1dc3016ebeddf0b94e5e63eb491ec934c51ac4bd",
+      "original_signed_fbx_sha256": "61e371d97c7ff5d17dbc8c5673c8edf489df0b8bdb1b4337396f41f8d4f477ea",
+      "real_w26_blender_action_run": 41707823517,
+      "original_FBX_reimport_test": "EXECUTED_GENUINE_BLENDER",
+      "native_audit_evidence": "https://github.com/C8LyNn/Model-Test/blob/c01/props-19-furniture-wave02/Assets/C01InteriorProps/C01-19-W02/QA/PASS26/P19-06/REAL_W26_NATIVE_AUDIT.json",
+      "native_counts": {
+        "meshes": 7,
+        "vertices": 56,
+        "indexed_triangle_equivalents": 84
+      },
+      "measured_flags": {
+        "nonmanifold_edges": 0,
+        "boundary_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "uv0_missing": 0,
+        "duplicate_geometric_faces": 0,
+        "tj_screen_candidates": 0
+      },
+      "classification": "PRIOR_EXACT_SHA_SCOPED_STATIC_PASS",
+      "new_W26_native_repair": "NOT_REQUIRED_WITH_CURRENT_EVIDENCE",
+      "independent_c01_02_new_sha": "PENDING_IF_PRODUCER_CHANGES",
+      "real_unity_6_urp": "NOT_RUN",
+      "final_approval": "HOLD"
+    },
+    {
+      "id": "P19-07",
+      "owner": "C01-19",
+      "producer_draft_pr": 29,
+      "producer_branch": "c01/props-19-furniture-wave02",
+      "original_signed_blend_sha256": "a6dc5d3287dc1b4842de35f6a3e1c8e7c885fd8c161016c11243ed2c760dbc28",
+      "original_signed_fbx_sha256": "eb579a85355756c0d803f58ec96fac509e33788d8142390349aebbffdba50e81",
+      "real_w26_blender_action_run": 41707823517,
+      "original_FBX_reimport_test": "EXECUTED_GENUINE_BLENDER",
+      "native_audit_evidence": "https://github.com/C8LyNn/Model-Test/blob/c01/props-19-furniture-wave02/Assets/C01InteriorProps/C01-19-W02/QA/PASS26/P19-07/REAL_W26_NATIVE_AUDIT.json",
+      "native_counts": {
+        "meshes": 6,
+        "vertices": 136,
+        "indexed_triangle_equivalents": 252
+      },
+      "measured_flags": {
+        "nonmanifold_edges": 0,
+        "boundary_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "uv0_missing": 0,
+        "duplicate_geometric_faces": 0,
+        "tj_screen_candidates": 17
+      },
+      "classification": "VERTEX_EDGE_PROXIMITY_REVIEW__NOT_PROVEN_VISIBLE_DEFECT",
+      "new_W26_native_repair": "NOT_REQUIRED_WITH_CURRENT_EVIDENCE",
+      "independent_c01_02_new_sha": "PENDING_IF_PRODUCER_CHANGES",
+      "real_unity_6_urp": "NOT_RUN",
+      "final_approval": "HOLD"
+    },
+    {
+      "id": "P19-08",
+      "owner": "C01-19",
+      "producer_draft_pr": 29,
+      "producer_branch": "c01/props-19-furniture-wave02",
+      "original_signed_blend_sha256": "9f878a0c1f9fb28e9b9748801e16a18319da4391dac8062285f80c1f8c5c81c5",
+      "original_signed_fbx_sha256": "9de76d296482e2d302b5b0a14c30692dbdb6adacd90fcd4e022da9ab35ec658c",
+      "real_w26_blender_action_run": 41707823517,
+      "original_FBX_reimport_test": "EXECUTED_GENUINE_BLENDER",
+      "native_audit_evidence": "https://github.com/C8LyNn/Model-Test/blob/c01/props-19-furniture-wave02/Assets/C01InteriorProps/C01-19-W02/QA/PASS26/P19-08/REAL_W26_NATIVE_AUDIT.json",
+      "native_counts": {
+        "meshes": 6,
+        "vertices": 149,
+        "indexed_triangle_equivalents": 282
+      },
+      "measured_flags": {
+        "nonmanifold_edges": 0,
+        "boundary_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "uv0_missing": 0,
+        "duplicate_geometric_faces": 0,
+        "tj_screen_candidates": 2
+      },
+      "classification": "NEAR_ENDPOINT_NUMERICAL_REVIEW__NOT_PROVEN_VISIBLE_DEFECT",
+      "new_W26_native_repair": "NOT_REQUIRED_WITH_CURRENT_EVIDENCE",
+      "independent_c01_02_new_sha": "PENDING_IF_PRODUCER_CHANGES",
+      "real_unity_6_urp": "NOT_RUN",
+      "final_approval": "HOLD"
+    }
+  ],
+  "global_final_status": "0/36_FINAL_APPROVED__HOLD"
+}

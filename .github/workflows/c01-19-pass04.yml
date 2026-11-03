@@ -1,0 +1,68 @@
+name: C01-19 PASS04 Native Blender Safe Triangulation
+on:
+  push:
+    branches: [c01/props-19-furniture-wave02]
+    paths:
+      - 'Assets/C01InteriorProps/C01-19-W02/Source/pass04_triangulate.py'
+      - '.github/workflows/c01-19-pass04.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  native-triangulation:
+    runs-on: ubuntu-24.04
+    concurrency:
+      group: c01-19-pass04-w02
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - name: Install real Blender and dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y blender python3-numpy git-lfs xvfb xauth libegl1 libgl1 libopengl0
+          git lfs install --local
+          git lfs pull
+      - name: Real source Blender triangulation, before after wireframes, binary FBX reimport
+        run: xvfb-run -a blender -b --factory-startup --python-exit-code 1 --python Assets/C01InteriorProps/C01-19-W02/Source/pass04_triangulate.py
+      - name: Verify reports and all native model outputs
+        run: |
+          python3 - <<'PY'
+          import json,pathlib
+          root=pathlib.Path('Assets/C01InteriorProps/C01-19-W02')
+          x=json.loads((root/'QA/PASS04/SUMMARY.json').read_text())
+          assert len(x['models'])==4
+          assert {z['id'] for z in x['models']}=={'P19-05','P19-06','P19-07','P19-08'}
+          for m in x['models']:
+            if m['id'] in {'P19-05','P19-07','P19-08'}:
+              assert m['after']['triangle_only'] and not m['after']['ngons']
+            assert m['after']['degenerate_triangles']==0
+            assert m['fbx_roundtrip']['status']=='PASS'
+            folder=root/'QA/PASS04'/m['id']
+            for name in ('wireframe_before.png','wireframe_after.png','shaded_after.png','closeup_actual_mesh.png','mesh_topology_before.json','mesh_topology_after.json','repair_and_roundtrip.json'):
+              p=folder/name
+              assert p.exists() and p.stat().st_size>100,(m['id'],name)
+          print('PASS04: four genuine Blender models validated, all source faces triangulated, FBX importer verified')
+          PY
+      - name: Upload actual binary and evidence for QA
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-19-PASS04-W02-native-triangulation
+          if-no-files-found: warn
+          path: |
+            Assets/C01InteriorProps/C01-19-W02/Models/*/*.blend
+            Assets/C01InteriorProps/C01-19-W02/Models/*/*.fbx
+            Assets/C01InteriorProps/C01-19-W02/QA/PASS04/**
+      - name: Commit source and real evidence to existing draft PR
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Assets/C01InteriorProps/C01-19-W02/Models Assets/C01InteriorProps/C01-19-W02/QA/PASS04
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "fix(C01-19 PASS04): real native triangulated Blender/FBX and evidence"
+          # Fail closed on a concurrent producer update: no force/rebase or unapproved merge.
+          git status --short | head -30
+          git push origin HEAD:c01/props-19-furniture-wave02

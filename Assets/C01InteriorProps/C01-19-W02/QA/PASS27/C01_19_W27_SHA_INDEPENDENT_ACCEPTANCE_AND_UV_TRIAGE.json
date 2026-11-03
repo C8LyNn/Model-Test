@@ -1,0 +1,113 @@
+{
+  "schema": "C01-19/W27/exact-sha-native-QA-independent-gate-v1",
+  "scope": "C01-19 P19-01,03,07,08; no delegated doors/gates (exclude all D01/D02 and other Claude door assets and old PR #19/#32)",
+  "reported_at_date_utc": "2026-11-03",
+  "w27_dispatch": "https://github.com/C8LyNn/Model-Test/issues/45",
+  "w27_producer_drafts": {
+    "P19_W01": 15,
+    "P19_W02": 29
+  },
+  "latest_producer_W01_HEAD": "e053a786ffe8f08e5121c3ae5aa0f974a629660d",
+  "latest_producer_W02_HEAD_before_this_report": "28584ea9f28a294b53eea13a08bbd050ad364f2a",
+  "actual_W27_Blender4_signed_FBX_readonly_qa": {
+    "run_url": "https://github.com/C8LyNn/Model-Test/actions/runs/41717268843",
+    "status": "SUCCESS",
+    "full_signed_byte_SHA_correct": true,
+    "blender_open_mainfile_and_fbx_reimport": true,
+    "screenshots_original_FBX_shaded_and_actual_indexed_edges": 8,
+    "previews_png_magic_and_distinct_render_pairs": "PASS_8_OF_8",
+    "producer_blend_fbx_files_modified": 0,
+    "native_export_attempted": 0,
+    "moved_vertices": 0,
+    "global_final_approved": false
+  },
+  "latest_independent_W27": {
+    "owner": "C01-02",
+    "report": "https://github.com/C8LyNn/Model-Test/issues/8#issuecomment-6615351090",
+    "genuine_physical_new_sha_action": "https://github.com/C8LyNn/Model-Test/actions/runs/41717112468",
+    "P19_03": "INDEPENDENT_NEW_SHA_STATIC_PASS/UV_PASS; independent original new native Blender + FBX verified; 128 world triangle position signatures match, 0 inverted polygon normals, 0 remaining ngons",
+    "real_unity": "NOT_RUN"
+  },
+  "items": [
+    {
+      "id": "P19-01",
+      "sha256_fbx": "f3b9f806f4dcaafe00f24ac22b0805bf06a49d4216cb1339460ed1be9b26a2f2",
+      "sha256_blend": "b4c695f3731ba1cfc575134f41ac795faedbf23ec4cfb58daaeb8bc44b8d8e98",
+      "producer_pr": 15,
+      "native_defect": "Previous micro-sliver repaired and C01-02 static accepted; previous independent raw FBX detected 1 tiny UV collapsed polygon 2.4736e-8 m2, no approved material/visual failure",
+      "new_native_repair_W27": "NONE",
+      "new_native_test_W27": "NOT_RUN_UNCHANGED_MODEL",
+      "independent_status": "OLDER_SCOPED_STATIC_PASS; P3 MICRO_UV_PRECISION_VISUAL_REVIEW",
+      "Unity6": "NOT_RUN",
+      "release": "HOLD"
+    },
+    {
+      "id": "P19-03",
+      "sha256_fbx": "4a1ad590e79515b0a699f0fb643d9999b4d1726bd68fce97505f401bb8375967",
+      "sha256_blend": "ce43931f9116fe3aef6f795c98e505665c921e6c1080c7d61c5cd518e7f7f5b8",
+      "producer_pr": 15,
+      "native_defect": "10 native n-gons, previous SHA, repaired W26 by targeted actual Blender triangulation",
+      "producer_repair": "https://github.com/C8LyNn/Model-Test/actions/runs/41709447234",
+      "new_native_repair_W27": "NONE; no independent failure to repair",
+      "new_native_test_W27": "C01-02 PHYSICALLY INDEPENDENT NEW-SHA BLENDER SOURCE+FBX REIMPORT",
+      "independent_status": "INDEPENDENT_NEW_SHA_STATIC_PASS/UV_PASS; 5 meshes,72V,128T,0 ngons,0 collapse, 128 world triangle signatures and bbox parity; VISUAL_PASS NOT CLAIMED",
+      "Unity6": "NOT_RUN",
+      "release": "HOLD"
+    },
+    {
+      "id": "P19-07",
+      "sha256_fbx": "eb579a85355756c0d803f58ec96fac509e33788d8142390349aebbffdba50e81",
+      "sha256_blend": "a6dc5d3287dc1b4842de35f6a3e1c8e7c885fd8c161016c11243ed2c760dbc28",
+      "producer_pr": 29,
+      "new_native_test_W27": "Genuine Blender4 source+FBX exact signed full byte SHA, local original indexed mesh UV/area and actual 3D edge wire closeups",
+      "source_uv_zero_positive_area_count": 4,
+      "imported_uv_zero_positive_area_surface_m2": 1.3915304028597954e-7,
+      "raw_zero_uv_polygon_indices": [
+        83,
+        84,
+        86,
+        88,
+        165,
+        168,
+        170,
+        173
+      ],
+      "raw_face83_world_area_m2": 0,
+      "material": "M_C01_STEEL.002",
+      "image_texture_nodes_on_these_faces": 0,
+      "t_junction_proximity_candidates": 17,
+      "three_d_world_area_metric_note": "Imported mesh world-coordinate triangle fan area; source raw indexed FBX prior C01-02 Newell raw audit 8 original UV collapsed faces ~1.468509e-7m². Different grain/tolerance; do not classify 83 as new confirmed rendering defect solely from zero world fan area.",
+      "original_signed_mesh_fbx_report": "https://github.com/C8LyNn/Model-Test/blob/c01/props-19-furniture-wave02/Assets/C01InteriorProps/C01-19-W02/QA/PASS27/P19-07/W27_TARGETED_REAL_NATIVE_UV_AND_EDGE_WITNESS.json",
+      "new_native_repair_W27": "NONE__NO_CONFIRMED_VISUAL_MATERIAL_IMPACT",
+      "independent_status": "RAW_UV_COLLAPSE_CONFIRMED_SMALL; C01-02 VISIBLE_SCREENSHOT/SHADING/TJ_SEVERITY REVIEW PENDING",
+      "Unity6": "NOT_RUN",
+      "release": "HOLD",
+      "imported_original_fbx_zero_uv_any_3d_count": 8,
+      "imported_original_fbx_uv_zero_positive_area_gt1e_14_count": 7
+    },
+    {
+      "id": "P19-08",
+      "sha256_fbx": "9de76d296482e2d302b5b0a14c30692dbdb6adacd90fcd4e022da9ab35ec658c",
+      "sha256_blend": "9f878a0c1f9fb28e9b9748801e16a18319da4391dac8062285f80c1f8c5c81c5",
+      "producer_pr": 29,
+      "new_native_test_W27": "Genuine Blender4 source+FBX exact signed SHA, source and FBX UV polygons, real indexed edge wire and shaded closeups",
+      "uv_zero_polygons_raw": 0,
+      "vertex_on_nonadjacent_edge_candidates": 2,
+      "original_signed_mesh_fbx_report": "https://github.com/C8LyNn/Model-Test/blob/c01/props-19-furniture-wave02/Assets/C01InteriorProps/C01-19-W02/QA/PASS27/P19-08/W27_TARGETED_REAL_NATIVE_UV_AND_EDGE_WITNESS.json",
+      "new_native_repair_W27": "NONE__NO_PROVEN_VISUAL_OR_PHYSICAL_DEFECT",
+      "independent_status": "SCOPED_STATIC_TOPOLOGY_PASS; C01-02 PHOTO_CANDIDATE_REVIEW_PENDING",
+      "Unity6": "NOT_RUN",
+      "release": "HOLD"
+    }
+  ],
+  "W27_scope_delta": {
+    "new_producer_model_id_count": 0,
+    "new_blend_fbx_model_files_changed": 0,
+    "new_native_fbx_exports": 0,
+    "changed_ship_layout_files": 0,
+    "changed_door_files": 0,
+    "merges": 0,
+    "QA_only_execution": true
+  },
+  "global_status": "RELEASE_HOLD / 0_OF_36_FINAL_APPROVED / UNITY_EDITOR_OWNER_ACTION_REQUIRED"
+}

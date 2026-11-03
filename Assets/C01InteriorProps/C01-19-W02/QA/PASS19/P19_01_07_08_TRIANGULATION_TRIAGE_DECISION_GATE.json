@@ -1,0 +1,138 @@
+{
+  "dispatch": "https://github.com/C8LyNn/Model-Test/issues/36#issuecomment-6589035504",
+  "owner": "C01-19",
+  "scope": "P19-01 P19-07 P19-08 — no source geometry changed in W19",
+  "evidence_basis": "Local independent decoding of physical 3 original PASS10 binary candidate FBXs and 3 actual Blender 4.0.2 PASS17 native exported FBXs, using same 2e-7m vertex-to-edge test on indexed Geometry. PASS10 baseline is earlier offline FBX candidate, NOT a current Blender application release.",
+  "thresholds": {
+    "vertex_edge_dist_m": 2e-7,
+    "edge_fraction_min": 0.00001,
+    "micro_face_area_m2": 1e-10
+  },
+  "producer_current": {
+    "PR15": "b33707018955bef9c83a10c8c6df09968a4a7b2b",
+    "PR29_before_this_receipt": "917654ef6ee936be97a1d12a6786009e97b3cb23",
+    "native_runs": [
+      41346465283,
+      41346471952
+    ],
+    "p1907_live_blender_native_qa_run": 41352494944
+  },
+  "models": [
+    {
+      "id": "P19-01",
+      "baseline_binary_fbx_sha": "9dc4d6b724c4a5a4b45a04412dc5a61fe732fa1b4423a9f0c27889053960163b",
+      "current_real_blender_fbx_sha": "e2e0bb9e095c1daed87e407814e88f8788cf503ab705d3e34513879038bcd559",
+      "current_real_blend_sha": "a8883117ec9e59b93cb988970c09d6cdaf496b8a73957a60aa3ca503f8be420f",
+      "original_109_vertex_positions_exactly_unchanged": true,
+      "vertex_edge_screen_before": 0,
+      "vertex_edge_screen_after": 3,
+      "sliver_triangles_before": 0,
+      "sliver_triangles_after": 2,
+      "slivers": [
+        {
+          "fbx_part": "Cube.001",
+          "face_index": 80,
+          "vertex_indices": [
+            3,
+            106,
+            107
+          ],
+          "area_m2": 6.991740519879386e-12
+        },
+        {
+          "fbx_part": "Cube.001",
+          "face_index": 132,
+          "vertex_indices": [
+            88,
+            87,
+            13
+          ],
+          "area_m2": 2.4334534387548956e-11
+        }
+      ],
+      "note": "Both sliver triangular vertex triples exist in baseline same exact coordinates, but their triples were not discrete triangle faces there; result from later topology triangulation, not moved source geometry. Severity/material rendering impact unknown.",
+      "independent_c01_02_requested_decision": "classify microscopic nonzero triangles against normals, lighting, collision; approve unchanged or identify precise BMesh cleanup. HOLD/REVIEW until accepted."
+    },
+    {
+      "id": "P19-07",
+      "baseline_binary_fbx_sha": "d9e832d4df2623b70842209944c1615d7aba7af6f042e16bf7720b4a95e9a3e1",
+      "current_real_blender_fbx_sha": "eb579a85355756c0d803f58ec96fac509e33788d8142390349aebbffdba50e81",
+      "current_real_blend_sha": "a6dc5d3287dc1b4842de35f6a3e1c8e7c885fd8c161016c11243ed2c760dbc28",
+      "all_136_vertex_positions_exactly_unchanged": true,
+      "vertex_edge_screen_before": 16,
+      "vertex_edge_screen_after": 18,
+      "unique_middle_vertices": 8,
+      "all_within_one_index_edge_connected_component": true,
+      "underlying_part": "Cube.019",
+      "current_edges": [
+        [
+          12,
+          16
+        ],
+        [
+          12,
+          94
+        ],
+        [
+          16,
+          69
+        ],
+        [
+          16,
+          94
+        ],
+        [
+          27,
+          35
+        ],
+        [
+          27,
+          64
+        ],
+        [
+          27,
+          65
+        ],
+        [
+          27,
+          89
+        ]
+      ],
+      "native_blender4_run": 41352494944,
+      "native_BMesh_vertex_edge_candidates": 17,
+      "native_BMesh_FBX_roundtrip": "PASS",
+      "native_manifold_and_zero_area": "PASS",
+      "request": "C01-02 classify if these 8 indexed positions are real shading cracks, z-fighting or intentional same-component triangulation; no BMesh weld without a negative-impact finding.",
+      "release_status": "HOLD_PENDING_INDEPENDENT_C01_02"
+    },
+    {
+      "id": "P19-08",
+      "baseline_binary_fbx_sha": "c740c5de71443f2b01f20cb48f76f37e61fda53ddfd5c5a9d7d263d511772e11",
+      "current_real_blender_fbx_sha": "9de76d296482e2d302b5b0a14c30692dbdb6adacd90fcd4e022da9ab35ec658c",
+      "current_real_blend_sha": "9f878a0c1f9fb28e9b9748801e16a18319da4391dac8062285f80c1f8c5c81c5",
+      "all_149_vertex_positions_exactly_unchanged": true,
+      "vertex_edge_screen_before": 0,
+      "vertex_edge_screen_after": 2,
+      "edge_middle_vertex_triplets": [
+        [
+          17,
+          81,
+          95
+        ],
+        [
+          24,
+          86,
+          90
+        ]
+      ],
+      "fraction_approx": 0.999922,
+      "release_status": "REVIEW_NEAR_ENDPOINT_TOLERANCE",
+      "request": "C01-02 decide numerical tolerance vs true T-edge defect; do not perturb mesh before classification."
+    }
+  ],
+  "model_release": "NOT_APPROVED",
+  "independent_c01_02": "PENDING",
+  "Unity6_URP_editor": "NOT_RUN",
+  "authorization": "NO_MERGE",
+  "QA_action": "Explicit per-SHA C01-02 decisions for three items; genuine Blender exporter only if confirmed defect and changed actual native mesh."
+}

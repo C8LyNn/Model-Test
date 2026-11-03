@@ -1,0 +1,297 @@
+{
+  "id": "P19-06",
+  "result": "PASS_STATIC_PARTS",
+  "changes": [],
+  "exceptions": [
+    {
+      "classification": "INTENTIONAL_SEPARATE_COMPONENT",
+      "reason": "preserve material boundaries or movable hierarchy",
+      "overlap": {
+        "a": "Wall_Mount_Plate",
+        "b": "Hinge_Bar",
+        "volume_m3": 0.00039936,
+        "same_material": false,
+        "moving": false,
+        "center": [
+          0.0,
+          0.02800000086426735,
+          0.06499999947845936
+        ]
+      }
+    },
+    {
+      "classification": "INTENTIONAL_SEPARATE_COMPONENT",
+      "reason": "preserve material boundaries or movable hierarchy",
+      "overlap": {
+        "a": "Wall_Mount_Plate",
+        "b": "Wall_Latch",
+        "volume_m3": 7.5e-05,
+        "same_material": false,
+        "moving": false,
+        "center": [
+          0.0,
+          0.029500000178813934,
+          0.3499999940395355
+        ]
+      }
+    },
+    {
+      "classification": "INTENTIONAL_SEPARATE_COMPONENT",
+      "reason": "preserve material boundaries or movable hierarchy",
+      "overlap": {
+        "a": "Hinge_Bar",
+        "b": "Tabletop_Fold",
+        "volume_m3": 0.001206401,
+        "same_material": false,
+        "moving": true,
+        "center": [
+          0.0,
+          0.059999980032444,
+          0.05549999885261059
+        ]
+      }
+    },
+    {
+      "classification": "INTENTIONAL_SEPARATE_COMPONENT",
+      "reason": "preserve material boundaries or movable hierarchy",
+      "overlap": {
+        "a": "Tabletop_Fold",
+        "b": "Edge_Trim",
+        "volume_m3": 0.00022,
+        "same_material": false,
+        "moving": true,
+        "center": [
+          0.0,
+          0.6449999809265137,
+          0.04899999871850014
+        ]
+      }
+    }
+  ],
+  "unresolved": [],
+  "fbx_roundtrip": {
+    "result": "PASS",
+    "bounds_max_error_m": 5.960464477539063e-08,
+    "triangles": 84,
+    "imported_meshes": 7,
+    "uv0_meshes": 7
+  },
+  "parts": [
+    {
+      "name": "Wall_Mount_Plate",
+      "vertices": 8,
+      "edges": 12,
+      "faces": 6,
+      "triangles": 12,
+      "components": 1,
+      "loose_vertices": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "duplicate_coordinate_vertices": 0,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "zero_edges": 0,
+      "inconsistent_winding_candidates": 0,
+      "self_intersection_candidates": 0,
+      "uv_layers": 1,
+      "material": "M_C01_STEEL.001",
+      "moving": false
+    },
+    {
+      "name": "Hinge_Bar",
+      "vertices": 8,
+      "edges": 12,
+      "faces": 6,
+      "triangles": 12,
+      "components": 1,
+      "loose_vertices": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "duplicate_coordinate_vertices": 0,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "zero_edges": 0,
+      "inconsistent_winding_candidates": 0,
+      "self_intersection_candidates": 0,
+      "uv_layers": 1,
+      "material": "M_C01_ACCENT.001",
+      "moving": false
+    },
+    {
+      "name": "Tabletop_Fold",
+      "vertices": 8,
+      "edges": 12,
+      "faces": 6,
+      "triangles": 12,
+      "components": 1,
+      "loose_vertices": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "duplicate_coordinate_vertices": 0,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "zero_edges": 0,
+      "inconsistent_winding_candidates": 0,
+      "self_intersection_candidates": 0,
+      "uv_layers": 1,
+      "material": "M_C01_DARK.001",
+      "moving": true
+    },
+    {
+      "name": "Edge_Trim",
+      "vertices": 8,
+      "edges": 12,
+      "faces": 6,
+      "triangles": 12,
+      "components": 1,
+      "loose_vertices": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "duplicate_coordinate_vertices": 0,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "zero_edges": 0,
+      "inconsistent_winding_candidates": 0,
+      "self_intersection_candidates": 0,
+      "uv_layers": 1,
+      "material": "M_C01_ACCENT.001",
+      "moving": true
+    },
+    {
+      "name": "Fold_Support_-0.48",
+      "vertices": 8,
+      "edges": 12,
+      "faces": 6,
+      "triangles": 12,
+      "components": 1,
+      "loose_vertices": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "duplicate_coordinate_vertices": 0,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "zero_edges": 0,
+      "inconsistent_winding_candidates": 0,
+      "self_intersection_candidates": 0,
+      "uv_layers": 1,
+      "material": "M_C01_STEEL.001",
+      "moving": false
+    },
+    {
+      "name": "Fold_Support_0.48",
+      "vertices": 8,
+      "edges": 12,
+      "faces": 6,
+      "triangles": 12,
+      "components": 1,
+      "loose_vertices": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "duplicate_coordinate_vertices": 0,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "zero_edges": 0,
+      "inconsistent_winding_candidates": 0,
+      "self_intersection_candidates": 0,
+      "uv_layers": 1,
+      "material": "M_C01_STEEL.001",
+      "moving": false
+    },
+    {
+      "name": "Wall_Latch",
+      "vertices": 8,
+      "edges": 12,
+      "faces": 6,
+      "triangles": 12,
+      "components": 1,
+      "loose_vertices": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "duplicate_coordinate_vertices": 0,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "zero_edges": 0,
+      "inconsistent_winding_candidates": 0,
+      "self_intersection_candidates": 0,
+      "uv_layers": 1,
+      "material": "M_C01_ACCENT.001",
+      "moving": false
+    }
+  ],
+  "totals": {
+    "vertices": 56,
+    "edges": 84,
+    "faces": 42,
+    "triangles": 84,
+    "loose_vertices": 0,
+    "degenerate_faces": 0,
+    "duplicate_faces": 0,
+    "duplicate_coordinate_vertices": 0,
+    "boundary_edges": 0,
+    "nonmanifold_edges": 0,
+    "zero_edges": 0,
+    "inconsistent_winding_candidates": 0
+  },
+  "bounding_xyz_blender": [
+    [
+      -0.550000011920929,
+      0.0,
+      -0.38999998569488525
+    ],
+    [
+      0.550000011920929,
+      0.6499999761581421,
+      0.38999998569488525
+    ]
+  ],
+  "interpart_overlaps": [
+    {
+      "a": "Wall_Mount_Plate",
+      "b": "Hinge_Bar",
+      "volume_m3": 0.00039936,
+      "same_material": false,
+      "moving": false,
+      "center": [
+        0.0,
+        0.02800000086426735,
+        0.06499999947845936
+      ]
+    },
+    {
+      "a": "Wall_Mount_Plate",
+      "b": "Wall_Latch",
+      "volume_m3": 7.5e-05,
+      "same_material": false,
+      "moving": false,
+      "center": [
+        0.0,
+        0.029500000178813934,
+        0.3499999940395355
+      ]
+    },
+    {
+      "a": "Hinge_Bar",
+      "b": "Tabletop_Fold",
+      "volume_m3": 0.001206401,
+      "same_material": false,
+      "moving": true,
+      "center": [
+        0.0,
+        0.059999980032444,
+        0.05549999885261059
+      ]
+    },
+    {
+      "a": "Tabletop_Fold",
+      "b": "Edge_Trim",
+      "volume_m3": 0.00022,
+      "same_material": false,
+      "moving": true,
+      "center": [
+        0.0,
+        0.6449999809265137,
+        0.04899999871850014
+      ]
+    }
+  ]
+}

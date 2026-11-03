@@ -1,0 +1,86 @@
+name: C01-19 W26 actual signed Blender FBX read-only mesh audit
+on:
+  push:
+    branches: [c01/props-19-furniture, c01/props-19-furniture-wave02]
+    paths:
+      - '.github/workflows/c01-19-w26-native-audit.yml'
+      - 'Assets/C01InteriorProps/C01-19/Source/pass26_native_mesh_qa.py'
+      - 'Assets/C01InteriorProps/C01-19-W02/Source/pass26_native_mesh_qa.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: c01-19-w26-${{ github.ref_name }}
+  cancel-in-progress: false
+jobs:
+  full-physical-native-QA:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+          persist-credentials: true
+      - name: Install genuine Blender 4.x with Git LFS (non-door native scope only)
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends blender python3-numpy git-lfs xvfb xauth libegl1 libgl1 libgl1-mesa-dri libopengl0
+          blender --version | head -3
+          git lfs install --local
+          if [ "$GITHUB_REF_NAME" = "c01/props-19-furniture-wave02" ]; then
+            echo "ASSET_ROOT=Assets/C01InteriorProps/C01-19-W02" >> "$GITHUB_ENV"
+            root="Assets/C01InteriorProps/C01-19-W02"
+          else
+            echo "ASSET_ROOT=Assets/C01InteriorProps/C01-19" >> "$GITHUB_ENV"
+            root="Assets/C01InteriorProps/C01-19"
+          fi
+          git lfs pull --include="$root/Models/**" --exclude="*"
+          test "$(find "$root/Models" -name '*.blend' -type f | wc -l)" -eq 4
+          test "$(find "$root/Models" -name '*.fbx' -type f | wc -l)" -eq 4
+      - name: Execute actual Blender 4.x original BLEND + unchanged signed original FBX QA, generate 16 physical renders
+        run: |
+          LIBGL_ALWAYS_SOFTWARE=1 xvfb-run -a blender -b --factory-startup --python-exit-code 1 --python "$ASSET_ROOT/Source/pass26_native_mesh_qa.py"
+      - name: Verify every original binary matches signed SHA and all native preview/test outputs exist
+        run: |
+          python3 - <<'PY'
+          import json,os,hashlib,pathlib
+          root=pathlib.Path(os.environ['ASSET_ROOT'])
+          report=json.loads((root/'QA/PASS26/SUMMARY.json').read_text())
+          assert len(report['models'])==4 and report['source_modified'] is False and report['export_performed'] is False
+          ids=set(x['asset_id'] for x in report['models'])
+          expected={'P19-05','P19-06','P19-07','P19-08'} if report['wave']=='W02' else {'P19-01','P19-02','P19-03','P19-04'}
+          assert ids==expected,(ids,expected)
+          for x in report['models']:
+              mid=x['asset_id']
+              j=json.loads((root/'QA/PASS26'/mid/'REAL_W26_NATIVE_AUDIT.json').read_text())
+              assert x['blend_sha256']==hashlib.sha256((root/'Models'/mid/(mid+'.blend')).read_bytes()).hexdigest()
+              assert x['fbx_sha256']==hashlib.sha256((root/'Models'/mid/(mid+'.fbx')).read_bytes()).hexdigest()
+              assert j['source_geometry_changed'] is False and j['fbx_export_performed'] is False and j['sha_matches_signed_LFS']
+              assert j['actual_source_BLEND']['totals']['meshes']>0
+              assert j['actual_reimported_FBX']['totals']['meshes']>0
+              for name in j['screenshots']:
+                  p=root/'QA/PASS26'/mid/name
+                  assert p.stat().st_size>1000 and p.read_bytes()[:8]==b'\x89PNG\r\n\x1a\n',(mid,name)
+              print('W26_VERIFIED_REAL_BLENDER',mid,j['fbx_SHA256'],flush=True)
+          print('W26_PASS_4_ACTUAL_SIGNED_BLENDER_FBX',report['wave'],flush=True)
+          PY
+      - name: Upload physical Blender signed-mesh audit and 16 workbench previews
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-19-W26-REAL-SIGNED-NATIVE-MESH-AUDIT-${{ github.ref_name }}
+          if-no-files-found: warn
+          path: ${{ env.ASSET_ROOT }}/QA/PASS26/
+      - name: Commit actual QA evidence only into existing isolated Draft branch; no meshes or doors
+        if: success()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$ASSET_ROOT/QA/PASS26"
+          if git diff --cached --quiet; then exit 0; fi
+          git diff --cached --name-only | tee /tmp/c01-19-w26-changed-files.txt
+          if grep -v "^$ASSET_ROOT/QA/PASS26/" /tmp/c01-19-w26-changed-files.txt; then
+            echo 'W26 FAIL CLOSED: staged file outside QA PASS26'; exit 1
+          fi
+          git commit -m 'test(C01-19 W26): genuine read-only Blender/FBX mesh and preview QA evidence'
+          git push origin "HEAD:$GITHUB_REF_NAME"

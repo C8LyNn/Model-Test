@@ -1,0 +1,90 @@
+{
+  "owner": "C01-14",
+  "asset_id": "RMP-01",
+  "scope": "existing optional non-door structural ramp outside canonical 36 P15-P19",
+  "verdict": "STATIC_BINARY_CONTACT_PASS__C01_02_FINAL_PENDING__UNITY_NOT_RUN",
+  "provenance": {
+    "actual_native_run": "https://github.com/C8LyNn/Model-Test/actions/runs/41626127600",
+    "actual_native_artifact_id": 13226850003,
+    "native_blender_version": "4.0.2",
+    "original_blend_sha256": "7cba127139253a34b0575b0c55f10112395acb790b9716e1a248a3bcc8812cfa",
+    "original_fbx_sha256": "97f0b125313057f4ecf601dd60a02b4d3f0d55b87c1713d71a0adbedcc6d1443",
+    "new_blend_sha256": "9c5a262813aeeb3a875a162008f120543c8a722ddda477e7af0f813091ec2e40",
+    "new_fbx_sha256": "3b47d12a5a32c286c9e35a8f7198c0820d7fef5e9325823a2cfabdc12559c417",
+    "downloaded_zip_sha256": "97ad7e0126d0e9015e4fe1764a83ffeaf74bc183fa48cb635316ec347ec188fc",
+    "downloaded_zip_crc": "PASS",
+    "independent_test_method": "decoded original and new physical FBX7400 through standalone read-only indexed-geometry parser, per-mesh old/new actual vertex sets + UV0 + normals + topology"
+  },
+  "witnessed_defect": {
+    "existing_components": [
+      "AntiSlipMark_01",
+      "AntiSlipMark_02",
+      "AntiSlipMark_03",
+      "AntiSlipMark_04"
+    ],
+    "actual_original_bottom_gap_m": 0.0006,
+    "actual_original_visible_top_m": 0.003,
+    "original_contact": "NO physical mesh contact",
+    "intended_function": "rigidly attached anti-slip strips on the 25 percent sloped Deck_Main",
+    "confirmed_from": "physical original Kaydara FBX7400 per-vertex z - 0.25*x"
+  },
+  "correction": {
+    "new_existing_parts": 0,
+    "moved_vertices_total": 16,
+    "moved_vertices_per_strip": 4,
+    "bottom_coordinate_change_m": [
+      0,
+      0,
+      -0.001
+    ],
+    "new_bottom_embed_into_actual_deck_m": 0.0004,
+    "new_visible_top_above_deck_m": 0.003,
+    "top_vertices_unchanged": true,
+    "original_mesh_names_materials_UV0_pivots_preserved": true,
+    "original_deck_and_COL_RampDeck_meshes_unchanged": true,
+    "no_door_or_gate_related_changes": true
+  },
+  "independently_executed_results": {
+    "mesh_parts_before": 6,
+    "mesh_parts_after": 6,
+    "mesh_triangles_before": 72,
+    "mesh_triangles_after": 72,
+    "parts_with_authorized_changes": 4,
+    "parts_with_verified_no_changes": [
+      "Deck_Main",
+      "COL_RampDeck"
+    ],
+    "actual_fbx_topology_totals": {
+      "vertices": 48,
+      "faces": 72,
+      "triangles": 72,
+      "indexed_edges": 108
+    },
+    "anomaly_counts": {
+      "degenerate_face_tris": 0,
+      "duplicate_faces": 0,
+      "loose_vertices": 0,
+      "nonmanifold_edges": 0,
+      "bad_shared_edge_winding": 0,
+      "face_corner_normals_misaligned": 0,
+      "uv_indices_out_of_range_tris": 0,
+      "zero_uv_area_triangles": 0
+    },
+    "source_fbx_vs_new_fbx_uv0": "PASS identical UV values for all 6 meshes",
+    "Blender_FBX_reimport_world_vertex_parity": "PASS 1e-5m",
+    "actual_new_bottom_vs_old": "PASS exactly -0.001m on 4 bottom vertices per strip, 4/4",
+    "top_profile": "PASS exactly unchanged for all four strips"
+  },
+  "current_signed_unity_preflight": {
+    "run": "https://github.com/C8LyNn/Model-Test/actions/runs/41626795891",
+    "actual_LFS_native_byte_sha256": "PASS 4/4 RAI v003 & RMP v003",
+    "static_importer_guards": "PASS 19/19",
+    "actual_Unity_Editor": "NOT RUN",
+    "CSharp_compilation": "NOT RUN",
+    "prefab_creation": "NOT RUN"
+  },
+  "independent_external_C01_02": "PENDING",
+  "actual_Unity6_URP": "NOT RUN",
+  "final_release": "HOLD",
+  "note": "Producer-side independent binary re-audit is not external C01-02 final approval. No unrelated 36-model status promotion."
+}

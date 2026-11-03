@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="5" result="Failed(Child)" total="5" passed="4" failed="1" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-11-03 23:10:07Z" end-time="2026-11-03 23:11:11Z" duration="64,6831367">
+  <test-suite type="TestSuite" id="1135" name="Model Test" fullname="Model Test" runstate="Runnable" testcasecount="88" result="Failed" site="Child" start-time="2026-11-03 23:10:07Z" end-time="2026-11-03 23:11:11Z" duration="64.683137" total="5" passed="4" failed="1" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1131" name="C01ShipV67.PlayTests.dll" fullname="C:/Users/kubap/Desktop/C01_GeneralPolish_Work/Library/ScriptAssemblies/C01ShipV67.PlayTests.dll" runstate="Runnable" testcasecount="5" result="Failed" site="Child" start-time="2026-11-03 23:10:07Z" end-time="2026-11-03 23:11:11Z" duration="64.676388" total="5" passed="4" failed="1" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="23928" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestFixture" id="1125" name="ShipV67PlayTests" fullname="ShipV67PlayTests" classname="ShipV67PlayTests" runstate="Runnable" testcasecount="5" result="Failed" site="Child" start-time="2026-11-03 23:10:07Z" end-time="2026-11-03 23:11:11Z" duration="64.675081" total="5" passed="4" failed="1" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-case id="1127" name="AtriumHalfStoreyStairIsUsable" fullname="ShipV67PlayTests.AtriumHalfStoreyStairIsUsable" methodname="AtriumHalfStoreyStairIsUsable" classname="ShipV67PlayTests" runstate="Runnable" seed="854804424" result="Passed" start-time="2026-11-03 23:10:07Z" end-time="2026-11-03 23:10:17Z" duration="10.362613" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1129" name="BridgeStationsDoNotIntersectOtherColliders" fullname="ShipV67PlayTests.BridgeStationsDoNotIntersectOtherColliders" methodname="BridgeStationsDoNotIntersectOtherColliders" classname="ShipV67PlayTests" runstate="Runnable" seed="1696815422" result="Failed" start-time="2026-11-03 23:10:17Z" end-time="2026-11-03 23:10:28Z" duration="11.093451" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[  base intersects P_Rail3__00_METAL depth=0,04000092
+  Expected: less than 0.00200000009f
+  But was:  0.0400009155f
+]]></message>
+            <stack-trace><![CDATA[at ShipV67PlayTests+<BridgeStationsDoNotIntersectOtherColliders>d__7.MoveNext () [0x0012f] in C:\Users\kubap\Desktop\C01_GeneralPolish_Work\Assets\C01ShipV67\Tests\PlayMode\ShipV67PlayTests.cs:87
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@aebcb98460c6\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+          </failure>
+        </test-case>
+        <test-case id="1126" name="ChaseRouteConnectsBridgeObstaclesAndExit" fullname="ShipV67PlayTests.ChaseRouteConnectsBridgeObstaclesAndExit" methodname="ChaseRouteConnectsBridgeObstaclesAndExit" classname="ShipV67PlayTests" runstate="Runnable" seed="736174315" result="Passed" start-time="2026-11-03 23:10:28Z" end-time="2026-11-03 23:10:40Z" duration="11.488532" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1130" name="PassengerAndCargoLiftCarryPlayerAndCamera" fullname="ShipV67PlayTests.PassengerAndCargoLiftCarryPlayerAndCamera" methodname="PassengerAndCargoLiftCarryPlayerAndCamera" classname="ShipV67PlayTests" runstate="Runnable" seed="1016733566" result="Passed" start-time="2026-11-03 23:10:40Z" end-time="2026-11-03 23:11:00Z" duration="20.376815" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1128" name="SizesAndSpeedsMatchRequestedGrid" fullname="ShipV67PlayTests.SizesAndSpeedsMatchRequestedGrid" methodname="SizesAndSpeedsMatchRequestedGrid" classname="ShipV67PlayTests" runstate="Runnable" seed="156574507" result="Passed" start-time="2026-11-03 23:11:00Z" end-time="2026-11-03 23:11:11Z" duration="11.342281" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[Saving results to: C:/Users/kubap/AppData/LocalLow/DefaultCompany/Model Test\TestResults.xml
+]]></output>
+        </test-case>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

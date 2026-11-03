@@ -1,0 +1,274 @@
+{
+  "report_id": "C01-02_DETAIL_PASS17_INDEPENDENT_PINNED_SOURCE_QA",
+  "date": "2026-11-01",
+  "scope": "Read-only independent source QA. Exact immutable producer commits, never production release approval.",
+  "refs": {
+    "P17": "7664324f503b83f01d0dccfc9578299465da1926",
+    "P18": "5769d0326a1bc4bdcfa892de0f95d912ab30b55a"
+  },
+  "tools": [
+    "GitHub repository byte reads",
+    "in-process OBJ per-mesh geometry parser with quantized 1e-7m welded positional edge adjacency",
+    "convex projected triangle clipping for co-oriented coplanar pair overlap",
+    "glTF base64 bufferView/accessor decoder for NORMAL/UV0/POSITION",
+    "triangle segment intersection narrowphase",
+    "SHA256 verified using known empty/abc vectors"
+  ],
+  "models": [
+    {
+      "id": "P17-01",
+      "commit_sha": "7664324f503b83f01d0dccfc9578299465da1926",
+      "obj_blob_sha": "8d6f6ccbc53ea42d3b2d8f0e423072b10a388f52",
+      "obj_sha256": "98f0e9b85f43711329ce29a923a75fb1faf52f340ff1fe2ca700a95aad68a164",
+      "gltf_blob_sha": "e0df06d260a955fe926f7e0279068bf2a2e6a6b5",
+      "gltf_sha256": "77bffeffd7440c40882945e7341f659be2035eb23e67dae6329d108c74c88980",
+      "mesh_instances_or_obj_parts": 25,
+      "obj_triangles": 380,
+      "new_parts_vs_PASS16": 0,
+      "invalid_obj_indices": 0,
+      "degenerate_triangles": 0,
+      "per_mesh_boundary_edges": 0,
+      "nonmanifold_edges_gt2": 0,
+      "winding_errors": 0,
+      "duplicate_triangles": 0,
+      "same_facing_coplanar_inter_part_pairs": 0,
+      "missing_uv_or_normals": "OBJ fallback has no vt/vn; actual glTF POSITION/NORMAL/TEXCOORD_0 decoded and finite",
+      "native_fbx_git_lfs_pointer_oid_sha256": "fca67dad3e35e7070575c7d7d141fab3e6756eecb0d618d325ec36266eca2772",
+      "native_fbx_binary_hydrated_and_reimported": "NOT_RUN"
+    },
+    {
+      "id": "P17-02",
+      "commit_sha": "7664324f503b83f01d0dccfc9578299465da1926",
+      "obj_blob_sha": "95406264730fc594ec9c1bb48724bab78986d974",
+      "obj_sha256": "3c6fda66cecba7f10e40a741b2b8dcef6ad6e0021853647444c6bbe39c03ccf3",
+      "gltf_blob_sha": "d80a67af140e434b983104aaec0078f9cf5bd66f",
+      "gltf_sha256": "a9995704a70776b49f2bd6916a50cf222a4ab40b370a0a9e258b63bdc4429786",
+      "mesh_instances_or_obj_parts": 38,
+      "obj_triangles": 536,
+      "new_parts_vs_PASS16": 0,
+      "invalid_obj_indices": 0,
+      "degenerate_triangles": 0,
+      "per_mesh_boundary_edges": 0,
+      "nonmanifold_edges_gt2": 0,
+      "winding_errors": 0,
+      "duplicate_triangles": 0,
+      "same_facing_coplanar_inter_part_pairs": 0,
+      "missing_uv_or_normals": "OBJ fallback has no vt/vn; actual glTF POSITION/NORMAL/TEXCOORD_0 decoded and finite",
+      "native_fbx_git_lfs_pointer_oid_sha256": "af858385a0abae9c623ee4002bcf22bcbc401b5687024acd8df142eb1b848147",
+      "native_fbx_binary_hydrated_and_reimported": "NOT_RUN"
+    },
+    {
+      "id": "P17-03",
+      "commit_sha": "7664324f503b83f01d0dccfc9578299465da1926",
+      "obj_blob_sha": "2265c062ef89233edf0dbbfdb71da293018689e2",
+      "obj_sha256": "764b4cf53343abcf7d85ca1bbc08d7d72d2c2c7d6af3693708c701321a0cb560",
+      "gltf_blob_sha": "e882a5dafe3f9f5e600d6443ebf44b1aba519f30",
+      "gltf_sha256": "f38ed83c806b30deb55854b061492a0d89d278f7a7c20f900b2aeaed7933b23d",
+      "mesh_instances_or_obj_parts": 20,
+      "obj_triangles": 424,
+      "new_parts_vs_PASS16": 0,
+      "invalid_obj_indices": 0,
+      "degenerate_triangles": 0,
+      "per_mesh_boundary_edges": 8,
+      "nonmanifold_edges_gt2": 0,
+      "winding_errors": 0,
+      "duplicate_triangles": 0,
+      "same_facing_coplanar_inter_part_pairs": 0,
+      "missing_uv_or_normals": "OBJ fallback has no vt/vn; actual glTF POSITION/NORMAL/TEXCOORD_0 decoded and finite",
+      "native_fbx_git_lfs_pointer_oid_sha256": "749c0a6e3df59e927fc448e01ae233504b46d0caed1d6ecd1768be8c926a412c",
+      "native_fbx_binary_hydrated_and_reimported": "NOT_RUN"
+    },
+    {
+      "id": "P18-01",
+      "commit_sha": "5769d0326a1bc4bdcfa892de0f95d912ab30b55a",
+      "obj_blob_sha": "7dc5c975e39ff6eb9be093b77e8720b7c26a89ab",
+      "obj_sha256": "4fd8fc54e37f9941142aed85559ecef077cdfc97e2326b153dfb2ca91fa7b566",
+      "gltf_blob_sha": null,
+      "gltf_sha256": null,
+      "mesh_instances_or_obj_parts": 47,
+      "obj_triangles": 980,
+      "new_parts_vs_PASS16": 4,
+      "invalid_obj_indices": 0,
+      "degenerate_triangles": 0,
+      "per_mesh_boundary_edges": 0,
+      "nonmanifold_edges_gt2": 0,
+      "winding_errors": 0,
+      "duplicate_triangles": 0,
+      "same_facing_coplanar_inter_part_pairs": 0,
+      "missing_uv_or_normals": 0,
+      "native_fbx_git_lfs_pointer_oid_sha256": "84851387b58aeadc7f2ace49201077d847cfd294f82acfb2d0a7dce3e471a939",
+      "native_fbx_binary_hydrated_and_reimported": "NOT_RUN"
+    },
+    {
+      "id": "P18-02",
+      "commit_sha": "5769d0326a1bc4bdcfa892de0f95d912ab30b55a",
+      "obj_blob_sha": "fe96d137d0ac6de5b4c53820cade6cce89ccf2b9",
+      "obj_sha256": "b7ee7803f625c2ec48901a0ad6739248e22a59ac56d7dada5e20847604e4d2fc",
+      "gltf_blob_sha": null,
+      "gltf_sha256": null,
+      "mesh_instances_or_obj_parts": 59,
+      "obj_triangles": 1284,
+      "new_parts_vs_PASS16": 4,
+      "invalid_obj_indices": 0,
+      "degenerate_triangles": 0,
+      "per_mesh_boundary_edges": 0,
+      "nonmanifold_edges_gt2": 0,
+      "winding_errors": 0,
+      "duplicate_triangles": 0,
+      "same_facing_coplanar_inter_part_pairs": 0,
+      "missing_uv_or_normals": 0,
+      "native_fbx_git_lfs_pointer_oid_sha256": "5ba3faf85a3ea57f755eeb51d0db832c1ce37aa64721d710a22db509f2c6d03f",
+      "native_fbx_binary_hydrated_and_reimported": "NOT_RUN"
+    },
+    {
+      "id": "P18-03",
+      "commit_sha": "5769d0326a1bc4bdcfa892de0f95d912ab30b55a",
+      "obj_blob_sha": "2aaea1148ca37d8835c1298fadf1010b7ebf7875",
+      "obj_sha256": "4446cfc77a6c4a9de4cf7c172ae06395b9dad9e39941566046d952eab0f16a6a",
+      "gltf_blob_sha": null,
+      "gltf_sha256": null,
+      "mesh_instances_or_obj_parts": 63,
+      "obj_triangles": 1780,
+      "new_parts_vs_PASS16": 2,
+      "invalid_obj_indices": 0,
+      "degenerate_triangles": 0,
+      "per_mesh_boundary_edges": 0,
+      "nonmanifold_edges_gt2": 0,
+      "winding_errors": 0,
+      "duplicate_triangles": 0,
+      "same_facing_coplanar_inter_part_pairs": 0,
+      "missing_uv_or_normals": 0,
+      "native_fbx_git_lfs_pointer_oid_sha256": "639fc09c39b804b9bf83de75a4096cdefe1229f58549662ee777537c19e165",
+      "native_fbx_binary_hydrated_and_reimported": "NOT_RUN"
+    }
+  ],
+  "aggregate": {
+    "obj_assets_read": 6,
+    "gltf_assets_decoded": 3,
+    "obj_parts": 242,
+    "obj_triangles": 5104,
+    "verified_current_P18_source_parts": 169,
+    "verified_current_P18_source_triangles": 4044,
+    "new_P18_PASS17_parts": 10,
+    "new_P18_PASS17_triangles": 280,
+    "new_P18_actual_3d_support_contacts": 10,
+    "invalid_index": 0,
+    "degenerate": 0,
+    "duplicate": 0,
+    "same_facing_coplanar_triangle_pairs": 0,
+    "nonmanifold_edges_gt2": 0,
+    "winding_errors": 0,
+    "per_mesh_boundary_edges": 8,
+    "final_approved_binary_assets": 0,
+    "final_scope_assets": 36
+  },
+  "current_P18_delta": {
+    "baseline_commit": "60c582cc74bf1401baed4f7d46c99d75dd3efab1",
+    "prior_p18_parts": 159,
+    "prior_p18_triangles": 3764,
+    "new_p18_parts": 169,
+    "new_p18_triangles": 4044,
+    "all_159_prior_meshes_unchanged_text_prefix": true,
+    "prior_part_bounds_changed": 0,
+    "all_4_cart_wheels_min_world_y_m": 0,
+    "contacts": [
+      {
+        "asset": "P18-01",
+        "parts": [
+          "FrontLatch_L_KeeperScrew_A",
+          "FrontLatch_L_KeeperScrew_B",
+          "FrontLatch_R_KeeperScrew_A",
+          "FrontLatch_R_KeeperScrew_B"
+        ],
+        "pair_hits": [
+          16,
+          16,
+          16,
+          16
+        ],
+        "support": "corresponding FrontLatch_L/R_UpperKeeper",
+        "method": "3D segment vs triangle barycentric narrowphase; at least one source triangle intersection per part",
+        "result": "10/10 PASS for all groups combined"
+      },
+      {
+        "asset": "P18-02",
+        "parts": [
+          "Rack_FootPlate_LB",
+          "Rack_FootPlate_LF",
+          "Rack_FootPlate_RB",
+          "Rack_FootPlate_RF"
+        ],
+        "pair_hits": [
+          24,
+          24,
+          24,
+          24
+        ],
+        "support": "corresponding Rack_Post_±1.015_±0.365",
+        "method": "3D segment vs triangle barycentric narrowphase; at least one source triangle intersection per part",
+        "result": "10/10 PASS for all groups combined"
+      },
+      {
+        "asset": "P18-03",
+        "parts": [
+          "Cart_HandleClamp_L",
+          "Cart_HandleClamp_R"
+        ],
+        "pair_hits": [
+          24,
+          24
+        ],
+        "support": "corresponding Cart_Handle_Post_±0.44",
+        "method": "3D segment vs triangle barycentric narrowphase; at least one source triangle intersection per part",
+        "result": "10/10 PASS for all groups combined"
+      }
+    ]
+  },
+  "findings": [
+    {
+      "severity": "P1_REVIEW",
+      "asset": "P17-03",
+      "component": "LeverShaft",
+      "boundary_edges": 4,
+      "world_y_m": 0.349,
+      "issue": "Open end / boundary loop in actual authored OBJ; may be intentionally hidden by joint overlap. Producer to document intentional open topology or cap and re-test movement."
+    },
+    {
+      "severity": "P1_REVIEW",
+      "asset": "P17-03",
+      "component": "LeverGrip",
+      "boundary_edges": 4,
+      "world_y_m": 0.49,
+      "issue": "Open end / boundary loop in actual authored OBJ; may be intentionally hidden by shaft. Not independently approved as closed manifold."
+    },
+    {
+      "severity": "P0_HOLD",
+      "asset": "P17/P18 native release",
+      "issue": "Repository FBX entries are 130-byte Git LFS pointers, not hydrated new Blender 4 native exports. They represent historical binaries and cannot pass final detail parity or Unity checks."
+    }
+  ],
+  "limitations": [
+    "This is OBJ/glTF authoring-source QA only, not final exact binary FBX QA.",
+    "P17 OBJ fallback has no vt/vn; actual three P17 glTF files have POSITION/NORMAL/TEXCOORD_0 and decoded arrays were finite with zero degenerate and reversed normal faces.",
+    "No full animated swept-volume QA or whole-assembly arbitrary oblique self-intersection pass.",
+    "3D narrowphase positive contacts do not exclude all buried/internal collisions.",
+    "Opposite-facing coplanars and physically hidden contacts need final shaded/native inspection.",
+    "Current actual Blender 4 save/export/reimport NOT_RUN; Unity6 URP import, prefab pivots and rendered wireframe NOT_RUN.",
+    "All claims are pinned to exact producer commits; new branch changes require a new QA cycle."
+  ],
+  "preview": {
+    "status": "GENERATED_SOURCE_GEOMETRY / BROWSER_RUNTIME_NOT_RUN",
+    "path": "C01InteriorProps_QA/DETAIL_PASS17/Previews/ACTUAL_SOURCE_INTERACTIVE_BEFORE_AFTER.html",
+    "git_blob_sha": "93e06e68c2db01558285933e6c7b26d94e4158d1",
+    "html_bytes": 219746,
+    "source_models_embedded": 9,
+    "data": "6 current actual OBJ authored source meshes + 3 exact actual source previous PASS16 OBJ for comparison",
+    "total_packed_current_triangles": 5104,
+    "total_packed_before_triangles": 3764,
+    "packed_triangulated_index_checks": "9/9 PASS: unpacked lengths and every face vertex/material/part reference valid",
+    "browser_script_syntax": "PASS using JS parser",
+    "rendering_engine": "Canvas2D diagnostic painter-sorted triangles, not Blender or Unity; approximate material colors; source OBJ coordinates quantized <=0.5 micrometer",
+    "browser_visual_runtime": "NOT_RUN",
+    "blender_shaded_wireframe": "NOT_RUN"
+  }
+}

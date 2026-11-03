@@ -1,0 +1,379 @@
+{
+  "project": "C01 — 3D Asset Factory",
+  "role": "C01-02 independent QA",
+  "wave": "DETAIL PASS 15",
+  "date": "2026-10-30",
+  "issue": 36,
+  "qa_pr": 13,
+  "qa_policy": "Inspect actual producer-authored geometry, do not create new model IDs, source producer edits, alter ship or merge.",
+  "pins": {
+    "P18": {
+      "pr": 18,
+      "producer_head": "a36b22669526daba76ae0a4147f0a4d2a48e33fc",
+      "detail_mesh_commit": "91659e272ef1fe49fdaf7a906b4b6b2769ce50c8"
+    },
+    "P17": {
+      "pr": 17,
+      "producer_head": "a719367919f1072a7d6feb0c4e483e55ce752526",
+      "detail_gltf_commit": "28824c2fa48e8523f9a8715df71c57379fa7634a"
+    },
+    "P15": {
+      "pr": 16,
+      "spec_authoring_head": "67b6d6f800b417e9d2300bcfdef71c266eb5f23c"
+    },
+    "P16": {
+      "prs": [
+        12,
+        28
+      ],
+      "lighting_w02_head": "a02ae4d525f3231ec8faa894b89b4aae9547423f"
+    }
+  },
+  "P18": {
+    "source_qa": "PASS_3_OF_3_STATIC_AND_DETAIL_ATTACHMENT",
+    "models": [
+      {
+        "id": "P18-01",
+        "git_blob": "732a23a5c1c18fc39fb2e257e4de8c0a558c5e5f",
+        "SHA256_source_OBJ": "5fb7ee496d6ed0d2e9f439629b9d9ed4774ca862290f04e13dc70239e44ec39d",
+        "before": {
+          "parts": 37,
+          "triangles": 684
+        },
+        "after": {
+          "parts": 41,
+          "V": 504,
+          "F": 546,
+          "triangles": 844,
+          "UV0": 2116,
+          "normals": 2116
+        },
+        "added": [
+          "+4 RearHinge_L/R_Retainer_L/R"
+        ],
+        "new_part_triangles": 160,
+        "real_source_triangle_pairs_retainers_to_hinge_pin": [
+          72,
+          72,
+          72,
+          72
+        ],
+        "real_source_triangle_pairs_retainers_to_hinge_leaf": [
+          23,
+          23,
+          23,
+          23
+        ],
+        "real_source_triangle_pairs_retainers_to_lid": [
+          22,
+          22,
+          22,
+          22
+        ],
+        "all4_new_parts_attached": true
+      },
+      {
+        "id": "P18-02",
+        "git_blob": "26894eb7c5fbbd1c25239905fc3ba228f9925a15",
+        "SHA256_source_OBJ": "37f81ce82235689980e86febdc4ea0f8bbfd5f9296e4462d156295f2c2297699",
+        "before": {
+          "parts": 47,
+          "triangles": 1012
+        },
+        "after": {
+          "parts": 51,
+          "V": 624,
+          "F": 686,
+          "triangles": 1044,
+          "UV0": 2620,
+          "normals": 2620
+        },
+        "added": [
+          "+4 BackSupport_0.60/1.48_Gusset_L/R"
+        ],
+        "new_part_triangles": 32,
+        "real_source_triangle_pairs_gussets_to_rack_posts": [
+          12,
+          12,
+          14,
+          12
+        ],
+        "real_source_triangle_pairs_gussets_to_back_supports": [
+          10,
+          10,
+          10,
+          10
+        ],
+        "all4_new_parts_attached": true
+      },
+      {
+        "id": "P18-03",
+        "git_blob": "e1e1b3444d00ff5ba0ba205ad1291e5968688f6e",
+        "SHA256_source_OBJ": "39aba96fa20eb28f698b68b7daf435e96cabe15c0af2bb70e9db6392e2cd1aa2",
+        "before": {
+          "parts": 53,
+          "triangles": 1532
+        },
+        "after": {
+          "parts": 57,
+          "V": 928,
+          "F": 1182,
+          "triangles": 1628,
+          "UV0": 4148,
+          "normals": 4148
+        },
+        "added": [
+          "+4 Wheel_LB/LF/RB/RF_CrownBolt"
+        ],
+        "new_part_triangles": 96,
+        "real_source_triangle_pairs_crown_bolts_to_fork_inners": [
+          15,
+          17,
+          17,
+          19
+        ],
+        "real_source_triangle_pairs_crown_bolts_to_fork_crowns": [
+          12,
+          12,
+          14,
+          14
+        ],
+        "all4_new_parts_attached": true
+      }
+    ],
+    "source_totals": {
+      "parts": 149,
+      "triangles": 3516,
+      "new_parts": 12,
+      "new_triangles": 288,
+      "invalid_vertex_uv_normal_indices": 0,
+      "zero_area_fan_triangles": 0,
+      "normal_face_orientation_mismatch_candidates": 0,
+      "duplicate_indexed_polygons": 0,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "positive_aabb_isolated_parts": 0,
+      "UV0_range": [
+        0,
+        1
+      ],
+      "new_parts_true_triangle_contact": "12/12 PASS",
+      "same_facing_nonzero_cross_mesh_coplanar_overlap_area_m2": 0
+    },
+    "performance": {
+      "triangle_gain_absolute": 288,
+      "relative_vs_P14": 0.08921933085501858,
+      "part_gain": 12,
+      "decision": "WARNING_BUDGET_REVIEW_NOT_AUTO_PASS",
+      "note": "Visual usefulness and projected pixel impact must be assessed in real engine; no invented poly budget."
+    },
+    "opposite_facing_mating_seams": {
+      "P18_01": {
+        "pairs": 0,
+        "area_m2": 0
+      },
+      "P18_02": {
+        "pairs": 6,
+        "triangle_pair_hits": 18,
+        "area_m2": 0.27876,
+        "models": "6× Shelf_0/1/2_Deck ↔ Shelf_0/1/2_Lip_±0.375, unchanged old base parts"
+      },
+      "P18_03": {
+        "pairs": 4,
+        "triangle_pair_hits": 40,
+        "area_m2": 0.002128896,
+        "models": "Wheel_*_AxleFastener ↔ Wheel_*_ForkOuter, unchanged old source parts"
+      },
+      "gate": "REVIEW_ONLY — opposing normals, internal mechanical mating, no proven rendered GPU z-fighting."
+    }
+  },
+  "P17": {
+    "P17_01": {
+      "source_git_blob": "c604553c874b590cfd5fcae135f4c892561eba96",
+      "SHA256_source_glTF": "6dbb6933acdcbb3ee5ef9d1480bd786ad2da4ec5368046e8e579084af57c65b0",
+      "old": {
+        "parts": 17,
+        "triangles": 204
+      },
+      "new": {
+        "mesh_instances": 25,
+        "unique_meshes": 18,
+        "triangles": 380,
+        "new_parts": 8,
+        "new_triangles": 176
+      },
+      "new_parts": [
+        "ScreenMountBolt_LB",
+        "ScreenMountBolt_LT",
+        "ScreenMountBolt_RB",
+        "ScreenMountBolt_RT",
+        "KeyboardGuide_L",
+        "KeyboardGuide_R",
+        "RearServiceLatch_L",
+        "RearServiceLatch_R"
+      ],
+      "real_source_triangle_attachment_hits": {
+        "ScreenMountBolt_LB": 16,
+        "ScreenMountBolt_LT": 16,
+        "ScreenMountBolt_RB": 16,
+        "ScreenMountBolt_RT": 16,
+        "KeyboardGuide_L": 15,
+        "KeyboardGuide_R": 15,
+        "RearServiceLatch_L": 8,
+        "RearServiceLatch_R": 8
+      },
+      "source_qc": {
+        "invalid_indices": 0,
+        "zero_area_triangles": 0,
+        "normal_orientation_failures": 0,
+        "missing_UV0_or_normal_instances": 0,
+        "accessor_metadata_minmax_mismatch": 0,
+        "world_size_m": [
+          1.6,
+          1.1,
+          0.65
+        ]
+      },
+      "source_coplanar": {
+        "new_P1": "FAIL_DETAILS_SAME_FACING_COPLANAR",
+        "KeyboardGuide_L_to_Keyboard_area_m2": 0.00019,
+        "KeyboardGuide_R_to_Keyboard_area_m2": 0.00019,
+        "total_new_area_m2": 0.00038,
+        "triangle_pairs_per_guide": 6,
+        "shared_plane_world_Z_m": -0.065,
+        "normal": [
+          0,
+          0,
+          1
+        ],
+        "Backbone_Plith_old_area_m2": 0.0479700138,
+        "Backbone_Plith_preexisting": true
+      },
+      "advice": "Producer offset/recess 2 KeyboardGuide shared end faces by documented ~1mm along their local/world Z, preserving real triangulated attachment and unchanged silhouette; rerun independent same-facing polygon overlap check. Do not change valid P17-02 screws."
+    },
+    "P17_02": {
+      "source_git_blob": "d80a67af140e434b983104aaec0078f9cf5bd66f",
+      "source_contact_verified_previous": "4 screws 9x9x3mm and 0.5mm Keybed/Housing seating PASS",
+      "new_native_real_export": "NOT_RUN",
+      "offline_fbx_candidate": "EXISTS_QUARANTINED_NOT_BLENDER"
+    }
+  },
+  "P15": {
+    "P15_01": {
+      "source_spec_version": "0.1.4",
+      "git_blob": "eb015d7714a5d4179275ead0f8a3af21e767696a",
+      "SHA256_spec": "7f3d602af1040431134aa4cca236fb36c9613d77160b383f175ec6c02d144703",
+      "before_part_count": 17,
+      "after_part_count": 25,
+      "new_parts": 8,
+      "modified_old_parts": 8,
+      "added_names": [
+        "ClampTieRear230",
+        "ClampTieFront230",
+        "ClampLockScrewTop230",
+        "ClampLockScrewBottom230",
+        "ClampTieRear770",
+        "ClampTieFront770",
+        "ClampLockScrewTop770",
+        "ClampLockScrewBottom770"
+      ],
+      "source_geometry_parametric_AABB_contacts": {
+        "rear_tie_to_old_mount_plate_positive_Z_mm": 2,
+        "rear_tie_to_UClip_y_mm": 8.5,
+        "rear_tie_to_UClip_z_mm": 3.5,
+        "front_tie_to_UClip_z_mm": 6.5,
+        "lock_screw_to_front_tie_Z_mm": 1
+      },
+      "new_parts_with_positive_support_AABB": "8/8",
+      "new_parts_with_baked_mesh_triangulation": "NOT_RUN",
+      "preexisting_nominal_envelope_exception": "2 CouplerBand objects extend 1mm beyond nominal Z max=0.140m, predated pass15, standards review needed; none of eight new parts exceed configured envelope."
+    },
+    "P15_03": {
+      "moving_hinge_and_door_status": "PASS14 source, new Blender/Unity NOT RUN"
+    }
+  },
+  "P16": {
+    "producer_wave02_new_details": {
+      "P16_04": {
+        "git_blob": "f1e3a83176b717563e13955121f1bd2c67f7f097",
+        "SHA256": "e939e95ebec16e9922e9aac6c4063d765cf7dcd3930e4d9ac54e81d4a29e45d3",
+        "new_parts": 4,
+        "new_tris": 48,
+        "attachment_actual_triangle_hits_to_original": [
+          10,
+          12,
+          10,
+          12
+        ]
+      },
+      "P16_05": {
+        "git_blob": "477cf125bcd850734f77fa177d80482388465fa3",
+        "SHA256": "aaf082f77f9794f5b4395e66cf88e35a37f55381e731ca51a7db0743eb586ae5",
+        "new_parts": 2,
+        "new_tris": 24,
+        "attachment_hits_to_original": [
+          12,
+          14
+        ]
+      },
+      "P16_06": {
+        "git_blob": "9a3f77ebd170cacac2c21673e9dfa509dd09d8b3",
+        "SHA256": "12438d9684ac0e03e68982d5fe3a11d19e795245532f46d4c737f6a562c68557",
+        "new_parts": 2,
+        "new_tris": 24,
+        "attachment_hits_to_original": [
+          10,
+          10
+        ],
+        "rotating_screw_and_rotor_original_geometry_unchanged": true
+      }
+    },
+    "totals": {
+      "new_parts": 8,
+      "new_triangles": 96,
+      "true_triangle_surface_attachments": "8/8 PASS",
+      "invalid_uv_normal_indices": 0,
+      "zero_area": 0,
+      "combined_old_7_assets_pre_new_pass15": {
+        "parts": 100,
+        "triangles": 1796
+      },
+      "combined_after_extra_8_detail_meshes_expected_from_source": {
+        "parts": 108,
+        "triangles": 1892
+      },
+      "not_native_exported": true
+    }
+  },
+  "old_current_FBX_LFS_sha256": {
+    "P17-01": "fca67dad3e35e7070575c7d7d141fab3e6756eecb0d618d325ec36266eca2772",
+    "P17-02": "af858385a0abae9c623ee4002bcf22bcbc401b5687024acd8df142eb1b848147",
+    "P18-01": "84851387b58aeadc7f2ace49201077d847cfd294f82acfb2d0a7dce3e471a939",
+    "P18-02": "5ba3faf85a3ea57f755eeb51d0db832c1ce37aa64721d710a22db509f2c6d03f",
+    "P18-03": "639fc09c39b804b9bf83de75a4096cdefe1229f58549662ee777537c19e165"
+  },
+  "evidence_preview": {
+    "type": "actual old/new source glTF triangle shaded and wireframe SVG, not Blender render",
+    "path": "C01InteriorProps_QA/DETAIL_PASS15/Previews/P17-01_GLTF_SOURCE_BEFORE_AFTER_SHADED_WIREFRAME.svg",
+    "old_tris": 204,
+    "new_tris": 380
+  },
+  "native_release": {
+    "blender_4x_local": "UNAVAILABLE",
+    "git_lfs_local": "UNAVAILABLE",
+    "Unity6_local": "UNAVAILABLE",
+    "github_actions_run_41128231660": "FAIL_PRE_RUNNER_STEPS_ZERO",
+    "authentic_new_blend_saved_through_Blender": "NOT_RUN",
+    "authentic_new_binary_fbx_Exporter_Blender": "NOT_RUN",
+    "real_blender_fbx_reimport": "NOT_RUN",
+    "Unity6_URP_prefabs": "NOT_RUN",
+    "independent_final_36_QA": "0/36",
+    "action_needed": "Restore allocated runner or authorized Windows Blender4 + Git-LFS host, then Unity6 QA. DO NOT merge without approval."
+  },
+  "independent_QA_decision": {
+    "source_scoped_pass": "P18 3/3 new details + P16 8/8 details + P15 spec 8/8 AABB + P17 8/8 physical attachment",
+    "source_block": "P17-01 KeyboardGuides same-facing visible-surface overlap P1",
+    "native_block": "All new FBX still pre-detail LFS original SHA; no new native Blender export/reimport.",
+    "full_release": "HOLD"
+  }
+}

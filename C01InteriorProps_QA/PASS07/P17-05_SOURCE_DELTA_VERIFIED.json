@@ -1,0 +1,60 @@
+{
+  "gate": "C01-02_PASS07_INDEPENDENT_SOURCE_DELTA",
+  "status": "SOURCE_ONLY_PASS__NATIVE_BLOCKED",
+  "model": "P17-05",
+  "producer_pr": 23,
+  "old_producer_commit": "30957f2c59c280136d6652973d0ea9c4e7950c80",
+  "checked_producer_commit": "f460ec2cda2789669c179035f5f0d56b930456e0",
+  "gltf": {
+    "path": "Assets/C01InteriorProps/W02/Models/P17-05.gltf",
+    "old_git_blob_sha": "4a6d45a0d84086e2bec964545346e150e2137fe2",
+    "new_git_blob_sha": "abb88f40afa5502130fad4bb2f1f9abb46fe3ac8",
+    "json_atomic_differences": 1,
+    "only_difference": {
+      "path": "nodes[12].translation[2]",
+      "node_name": "LowerDisplayRail",
+      "before_m": 0.12,
+      "after_m": 0.121
+    },
+    "mesh_parts_before_after": [
+      20,
+      20
+    ],
+    "scene_nodes_before_after": [
+      21,
+      21
+    ],
+    "accessors_before_after": [
+      80,
+      80
+    ],
+    "geometry_and_mesh_buffers_byte_identical": true
+  },
+  "spec": {
+    "path": "C01InteriorProps_W02/Specs/P17-05.json",
+    "old_git_blob_sha": "9debee0210075829198d87d69ff703071f25152f",
+    "new_git_blob_sha": "040ef5dabc64704038ddde90",
+    "json_atomic_differences": 1,
+    "only_difference": {
+      "path": "parts[11].p[2]",
+      "name": "LowerDisplayRail",
+      "before_m": 0.12,
+      "after_m": 0.121
+    }
+  },
+  "existing_native_blend": {
+    "path": "C01InteriorProps_W02/Blender/P17-05.blend",
+    "sha256_from_current_lfs_pointer": "07be57396ccab85423745dc71db2e820eacd00f8191cb86809091c4d14a6dbbd",
+    "expected_old_sha256": "07be57396ccab85423745dc71db2e820eacd00f8191cb86809091c4d14a6dbbd",
+    "status": "STALE_OLD_SOURCE__NOT_REBUILT"
+  },
+  "existing_native_fbx": {
+    "path": "Assets/C01InteriorProps/W02/Models/P17-05.fbx",
+    "sha256_from_current_lfs_pointer": "3fa314481f87d66f9a878936028b809cd78440d781146a058594e28f3f4e1740",
+    "expected_old_sha256": "3fa314481f87d66f9a878936028b809cd78440d781146a058594e28f3f4e1740",
+    "status": "STALE_OLD_SOURCE__NOT_REBUILT"
+  },
+  "blender4_roundtrip_pass07": "NOT_RUN",
+  "unity6_urp_pass07": "NOT_RUN",
+  "condition_for_pass": "Real saved changed P17-05.blend and Blender-origin binary FBX, reimport proof, new SHA256 independently checked, visible coplanar contact resolved; until then do not merge."
+}

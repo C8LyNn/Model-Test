@@ -1,0 +1,206 @@
+{
+  "project": "C01 — 3D Asset Factory",
+  "role": "C01-02 INDEPENDENT QA",
+  "pass": "DETAIL PASS16",
+  "date": "2026-10-30",
+  "issue": 36,
+  "producer_head_changed_during_review": true,
+  "reference_catalog": "References/VERIFIED_CONSTRUCTION_SOURCES.md",
+  "reference_count": 12,
+  "pins": {
+    "P17_01": {
+      "producer_pr": 17,
+      "source_path": "Assets/C01InteriorProps/Models/P17-01.gltf",
+      "git_blob": "c604553c874b590cfd5fcae135f4c892561eba96",
+      "source_sha256": "6dbb6933acdcbb3ee5ef9d1480bd786ad2da4ec5368046e8e579084af57c65b0"
+    },
+    "P17_03": {
+      "producer_pr": 17,
+      "source_path": "Assets/C01InteriorProps/Models/P17-03.gltf",
+      "git_blob": "e882a5dafe3f9f5e600d6443ebf44b1aba519f30",
+      "source_sha256": "f38ed83c806b30deb55854b061492a0d89d278f7a7c20f900b2aeaed7933b23d"
+    },
+    "P18_01": {
+      "producer_pr": 18,
+      "source_path": "Assets/C01InteriorProps/C01-18/Models/P18-01.obj",
+      "git_blob": "732a23a5c1c18fc39fb2e257e4de8c0a558c5e5f",
+      "source_sha256": "5fb7ee496d6ed0d2e9f439629b9d9ed4774ca862290f04e13dc70239e44ec39d"
+    },
+    "P18_02": {
+      "producer_pr": 18,
+      "source_path": "Assets/C01InteriorProps/C01-18/Models/P18-02.obj",
+      "git_blob": "26894eb7c5fbbd1c25239905fc3ba228f9925a15",
+      "source_sha256": "37f81ce82235689980e86febdc4ea0f8bbfd5f9296e4462d156295f2c2297699"
+    },
+    "P18_03": {
+      "producer_pr": 18,
+      "source_path": "Assets/C01InteriorProps/C01-18/Models/P18-03.obj",
+      "git_blob": "e1e1b3444d00ff5ba0ba205ad1291e5968688f6e",
+      "source_sha256": "39aba96fa20eb28f698b68b7daf435e96cabe15c0af2bb70e9db6392e2cd1aa2"
+    }
+  },
+  "tests": {
+    "P17_01": {
+      "status": "FAIL_SOURCE_COPLANAR_UNFIXED",
+      "parts": 25,
+      "triangles": 380,
+      "real_source_coplanar": {
+        "parts": [
+          "KeyboardGuide_L",
+          "KeyboardGuide_R"
+        ],
+        "support": "Keyboard",
+        "same_facing_normal": [
+          0,
+          0,
+          1
+        ],
+        "world_plane_z_m": -0.065,
+        "overlap_area_m2_per_guide": 0.00019,
+        "total_m2": 0.00038,
+        "previous_PASS15_result": "FAIL",
+        "current_source_git_blob_unchanged": true
+      },
+      "virtual_only_patch_trials": [
+        {
+          "both_guides_translation_add_world_z_m": 0,
+          "Left": {
+            "tri_contact_pairs": 15,
+            "coplanar_area_m2": 0.00018999843771422276
+          },
+          "Right": {
+            "tri_contact_pairs": 15,
+            "coplanar_area_m2": 0.00018999843771422276
+          }
+        },
+        {
+          "both_guides_translation_add_world_z_m": 0.0005,
+          "Left": {
+            "tri_contact_pairs": 15,
+            "coplanar_area_m2": 0
+          },
+          "Right": {
+            "tri_contact_pairs": 13,
+            "coplanar_area_m2": 0
+          }
+        },
+        {
+          "both_guides_translation_add_world_z_m": 0.001,
+          "Left": {
+            "tri_contact_pairs": 15,
+            "coplanar_area_m2": 0
+          },
+          "Right": {
+            "tri_contact_pairs": 13,
+            "coplanar_area_m2": 0
+          }
+        },
+        {
+          "both_guides_translation_add_world_z_m": -0.001,
+          "Left": {
+            "tri_contact_pairs": 13,
+            "coplanar_area_m2": 0
+          },
+          "Right": {
+            "tri_contact_pairs": 15,
+            "coplanar_area_m2": 0
+          }
+        }
+      ],
+      "method": "Current exact glTF mesh buffers transformed by scene node translation/scale; independent virtual translation of both guides, true segment→triangle narrowphase supports and oriented same-plane triangle polygon clipping. No source producer file or binary actually modified.",
+      "recommended_implementation": "Producer apply +0.0005m or +0.001m world-Z translation to existing guide nodes AND matching OBJ text/spec; reimport reconstructed source and independent test for all mesh pairs, original silhouette, pivot, UV/material and performance. Translation is proof-of-concept only, not an approved final visible geometry edit.",
+      "release": "HOLD"
+    },
+    "P17_03": {
+      "status": "PASS_SOURCE_INDEXED_AND_EIGHT_MECHANICAL_CONTACTS",
+      "git_blob": "e882a5dafe3f9f5e600d6443ebf44b1aba519f30",
+      "source_sha256": "f38ed83c806b30deb55854b061492a0d89d278f7a7c20f900b2aeaed7933b23d",
+      "parts": 20,
+      "triangles": 424,
+      "invalid_indices": 0,
+      "zero_area": 0,
+      "inverted_normal_triangles": 0,
+      "uv0_missing": 0,
+      "real_transformed_tri_contact_pairs": {
+        "PanelBolt_LB_to_FrontPanel": 16,
+        "PanelBolt_LT_to_FrontPanel": 16,
+        "PanelBolt_RB_to_FrontPanel": 16,
+        "PanelBolt_RT_to_FrontPanel": 18,
+        "SocketRetainer_L_to_LeverSocket": 10,
+        "SocketRetainer_R_to_LeverSocket": 10,
+        "CoverBolt_L_to_TopCap": 12,
+        "CoverBolt_R_to_TopCap": 12
+      },
+      "attachment_pass": "8/8",
+      "actual_node_hierarchy": {
+        "P17-03_ROOT": "LeverPivot plus 17 static mesh nodes",
+        "LeverPivot": [
+          "LeverShaft",
+          "LeverGrip",
+          "PivotAnchorVisual"
+        ]
+      },
+      "pivot_origin_translation_m": [
+        0,
+        0.35,
+        -0.015
+      ],
+      "actual_Unity_sweep": "NOT_RUN",
+      "real_Blender_pivot_test": "NOT_RUN"
+    },
+    "P18_previous_PASS15_source_preserved": {
+      "models": [
+        "P18-01",
+        "P18-02",
+        "P18-03"
+      ],
+      "parts": 149,
+      "triangles": 3516,
+      "source_same_facing_coplanar_area_m2": 0,
+      "real_12_new_mechanical_contacts": "12/12 PASS15",
+      "PASS14_repairs": "PRESERVED_AT_PIN",
+      "new_PASS16_reference_driven_authored_source_additions_at_last_pin": 0,
+      "full_animation_test": "NOT_RUN"
+    },
+    "P16_previous_PASS15_source_preserved": {
+      "models": [
+        "P16-04",
+        "P16-05",
+        "P16-06"
+      ],
+      "new_parts": 8,
+      "new_triangles": 96,
+      "true_triangle_contact": "8/8 SOURCE PASS15",
+      "native_blender": "NOT_RUN"
+    },
+    "P19": {
+      "status": "NOT_INDEPENDENTLY_RETESTED_PASS16",
+      "candidate_report_seen_in_HQ": true,
+      "offline_binary_producer_claim": "Unverified without actual physical binary bytes in current QA environment; do not promote or attribute Blender export origin."
+    }
+  },
+  "archive_lfs_status": {
+    "old_P17_01_fbx": "fca67dad3e35e7070575c7d7d141fab3e6756eecb0d618d325ec36266eca2772",
+    "old_P17_02_fbx": "af858385a0abae9c623ee4002bcf22bcbc401b5687024acd8df142eb1b848147",
+    "old_P18_01_fbx": "84851387b58aeadc7f2ace49201077d847cfd294f82acfb2d0a7dce3e471a939",
+    "old_P18_02_fbx": "5ba3faf85a3ea57f755eeb51d0db832c1ce37aa64721d710a22db509f2c6d03f",
+    "old_P18_03_fbx": "639fc09c39b804b9bf83de75a4096cdefe1229f58549662ee777537c19c5e165"
+  },
+  "execution_capabilities": {
+    "Blender_executable": "ABSENT",
+    "bpy_module": "ABSENT",
+    "Unity6": "ABSENT",
+    "genuine_blender_save_blend": "NOT_RUN",
+    "genuine_native_fbx_export_import_roundtrip": "NOT_RUN",
+    "real_blender_shaded_wireframe": "NOT_RUN",
+    "Unity6_URP_prefab_tests": "NOT_RUN",
+    "new_36_model_final_independent_approved": 0
+  },
+  "conditions_for_PASS": [
+    "P17-01 updated real producer source with ZERO same-facing coplanars and support triangle intersection kept",
+    "All new detail shapes justified by cited construction reference, no product shape 1:1",
+    "Real Blender4 save/reopen and Blender-exported binary FBX SHA256 comparison to exact source",
+    "Independent 36/36 mesh and mechanical checks, pivots, UV/normal/material/shading + animation and Unity6 URP imports",
+    "No merge unless explicit owner approval"
+  ]
+}

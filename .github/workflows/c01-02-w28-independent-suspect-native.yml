@@ -1,0 +1,71 @@
+name: C01-02 W28 independent existing non-door mesh suspect acceptance
+on:
+  push:
+    branches: [c01/props-02-independent-qa]
+    paths:
+      - C01InteriorProps_QA/W28/w28_independent_suspect_native.py
+      - .github/workflows/c01-02-w28-independent-suspect-native.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  four-current-exact-sha-originals:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - name: Checkout existing read-only QA Draft PR13
+        uses: actions/checkout@v4
+        with:
+          path: qa
+          lfs: false
+          persist-credentials: false
+      - name: Checkout pinned producer PR15 (P19-01 only)
+        uses: actions/checkout@v4
+        with:
+          ref: e053a786ffe8f08e5121c3ae5aa0f974a629660d
+          path: qa/producers/p19w1
+          lfs: false
+          persist-credentials: false
+      - name: Checkout pinned producer PR29 (P19-07 and P19-08 only)
+        uses: actions/checkout@v4
+        with:
+          ref: cf042fd3f90f10c78e614f1a67385293e51d85a0
+          path: qa/producers/p19w2
+          lfs: false
+          persist-credentials: false
+      - name: Checkout pinned producer PR17 (P17-01 only)
+        uses: actions/checkout@v4
+        with:
+          ref: 5a0ef15c261864d1e3fc2716466d223b269fc228
+          path: qa/producers/p17
+          lfs: false
+          persist-credentials: false
+      - name: Install genuine Blender 4 Python FBX import, NumPy, LFS and Xvfb
+        run: |
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y blender python3-numpy git-lfs xvfb
+          blender --version | head -1
+          git lfs version
+      - name: Hydrate exactly eight original signed non-door BLEND/FBX LFS files
+        working-directory: qa
+        run: |
+          set -euo pipefail
+          git -C producers/p19w1 lfs pull --include="Assets/C01InteriorProps/C01-19/Models/P19-01/P19-01.blend,Assets/C01InteriorProps/C01-19/Models/P19-01/P19-01.fbx" --exclude=""
+          git -C producers/p19w2 lfs pull --include="Assets/C01InteriorProps/C01-19-W02/Models/P19-07/P19-07.blend,Assets/C01InteriorProps/C01-19-W02/Models/P19-07/P19-07.fbx,Assets/C01InteriorProps/C01-19-W02/Models/P19-08/P19-08.blend,Assets/C01InteriorProps/C01-19-W02/Models/P19-08/P19-08.fbx" --exclude=""
+          git -C producers/p17 lfs pull --include="C01InteriorProps_Source/Blender/P17-01.blend,Assets/C01InteriorProps/Models/P17-01.fbx" --exclude=""
+      - name: Independently inspect original native FBX materials UV normals and real Blender true wire/shaded
+        working-directory: qa
+        run: |
+          set -o pipefail
+          xvfb-run -a blender -b --factory-startup -t 2 --python C01InteriorProps_QA/W28/w28_independent_suspect_native.py 2>&1 | tee c01_w28_independent.log
+      - name: Upload actual original binary provenance JSON and 8 real FBX Blender visuals
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: c01-02-w28-real-original-four-suspect-QA
+          path: |
+            qa/C01InteriorProps_QA/W28/native-results/*.json
+            qa/C01InteriorProps_QA/W28/native-results/*.png
+            qa/c01_w28_independent.log
+          if-no-files-found: warn
+          retention-days: 30

@@ -1,0 +1,54 @@
+name: C01-02 W29 independent CURRENT CURATED W01 W02 W03 non-door Blender QA
+on:
+  push:
+    branches: [c01/props-02-independent-qa]
+    paths:
+      - C01InteriorProps_QA/W29/w29_curated_w01_w03_independent.py
+      - .github/workflows/c01-02-w29-current-curated-w01-w03-native.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-curated-w01-02-03-only:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 27
+    steps:
+      - name: Checkout independent C01-02 existing Draft PR13
+        uses: actions/checkout@v4
+        with:
+          path: qa
+          lfs: false
+          persist-credentials: false
+      - name: Checkout exact pinned C01-11 W29 current curated authoring HEAD
+        uses: actions/checkout@v4
+        with:
+          path: qa/producer_walls
+          ref: 254b3225000125b91a156d33f03ebd6b117a6ca7
+          lfs: false
+          persist-credentials: false
+      - name: Install genuine Blender4 FBX importer, LFS and offscreen output
+        run: |
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y blender python3-numpy git-lfs xvfb
+          blender --version | head -1
+      - name: Hydrate ONLY six original W01 W02 W03 non-door native assets, NEVER W04
+        working-directory: qa
+        run: |
+          set -euo pipefail
+          git -C producer_walls lfs pull --include="Assets/C01Architecture/Walls_W01_W04/Blender/W01_FULL_WALL_1M.blend,Assets/C01Architecture/Walls_W01_W04/FBX/W01_FULL_WALL_1M.fbx,Assets/C01Architecture/Walls_W01_W04/Blender/W02_PANEL_WALL_1M.blend,Assets/C01Architecture/Walls_W01_W04/FBX/W02_PANEL_WALL_1M.fbx,Assets/C01Architecture/Walls_W01_W04/Blender/W03_CORNER_90_1M.blend,Assets/C01Architecture/Walls_W01_W04/FBX/W03_CORNER_90_1M.fbx" --exclude=""
+      - name: Independent actual CURRENT curated BLEND open and FBX reimport plus shaded and true wire
+        working-directory: qa
+        run: |
+          set -o pipefail
+          xvfb-run -a blender -b --factory-startup -t 2 --python C01InteriorProps_QA/W29/w29_curated_w01_w03_independent.py 2>&1 | tee c01_w29_curated_wall_QA.log
+      - name: Publish signed current-curated exact-source QA and real original FBX visuals
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: c01-02-w29-current-curated-W01-W02-W03-real-native-nondoor-only
+          path: |
+            qa/C01InteriorProps_QA/W29/curated_walls_results/*.json
+            qa/C01InteriorProps_QA/W29/curated_walls_results/*.png
+            qa/c01_w29_curated_wall_QA.log
+          if-no-files-found: warn
+          retention-days: 30

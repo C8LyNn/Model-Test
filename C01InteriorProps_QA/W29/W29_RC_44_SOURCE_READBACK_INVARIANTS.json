@@ -1,0 +1,27 @@
+{
+  "schema": "C01_02_W29_RC_EXACT_44_CURRENT_GITHUB_READBACK_V1",
+  "date": "2026-11-03",
+  "scope": "36 canonical +8 auxiliary non-door models; NO Claude door file reads or tests",
+  "source": {
+    "RC_json_blob": "82742d8a99e685d33100ea569b0f67b7747cc6ef",
+    "C01_03_canonical_json_blob": "8f0db6c3069cb519ab47cd7dd677d8908623a0e1",
+    "C01_03_architecture_csv_blob": "59e436300daae8ecdf4aecdb05adbb684cd8b5b7"
+  },
+  "checks": {
+    "canonical_36_correct": true,
+    "auxiliary_8_correct": true,
+    "unique_44_ids": true,
+    "current_canonical_36_exact_SHA": true,
+    "source_SHA64_all_44": true,
+    "latest_source_p19_visual_fail": true,
+    "current_p18_07_clearance_open": true,
+    "no_unity_pass": true,
+    "no_final_rc_pass": true,
+    "excluded_protected_ids": true,
+    "three_repaired_same_sha_qa": true
+  },
+  "passed": 11,
+  "total": 11,
+  "standards_scope": "GitHub SHA pointer/ledger crosswalk and static evidence only; not new native Blender or Unity run",
+  "note": "Latest RC is staged in C01-02 QA Draft #13, C01-03 owns authoritative release manifest; all remain HOLD."
+}

@@ -1,0 +1,129 @@
+{
+  "project": "C01",
+  "role": "C01-02",
+  "date": "2026-10-30",
+  "pass": "09",
+  "scope": "36 existing models P15-P19",
+  "test_method": "Independent read-only exact source OBJ face-by-face equivalence; GitHub commit-pinned blobs, not producer claims. Original loops triangulated by OBJ fan yielding original explicit triangle split, polygon faces mapped to original object/material/UV0/normals.",
+  "source_for_p18_w01": {
+    "before_commit": "19a8fa905c4fbc3921e1b3b4924fbdd629e3d134",
+    "after_commit": "41d5f6a46bf9c4f6fb9a86f331a6214ec590387a",
+    "producer_pr": 18
+  },
+  "tests": [
+    {
+      "id": "P18-01",
+      "before_OBJ_blob": "5787314578f8042f6f64bdafb6ccc421b1621b5f",
+      "after_OBJ_blob": "665b940dd9ba1ab9c7a1339a8a395bdc35fe72b9",
+      "V": 120,
+      "UV_records": 540,
+      "normal_records": 540,
+      "F_before": 180,
+      "F_after": 90,
+      "quads_after": 90,
+      "T_before": 180,
+      "T_after": 180,
+      "full_oriented_triangles_position_uv_normal_material_object_multiset": "PASS_IDENTICAL",
+      "mismatched_triangles": 0,
+      "current_native_fbx_expected_lfs_sha256": "84851387b58aeadc7f2ace49201077d847cfd294f82acfb2d0a7dce3e471a939",
+      "current_native_blend_expected_lfs_sha256": "d9e3037b754edd952473170ec0924b4849eec1aa2afc193c2151c9bf079b3a42",
+      "native_source_current": "STALE"
+    },
+    {
+      "id": "P18-02",
+      "before_OBJ_blob": "c451166192d6035f382a5b926944d00b5be7bf21",
+      "after_OBJ_blob": "6200a15fdf29a23d4e2106359fdaed347b1656fd",
+      "V": 136,
+      "UV_records": 612,
+      "normal_records": 612,
+      "F_before": 204,
+      "F_after": 102,
+      "quads_after": 102,
+      "T_before": 204,
+      "T_after": 204,
+      "full_oriented_triangles_position_uv_normal_material_object_multiset": "PASS_IDENTICAL",
+      "mismatched_triangles": 0,
+      "current_native_fbx_expected_lfs_sha256": "5ba3faf85a3ea57f755eeb51d0db832c1ce37aa64721d710a22db509f2c6d03f",
+      "current_native_blend_expected_lfs_sha256": "5b4cc6a8a73624ddc6521842146cdbc6cc4e7a579522e5122ce669e93c585b09",
+      "native_source_current": "STALE"
+    },
+    {
+      "id": "P18-03",
+      "before_OBJ_blob": "77b544df2e1ddb9752eb3bf9e8613a9327e94066",
+      "after_OBJ_blob": "901959fa24658c9beb1439fc06805f3feb8aa069",
+      "V": 208,
+      "UV_records": 1044,
+      "normal_records": 1044,
+      "F_before": 348,
+      "F_after": 270,
+      "quads_after": 78,
+      "triangles_retained_after": 192,
+      "T_before": 348,
+      "T_after": 348,
+      "full_oriented_triangles_position_uv_normal_material_object_multiset": "PASS_IDENTICAL",
+      "mismatched_triangles": 0,
+      "current_native_fbx_expected_lfs_sha256": "639fc09c39b804b9bf83de75a4096cdefe1229f58549662ee777537c19c5e165",
+      "current_native_blend_expected_lfs_sha256": "a33b23ad173f56a545aa57ae2d81e24afa27928f497835596350e06772e343fc",
+      "native_source_current": "STALE"
+    }
+  ],
+  "p18_w02": {
+    "producer_pr": 26,
+    "before_commit": "f76233ab4ea67ce44647e175342654072739b3b2",
+    "after_commit": "ce5f80db7121f435b09e3bed17d7daa93b4147c8",
+    "path": "Assets/C01InteriorProps/C01-18-Wave02/Sources/build_wave02.py",
+    "before_blob": "253843b0ebdcf5d86b627523529dcce7698f3f6a",
+    "after_blob": "8b6690d1274534f2ef358329a2d0c90cea82c0b8",
+    "code_delta": "Exactly one production line: Front_Lock center Unity Z .164 -> .165 (1mm)",
+    "static_source_role": "FRONT_LOCK_1MM_OUTWARDS",
+    "current_native_fbx_expected_lfs_sha256": "56c19c7ea12fe2713ae30b72ecf8771613f794d4a2e8c4da18c41cb9dd825e08",
+    "current_native_blend_expected_lfs_sha256": "302a6832594702c7eff11a486d9e581c159993ff7b7f5c5abe124bf29edbc8d8",
+    "old_lid_front_plane_z_m": 0.17,
+    "new_lock_front_plane_z_m": 0.171,
+    "old_lock_front_plane_z_m": 0.17,
+    "source_bounds_before_WDH_m": [
+      0.56,
+      0.34,
+      0.38
+    ],
+    "source_bounds_after_WDH_m": [
+      0.56,
+      0.341,
+      0.38
+    ],
+    "dimensional_qa_warning": "Depth increases by 1 mm; C01-01 tolerances plus native image/Unity review required. Other box positions unchanged; moving hinge remains separate.",
+    "new_actual_blend_and_fbx": "NOT_RUN"
+  },
+  "runtime": {
+    "blender_executable": "MISSING",
+    "bpy": "MISSING",
+    "git_lfs": "MISSING",
+    "unity": "MISSING",
+    "dns_hosts_blender_github_pypi": "FAILED",
+    "github_actions_run_41108063941": "FAIL_PRE_RUNNER runner=0 steps=0",
+    "github_actions_run_41103140385": "FAIL_PRE_RUNNER runner=0 steps=0",
+    "root_cause": "UNKNOWN_NODIAGNOSTIC_PRIVILEGE",
+    "owner_action": "Restore an eligible GitHub Actions runner without unauthorized billing changes or execute existing source-preserving native Blender 4.x scripts on authorized Windows workstation."
+  },
+  "cross_project": {
+    "repo": "C8LyNn/RoboRougelike",
+    "ENV01_PR": 288,
+    "ENV02_PR": 290,
+    "ENV03_PR": 291,
+    "ENV04_PR": 289,
+    "ENV05_PR": 293,
+    "transferable_qa": "Blender save/reopen, UV/normals/manifold/degenerates check, true exporter roundtrip, isolated collider visual/physics status, image source provenance, SHA256, deterministic GLB when applicable; C01 still specifically requires FBX not GLB",
+    "file_transfer": "NONE",
+    "unity_verdict": "NOT_RUN_ON_ENV_REFS"
+  },
+  "counts": {
+    "new_native_repairs": 0,
+    "new_native_roundtrips": 0,
+    "new_unity_pass": 0,
+    "new_source_delta_models_independently_checked": 4,
+    "total_current_final_binary_SHA_independently_audited": 22,
+    "total_current_final_binary_required": 36,
+    "total_full_acceptances": 0
+  },
+  "note": "22 binary FBX at immutable PASS06 SHA from older Actions; this turn did NOT repeat Blender/Unity byte validation for 36 final assets. Seven P15 not independently hydrated, seven P16 native .blend/FBX missing. Five P19 preflight export-risk failures remain."
+}

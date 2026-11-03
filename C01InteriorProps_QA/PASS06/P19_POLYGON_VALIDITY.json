@@ -1,0 +1,44 @@
+{
+  "run": "C01-02 PASS06 2026-10-30",
+  "method": "Read-only Shapely polygon validity on 8 original binary Blender-FBX 7400, dominant-normal 2D projection. This is a polygon-validity candidate test, NOT Blender/Unity runtime triangulation.",
+  "models": {
+    "P19-01": {
+      "ngons_tested": 76,
+      "invalid": 1,
+      "geometry": "Cube.001",
+      "polygon_index_zero_based": 59,
+      "vertex_count": 6,
+      "issue": "Self-intersection[-0.0349999964237213 0.0749999284744263]",
+      "fbx_sha256": "47b4d6f2017626b6084584fbf0bad907505eb9e194703032d83af5315c1a4009"
+    },
+    "P19-02": {
+      "ngons_tested": 76,
+      "invalid": 0
+    },
+    "P19-03": {
+      "ngons_tested": 48,
+      "invalid": 0
+    },
+    "P19-04": {
+      "ngons_tested": 54,
+      "invalid": 0
+    },
+    "P19-05": {
+      "ngons_tested": 66,
+      "invalid": 0
+    },
+    "P19-06": {
+      "ngons_tested": 42,
+      "invalid": 0
+    },
+    "P19-07": {
+      "ngons_tested": 78,
+      "invalid": 0
+    },
+    "P19-08": {
+      "ngons_tested": 93,
+      "invalid": 0
+    }
+  },
+  "acceptance": "P19-01 FAIL until original Blender polygon topology repaired, source saved, new binary FBX exported and independently tested; other 7 results only say no invalid projected polygons detected under this test."
+}

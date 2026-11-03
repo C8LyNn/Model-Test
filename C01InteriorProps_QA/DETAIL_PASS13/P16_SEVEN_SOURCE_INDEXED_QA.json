@@ -1,0 +1,72 @@
+{
+  "date": "2026-10-30",
+  "role": "C01-02 independent QA",
+  "pass": 13,
+  "scope": "seven producer-authoring P16-01..07 detail-only OBJ components (NOT seven final complete BLEND/FBX models)",
+  "count": {
+    "parts": 57,
+    "triangles": 1280,
+    "invalid_v_vt_vn_indices": 0,
+    "zero_area_fan_tris": 0
+  },
+  "method": "Read actual GitHub source OBJ, parse v/vt/vn and f, verify each referenced vertex/UV0/normal index and each indexed triangle cross-product. Source only, no joined global assembly BVH, Blender save or Unity.",
+  "models": [
+    {
+      "id": "P16-01",
+      "Git_blob": "d32eab80d6a3ebdf9c3dd7fe81cc516754a64509",
+      "parts": 7,
+      "V": 94,
+      "T": 160
+    },
+    {
+      "id": "P16-02",
+      "Git_blob": "c7d73e53395720a5d6a13d4d2151032d34770053",
+      "parts": 7,
+      "V": 94,
+      "T": 160
+    },
+    {
+      "id": "P16-03",
+      "Git_blob": "0a3b454b1c053fe52b949be113705b5dc0846e79",
+      "parts": 7,
+      "V": 94,
+      "T": 160
+    },
+    {
+      "id": "P16-04",
+      "Git_blob": "aa2ab0ff5b4ba17de696433a2f1aa3c95b6f5ab2",
+      "parts": 12,
+      "V": 144,
+      "T": 240
+    },
+    {
+      "id": "P16-05",
+      "Git_blob": "773df8e46f44595c605f2688b1582f5afb787bbe",
+      "parts": 8,
+      "V": 114,
+      "T": 196
+    },
+    {
+      "id": "P16-06",
+      "Git_blob": "b6ba4fcffd7e262de758aebbd33326ea55b500a3",
+      "parts": 10,
+      "V": 128,
+      "T": 216
+    },
+    {
+      "id": "P16-07",
+      "Git_blob": "e21758b78fce32b1d9872bc6297406756fec8da5",
+      "parts": 6,
+      "V": 86,
+      "T": 148
+    }
+  ],
+  "status": "SOURCE_DETAIL_INDEXED_PREFLIGHT_PASS_7_OF_7; final native Blender+FBX still NOT_RUN, no release QA",
+  "producer_branches": {
+    "P16_01_03": "c01/props-16-lighting",
+    "P16_04_07": "c01/props-16-lighting-wave02"
+  },
+  "native_blend_after": "NOT_RUN",
+  "native_fbx_after": "NOT_RUN",
+  "Unity6": "NOT_RUN"
+}

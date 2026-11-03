@@ -1,0 +1,294 @@
+{
+  "project": "C01 — 3D Asset Factory",
+  "role": "C01-02 independent QA",
+  "issue": 36,
+  "pass": 13,
+  "date": "2026-10-30",
+  "scope": "existing P15-P19; independent focus P17-02/P18-01/02/03",
+  "source_provenance": {
+    "P17_02": {
+      "producer_PR": 17,
+      "verified_commit": "97f6d77eab77dbdd171c2321a922980517efefed",
+      "gltf_git_blob": "d80a67af140e434b983104aaec0078f9cf5bd66f",
+      "previous_gltf_git_blob": "7f183922dab2b5e416af7a8dc30a46c1b6990286"
+    },
+    "P18": {
+      "producer_PR": 18,
+      "verified_commit": "27a680d7ce2e996b62956cb41db7fe5607fd8df2",
+      "obj_git_blobs": {
+        "P18-01": "c0f9d6b5131c987e1c484ce4eb83ac2115e1d7f7",
+        "P18-02": "9a81151c93006cd2a52d0e5541fe1d3c2cbc2011",
+        "P18-03": "df5a68c87fd49597c79bbb6f70735f32543489bf"
+      }
+    }
+  },
+  "methodology": "Direct GitHub-fetched original/current OBJ polygon triangulation and oriented coplanar plane grouping+2D convex triangle clipping; glTF actual embedded base64 float32 POSITION, uint16 index buffers and scale/translation transforms; true 3D vertex-triangle/segment-triangle/segment-segment closest feature scans. Surface contact does not prove clean visibility, correct mating weld or no noncoplanar penetration.",
+  "P17_02": {
+    "finding_retraction": "Previous severe fail for 2m screws is RETRACTED; source mesh local [-1,+1] was incorrectly interpreted without node.scale; 14 KeyGuide/clamp reinforcements similarly node-scaled, not huge unscaled slabs.",
+    "world_screw_size_mm": [
+      9,
+      9,
+      3
+    ],
+    "screw_to_MountBacking_contacts_mm": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "screw_actual_intersection_examples_m": [
+      [
+        -0.079818,
+        0.013182,
+        0.016
+      ],
+      [
+        -0.079818,
+        0.273182,
+        0.016
+      ],
+      [
+        0.086182,
+        0.013182,
+        0.016
+      ],
+      [
+        0.086182,
+        0.273182,
+        0.016
+      ]
+    ],
+    "Keybed_Housing_before_min_triangle_distance_mm": 0.5,
+    "Keybed_Housing_after": {
+      "Housing_position_Z_m": 0.0405,
+      "Housing_scale_Z": 1.0285714285714285,
+      "Housing_world_Z_bounds_m": [
+        0.0225,
+        0.0585
+      ],
+      "Keybed_world_Z_bounds_m": [
+        0.058,
+        0.064
+      ],
+      "signed_overlap_m": 0.0005,
+      "actual_triangle_face_intersection_xyz_m": [
+        -0.064,
+        0.1895833,
+        0.0585
+      ],
+      "source_contact_gate": "PASS_SOURCE_GEOMETRIC_CONTACT"
+    },
+    "KeyGuide_Keybed_tri_intersection": "PASS",
+    "KeyGuide_Key_tri_intersection": "PASS",
+    "ClampReinforcement_Clamp_tri_intersection": "PASS",
+    "new_blender_native_after": "NOT_RUN",
+    "binary_fbx_after": "NOT_RUN",
+    "unity": "NOT_RUN"
+  },
+  "P18_01": {
+    "source_before_detail": {
+      "V": 120,
+      "F": 90,
+      "T": 180,
+      "parts": 15
+    },
+    "source_after_detail": {
+      "V": 416,
+      "F": 426,
+      "T": 684,
+      "parts": 37
+    },
+    "new_assembly_details": 22,
+    "triangle_contact_samples": [
+      "Front_Trim↔TrimBacker↔Crate_Shell",
+      "rear hinge pin↔leaf↔lid",
+      "front latch lever↔backing↔crate",
+      "lid bolts↔lid"
+    ],
+    "contact_minima_mm": 0,
+    "original_corrected_source_coplanar_pairs": 0,
+    "first_detail_source_coplanar": {
+      "git_blob": "3147fbc11da4ad2c4cac9f4c8a520d921d1cd6b7",
+      "cross_part_face_pairs": 8,
+      "triangle_overlap_hits": 48,
+      "total_same_facing_area_m2": 0.003328
+    },
+    "latest_after_repair_coplanar": {
+      "git_blob": "c0f9d6b5131c987e1c484ce4eb83ac2115e1d7f7",
+      "cross_part_face_pairs": 8,
+      "triangle_overlap_hits": 48,
+      "total_same_facing_area_m2": 0.002496,
+      "per_pair_area_m2": 0.000312,
+      "reduction_fraction": 0.25,
+      "gate": "FAIL_SOURCE_ZFIGHT_COPLANAR",
+      "interface_pairs": [
+        "Front_Trim_-0.444_0.28 ↔ TrimBacker_B_0.28",
+        "Front_Trim_-0.444_0.63 ↔ TrimBacker_B_0.63",
+        "Front_Trim_0.444_0.28 ↔ TrimBacker_F_0.28",
+        "Front_Trim_0.444_0.63 ↔ TrimBacker_F_0.63",
+        "Side_Trim_-0.444_0.28 ↔ TrimBacker_L_0.28",
+        "Side_Trim_-0.444_0.63 ↔ TrimBacker_L_0.63",
+        "Side_Trim_0.444_0.28 ↔ TrimBacker_R_0.28",
+        "Side_Trim_0.444_0.63 ↔ TrimBacker_R_0.63"
+      ]
+    },
+    "suggested_producer_fix": "Shorten each TrimBacker long-axis half-extent from 0.335 to 0.334m (1 mm each end) without affecting trim/silhouette; rerun true plane triangle scan, correct any additional confirmed source defects, then native export.",
+    "new_blender_native_after": "NOT_RUN",
+    "binary_fbx_after": "NOT_RUN"
+  },
+  "P18_02": {
+    "source_after_detail": {
+      "V": 600,
+      "F": 666,
+      "T": 1012,
+      "parts": 47
+    },
+    "detail_pieces": 30,
+    "triangle_contact_checks": [
+      {
+        "a": "Top_Label_-0.5",
+        "b": "Top_Label_L_MountingBackplate",
+        "distance_mm": 0
+      },
+      {
+        "a": "Top_Label_L_MountingBackplate",
+        "b": "Shelf_2_Deck",
+        "distance_mm": 0
+      },
+      {
+        "a": "Top_Label_0.5",
+        "b": "Top_Label_R_MountingBackplate",
+        "distance_mm": 0
+      },
+      {
+        "a": "Top_Label_R_MountingBackplate",
+        "b": "Shelf_2_Deck",
+        "distance_mm": 0
+      },
+      {
+        "a": "Shelf2_Bracket_LB",
+        "b": "Shelf_2_Deck",
+        "distance_mm": 0
+      },
+      {
+        "a": "Shelf2_Bracket_LB",
+        "b": "Rack_Post_-1.015_-0.365",
+        "distance_mm": 0
+      }
+    ],
+    "same_facing_plane_coplanar_overlaps": 0,
+    "gate": "PASS_SOURCE_SAMPLED_CONTACT_AND_COPLANAR",
+    "native_after": "NOT_RUN",
+    "Unity": "NOT_RUN"
+  },
+  "P18_03": {
+    "source_after_detail": {
+      "V": 872,
+      "F": 1110,
+      "T": 1532,
+      "parts": 53
+    },
+    "detail_pieces": 36,
+    "per_wheel_fixed_bracket_axle_hub_parts": 9,
+    "triangle_contact_checks": [
+      {
+        "a": "Wheel_LB",
+        "b": "Wheel_LB_Hub_In",
+        "distance_mm": 0
+      },
+      {
+        "a": "Wheel_LB",
+        "b": "Wheel_LB_Hub_Out",
+        "distance_mm": 0
+      },
+      {
+        "a": "Wheel_LB_Axle",
+        "b": "Wheel_LB_Hub_In",
+        "distance_mm": 0
+      },
+      {
+        "a": "Wheel_LB_Axle",
+        "b": "Wheel_LB_ForkInner",
+        "distance_mm": 0
+      },
+      {
+        "a": "Wheel_LB_Axle",
+        "b": "Wheel_LB_ForkOuter",
+        "distance_mm": 0
+      },
+      {
+        "a": "Wheel_LB_ForkOuter",
+        "b": "Wheel_LB_ForkCrown",
+        "distance_mm": 0
+      },
+      {
+        "a": "Wheel_LB_ForkCrown",
+        "b": "Wheel_LB_Anchor",
+        "distance_mm": 0
+      },
+      {
+        "a": "Wheel_LB_Anchor",
+        "b": "Cart_Upright_-0.44_-0.29",
+        "distance_mm": 0
+      },
+      {
+        "a": "Wheel_LB_Gusset",
+        "b": "Cart_Shelf_0",
+        "distance_mm": 0
+      },
+      {
+        "a": "Wheel_RB_Axle",
+        "b": "Wheel_RB_ForkOuter",
+        "distance_mm": 0
+      },
+      {
+        "a": "Wheel_RF_Anchor",
+        "b": "Cart_Upright_0.44_0.29",
+        "distance_mm": 0
+      }
+    ],
+    "wheel_source_ground_contacts": 4,
+    "per_wheel_ymin_m": 0,
+    "cross_mesh_same_facing_coplanar_overlaps": 0,
+    "gate": "PASS_SOURCE_SAMPLED_MECHANICAL_CONTACT_AND_COPLANAR",
+    "actual_wheel_pivot_and_Unity_rotation": "NOT_RUN",
+    "native_after": "NOT_RUN"
+  },
+  "qa_test_script": {
+    "name": "qa_coplanar_source.py",
+    "local_python_unittest": "PASS 6/6 synthetic oriented-plane/convex clipping regression tests",
+    "script_sha256": "8dd25434b3746cc5ff3b00ac1c0469cdf97032caffad9e3616b66e923cf196e3",
+    "unit_test_sha256": "63298b06a1c9d7a99a75b596141a9ad0dae9023c810dc4a8b0105df2a6da7d94",
+    "executed_real_repo_data": "YES separate same plane algorithm on GitHub-fetched actual OBJ with JS, not locally hydrated authoring OBJ"
+  },
+  "current_original_binary_LFS_SHA256": {
+    "P17-02": "af858385a0abae9c623ee4002bcf22bcbc401b5687024acd8df142eb1b848147",
+    "P18-01": "84851387b58aeadc7f2ace49201077d847cfd294f82acfb2d0a7dce3e471a939",
+    "P18-02": "5ba3faf85a3ea57f755eeb51d0db832c1ce37aa64721d710a22db509f2c6d03f",
+    "P18-03": "639fc09c39b804b9bf83de75a4096cdefe1229f58549662ee777537c19e165"
+  },
+  "runtime": {
+    "blender_4x": "NOT_AVAILABLE",
+    "git_lfs": "NOT_AVAILABLE",
+    "unity6": "NOT_AVAILABLE",
+    "private_c01_actions_run": 41119479370,
+    "runner_id": 0,
+    "job_steps": 0,
+    "conclusion": "FAIL_INFRA_PRE_RUNNER",
+    "native_Blend_save": "NOT_RUN",
+    "new_Blend_export_FBX": "NOT_RUN",
+    "Blender_FBX_reimport": "NOT_RUN",
+    "Unity6_URP": "NOT_RUN"
+  },
+  "outstanding": {
+    "P19": "Five original triangulation risk and P19-02/05 separate producer candidates require Blender save/reimport+source pairing and independent SHA",
+    "P16": "Seven native pairs outstanding despite updated OBJ detailed sources",
+    "P15": "Original final seven binary FBX independent hydration missing",
+    "global_full_independent_acceptance": "0/36"
+  },
+  "decision": "HOLD / NEEDS_OWNER_ACTION. P17-02 source gap repaired and source contact passes; P18-02 and P18-03 sampled mechanical contacts pass; P18-01 coplanar source FAIL. No new final Blender binaries, Unity imports, or approved merges.",
+  "references": {
+    "P17_review": "https://github.com/C8LyNn/Model-Test/issues/17#issuecomment-6532826731",
+    "P18_review": "https://github.com/C8LyNn/Model-Test/issues/18#issuecomment-6532825765"
+  }
+}

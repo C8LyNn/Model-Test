@@ -1,0 +1,53 @@
+name: C01-02 W28 P19-01 signed mattress-stripe visual witness only
+on:
+  push:
+    branches: [c01/props-02-independent-qa]
+    paths:
+      - C01InteriorProps_QA/W28/p1901_independent_stripe_surface_witness.py
+      - .github/workflows/c01-02-w28-p1901-mattress-contact.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  current-original-p19-01-only:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 19
+    steps:
+      - name: Checkout current independent QA Draft PR13 (no original model changes)
+        uses: actions/checkout@v4
+        with:
+          path: qa
+          lfs: false
+          persist-credentials: false
+      - name: Checkout exact original P19-01 producer SHA on isolated Draft PR15
+        uses: actions/checkout@v4
+        with:
+          ref: e053a786ffe8f08e5121c3ae5aa0f974a629660d
+          path: qa/producer_w1
+          lfs: false
+          persist-credentials: false
+      - name: Install genuine Blender4, LFS, NumPy and headless image support
+        run: |
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y blender python3-numpy git-lfs xvfb
+          blender --version | head -1
+      - name: Hydrate ONLY immutable original P19-01 BLEND and FBX
+        working-directory: qa
+        run: |
+          git -C producer_w1 lfs pull --include="Assets/C01InteriorProps/C01-19/Models/P19-01/P19-01.blend,Assets/C01InteriorProps/C01-19/Models/P19-01/P19-01.fbx" --exclude=""
+      - name: Execute independent real native+FBX strict mattress/stripe surface and A/B shading
+        working-directory: qa
+        run: |
+          set -o pipefail
+          xvfb-run -a blender -b --factory-startup -t 2 --python C01InteriorProps_QA/W28/p1901_independent_stripe_surface_witness.py 2>&1 | tee w28_p1901_contact.log
+      - name: Upload exact physical native geometry, shading ablation and original source witnesses
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: c01-02-w28-p1901-mattress-stripe-current-exact-sha-evidence
+          path: |
+            qa/C01InteriorProps_QA/W28/p1901-contact-results/*.json
+            qa/C01InteriorProps_QA/W28/p1901-contact-results/*.png
+            qa/w28_p1901_contact.log
+          if-no-files-found: warn
+          retention-days: 30

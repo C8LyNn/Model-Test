@@ -1,0 +1,198 @@
+{
+  "project": "C01 — 3D Asset Factory",
+  "role": "C01-02 independent QA",
+  "task": "DETAIL PASS14",
+  "date": "2026-10-30",
+  "issue": 36,
+  "pr": 13,
+  "source_pin": {
+    "producer_pr": 18,
+    "producer_head_checked": "996b8e8f8deb86e2a59f1468fb8b318a7815cfa7",
+    "baseline_producer_head": "9dc58f654d1799208dda3334b9b9ecf9eae33a76",
+    "files": [
+      {
+        "id": "P18-01",
+        "git_blob": "051ab09222a354f1c64f7c682442529b6f4d54ee",
+        "sha256": "6d1cbedba52d975594c4d1c4c1addcf14f752ee7118a521a3e63c880e8044b06",
+        "V": 416,
+        "UV0_corners": 1716,
+        "normals": 1716,
+        "F": 426,
+        "T": 684,
+        "parts": 37,
+        "changed_positions": 68
+      },
+      {
+        "id": "P18-02",
+        "git_blob": "349fd2307eca8d2334cb8c8cbeb5f43ff9408d4b",
+        "sha256": "dc9434a32b7de2235d80a374cc04778b657e39c8f98d88b288bdad40fbf6af2c",
+        "V": 600,
+        "UV0_corners": 2548,
+        "normals": 2548,
+        "F": 666,
+        "T": 1012,
+        "parts": 47,
+        "changed_positions": 16
+      },
+      {
+        "id": "P18-03",
+        "git_blob": "e6440810d917df3c978505ce79f084ba1f98086c",
+        "sha256": "22513002afb38d2d3f4a13ef429a41c9a04928528b3cffef87613d51351c1901",
+        "V": 872,
+        "UV0_corners": 3908,
+        "normals": 3908,
+        "F": 1110,
+        "T": 1532,
+        "parts": 53,
+        "changed_positions": 48
+      }
+    ],
+    "P17_02": {
+      "producer_pr": 17,
+      "producer_head": "cdcc18428d2fb52c2c60826fc8af9a70f51c82f9",
+      "gltf_blob": "d80a67af140e434b983104aaec0078f9cf5bd66f",
+      "last_qa": "PASS13 verified real screw×MountBacking 4/4 and Keybed×Housing closed 0.5mm gap; unchanged in PASS14; new Blender FBX unavailable"
+    }
+  },
+  "tests": {
+    "source_integrity": {
+      "models": 3,
+      "parts_total": 137,
+      "source_triangles_total": 3228,
+      "source_invalid_indices": 0,
+      "fan_zero_area": 0,
+      "flipped_normal_candidates": 0,
+      "duplicate_indexed_faces": 0,
+      "nonmanifold_edges": 0,
+      "boundary_edges": 0,
+      "UV0_corner_arrays_unchanged": true,
+      "recorded_vertex_normals_unchanged": true,
+      "face_indices_and_material_assignments_unchanged": true,
+      "scope": "Source OBJ index/normal/area/manifold checks; material visual correctness not Blender-tested."
+    },
+    "P18_01": {
+      "baseline_git_blob": "c0f9d6b5131c987e1c484ce4eb83ac2115e1d7f7",
+      "current_git_blob": "051ab09222a354f1c64f7c682442529b6f4d54ee",
+      "before": {
+        "Lower_Rim_to_Crate_Shell_gap_mm": 10,
+        "trim_to_backer_same_facing_coplanar_mesh_pairs": 8,
+        "coplanar_triangle_pairs": 48,
+        "coplanar_area_m2": 0.002496
+      },
+      "after": {
+        "Lower_Rim_to_Crate_Shell_gap_mm": 0,
+        "Lower_Rim_Crate_Shell_AABB_Y_overlap_mm": 2,
+        "Lower_Rim_ground_y_m": 0,
+        "trim_to_backer_same_facing_coplanar_mesh_pairs": 0,
+        "coplanar_triangle_pairs": 0,
+        "coplanar_area_m2": 0
+      },
+      "source_changes": "4 top-face Lower_Rim vertices Y+12mm and 64 backing-bar vertices each 1mm trimmed per longitudinal end; preserved topology, original UV0, normals, material grouping.",
+      "status": "PASS_SCOPED_SOURCE_REPAIR"
+    },
+    "P18_02": {
+      "baseline_git_blob": "9a81151c93006cd2a52d0e5541fe1d3c2cbc2011",
+      "current_git_blob": "349fd2307eca8d2334cb8c8cbeb5f43ff9408d4b",
+      "before": {
+        "Back_Support_0_6_and_1_48_nearest_post_gap_each_mm": 30
+      },
+      "after": {
+        "Back_Support_0_6_X_extent_m": [
+          -0.985,
+          0.985
+        ],
+        "Back_Support_1_48_X_extent_m": [
+          -0.985,
+          0.985
+        ],
+        "both_support_ends_X_overlap_into_post_mm": 5,
+        "mesh_contacts_per_support": 2,
+        "source_coplanar_pairs": 0
+      },
+      "source_changes": "16 end-cap vertices X expanded 35mm to left/right across 2 existing rear support meshes; same source polygons/UV0/materials.",
+      "status": "PASS_SCOPED_SOURCE_REPAIR"
+    },
+    "P18_03": {
+      "baseline_git_blob": "df5a68c87fd49597c79bbb6f70735f32543489bf",
+      "current_git_blob": "e6440810d917df3c978505ce79f084ba1f98086c",
+      "before": {
+        "all_four_shelf_lips_deck_Y_gap_mm": 5,
+        "wheel_to_upright_triangle_intersection_count_per_wheel": [
+          11,
+          11,
+          13,
+          13
+        ],
+        "total": 48,
+        "upper_wheel_Y_m": 0.21,
+        "upright_lower_Y_m": 0.145
+      },
+      "after": {
+        "all_four_shelf_lips_deck_Y_gap_mm": 0,
+        "each_lip_deck_Y_overlap_mm": 2,
+        "each_lip_deck_true_triangle_pairs_intersecting": 10,
+        "all_four_lips_40_triangle_pairs": 40,
+        "all_four_wheels_ground_Ymin_m": 0,
+        "wheel_to_upright_triangle_intersection_count_per_wheel": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "wheel_to_upright_total": 0,
+        "each_wheel_top_upright_bottom_vertical_clearance_mm": 2,
+        "upper_wheel_Y_m": 0.21,
+        "upright_lower_Y_m": 0.212,
+        "upright_anchor_triangle_crossing_pairs": [
+          16,
+          20,
+          16,
+          20
+        ],
+        "source_coplanar_pairs": 0
+      },
+      "source_changes": "Four Lip meshes shifted Y-7mm each (32 source positions), four Upright bottoms raised Y from .145 to .212m (16 source positions), preserved wheel hubs axle/pivots and original wheel vertices.",
+      "status": "PASS_SCOPED_SOURCE_REPAIR"
+    }
+  },
+  "before_after_preview": {
+    "type": "Actual OBJ polygon-derived orthographic technical views (not Blender renders)",
+    "old_ref": "9dc58f654d1799208dda3334b9b9ecf9eae33a76",
+    "new_ref": "996b8e8f8deb86e2a59f1468fb8b318a7815cfa7",
+    "assets": [
+      "C01InteriorProps_QA/DETAIL_PASS14/Previews/P18-01_SOURCE_BEFORE_AFTER.svg",
+      "C01InteriorProps_QA/DETAIL_PASS14/Previews/P18-02_SOURCE_BEFORE_AFTER.svg",
+      "C01InteriorProps_QA/DETAIL_PASS14/Previews/P18-03_SOURCE_BEFORE_AFTER.svg"
+    ]
+  },
+  "binary_gate": {
+    "current_fbx_LFS_SHA256": {
+      "P17-02": "af858385a0abae9c623ee4002bcf22bcbc401b5687024acd8df142eb1b848147",
+      "P18-01": "84851387b58aeadc7f2ace49201077d847cfd294f82acfb2d0a7dce3e471a939",
+      "P18-02": "5ba3faf85a3ea57f755eeb51d0db832c1ce37aa64721d710a22db509f2c6d03f",
+      "P18-03": "639fc09c39b804b9bf83de75a4096cdefe1229f58549662ee777537c19e165"
+    },
+    "binary_after_source_change": false,
+    "actual_new_blender_native_blend_files": 0,
+    "actual_new_blender_origin_binary_fbx_files": 0,
+    "new_blender_fbx_roundtrip": "NOT_RUN",
+    "UV_and_pivot_in_native": "NOT_RUN",
+    "real_Unity6_URP": "NOT_RUN",
+    "all36_final_approved": 0,
+    "total_models": 36
+  },
+  "blocked_infrastructure": {
+    "local_blender": "ABSENT",
+    "local_bpy": "ABSENT",
+    "local_git_lfs": "ABSENT",
+    "local_Unity6": "ABSENT",
+    "C01_latest_inspected_Actions_run_id": 41124421941,
+    "job_name": "check-manifest",
+    "conclusion": "failure",
+    "executed_steps": 0,
+    "runner_assigned": false,
+    "root_cause": "UNDETERMINED",
+    "status": "NEEDS_OWNER_ACTION"
+  },
+  "next_required": "C01-18 must rerun real Blender4 native source save, FBX export and FBX reimport on these exact OBJ SHA values; C01-17 export repaired source glTF; C01-15/16/19 finish their producer native exports; C01-02 verify actual hydrated new binary FBX SHA and mesh topology and source parity; C01-10 Unity6 URP prefab import. No unauthorized merge or source edit by independent QA."
+}

@@ -1,0 +1,2443 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "C01-INTERIOR-PROPS-PASS01-WAVE01",
+  "source_issue": "https://github.com/C8LyNn/Model-Test/issues/2",
+  "base_branch": "codex/c01-ship-integration",
+  "coordinates": "UNITY_Y_UP",
+  "architecture_grid_m": 1,
+  "release_status": "DRAFT_NOT_QA_APPROVED",
+  "assets": [
+    {
+      "asset_id": "C01-P15-01",
+      "code": "P15-01",
+      "name": "Straight modular pipe 1 m",
+      "category": "technical_installations",
+      "owner_thread": "C01-15",
+      "source_issue": "https://github.com/C8LyNn/Model-Test/issues/3",
+      "producer_branch": "c01/props-15-installations",
+      "planned_version": "0.1.0",
+      "delivered_version": null,
+      "status": "IN PRODUCTION",
+      "suggested_dimensions_wdh_m": [
+        1,
+        0.14,
+        0.14
+      ],
+      "measured": {
+        "dimensions_wdh_m": null,
+        "triangles": null,
+        "pivot_xyz_m": null,
+        "orientation": null,
+        "material_slots": null,
+        "colliders": null,
+        "mounting_socket": null
+      },
+      "mounting_type": "WALL_OR_CEILING",
+      "intended_use": "Engineering and service corridors",
+      "files": [],
+      "qa": {
+        "status": "NOT_RUN",
+        "report_path": null,
+        "fbx_sha256": null
+      },
+      "execution": {
+        "blender": "NOT_RUN",
+        "unity": "NOT_RUN"
+      },
+      "supplier_evidence": {
+        "pr": 16,
+        "branch": "c01/props-15-installations",
+        "head_sha": "e4e6223e9afa9f1d03eb645d8b5746db69f08f78",
+        "candidate_version": "0.1.0",
+        "paths": [
+          {
+            "role": "fbx",
+            "path": "Assets/C01InteriorProps/P15/Models/FBX/P15-01.fbx",
+            "repo_path_confirmed": true,
+            "sha256": "7f04fe0477b99d6acf9626c14d8e8d3c64700e5120ed10b1b84e6c4c01e5e5b4",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116613781,
+              "producer_head": "e4e6223e9afa9f1d03eb645d8b5746db69f08f78",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "preview",
+            "path": "Assets/C01InteriorProps/P15/Previews/Blender/P15-01_front.png",
+            "repo_path_confirmed": true,
+            "sha256": "ac41babbc7eb6237f868ba142036e75204fa85144914117cdda040a7aedc12aa",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116613781,
+              "producer_head": "e4e6223e9afa9f1d03eb645d8b5746db69f08f78",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "preview",
+            "path": "Assets/C01InteriorProps/P15/Previews/Blender/P15-01_iso.png",
+            "repo_path_confirmed": true,
+            "sha256": "64a404b658485eeaaf51fe9359031aedb46ec32fbe3cb336dbaa629f7787df25",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116613781,
+              "producer_head": "e4e6223e9afa9f1d03eb645d8b5746db69f08f78",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "preview",
+            "path": "Assets/C01InteriorProps/P15/Previews/Blender/P15-01_side.png",
+            "repo_path_confirmed": true,
+            "sha256": "7d1a8af5da4f4160055717892f9901fdccd8183f73703ebf7bcba7fef1e17049",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116613781,
+              "producer_head": "e4e6223e9afa9f1d03eb645d8b5746db69f08f78",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "blend",
+            "path": "Assets/C01InteriorProps/P15/Sources/Blender/P15-01.blend",
+            "repo_path_confirmed": true,
+            "sha256": "76cbd4bf73c9beedb88758c35168dcdb509cb1ec7bc4a9ba360c7866e478083f",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116613781,
+              "producer_head": "e4e6223e9afa9f1d03eb645d8b5746db69f08f78",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          }
+        ],
+        "interpretation": "SHA256_VERIFIED_FROM_PINNED_PRODUCER_GIT_LFS_CHECKOUT__NOT_QA_OR_UNITY_APPROVAL"
+      },
+      "qa_independent": {
+        "overall": "BLOCKED",
+        "qa_pr": 13,
+        "source": "C01InteriorProps_QA/reports/asset_status.csv",
+        "qa_branch": "c01/props-02-independent-qa",
+        "qa_head_sha": "5bb348672ce830620d22924a1b1ebda309102784",
+        "source_test": "NOT_RUN_UNLESS_SPECIFICALLY_RETESTED_BY_C01_02",
+        "note": "No independent C01-02 approval"
+      }
+    },
+    {
+      "asset_id": "C01-P15-02",
+      "code": "P15-02",
+      "name": "Ventilation grille",
+      "category": "technical_installations",
+      "owner_thread": "C01-15",
+      "source_issue": "https://github.com/C8LyNn/Model-Test/issues/3",
+      "producer_branch": "c01/props-15-installations",
+      "planned_version": "0.1.0",
+      "delivered_version": null,
+      "status": "IN PRODUCTION",
+      "suggested_dimensions_wdh_m": [
+        0.6,
+        0.08,
+        0.4
+      ],
+      "measured": {
+        "dimensions_wdh_m": null,
+        "triangles": null,
+        "pivot_xyz_m": null,
+        "orientation": null,
+        "material_slots": null,
+        "colliders": null,
+        "mounting_socket": null
+      },
+      "mounting_type": "WALL",
+      "intended_use": "Ventilation shafts and machinery",
+      "files": [],
+      "qa": {
+        "status": "NOT_RUN",
+        "report_path": null,
+        "fbx_sha256": null
+      },
+      "execution": {
+        "blender": "NOT_RUN",
+        "unity": "NOT_RUN"
+      },
+      "supplier_evidence": {
+        "pr": 16,
+        "branch": "c01/props-15-installations",
+        "head_sha": "e4e6223e9afa9f1d03eb645d8b5746db69f08f78",
+        "candidate_version": "0.1.0",
+        "paths": [
+          {
+            "role": "fbx",
+            "path": "Assets/C01InteriorProps/P15/Models/FBX/P15-02.fbx",
+            "repo_path_confirmed": true,
+            "sha256": "5b9553663847b97cbbb8252cb1f1e1c7cb6dc9d426d6c91f8534ca1f784ce0dd",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116613781,
+              "producer_head": "e4e6223e9afa9f1d03eb645d8b5746db69f08f78",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "preview",
+            "path": "Assets/C01InteriorProps/P15/Previews/Blender/P15-02_front.png",
+            "repo_path_confirmed": true,
+            "sha256": "8039d040de635805cf80e2bb76d7986fd7c2ee5968daec184f2176eb821649f9",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116613781,
+              "producer_head": "e4e6223e9afa9f1d03eb645d8b5746db69f08f78",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "preview",
+            "path": "Assets/C01InteriorProps/P15/Previews/Blender/P15-02_iso.png",
+            "repo_path_confirmed": true,
+            "sha256": "6618bd95eeba4387e72aa9c270c1ff86289fd32851cbc8ac1900e13fa42240f2",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116613781,
+              "producer_head": "e4e6223e9afa9f1d03eb645d8b5746db69f08f78",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "preview",
+            "path": "Assets/C01InteriorProps/P15/Previews/Blender/P15-02_side.png",
+            "repo_path_confirmed": true,
+            "sha256": "86ae0aa85f91c779bb15113e0ab2c3839c3705c095d44097601c192cf75ad3a0",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116613781,
+              "producer_head": "e4e6223e9afa9f1d03eb645d8b5746db69f08f78",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "blend",
+            "path": "Assets/C01InteriorProps/P15/Sources/Blender/P15-02.blend",
+            "repo_path_confirmed": true,
+            "sha256": "d04e999566a26100bb6e2feb5e12d524d985d07bc95eafa89941120cad014c61",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116613781,
+              "producer_head": "e4e6223e9afa9f1d03eb645d8b5746db69f08f78",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          }
+        ],
+        "interpretation": "SHA256_VERIFIED_FROM_PINNED_PRODUCER_GIT_LFS_CHECKOUT__NOT_QA_OR_UNITY_APPROVAL"
+      },
+      "qa_independent": {
+        "overall": "BLOCKED",
+        "qa_pr": 13,
+        "source": "C01InteriorProps_QA/reports/asset_status.csv",
+        "qa_branch": "c01/props-02-independent-qa",
+        "qa_head_sha": "5bb348672ce830620d22924a1b1ebda309102784",
+        "source_test": "NOT_RUN_UNLESS_SPECIFICALLY_RETESTED_BY_C01_02",
+        "note": "No independent C01-02 approval"
+      }
+    },
+    {
+      "asset_id": "C01-P15-03",
+      "code": "P15-03",
+      "name": "Electrical service cabinet",
+      "category": "technical_installations",
+      "owner_thread": "C01-15",
+      "source_issue": "https://github.com/C8LyNn/Model-Test/issues/3",
+      "producer_branch": "c01/props-15-installations",
+      "planned_version": "0.1.0",
+      "delivered_version": null,
+      "status": "IN PRODUCTION",
+      "suggested_dimensions_wdh_m": [
+        0.8,
+        0.35,
+        1.8
+      ],
+      "measured": {
+        "dimensions_wdh_m": null,
+        "triangles": null,
+        "pivot_xyz_m": null,
+        "orientation": null,
+        "material_slots": null,
+        "colliders": null,
+        "mounting_socket": null
+      },
+      "mounting_type": "FLOOR_OR_WALL",
+      "intended_use": "Engineering and technical sectors",
+      "files": [],
+      "qa": {
+        "status": "NOT_RUN",
+        "report_path": null,
+        "fbx_sha256": null
+      },
+      "execution": {
+        "blender": "NOT_RUN",
+        "unity": "NOT_RUN"
+      },
+      "supplier_evidence": {
+        "pr": 16,
+        "branch": "c01/props-15-installations",
+        "head_sha": "e4e6223e9afa9f1d03eb645d8b5746db69f08f78",
+        "candidate_version": "0.1.0",
+        "paths": [
+          {
+            "role": "fbx",
+            "path": "Assets/C01InteriorProps/P15/Models/FBX/P15-03.fbx",
+            "repo_path_confirmed": true,
+            "sha256": "7d43776597a5da12d6df4c41930e747e7b94b0f772a0be981a7fc06386b00c3d",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116613781,
+              "producer_head": "e4e6223e9afa9f1d03eb645d8b5746db69f08f78",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "fbx",
+            "path": "Assets/C01InteriorProps/P15/Models/FBX/P15-03_Body.fbx",
+            "repo_path_confirmed": true,
+            "sha256": "12fdd0fb2e38908d1e5164e2180c00457410a1e3a66041af19c4f284c2b1d5ae",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116613781,
+              "producer_head": "e4e6223e9afa9f1d03eb645d8b5746db69f08f78",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "fbx",
+            "path": "Assets/C01InteriorProps/P15/Models/FBX/P15-03_Door.fbx",
+            "repo_path_confirmed": true,
+            "sha256": "834fa24cdfdcc9350182f48204fd4a8eed990c89ac1f40a84874734e5fa5da5b",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116613781,
+              "producer_head": "e4e6223e9afa9f1d03eb645d8b5746db69f08f78",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "preview",
+            "path": "Assets/C01InteriorProps/P15/Previews/Blender/P15-03_front.png",
+            "repo_path_confirmed": true,
+            "sha256": "9cdc97040320de4d399f74daf0746b807c9c3adcc636ef7aa9d0c13507fabc5a",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116613781,
+              "producer_head": "e4e6223e9afa9f1d03eb645d8b5746db69f08f78",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "preview",
+            "path": "Assets/C01InteriorProps/P15/Previews/Blender/P15-03_iso.png",
+            "repo_path_confirmed": true,
+            "sha256": "c9224396721f5d9cf951c3e09831e68c8f1e02ea7b3cd97a60f9ed62635b438a",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116613781,
+              "producer_head": "e4e6223e9afa9f1d03eb645d8b5746db69f08f78",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "preview",
+            "path": "Assets/C01InteriorProps/P15/Previews/Blender/P15-03_side.png",
+            "repo_path_confirmed": true,
+            "sha256": "32cfd1f6609ccf579a118701e10206bc3036b2a9d0bfa186cda13f5cc63aef3e",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116613781,
+              "producer_head": "e4e6223e9afa9f1d03eb645d8b5746db69f08f78",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "blend",
+            "path": "Assets/C01InteriorProps/P15/Sources/Blender/P15-03.blend",
+            "repo_path_confirmed": true,
+            "sha256": "efb7ccff5e24f2672a8fbfffbd8d8ba53650f84820f71720ee8689be06b3ca42",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116613781,
+              "producer_head": "e4e6223e9afa9f1d03eb645d8b5746db69f08f78",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          }
+        ],
+        "interpretation": "SHA256_VERIFIED_FROM_PINNED_PRODUCER_GIT_LFS_CHECKOUT__NOT_QA_OR_UNITY_APPROVAL"
+      },
+      "qa_independent": {
+        "overall": "BLOCKED",
+        "qa_pr": 13,
+        "source": "C01InteriorProps_QA/reports/asset_status.csv",
+        "qa_branch": "c01/props-02-independent-qa",
+        "qa_head_sha": "5bb348672ce830620d22924a1b1ebda309102784",
+        "source_test": "NOT_RUN_UNLESS_SPECIFICALLY_RETESTED_BY_C01_02",
+        "note": "No independent C01-02 approval"
+      }
+    },
+    {
+      "asset_id": "C01-P16-01",
+      "code": "P16-01",
+      "name": "Ceiling lightbar",
+      "category": "lighting_signals",
+      "owner_thread": "C01-16",
+      "source_issue": "https://github.com/C8LyNn/Model-Test/issues/4",
+      "producer_branch": "c01/props-16-lighting",
+      "planned_version": "0.1.0",
+      "delivered_version": null,
+      "status": "IN PRODUCTION",
+      "suggested_dimensions_wdh_m": [
+        1.2,
+        0.15,
+        0.12
+      ],
+      "measured": {
+        "dimensions_wdh_m": null,
+        "triangles": null,
+        "pivot_xyz_m": null,
+        "orientation": null,
+        "material_slots": null,
+        "colliders": null,
+        "mounting_socket": null
+      },
+      "mounting_type": "CEILING",
+      "intended_use": "Corridors and bridge",
+      "files": [],
+      "qa": {
+        "status": "NOT_RUN",
+        "report_path": null,
+        "fbx_sha256": null
+      },
+      "execution": {
+        "blender": "NOT_RUN",
+        "unity": "NOT_RUN"
+      },
+      "supplier_evidence": {
+        "pr": 12,
+        "branch": "c01/props-16-lighting",
+        "head_sha": "e9cd92831c41ebd5fa2da026326831e524d08458",
+        "candidate_version": "0.1.0",
+        "paths": [
+          {
+            "role": "prefab",
+            "path": "Assets/C01InteriorProps/Lighting/Prefabs/P16-01.prefab",
+            "repo_path_confirmed": true,
+            "sha256": "e95d3edabd8cc353debe5ccb7cd3e9ccc2da6b6f1affc8042da5004a11c39ede",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116645718,
+              "producer_head": "e9cd92831c41ebd5fa2da026326831e524d08458",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "prefab_meta",
+            "path": "Assets/C01InteriorProps/Lighting/Prefabs/P16-01.prefab.meta",
+            "repo_path_confirmed": true,
+            "sha256": "ebdf36b856cae5bc8bcdad573869cdd6dc39835159dc13b0fa4eb8de4c62227e",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116645718,
+              "producer_head": "e9cd92831c41ebd5fa2da026326831e524d08458",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "fbx",
+            "path": "C01Source/Lighting/FBX/P16-01.fbx",
+            "repo_path_confirmed": true,
+            "sha256": "8a3453701d7e1d9c0739f8dc0190e33e206a34bdcac76e6d3d33c4e5d9bb5158",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116645718,
+              "producer_head": "e9cd92831c41ebd5fa2da026326831e524d08458",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "obj",
+            "path": "C01Source/Lighting/OBJ/P16-01.obj",
+            "repo_path_confirmed": true,
+            "sha256": "df76d84462eeb0eaf1537dd994513ca34a5caa24be857746b9e0e268c729411b",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116645718,
+              "producer_head": "e9cd92831c41ebd5fa2da026326831e524d08458",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          }
+        ],
+        "interpretation": "SHA256_VERIFIED_FROM_PINNED_PRODUCER_GIT_LFS_CHECKOUT__NOT_QA_OR_UNITY_APPROVAL"
+      },
+      "qa_independent": {
+        "overall": "BLOCKED",
+        "qa_pr": 13,
+        "source": "C01InteriorProps_QA/reports/asset_status.csv",
+        "qa_branch": "c01/props-02-independent-qa",
+        "qa_head_sha": "5bb348672ce830620d22924a1b1ebda309102784",
+        "source_test": "NOT_RUN_UNLESS_SPECIFICALLY_RETESTED_BY_C01_02",
+        "note": "No independent C01-02 approval"
+      }
+    },
+    {
+      "asset_id": "C01-P16-02",
+      "code": "P16-02",
+      "name": "Emergency wall lamp",
+      "category": "lighting_signals",
+      "owner_thread": "C01-16",
+      "source_issue": "https://github.com/C8LyNn/Model-Test/issues/4",
+      "producer_branch": "c01/props-16-lighting",
+      "planned_version": "0.1.0",
+      "delivered_version": null,
+      "status": "IN PRODUCTION",
+      "suggested_dimensions_wdh_m": [
+        0.35,
+        0.14,
+        0.22
+      ],
+      "measured": {
+        "dimensions_wdh_m": null,
+        "triangles": null,
+        "pivot_xyz_m": null,
+        "orientation": null,
+        "material_slots": null,
+        "colliders": null,
+        "mounting_socket": null
+      },
+      "mounting_type": "WALL",
+      "intended_use": "Airlocks and corridors",
+      "files": [],
+      "qa": {
+        "status": "NOT_RUN",
+        "report_path": null,
+        "fbx_sha256": null
+      },
+      "execution": {
+        "blender": "NOT_RUN",
+        "unity": "NOT_RUN"
+      },
+      "supplier_evidence": {
+        "pr": 12,
+        "branch": "c01/props-16-lighting",
+        "head_sha": "e9cd92831c41ebd5fa2da026326831e524d08458",
+        "candidate_version": "0.1.0",
+        "paths": [
+          {
+            "role": "prefab",
+            "path": "Assets/C01InteriorProps/Lighting/Prefabs/P16-02.prefab",
+            "repo_path_confirmed": true,
+            "sha256": "94eb539a5168ee7d7c9750d6d201918ae7f984c5c1a0b82a87bfb9c9b70b42c1",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116645718,
+              "producer_head": "e9cd92831c41ebd5fa2da026326831e524d08458",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "prefab_meta",
+            "path": "Assets/C01InteriorProps/Lighting/Prefabs/P16-02.prefab.meta",
+            "repo_path_confirmed": true,
+            "sha256": "0d729b99717fe2ad6300424d34be701f684f02abe9786a64a926069f805beb0b",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116645718,
+              "producer_head": "e9cd92831c41ebd5fa2da026326831e524d08458",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "fbx",
+            "path": "C01Source/Lighting/FBX/P16-02.fbx",
+            "repo_path_confirmed": true,
+            "sha256": "30dd6bb3ac4a5333b271efa16f83c27a124ce2ea5cbd5d52d14a203cd022b80f",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116645718,
+              "producer_head": "e9cd92831c41ebd5fa2da026326831e524d08458",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "obj",
+            "path": "C01Source/Lighting/OBJ/P16-02.obj",
+            "repo_path_confirmed": true,
+            "sha256": "60cc5d64c2d208ff31e97461fb17ec89959488fcc7b4104c413e60ab99a62d49",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116645718,
+              "producer_head": "e9cd92831c41ebd5fa2da026326831e524d08458",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          }
+        ],
+        "interpretation": "SHA256_VERIFIED_FROM_PINNED_PRODUCER_GIT_LFS_CHECKOUT__NOT_QA_OR_UNITY_APPROVAL"
+      },
+      "qa_independent": {
+        "overall": "BLOCKED",
+        "qa_pr": 13,
+        "source": "C01InteriorProps_QA/reports/asset_status.csv",
+        "qa_branch": "c01/props-02-independent-qa",
+        "qa_head_sha": "5bb348672ce830620d22924a1b1ebda309102784",
+        "source_test": "NOT_RUN_UNLESS_SPECIFICALLY_RETESTED_BY_C01_02",
+        "note": "No independent C01-02 approval"
+      }
+    },
+    {
+      "asset_id": "C01-P16-03",
+      "code": "P16-03",
+      "name": "Three-state status beacon",
+      "category": "lighting_signals",
+      "owner_thread": "C01-16",
+      "source_issue": "https://github.com/C8LyNn/Model-Test/issues/4",
+      "producer_branch": "c01/props-16-lighting",
+      "planned_version": "0.1.0",
+      "delivered_version": null,
+      "status": "IN PRODUCTION",
+      "suggested_dimensions_wdh_m": [
+        0.2,
+        0.2,
+        0.3
+      ],
+      "measured": {
+        "dimensions_wdh_m": null,
+        "triangles": null,
+        "pivot_xyz_m": null,
+        "orientation": null,
+        "material_slots": null,
+        "colliders": null,
+        "mounting_socket": null
+      },
+      "mounting_type": "WALL_OR_CEILING",
+      "intended_use": "Bridge and machinery",
+      "files": [],
+      "qa": {
+        "status": "NOT_RUN",
+        "report_path": null,
+        "fbx_sha256": null
+      },
+      "execution": {
+        "blender": "NOT_RUN",
+        "unity": "NOT_RUN"
+      },
+      "supplier_evidence": {
+        "pr": 12,
+        "branch": "c01/props-16-lighting",
+        "head_sha": "e9cd92831c41ebd5fa2da026326831e524d08458",
+        "candidate_version": "0.1.0",
+        "paths": [
+          {
+            "role": "prefab",
+            "path": "Assets/C01InteriorProps/Lighting/Prefabs/P16-03.prefab",
+            "repo_path_confirmed": true,
+            "sha256": "8140fd5cdd21fcd69bb34e668e3646571fc2c2f2da8ab5395763dea62578635c",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116645718,
+              "producer_head": "e9cd92831c41ebd5fa2da026326831e524d08458",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "prefab_meta",
+            "path": "Assets/C01InteriorProps/Lighting/Prefabs/P16-03.prefab.meta",
+            "repo_path_confirmed": true,
+            "sha256": "71bb46fe171b58c89db4cd89775156102e56a4afbf6b2e2c82a87a94c681d651",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116645718,
+              "producer_head": "e9cd92831c41ebd5fa2da026326831e524d08458",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "prefab",
+            "path": "Assets/C01InteriorProps/Lighting/Prefabs/P16-03_Amber.prefab",
+            "repo_path_confirmed": true,
+            "sha256": "36e037756217841fdbf0f792c16237202b26fce5801c7fc8be18c1bba3cfbae6",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116645718,
+              "producer_head": "e9cd92831c41ebd5fa2da026326831e524d08458",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "prefab_meta",
+            "path": "Assets/C01InteriorProps/Lighting/Prefabs/P16-03_Amber.prefab.meta",
+            "repo_path_confirmed": true,
+            "sha256": "7681113b90430010dfd95afcd1ae550038630dc979f925a218f18e214a7957c3",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116645718,
+              "producer_head": "e9cd92831c41ebd5fa2da026326831e524d08458",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "prefab",
+            "path": "Assets/C01InteriorProps/Lighting/Prefabs/P16-03_Red.prefab",
+            "repo_path_confirmed": true,
+            "sha256": "98cdc58aaf681f63d93e34522856936591c60a71845bcbccf8ffd17944a75df0",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116645718,
+              "producer_head": "e9cd92831c41ebd5fa2da026326831e524d08458",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "prefab_meta",
+            "path": "Assets/C01InteriorProps/Lighting/Prefabs/P16-03_Red.prefab.meta",
+            "repo_path_confirmed": true,
+            "sha256": "a03178ce4ceade1e202c9ed3d18d0e8eb43ed9d98b3879b0edcf46edc42d9822",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116645718,
+              "producer_head": "e9cd92831c41ebd5fa2da026326831e524d08458",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "fbx",
+            "path": "C01Source/Lighting/FBX/P16-03.fbx",
+            "repo_path_confirmed": true,
+            "sha256": "f9e6866a94f1b6097da0a8fb4051f92580213df620554f781c5b5660bfa2f6e0",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116645718,
+              "producer_head": "e9cd92831c41ebd5fa2da026326831e524d08458",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "obj",
+            "path": "C01Source/Lighting/OBJ/P16-03.obj",
+            "repo_path_confirmed": true,
+            "sha256": "d4740b5d77dffa8b9d72c27d2b4d4952a88f09aeb5d1bc6bef15b9e8d84b7f7f",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116645718,
+              "producer_head": "e9cd92831c41ebd5fa2da026326831e524d08458",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          }
+        ],
+        "interpretation": "SHA256_VERIFIED_FROM_PINNED_PRODUCER_GIT_LFS_CHECKOUT__NOT_QA_OR_UNITY_APPROVAL"
+      },
+      "qa_independent": {
+        "overall": "BLOCKED",
+        "qa_pr": 13,
+        "source": "C01InteriorProps_QA/reports/asset_status.csv",
+        "qa_branch": "c01/props-02-independent-qa",
+        "qa_head_sha": "5bb348672ce830620d22924a1b1ebda309102784",
+        "source_test": "NOT_RUN_UNLESS_SPECIFICALLY_RETESTED_BY_C01_02",
+        "note": "No independent C01-02 approval"
+      }
+    },
+    {
+      "asset_id": "C01-P17-01",
+      "code": "P17-01",
+      "name": "Bridge control console",
+      "category": "controls_puzzles",
+      "owner_thread": "C01-17",
+      "source_issue": "https://github.com/C8LyNn/Model-Test/issues/5",
+      "producer_branch": "c01/props-17-controls",
+      "planned_version": "0.1.0",
+      "delivered_version": null,
+      "status": "IN PRODUCTION",
+      "suggested_dimensions_wdh_m": [
+        1.6,
+        0.65,
+        1.1
+      ],
+      "measured": {
+        "dimensions_wdh_m": null,
+        "triangles": null,
+        "pivot_xyz_m": null,
+        "orientation": null,
+        "material_slots": null,
+        "colliders": null,
+        "mounting_socket": null
+      },
+      "mounting_type": "FLOOR",
+      "intended_use": "Bridge and laboratory",
+      "files": [],
+      "qa": {
+        "status": "NOT_RUN",
+        "report_path": null,
+        "fbx_sha256": null
+      },
+      "execution": {
+        "blender": "NOT_RUN",
+        "unity": "NOT_RUN"
+      },
+      "supplier_evidence": {
+        "pr": 17,
+        "branch": "c01/props-17-controls",
+        "head_sha": "004a4af78208135592d0c51657af2e9e42b6b572",
+        "candidate_version": "0.1.0",
+        "paths": [
+          {
+            "role": "fbx",
+            "path": "Assets/C01InteriorProps/Models/P17-01.fbx",
+            "repo_path_confirmed": true,
+            "sha256": "9907d9ccec05f85ea2c26a369a96784b0277d45e4dc3a01557d64f0e6103bebb",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116748288,
+              "producer_head": "004a4af78208135592d0c51657af2e9e42b6b572",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "gltf",
+            "path": "Assets/C01InteriorProps/Models/P17-01.gltf",
+            "repo_path_confirmed": true,
+            "sha256": "319351a5c69ccd2e1f482902371fdd4e9de571b7c874bf5c1d23585e3b126a58",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116748288,
+              "producer_head": "004a4af78208135592d0c51657af2e9e42b6b572",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "blend",
+            "path": "C01InteriorProps_Source/Blender/P17-01.blend",
+            "repo_path_confirmed": true,
+            "sha256": "dad0d71b4362845314ed6d3853b048584497793d6ac68b98183e1de163c81090",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116748288,
+              "producer_head": "004a4af78208135592d0c51657af2e9e42b6b572",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "preview",
+            "path": "C01InteriorProps_Source/Previews/P17-01_front.png",
+            "repo_path_confirmed": true,
+            "sha256": "043aa8ceca4b82b647b3d2bf4807fe0749d460e78071c4b51d36e7b4c502a257",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116748288,
+              "producer_head": "004a4af78208135592d0c51657af2e9e42b6b572",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "preview",
+            "path": "C01InteriorProps_Source/Previews/P17-01_iso.png",
+            "repo_path_confirmed": true,
+            "sha256": "4aa1dd8c434e03c8d233ccbc60e5d50970388865e631eebd9f894496a67c0fc7",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116748288,
+              "producer_head": "004a4af78208135592d0c51657af2e9e42b6b572",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "preview",
+            "path": "C01InteriorProps_Source/Previews/P17-01_side.png",
+            "repo_path_confirmed": true,
+            "sha256": "77156705324a5d1a803aa5de2b190fa5aef67226a6c9ea6a49162a441fb02623",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116748288,
+              "producer_head": "004a4af78208135592d0c51657af2e9e42b6b572",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "preview",
+            "path": "C01InteriorProps_Source/Previews/P17-01_views.svg",
+            "repo_path_confirmed": true,
+            "sha256": "4f48f425b40c98d5ae63299d8adac36a45fa95488d04fae30cfa0832c3164646",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116748288,
+              "producer_head": "004a4af78208135592d0c51657af2e9e42b6b572",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          }
+        ],
+        "interpretation": "SHA256_VERIFIED_FROM_PINNED_PRODUCER_GIT_LFS_CHECKOUT__NOT_QA_OR_UNITY_APPROVAL"
+      },
+      "qa_independent": {
+        "overall": "FAIL",
+        "qa_pr": 13,
+        "source": "C01InteriorProps_QA/reports/asset_status.csv",
+        "qa_branch": "c01/props-02-independent-qa",
+        "qa_head_sha": "5bb348672ce830620d22924a1b1ebda309102784",
+        "source_test": "NOT_RUN_UNLESS_SPECIFICALLY_RETESTED_BY_C01_02",
+        "note": "UV0 absent in sampled glTF primitives (QA #13)"
+      }
+    },
+    {
+      "asset_id": "C01-P17-02",
+      "code": "P17-02",
+      "name": "Door access keypad",
+      "category": "controls_puzzles",
+      "owner_thread": "C01-17",
+      "source_issue": "https://github.com/C8LyNn/Model-Test/issues/5",
+      "producer_branch": "c01/props-17-controls",
+      "planned_version": "0.1.0",
+      "delivered_version": null,
+      "status": "IN PRODUCTION",
+      "suggested_dimensions_wdh_m": [
+        0.18,
+        0.07,
+        0.28
+      ],
+      "measured": {
+        "dimensions_wdh_m": null,
+        "triangles": null,
+        "pivot_xyz_m": null,
+        "orientation": null,
+        "material_slots": null,
+        "colliders": null,
+        "mounting_socket": null
+      },
+      "mounting_type": "WALL",
+      "intended_use": "Airlocks D1–D4",
+      "files": [],
+      "qa": {
+        "status": "NOT_RUN",
+        "report_path": null,
+        "fbx_sha256": null
+      },
+      "execution": {
+        "blender": "NOT_RUN",
+        "unity": "NOT_RUN"
+      },
+      "supplier_evidence": {
+        "pr": 17,
+        "branch": "c01/props-17-controls",
+        "head_sha": "004a4af78208135592d0c51657af2e9e42b6b572",
+        "candidate_version": "0.1.0",
+        "paths": [
+          {
+            "role": "fbx",
+            "path": "Assets/C01InteriorProps/Models/P17-02.fbx",
+            "repo_path_confirmed": true,
+            "sha256": "3382385695be3247fb04a3cbd17ae8c8174259ffe8d00988a41300a7eb311607",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116748288,
+              "producer_head": "004a4af78208135592d0c51657af2e9e42b6b572",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "gltf",
+            "path": "Assets/C01InteriorProps/Models/P17-02.gltf",
+            "repo_path_confirmed": true,
+            "sha256": "a84b0be2d55f65f17ef22d1543f6932223346813882a736560a5fc4edd361d72",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116748288,
+              "producer_head": "004a4af78208135592d0c51657af2e9e42b6b572",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "blend",
+            "path": "C01InteriorProps_Source/Blender/P17-02.blend",
+            "repo_path_confirmed": true,
+            "sha256": "d407cea7e2558469de644a84bc80ed359d1335f4d5ef2330285f2c837a5de11b",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116748288,
+              "producer_head": "004a4af78208135592d0c51657af2e9e42b6b572",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "preview",
+            "path": "C01InteriorProps_Source/Previews/P17-02_front.png",
+            "repo_path_confirmed": true,
+            "sha256": "2c0979a22bfa9526b23a33ae0df9dbcabfb90b51513518bc8f83c6fd0848b2e9",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116748288,
+              "producer_head": "004a4af78208135592d0c51657af2e9e42b6b572",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "preview",
+            "path": "C01InteriorProps_Source/Previews/P17-02_iso.png",
+            "repo_path_confirmed": true,
+            "sha256": "c969358f38391fd7a48dc39d526be0e8f8d6f6cecf295e348c99618b8406e176",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116748288,
+              "producer_head": "004a4af78208135592d0c51657af2e9e42b6b572",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "preview",
+            "path": "C01InteriorProps_Source/Previews/P17-02_side.png",
+            "repo_path_confirmed": true,
+            "sha256": "94a9c505f6f5b0e897677dcf66d24023633cdac6c09fb9123404e835cb590ce2",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116748288,
+              "producer_head": "004a4af78208135592d0c51657af2e9e42b6b572",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "preview",
+            "path": "C01InteriorProps_Source/Previews/P17-02_views.svg",
+            "repo_path_confirmed": true,
+            "sha256": "999bfa5cd2e3fc4c2e83ba2f4d7e8cb5a9b4329ff7191a58c8379ade5b50102b",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116748288,
+              "producer_head": "004a4af78208135592d0c51657af2e9e42b6b572",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          }
+        ],
+        "interpretation": "SHA256_VERIFIED_FROM_PINNED_PRODUCER_GIT_LFS_CHECKOUT__NOT_QA_OR_UNITY_APPROVAL"
+      },
+      "qa_independent": {
+        "overall": "BLOCKED",
+        "qa_pr": 13,
+        "source": "C01InteriorProps_QA/reports/asset_status.csv",
+        "qa_branch": "c01/props-02-independent-qa",
+        "qa_head_sha": "5bb348672ce830620d22924a1b1ebda309102784",
+        "source_test": "NOT_RUN_UNLESS_SPECIFICALLY_RETESTED_BY_C01_02",
+        "note": "No independent C01-02 approval"
+      }
+    },
+    {
+      "asset_id": "C01-P17-03",
+      "code": "P17-03",
+      "name": "Mechanical lever control",
+      "category": "controls_puzzles",
+      "owner_thread": "C01-17",
+      "source_issue": "https://github.com/C8LyNn/Model-Test/issues/5",
+      "producer_branch": "c01/props-17-controls",
+      "planned_version": "0.1.0",
+      "delivered_version": null,
+      "status": "IN PRODUCTION",
+      "suggested_dimensions_wdh_m": [
+        0.4,
+        0.3,
+        0.55
+      ],
+      "measured": {
+        "dimensions_wdh_m": null,
+        "triangles": null,
+        "pivot_xyz_m": null,
+        "orientation": null,
+        "material_slots": null,
+        "colliders": null,
+        "mounting_socket": null
+      },
+      "mounting_type": "WALL_OR_FLOOR",
+      "intended_use": "Engineering and laboratory",
+      "files": [],
+      "qa": {
+        "status": "NOT_RUN",
+        "report_path": null,
+        "fbx_sha256": null
+      },
+      "execution": {
+        "blender": "NOT_RUN",
+        "unity": "NOT_RUN"
+      },
+      "supplier_evidence": {
+        "pr": 17,
+        "branch": "c01/props-17-controls",
+        "head_sha": "004a4af78208135592d0c51657af2e9e42b6b572",
+        "candidate_version": "0.1.0",
+        "paths": [
+          {
+            "role": "fbx",
+            "path": "Assets/C01InteriorProps/Models/P17-03.fbx",
+            "repo_path_confirmed": true,
+            "sha256": "cdb5f1b3ef8f75810baef473dfae7052fcb93282ec34e9f39c02be0771f056f8",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116748288,
+              "producer_head": "004a4af78208135592d0c51657af2e9e42b6b572",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "gltf",
+            "path": "Assets/C01InteriorProps/Models/P17-03.gltf",
+            "repo_path_confirmed": true,
+            "sha256": "5f0c68be7de2453c08b6b4bf9611abd67a482337d77fc469a40335db12c47b1b",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116748288,
+              "producer_head": "004a4af78208135592d0c51657af2e9e42b6b572",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "blend",
+            "path": "C01InteriorProps_Source/Blender/P17-03.blend",
+            "repo_path_confirmed": true,
+            "sha256": "2bea01865a093f1be633e3744818723d3a4e39fefcff53f122a9509023847f72",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116748288,
+              "producer_head": "004a4af78208135592d0c51657af2e9e42b6b572",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "preview",
+            "path": "C01InteriorProps_Source/Previews/P17-03_front.png",
+            "repo_path_confirmed": true,
+            "sha256": "ef27a3a192faa4f74ecf39ccc1e68b0757378c76e2e654f4a4f2f59f20fe09ed",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116748288,
+              "producer_head": "004a4af78208135592d0c51657af2e9e42b6b572",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "preview",
+            "path": "C01InteriorProps_Source/Previews/P17-03_iso.png",
+            "repo_path_confirmed": true,
+            "sha256": "c0fbafd260daabb95b089b2d71d732a169ea8a0c32696390fd68a7fe5aee3380",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116748288,
+              "producer_head": "004a4af78208135592d0c51657af2e9e42b6b572",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "preview",
+            "path": "C01InteriorProps_Source/Previews/P17-03_side.png",
+            "repo_path_confirmed": true,
+            "sha256": "2ca182a0cf6b759a6c68d2683f715f0f0acdbca11f384943b507c81f6ca7c026",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116748288,
+              "producer_head": "004a4af78208135592d0c51657af2e9e42b6b572",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "preview",
+            "path": "C01InteriorProps_Source/Previews/P17-03_views.svg",
+            "repo_path_confirmed": true,
+            "sha256": "84eb7e02e4415b8060bf63c24cdc8fad5fae7dc2c17c7b942d727814c7f0701b",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116748288,
+              "producer_head": "004a4af78208135592d0c51657af2e9e42b6b572",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          }
+        ],
+        "interpretation": "SHA256_VERIFIED_FROM_PINNED_PRODUCER_GIT_LFS_CHECKOUT__NOT_QA_OR_UNITY_APPROVAL"
+      },
+      "qa_independent": {
+        "overall": "BLOCKED",
+        "qa_pr": 13,
+        "source": "C01InteriorProps_QA/reports/asset_status.csv",
+        "qa_branch": "c01/props-02-independent-qa",
+        "qa_head_sha": "5bb348672ce830620d22924a1b1ebda309102784",
+        "source_test": "NOT_RUN_UNLESS_SPECIFICALLY_RETESTED_BY_C01_02",
+        "note": "No independent C01-02 approval"
+      }
+    },
+    {
+      "asset_id": "C01-P18-01",
+      "code": "P18-01",
+      "name": "Stackable cargo crate",
+      "category": "cargo_movable",
+      "owner_thread": "C01-18",
+      "source_issue": "https://github.com/C8LyNn/Model-Test/issues/6",
+      "producer_branch": "c01/props-18-cargo",
+      "planned_version": "0.1.0",
+      "delivered_version": null,
+      "status": "IN PRODUCTION",
+      "suggested_dimensions_wdh_m": [
+        0.9,
+        0.9,
+        0.9
+      ],
+      "measured": {
+        "dimensions_wdh_m": null,
+        "triangles": null,
+        "pivot_xyz_m": null,
+        "orientation": null,
+        "material_slots": null,
+        "colliders": null,
+        "mounting_socket": null
+      },
+      "mounting_type": "FLOOR",
+      "intended_use": "Cargo and storage",
+      "files": [],
+      "qa": {
+        "status": "NOT_RUN",
+        "report_path": null,
+        "fbx_sha256": null
+      },
+      "execution": {
+        "blender": "NOT_RUN",
+        "unity": "NOT_RUN"
+      },
+      "supplier_evidence": {
+        "pr": 18,
+        "branch": "c01/props-18-cargo",
+        "head_sha": "78b3afd92214d44086ead37239120b077c6d1217",
+        "candidate_version": "0.1.0",
+        "paths": [
+          {
+            "role": "fbx",
+            "path": "Assets/C01InteriorProps/C01-18/Models/P18-01.fbx",
+            "repo_path_confirmed": true,
+            "sha256": "e9285c384e55d7f67feda808ce4986cbc7de2461270106d620be10813b27af33",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116610966,
+              "producer_head": "78b3afd92214d44086ead37239120b077c6d1217",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "obj",
+            "path": "Assets/C01InteriorProps/C01-18/Models/P18-01.obj",
+            "repo_path_confirmed": true,
+            "sha256": "2c1c48406f738a915a8ae0c427fd6418ead3e11623fe2dddc0896135055e2463",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116610966,
+              "producer_head": "78b3afd92214d44086ead37239120b077c6d1217",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "prefab",
+            "path": "Assets/C01InteriorProps/C01-18/Prefabs/P18-01.prefab",
+            "repo_path_confirmed": true,
+            "sha256": "ca2f3d4935964a72ee4e010f769ae3800e28b2939346de9a3e17f67698336e24",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116610966,
+              "producer_head": "78b3afd92214d44086ead37239120b077c6d1217",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "prefab_meta",
+            "path": "Assets/C01InteriorProps/C01-18/Prefabs/P18-01.prefab.meta",
+            "repo_path_confirmed": true,
+            "sha256": "8d8167d84db48bc7c0530ae0056bc076c789e220fea7be05523e625f8c45a90d",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116610966,
+              "producer_head": "78b3afd92214d44086ead37239120b077c6d1217",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          }
+        ],
+        "interpretation": "SHA256_VERIFIED_FROM_PINNED_PRODUCER_GIT_LFS_CHECKOUT__NOT_QA_OR_UNITY_APPROVAL"
+      },
+      "qa_independent": {
+        "overall": "FAIL",
+        "qa_pr": 13,
+        "source": "C01InteriorProps_QA/reports/asset_status.csv",
+        "qa_branch": "c01/props-02-independent-qa",
+        "qa_head_sha": "5bb348672ce830620d22924a1b1ebda309102784",
+        "source_test": "NOT_RUN_UNLESS_SPECIFICALLY_RETESTED_BY_C01_02",
+        "note": "FBX UV and normal layer records absent (QA #13)"
+      }
+    },
+    {
+      "asset_id": "C01-P18-02",
+      "code": "P18-02",
+      "name": "Cargo rack / pallet",
+      "category": "cargo_movable",
+      "owner_thread": "C01-18",
+      "source_issue": "https://github.com/C8LyNn/Model-Test/issues/6",
+      "producer_branch": "c01/props-18-cargo",
+      "planned_version": "0.1.0",
+      "delivered_version": null,
+      "status": "IN PRODUCTION",
+      "suggested_dimensions_wdh_m": [
+        2.1,
+        0.8,
+        2.1
+      ],
+      "measured": {
+        "dimensions_wdh_m": null,
+        "triangles": null,
+        "pivot_xyz_m": null,
+        "orientation": null,
+        "material_slots": null,
+        "colliders": null,
+        "mounting_socket": null
+      },
+      "mounting_type": "FLOOR",
+      "intended_use": "Storage and maintenance",
+      "files": [],
+      "qa": {
+        "status": "NOT_RUN",
+        "report_path": null,
+        "fbx_sha256": null
+      },
+      "execution": {
+        "blender": "NOT_RUN",
+        "unity": "NOT_RUN"
+      },
+      "supplier_evidence": {
+        "pr": 18,
+        "branch": "c01/props-18-cargo",
+        "head_sha": "78b3afd92214d44086ead37239120b077c6d1217",
+        "candidate_version": "0.1.0",
+        "paths": [
+          {
+            "role": "fbx",
+            "path": "Assets/C01InteriorProps/C01-18/Models/P18-02.fbx",
+            "repo_path_confirmed": true,
+            "sha256": "d698e231c35abfa020f7efbb5905abf604c6af1e141daac7e2d2aca7970e5032",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116610966,
+              "producer_head": "78b3afd92214d44086ead37239120b077c6d1217",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "obj",
+            "path": "Assets/C01InteriorProps/C01-18/Models/P18-02.obj",
+            "repo_path_confirmed": true,
+            "sha256": "6350262e703f77b9b2f572b402ccd70974cc1f9b8b12c73a75a23a7d6d14b856",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116610966,
+              "producer_head": "78b3afd92214d44086ead37239120b077c6d1217",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "prefab",
+            "path": "Assets/C01InteriorProps/C01-18/Prefabs/P18-02.prefab",
+            "repo_path_confirmed": true,
+            "sha256": "bd75c7bbfa45a4d2a74afc17105c98dcf7ef312d4adced462bfa5d7de39264cb",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116610966,
+              "producer_head": "78b3afd92214d44086ead37239120b077c6d1217",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "prefab_meta",
+            "path": "Assets/C01InteriorProps/C01-18/Prefabs/P18-02.prefab.meta",
+            "repo_path_confirmed": true,
+            "sha256": "458aa742494b8208b8dc528ba923c81d62fcb2813743c9747a9dcddf51dec77c",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116610966,
+              "producer_head": "78b3afd92214d44086ead37239120b077c6d1217",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          }
+        ],
+        "interpretation": "SHA256_VERIFIED_FROM_PINNED_PRODUCER_GIT_LFS_CHECKOUT__NOT_QA_OR_UNITY_APPROVAL"
+      },
+      "qa_independent": {
+        "overall": "BLOCKED",
+        "qa_pr": 13,
+        "source": "C01InteriorProps_QA/reports/asset_status.csv",
+        "qa_branch": "c01/props-02-independent-qa",
+        "qa_head_sha": "5bb348672ce830620d22924a1b1ebda309102784",
+        "source_test": "NOT_RUN_UNLESS_SPECIFICALLY_RETESTED_BY_C01_02",
+        "note": "No independent C01-02 approval"
+      }
+    },
+    {
+      "asset_id": "C01-P18-03",
+      "code": "P18-03",
+      "name": "Maintenance cart",
+      "category": "cargo_movable",
+      "owner_thread": "C01-18",
+      "source_issue": "https://github.com/C8LyNn/Model-Test/issues/6",
+      "producer_branch": "c01/props-18-cargo",
+      "planned_version": "0.1.0",
+      "delivered_version": null,
+      "status": "IN PRODUCTION",
+      "suggested_dimensions_wdh_m": [
+        1,
+        0.7,
+        1.2
+      ],
+      "measured": {
+        "dimensions_wdh_m": null,
+        "triangles": null,
+        "pivot_xyz_m": null,
+        "orientation": null,
+        "material_slots": null,
+        "colliders": null,
+        "mounting_socket": null
+      },
+      "mounting_type": "FLOOR",
+      "intended_use": "Engineering and warehouses",
+      "files": [],
+      "qa": {
+        "status": "NOT_RUN",
+        "report_path": null,
+        "fbx_sha256": null
+      },
+      "execution": {
+        "blender": "NOT_RUN",
+        "unity": "NOT_RUN"
+      },
+      "supplier_evidence": {
+        "pr": 18,
+        "branch": "c01/props-18-cargo",
+        "head_sha": "78b3afd92214d44086ead37239120b077c6d1217",
+        "candidate_version": "0.1.0",
+        "paths": [
+          {
+            "role": "fbx",
+            "path": "Assets/C01InteriorProps/C01-18/Models/P18-03.fbx",
+            "repo_path_confirmed": true,
+            "sha256": "d4ce12f25cf87a2355bd8e474260fdcfccf6604fcebd6af5246c08dd3351cf99",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116610966,
+              "producer_head": "78b3afd92214d44086ead37239120b077c6d1217",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "obj",
+            "path": "Assets/C01InteriorProps/C01-18/Models/P18-03.obj",
+            "repo_path_confirmed": true,
+            "sha256": "e826c2b6ce9c88f39b77c0f76cc2872ac80e698ed76b7b3701a86eba4ebc2a07",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116610966,
+              "producer_head": "78b3afd92214d44086ead37239120b077c6d1217",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "prefab",
+            "path": "Assets/C01InteriorProps/C01-18/Prefabs/P18-03.prefab",
+            "repo_path_confirmed": true,
+            "sha256": "bc64686ca0429e3c007207b3021d545d468058c3eac3e015718fe828ea2bca69",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116610966,
+              "producer_head": "78b3afd92214d44086ead37239120b077c6d1217",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "prefab_meta",
+            "path": "Assets/C01InteriorProps/C01-18/Prefabs/P18-03.prefab.meta",
+            "repo_path_confirmed": true,
+            "sha256": "d55dc403b5ec7566a86bf81a17feb84095ed7078262b5798e0783c9314e0d66c",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116610966,
+              "producer_head": "78b3afd92214d44086ead37239120b077c6d1217",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          }
+        ],
+        "interpretation": "SHA256_VERIFIED_FROM_PINNED_PRODUCER_GIT_LFS_CHECKOUT__NOT_QA_OR_UNITY_APPROVAL"
+      },
+      "qa_independent": {
+        "overall": "BLOCKED",
+        "qa_pr": 13,
+        "source": "C01InteriorProps_QA/reports/asset_status.csv",
+        "qa_branch": "c01/props-02-independent-qa",
+        "qa_head_sha": "5bb348672ce830620d22924a1b1ebda309102784",
+        "source_test": "NOT_RUN_UNLESS_SPECIFICALLY_RETESTED_BY_C01_02",
+        "note": "No independent C01-02 approval"
+      }
+    },
+    {
+      "asset_id": "C01-P19-01",
+      "code": "P19-01",
+      "name": "Single crew bunk",
+      "category": "furniture",
+      "owner_thread": "C01-19",
+      "source_issue": "https://github.com/C8LyNn/Model-Test/issues/7",
+      "producer_branch": "c01/props-19-furniture",
+      "planned_version": "0.1.0",
+      "delivered_version": null,
+      "status": "IN PRODUCTION",
+      "suggested_dimensions_wdh_m": [
+        0.95,
+        2.1,
+        0.65
+      ],
+      "measured": {
+        "dimensions_wdh_m": null,
+        "triangles": null,
+        "pivot_xyz_m": null,
+        "orientation": null,
+        "material_slots": null,
+        "colliders": null,
+        "mounting_socket": null
+      },
+      "mounting_type": "FLOOR",
+      "intended_use": "Crew quarters",
+      "files": [],
+      "qa": {
+        "status": "NOT_RUN",
+        "report_path": null,
+        "fbx_sha256": null
+      },
+      "execution": {
+        "blender": "NOT_RUN",
+        "unity": "NOT_RUN"
+      },
+      "supplier_evidence": {
+        "pr": 15,
+        "branch": "c01/props-19-furniture",
+        "head_sha": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192",
+        "candidate_version": "0.1.0",
+        "paths": [
+          {
+            "role": "obj",
+            "path": "Assets/C01InteriorProps/C01-19/Models/P19-01/P19-01__Cross_Rail_1_02.obj",
+            "repo_path_confirmed": true,
+            "sha256": "25b607e98244e19d286f799ad1520657da69887bb94dfd9694092aa99e66f73f",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116741541,
+              "producer_head": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "obj",
+            "path": "Assets/C01InteriorProps/C01-19/Models/P19-01/P19-01__Cross_Rail__1_02.obj",
+            "repo_path_confirmed": true,
+            "sha256": "e05963dd48d4ee6684bac23f4b8212d0b4ba14e4eb5f09cb0b09609201f6e373",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116741541,
+              "producer_head": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "obj",
+            "path": "Assets/C01InteriorProps/C01-19/Models/P19-01/P19-01__Headboard.obj",
+            "repo_path_confirmed": true,
+            "sha256": "6734d81a8a5f6c610e473fc8578159c78b96b0be7baf3b67818f8b36fc77044d",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116741541,
+              "producer_head": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "obj",
+            "path": "Assets/C01InteriorProps/C01-19/Models/P19-01/P19-01__Leg_0_44_0_975.obj",
+            "repo_path_confirmed": true,
+            "sha256": "bbf1b0030baef72a9b51440df66f9b02da9e0e5311142d80e963c2e34330f4be",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116741541,
+              "producer_head": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "obj",
+            "path": "Assets/C01InteriorProps/C01-19/Models/P19-01/P19-01__Leg_0_44__0_975.obj",
+            "repo_path_confirmed": true,
+            "sha256": "1124754d3c6442785e9841f246df22a006b40db450c26cfc1e86b6d2abe3eda1",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116741541,
+              "producer_head": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "obj",
+            "path": "Assets/C01InteriorProps/C01-19/Models/P19-01/P19-01__Leg__0_44_0_975.obj",
+            "repo_path_confirmed": true,
+            "sha256": "6a109e60b62c78f7ddb8aefe49ee9d75955956875b65596892e81d27e21c55f8",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116741541,
+              "producer_head": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "obj",
+            "path": "Assets/C01InteriorProps/C01-19/Models/P19-01/P19-01__Leg__0_44__0_975.obj",
+            "repo_path_confirmed": true,
+            "sha256": "f47337cc4728840c22a44f0f0020a5f7fa9a2bedc76ad97c1766d9d2dfca0c85",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116741541,
+              "producer_head": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "obj",
+            "path": "Assets/C01InteriorProps/C01-19/Models/P19-01/P19-01__Long_Rail_0_445.obj",
+            "repo_path_confirmed": true,
+            "sha256": "622f613b823e6c2c1bac543bb9d3ffa1a4ff9e3c0dbb2c2609a8ceed018f59c4",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116741541,
+              "producer_head": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "obj",
+            "path": "Assets/C01InteriorProps/C01-19/Models/P19-01/P19-01__Long_Rail__0_445.obj",
+            "repo_path_confirmed": true,
+            "sha256": "ba17bbdd2f0f7675b6aef86116a1c8bc8eeb3a0b95590c33ea55076fa95b068a",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116741541,
+              "producer_head": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "obj",
+            "path": "Assets/C01InteriorProps/C01-19/Models/P19-01/P19-01__Mattress.obj",
+            "repo_path_confirmed": true,
+            "sha256": "a80d874a935b805ae762a5491ed843b54375955e350bfd10bfc750eb23df357a",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116741541,
+              "producer_head": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "obj",
+            "path": "Assets/C01InteriorProps/C01-19/Models/P19-01/P19-01__Mattress_Accent_Stripe.obj",
+            "repo_path_confirmed": true,
+            "sha256": "6a476f83aec42419b81e8ebeb62e29ffb1d062226706f93c701ce089c038aec8",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116741541,
+              "producer_head": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "preview",
+            "path": "Assets/C01InteriorProps/C01-19/Previews/P19-01_front.svg",
+            "repo_path_confirmed": true,
+            "sha256": "a0d16bee666138d4d54cda60353fe7d1ea9f8440640215b45f06b5b82c3c9a7b",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116741541,
+              "producer_head": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "preview",
+            "path": "Assets/C01InteriorProps/C01-19/Previews/P19-01_isometric.svg",
+            "repo_path_confirmed": true,
+            "sha256": "8ed285f05341beab3a6e7ea22bdd3af0d2752e3544f7fdc3c5bead7db95e8d1f",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116741541,
+              "producer_head": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "preview",
+            "path": "Assets/C01InteriorProps/C01-19/Previews/P19-01_top.svg",
+            "repo_path_confirmed": true,
+            "sha256": "a7a3f080f041e879c17fe32d4fab909a18d8c383a0b5ade0a7294a4b022e7cfa",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116741541,
+              "producer_head": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          }
+        ],
+        "interpretation": "SHA256_VERIFIED_FROM_PINNED_PRODUCER_GIT_LFS_CHECKOUT__NOT_QA_OR_UNITY_APPROVAL"
+      },
+      "qa_independent": {
+        "overall": "BLOCKED",
+        "qa_pr": 13,
+        "source": "C01InteriorProps_QA/reports/asset_status.csv",
+        "qa_branch": "c01/props-02-independent-qa",
+        "qa_head_sha": "5bb348672ce830620d22924a1b1ebda309102784",
+        "source_test": "NOT_RUN_UNLESS_SPECIFICALLY_RETESTED_BY_C01_02",
+        "note": "No independent C01-02 approval"
+      }
+    },
+    {
+      "asset_id": "C01-P19-02",
+      "code": "P19-02",
+      "name": "Crew locker",
+      "category": "furniture",
+      "owner_thread": "C01-19",
+      "source_issue": "https://github.com/C8LyNn/Model-Test/issues/7",
+      "producer_branch": "c01/props-19-furniture",
+      "planned_version": "0.1.0",
+      "delivered_version": null,
+      "status": "IN PRODUCTION",
+      "suggested_dimensions_wdh_m": [
+        0.65,
+        0.55,
+        1.8
+      ],
+      "measured": {
+        "dimensions_wdh_m": null,
+        "triangles": null,
+        "pivot_xyz_m": null,
+        "orientation": null,
+        "material_slots": null,
+        "colliders": null,
+        "mounting_socket": null
+      },
+      "mounting_type": "FLOOR",
+      "intended_use": "Crew quarters and barracks",
+      "files": [],
+      "qa": {
+        "status": "NOT_RUN",
+        "report_path": null,
+        "fbx_sha256": null
+      },
+      "execution": {
+        "blender": "NOT_RUN",
+        "unity": "NOT_RUN"
+      },
+      "supplier_evidence": {
+        "pr": 15,
+        "branch": "c01/props-19-furniture",
+        "head_sha": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192",
+        "candidate_version": "0.1.0",
+        "paths": [
+          {
+            "role": "obj",
+            "path": "Assets/C01InteriorProps/C01-19/Models/P19-02/P19-02__Back.obj",
+            "repo_path_confirmed": true,
+            "sha256": "a48b73295650a6e073339bcdb0e1b8d87a26d7567dbd25a98d85e89b05d5b281",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116741541,
+              "producer_head": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "obj",
+            "path": "Assets/C01InteriorProps/C01-19/Models/P19-02/P19-02__Bottom.obj",
+            "repo_path_confirmed": true,
+            "sha256": "8e0092d0f1834509d345b4ba0699120be182cdc0f4e2362ebee3a1c05655fc35",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116741541,
+              "producer_head": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "obj",
+            "path": "Assets/C01InteriorProps/C01-19/Models/P19-02/P19-02__Door_Handle.obj",
+            "repo_path_confirmed": true,
+            "sha256": "7a265f27189feff3a4896f42688929ad8ee1c3e8d999c0101f75540c5f642230",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116741541,
+              "producer_head": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "obj",
+            "path": "Assets/C01InteriorProps/C01-19/Models/P19-02/P19-02__Door_Leaf.obj",
+            "repo_path_confirmed": true,
+            "sha256": "a5be8ab06626075133fd1ce0a7770f88a0a60759c0eb333ccaefc81b8f298953",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116741541,
+              "producer_head": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "obj",
+            "path": "Assets/C01InteriorProps/C01-19/Models/P19-02/P19-02__Shelf.obj",
+            "repo_path_confirmed": true,
+            "sha256": "f6aa91e883b387ad58cc12b5395692cd45536506db157bbad71c2ac4aed65768",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116741541,
+              "producer_head": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "obj",
+            "path": "Assets/C01InteriorProps/C01-19/Models/P19-02/P19-02__Side_0_31.obj",
+            "repo_path_confirmed": true,
+            "sha256": "25ebadffdd7ac1abe66858ca10195421470c3126df5e1d399af2ef1ca20b95f8",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116741541,
+              "producer_head": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "obj",
+            "path": "Assets/C01InteriorProps/C01-19/Models/P19-02/P19-02__Side__0_31.obj",
+            "repo_path_confirmed": true,
+            "sha256": "707e65dad6e7f15ac0cd91f30f67e5d07f1e002939344bfb6d1e2a46cdf7232e",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116741541,
+              "producer_head": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "obj",
+            "path": "Assets/C01InteriorProps/C01-19/Models/P19-02/P19-02__Top.obj",
+            "repo_path_confirmed": true,
+            "sha256": "2495c905830cf72b912ed286a599b1951847bdf719375ebdc62684509799f697",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116741541,
+              "producer_head": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "obj",
+            "path": "Assets/C01InteriorProps/C01-19/Models/P19-02/P19-02__Vent_Upper.obj",
+            "repo_path_confirmed": true,
+            "sha256": "61f12368249f5861d66a90e70d97f32790ff8b5e239c334741ce32742af85a52",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116741541,
+              "producer_head": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "preview",
+            "path": "Assets/C01InteriorProps/C01-19/Previews/P19-02_front.svg",
+            "repo_path_confirmed": true,
+            "sha256": "aef5920302567d5ab9d8bdb486b8ee26c873e5d25be2ee737bb444e1d63361de",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116741541,
+              "producer_head": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "preview",
+            "path": "Assets/C01InteriorProps/C01-19/Previews/P19-02_isometric.svg",
+            "repo_path_confirmed": true,
+            "sha256": "a15229a8be47079409ecba4edea5b9e77113f1beb597baddf0713ca8274e80b1",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116741541,
+              "producer_head": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "preview",
+            "path": "Assets/C01InteriorProps/C01-19/Previews/P19-02_top.svg",
+            "repo_path_confirmed": true,
+            "sha256": "ed2397c5a919c01208b647d6561093942a4667453f806ae3667cd8bc286d26ee",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116741541,
+              "producer_head": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          }
+        ],
+        "interpretation": "SHA256_VERIFIED_FROM_PINNED_PRODUCER_GIT_LFS_CHECKOUT__NOT_QA_OR_UNITY_APPROVAL"
+      },
+      "qa_independent": {
+        "overall": "BLOCKED",
+        "qa_pr": 13,
+        "source": "C01InteriorProps_QA/reports/asset_status.csv",
+        "qa_branch": "c01/props-02-independent-qa",
+        "qa_head_sha": "5bb348672ce830620d22924a1b1ebda309102784",
+        "source_test": "NOT_RUN_UNLESS_SPECIFICALLY_RETESTED_BY_C01_02",
+        "note": "No independent C01-02 approval"
+      }
+    },
+    {
+      "asset_id": "C01-P19-03",
+      "code": "P19-03",
+      "name": "Computer desk (without terminal)",
+      "category": "furniture",
+      "owner_thread": "C01-19",
+      "source_issue": "https://github.com/C8LyNn/Model-Test/issues/7",
+      "producer_branch": "c01/props-19-furniture",
+      "planned_version": "0.1.0",
+      "delivered_version": null,
+      "status": "IN PRODUCTION",
+      "suggested_dimensions_wdh_m": [
+        1.4,
+        0.65,
+        0.75
+      ],
+      "measured": {
+        "dimensions_wdh_m": null,
+        "triangles": null,
+        "pivot_xyz_m": null,
+        "orientation": null,
+        "material_slots": null,
+        "colliders": null,
+        "mounting_socket": null
+      },
+      "mounting_type": "FLOOR",
+      "intended_use": "Crew quarters and bridge",
+      "files": [],
+      "qa": {
+        "status": "NOT_RUN",
+        "report_path": null,
+        "fbx_sha256": null
+      },
+      "execution": {
+        "blender": "NOT_RUN",
+        "unity": "NOT_RUN"
+      },
+      "supplier_evidence": {
+        "pr": 15,
+        "branch": "c01/props-19-furniture",
+        "head_sha": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192",
+        "candidate_version": "0.1.0",
+        "paths": [
+          {
+            "role": "obj",
+            "path": "Assets/C01InteriorProps/C01-19/Models/P19-03/P19-03__Desk_Edge.obj",
+            "repo_path_confirmed": true,
+            "sha256": "8c76a22f6c3e1ee00984bc2c956e84a38520f0e496afb7ab0c236ea69815a227",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116741541,
+              "producer_head": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "obj",
+            "path": "Assets/C01InteriorProps/C01-19/Models/P19-03/P19-03__Desktop.obj",
+            "repo_path_confirmed": true,
+            "sha256": "a789df2b050235b0edebbb80dbdecdeca5c4fea28d4027f754d68e64202de882",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116741541,
+              "producer_head": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "obj",
+            "path": "Assets/C01InteriorProps/C01-19/Models/P19-03/P19-03__Leg_0_64_0_29.obj",
+            "repo_path_confirmed": true,
+            "sha256": "2aaa05ac6a8b826f95862b826f42032645987badbc346d8e08a635a79d81188a",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116741541,
+              "producer_head": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "obj",
+            "path": "Assets/C01InteriorProps/C01-19/Models/P19-03/P19-03__Leg_0_64__0_29.obj",
+            "repo_path_confirmed": true,
+            "sha256": "b45206d1285ac85987efd84a76505676ccdfe6665800d64a3f499796de48e8f1",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116741541,
+              "producer_head": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "obj",
+            "path": "Assets/C01InteriorProps/C01-19/Models/P19-03/P19-03__Leg__0_64_0_29.obj",
+            "repo_path_confirmed": true,
+            "sha256": "4d22f1a2d09ce45836a7dc32ed84a87740b2c5e4ec1e115873119c3a2171c621",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116741541,
+              "producer_head": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "obj",
+            "path": "Assets/C01InteriorProps/C01-19/Models/P19-03/P19-03__Leg__0_64__0_29.obj",
+            "repo_path_confirmed": true,
+            "sha256": "8ea1757bfa008966e169243e5ed455eeea5a0bb9e58667cf7597f9a6e4d6ae28",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116741541,
+              "producer_head": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "obj",
+            "path": "Assets/C01InteriorProps/C01-19/Models/P19-03/P19-03__Privacy_Riser.obj",
+            "repo_path_confirmed": true,
+            "sha256": "47fc51be576f3743e0c57d8d0625c8ae55fdc23b545050f59814669c13d31888",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116741541,
+              "producer_head": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "obj",
+            "path": "Assets/C01InteriorProps/C01-19/Models/P19-03/P19-03__Rear_Brace.obj",
+            "repo_path_confirmed": true,
+            "sha256": "534108f4e986b6bb6e3db49ea5f8a6bf5f43340bf2b91c0ac6215313b8de8e05",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116741541,
+              "producer_head": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "preview",
+            "path": "Assets/C01InteriorProps/C01-19/Previews/P19-03_front.svg",
+            "repo_path_confirmed": true,
+            "sha256": "bcb09de08d53c89060495745157bc4d351cc8b6fd8775200c0c625055287433b",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116741541,
+              "producer_head": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "preview",
+            "path": "Assets/C01InteriorProps/C01-19/Previews/P19-03_isometric.svg",
+            "repo_path_confirmed": true,
+            "sha256": "b8ea96fa01696e4e2b10ef6c4309321b162737bf66ea903cd3fef5232621b28a",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116741541,
+              "producer_head": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "preview",
+            "path": "Assets/C01InteriorProps/C01-19/Previews/P19-03_top.svg",
+            "repo_path_confirmed": true,
+            "sha256": "9eede18405e346bb5d7070476d709466433f68eaa433b302714ccac2f20179bb",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116741541,
+              "producer_head": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          }
+        ],
+        "interpretation": "SHA256_VERIFIED_FROM_PINNED_PRODUCER_GIT_LFS_CHECKOUT__NOT_QA_OR_UNITY_APPROVAL"
+      },
+      "qa_independent": {
+        "overall": "BLOCKED",
+        "qa_pr": 13,
+        "source": "C01InteriorProps_QA/reports/asset_status.csv",
+        "qa_branch": "c01/props-02-independent-qa",
+        "qa_head_sha": "5bb348672ce830620d22924a1b1ebda309102784",
+        "source_test": "NOT_RUN_UNLESS_SPECIFICALLY_RETESTED_BY_C01_02",
+        "note": "No independent C01-02 approval"
+      }
+    },
+    {
+      "asset_id": "C01-P19-04",
+      "code": "P19-04",
+      "name": "Chair",
+      "category": "furniture",
+      "owner_thread": "C01-19",
+      "source_issue": "https://github.com/C8LyNn/Model-Test/issues/7",
+      "producer_branch": "c01/props-19-furniture",
+      "planned_version": "0.1.0",
+      "delivered_version": null,
+      "status": "IN PRODUCTION",
+      "suggested_dimensions_wdh_m": [
+        0.6,
+        0.6,
+        0.95
+      ],
+      "measured": {
+        "dimensions_wdh_m": null,
+        "triangles": null,
+        "pivot_xyz_m": null,
+        "orientation": null,
+        "material_slots": null,
+        "colliders": null,
+        "mounting_socket": null
+      },
+      "mounting_type": "FLOOR",
+      "intended_use": "Crew quarters and bridge",
+      "files": [],
+      "qa": {
+        "status": "NOT_RUN",
+        "report_path": null,
+        "fbx_sha256": null
+      },
+      "execution": {
+        "blender": "NOT_RUN",
+        "unity": "NOT_RUN"
+      },
+      "supplier_evidence": {
+        "pr": 15,
+        "branch": "c01/props-19-furniture",
+        "head_sha": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192",
+        "candidate_version": "0.1.0",
+        "paths": [
+          {
+            "role": "obj",
+            "path": "Assets/C01InteriorProps/C01-19/Models/P19-04/P19-04__Back_Rest.obj",
+            "repo_path_confirmed": true,
+            "sha256": "f7712c775d9594a2e2aa8ff0413cabeced703ead9346019d5ade130c05e589ec",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116741541,
+              "producer_head": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "obj",
+            "path": "Assets/C01InteriorProps/C01-19/Models/P19-04/P19-04__Back_Stanchion_0_275.obj",
+            "repo_path_confirmed": true,
+            "sha256": "92c111ccc6d8b44a7167ede271b28426fb446f5d197ba517ee1a411de653dae7",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116741541,
+              "producer_head": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "obj",
+            "path": "Assets/C01InteriorProps/C01-19/Models/P19-04/P19-04__Back_Stanchion__0_275.obj",
+            "repo_path_confirmed": true,
+            "sha256": "ecbb8ee4a7c558afdb908d56499694a969b9683acf7354d4dfa16b1e9bdc3eef",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116741541,
+              "producer_head": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "obj",
+            "path": "Assets/C01InteriorProps/C01-19/Models/P19-04/P19-04__Chair_Leg_0_275_0_275.obj",
+            "repo_path_confirmed": true,
+            "sha256": "48143ca36d18db238f075a94bea0ec6c29040bac034f4460d4d5fad6c3139b48",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116741541,
+              "producer_head": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "obj",
+            "path": "Assets/C01InteriorProps/C01-19/Models/P19-04/P19-04__Chair_Leg_0_275__0_275.obj",
+            "repo_path_confirmed": true,
+            "sha256": "39958d696fb130ee899447553b46e25ffd39fb7bcd16e894360135e057c146d4",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116741541,
+              "producer_head": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "obj",
+            "path": "Assets/C01InteriorProps/C01-19/Models/P19-04/P19-04__Chair_Leg__0_275_0_275.obj",
+            "repo_path_confirmed": true,
+            "sha256": "e6b47037f69ace7161293236f342fc62f6c388f698065fdf3e2dc715d91ffea8",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116741541,
+              "producer_head": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "obj",
+            "path": "Assets/C01InteriorProps/C01-19/Models/P19-04/P19-04__Chair_Leg__0_275__0_275.obj",
+            "repo_path_confirmed": true,
+            "sha256": "bfa281f0b7c416c4b2fd21c82851d0ee9ef692e6cd92992373fee22d4583588f",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116741541,
+              "producer_head": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "obj",
+            "path": "Assets/C01InteriorProps/C01-19/Models/P19-04/P19-04__Cushion.obj",
+            "repo_path_confirmed": true,
+            "sha256": "f1167e45c1b9bf46e995b7633f77eaaa1f4ef75a158833ac63e955c6c7c68c42",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116741541,
+              "producer_head": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "obj",
+            "path": "Assets/C01InteriorProps/C01-19/Models/P19-04/P19-04__Seat.obj",
+            "repo_path_confirmed": true,
+            "sha256": "3c785db22b504869056d557148b19ead59cf08ba5a3d74f770b131e37cb50ad7",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116741541,
+              "producer_head": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "preview",
+            "path": "Assets/C01InteriorProps/C01-19/Previews/P19-04_front.svg",
+            "repo_path_confirmed": true,
+            "sha256": "e66991992131d24bdd3a2f54f754a2ce867afddf9432f4f067af59b6f6b7c5ca",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116741541,
+              "producer_head": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "preview",
+            "path": "Assets/C01InteriorProps/C01-19/Previews/P19-04_isometric.svg",
+            "repo_path_confirmed": true,
+            "sha256": "6e6c7e638e14e6649a10875193c791237b2b5034dd3fe9f7bf0440e222678517",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116741541,
+              "producer_head": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          },
+          {
+            "role": "preview",
+            "path": "Assets/C01InteriorProps/C01-19/Previews/P19-04_top.svg",
+            "repo_path_confirmed": true,
+            "sha256": "04d4b4d7954244665b56592ae57d7999b7bcf17303a0dcb0a9d4300af7eb81c0",
+            "byte_verified": true,
+            "provenance": {
+              "action_run_id": 41071526841,
+              "job_id": 124116741541,
+              "producer_head": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192",
+              "scope": "HEADER_AND_SHA256_ONLY"
+            }
+          }
+        ],
+        "interpretation": "SHA256_VERIFIED_FROM_PINNED_PRODUCER_GIT_LFS_CHECKOUT__NOT_QA_OR_UNITY_APPROVAL"
+      },
+      "qa_independent": {
+        "overall": "BLOCKED",
+        "qa_pr": 13,
+        "source": "C01InteriorProps_QA/reports/asset_status.csv",
+        "qa_branch": "c01/props-02-independent-qa",
+        "qa_head_sha": "5bb348672ce830620d22924a1b1ebda309102784",
+        "source_test": "NOT_RUN_UNLESS_SPECIFICALLY_RETESTED_BY_C01_02",
+        "note": "No independent C01-02 approval"
+      }
+    }
+  ],
+  "wave01_supplier_snapshot": {
+    "basis": "2026-10-30 GitHub PR changed file lists and QA PR #13",
+    "quality": "GITHUB_ACTIONS_SHA256_FROM_REAL_CHECKOUT_NOT_IMPORT_QA",
+    "candidate_paths_count": 115,
+    "qa_approved": 0,
+    "supplier_heads": {
+      "C01-15": {
+        "pr": 16,
+        "branch": "c01/props-15-installations",
+        "head_sha": "e4e6223e9afa9f1d03eb645d8b5746db69f08f78"
+      },
+      "C01-16": {
+        "pr": 12,
+        "branch": "c01/props-16-lighting",
+        "head_sha": "e9cd92831c41ebd5fa2da026326831e524d08458"
+      },
+      "C01-17": {
+        "pr": 17,
+        "branch": "c01/props-17-controls",
+        "head_sha": "004a4af78208135592d0c51657af2e9e42b6b572"
+      },
+      "C01-18": {
+        "pr": 18,
+        "branch": "c01/props-18-cargo",
+        "head_sha": "78b3afd92214d44086ead37239120b077c6d1217"
+      },
+      "C01-19": {
+        "pr": 15,
+        "branch": "c01/props-19-furniture",
+        "head_sha": "f3bccbf2fef5265e7cd37d094968d76bdc7b5192"
+      }
+    },
+    "qa_snapshot": {
+      "source": "C01InteriorProps_QA/reports/asset_status.csv",
+      "branch": "c01/props-02-independent-qa",
+      "sha": "5bb348672ce830620d22924a1b1ebda309102784",
+      "source_ref": "https://github.com/C8LyNn/Model-Test/pull/13"
+    },
+    "action_run": "https://github.com/C8LyNn/Model-Test/actions/runs/41071526841",
+    "byte_hashed_paths": 115
+  }
+}

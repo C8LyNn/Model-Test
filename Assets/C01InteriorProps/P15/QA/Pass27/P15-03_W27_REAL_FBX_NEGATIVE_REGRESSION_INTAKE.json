@@ -1,0 +1,99 @@
+{
+  "report_id": "C01-15-W27-P15-03-EXACT-FBX-NEGATIVE-REGRESSION",
+  "scope": "Read-only producer check, original existing internal P15-03 cabinet only. NOT independent C01-02 acceptance and NOT Unity.",
+  "original": {
+    "source_zip_sha256": "c4284457609f26ee88f457b385ca9b50fa22939791a6115bf019dbba60076978",
+    "source_zip_artifact": "https://github.com/C8LyNn/Model-Test/actions/runs/41531603550/artifacts/13182412317",
+    "blend_sha256": "1deb3df36a1c87be8fe6ebec7529233b1d9eececa38230f4d9f693bf40fceb9a",
+    "full_fbx_sha256": "7be76765763308deb8c0fa9d4c11cec8c74b60777e0199a160ebab088c59189d"
+  },
+  "updated": {
+    "source_zip_sha256": "5d79ff9ab0ddfdeeab40848249c05127d32a4d3750f5bc5f7cdcc81803e0faba",
+    "source_zip_artifact": "https://github.com/C8LyNn/Model-Test/actions/runs/41711037346/artifacts/13267968948",
+    "blend_sha256": "e787a9455baa08d5e6b198b4c47d236376b240e08781792020b93be899ca38de",
+    "full_fbx_sha256": "ea25d2d7b47baa50fdca3000b101c65b19ba252994553ee6fe6691ca89d5c149"
+  },
+  "method": "Reopened and CRC-tested two previously produced ORIGINAL hydrated GitHub Actions ZIPs; verified all native file full SHA256 against signed LFS OIDs. Parsed real FBX7400 Objects/Geometry/Vertices, PolygonVertexIndex, LayerElementNormal/Normals and LayerElementUV/UV+UVIndex. Compared ALL 34 mesh geometry arrays and FBX 36 Model local source transforms by exact value. Triangulated indexed polygon corners and measured actual 3D/UV signed area; no synthetic geometry, no new exporter, no Unity simulation.",
+  "artifact_integrity": {
+    "previous_zip_crc": "PASS",
+    "updated_zip_crc": "PASS",
+    "previous_entries": 6,
+    "updated_entries": 8,
+    "sha_pair_match": "PASS_4_FILES"
+  },
+  "asset": "P15-03",
+  "per_mesh_targeted": [
+    {
+      "name": "DoorSkin_MESH",
+      "triangles": 44,
+      "uv0_collapsed_before": 24,
+      "uv0_collapsed_after": 0,
+      "uv_triangles_outside_0_1_before": 22,
+      "uv_triangles_outside_0_1_after": 0
+    },
+    {
+      "name": "Hinge_Lower_Sleeve_MESH",
+      "triangles": 96,
+      "uv0_collapsed_before": 48,
+      "uv0_collapsed_after": 0,
+      "uv_triangles_outside_0_1_before": 72,
+      "uv_triangles_outside_0_1_after": 51
+    },
+    {
+      "name": "Hinge_Upper_Sleeve_MESH",
+      "triangles": 96,
+      "uv0_collapsed_before": 48,
+      "uv0_collapsed_after": 0,
+      "uv_triangles_outside_0_1_before": 72,
+      "uv_triangles_outside_0_1_after": 51
+    }
+  ],
+  "direct_independent_from_blender_exporter_negative_regression": {
+    "original_mesh_count": 34,
+    "updated_mesh_count": 34,
+    "old_and_new_indexed_triangle_count": 672,
+    "all_34_Geometry_Vertices_arrays_exactly_identical": true,
+    "all_34_Geometry_PolygonVertexIndex_arrays_exactly_identical": true,
+    "all_34_Geometry_LayerElementNormal_Normal_arrays_exactly_identical": true,
+    "all_36_Model_object_names_and_local_transforms_exactly_identical": true,
+    "uv0_changed_meshes": [
+      "DoorSkin_MESH",
+      "Hinge_Lower_Sleeve_MESH",
+      "Hinge_Upper_Sleeve_MESH"
+    ],
+    "other_31_UV_arrays_exactly_identical": true,
+    "previous_zero_area_3d_triangles": 0,
+    "updated_zero_area_3d_triangles": 0,
+    "previous_zero_area_uv0_triangles": 120,
+    "updated_zero_area_uv0_triangles": 0,
+    "previous_repeated_corner_uv0_triangle_incidents": 120,
+    "updated_repeated_corner_uv0_triangle_incidents": 0,
+    "previous_invalid_indices": 0,
+    "updated_invalid_indices": 0,
+    "updated_missing_UV_meshes": 0,
+    "updated_missing_normals_meshes": 0,
+    "updated_inverted_normal_corners": 0,
+    "updated_corner_normals_deviating_over_80_deg": 0,
+    "updated_nonmanifold_mesh_edges": 0,
+    "updated_boundary_mesh_edges": 0,
+    "updated_duplicate_index_triangles": 0,
+    "updated_duplicate_geometric_triangles": 0,
+    "uv0_triangles_with_any_corner_outside_0_1_before": 166,
+    "uv0_triangles_with_any_corner_outside_0_1_after": 102,
+    "updated_outside_0_1_only_on_two_hinge_sleeves": true,
+    "current_FBX_texture_objects": 0,
+    "current_FBX_material_objects": 3
+  },
+  "interpretation": {
+    "static_geometry_negative_regression": "NO NEW MESH OR NORMAL REGRESSION FOUND ON EXACT NEW BINARY FBX",
+    "uv0_degenerate_repair": "CONFIRMED FIX ON ACTUAL NEW FBX",
+    "uv_outside_0_1": "REVIEW_ONLY: 102 cylinder sleeve UV triangles extend beyond one tile; source uses a wrapping cylindrical seam and current FBX carries no image Texture objects. No visible texturing failure demonstrated; do not arbitrarily repack/remesh or reexport. Review if actual UV-textured materials are introduced.",
+    "motion": "INHERITED_PRODUCER_SCOPE_FROM_W26_NEW_SHA_CORRECTED_BVH_361_CRITICAL_AND_46_ALL_MOVING_POSITIONS_PER_NATIVE_SOURCE_AND_REIMPORTED_FBX_0_TRIANGLE_CROSSES; NOT independently rerun in W27",
+    "independent_C01_02": "PENDING_NEW_SHA",
+    "unity_6_urp": "NOT_RUN_OWNER_ACTION_REQUIRED",
+    "release": "HOLD",
+    "no_new_native_reexport": true,
+    "all_Claude_delegated_doors_untouched": true,
+    "frozen_pr19_pr32_untouched": true
+  }
+}

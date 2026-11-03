@@ -1,0 +1,1804 @@
+{
+  "contract": "C01-15-W01-PROPS",
+  "version": "0.1.6",
+  "coordinate_system": "Unity Y-up X-right Z-front, meter=1, localScale=1",
+  "materials": {
+    "STEEL": [
+      0.44,
+      0.52,
+      0.58,
+      1
+    ],
+    "DARK": [
+      0.1,
+      0.14,
+      0.18,
+      1
+    ],
+    "WARN": [
+      0.9,
+      0.55,
+      0.14,
+      1
+    ]
+  },
+  "assets": {
+    "P15-01": {
+      "label": "Modular Wall/Ceiling Pipe 1m",
+      "size_wdh": [
+        1,
+        0.14,
+        0.14
+      ],
+      "bounds_xyz": [
+        [
+          0,
+          1
+        ],
+        [
+          -0.07,
+          0.07
+        ],
+        [
+          0,
+          0.14
+        ]
+      ],
+      "pivot": "left endpoint, mounting surface local Z=0",
+      "mount": "wall/ceiling; +Z outwards; run +X; 90-degree root rotations permitted",
+      "colliders": [
+        {
+          "component": "Body",
+          "center": [
+            0.5,
+            0,
+            0.07
+          ],
+          "size": [
+            1,
+            0.14,
+            0.14
+          ]
+        }
+      ],
+      "usage": "engineering and service corridors",
+      "socket": [
+        0,
+        0,
+        0
+      ],
+      "faces": [
+        "X=0",
+        "X=1"
+      ]
+    },
+    "P15-02": {
+      "label": "Ventilation grille",
+      "size_wdh": [
+        0.6,
+        0.08,
+        0.4
+      ],
+      "bounds_xyz": [
+        [
+          -0.3,
+          0.3
+        ],
+        [
+          -0.2,
+          0.2
+        ],
+        [
+          0,
+          0.08
+        ]
+      ],
+      "pivot": "rear mounting plane center",
+      "mount": "wall; positive local Z outwards",
+      "colliders": [
+        {
+          "component": "Body",
+          "center": [
+            0,
+            0,
+            0.04
+          ],
+          "size": [
+            0.6,
+            0.4,
+            0.08
+          ]
+        }
+      ],
+      "usage": "engineering and lateral corridors",
+      "socket": [
+        0,
+        0,
+        0
+      ]
+    },
+    "P15-03": {
+      "label": "Electrical service cabinet with movable door",
+      "size_wdh": [
+        0.8,
+        0.35,
+        1.8
+      ],
+      "bounds_xyz": [
+        [
+          -0.4,
+          0.4
+        ],
+        [
+          0,
+          1.8
+        ],
+        [
+          -0.175,
+          0.175
+        ]
+      ],
+      "pivot": "floor center (Y=0)",
+      "mount": "floor; front +Z",
+      "hinge": [
+        -0.352,
+        0,
+        0.138
+      ],
+      "hinge_axis": "+Y",
+      "hinge_swing": "0 to -90 degrees: leaf opens toward +Z",
+      "colliders": [
+        {
+          "component": "Body",
+          "name": "Back",
+          "center": [
+            0,
+            0.9,
+            -0.1625
+          ],
+          "size": [
+            0.8,
+            1.8,
+            0.025
+          ]
+        },
+        {
+          "component": "Body",
+          "name": "LeftSide",
+          "center": [
+            -0.3875,
+            0.9,
+            -0.0175
+          ],
+          "size": [
+            0.025,
+            1.8,
+            0.29
+          ]
+        },
+        {
+          "component": "Body",
+          "name": "RightSide",
+          "center": [
+            0.3875,
+            0.9,
+            -0.0175
+          ],
+          "size": [
+            0.025,
+            1.8,
+            0.29
+          ]
+        },
+        {
+          "component": "Body",
+          "name": "Bottom",
+          "center": [
+            0,
+            0.0225,
+            -0.0175
+          ],
+          "size": [
+            0.75,
+            0.045,
+            0.29
+          ]
+        },
+        {
+          "component": "Body",
+          "name": "Top",
+          "center": [
+            0,
+            1.7775,
+            -0.0175
+          ],
+          "size": [
+            0.75,
+            0.045,
+            0.29
+          ]
+        },
+        {
+          "component": "Door",
+          "name": "DoorLeaf",
+          "center": [
+            0.35,
+            0.9,
+            0
+          ],
+          "size": [
+            0.7,
+            1.59,
+            0.04
+          ]
+        }
+      ],
+      "usage": "electrical service area",
+      "socket": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "parts": [
+    {
+      "asset": "P15-01",
+      "component": "Body",
+      "name": "PipeCore",
+      "shape": "cylinder",
+      "material": "STEEL",
+      "center": [
+        0.5,
+        0,
+        0.075
+      ],
+      "axis": "X",
+      "radius": 0.0495,
+      "depth": 1,
+      "sides": 16
+    },
+    {
+      "asset": "P15-01",
+      "component": "Body",
+      "name": "CouplerHousing055",
+      "shape": "cylinder",
+      "material": "DARK",
+      "center": [
+        0.055,
+        0,
+        0.075
+      ],
+      "axis": "X",
+      "radius": 0.065,
+      "depth": 0.042,
+      "sides": 16
+    },
+    {
+      "asset": "P15-01",
+      "component": "Body",
+      "name": "CouplerBand055",
+      "shape": "cylinder",
+      "material": "WARN",
+      "center": [
+        0.055,
+        0,
+        0.075
+      ],
+      "axis": "X",
+      "radius": 0.066,
+      "depth": 0.011,
+      "sides": 16
+    },
+    {
+      "asset": "P15-01",
+      "component": "Body",
+      "name": "CouplerHousing945",
+      "shape": "cylinder",
+      "material": "DARK",
+      "center": [
+        0.945,
+        0,
+        0.075
+      ],
+      "axis": "X",
+      "radius": 0.065,
+      "depth": 0.042,
+      "sides": 16
+    },
+    {
+      "asset": "P15-01",
+      "component": "Body",
+      "name": "CouplerBand945",
+      "shape": "cylinder",
+      "material": "WARN",
+      "center": [
+        0.945,
+        0,
+        0.075
+      ],
+      "axis": "X",
+      "radius": 0.066,
+      "depth": 0.011,
+      "sides": 16
+    },
+    {
+      "asset": "P15-01",
+      "component": "Body",
+      "name": "MountPlate230",
+      "shape": "box",
+      "material": "DARK",
+      "center": [
+        0.23,
+        0,
+        0.006
+      ],
+      "size": [
+        0.155,
+        0.122,
+        0.012
+      ]
+    },
+    {
+      "asset": "P15-01",
+      "component": "Body",
+      "name": "MountPost230",
+      "shape": "box",
+      "material": "STEEL",
+      "center": [
+        0.23,
+        0,
+        0.033
+      ],
+      "size": [
+        0.07,
+        0.055,
+        0.055
+      ]
+    },
+    {
+      "asset": "P15-01",
+      "component": "Body",
+      "name": "UClipTop230",
+      "shape": "box",
+      "material": "STEEL",
+      "center": [
+        0.23,
+        0.0555,
+        0.077
+      ],
+      "size": [
+        0.085,
+        0.012,
+        0.113
+      ]
+    },
+    {
+      "asset": "P15-01",
+      "component": "Body",
+      "name": "UClipBottom230",
+      "shape": "box",
+      "material": "STEEL",
+      "center": [
+        0.23,
+        -0.0555,
+        0.077
+      ],
+      "size": [
+        0.085,
+        0.012,
+        0.113
+      ]
+    },
+    {
+      "asset": "P15-01",
+      "component": "Body",
+      "name": "Bolt0.23_-0.055",
+      "shape": "cylinder",
+      "material": "WARN",
+      "center": [
+        0.17500000000000002,
+        0,
+        0.014
+      ],
+      "axis": "Z",
+      "radius": 0.009,
+      "depth": 0.005,
+      "sides": 8
+    },
+    {
+      "asset": "P15-01",
+      "component": "Body",
+      "name": "Bolt0.23_0.055",
+      "shape": "cylinder",
+      "material": "WARN",
+      "center": [
+        0.28500000000000003,
+        0,
+        0.014
+      ],
+      "axis": "Z",
+      "radius": 0.009,
+      "depth": 0.005,
+      "sides": 8
+    },
+    {
+      "asset": "P15-01",
+      "component": "Body",
+      "name": "MountPlate770",
+      "shape": "box",
+      "material": "DARK",
+      "center": [
+        0.77,
+        0,
+        0.006
+      ],
+      "size": [
+        0.155,
+        0.122,
+        0.012
+      ]
+    },
+    {
+      "asset": "P15-01",
+      "component": "Body",
+      "name": "MountPost770",
+      "shape": "box",
+      "material": "STEEL",
+      "center": [
+        0.77,
+        0,
+        0.033
+      ],
+      "size": [
+        0.07,
+        0.055,
+        0.055
+      ]
+    },
+    {
+      "asset": "P15-01",
+      "component": "Body",
+      "name": "UClipTop770",
+      "shape": "box",
+      "material": "STEEL",
+      "center": [
+        0.77,
+        0.0555,
+        0.077
+      ],
+      "size": [
+        0.085,
+        0.012,
+        0.113
+      ]
+    },
+    {
+      "asset": "P15-01",
+      "component": "Body",
+      "name": "UClipBottom770",
+      "shape": "box",
+      "material": "STEEL",
+      "center": [
+        0.77,
+        -0.0555,
+        0.077
+      ],
+      "size": [
+        0.085,
+        0.012,
+        0.113
+      ]
+    },
+    {
+      "asset": "P15-01",
+      "component": "Body",
+      "name": "Bolt0.77_-0.055",
+      "shape": "cylinder",
+      "material": "WARN",
+      "center": [
+        0.715,
+        0,
+        0.014
+      ],
+      "axis": "Z",
+      "radius": 0.009,
+      "depth": 0.005,
+      "sides": 8
+    },
+    {
+      "asset": "P15-01",
+      "component": "Body",
+      "name": "Bolt0.77_0.055",
+      "shape": "cylinder",
+      "material": "WARN",
+      "center": [
+        0.8250000000000001,
+        0,
+        0.014
+      ],
+      "axis": "Z",
+      "radius": 0.009,
+      "depth": 0.005,
+      "sides": 8
+    },
+    {
+      "asset": "P15-02",
+      "component": "Body",
+      "name": "LeftFrame",
+      "shape": "box",
+      "material": "DARK",
+      "center": [
+        -0.277,
+        0,
+        0.04
+      ],
+      "size": [
+        0.046,
+        0.4,
+        0.08
+      ]
+    },
+    {
+      "asset": "P15-02",
+      "component": "Body",
+      "name": "RightFrame",
+      "shape": "box",
+      "material": "DARK",
+      "center": [
+        0.277,
+        0,
+        0.04
+      ],
+      "size": [
+        0.046,
+        0.4,
+        0.08
+      ]
+    },
+    {
+      "asset": "P15-02",
+      "component": "Body",
+      "name": "TopFrame",
+      "shape": "box",
+      "material": "DARK",
+      "center": [
+        0,
+        0.178,
+        0.04
+      ],
+      "size": [
+        0.508,
+        0.044,
+        0.08
+      ]
+    },
+    {
+      "asset": "P15-02",
+      "component": "Body",
+      "name": "BottomFrame",
+      "shape": "box",
+      "material": "DARK",
+      "center": [
+        0,
+        -0.178,
+        0.04
+      ],
+      "size": [
+        0.508,
+        0.044,
+        0.08
+      ]
+    },
+    {
+      "asset": "P15-02",
+      "component": "Body",
+      "name": "InnerRimLeft",
+      "shape": "box",
+      "material": "STEEL",
+      "center": [
+        -0.245,
+        0,
+        0.064
+      ],
+      "size": [
+        0.015,
+        0.32,
+        0.026
+      ]
+    },
+    {
+      "asset": "P15-02",
+      "component": "Body",
+      "name": "InnerRimRight",
+      "shape": "box",
+      "material": "STEEL",
+      "center": [
+        0.245,
+        0,
+        0.064
+      ],
+      "size": [
+        0.015,
+        0.32,
+        0.026
+      ]
+    },
+    {
+      "asset": "P15-02",
+      "component": "Body",
+      "name": "Louver00",
+      "shape": "box",
+      "material": "STEEL",
+      "center": [
+        0,
+        -0.13,
+        0.065
+      ],
+      "size": [
+        0.49,
+        0.024,
+        0.027
+      ]
+    },
+    {
+      "asset": "P15-02",
+      "component": "Body",
+      "name": "Louver01",
+      "shape": "box",
+      "material": "STEEL",
+      "center": [
+        0,
+        -0.078,
+        0.065
+      ],
+      "size": [
+        0.49,
+        0.024,
+        0.027
+      ]
+    },
+    {
+      "asset": "P15-02",
+      "component": "Body",
+      "name": "Louver02",
+      "shape": "box",
+      "material": "STEEL",
+      "center": [
+        0,
+        -0.026,
+        0.065
+      ],
+      "size": [
+        0.49,
+        0.024,
+        0.027
+      ]
+    },
+    {
+      "asset": "P15-02",
+      "component": "Body",
+      "name": "Louver03",
+      "shape": "box",
+      "material": "STEEL",
+      "center": [
+        0,
+        0.026,
+        0.065
+      ],
+      "size": [
+        0.49,
+        0.024,
+        0.027
+      ]
+    },
+    {
+      "asset": "P15-02",
+      "component": "Body",
+      "name": "Louver04",
+      "shape": "box",
+      "material": "STEEL",
+      "center": [
+        0,
+        0.078,
+        0.065
+      ],
+      "size": [
+        0.49,
+        0.024,
+        0.027
+      ]
+    },
+    {
+      "asset": "P15-02",
+      "component": "Body",
+      "name": "Louver05",
+      "shape": "box",
+      "material": "STEEL",
+      "center": [
+        0,
+        0.13,
+        0.065
+      ],
+      "size": [
+        0.49,
+        0.024,
+        0.027
+      ]
+    },
+    {
+      "asset": "P15-02",
+      "component": "Body",
+      "name": "MountScrew_-0.27_-0.174",
+      "shape": "cylinder",
+      "material": "WARN",
+      "center": [
+        -0.27,
+        -0.174,
+        0.079
+      ],
+      "axis": "Z",
+      "radius": 0.012,
+      "depth": 0.004,
+      "sides": 10
+    },
+    {
+      "asset": "P15-02",
+      "component": "Body",
+      "name": "MountScrew_-0.27_0.174",
+      "shape": "cylinder",
+      "material": "WARN",
+      "center": [
+        -0.27,
+        0.174,
+        0.079
+      ],
+      "axis": "Z",
+      "radius": 0.012,
+      "depth": 0.004,
+      "sides": 10
+    },
+    {
+      "asset": "P15-02",
+      "component": "Body",
+      "name": "MountScrew_0.27_-0.174",
+      "shape": "cylinder",
+      "material": "WARN",
+      "center": [
+        0.27,
+        -0.174,
+        0.079
+      ],
+      "axis": "Z",
+      "radius": 0.012,
+      "depth": 0.004,
+      "sides": 10
+    },
+    {
+      "asset": "P15-02",
+      "component": "Body",
+      "name": "MountScrew_0.27_0.174",
+      "shape": "cylinder",
+      "material": "WARN",
+      "center": [
+        0.27,
+        0.174,
+        0.079
+      ],
+      "axis": "Z",
+      "radius": 0.012,
+      "depth": 0.004,
+      "sides": 10
+    },
+    {
+      "asset": "P15-03",
+      "component": "Body",
+      "name": "CabinetBack",
+      "shape": "box",
+      "material": "DARK",
+      "center": [
+        0,
+        0.9,
+        -0.1625
+      ],
+      "size": [
+        0.8,
+        1.8,
+        0.025
+      ]
+    },
+    {
+      "asset": "P15-03",
+      "component": "Body",
+      "name": "CabinetSide_-0.3875",
+      "shape": "box",
+      "material": "STEEL",
+      "center": [
+        -0.3875,
+        0.9,
+        -0.0175
+      ],
+      "size": [
+        0.025,
+        1.8,
+        0.29
+      ]
+    },
+    {
+      "asset": "P15-03",
+      "component": "Body",
+      "name": "CabinetSide_0.3875",
+      "shape": "box",
+      "material": "STEEL",
+      "center": [
+        0.3875,
+        0.9,
+        -0.0175
+      ],
+      "size": [
+        0.025,
+        1.8,
+        0.29
+      ]
+    },
+    {
+      "asset": "P15-03",
+      "component": "Body",
+      "name": "CabinetRoof_0.0225",
+      "shape": "box",
+      "material": "STEEL",
+      "center": [
+        0,
+        0.0225,
+        -0.0175
+      ],
+      "size": [
+        0.75,
+        0.045,
+        0.29
+      ]
+    },
+    {
+      "asset": "P15-03",
+      "component": "Body",
+      "name": "CabinetRoof_1.7775",
+      "shape": "box",
+      "material": "STEEL",
+      "center": [
+        0,
+        1.7775,
+        -0.0175
+      ],
+      "size": [
+        0.75,
+        0.045,
+        0.29
+      ]
+    },
+    {
+      "asset": "P15-03",
+      "component": "Body",
+      "name": "FrontFrameSide_-0.375",
+      "shape": "box",
+      "material": "DARK",
+      "center": [
+        -0.375,
+        0.9,
+        0.105
+      ],
+      "size": [
+        0.05,
+        1.72,
+        0.012
+      ]
+    },
+    {
+      "asset": "P15-03",
+      "component": "Body",
+      "name": "FrontFrameSide_0.375",
+      "shape": "box",
+      "material": "DARK",
+      "center": [
+        0.375,
+        0.9,
+        0.105
+      ],
+      "size": [
+        0.05,
+        1.72,
+        0.012
+      ]
+    },
+    {
+      "asset": "P15-03",
+      "component": "Body",
+      "name": "FrontFrameRail_0.065",
+      "shape": "box",
+      "material": "DARK",
+      "center": [
+        0,
+        0.065,
+        0.105
+      ],
+      "size": [
+        0.7,
+        0.05,
+        0.012
+      ]
+    },
+    {
+      "asset": "P15-03",
+      "component": "Body",
+      "name": "FrontFrameRail_1.735",
+      "shape": "box",
+      "material": "DARK",
+      "center": [
+        0,
+        1.735,
+        0.105
+      ],
+      "size": [
+        0.7,
+        0.05,
+        0.012
+      ]
+    },
+    {
+      "asset": "P15-03",
+      "component": "Body",
+      "name": "InnerBackPanel",
+      "shape": "box",
+      "material": "STEEL",
+      "center": [
+        0,
+        0.89,
+        -0.139
+      ],
+      "size": [
+        0.69,
+        1.57,
+        0.015
+      ]
+    },
+    {
+      "asset": "P15-03",
+      "component": "Body",
+      "name": "InternalBusbar0",
+      "shape": "box",
+      "material": "WARN",
+      "center": [
+        -0.2,
+        1.2,
+        -0.123
+      ],
+      "size": [
+        0.07,
+        0.45,
+        0.018
+      ]
+    },
+    {
+      "asset": "P15-03",
+      "component": "Body",
+      "name": "InternalBusbar1",
+      "shape": "box",
+      "material": "WARN",
+      "center": [
+        0,
+        1.2,
+        -0.123
+      ],
+      "size": [
+        0.07,
+        0.45,
+        0.018
+      ]
+    },
+    {
+      "asset": "P15-03",
+      "component": "Body",
+      "name": "InternalBusbar2",
+      "shape": "box",
+      "material": "WARN",
+      "center": [
+        0.2,
+        1.2,
+        -0.123
+      ],
+      "size": [
+        0.07,
+        0.45,
+        0.018
+      ]
+    },
+    {
+      "asset": "P15-03",
+      "component": "Door",
+      "name": "DoorSkin",
+      "shape": "notched_box",
+      "material": "STEEL",
+      "center": [
+        0.35,
+        0.9,
+        0
+      ],
+      "size": [
+        0.7,
+        1.59,
+        0.04
+      ],
+      "notches": [
+        {
+          "center_y": 0.32,
+          "height": 0.09,
+          "depth_x": 0.0115
+        },
+        {
+          "center_y": 1.49,
+          "height": 0.09,
+          "depth_x": 0.0115
+        }
+      ]
+    },
+    {
+      "asset": "P15-03",
+      "component": "Door",
+      "name": "DoorInset",
+      "shape": "box",
+      "material": "DARK",
+      "center": [
+        0.35,
+        0.93,
+        0.0205
+      ],
+      "size": [
+        0.586,
+        1.32,
+        0.001
+      ]
+    },
+    {
+      "asset": "P15-03",
+      "component": "Door",
+      "name": "DoorSafetyStripe",
+      "shape": "box",
+      "material": "WARN",
+      "center": [
+        0.35,
+        0.205,
+        0.021
+      ],
+      "size": [
+        0.56,
+        0.042,
+        0.003
+      ]
+    },
+    {
+      "asset": "P15-03",
+      "component": "Door",
+      "name": "WarningPlate",
+      "shape": "box",
+      "material": "WARN",
+      "center": [
+        0.35,
+        1.265,
+        0.022
+      ],
+      "size": [
+        0.205,
+        0.158,
+        0.003
+      ]
+    },
+    {
+      "asset": "P15-03",
+      "component": "Door",
+      "name": "HandlePlate",
+      "shape": "box",
+      "material": "DARK",
+      "center": [
+        0.617,
+        0.93,
+        0.024
+      ],
+      "size": [
+        0.063,
+        0.19,
+        0.008
+      ]
+    },
+    {
+      "asset": "P15-03",
+      "component": "Door",
+      "name": "HandleGrip",
+      "shape": "box",
+      "material": "STEEL",
+      "center": [
+        0.621,
+        0.93,
+        0.031
+      ],
+      "size": [
+        0.025,
+        0.105,
+        0.011
+      ]
+    },
+    {
+      "asset": "P15-03",
+      "component": "Door",
+      "name": "VentSlot0",
+      "shape": "box",
+      "material": "DARK",
+      "center": [
+        0.35,
+        0.455,
+        0.022
+      ],
+      "size": [
+        0.35,
+        0.012,
+        0.003
+      ]
+    },
+    {
+      "asset": "P15-03",
+      "component": "Door",
+      "name": "VentSlot1",
+      "shape": "box",
+      "material": "DARK",
+      "center": [
+        0.35,
+        0.505,
+        0.022
+      ],
+      "size": [
+        0.35,
+        0.012,
+        0.003
+      ]
+    },
+    {
+      "asset": "P15-03",
+      "component": "Door",
+      "name": "VentSlot2",
+      "shape": "box",
+      "material": "DARK",
+      "center": [
+        0.35,
+        0.555,
+        0.022
+      ],
+      "size": [
+        0.35,
+        0.012,
+        0.003
+      ]
+    },
+    {
+      "asset": "P15-03",
+      "component": "Door",
+      "name": "VentSlot3",
+      "shape": "box",
+      "material": "DARK",
+      "center": [
+        0.35,
+        0.605,
+        0.022
+      ],
+      "size": [
+        0.35,
+        0.012,
+        0.003
+      ]
+    },
+    {
+      "asset": "P15-03",
+      "component": "Door",
+      "name": "VentSlot4",
+      "shape": "box",
+      "material": "DARK",
+      "center": [
+        0.35,
+        0.655,
+        0.022
+      ],
+      "size": [
+        0.35,
+        0.012,
+        0.003
+      ]
+    },
+    {
+      "asset": "P15-03",
+      "component": "Body",
+      "name": "Hinge_Lower_Mount",
+      "shape": "box",
+      "material": "DARK",
+      "center": [
+        -0.385,
+        0.32,
+        0.123
+      ],
+      "size": [
+        0.026,
+        0.09,
+        0.025
+      ]
+    },
+    {
+      "asset": "P15-03",
+      "component": "Body",
+      "name": "Hinge_Lower_AxlePin",
+      "shape": "cylinder",
+      "material": "STEEL",
+      "center": [
+        -0.352,
+        0.32,
+        0.138
+      ],
+      "axis": "Y",
+      "radius": 0.006,
+      "depth": 0.088,
+      "sides": 12
+    },
+    {
+      "asset": "P15-03",
+      "component": "Door",
+      "name": "Hinge_Lower_Sleeve",
+      "shape": "hollow_cylinder",
+      "material": "STEEL",
+      "center": [
+        0,
+        0.32,
+        0
+      ],
+      "axis": "Y",
+      "radius": 0.013,
+      "depth": 0.034,
+      "sides": 12,
+      "inner_radius": 0.0075
+    },
+    {
+      "asset": "P15-03",
+      "component": "Body",
+      "name": "Hinge_Upper_Mount",
+      "shape": "box",
+      "material": "DARK",
+      "center": [
+        -0.385,
+        1.49,
+        0.123
+      ],
+      "size": [
+        0.026,
+        0.09,
+        0.025
+      ]
+    },
+    {
+      "asset": "P15-03",
+      "component": "Body",
+      "name": "Hinge_Upper_AxlePin",
+      "shape": "cylinder",
+      "material": "STEEL",
+      "center": [
+        -0.352,
+        1.49,
+        0.138
+      ],
+      "axis": "Y",
+      "radius": 0.006,
+      "depth": 0.088,
+      "sides": 12
+    },
+    {
+      "asset": "P15-03",
+      "component": "Door",
+      "name": "Hinge_Upper_Sleeve",
+      "shape": "hollow_cylinder",
+      "material": "STEEL",
+      "center": [
+        0,
+        1.49,
+        0
+      ],
+      "axis": "Y",
+      "radius": 0.013,
+      "depth": 0.034,
+      "sides": 12,
+      "inner_radius": 0.0075
+    },
+    {
+      "asset": "P15-03",
+      "component": "Body",
+      "name": "Hinge_Lower_LowerEar",
+      "shape": "box",
+      "material": "DARK",
+      "center": [
+        -0.367,
+        0.291,
+        0.137
+      ],
+      "size": [
+        0.038,
+        0.018,
+        0.022
+      ]
+    },
+    {
+      "asset": "P15-03",
+      "component": "Body",
+      "name": "Hinge_Lower_UpperEar",
+      "shape": "box",
+      "material": "DARK",
+      "center": [
+        -0.367,
+        0.34900000000000003,
+        0.137
+      ],
+      "size": [
+        0.038,
+        0.018,
+        0.022
+      ]
+    },
+    {
+      "asset": "P15-03",
+      "component": "Body",
+      "name": "Hinge_Upper_LowerEar",
+      "shape": "box",
+      "material": "DARK",
+      "center": [
+        -0.367,
+        1.461,
+        0.137
+      ],
+      "size": [
+        0.038,
+        0.018,
+        0.022
+      ]
+    },
+    {
+      "asset": "P15-03",
+      "component": "Body",
+      "name": "Hinge_Upper_UpperEar",
+      "shape": "box",
+      "material": "DARK",
+      "center": [
+        -0.367,
+        1.519,
+        0.137
+      ],
+      "size": [
+        0.038,
+        0.018,
+        0.022
+      ]
+    },
+    {
+      "asset": "P15-01",
+      "component": "Body",
+      "name": "ClampTieRear230",
+      "shape": "box",
+      "material": "STEEL",
+      "center": [
+        0.23,
+        0,
+        0.017
+      ],
+      "size": [
+        0.05,
+        0.116,
+        0.014
+      ]
+    },
+    {
+      "asset": "P15-01",
+      "component": "Body",
+      "name": "ClampTieFront230",
+      "shape": "box",
+      "material": "STEEL",
+      "center": [
+        0.23,
+        0,
+        0.133
+      ],
+      "size": [
+        0.05,
+        0.116,
+        0.012
+      ]
+    },
+    {
+      "asset": "P15-01",
+      "component": "Body",
+      "name": "ClampLockScrewTop230",
+      "shape": "cylinder",
+      "material": "WARN",
+      "center": [
+        0.23,
+        0.054,
+        0.139
+      ],
+      "axis": "Z",
+      "radius": 0.005,
+      "depth": 0.002,
+      "sides": 6
+    },
+    {
+      "asset": "P15-01",
+      "component": "Body",
+      "name": "ClampLockScrewBottom230",
+      "shape": "cylinder",
+      "material": "WARN",
+      "center": [
+        0.23,
+        -0.054,
+        0.139
+      ],
+      "axis": "Z",
+      "radius": 0.005,
+      "depth": 0.002,
+      "sides": 6
+    },
+    {
+      "asset": "P15-01",
+      "component": "Body",
+      "name": "ClampTieRear770",
+      "shape": "box",
+      "material": "STEEL",
+      "center": [
+        0.77,
+        0,
+        0.017
+      ],
+      "size": [
+        0.05,
+        0.116,
+        0.014
+      ]
+    },
+    {
+      "asset": "P15-01",
+      "component": "Body",
+      "name": "ClampTieFront770",
+      "shape": "box",
+      "material": "STEEL",
+      "center": [
+        0.77,
+        0,
+        0.133
+      ],
+      "size": [
+        0.05,
+        0.116,
+        0.012
+      ]
+    },
+    {
+      "asset": "P15-01",
+      "component": "Body",
+      "name": "ClampLockScrewTop770",
+      "shape": "cylinder",
+      "material": "WARN",
+      "center": [
+        0.77,
+        0.054,
+        0.139
+      ],
+      "axis": "Z",
+      "radius": 0.005,
+      "depth": 0.002,
+      "sides": 6
+    },
+    {
+      "asset": "P15-01",
+      "component": "Body",
+      "name": "ClampLockScrewBottom770",
+      "shape": "cylinder",
+      "material": "WARN",
+      "center": [
+        0.77,
+        -0.054,
+        0.139
+      ],
+      "axis": "Z",
+      "radius": 0.005,
+      "depth": 0.002,
+      "sides": 6
+    },
+    {
+      "asset": "P15-02",
+      "component": "Body",
+      "name": "LouverRearSupport_L",
+      "shape": "box",
+      "material": "DARK",
+      "center": [
+        -0.225,
+        0,
+        0.0495
+      ],
+      "size": [
+        0.018,
+        0.344,
+        0.018
+      ]
+    },
+    {
+      "asset": "P15-02",
+      "component": "Body",
+      "name": "LouverRearSupport_R",
+      "shape": "box",
+      "material": "DARK",
+      "center": [
+        0.225,
+        0,
+        0.0495
+      ],
+      "size": [
+        0.018,
+        0.344,
+        0.018
+      ]
+    },
+    {
+      "asset": "P15-02",
+      "component": "Body",
+      "name": "LouverFastener_L_00",
+      "shape": "cylinder",
+      "material": "STEEL",
+      "center": [
+        -0.232,
+        -0.13,
+        0.0775
+      ],
+      "axis": "Z",
+      "radius": 0.004,
+      "depth": 0.004,
+      "sides": 8
+    },
+    {
+      "asset": "P15-02",
+      "component": "Body",
+      "name": "LouverFastener_R_00",
+      "shape": "cylinder",
+      "material": "STEEL",
+      "center": [
+        0.232,
+        -0.13,
+        0.0775
+      ],
+      "axis": "Z",
+      "radius": 0.004,
+      "depth": 0.004,
+      "sides": 8
+    },
+    {
+      "asset": "P15-02",
+      "component": "Body",
+      "name": "LouverFastener_L_01",
+      "shape": "cylinder",
+      "material": "STEEL",
+      "center": [
+        -0.232,
+        -0.078,
+        0.0775
+      ],
+      "axis": "Z",
+      "radius": 0.004,
+      "depth": 0.004,
+      "sides": 8
+    },
+    {
+      "asset": "P15-02",
+      "component": "Body",
+      "name": "LouverFastener_R_01",
+      "shape": "cylinder",
+      "material": "STEEL",
+      "center": [
+        0.232,
+        -0.078,
+        0.0775
+      ],
+      "axis": "Z",
+      "radius": 0.004,
+      "depth": 0.004,
+      "sides": 8
+    },
+    {
+      "asset": "P15-02",
+      "component": "Body",
+      "name": "LouverFastener_L_02",
+      "shape": "cylinder",
+      "material": "STEEL",
+      "center": [
+        -0.232,
+        -0.026,
+        0.0775
+      ],
+      "axis": "Z",
+      "radius": 0.004,
+      "depth": 0.004,
+      "sides": 8
+    },
+    {
+      "asset": "P15-02",
+      "component": "Body",
+      "name": "LouverFastener_R_02",
+      "shape": "cylinder",
+      "material": "STEEL",
+      "center": [
+        0.232,
+        -0.026,
+        0.0775
+      ],
+      "axis": "Z",
+      "radius": 0.004,
+      "depth": 0.004,
+      "sides": 8
+    },
+    {
+      "asset": "P15-02",
+      "component": "Body",
+      "name": "LouverFastener_L_03",
+      "shape": "cylinder",
+      "material": "STEEL",
+      "center": [
+        -0.232,
+        0.026,
+        0.0775
+      ],
+      "axis": "Z",
+      "radius": 0.004,
+      "depth": 0.004,
+      "sides": 8
+    },
+    {
+      "asset": "P15-02",
+      "component": "Body",
+      "name": "LouverFastener_R_03",
+      "shape": "cylinder",
+      "material": "STEEL",
+      "center": [
+        0.232,
+        0.026,
+        0.0775
+      ],
+      "axis": "Z",
+      "radius": 0.004,
+      "depth": 0.004,
+      "sides": 8
+    },
+    {
+      "asset": "P15-02",
+      "component": "Body",
+      "name": "LouverFastener_L_04",
+      "shape": "cylinder",
+      "material": "STEEL",
+      "center": [
+        -0.232,
+        0.078,
+        0.0775
+      ],
+      "axis": "Z",
+      "radius": 0.004,
+      "depth": 0.004,
+      "sides": 8
+    },
+    {
+      "asset": "P15-02",
+      "component": "Body",
+      "name": "LouverFastener_R_04",
+      "shape": "cylinder",
+      "material": "STEEL",
+      "center": [
+        0.232,
+        0.078,
+        0.0775
+      ],
+      "axis": "Z",
+      "radius": 0.004,
+      "depth": 0.004,
+      "sides": 8
+    },
+    {
+      "asset": "P15-02",
+      "component": "Body",
+      "name": "LouverFastener_L_05",
+      "shape": "cylinder",
+      "material": "STEEL",
+      "center": [
+        -0.232,
+        0.13,
+        0.0775
+      ],
+      "axis": "Z",
+      "radius": 0.004,
+      "depth": 0.004,
+      "sides": 8
+    },
+    {
+      "asset": "P15-02",
+      "component": "Body",
+      "name": "LouverFastener_R_05",
+      "shape": "cylinder",
+      "material": "STEEL",
+      "center": [
+        0.232,
+        0.13,
+        0.0775
+      ],
+      "axis": "Z",
+      "radius": 0.004,
+      "depth": 0.004,
+      "sides": 8
+    },
+    {
+      "asset": "P15-02",
+      "component": "Body",
+      "name": "LouverFrameAnchor_L_Bottom",
+      "shape": "cylinder",
+      "material": "STEEL",
+      "center": [
+        -0.225,
+        -0.164,
+        0.0625
+      ],
+      "axis": "Z",
+      "radius": 0.005,
+      "depth": 0.037,
+      "sides": 8
+    },
+    {
+      "asset": "P15-02",
+      "component": "Body",
+      "name": "LouverFrameAnchor_L_Top",
+      "shape": "cylinder",
+      "material": "STEEL",
+      "center": [
+        -0.225,
+        0.164,
+        0.0625
+      ],
+      "axis": "Z",
+      "radius": 0.005,
+      "depth": 0.037,
+      "sides": 8
+    },
+    {
+      "asset": "P15-02",
+      "component": "Body",
+      "name": "LouverFrameAnchor_R_Bottom",
+      "shape": "cylinder",
+      "material": "STEEL",
+      "center": [
+        0.225,
+        -0.164,
+        0.0625
+      ],
+      "axis": "Z",
+      "radius": 0.005,
+      "depth": 0.037,
+      "sides": 8
+    },
+    {
+      "asset": "P15-02",
+      "component": "Body",
+      "name": "LouverFrameAnchor_R_Top",
+      "shape": "cylinder",
+      "material": "STEEL",
+      "center": [
+        0.225,
+        0.164,
+        0.0625
+      ],
+      "axis": "Z",
+      "radius": 0.005,
+      "depth": 0.037,
+      "sides": 8
+    }
+  ]
+}

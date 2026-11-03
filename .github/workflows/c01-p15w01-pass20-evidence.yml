@@ -1,0 +1,47 @@
+name: C01-15 PASS20 original P15-01 P15-02 binary intake NO REEXPORT
+on:
+  push:
+    branches: [c01/props-15-installations]
+    paths:
+      - .github/workflows/c01-p15w01-pass20-evidence.yml
+      - Tools/C01MeshPass20/P15/verify_original_w01.py
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  actual-native-binary-receipts:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+      - name: Hydrate four existing real P15-01 and P15-02 binaries from LFS
+        shell: bash
+        run: |
+          set -euo pipefail
+          git lfs install --local
+          git lfs pull --include="Assets/C01InteriorProps/P15/Sources/Blender/P15-01.blend,Assets/C01InteriorProps/P15/Sources/Blender/P15-02.blend,Assets/C01InteriorProps/P15/Models/FBX/P15-01.fbx,Assets/C01InteriorProps/P15/Models/FBX/P15-02.fbx" --exclude=""
+      - name: Install genuine Blender 4.x reader and FBX importer
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends blender python3-numpy xvfb libegl1 libgl1 libgl1-mesa-dri libopengl0
+      - name: Reopen original .blend and .fbx and verify LFS full bytes
+        shell: bash
+        run: |
+          mkdir -p C01_PASS20_P15W01_RECEIPT
+          set -o pipefail
+          LIBGL_ALWAYS_SOFTWARE=1 xvfb-run -a blender --background --python Tools/C01MeshPass20/P15/verify_original_w01.py 2>&1 | tee C01_PASS20_P15W01_RECEIPT/Blender4_W20.log
+      - name: Supply original 4 binaries and receipt to independent QA
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-15-PASS20-P15-W01-ORIGINAL-HYDRATED-P15-01-02
+          path: |
+            C01_PASS20_P15W01_RECEIPT/
+            Assets/C01InteriorProps/P15/Sources/Blender/P15-01.blend
+            Assets/C01InteriorProps/P15/Sources/Blender/P15-02.blend
+            Assets/C01InteriorProps/P15/Models/FBX/P15-01.fbx
+            Assets/C01InteriorProps/P15/Models/FBX/P15-02.fbx
+          if-no-files-found: warn
+          retention-days: 14

@@ -1,0 +1,87 @@
+{
+  "schema": "C01_P15_03_DETAIL_PASS13_REPAIR_EVIDENCE_V1",
+  "scope": "Existing C01-15 P15-03 only; no new asset model IDs",
+  "status": "AUTHORING_SOURCE_GEOMETRY_CHANGED_OFFLINE_QA_PASS_NATIVE_EXPORT_BLOCKED",
+  "pr": 16,
+  "branch": "c01/props-15-installations",
+  "commits": {
+    "source_detail": "9ba13cf2eb741ab08c7d485db44f118ddaded47c",
+    "blender_generator": "65fd3d7210399975a78553162c7d7790639daaeb"
+  },
+  "github_git_blob_shas": {
+    "revised_source_spec": "4aca67f4e89dd02c813cbca5383440853558e5f5",
+    "revised_blender_builder": "fcfb7ba090d51759482ea373ade8ba104fb9e092"
+  },
+  "before": {
+    "parts": 30,
+    "triangles": 440,
+    "observed_problem": "Two full-solid sleeve cylinders physically intersect matching full-solid axle pins. Original fixed mounts have 0.009m AABB X overlap with moving door skin."
+  },
+  "after": {
+    "parts": 34,
+    "triangles_offline": 680,
+    "old_components_unchanged": 23,
+    "modified_existing_components": [
+      "DoorSkin",
+      "Hinge_Lower_Mount",
+      "Hinge_Lower_AxlePin",
+      "Hinge_Lower_Sleeve",
+      "Hinge_Upper_Mount",
+      "Hinge_Upper_AxlePin",
+      "Hinge_Upper_Sleeve"
+    ],
+    "added_components": [
+      "Hinge_Lower_LowerEar",
+      "Hinge_Lower_UpperEar",
+      "Hinge_Upper_LowerEar",
+      "Hinge_Upper_UpperEar"
+    ],
+    "shape_changes": "Two actual hollow manifold hinge sleeves, separate bracket support ears, shaft aligned to existing Door root pivot and tiny edge relief notches",
+    "model_world_AABB_unchanged": true,
+    "pivot_unchanged": true,
+    "original_material_roles_unchanged": true
+  },
+  "numeric_QA": {
+    "source_geometry_valid_parts": 34,
+    "watertight_and_consistent_winding": 34,
+    "positive_signed_volumes": 34,
+    "zero_area_triangles": 0,
+    "pin_radius_m": 0.006,
+    "bore_radius_m": 0.0075,
+    "radial_clearance_m": 0.0015,
+    "axial_ear_gap_m": 0.003,
+    "notch_edge_to_pin_max_X_extent_m": 0.0055,
+    "original_mount_door_AABB_overlap_x_m": 0.009,
+    "new_mount_door_X_gap_m": 0.02,
+    "source_analytic_checks": "PASS",
+    "true_triangle_pair_interference_all_parts": "NOT RUN"
+  },
+  "hashes_sha256": {
+    "offline_source_geometry_spec": "7815f19f6acfefe4059a31366c9acbace3739a407fb15cd9e9946d87a5523088",
+    "offline_glb": "2088b664983159f34b5b11321a8fd3d2360675d66fd5f58bddbc00f096e2d312",
+    "offline_obj": "0f34289031da0467b502ffadd0fca787cf67def08b52138712dbd3d175fdaaad",
+    "evidence_zip": "8d7f52276447c35cb89b53fafa7fb06908f3a697f45faf6d0f972742819c6680",
+    "old_native_blend_lfs_oid": "c76b4911e885234f18756669c4492a195ab9fde2ea2b3911683f241c5e7b503e",
+    "old_blender_binary_fbx_lfs_oid": "95d2730197a7c86bd3a59c1748a1df6df2a276ef9a9554d0df3ad0b769f6f414"
+  },
+  "test_results": {
+    "offline_GLTF_export_reload": "PASS",
+    "offline_closed_mesh_and_winding": "PASS",
+    "offline_exact_pivot_numeric": "PASS",
+    "offline_quantified_mechanical_clearances": "PASS",
+    "blender4_native_open_save": "NOT RUN",
+    "blender4_binary_FBX_export": "NOT RUN",
+    "blender4_FBX_reimport": "NOT RUN",
+    "native_uv0_and_material_slots": "NOT RUN",
+    "C01_02_independent_QA": "NOT RUN",
+    "Unity6_URP_prefab": "NOT RUN"
+  },
+  "owner_action": "NEEDS_OWNER_ACTION — recover GitHub Actions runner for private C01 repository or execute this PR on authenticated Blender 4.x host with Git LFS. Actual LFS .blend and binary .fbx are still old and MUST NOT be labeled current.",
+  "constraints": {
+    "no_ship_changes": true,
+    "no_new_model_ids": true,
+    "pr_is_draft": true,
+    "no_merge": true,
+    "offline_candidate_is_not_native_export": true
+  }
+}

@@ -1,0 +1,228 @@
+{
+  "gate": "C01-15_PASS26_POST_UV_REAL_NATIVE_P15-03_HINGE_SWEEP_FIXED_AABB",
+  "scope": "existing signed source + hydrated genuine .blend and 3 Blender FBX, no new model export",
+  "model": "P15-03",
+  "blender_version": "4.0.2",
+  "files": {
+    "Sources/Blender/P15-03.blend": {
+      "sha256": "e787a9455baa08d5e6b198b4c47d236376b240e08781792020b93be899ca38de",
+      "size": 661300
+    },
+    "Models/FBX/P15-03.fbx": {
+      "sha256": "ea25d2d7b47baa50fdca3000b101c65b19ba252994553ee6fe6691ca89d5c149",
+      "size": 102252
+    },
+    "Models/FBX/P15-03_Body.fbx": {
+      "sha256": "28b5ac854c9ecd869c587a6e337e3cc76919141a1fad38ab2d0a078ab0f6802c",
+      "size": 66844
+    },
+    "Models/FBX/P15-03_Door.fbx": {
+      "sha256": "c4a7aa9fd054b7106faf692868681290f6880e45f0e0a7d7bcc52f5e88ad0d7d",
+      "size": 50492
+    }
+  },
+  "stages": [
+    {
+      "check": "runtime_blender4",
+      "result": "PASS",
+      "details": {}
+    },
+    {
+      "check": "pinned_authoring_spec_sha",
+      "result": "PASS",
+      "details": {
+        "measured_sha256": "9394e90c72b78ce8d33e0629e383fe32b9faafb0a1cbf3fcb817281623cf05f3",
+        "expected": "9394e90c72b78ce8d33e0629e383fe32b9faafb0a1cbf3fcb817281623cf05f3"
+      }
+    },
+    {
+      "check": "source_version_0_1_6",
+      "result": "PASS",
+      "details": {}
+    },
+    {
+      "check": "exact_native_sha_Sources/Blender/P15-03.blend",
+      "result": "PASS",
+      "details": {
+        "expected": "e787a9455baa08d5e6b198b4c47d236376b240e08781792020b93be899ca38de",
+        "measured": "e787a9455baa08d5e6b198b4c47d236376b240e08781792020b93be899ca38de"
+      }
+    },
+    {
+      "check": "exact_native_sha_Models/FBX/P15-03.fbx",
+      "result": "PASS",
+      "details": {
+        "expected": "ea25d2d7b47baa50fdca3000b101c65b19ba252994553ee6fe6691ca89d5c149",
+        "measured": "ea25d2d7b47baa50fdca3000b101c65b19ba252994553ee6fe6691ca89d5c149"
+      }
+    },
+    {
+      "check": "exact_native_sha_Models/FBX/P15-03_Body.fbx",
+      "result": "PASS",
+      "details": {
+        "expected": "28b5ac854c9ecd869c587a6e337e3cc76919141a1fad38ab2d0a078ab0f6802c",
+        "measured": "28b5ac854c9ecd869c587a6e337e3cc76919141a1fad38ab2d0a078ab0f6802c"
+      }
+    },
+    {
+      "check": "exact_native_sha_Models/FBX/P15-03_Door.fbx",
+      "result": "PASS",
+      "details": {
+        "expected": "c4a7aa9fd054b7106faf692868681290f6880e45f0e0a7d7bcc52f5e88ad0d7d",
+        "measured": "c4a7aa9fd054b7106faf692868681290f6880e45f0e0a7d7bcc52f5e88ad0d7d"
+      }
+    },
+    {
+      "check": "blender_magic",
+      "result": "PASS",
+      "details": {}
+    },
+    {
+      "check": "binary_fbx_magic",
+      "result": "PASS",
+      "details": {}
+    },
+    {
+      "check": "blend_exact_34_names",
+      "result": "PASS",
+      "details": {
+        "missing": [],
+        "extra": []
+      }
+    },
+    {
+      "check": "blend_two_separate_roots",
+      "result": "PASS",
+      "details": {}
+    },
+    {
+      "check": "blend_parent_hierarchy",
+      "result": "PASS",
+      "details": {}
+    },
+    {
+      "check": "blend_uv_normals_triangle_area",
+      "result": "PASS",
+      "details": {}
+    },
+    {
+      "check": "blend_NEW_FBXd_UV0_no_collapsed_triangles",
+      "result": "PASS",
+      "details": {
+        "total": 0,
+        "details": {}
+      }
+    },
+    {
+      "check": "blend_native_hinge_world_position",
+      "result": "PASS",
+      "details": {
+        "hinge_blender_xyz": [
+          -0.35199999809265137,
+          -0.1379999965429306,
+          0.0
+        ]
+      }
+    },
+    {
+      "check": "blend_actual_world_triangle_motion",
+      "result": "PASS",
+      "details": {
+        "hinge_samples": 361,
+        "full_sweep_samples": 46,
+        "critical_collision_samples": [],
+        "full_collision_samples": []
+      }
+    },
+    {
+      "check": "fbx_exact_34_names",
+      "result": "PASS",
+      "details": {
+        "missing": [],
+        "extra": []
+      }
+    },
+    {
+      "check": "fbx_two_separate_roots",
+      "result": "PASS",
+      "details": {}
+    },
+    {
+      "check": "fbx_parent_hierarchy",
+      "result": "PASS",
+      "details": {}
+    },
+    {
+      "check": "fbx_uv_normals_triangle_area",
+      "result": "PASS",
+      "details": {}
+    },
+    {
+      "check": "fbx_NEW_FBXd_UV0_no_collapsed_triangles",
+      "result": "PASS",
+      "details": {
+        "total": 0,
+        "details": {}
+      }
+    },
+    {
+      "check": "fbx_native_hinge_world_position",
+      "result": "PASS",
+      "details": {
+        "hinge_blender_xyz": [
+          -0.35199999809265137,
+          -0.1379999965429306,
+          0.0
+        ]
+      }
+    },
+    {
+      "check": "fbx_actual_world_triangle_motion",
+      "result": "PASS",
+      "details": {
+        "hinge_samples": 361,
+        "full_sweep_samples": 46,
+        "critical_collision_samples": [],
+        "full_collision_samples": []
+      }
+    },
+    {
+      "check": "genuine_workbench_image_P15-03_POST_UV_SHADED.png",
+      "result": "PASS",
+      "details": {}
+    },
+    {
+      "check": "real_indexed_edge_wire_overlay_nonempty",
+      "result": "PASS",
+      "details": {
+        "exact_mesh_edges": 666
+      }
+    },
+    {
+      "check": "genuine_workbench_image_P15-03_POST_UV_REAL_TRIANGLE_WIREFRAME.png",
+      "result": "PASS",
+      "details": {}
+    }
+  ],
+  "result": "NATIVE_POST_UV_MOTION_BVH_AND_TRUE_WIREFRAME_PASS_INDEPENDENT_QA_PENDING",
+  "unity_6_urp": "NOT_RUN",
+  "independent_C01_02": "PENDING",
+  "blend": {
+    "parts": 34,
+    "native_movement": {
+      "hinge_samples": 361,
+      "full_sweep_samples": 46,
+      "critical_collision_samples": [],
+      "full_collision_samples": []
+    }
+  },
+  "fbx": {
+    "parts": 34,
+    "native_movement": {
+      "hinge_samples": 361,
+      "full_sweep_samples": 46,
+      "critical_collision_samples": [],
+      "full_collision_samples": []
+    }
+  }
+}

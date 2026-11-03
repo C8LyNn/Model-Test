@@ -1,0 +1,77 @@
+{
+  "id": "P15-02",
+  "owner": "C01-15",
+  "library_id": null,
+  "library_registration": "PENDING_C01-03",
+  "release": "Interior Props WAVE 01",
+  "version": "0.1.0",
+  "engine": "Unity 6000.3.14f1 URP",
+  "coordinate_system": "X-right Y-up Z-forward",
+  "unit": "meter",
+  "root_scale": [
+    1,
+    1,
+    1
+  ],
+  "name": "Ventilation grille",
+  "nominal_wdh_m": [
+    0.6,
+    0.08,
+    0.4
+  ],
+  "local_measured_wdh_m": [
+    0.6,
+    0.08,
+    0.4
+  ],
+  "local_obj_glb_triangle_count": 304,
+  "fbx_triangle_count": "NOT MEASURED IN UNITY",
+  "pivot": "rear mounting plane center",
+  "mount": "wall; positive local Z outwards",
+  "mount_socket": [
+    0,
+    0,
+    0
+  ],
+  "materials": [
+    "C01_P15_STEEL",
+    "C01_P15_DARK",
+    "C01_P15_WARN"
+  ],
+  "colliders": [
+    {
+      "component": "Body",
+      "center": [
+        0,
+        0,
+        0.04
+      ],
+      "size": [
+        0.6,
+        0.4,
+        0.08
+      ]
+    }
+  ],
+  "hinge_m": null,
+  "hinge_swing": null,
+  "model_files": {
+    "blender": "Assets/C01InteriorProps/P15/Sources/Blender/P15-02.blend",
+    "fbx": [
+      "Assets/C01InteriorProps/P15/Models/FBX/P15-02.fbx"
+    ]
+  },
+  "previews": [
+    "Assets/C01InteriorProps/P15/Previews/Blender/P15-02_front.png",
+    "Assets/C01InteriorProps/P15/Previews/Blender/P15-02_iso.png",
+    "Assets/C01InteriorProps/P15/Previews/Blender/P15-02_side.png"
+  ],
+  "file_hashes": "Assets/C01InteriorProps/P15/QA/blender_export_validation.json",
+  "blender_export_signature_qa": "PASS (GitHub Actions run 40969827124, 17 files total)",
+  "local_static_qa": "PASS (22 contract checks in QA/local_static_qa.json)",
+  "unity_import_qa": "NOT RUN",
+  "unity_prefab_file": "MISSING: create with Tools/C01 Props15/Build FBX prefab set",
+  "unity_clearance_qa": "NOT RUN",
+  "independent_qa": "NOT RUN",
+  "approval": "PENDING_C01-02_AND_C01-10"
+}

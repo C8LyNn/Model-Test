@@ -1,0 +1,109 @@
+{
+  "schema": "C01-15_DETAIL_PASS17_SOURCE_DERIVED_ACTUAL_GLTF_QA",
+  "owner": "C01-15",
+  "asset_id": "P15-02",
+  "issue": 36,
+  "producer_pr": 16,
+  "source_spec": {
+    "path": "Assets/C01InteriorProps/P15/Sources/geometry_spec.json",
+    "version": "0.1.6",
+    "git_blob_sha1": "07531d92cef59d81c9e185810c4a407c48bb918a",
+    "sha256": "9394e90c72b78ce8d33e0629e383fe32b9faafb0a1cbf3fcb817281623cf05f3",
+    "commit": "b1d3c69d082afb713801cba00fd494b8126dfed2"
+  },
+  "source_details": {
+    "new_asset_ids": 0,
+    "original_meshes_preserved": 30,
+    "added_parts": [
+      "LouverFrameAnchor_L_Bottom",
+      "LouverFrameAnchor_L_Top",
+      "LouverFrameAnchor_R_Bottom",
+      "LouverFrameAnchor_R_Top"
+    ],
+    "each_fastener": {
+      "shape": "8-sided capped cylinder",
+      "axis": "Unity +Z",
+      "radius_m": 0.005,
+      "depth_m": 0.037,
+      "z_extent_m": [
+        0.044,
+        0.081
+      ]
+    },
+    "anchor_positions_xy_m": [
+      [
+        -0.225,
+        -0.164
+      ],
+      [
+        -0.225,
+        0.164
+      ],
+      [
+        0.225,
+        -0.164
+      ],
+      [
+        0.225,
+        0.164
+      ]
+    ],
+    "unchanged_original_size_pivot_materials": true
+  },
+  "actual_physical_files": {
+    "original_source_derived_PASS16_glb_sha256": "c8b81d26c52f9d7416cc137988836108deb6b9173fe0327ac6f25c4e2b240034",
+    "new_offline_glb_sha256": "e612e53a545ffbb2ac4ec13ade793990b03504c37bd7658ab6b07dff2663924f",
+    "new_offline_obj_sha256": "cd9a4dce55c269d2adb14f528bbdcadf958b3d3f8439d12e6d4c5841901e8bfd",
+    "interactive_html_sha256": "c80d821ad6fe47cc755ada2ecd461102e339340baa678e4ddedeb7ba0b431d00",
+    "producer_chat_archive_sha256": "2f5f99233735f964c111b31577e4cba3a415a3156bfb45a383df89b0d08b2536",
+    "archive_bytes": 1275870,
+    "archive_crc": "PASS",
+    "sha256_manifest": "IN_ARCHIVE",
+    "provenance": "current P15-02 real offline GLB PASS16 physical bytes + exact four newly committed spec primitives; not native Blender file"
+  },
+  "executed_numeric_qa": {
+    "before_parts": 30,
+    "after_parts": 34,
+    "before_vertices": 416,
+    "after_vertices": 488,
+    "before_triangles": 712,
+    "after_triangles": 840,
+    "per_mesh_watertight": 34,
+    "per_mesh_positive_volume": 34,
+    "per_mesh_winding_consistent": 34,
+    "degenerate_triangles": 0,
+    "original_30_meshes_vertex_face_arrays_unchanged": true,
+    "after_export_glb_reimport_triangle_count_identical": true,
+    "source_aabb_unchanged": true,
+    "strict_segment_triangle_contact_intersections": {
+      "passed": 8,
+      "total": 8,
+      "per_pair_segment_triangles": 32,
+      "method": "Bidirectional Moller-Trumbore on physical indexed triangle arrays, target each new fastener-to-rear-support and fastener-to-upper/lower-frame"
+    },
+    "same_facing_coplanar_overlaps": {
+      "before_pairs": 0,
+      "after_pairs": 0,
+      "method": "All-orientation matching planar triangle with normal/plane quantization ~1e-5 and Shapely projected polygon intersections area>1e-12m2; not full collision/zfighting guarantee"
+    }
+  },
+  "preview": {
+    "before_after_shaded_wireframe": "Four software-rendered PNG from actual old/new source-derived GLB indexed mesh triangles, NOT Blender",
+    "interactive": "Standalone offline HTML shows exactly 34 named meshes/840 real GLB triangles; orbit/zoom/shading/wireframe/mode & mesh select; embedded geometry; WebGL/Canvas2D fallback",
+    "viewer_js_syntax": "PASS",
+    "automated_browser_render": "NOT_RUN_GPU_EGL_INITIALIZATION_FAILED",
+    "not_production_fbx": true
+  },
+  "release_gates": {
+    "source_spec_committed": "PASS",
+    "targeted_source_GLTF_triangle_qa": "PASS",
+    "native_blender_4x_save": "NOT RUN",
+    "actual_blender_origin_binary_fbx": "NOT RUN",
+    "actual_blender_fbx_reimport": "NOT RUN",
+    "native_uv0_hard_normals_materials": "NOT RUN",
+    "independent_C01_02_exact_native_fbx_sha": "PENDING",
+    "unity_6_urp_prefab_collider": "NOT RUN",
+    "approval": "BLOCKED"
+  },
+  "blocker": "Local Blender4/bpy/git-lfs/Unity6 unavailable; GitHub private Actions runner has historically failed before step allocation. NEEDS_OWNER_ACTION: run existing Tools/C01Props15/blender_build.py against current v0.1.6 using actual Blender4 Git LFS hydrated host; save .blend and binary FBX, execute genuine reimport/QA/render, exact SHA independent C01-02, and Unity C01-10. No merge."
+}

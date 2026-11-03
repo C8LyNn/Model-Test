@@ -1,0 +1,134 @@
+{
+  "schema": "C01-15_PASS16_EXACT_SOURCE_AND_OFFLINE_RECONSTRUCTED_MESH",
+  "timestamp_utc": "2026-10-30",
+  "owner": "C01-15",
+  "existing_asset_id": "P15-02",
+  "pr": 16,
+  "issue": 36,
+  "sources": {
+    "model_path": "Assets/C01InteriorProps/P15/Sources/geometry_spec.json",
+    "authoring_spec_version_before": "0.1.4",
+    "authoring_spec_version_after": "0.1.5",
+    "authoring_commit": "a737a4998fe5deb3598c2f301c28b1126914aed4",
+    "authoring_current_git_blob_sha1": "e34122a51507ca5374498c0be734460ac47f37f5",
+    "references": "Assets/C01InteriorProps/P15/References/DETAIL_PASS16_CONSTRUCTION_REFERENCES.md"
+  },
+  "changes": {
+    "models_added": 0,
+    "existing_parts_repositioned": 4,
+    "added_parts": 14,
+    "root_pivot_modified": false,
+    "original_six_blades_modified": false,
+    "other_assets_modified": false,
+    "parts_added": [
+      "LouverRearSupport_L",
+      "LouverRearSupport_R",
+      "LouverFastener_L_00",
+      "LouverFastener_R_00",
+      "LouverFastener_L_01",
+      "LouverFastener_R_01",
+      "LouverFastener_L_02",
+      "LouverFastener_R_02",
+      "LouverFastener_L_03",
+      "LouverFastener_R_03",
+      "LouverFastener_L_04",
+      "LouverFastener_R_04",
+      "LouverFastener_L_05",
+      "LouverFastener_R_05"
+    ],
+    "coplanar_screw_caps_before_z_m": 0.08,
+    "after_z_m": 0.081,
+    "screw_frame_embedding_after_mm": 3,
+    "visible_screw_head_mm": 1,
+    "model_aabb_before_m": [
+      [
+        -0.3,
+        -0.2,
+        0
+      ],
+      [
+        0.3,
+        0.2,
+        0.08
+      ]
+    ],
+    "model_aabb_after_m": [
+      [
+        -0.3,
+        -0.2,
+        0
+      ],
+      [
+        0.3,
+        0.2,
+        0.081
+      ]
+    ]
+  },
+  "source_offline_reconstructed_mesh": {
+    "before": {
+      "parts": 16,
+      "vertices": 184,
+      "triangles": 304,
+      "closed_parts": 16,
+      "winding_consistent_parts": 16,
+      "degenerate_triangles": 0
+    },
+    "after": {
+      "parts": 30,
+      "vertices": 416,
+      "triangles": 712,
+      "closed_parts": 30,
+      "winding_consistent_parts": 30,
+      "positive_volume_parts": 30,
+      "degenerate_triangles": 0
+    }
+  },
+  "real_offline_testing": {
+    "actual_indexed_triangle_cross_part_coplanar_axis_normal_test": {
+      "before_pairs": 4,
+      "before_triangle_pairs": 40,
+      "before_projected_area_mm2": 1692.8215266023,
+      "after_pairs": 0,
+      "after_triangle_pairs": 0,
+      "after_projected_area_mm2": 0,
+      "notes": "same-facing, axis-aligned co-planar triangle intersection polygon clipping on actual reconstructed meshes; excludes oblique/other possible intersections"
+    },
+    "analytical_aabb_contact_checks": {
+      "passed": 104,
+      "total": 104
+    },
+    "strict_surface_contact": {
+      "passed": 32,
+      "total": 32,
+      "method": "bidirectional Moller-Trumbore edge-segment vs indexed-triangle intersection",
+      "tested_pairs": "2 rear support rails x (2 existing frame rails + 6 louvers) =16, 12 front rivets x 1 louver =12, 4 corner screws x 1 existing frame =4",
+      "limitations": "offline authoring geometry; not native Blender/FBX and not comprehensive all-pairs interference assessment"
+    }
+  },
+  "actual_local_outputs": {
+    "zip_filename": "C01-15_DETAIL_PASS16_P15-02_SOURCE_QA.zip",
+    "zip_sha256": "ee0786d03f34746501ff547957f3c3647a0a0c470dc79c0353b12b29781f4f8a",
+    "zip_bytes": 230581,
+    "zip_crc": "PASS",
+    "glb_filename": "P15-02_PASS16_OFFLINE_SOURCE_CANDIDATE.glb",
+    "glb_sha256": "c8b81d26c52f9d7416cc137988836108deb6b9173fe0327ac6f25c4e2b240034",
+    "offline_json_report_sha256": "030e7131d0282bb92fe5b8af8b3d186584d9b1244937a83b18ae630a66f4c9b6",
+    "image_previews": "4 same-camera BEFORE/AFTER shaded/wireframe, 1 closeup, created offline, NOT Blender"
+  },
+  "gates": {
+    "model_source_authoring": "PASS",
+    "offline_mesh_geometry": "PASS",
+    "offline_targeted_triangle_contact": "PASS",
+    "offline_axis_same_facing_overlap": "PASS",
+    "real_blender_4x_save_new_blend": "NOT_RUN",
+    "real_blender_binary_fbx_export": "NOT_RUN",
+    "real_blender_fbx_reimport": "NOT_RUN",
+    "native_uv0_hard_normals": "NOT_RUN",
+    "real_blender_workbench_previews": "NOT_RUN",
+    "independent_c01_02_native_exact_fbx_sha": "PENDING",
+    "unity_6_urp": "NOT_RUN",
+    "final_release": "BLOCKED"
+  },
+  "blocker": "Current connected environment lacks Blender4/bpy/Git LFS/Unity; old LFS native .blend/.fbx are NOT updated with v0.1.5. Private Actions runner allocation reported failing prior to steps. NEEDS_OWNER_ACTION: authorized Windows Blender4+hydrated LFS or eligible Actions runner; regenerate .blend + Blender-origin binary FBX, reimport, add actual SHA and authentic Blender screenshots; independent C01-02 then C01-10 Unity. Keep PR Draft; no merge."
+}

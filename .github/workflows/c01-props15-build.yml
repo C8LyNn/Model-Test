@@ -1,0 +1,42 @@
+name: C01-15 real Blender sources FBX previews (MANUAL ONLY - W26 preserve existing native)
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  blender-export:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Blender CLI
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends blender python3-numpy xvfb libegl1 libgl1 libgl1-mesa-dri libopengl0
+          blender --version | head -4
+      - name: Create actual blend sources and FBX exports
+        run: LIBGL_ALWAYS_SOFTWARE=1 xvfb-run -a blender --background --python Tools/C01Props15/blender_build.py
+      - name: Import actual FBX into Blender and audit UV normals materials
+        run: LIBGL_ALWAYS_SOFTWARE=1 xvfb-run -a blender --background --python Tools/C01Props15/blender_verify.py
+      - name: Check real file signatures and record SHA256
+        run: python3 Tools/C01Props15/validate_generated.py
+      - name: Commit generated real binaries back to isolated branch
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config lfs.https://github.com/C8LyNn/Model-Test.git/info/lfs.locksverify false
+          git add Assets/C01InteriorProps/P15/Sources/Blender/
+          git add Assets/C01InteriorProps/P15/Models/FBX/
+          git add Assets/C01InteriorProps/P15/Previews/Blender/
+          git add Assets/C01InteriorProps/P15/QA/blender_export_validation.json
+          git add Assets/C01InteriorProps/P15/QA/blender_mesh_roundtrip.json
+          if ! git diff --cached --quiet; then
+            git commit -m "C01-15: generated actual Blender FBX and preview artifacts"
+            git fetch origin c01/props-15-installations
+            git reset --hard HEAD
+            git clean -fd Assets/C01InteriorProps/P15
+            git update-index --assume-unchanged Assets/TutorialInfo/Icons/URP.png
+            git rebase origin/c01/props-15-installations
+            git push origin HEAD:c01/props-15-installations
+          fi

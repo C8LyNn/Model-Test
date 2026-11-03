@@ -1,0 +1,135 @@
+{
+  "schema": "C01-13-W27-EXACT-FBX-PROVENANCE-DEPENDENCY-HOLD-V1",
+  "generated_on": "2026-11-03",
+  "dispatch": "https://github.com/C8LyNn/Model-Test/issues/45",
+  "scope": "NON-DOOR PROP PLACEMENT & CLIPPING QA; PR39 only; read-only signed source and prior actual Blender results; no door/gate tests or exports",
+  "current_source": {
+    "asset": "P19-03",
+    "producer_pr": 15,
+    "producer_HEAD": "e053a786ffe8f08e5121c3ae5aa0f974a629660d",
+    "native_fbx_repo_path": "Assets/C01InteriorProps/C01-19/Models/P19-03/P19-03.fbx",
+    "git_lfs_pointer_blob_sha1": "17e48064cbd8ffbba463c80f1efdd692938000cf",
+    "git_lfs_pointer_declared_size_bytes": 29308,
+    "git_lfs_pointer_declared_fbx_sha256": "4a1ad590e79515b0a699f0fb643d9999b4d1726bd68fce97505f401bb8375967",
+    "producer_qa_receipt_blob_sha1": "32dacd0f4dd7abe966390180c8a53057693ebe94",
+    "producer_claim": "10 complex n-gon source faces triangulated 10→0; world vertex positions/UV0 corner sets/pivots unchanged; source + FBX reimport run by producer",
+    "producer_claim_unmodified_world_positions": true,
+    "producer_claim_n_gons_before": 10,
+    "producer_claim_n_gons_after": 0,
+    "producer_claim_original_triangles": 128,
+    "producer_claim_latest_triangles": 128,
+    "c01_13_new_native_physical_binary_reimport": "NOT_RUN_W27",
+    "c01_02_exact_new_fbx_independent_acceptance": "PENDING_NEW_SHA",
+    "user_engine_unity6": "OWNER_ACTION_REQUIRED"
+  },
+  "obsolete_source_sha256": "1bd730b2382879d7d9c2f3d67c4b9646b8ca036c04de663e53b3019c403af2df",
+  "historic_signed_scope": [
+    {
+      "test": "W23",
+      "report_path": "C01NonDoorQA/Pass23/Results/non_door_placement_W23.json",
+      "git_report_blob_sha1": "33f2ee606c4d33aafa31817b2dc244a65282137f",
+      "original_verified_FBX_sha256": "1bd730b2382879d7d9c2f3d67c4b9646b8ca036c04de663e53b3019c403af2df",
+      "yaw_scenarios": 24,
+      "archival_actual_FBX_QA": "PRESERVED_AT_OLD_EXACT_SHA",
+      "current_P19_03_candidate_source_disposition": "STALE_SOURCE_SHA_NOT_CURRENT_ACCEPTANCE"
+    },
+    {
+      "test": "W24",
+      "report_path": "C01NonDoorQA/Pass24/Results/multi_object_clearance_W24.json",
+      "git_report_blob_sha1": "98602d1f18bcd9864d5448cb7d2f9f938e5d0ebf",
+      "original_verified_FBX_sha256": "1bd730b2382879d7d9c2f3d67c4b9646b8ca036c04de663e53b3019c403af2df",
+      "layout_count": 5,
+      "archival_actual_FBX_QA": "PRESERVED_AT_OLD_EXACT_SHA",
+      "current_P19_03_candidate_source_disposition": "STALE_SOURCE_SHA_NOT_CURRENT_ACCEPTANCE"
+    },
+    {
+      "test": "W25",
+      "report_path": "C01NonDoorQA/Pass25/Results/corrected_non_door_layouts_W25.json",
+      "git_report_blob_sha1": "460cb14273ce88b60a57ba02097484eec3b901ef",
+      "original_verified_FBX_sha256": "1bd730b2382879d7d9c2f3d67c4b9646b8ca036c04de663e53b3019c403af2df",
+      "candidate_room_layouts": 3,
+      "slab_cases": 9,
+      "archival_actual_FBX_QA": "PRESERVED_AT_OLD_EXACT_SHA",
+      "current_P19_03_candidate_source_disposition": "STALE_SOURCE_SHA_NOT_CURRENT_ACCEPTANCE"
+    },
+    {
+      "test": "W26",
+      "report_path": "C01NonDoorQA/Pass26/Results/W26_FBX_W01_F01_NONDOOR_CONTACTS.json",
+      "git_report_blob_sha1": "2611c55f5e18140c8bbb4b91f67eaca8ea8ac2a2",
+      "original_verified_FBX_sha256": "1bd730b2382879d7d9c2f3d67c4b9646b8ca036c04de663e53b3019c403af2df",
+      "room_layouts": 3,
+      "actual_W01_strict_crossings": 0,
+      "archival_actual_FBX_QA": "PRESERVED_AT_OLD_EXACT_SHA",
+      "current_P19_03_candidate_source_disposition": "STALE_SOURCE_SHA_NOT_CURRENT_ACCEPTANCE"
+    }
+  ],
+  "unaffected_scene_inputs_from_last_physical_test": [
+    {
+      "id": "P17-01",
+      "old_signed_fbx_sha256": "cd6a5787bb7b4c088f0af35382385e4274c85c415c60467f9a22e46fe33ef02c",
+      "gate": "UNCHANGED_IN_THIS_PLACEMENT_SCENARIO_UNLESS_OWNER_UPDATES_SHA"
+    },
+    {
+      "id": "P18-01",
+      "old_signed_fbx_sha256": "f541d502ba9eaaf5c7a0a7279c44f71f36dd482e3aed3ba0734058dcf1045f6c",
+      "gate": "UNCHANGED_IN_THIS_PLACEMENT_SCENARIO_UNLESS_OWNER_UPDATES_SHA"
+    },
+    {
+      "id": "W01",
+      "old_signed_fbx_sha256": "4260732720f10688e9ee370d2a254b67c9263e3e8241b4da42f08e12fe99632f",
+      "gate": "UNCHANGED_IN_THIS_PLACEMENT_SCENARIO_UNLESS_OWNER_UPDATES_SHA"
+    },
+    {
+      "id": "F01",
+      "old_signed_fbx_sha256": "46acac987ca3f8387472b2dc8b611cd871c90cd3e7d4773568c9005c84cb5c09",
+      "gate": "UNCHANGED_IN_THIS_PLACEMENT_SCENARIO_UNLESS_OWNER_UPDATES_SHA"
+    }
+  ],
+  "other_W27_repaired_assets": [
+    {
+      "id": "P18-03",
+      "new_original_FBX_git_lfs_sha256": "f932c5fb36624ef91c039b1de04367fff4e99da7c400bbcb4cadd4138f83618f",
+      "producer_pr": 43,
+      "current_owner_new_sha": "PENDING_C01_02",
+      "in_old_C01_13_placement_proof": false,
+      "action": "NO_SCENE_INVALIDATION_AND_NO_DUPLICATE_SCENE_RUN"
+    },
+    {
+      "id": "P15-03",
+      "new_original_FBX_SHA256_from_dispatch": "ea25d2d7b47baa50fdca3000b101c65b19ba252994553ee6fe6691ca89d5c149",
+      "producer_pr": 16,
+      "current_owner_new_sha": "PENDING_C01_02",
+      "in_old_C01_13_placement_proof": false,
+      "action": "OUT_OF_C01_13_SCOPE_NO_SCENE_REFRESH"
+    }
+  ],
+  "required_gate_before_current_source_layout_acceptance": [
+    "C01-02 independently verifies exact NEW P19-03 physical BLEND+FBX SHA and signs STATIC/UV/NORMAL/VISUAL PASS, or else producer repair first",
+    "Recheck only current accepted P19-03 in 3 W25 corrected room layouts with pinned unchanged P17-01/P18-01; keep SHA-provenance and 1m transforms",
+    "Recheck corresponding W26 real-FBX W01+F01 contact for those 3 scenes (physical walls and floor); distinguish expected floor support",
+    "Do NOT rerun obsolete W23/W24 exploratory fixtures unless a new independent real defect or requirement appears",
+    "Maintain minimum walkway width OWNER_DECISION_UNDEFINED; Unity Physics/NavMesh/URP NOT_RUN until real licensed editor"
+  ],
+  "states": {
+    "new_geometry_repair_by_C01_13": "NONE_AUTHORIZED",
+    "Blender_model_export": "NONE_W27",
+    "new_layout_retest": "HOLD_C01_02_NEW_SHA",
+    "prior_result_data_mutation": false,
+    "old_result_SHA_attribution_preserved": true,
+    "doors_or_gates_tested_modified_exported": false,
+    "frozen_prs_unchanged_by_this_work": [
+      19,
+      32
+    ],
+    "merge": false,
+    "unity6": "NOT_RUN",
+    "release": "HOLD"
+  },
+  "checks": {
+    "historic_four_reports_sha_binding_to_old_FBXP19_03": true,
+    "producer_native_lfs_SHA_versus_new_repair_receipt": true,
+    "old_source_versus_new_source_sha_changed": true,
+    "old_to_new_producer_claim_world_positions_invariant": true,
+    "no_unapproved_new_source_QA_pass": true
+  }
+}

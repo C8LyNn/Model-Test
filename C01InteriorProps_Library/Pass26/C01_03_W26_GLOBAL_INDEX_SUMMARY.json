@@ -50,7 +50,8 @@
     "three_current_native_candidate_sha_changes_pending_independent": true,
     "still_1420_plus9_unchanged": true,
     "doors_still_excluded": true,
-    "release_0": true
+    "release_0": true,
+    "c01_02_crosswalk_33_current_3_new_pending": true
   },
   "SHA_boundary": "36 currently tracked BLEND+FBX source SHA256 values in Pass26 canonical JSON; W26 P15-03/P18-03/P19-03 are NEW producer original signed SHA from three isolated PRs, independent exact SHA pending. 1420 generated/curated versioned FILE PATHS are NOT 1420 distinct audited meshes. Most generated ship variants have Git blob SHA1 metadata only; no new full-byte content SHA256 claimed.",
   "excluded_policy": "D01/D02 and entrusted door/gate/hatch/airlock/W04 assets forbidden; G_ and SILL_ quarantined as ambiguous; frozen PR #19/#32 untouched. No door byte inspection.",
@@ -77,5 +78,22 @@
     "additional_primary_nondoor_v62_v64": 406,
     "auxiliary_historical_record_count": 9,
     "reviewer_note": "Authoritative current C01-03 sources: Pass26 1420-row primary + 9-row historical supplement + exact 36-row canonical release JSON; W26 one-off parallel secondary retired to avoid duplicate/stale SHA. Generated V3-V64 snapshots only Git metadata/historical."
+  },
+  "independent_W26_polygon_QA_crosswalk": {
+    "source": "C01InteriorProps_QA/GLOBAL_MESH_W26/W26_44_SIGNED_FBX_INDEPENDENT_POLYGON_QA.csv",
+    "source_blob_sha1": "bc184f3db943aef422b5d85d7d3bd9d8d03829ab",
+    "evaluated_rows": 44,
+    "canonical36_current_exact_sha_correlated": 33,
+    "canonical36_new_repaired_sha_without_C01_02_acceptance": [
+      "P15-03",
+      "P18-03",
+      "P19-03"
+    ],
+    "non_door_architecture_rows_in_QA": 8,
+    "scope": "independently actual original FBX7400 polygon/UV/normal static QA only; older SHA findings must not be labeled repaired-current SHA approval",
+    "original_old_36_scoped_UV_collapsed_polygons": 69,
+    "original_old_36_inverted_polygon_normal_corners": 0,
+    "Unity_Editor": "NOT_RUN",
+    "finalApproved": 0
   }
 }

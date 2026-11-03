@@ -1,0 +1,74 @@
+# C01-02 — DETAIL PASS 24 / WAVE 24 — Independent non-door binary QA
+
+**Owner:** C01-02 independent geometry/quality audit. **Date:** 2026-11-03. **Existing Draft PR:** [#13](https://github.com/C8LyNn/Model-Test/pull/13) / `c01/props-02-independent-qa`. **Hard invariant `CLAUDE_DOORS_EXTERNAL_HOLD`:** D01/D02 and all Claude-owned door/gate geometry, pivots, imports, prefabs, materials and scripts **not inspected, touched, re-exported, edited or re-tested**. Frozen door PR #19/#32 untouched. C01-13 non-door placement work stays exclusively in **its existing Draft #39**.
+
+## W24 original binary evidence and independent execution
+
+Independent **read-only FBX7400** parser decoded real downloaded native FBX original bytes, `Objects/Geometry/Vertices`, polygon indices, UV0, corner normals, mesh identities, `Objects/Model` and `Connections` parent transforms. Per actual FBX geometry, applied parent/local translations and signed hinge rotations in original pre-FBX-axis conversion metre space; performed independent **strict two-sided triangle-edge surface intersection narrowphase**, actual polygon vertex signed distances to the inclined ramp surface, 5° sampled poses (no claim of continuous-time/PhysX). Independently audited current C# code blobs. **Native Blender4 producer roundtrips executed on Actions separately**; C01-02 did NOT run Blender application or Unity Editor locally.
+
+**Actual native source provenance:**
+- **P18-05** actual binary FBX SHA256 `58e33516ead13e35e8a48228045c67bd53d6caf8de01883a11625fa2961957e5`, original .blend SHA256 `5f98b9e34f346df3ef133e30243aee5b26dc45032c415d643490d00dbdd22f21`, [real Blender Actions #41089810123 original #12994285353](https://github.com/C8LyNn/Model-Test/actions/runs/41089810123), complete ZIP SHA `03daa679d31714648fd6399f2f761e3db2b0f86ba5fe6e99d34fa1b5539c7dbf`; ZIP CRC and original BLEND/FBX SHA match current PR26 producer LFS OIDs. **Actual 10 meshes /120 indexed triangles**, 0 invalid UV0/corner normals/winding/zero areas/open/nonmanifold. FBX `Lid_HingePivot` is an actual parent of `Case_Lid` and `Lid_Accent`.
+- **P18-07** unchanged signed binary FBX SHA256 `858a24db4338804ee3a3a70c310cd4936e3c45f559b9c4ab81c6037add564554`, .blend `5fd990d8153430dd4f1a8893ebef0097465a404d1b2c6bbd77777de695b3e87d`, [original physical Blender Actions #41536767833 artifact #13184427833](https://github.com/C8LyNn/Model-Test/actions/runs/41536767833), original ZIP SHA `08c7c62a18b52ee2edf83a6a1e01fdf0337991f5640e5007349989166750b74e`; actual 10 meshes/120T + real hinge with five children, complete source/FBX sha unchanged. Independent retraction measurement against genuine original FBX (not only producer BVH #41625233773).
+- **P18-03** unchanged real signed binary FBX SHA256 `f169ab74086ee3853c14b46ac6f6199cd255cfca15d8b7cbef32c3758cde7926`, .blend `ea1b4f5cc5612f8d8ff5c3c585b9b48843659972c2371204b5d3b5c4df3a3b56`, original [real native Action #41344872313 / #13099325067](https://github.com/C8LyNn/Model-Test/actions/runs/41344872313). 63 meshes/1780T; prior C01-02 signed real FBX 576/576 bearing/fork intersection witness unchanged. Current producer PR #18 HEAD `b681c29b5f186bce6b6cc7afb57383a7b4bf967e` changed scripts / QA, **not** original FBX mesh.
+- **Optional RMP-01 (C01-14)**: actual latest .blend SHA256 **`9c5a262813aeeb3a875a162008f120543c8a722ddda477e7af0f813091ec2e40`**, binary FBX **`3b47d12a5a32c286c9e35a8f7198c0820d7fef5e9325823a2cfabdc12559c417`**: downloaded original genuine [Blender4 Action #41626127600/artifact #13226850003](https://github.com/C8LyNn/Model-Test/actions/runs/41626127600), **ZIP SHA256 `97ad7e0126d0e9015e4fe1764a83ffeaf74bc183fa48cb635316ec347ec188fc`**, CRC PASS, both complete native bytes match current PR24 LFS OIDs at HEAD `01174c55e2e42217f48d43bc69fc4ccd26214447`. **6 indexed meshes/72 triangles**, UV0/normals all six, no malformed/nonmanifold/open/near-zero triangles. RMP-01 is **outside** the canonical 36 P15–P19 denominator.
+
+## P18-05: NEW independently detected start-of-opening motion penetration — HOLD
+
+Actual FBX hierarchy: `Lid_HingePivot` local authoring coords `(0,0.2,0.2)m`, children `Case_Lid` and `Lid_Accent`. Tested actual indexed triangles of both moving parts at **23 poses 0°..110° each 5° for BOTH signs around local X** against stationary `Case_Bottom`, `Front_Latch_L/R`, `Carry_Handle_Rail/Stem_L/Stem_R`, `Rubber_Foot_L/R`. Pure surface intersections, not just AABB; source & Unity permitted hinge angle range must be owner-confirmed.
+
+**Opening direction in authored geometry is local −X.** Independent surface intersection counts (sum over named moving/fixed pairs):
+
+| Angle | Actual strict intersecting triangle pairs | Named witness |
+|---|---:|---|
+| 0° | **40** | `Case_Lid`↔Front_Latch_L **9**, Front_Latch_R **11**, static Carry_Handle_Stem_L **11**, Stem_R **9**; some rest/attached contacts may be intentional |
+| −5° | **43** | `Case_Lid`↔Case_Bottom **3**, latch L/R **9+9**, handle stems L/R **11+11** |
+| −10° | **21** | lid↔bottom **3**, handle stems **8+10** |
+| −15° | **3** | lid↔bottom **3** |
+| −20° to −110° | **0 at all 19 sampled poses** | All 8 stationary obstacle families clear |
+| +5° to +110° (opposite sign) | **intersections at all 22 tested nonzero samples** | Worse path; NOT a sign-safe alternative |
+
+**Disposition: `STATIC_INDEXED_PASS / P1 HINGE_MOTION_HOLD`.** Mechanical contact of an engaged latch at rest can be intended, but signed FBX makes **lid/body 3 pairs at −5/−10/−15** and lid/handle stems crossing an actual start-of-opening obstruction. The current W02 builder checks only the existence of `Lid_HingePivot`; unlike P18-07, no validated P18-05 opening/release sequence or suitable lid collider motion test was found in the inspected source. **C01-18** must specify authorized angle range, whether handle/latches remain stationary and how they release, then fix **only** actionable native geometry/hierarchy or source animation/state (and reexport only if geometry actually changed), and request new SHA-specific independent motion QA; Unity PlayMode still NOT_RUN.
+
+## P18-07: new independent native geometry clearance PASS for correct offset; C# child-local axis mismatch — HOLD
+
+Original actual FBX: `P18-07_Root` with signed `Lcl Rotation X=-90.0000025°` and scale 100 FBX export cm; `Front_Lock` a direct mesh child of that root, `Toolbox_LidHinge` another child with five moving mesh descendants. Current [producer real Blender+FBX 151-offset search #41625233773](https://github.com/C8LyNn/Model-Test/actions/runs/41625233773) demonstrates world-space Blender `(0,-.020,0)m` is collision-free, but the latest *implemented* [C# lock gate PR26](https://github.com/C8LyNn/Model-Test/blob/c01/props-18-cargo-wave02/Assets/C01InteriorProps/C01-18-Wave02/Runtime/C01ToolBinLatchGate.cs) at exact blob `265afca618b76fa587e2450c733b36638da20e5e` applies `lockReleaseLocalOffset = new Vector3(0,0,+.020)` **to `Front_Lock.transform.localPosition` (parent-local space)**, not Blender world nor Unity world. These vectors are NOT interchangeable when `P18-07_Root` retains −90° X in the actual FBX. Existing `.fbx.meta` specifies no explicit `bakeAxisConversion`; actual Unity import transform may differ.
+
+**Executed independent physically decoded native FBX triangle narrowphase for 23 lid poses 0°..110°/5°**, five actual moving meshes against five existing stationary meshes (including original lock, chassis, base and both grip rails):
+
+| Front_Lock movement defined in actual original FBX *parent-local* coordinates | Lid↔lock @0° | @5° | ≥10° | Other contact |
+|---|---:|---:|---:|---|
+| Original locked `(0,0,0)` | **13** | **9** | 0 | Expected closed `Bin_Lid↔Bin_Chassis` seam 10 pairs at 0° |
+| **Producer's intended world release**, actual signed FBX child-local **`(0,-.020,0)`** | **0** | **0** | **0** | Only expected 10-pair lid/chassis closed seam at 0° |
+| **Current C# child-local `(0,0,+.020)`** in signed FBX unbaked parent space | **13** | **11** | 0 | Same closed seam |
+
+**Independent verdict:** `BINARY_STATIC_PASS`, **`GEOMETRY_RELEASE_PASS_AT_VERIFIED_LOCAL_MINUS_Y`**, but **`CURRENT_RUNTIME_LOCAL_AXIS_CONTRACT_HOLD`**. Exact signed-FBX root transform maps **child LOCAL +Z → world +Y**, whereas intended Blender −Y maps **world Unity +Z** and requires **child LOCAL −Y** in the native hierarchy (assuming importer preserves root). C01-18 **must correct the executable source local axis after checking Unity imported transforms or compute a target world vector via `InverseTransformVector`**. The original 20mm retraction idea is valid; simply asserting 42 successful producer *world-space* offsets is not evidence the current C# *local* vector is correct. **Not a confirmed PlayMode failure because Unity Editor hasn't run.** Do not edit/reexport existing correct FBX. Exact independent source defect handoff [PR #26 comment](https://github.com/C8LyNn/Model-Test/pull/26#issuecomment-6602916665).
+
+**Runtime state QA:** Current code source checks `TryUnlock` before hinge opening, moves visible `Front_Lock`+collider synchronously, blocks opening if not visually released, closes/relocks only at 0°, restores expected transform in `LateUpdate`. Static contract is reasonable except axis mapping; actual Unity import, renderer, collider, prefab execution, camera and tests remain NOT_RUN.
+
+### Dimension P18-07: scoped independent C01-02 disposition
+
+Native oriented full bounds **0.560m W × 0.341m D × 0.380m H** versus manifest **0.560 × 0.340 × 0.380m** → **+0.001m depth (+0.294% of nominal depth)**. Standards `MESH_TOPOLOGY_INTEGRITY_STANDARD_v1.0.md` recognizes **≤1mm before/after bounds comparison** but explicitly states dimensional/mounting contracts cannot be changed without C01-01 compatible signoff.
+
+**C01-02 engineering recommendation: `ACCEPT_1MM_SCOPED_NONSTRUCTURAL_P18-07_ONLY`**, provided ledger records **actual D=0.341m**, the bin is not used as a structural flush-fit/snap sealing element, and a measured scene clearance does not disqualify it. **This is NOT a generic ±1mm project-wide tolerance waiver, nor C01-01 formal authorization.** Contractual `C01_01_DIMENSION_SIGNOFF_PENDING`; release HOLD pending the standards owner explicitly recording this per-asset exception. No reason to reexport P18-07 solely to force nominal decimal without seeing a functional clearance issue.
+
+## P18-03: updated visual-only bearing contract static source ACCEPTED, physical rendered contact remains
+
+Original FBX unchanged, prior C01-02 actual 576/576 rotating eight metal hubs vs eight fixed forks true triangle intersections remain. At current C01-18 PR18 head `b681c29b5f186bce6b6cc7afb57383a7b4bf967e`, independently inspected actual source:
+- `BuildWave01CargoPrefabs.cs` blob `98a442540df361c2d18a40f26bc18cb80ad2d7d4`: full FBX SHA preflight before writes; exact 63 meshes/1780T, only **six** shelf/upright solid BoxColliders; checks original `Wheel_*` model hierarchy has **no Collider** on any part; serializes **four named wheel pivots** into the component `C01CartWheelVisualBearing`; no automatic wheel PhysX/joints.
+- `C01CartWheelVisualBearing.cs` blob `35ce0a6eaad74c61305a4448f4137955bd7620fa`: guard requiring four true wheel names, meshes without nested colliders, restore nonserialized `restingRotations` in `Awake`, `AdvanceVisualRolling(signedTravelMeters)` rotates wheel local X about 105mm signed radius. Source code exists; **C# compilation/prefab import/scene roll not run**.
+
+**Decision: `STATIC_SOURCE_RENDER_ONLY_CONTRACT_ACCEPTED` / `VISUAL_BEARING_CLIPPING_REVIEW` / `UNITY_ROLL_AND_COLLIDER_HOLD`.** Render-only overlapping rigid hardware is a permitted engineering abstraction **only if** real rendered 4-wheel rotation produces acceptable appearance, and actual imported colliders are segregated. No geometry fix/reexport is justified by hypothetical PhysX-on-parts that the current source deliberately excludes. Not a real wheel-ground dynamics or drift PASS.
+
+## Optional non-door RMP-01: verified physical strip seating FIX — separate from 36
+
+From actual current signed **FBX `3b47d12a5a32c286c9e35a8f7198c0820d7fef5e9325823a2cfabdc12559c417`**: main ramp top plane exactly **`z=0.25*x`** in source metres. For **each** of `AntiSlipMark_01/02/03/04`, independently measured vertex signed heights `z-0.25*x`: **bottom −0.0004000068m (0.400mm embedded)**, **top +0.00300002m (3mm raised)**, and **10 strict actual indexed strip↔Deck_Main intersecting triangle pairs**, demonstrating true physical seating. Old source-only record reported +0.0006m floating gap; current binary has the verified corrected condition. No UV0, normal, indexed manifold/zero-area defects, six mesh bodies/72T preserved. `COL_RampDeck` geometry is exactly coincident with `Deck_Main` (render z-fighting risk only if both visible); actual source `C01Structures14Pass19SignedUnityQa.cs` blob `98c2d358281cf70ca43e85f2d4099bd4a817c365` explicitly disables `COL_` MeshRenderer and creates dedicated nonconvex MeshCollider, checks 1 collider + 5 visible meshes. **That C# is not yet executed in a licensed Unity Editor**, so renderer-off state remains pending runtime inspection.
+
+**Decision: `RMP01_CURRENT_SHA_STATIC_GEOMETRY_AND_STRIP_CONTACT_PASS`; `UNITY_QA_HOLD`; not part of the P15–P19 36-ID release denominator.** Do not rerun Blender or modify correct ramp model. C01-14 can proceed to licensed Unity importer/prefab when available.
+
+## Final gates, registry and no-door freeze
+
+[**Own W24 36-ID QA matrix**](W24_36_EXACT_SHA_INDEPENDENT_NONDOOR_QA.csv) derives from current C01-03 **W23 canonical exact-SHA 36-row ledger** at immutable `da5309117898dd70c54eff26868e8c28aa4b35e2`; carries precise P18-03, P18-05, P18-07 W24 changes without promoting untested others. C01-03 must mirror exact independent result per FBX SHA, preserve 36/36 identities and all producer original SHA; RMP-01 is a **separate optional row** only in its structural registry.
+
+C01-13 new non-door [Draft #39](https://github.com/C8LyNn/Model-Test/pull/39) owns room/corridor spatial QA; no changes to C01-13 branch from C01-02. **Unity:** `UNITY_NOT_RUN / OWNER_ACTION_REQUIRED`. The three SHA-pinned P16-01/P17-02/P18-01 initial C01-10 imports still lack licensed Unity Editor proof; **zero** native prefab/scene/EditMode/PlayMode/Editor.log/screenshots. **Single owner action**: activate Unity 6000.3.14f1 in Windows Unity Hub on authorized owner machine; run `& .\C01InteriorProps\Pass20\run_real_unity_windows.ps1 -Mode Execute -ProjectRoot (Get-Location).Path` in isolated C01-10 PR11 checkout per [existing local owner runbook](https://github.com/C8LyNn/Model-Test/blob/c01/props-10-showcase-integration/C01InteriorProps/Pass20/UNITY6_WINDOWS_OWNER_RUNBOOK.md). No license leaks, no repeated ineffective CI.
+
+**0/36 FINAL_APPROVED, NO MERGE / NO SHIP-LAYOUT EDITS / NO NEW MODELS / CLAUDE_DOORS_EXTERNAL_HOLD STRICT.**

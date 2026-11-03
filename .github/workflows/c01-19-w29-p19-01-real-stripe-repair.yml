@@ -1,0 +1,87 @@
+name: C01-19 W29 P19-01 native P1 visual zfight surgical repair
+on:
+  push:
+    branches: [c01/props-19-furniture]
+    paths:
+      - '.github/workflows/c01-19-w29-p19-01-real-stripe-repair.yml'
+      - 'Assets/C01InteriorProps/C01-19/Source/pass29_p19_01_matress_accent_contact_surgical.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: c01-19-w29-p1901-confirmed-zfight
+  cancel-in-progress: false
+jobs:
+  genuine-blender-p1901-P1-fix:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+      - name: Install genuine Blender4 and hydrate only existing signed P19-01 BLEND/FBX
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends blender python3-numpy git-lfs xvfb xauth libegl1 libgl1 libgl1-mesa-dri libopengl0
+          blender --version | head -3
+          git lfs install --local
+          git lfs pull --include="Assets/C01InteriorProps/C01-19/Models/P19-01/**" --exclude=""
+      - name: Execute physically signed Blender source surgical stripe repair and fresh FBX export/reimport with actual before-after shaded/real-edge PNG
+        run: |
+          LIBGL_ALWAYS_SOFTWARE=1 xvfb-run -a blender -b --factory-startup --python-exit-code 1 --python Assets/C01InteriorProps/C01-19/Source/pass29_p19_01_matress_accent_contact_surgical.py
+      - name: Verify exact actual BLEND FBX bytes, old-to-new BVH, 6 PNG and no unrelated geometry
+        run: |
+          python3 - <<'PY'
+          import json,hashlib,pathlib
+          root=pathlib.Path("Assets/C01InteriorProps/C01-19")
+          qa=root/"QA/PASS29/P19-01"
+          j=json.loads((qa/"W29_P19_01_ACTUAL_BLENDER_FBX_REPAIR.json").read_text())
+          assert j["asset_id"]=="P19-01" and j["status"]=="PRODUCER_REAL_NATIVE_REPAIR_PASS__INDEPENDENT_C01_02_NEW_SHA_REQUIRED"
+          before=j["original_reimported_fbx_before"];after=j["actual_new_fbx_reimport"]
+          assert before["stripe_mattress_bvh_triangle_intersections"]>=15
+          assert after["stripe_mattress_bvh_triangle_intersections"]<=before["stripe_mattress_bvh_triangle_intersections"]
+          assert abs(before["top_delta_stripe_above_mattress_m"])<5e-6
+          assert 0.0013<after["top_delta_stripe_above_mattress_m"]<0.0017
+          assert 0.000025<after["bottom_stripe_embed_into_mattress_m"]<0.00009
+          for state in [before,j["original_source_blend_before"],j["producer_source_blend_after"],after]:
+              assert state["meshes"]==4 and state["vertices"]==269 and state["triangle_equivalents"]==470 and state["UV0_present"]==4
+          flags=j["source_before_after_invariants"]
+          assert all(flags.values()) and j["door_and_other_model_edits"]==0
+          assert j["independent_C01_02"]=="NEW_SHA_PRESUMED_PENDING" and j["unity_6000_3_14f1_URP"]=="NOT_RUN_OWNER_ACTION_REQUIRED"
+          for ext,name,key in [("blend","P19-01.blend","new_signed_blend_SHA256"),("fbx","P19-01.fbx","new_signed_fbx_SHA256")]:
+              p=root/"Models/P19-01"/name;dat=p.read_bytes()
+              assert dat.startswith(b"BLENDER-" if ext=="blend" else b"Kaydara FBX Binary")
+              assert hashlib.sha256(dat).hexdigest()==j[key],(name,j[key])
+          for group in ("true_original_fbxscreenshots","repaired_blend_screenshots","actual_new_fbx_screenshots"):
+              assert set(j[group])=={"SHADED_SAME_CAMERA","TRUE_INDEXED_WIREFRAME_SAME_CAMERA"}
+              for receipt in j[group].values():
+                  p=qa/receipt["file"];raw=p.read_bytes()
+                  assert raw.startswith(b"\x89PNG\r\n\x1a\n") and hashlib.sha256(raw).hexdigest()==receipt["sha256"]
+          print("C01_W29_P19_01_SIGNED_BLENDER_FBX_REPAIR_SHA_PASS",j["new_signed_blend_SHA256"],j["new_signed_fbx_SHA256"],flush=True)
+          print("C01_W29_P19_01_BVH_BEFORE_AFTER",before["stripe_mattress_bvh_triangle_intersections"],after["stripe_mattress_bvh_triangle_intersections"],flush=True)
+          PY
+      - name: Save all actual original and repaired signed outputs and physical screenshot evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-19-W29-P19-01-GENUINE-BLENDER-STRIPE-P1-SURGICAL-REPAIR
+          if-no-files-found: warn
+          path: |
+            Assets/C01InteriorProps/C01-19/Models/P19-01/P19-01.blend
+            Assets/C01InteriorProps/C01-19/Models/P19-01/P19-01.fbx
+            Assets/C01InteriorProps/C01-19/QA/PASS29/P19-01/
+      - name: Commit only source existing P19-01 BLEND FBX and own W29 receipts into existing Draft PR15
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- Assets/C01InteriorProps/C01-19/Models/P19-01/P19-01.blend
+          git add -- Assets/C01InteriorProps/C01-19/Models/P19-01/P19-01.fbx
+          git add -- Assets/C01InteriorProps/C01-19/QA/PASS29/P19-01/
+          if git diff --cached --quiet; then exit 0; fi
+          git diff --cached --name-only | tee /tmp/c01-19-w29-staged-files.txt
+          if grep -Ev '^Assets/C01InteriorProps/C01-19/(Models/P19-01/P19-01\.(blend|fbx)|QA/PASS29/P19-01/.*)$' /tmp/c01-19-w29-staged-files.txt; then
+            echo "FAIL CLOSED: unauthorized staged model/door/ship path"; exit 1
+          fi
+          git commit -m "fix(C01-19 W29): real native Blender stripe visual zfight correction with exact FBX roundtrip receipt"
+          git push origin "HEAD:$GITHUB_REF_NAME"

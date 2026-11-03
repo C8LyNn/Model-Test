@@ -1,0 +1,46 @@
+name: C01 PASS20 Windows signed FBX local Unity preflight
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - c01/props-10-showcase-integration
+    paths:
+      - 'C01InteriorProps/Pass20/**'
+      - '.github/workflows/c01-pass20-windows-real-fbx-preflight.yml'
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  real-three-fbx-windows-preflight:
+    runs-on: windows-2025
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+      - name: Download ORIGINAL W19 three exact signed native FBX (no new Blender exports)
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 41531591861
+          name: C01-PASS19-3-REAL-SIGNED-FBX-READY-FOR-UNITY
+          path: .
+          github-token: ${{ github.token }}
+      - name: Execute Windows PowerShell source-binary physical SHA gate
+        shell: pwsh
+        run: |
+          & ./C01InteriorProps/Pass20/run_real_unity_windows.ps1 -Mode Preflight -ProjectRoot "${{ github.workspace }}"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          $result = Get-Content -LiteralPath 'C01InteriorProps_QA/PASS20/WindowsUnity/C01_10_PASS20_ACTUAL_WINDOWS_RESULT.json' -Raw | ConvertFrom-Json
+          if ($result.physical_fbx_sha_pass -ne $true -or $result.checked_inputs.Count -ne 3 -or $result.unity -ne 'UNITY_NOT_RUN') {
+            throw 'Windows physical FBX preflight did not provide exact three-asset evidence'
+          }
+          Write-Host 'WINDOWS SOURCE PRECHECK 3/3 PASS. LICENSED UNITY ACTUAL NOT_RUN.'
+      - name: Archive actual Windows preflight SHA result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-10-PASS20-WINDOWS-PHYSICAL-FBX-SHA-PREFLIGHT
+          path: C01InteriorProps_QA/PASS20/WindowsUnity/C01_10_PASS20_ACTUAL_WINDOWS_RESULT.json
+          retention-days: 14
+          if-no-files-found: warn

@@ -1,0 +1,150 @@
+name: C01 PASS19 REAL signed 3 FBX to Unity 6 URP
+# W21: run only on explicit owner-authorized dispatch after license setup.
+# Do not repeatedly hydrate unchanged native FBX on ordinary Draft PR commits.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  stage-three-real-native-fbx:
+    runs-on: ubuntu-24.04
+    outputs:
+      unity_license_ready: ${{ steps.license_gate.outputs.ready }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 1
+          lfs: false
+      - name: Install Git LFS for exact physical producer source hydration
+        run: |
+          git lfs version || (sudo apt-get update -qq && sudo apt-get install -y git-lfs)
+          git lfs install --local --skip-smudge
+      - name: Stage exact three signed real FBX from immutable producer commits
+        run: |
+          python3 C01InteriorProps/Pass04/stage_real_fbx.py --repo . --apply --ids P16-01 P17-02 P18-01
+      - name: Validate actual staged bytes and producer SHA pins
+        run: |
+          python3 - <<'PY'
+          import csv,hashlib,json,pathlib
+          manifest=json.loads(pathlib.Path('C01InteriorProps/Pass04/source_stage_36.json').read_text())
+          refs={x['id']:x for x in manifest['assets']}
+          ids=['P16-01','P17-02','P18-01']
+          records=list(csv.DictReader(pathlib.Path('C01InteriorProps_QA/PASS04/staged_sources.csv').open()))
+          assert len(records)==3 and {r['id'] for r in records}==set(ids)
+          out=[]
+          for asset_id in ids:
+              entry=refs[asset_id]
+              file=pathlib.Path(f'Assets/C01InteriorProps/Pass04Incoming/{asset_id}/{asset_id}.fbx')
+              blob=file.read_bytes()
+              assert blob.startswith(b'Kaydara FBX Binary'),asset_id
+              digest=hashlib.sha256(blob).hexdigest()
+              assert digest==entry['final_fbx_sha256'],asset_id
+              row=next(r for r in records if r['id']==asset_id)
+              assert row['state']=='STAGED_SOURCE_NOT_QA_APPROVED',row
+              out.append(dict(id=asset_id,fbx_sha256=digest,bytes=len(blob),
+                              blend_sha256=entry['native_blend_sha256'],
+                              producer_commit=entry['source_commit'],
+                              independent_qa='PENDING',unity='NOT_RUN'))
+          target=pathlib.Path('C01InteriorProps_QA/PASS19')
+          target.mkdir(parents=True,exist_ok=True)
+          (target/'ACTUAL_STAGED_THREE_SHA_RECEIPT.json').write_text(
+              json.dumps(dict(stage='PHYSICAL_SOURCE_BYTES_READY_FOR_UNITY',
+                              assets=out,not_a_unity_import_test=True),indent=2)+'\n')
+          print('PHYSICAL 3/3 REAL FBX SHA + BINARY MAGIC STAGING PASS; UNITY STILL NOT RUN')
+          PY
+      - name: Unity CI license availability gate (never print secret)
+        id: license_gate
+        env:
+          U_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          U_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          U_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+          U_SERIAL: ${{ secrets.UNITY_SERIAL }}
+        run: |
+          if [[ -n "$U_EMAIL" && -n "$U_PASSWORD" && ( -n "$U_LICENSE" || -n "$U_SERIAL" ) ]]; then
+            echo 'ready=true' >> "$GITHUB_OUTPUT"
+            echo 'UNITY CI license configuration present (validity not yet checked)'
+          else
+            echo 'ready=false' >> "$GITHUB_OUTPUT"
+            echo 'UNITY_NOT_RUN: no complete authorized CI Unity license configuration'
+          fi
+      - name: Upload 3 hydrated original FBX and exact native receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-PASS19-3-REAL-SIGNED-FBX-READY-FOR-UNITY
+          path: |
+            Assets/C01InteriorProps/Pass04Incoming/P16-01/P16-01.fbx
+            Assets/C01InteriorProps/Pass04Incoming/P17-02/P17-02.fbx
+            Assets/C01InteriorProps/Pass04Incoming/P18-01/P18-01.fbx
+            C01InteriorProps_QA/PASS04/staged_sources.csv
+            C01InteriorProps_QA/PASS19/ACTUAL_STAGED_THREE_SHA_RECEIPT.json
+          if-no-files-found: error
+          retention-days: 14
+
+  unity-not-run-license-blocker:
+    needs: stage-three-real-native-fbx
+    if: needs.stage-three-real-native-fbx.result == 'success' && needs.stage-three-real-native-fbx.outputs.unity_license_ready != 'true'
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Fail release gate explicitly without a licensed Unity Editor
+        run: |
+          echo '::error::UNITY_NOT_RUN: real Unity 6000.3.14f1 cannot start because complete Unity CI license configuration is absent. Original three FBX staged successfully, but NO prefab/scene/EditMode/PlayMode evidence exists. Set authorized GitHub Actions Unity licensing secrets or run same immutable input via licensed local Windows Unity Editor. Never mark this W19 Unity gate PASS.'
+          exit 19
+
+  actual-unity-6-urp:
+    needs: stage-three-real-native-fbx
+    if: needs.stage-three-real-native-fbx.result == 'success' && needs.stage-three-real-native-fbx.outputs.unity_license_ready == 'true'
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+      - uses: actions/download-artifact@v4
+        with:
+          name: C01-PASS19-3-REAL-SIGNED-FBX-READY-FOR-UNITY
+          path: .
+      - name: Actual Unity 6000.3.14f1 EditMode native prefab and isolated scene build
+        id: editmode
+        uses: game-ci/unity-test-runner@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+          UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
+        with:
+          projectPath: .
+          unityVersion: 6000.3.14f1
+          testMode: EditMode
+          coverageEnabled: false
+          customParameters: -testFilter C01.InteriorProps.Pass19.ThreeNativeEditModeTests
+          artifactsPath: C01InteriorProps_QA/PASS19/UnityEditMode
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+      - name: Actual Unity 6000.3.14f1 PlayMode real FBX prefab PhysX tests
+        id: playmode
+        uses: game-ci/unity-test-runner@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+          UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
+        with:
+          projectPath: .
+          unityVersion: 6000.3.14f1
+          testMode: PlayMode
+          coverageEnabled: false
+          customParameters: -testFilter C01.InteriorProps.Pass19.RealNativePhysicsTests
+          artifactsPath: C01InteriorProps_QA/PASS19/UnityPlayMode
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+      - name: Export actual Unity-generated native QA prefabs and test evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-PASS19-ACTUAL-UNITY-3-NATIVE-PREFABS-AND-LOGS
+          if-no-files-found: warn
+          retention-days: 14
+          path: |
+            Assets/C01InteriorProps/Pass19/Resources/Pass19QA/
+            Assets/C01InteriorProps/Pass19/Generated/
+            C01InteriorProps_QA/PASS19/

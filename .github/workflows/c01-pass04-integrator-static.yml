@@ -1,0 +1,110 @@
+name: C01 PASS04 integrator tooling static checks
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - c01/props-10-showcase-integration
+    paths:
+      - 'C01InteriorProps/Pass04/**'
+      - 'C01InteriorProps/Pass18/**'
+      - 'Assets/C01InteriorProps/Editor/Pass18NativeUnityBatchAudit.cs'
+      - '.github/workflows/c01-pass04-integrator-static.yml'
+jobs:
+  source-tooling:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile Python staging script (syntax only)
+        run: python3 -m py_compile C01InteriorProps/Pass04/stage_real_fbx.py
+      - name: Validate 36 real-source locators and QA restrictions
+        run: |
+          python3 - <<'PY'
+          import json, pathlib, re
+          p = pathlib.Path('C01InteriorProps/Pass04/source_stage_36.json')
+          manifest = json.loads(p.read_text())
+          rows = manifest['assets']
+          assert len(rows) == 36 and len({x['id'] for x in rows}) == 36
+          assert all(re.fullmatch(r'P(?:15|16|17|18|19)-0[1-8]',x['id']) for x in rows)
+          assert all(re.fullmatch(r'[0-9a-f]{40}',x['source_commit']) for x in rows)
+          assert all(x['independent_qa'] == 'NOT_APPROVED' for x in rows)
+          assert sum(x['id'] in ('P19-05','P19-07','P19-08') for x in rows) == 3
+          editor = pathlib.Path('Assets/C01InteriorProps/Editor/Pass04SourceImportAudit.cs').read_text()
+          assert 'Kaydara FBX Binary' in editor
+          assert 'SOURCE_PRECHECK_PASS' in editor
+          assert 'C01_PASS04_FBX_Source_Inspection' in editor
+          assert 'Pass04Quarantine' in editor
+          assert 'NOT_RUN' in editor
+          assert 'new Mesh(' not in editor and 'CreatePrimitive(' not in editor
+          print('C01 PASS04 STATIC MANIFEST+SOURCE CHECKS PASS; no Blender or Unity QA was run')
+          PY
+      - name: PASS18 provenance and Unity-only test boundary assertions
+        run: |
+          python3 - <<'PY'
+          import csv, json, pathlib, re
+          root = pathlib.Path('.')
+          m = json.loads((root/'C01InteriorProps/Pass04/source_stage_36.json').read_text())
+          rows = m['assets']
+          signed = [e for e in rows if re.fullmatch(r'[0-9a-f]{64}',e.get('native_blend_sha256') or '')
+                    and re.fullmatch(r'[0-9a-f]{64}',e.get('final_fbx_sha256') or '')]
+          eligible = [e for e in signed if e['native_export_sync']=='CANDIDATE_BINARY_FBX_QA_NOT_APPROVED']
+          blocked = {e['id'] for e in rows if e['native_export_sync'].startswith('BLOCKED')}
+          assert len(rows)==36 and len(signed)==24 and len(eligible)==23
+          assert blocked == {'P17-05','P18-07','P19-07'}, blocked
+          assert all(e['independent_qa']=='NOT_APPROVED' for e in rows)
+          with (root/'C01InteriorProps/Pass18/C01_10_NATIVE_36_SHA_QA_MATRIX.csv').open() as f:
+              matrix = list(csv.DictReader(line for line in f if not line.startswith('#')))
+          assert len(matrix)==36 and {e['id'] for e in matrix}=={e['id'] for e in rows}
+          editor=(root/'Assets/C01InteriorProps/Editor/Pass18NativeUnityBatchAudit.cs').read_text()
+          assert 'AssetDatabase.LoadAssetAtPath<GameObject>' in editor
+          assert 'Pass04Incoming/' in editor and 'NOT_APPROVED' in editor
+          assert 'new Mesh(' not in editor and 'CreatePrimitive(' not in editor
+          assert 'RunBatch' in editor and 'HasFbxMagic' in editor
+          print('PASS18 STATIC MATRIX SOURCE + UNITY API INTENT CHECK PASS, actual Unity NOT RUN')
+          PY
+      - name: Validate 24 immutable producer git LFS source and FBX pointers
+        run: |
+          python3 C01InteriorProps/Pass18/verify_producer_lfs_pins.py
+      - name: Upload exact producer pointer-only evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-10-PASS18-PRODUCER-LFS-POINTER-AUDIT
+          path: C01InteriorProps_QA/PASS18/PRODUCER_LFS_POINTER_AUDIT.json
+          if-no-files-found: warn
+      - name: Regression - exact FBX SHA pin required before QA staging
+        run: |
+          python3 - <<'PY'
+          import copy, json, pathlib, tempfile
+          from C01InteriorProps.Pass04.stage_real_fbx import stage
+          project = pathlib.Path.cwd()
+          source = json.loads((project/'C01InteriorProps/Pass04/source_stage_36.json').read_text())
+          pinned = next(x for x in source['assets'] if x['id'] == 'P18-01')
+          assert len(pinned['final_fbx_sha256']) == 64
+          with tempfile.TemporaryDirectory() as tmp:
+              manifest = pathlib.Path(tmp)/'manifest.json'
+              def stage_one(apply):
+                  manifest.write_text(json.dumps(source))
+                  return stage(manifest, project, apply, {'P18-01'})
+              assert stage_one(False)[0]['state'] == 'NOT_RUN_DRY_RUN'
+              pinned['final_fbx_sha256'] = None
+              assert stage_one(False)[0]['state'] == 'BLOCKED_UNPINNED_BINARY_SHA256'
+              # Apply mode must not fetch old producer FBX or create a staged asset.
+              assert stage_one(True)[0]['state'] == 'BLOCKED_UNPINNED_BINARY_SHA256'
+              assert not (project/'Assets/C01InteriorProps/Pass04Incoming/P18-01/P18-01.fbx').exists()
+              pinned['final_fbx_sha256'] = 'not-a-real-sha'
+              assert stage_one(False)[0]['state'] == 'BLOCKED_UNPINNED_BINARY_SHA256'
+              pinned['final_fbx_sha256'] = 'f169ab74086ee3853c14b46ac6f6199cd255cfca15d8b7cbef32c3758cde7926'
+              pinned['native_blend_sha256'] = None
+              assert stage_one(False)[0]['state'] == 'BLOCKED_UNPINNED_NATIVE_BLEND_SHA256'
+              assert stage_one(True)[0]['state'] == 'BLOCKED_UNPINNED_NATIVE_BLEND_SHA256'
+          print('C01-10 QA SHA PIN GATE: 4/4 regression assertions PASS; Unity/Blender NOT RUN')
+          PY
+      - name: Execute Python staging dry run with current checkout
+        run: |
+          python3 C01InteriorProps/Pass04/stage_real_fbx.py --repo . --ids P19-05 P19-07 P19-08
+      - name: Assert no producer FBX was downloaded by dry-run
+        run: |
+          test ! -d Assets/C01InteriorProps/Pass04Incoming/P19-05
+          test ! -d Assets/C01InteriorProps/Pass04Incoming/P19-07
+          test ! -d Assets/C01InteriorProps/Pass04Incoming/P19-08
+          echo 'DRY-RUN ISOLATION PASS (no hydrated binaries; no geometry QA)'

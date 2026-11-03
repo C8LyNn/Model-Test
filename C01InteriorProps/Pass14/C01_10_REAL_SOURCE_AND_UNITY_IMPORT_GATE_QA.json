@@ -1,0 +1,160 @@
+{
+  "schema": "C01_10_DETAIL_PASS14_ACTUAL_SOURCE_GEOMETRY_1",
+  "date_local": "2026-10-30",
+  "role": "C01-10 Unity 6 URP importer / actual source geometric preflight; NOT producer edits",
+  "producer_source_snapshot": {
+    "repository": "C8LyNn/Model-Test",
+    "producer_branch": "c01/props-18-cargo",
+    "checked_commit": "681fc52d2159ac774abf1f48efd7b89965d1afe8",
+    "objects": {
+      "P18-01": {
+        "path": "Assets/C01InteriorProps/C01-18/Models/P18-01.obj",
+        "git_blob_sha1": "051ab09222a354f1c64f7c682442529b6f4d54ee",
+        "actual_full_sha256": "6d1cbedba52d975594c4d1c4c1addcf14f752ee7118a521a3e63c880e8044b06",
+        "mesh_parts": 37,
+        "triangles": 684,
+        "previous_git_blob_sha1": "c0f9d6b5131c987e1c484ce4eb83ac2115e1d7f7"
+      },
+      "P18-02": {
+        "path": "Assets/C01InteriorProps/C01-18/Models/P18-02.obj",
+        "git_blob_sha1": "349fd2307eca8d2334cb8c8cbeb5f43ff9408d4b",
+        "actual_full_sha256": "dc9434a32b7de2235d80a374cc04778b657e39c8f98d88b288bdad40fbf6af2c",
+        "mesh_parts": 47,
+        "triangles": 1012,
+        "previous_git_blob_sha1": "9a81151c93006cd2a52d0e5541fe1d3c2cbc2011"
+      },
+      "P18-03": {
+        "path": "Assets/C01InteriorProps/C01-18/Models/P18-03.obj",
+        "git_blob_sha1": "e6440810d917df3c978505ce79f084ba1f98086c",
+        "actual_full_sha256": "22513002afb38d2d3f4a13ef429a41c9a04928528b3cffef87613d51351c1901",
+        "mesh_parts": 53,
+        "triangles": 1532,
+        "previous_git_blob_sha1": "df5a68c87fd49597c79bbb6f70735f32543489bf"
+      }
+    }
+  },
+  "tests": {
+    "P18_01_trim_backer_coplanar": {
+      "scope": "8 explicit current Trim→TrimBacker object-name pairs, exact horizontal/vertical cap planes",
+      "method": "Actual OBJ v+f parser, triangle normal/winding classification, coplanar plane match, convex 2D polygon clipping and sum of 8 paired projected overlap areas.",
+      "BEFORE": {
+        "git_blob": "c0f9d6b5131c987e1c484ce4eb83ac2115e1d7f7",
+        "same_facing_triangle_pairs": 48,
+        "overlap_area_mm2": 2496,
+        "groups_with_overlap": 8
+      },
+      "AFTER": {
+        "git_blob": "051ab09222a354f1c64f7c682442529b6f4d54ee",
+        "same_facing_triangle_pairs": 0,
+        "overlap_area_mm2": 0,
+        "groups_with_overlap": 0
+      },
+      "result": "SOURCE_EIGHT_NAMED_COPLANAR_OVERLAPS_FIXED",
+      "caveat": "Does not imply global absence of all z-fighting or full Blender importer equivalence."
+    },
+    "P18_seven_disconnected_source_parts": {
+      "method": "Actual indexed OBJ part meshes; per named component bounding AABB minimum Euclidean separation to all other authoring OBJ parts. Positive AABB distance mathematically proves non-contact; zero or negative AABB broadphase distance only identifies an eligible contact candidate.",
+      "BEFORE": [
+        {
+          "id": "P18-01",
+          "name": "Lower_Rim",
+          "min_gap_mm": 10
+        },
+        {
+          "id": "P18-02",
+          "name": "Back_Support_0.6",
+          "min_gap_mm": 30
+        },
+        {
+          "id": "P18-02",
+          "name": "Back_Support_1.48",
+          "min_gap_mm": 30
+        },
+        {
+          "id": "P18-03",
+          "name": "Cart_Shelf_Lip_0_-0.48",
+          "min_gap_mm": 5
+        },
+        {
+          "id": "P18-03",
+          "name": "Cart_Shelf_Lip_0_0.48",
+          "min_gap_mm": 5
+        },
+        {
+          "id": "P18-03",
+          "name": "Cart_Shelf_Lip_1_-0.48",
+          "min_gap_mm": 5
+        },
+        {
+          "id": "P18-03",
+          "name": "Cart_Shelf_Lip_1_0.48",
+          "min_gap_mm": 5
+        }
+      ],
+      "AFTER": {
+        "above_component_ids_with_positive_minimum_AABB_separation": 0,
+        "total_parts_queried": 137,
+        "result": "SOURCE_BROADPHASE_SEPARATION_ZERO_7_OF_7"
+      },
+      "caveat": "AABB overlap is NOT a triangle contact proof; C01-12 independently reports exact 72 triangle crossings for all seven, but this C01-10 result itself is AABB-level."
+    },
+    "P18_03_wheels_vs_posts": {
+      "method": "Read actual complete 53-object OBJ source, extract 4 wheel and 4 upright indexed triangles, apply exact object vertex coordinates in meters. Moller-Trumbore segment-triangle face intersection both directions on 4 expected wheel/post pairs.",
+      "AFTER": {
+        "wheel_to_nearest_upright_tested": 4,
+        "triangle_surface_crossings_each": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "result": "NO_FACE_CROSSINGS_IN_REST_POSE"
+      },
+      "caveat": "Does not test 360-degree swept animation, physically contained volume overlap, Unity PhysX contacts or target Blender FBX."
+    },
+    "P17_02_source_contact": {
+      "producer_commit": "cdcc18428d2fb52c2c60826fc8af9a70f51c82f9",
+      "git_blob_sha1": "d80a67af140e434b983104aaec0078f9cf5bd66f",
+      "actual_sha256": "a9995704a70776b49f2bd6916a50cf222a4ab40b370a0a9e258b63bdc4429786",
+      "source_triangle_intersections": "PASS 4/4 screws-to-MountBacking, Keybed/Housing, source-only, carried forward from PASS13"
+    }
+  },
+  "actual_native_FBX_LFS_unchanged_SHA256": {
+    "P18-01": "84851387b58aeadc7f2ace49201077d847cfd294f82acfb2d0a7dce3e471a939",
+    "P18-02": "5ba3faf85a3ea57f755eeb51d0db832c1ce37aa64721d710a22db509f2c6d03f",
+    "P18-03": "639fc09c39b804b9bf83de75a4096cdefe1229f58549662ee777537c19c5e165",
+    "P17-02": "af858385a0abae9c623ee4002bcf22bcbc401b5687024acd8df142eb1b848147",
+    "P15-03": "95d2730197a7c86bd3a59c1748a1df6df2a276ef9a9554d0df3ad0b769f6f414"
+  },
+  "actual_unity_importer_change": {
+    "branch": "c01/props-10-showcase-integration",
+    "file": "Assets/C01InteriorProps/Editor/Pass04SourceImportAudit.cs",
+    "expected_final_SHA_check": "MANIFEST_FINAL_FBX_SHA_INVALID or STAGED_BINARY_DIFFERS_FROM_EXACT_MANIFEST_SHA",
+    "mechanical_import_checks": [
+      "P18-01 Lower_Rim min positive separation to any imported MeshFilter part",
+      "P18-02 two Back_Support min positive separation to any imported MeshFilter part",
+      "P18-03 four Cart_Shelf_Lip min positive separation to any imported MeshFilter part",
+      "P18-03 four Wheel ground contact min Y ±2mm"
+    ],
+    "world_transforms": "mesh.bounds transformed by imported root.worldToLocalMatrix * filter.transform.localToWorldMatrix including pivots/rotations/axes",
+    "mechanical_separation_threshold_m": 0.0005,
+    "code_commit": "953530a122c7d5e6580c69fb2a98c6935f593cdc",
+    "static_verification": "PASS 7/7 source structural invariants; C# compilation NOT RUN"
+  },
+  "pipeline_gate": {
+    "total_asset_ids": 36,
+    "blocked_native_detail_or_export": 19,
+    "quarantine_only_candidates": 17,
+    "independent_final_QA_approved": 0,
+    "source_fix_is_NOT_native_output": true,
+    "new_native_blender4_saves_this_C01_10_turn": 0,
+    "actual_Blender4_roundtrip": "NOT RUN",
+    "actual_Unity6_URP_FBX_import": "NOT RUN",
+    "unity_prefab_generation": "NOT RUN",
+    "need_owner_action": true,
+    "reason": "No Blender4/Unity6/git-lfs executable in the current executor; C01 Actions runner still fails before steps; native after export and C01-02 independent QA required.",
+    "no_new_models": true,
+    "no_ship_geometry_changes": true,
+    "no_unapproved_merge": true
+  }
+}

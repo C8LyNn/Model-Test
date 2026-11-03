@@ -1,101 +1,126 @@
+using System;
 using UnityEngine;
 
 namespace C01.Cargo
 {
     /// <summary>
-    /// QA-scoped functional lock contract for the existing P18-07 tool-bin lid.
-    /// The imported Front_Lock collider remains solid while the lid is locked.
-    /// Open the lid only through TrySetOpeningDegrees, AFTER TryUnlock succeeds.
-    /// Real Unity6 PlayMode / imported FBX pivot-axis validation is required.
+    /// P18-07 signed native 10-mesh/120-triangle lid: a visible Front_Lock mesh
+    /// must retract 20mm in authored ROOT +Z before the lid can move.
+    /// World-geometry proof: genuine Blender4+binary FBX / 23 angles 0..110deg.
+    /// Only licensed Unity6 Editor/PlayMode can validate runtime FBX import.
     /// </summary>
     [DisallowMultipleComponent]
     public sealed class C01ToolBinLatchGate : MonoBehaviour
     {
+        private enum LatchPhase { Locked, Retracting, Unlocked, Relocking }
+
         [SerializeField] private Transform lidHinge;
         [SerializeField] private Collider frontLockCollider;
         [SerializeField] private Vector3 localOpeningAxis = Vector3.left;
-        // Proven signed Blender4 source AND binary FBX 23-pose BVH geometric
-        // release clearance: Blender WORLD (0,-0.020,0) => original authoring
-        // Unity XYZ (0,0,+0.020). Verify imported local axis in actual Unity.
-        [SerializeField] private Vector3 lockReleaseLocalOffset = new Vector3(0f, 0f, 0.020f);
+        // Authoring Unity XYZ root basis (+Z). Do NOT apply blindly in the
+        // imported Front_Lock's local axes: the FBX parent may be rotated.
+        [SerializeField] private Vector3 rootSpaceReleaseOffset = new Vector3(0f, 0f, 0.020f);
+        [SerializeField, Range(0.05f, 1f)] private float retractDurationSeconds = 0.25f;
         [SerializeField, Range(0f, 180f)] private float maximumOpeningDegrees = 110f;
 
         private Quaternion closedLocalRotation;
-        private Vector3 closedLockLocalPosition;
+        private Vector3 engagedLockLocalPosition;
+        private Vector3 retractedDeltaInLockParent;
         private MeshRenderer visibleLockRenderer;
+        private Transform originalLockParent;
+        private LatchPhase phase = LatchPhase.Locked;
+        private float releaseProgress;
         private bool initialized;
-        private bool unlocked;
 
-        public bool IsUnlocked => initialized && unlocked;
+        public bool IsUnlocked => initialized && phase == LatchPhase.Unlocked;
+        public bool IsTransitioning => initialized &&
+            (phase == LatchPhase.Retracting || phase == LatchPhase.Relocking);
+        public bool IsLocked => initialized && phase == LatchPhase.Locked;
+        public float ReleaseProgress => releaseProgress;
         public float MaximumOpeningDegrees => maximumOpeningDegrees;
         public bool IsLockVisiblyReleased =>
-            initialized && unlocked && visibleLockRenderer != null &&
-            visibleLockRenderer.enabled &&
-            (frontLockCollider.transform.localPosition - closedLockLocalPosition).sqrMagnitude > 0.000001f;
+            IsUnlocked && visibleLockRenderer != null && visibleLockRenderer.enabled &&
+            frontLockCollider != null && !frontLockCollider.enabled &&
+            (frontLockCollider.transform.localPosition -
+             (engagedLockLocalPosition + retractedDeltaInLockParent)).sqrMagnitude <= 0.0000000625f;
 
-        /// <summary>Called by the W02 QA prefab builder on the imported REAL FBX nodes.</summary>
+        /// <summary>Called on imported, SHA-pinned FBX parts by W02 prefab builder.</summary>
         public void Configure(Transform hinge, Collider lockCollider)
         {
             if (hinge == null || lockCollider == null)
-                throw new System.ArgumentNullException("P18-07 requires both native lid hinge and Front_Lock collider");
+                throw new ArgumentNullException("P18-07 requires imported hinge and physical Front_Lock");
             if (hinge == lockCollider.transform)
-                throw new System.InvalidOperationException("P18-07 lid hinge cannot be its own fixed Front_Lock");
+                throw new InvalidOperationException("P18-07 lock cannot be lid hinge");
             lidHinge = hinge;
             frontLockCollider = lockCollider;
-            closedLocalRotation = lidHinge.localRotation;
-            closedLockLocalPosition = frontLockCollider.transform.localPosition;
-            visibleLockRenderer = frontLockCollider.GetComponent<MeshRenderer>();
-            if (visibleLockRenderer == null || !visibleLockRenderer.enabled)
-                throw new System.InvalidOperationException("P18-07 Front_Lock must be visible in LOCKED state");
+            originalLockParent = lockCollider.transform.parent;
+            if (originalLockParent == hinge ||
+                (originalLockParent != null && originalLockParent.IsChildOf(hinge)))
+                throw new InvalidOperationException("P18-07 Front_Lock must NOT ride with opening lid");
+            visibleLockRenderer = lockCollider.GetComponent<MeshRenderer>();
+            if (visibleLockRenderer == null || !visibleLockRenderer.enabled || lockCollider.isTrigger)
+                throw new InvalidOperationException("P18-07 needs VISIBLE, solid, non-trigger Front_Lock");
+
+            // Map original AUTHORING ROOT motion through any FBX importer parent
+            // transforms instead of assuming Blender / Unity local bases agree.
+            Vector3 worldRelease = transform.TransformVector(rootSpaceReleaseOffset);
+            retractedDeltaInLockParent = originalLockParent != null
+                ? originalLockParent.InverseTransformVector(worldRelease) : worldRelease;
+            if (retractedDeltaInLockParent.sqrMagnitude < 0.000225f)
+                throw new InvalidOperationException("P18-07 latch needs >=15mm real visual release");
+
+            closedLocalRotation = hinge.localRotation;
+            engagedLockLocalPosition = lockCollider.transform.localPosition;
+            releaseProgress = 0f;
+            phase = LatchPhase.Locked;
             initialized = true;
-            unlocked = false;
+            lidHinge.localRotation = closedLocalRotation;
+            frontLockCollider.transform.localPosition = engagedLockLocalPosition;
             frontLockCollider.enabled = true;
         }
 
         private void Awake()
         {
-            if (lidHinge == null || frontLockCollider == null)
+            try { Configure(lidHinge, frontLockCollider); }
+            catch (Exception ex)
             {
-                Debug.LogError("C01-18 P18-07 latch not bound to real FBX hinge/Front_Lock", this);
+                Debug.LogError("P18-07 invalid imported lock/hinge; release blocked: " + ex.Message, this);
+                initialized = false;
                 enabled = false;
-                return;
             }
-            closedLocalRotation = lidHinge.localRotation;
-            closedLockLocalPosition = frontLockCollider.transform.localPosition;
-            visibleLockRenderer = frontLockCollider.GetComponent<MeshRenderer>();
-            if (visibleLockRenderer == null || !visibleLockRenderer.enabled ||
-                lockReleaseLocalOffset.sqrMagnitude < 0.0001f)
-            {
-                Debug.LogError("P18-07 missing VISIBLE lock or release offset", this);
-                enabled = false;
-                return;
-            }
-            initialized = true;
-            unlocked = false;
-            frontLockCollider.enabled = true;
         }
 
+        /// <summary>Starts a visible release. Opening is REJECTED during animation.</summary>
         public bool TryUnlock()
         {
-            if (!initialized || unlocked || !IsLidClosed())
+            if (!initialized || phase != LatchPhase.Locked || !IsLidClosed() ||
+                visibleLockRenderer == null || !visibleLockRenderer.enabled ||
+                !frontLockCollider.enabled)
                 return false;
-            // First retract the ACTUAL visible mesh itself (collider lives on it),
-            // THEN release collision gate in the SAME synchronous action.
-            frontLockCollider.transform.localPosition = closedLockLocalPosition + lockReleaseLocalOffset;
-            frontLockCollider.enabled = false;
-            unlocked = true;
-            return IsLockVisiblyReleased;
+            phase = LatchPhase.Retracting;
+            releaseProgress = 0f;
+            return true;
         }
 
-        /// <summary>Uses the imported hinge's LOCAL axis; verify sign in REAL Unity Editor.</summary>
+        /// <summary>Starts a visible reengagement, only from fully closed lid.</summary>
+        public bool TryRelock()
+        {
+            if (!initialized || phase != LatchPhase.Unlocked || !IsLidClosed() ||
+                !IsLockVisiblyReleased)
+                return false;
+            phase = LatchPhase.Relocking;
+            releaseProgress = 1f;
+            return true;
+        }
+
         public bool TrySetOpeningDegrees(float degrees)
         {
-            if (!initialized || !unlocked || !IsLockVisiblyReleased ||
-                frontLockCollider.enabled || (float.IsNaN(degrees) || float.IsInfinity(degrees)) ||
+            if (!IsLockVisiblyReleased || IsTransitioning ||
+                float.IsNaN(degrees) || float.IsInfinity(degrees) ||
                 degrees < 0f || degrees > maximumOpeningDegrees ||
                 localOpeningAxis.sqrMagnitude < 0.5f)
             {
-                Debug.LogWarning("P18-07 opening refused: lid LOCKED, lock still engaged, or angle invalid", this);
+                Debug.LogWarning("P18-07 refused lid motion before complete visual release", this);
                 return false;
             }
             lidHinge.localRotation =
@@ -103,34 +128,92 @@ namespace C01.Cargo
             return true;
         }
 
-        public bool TryRelock()
-        {
-            if (!initialized || !unlocked || !IsLidClosed())
-                return false;
-            unlocked = false;
-            frontLockCollider.transform.localPosition = closedLockLocalPosition;
-            frontLockCollider.enabled = true;
-            return true;
-        }
+        private bool IsLidClosed() =>
+            initialized && lidHinge != null &&
+            Quaternion.Angle(lidHinge.localRotation, closedLocalRotation) <= 0.1f;
 
-        private bool IsLidClosed()
+        private void Update() { Tick(Time.deltaTime); }
+
+        /// <summary>
+        /// Internal deterministic frame advance, also exercised using compiled
+        /// C# test doubles. That is NOT a Unity Editor or PlayMode test.
+        /// </summary>
+        internal void Tick(float dt)
         {
-            return initialized && lidHinge != null &&
-                Quaternion.Angle(lidHinge.localRotation, closedLocalRotation) <= 0.1f;
+            if (!initialized || float.IsNaN(dt) || float.IsInfinity(dt) || dt <= 0f)
+                return;
+            if (phase != LatchPhase.Retracting && phase != LatchPhase.Relocking)
+                return;
+            if (frontLockCollider.transform.parent != originalLockParent ||
+                visibleLockRenderer == null || !visibleLockRenderer.enabled)
+            {
+                FailClosed("Front_Lock parent/visible renderer changed during motion");
+                return;
+            }
+
+            float step = dt / Mathf.Max(0.05f, retractDurationSeconds);
+            if (phase == LatchPhase.Retracting)
+            {
+                releaseProgress = Mathf.MoveTowards(releaseProgress, 1f, step);
+                frontLockCollider.transform.localPosition =
+                    engagedLockLocalPosition + retractedDeltaInLockParent * releaseProgress;
+                // Remains solid until visually FULLY retracted; hinge always locked.
+                frontLockCollider.enabled = true;
+                if (releaseProgress >= 1f)
+                {
+                    frontLockCollider.enabled = false;
+                    phase = LatchPhase.Unlocked;
+                }
+            }
+            else
+            {
+                releaseProgress = Mathf.MoveTowards(releaseProgress, 0f, step);
+                frontLockCollider.enabled = false; // Never relock while sliding.
+                frontLockCollider.transform.localPosition =
+                    engagedLockLocalPosition + retractedDeltaInLockParent * releaseProgress;
+                if (releaseProgress <= 0f)
+                {
+                    frontLockCollider.transform.localPosition = engagedLockLocalPosition;
+                    frontLockCollider.enabled = true;
+                    phase = LatchPhase.Locked;
+                }
+            }
         }
 
         private void LateUpdate()
         {
-            if (!initialized || lidHinge == null || frontLockCollider == null)
+            if (!initialized) return;
+            if (frontLockCollider.transform.parent != originalLockParent ||
+                visibleLockRenderer == null || !visibleLockRenderer.enabled)
+            {
+                FailClosed("Front_Lock visible mesh or parent unexpectedly changed");
                 return;
-            if (!unlocked && !IsLidClosed())
+            }
+            if (phase != LatchPhase.Unlocked && !IsLidClosed())
                 lidHinge.localRotation = closedLocalRotation;
-            if (frontLockCollider.enabled == unlocked)
-                frontLockCollider.enabled = !unlocked;
-            Vector3 expectedLockPosition = closedLockLocalPosition +
-                (unlocked ? lockReleaseLocalOffset : Vector3.zero);
-            if ((frontLockCollider.transform.localPosition - expectedLockPosition).sqrMagnitude > 0.00000001f)
-                frontLockCollider.transform.localPosition = expectedLockPosition;
+
+            Vector3 expected = engagedLockLocalPosition +
+                retractedDeltaInLockParent * releaseProgress;
+            if ((frontLockCollider.transform.localPosition - expected).sqrMagnitude > 0.00000001f)
+                frontLockCollider.transform.localPosition = expected;
+            bool shouldBeSolid = phase == LatchPhase.Locked ||
+                                  phase == LatchPhase.Retracting;
+            if (frontLockCollider.enabled != shouldBeSolid)
+                frontLockCollider.enabled = shouldBeSolid;
+        }
+
+        private void FailClosed(string reason)
+        {
+            Debug.LogError("P18-07 lock FAIL-CLOSED: " + reason, this);
+            if (lidHinge != null) lidHinge.localRotation = closedLocalRotation;
+            if (frontLockCollider != null)
+            {
+                frontLockCollider.transform.localPosition = engagedLockLocalPosition;
+                frontLockCollider.enabled = true;
+            }
+            releaseProgress = 0f;
+            phase = LatchPhase.Locked;
+            enabled = false;
         }
     }
 }

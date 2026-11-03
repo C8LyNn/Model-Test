@@ -213,14 +213,39 @@ namespace C01.Ship.V5
             }
         }
 
-        public bool TryPressRay(Ray ray, float maxDistance = 3.5f)
+        // The same first hit controls both the interaction prompt and the press.
+        // A wall in front of a button must prevent either action.
+        public ShipButtonV5 FindButtonOnRay(Ray ray, float maxDistance = 3.5f)
         {
             if (maxDistance <= 0 || !Physics.Raycast(ray, out var hit, maxDistance,
-                Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore)) return false;
+                Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore)) return null;
             var button = hit.collider.GetComponentInParent<ShipButtonV5>();
-            if (button == null || !button.isActiveAndEnabled) return false;
+            return button != null && button.isActiveAndEnabled ? button : null;
+        }
+
+        public bool TryPressRay(Ray ray, float maxDistance = 3.5f)
+        {
+            var button = FindButtonOnRay(ray, maxDistance);
+            if (button == null) return false;
             button.Press();
             return true;
+        }
+
+        // World labels in the walking view are local wayfinding, not X-ray markers.
+        public bool ShouldShowZoneLabel(ShipZoneV5 zone)
+        {
+            if (zone == null || view == null) return false;
+            if (!walking) return selectedDeck < 0 || zone.deck == selectedDeck;
+            if (player != null && Mathf.Abs(player.transform.position.y - zone.floor) > 3) return false;
+            var target = new Vector3(zone.transform.position.x,
+                zone.floor + Mathf.Min(zone.height * .5f, 2), zone.transform.position.z);
+            var offset = target - view.transform.position;
+            float distance = offset.magnitude;
+            if (distance < .01f || distance > 18f) return false;
+            var viewport = view.WorldToViewportPoint(target);
+            if (viewport.z <= 0 || viewport.x < 0 || viewport.x > 1 || viewport.y < 0 || viewport.y > 1) return false;
+            return !Physics.Raycast(view.transform.position, offset / distance, Mathf.Max(0, distance - .05f),
+                Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore);
         }
 
         public bool TryPressScreen(Vector2 screen)
@@ -362,12 +387,23 @@ namespace C01.Ship.V5
             if (GUILayout.Button("Reset view")) ResetView();
             GUILayout.EndHorizontal();
             GUILayout.EndArea();
-            if (walking) GUI.Label(new Rect(Screen.width / 2f - 4, Screen.height / 2f - 10, 20, 20), "+");
-            if (!labels || view == null) return;
+            if (walking)
+            {
+                GUI.Label(new Rect(Screen.width / 2f - 4, Screen.height / 2f - 10, 20, 20), "+");
+                if (view != null && Event.current.type == EventType.Repaint)
+                {
+                    var button = FindButtonOnRay(view.ViewportPointToRay(new Vector3(.5f, .5f)));
+                    if (button != null && (button.gate != null || button.lift != null))
+                    {
+                        var hint = button.lift != null ? "E / LPM: winda — poziom " + button.floor : "E / LPM: brama";
+                        GUI.Box(new Rect(Screen.width / 2f - 110, Screen.height / 2f + 22, 220, 26), hint);
+                    }
+                }
+            }
+            if (!labels || view == null || Event.current.type != EventType.Repaint) return;
             foreach (var zone in zones)
             {
-                if (zone == null || (!walking && selectedDeck >= 0 && zone.deck != selectedDeck)) continue;
-                if (walking && player != null && Mathf.Abs(player.transform.position.y - zone.floor) > 3) continue;
+                if (!ShouldShowZoneLabel(zone)) continue;
                 var point = view.WorldToScreenPoint(new Vector3(zone.transform.position.x,
                     zone.floor + Mathf.Min(zone.height * .5f, 2), zone.transform.position.z));
                 if (point.z <= 0) continue;

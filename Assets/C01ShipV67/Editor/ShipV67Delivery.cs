@@ -19,6 +19,12 @@ public static class ShipV67Delivery
         AssetDatabase.ExportPackage(new[]{"Assets/C01ShipV67","Assets/C01ShipV5/Runtime","Assets/C01ShipV6/Cargo/Runtime","Assets/C01ShipV61/Signage"},
             Path.GetFullPath("C01ShipV67_QA/C01_Ship_Multideck_v6.7.unitypackage"),ExportPackageOptions.Recurse|ExportPackageOptions.IncludeDependencies);
     }
+    public static void ExportPolished()
+    {
+        Directory.CreateDirectory("C01ShipV67Polish_QA");
+        AssetDatabase.ExportPackage(new[]{"Assets/C01ShipV67","Assets/C01ShipV5/Runtime","Assets/C01ShipV6/Cargo/Runtime","Assets/C01ShipV61/Signage"},
+            Path.GetFullPath("C01ShipV67Polish_QA/C01_Ship_Multideck_v6.7.1.unitypackage"),ExportPackageOptions.Recurse|ExportPackageOptions.IncludeDependencies);
+    }
     static void Capture(Camera camera,string path)
     {
         var previous=camera.targetTexture;var active=RenderTexture.active;var texture=new RenderTexture(1280,720,24);

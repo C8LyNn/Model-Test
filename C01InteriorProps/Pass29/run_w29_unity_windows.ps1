@@ -11,9 +11,9 @@ $state=[ordered]@{unity='NOT_RUN';source='NOT_RUN';build='NOT_RUN';editmode='NOT
  screenshots='OWNER_ACTION_REQUIRED';authored_motion='NOT_APPROVED';release='HOLD'}
 $receipt=Join-Path $folder 'W29_REAL_UNITY_RESULT.json'
 function Save{$state|ConvertTo-Json -Depth 8|Set-Content $receipt -Encoding utf8}
-function Editor([string[]]$args,[string]$tag){
- & $UnityExe @args
- if($LASTEXITCODE -ne 0){throw "$tag real Unity process failed $LASTEXITCODE"}
+function Invoke-UnityEditor([string[]]$CommandArgs,[string]$Tag){
+ & $UnityExe @CommandArgs
+ if($LASTEXITCODE -ne 0){throw "$Tag real Unity process failed $LASTEXITCODE"}
 }
 function CheckXml([string]$f){
  if(!(Test-Path $f)){throw 'Real Unity XML missing'}
@@ -36,19 +36,19 @@ try {
  if($LASTEXITCODE -ne 0){throw 'Signed binary source stage failed'}
  $state.source='NINE_PHYSICAL_SIGNED_FBX'
  $state.unity='EDITOR_STARTED';Save
- Editor @('-batchmode','-quit','-projectPath',$ProjectRoot,
+ Invoke-UnityEditor @('-batchmode','-quit','-projectPath',$ProjectRoot,
  '-executeMethod','C01.InteriorProps.Pass29.W29Room.Build',
  '-logFile',(Join-Path $folder 'Build-Editor.log')) 'BUILD'
  $scene=Join-Path $ProjectRoot 'Assets\C01InteriorProps\Pass29\Generated\Scenes\W29_NONDOOR_ROOM_4x4_CORRIDOR_2x4.unity'
  if(!(Test-Path $scene)){throw 'Real scene not generated'}
  $state.build='NATIVE_UNITY_SCENE_SAVED';Save
  $edit=Join-Path $folder 'EditMode-results.xml'
- Editor @('-batchmode','-quit','-projectPath',$ProjectRoot,'-runTests','-testPlatform','editmode',
+ Invoke-UnityEditor @('-batchmode','-quit','-projectPath',$ProjectRoot,'-runTests','-testPlatform','editmode',
  '-testFilter','C01.InteriorProps.Pass29.W29EditTests','-testResults',$edit,
  '-logFile',(Join-Path $folder 'EditMode-Editor.log')) 'EDITMODE'
  $state.editmode=CheckXml $edit;Save
  $play=Join-Path $folder 'PlayMode-results.xml'
- Editor @('-batchmode','-quit','-projectPath',$ProjectRoot,'-runTests','-testPlatform','playmode',
+ Invoke-UnityEditor @('-batchmode','-quit','-projectPath',$ProjectRoot,'-runTests','-testPlatform','playmode',
  '-testFilter','C01.InteriorProps.Pass29.W29Play','-testResults',$play,
  '-logFile',(Join-Path $folder 'PlayMode-Editor.log')) 'PLAYMODE'
  $state.playmode=CheckXml $play

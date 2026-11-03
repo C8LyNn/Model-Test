@@ -8,7 +8,7 @@
     "repo": "C8LyNn/Model-Test",
     "producer_pr_heads_snapshot": {
       "12": "41b92d6efdf69da56f079a03454ab796ce3c7696",
-      "15": "e053a786ffe8f08e5121c3ae5aa0f974a629660d",
+      "15": "ab83b37861157c9471059dd4da5e8b1e7a4ee131",
       "16": "880c3c6eaa199da3490a4ca66413a247bd08e78e",
       "17": "5a0ef15c261864d1e3fc2716466d223b269fc228",
       "18": "6f178a17a566294ef0be7654b2dee516062bb9b1",
@@ -29,7 +29,20 @@
     "C01_02_current_native_report": "C01InteriorProps_QA/W27/W27_EXECUTED_EXACT_SHA_ACCEPTANCE.md",
     "C01_02_W28_full_review": "C01InteriorProps_QA/W28/W28_INDEPENDENT_FINAL_MESH_ACCEPTANCE_HANDOFF.md",
     "Unity_owner_runbook": "C01InteriorProps/Pass20/UNITY6_WINDOWS_OWNER_RUNBOOK.md",
-    "full_byte_caveat": "W29 source SHA values are read from C01-03 canonical registry, previously verified at signed original bytes/current producer LFS OIDs; this W29 export does not rehydrate 44 native binaries or execute Blender/Unity. Independent acceptance scoped to exact SHA only."
+    "full_byte_caveat": "W29 source SHA values are read from C01-03 canonical registry, previously verified at signed original bytes/current producer LFS OIDs; this W29 export does not rehydrate 44 native binaries or execute Blender/Unity. Independent acceptance scoped to exact SHA only.",
+    "latest_W29_reconciliation": {
+      "version": "W29_LATEST_NATIVE_OWNER_CHANGE_OVERLAY",
+      "updated_after_original_rc": "2026-11-03",
+      "original_base_registry_snapshot": "Original W28 canonical JSON may still contain historical P19-01 SHA; this RC file supersedes P19-01 only on producer new-asset current SHA, not independent signoff",
+      "modified_ids": [
+        "P19-01",
+        "P18-07"
+      ],
+      "P19_01_new_producer_native_SHA_verified_Git_LFS": true,
+      "P18_07_C01_01_W29_formal_standard_decision": "ACCEPT_SCOPED_WITH_SEPARATE_SWEPT_PLACEMENT_HOLD",
+      "no_blender_run_in_this_registry_export": true,
+      "UNITY_NOT_RUN": true
+    }
   },
   "counts": {
     "canonical": 36,
@@ -39,16 +52,16 @@
     "ancillary_RC_BLOCKED": 8,
     "final_approved": 0,
     "genuine_editor_acceptance": 0,
-    "canonical_independent_static_scoped_accepted": 24,
+    "canonical_independent_static_scoped_accepted": 23,
     "ancillary_same_sha_scoped_static_accepted": 5,
     "ancillary_version_mismatch": 3
   },
   "core_blockers": [
-    "1/ Licensed Unity 6000.3.14f1 URP Editor actual 4x4m room + 2x4m corridor, signed real FBX import, lighting/pivots/colliders, prefab, EditMode/PlayMode and 1080p screenshots NOT_RUN; C01-10 owner action.",
-    "2/ P19-01 producer C01-19 actual P1 matte orange mattress stripe z-fighting 17 BVH contacts; new native repair+roundtrip+independent current new SHA required.",
-    "3/ C01-01 formal scoped P18-07 static +1mm (0.341m vs nominal 0.340m) and total swept clearance depth 0.361m pending; C01-13 placement clearance.",
-    "4/ W01/W02/W03 curated architectural FBX signatures differ from independent tested candidate, require version/identity harmonization before claiming same-SHA acceptance or Unity staging.",
-    "5/ Independent 1080p URP visual/material/signoff and incomplete current-SHA full assembly scopes across remaining non-door canonical assets; no guessed PASS."
+    "1/ Licensed Unity 6000.3.14f1 URP Editor actual 4x4m room + 2x4m corridor, signed FBX, URP visuals, physics/prefabs/EditMode/PlayMode, 1080p screenshots NOT_RUN; C01-10 Windows owner action.",
+    "2/ P19-01 NEW producer genuine native BLEND+FBX SHA signed repaired on PR15 Action 41735847975; C01-02 independent FULL new-SHA static, shaded visual and residual 14 intentional structural embed contacts classification PENDING.",
+    "3/ P18-07 C01-01 W29 scoped 341mm LOCKED vs 340mm nominal exception ACCEPTED; real 361mm max latch swept placement/collider/room/corridor clearance still C01-13/C01-10 HOLD.",
+    "4/ W01/W02/W03 curated architectural version SHA vs independent-test candidate conflict; C01-11/C01-03/C01-10 select and test correct version before Unity import.",
+    "5/ Actual licensed Unity URP 1080p player-view material/light/normal/scale and remaining current-source assembly intent final signoffs not run; Blender 1080p signed images do not substitute Editor GameView."
   ],
   "hard_freeze": "CLAUDE_DOORS_EXTERNAL_HOLD: no test/export/import/edit of Claude-assigned door or gate models; D01/D02/W04 excluded; no PR19/32 touches, no ship layout edits, no unauthorized merge",
   "no_mesh_edits": true,
@@ -899,43 +912,62 @@
       "gate_static": "STATIC_ACCEPTED_SCOPED",
       "gate_unity": "NOT_RUN",
       "RC_STATUS": "BLOCKED",
-      "defect": "OLD_LOCKED_CROSSINGS_CURRENT_SOURCE_AXIS_FIXED",
+      "defect": "C01_01_W29_ACCEPT_P18_07_SCOPED_STATIC_PLUS_SWEPT_CLEARANCE: 341MM_LOCKED_VS_340MM_NOMINAL_ACCEPTED_UNDER_EXISTING_PLUS_MINUS_2MM; 361MM_FULL_LATCH_SWEPT_REMAINS_PLACEMENT_GATE",
       "repair": "SOURCE_ROOT_WORLD_PARENT_AXIS_REPAIR_NO_NATIVE_REEXPORT",
       "blockers": [
-        "C01_01_FORMAL_0_341m_LOCKED_VS_0_340m_NOMINAL_AND_0_361m_SWEPT_DECISION_PENDING",
+        "C01_13_C01_10_SCENE_FULL_11_STAGE_0_TO_20MM_VISIBLE_LATCH_PLUS_COLLIDER_SWEEP_AND_PLAYER_ACCESS_MUST_BE_MEASURED_IN_SELECTED_PLACEMENT",
         "UNITY_6000_3_14f1_URP_EDITOR_PREFABS_EDITMODE_PLAYMODE_NOT_RUN"
-      ]
+      ],
+      "W29_standard_ruling": {
+        "status": "ACCEPT_P18_07_SCOPED_STATIC_PLUS_SWEPT_CLEARANCE",
+        "source": "Docs/C01InteriorProps/C01_01_W29_P18_07_SCOPED_DIMENSION_AND_SWEEP_RULING.md",
+        "source_pr": 31,
+        "commit": "11ebe4e8be1d11ea2b46f1f3eda66e887d9b9f58",
+        "native_sha_unchanged": true,
+        "locked_depth_m": 0.341000006,
+        "nominal_depth_m": 0.34,
+        "full_swept_depth_m": 0.361000001,
+        "placement_and_Unity_still_unverified": true
+      }
     },
     {
       "asset_id": "P19-01",
       "scope": "CANONICAL_36",
       "owner": "C01-19",
       "producer_PR": 15,
-      "producer_PR_head_observed_W29": "e053a786ffe8f08e5121c3ae5aa0f974a629660d",
-      "model_version_commit_from_W28": "dece710d3672d8eb4ef4183eb3f8657ea6790b21",
-      "BLEND_SHA256": "b4c695f3731ba1cfc575134f41ac795faedbf23ec4cfb58daaeb8bc44b8d8e98",
-      "FBX_SHA256": "f3b9f806f4dcaafe00f24ac22b0805bf06a49d4216cb1339460ed1be9b26a2f2",
+      "producer_PR_head_observed_W29": "ab83b37861157c9471059dd4da5e8b1e7a4ee131",
+      "model_version_commit_from_W28": "W29_NATIVE_REPAIR_CURRENT_PRODUCER_HEAD_ab83b37861157c9471059dd4da5e8b1e7a4ee131",
+      "BLEND_SHA256": "eb026e37ba5e34369d254cfc50d5dc043ca43cb7f52ce34046ae5e0c61dcc879",
+      "FBX_SHA256": "80c7dc228e61b36392914ed36919b39fca58b772286ee569b505cf81ad5c29d1",
       "BLEND_repository_path": "Assets/C01InteriorProps/C01-19/Models/P19-01/P19-01.blend",
       "FBX_repository_path": "Assets/C01InteriorProps/C01-19/Models/P19-01/P19-01.fbx",
-      "blender_QA": "CURRENT_SHA_REAL_BLENDER4_IMPORTED",
-      "independent_QA": "INDEPENDENT_TOPOLOGY_STATIC_PASS__ASSEMBLY_VISUAL_FAIL_REPAIR_REQUIRED",
+      "blender_QA": "PRODUCER_REAL_BLENDER_4_0_2_NATIVE_EXPORT_FBX_REIMPORT_PASS__ACTION_41735847975",
+      "independent_QA": "C01_02_W29_NEW_SHA_STATIC_UV_VISUAL_RETEST_PENDING__HISTORIC_OLD_SHA_VISUAL_FAIL",
       "independent_examined_FBX_SHA256": "f3b9f806f4dcaafe00f24ac22b0805bf06a49d4216cb1339460ed1be9b26a2f2",
-      "independent_exact_current_sha_match": true,
-      "geometry": "W28_INDEPENDENT_BLENDER4_SOURCE_FBX_STATIC_INDEX_UV_NORMAL_PASS__ASSEMBLY_VISUAL_FAIL",
-      "UV": "1_MICRO_UV_COLLAPSE_2_47E-8_M2__NO_IMAGE_TEXTURE_NODE",
-      "normals": "0_INVERTED",
+      "independent_exact_current_sha_match": false,
+      "geometry": "PRODUCER_NATIVE_ORIGINAL_4_MESHES_269_VERTICES_470_TRIANGLES_UNCHANGED; INDEPENDENT_NEW_SHA_PENDING",
+      "UV": "PRODUCER_ORIGINAL_ALL_UV_MATERIAL_PIVOT_HIERARCHY_UNCHANGED; INDEPENDENT_PENDING",
+      "normals": "PRODUCER_ORIGINAL_NORMALS_WINDING_RETAINED; INDEPENDENT_PENDING",
       "motion": "STATIC_FURNITURE",
-      "visual": "BLOCKED_CONFIRMED_P1_MATTRESS_STRIPE_Z_FIGHT",
+      "visual": "PRODUCER_REAL_NATIVE_SHADED_WIRE_A_B_RENDER_AVAILABLE__INDEPENDENT_NEW_SHA_VISUAL_NOT_APPROVED",
       "Unity": "NOT_RUN_OWNER_ACTION_REQUIRED",
-      "gate_static": "STATIC_ACCEPTED_SCOPED",
+      "gate_static": "BLOCKED_NEW_SHA_INDEPENDENT_RETEST_PENDING",
       "gate_unity": "NOT_RUN",
       "RC_STATUS": "BLOCKED",
-      "defect": "P1_CONFIRMED_VISIBLE_MATTRESS_ACCENT_STRIPE_ZFIGHT_17_STRICT_BVH_PAIRS__CURRENT_SIGNED_SHA",
-      "repair": "C01_19_OWN_PR15_TARGETED_NATIVE_REPAIR_REQUIRED__NO_NEW_NATIVE_SHA_PRODUCED",
+      "defect": "OLD_SHA_CONFIRMED_MATTRESS_STRIPE_ZFIGHT_17_BVH_PAIRS; NEW_SHA_PRODUCER_STRIPE_TOP_1_5MM_ABOVE_MATTRESS_50UM_HIDDEN_EMBED; 14_SUPPORT_CONTACT_PAIRS_CLASSIFY",
+      "repair": "C01_19_PR15_W29_NATIVE_BLENDER_4_FBX_ROUNDTRIP_PASS_8_EXISTING_STRIPE_VERTICES_ONLY; NO_MODEL_ID_CHANGE",
       "blockers": [
-        "CONFIRMED_P1_VISUAL_ZFIGHT_MATTRESS_STRIPE_17_TRIANGLE_CONTACTS__PRODUCER_C01_19_NATIVE_REPAIR_AND_RETEST",
+        "C01_02_INDEPENDENT_CURRENT_NEW_FBX_SHA_FULL_NATIVE_STATIC_UV_VISUAL_AND_14_EMBED_CONTACT_CLASSIFICATION_PENDING",
         "UNITY_6000_3_14f1_URP_EDITOR_PREFABS_EDITMODE_PLAYMODE_NOT_RUN"
-      ]
+      ],
+      "W29_evidence": {
+        "producer_native_action": "https://github.com/C8LyNn/Model-Test/actions/runs/41735847975",
+        "producer_receipt": "Assets/C01InteriorProps/C01-19/QA/PASS29/P19-01/W29_P19_01_ACTUAL_BLENDER_FBX_REPAIR.json",
+        "previous_FBX_SHA256": "f3b9f806f4dcaafe00f24ac22b0805bf06a49d4216cb1339460ed1be9b26a2f2",
+        "current_FBX_SHA256": "80c7dc228e61b36392914ed36919b39fca58b772286ee569b505cf81ad5c29d1",
+        "current_BLENDER_SHA256": "eb026e37ba5e34369d254cfc50d5dc043ca43cb7f52ce34046ae5e0c61dcc879",
+        "current_producer_pr15_head": "ab83b37861157c9471059dd4da5e8b1e7a4ee131"
+      }
     },
     {
       "asset_id": "P19-02",

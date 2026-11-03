@@ -6,7 +6,7 @@
 
 - C01-03 [W29 36+8 RC metadata manifest](https://github.com/C8LyNn/Model-Test/blob/c01/props-03-library-wave02/C01InteriorProps_Library/Pass29/C01_03_W29_RELEASE_CANDIDATE_36_PLUS_8.json), exact producer SHA, all 44 `RC_STATUS=BLOCKED`, 0 Unity accepted.
 - C01-02 [W27 genuine 3 changed SHA independent Blender4 import acceptance](https://github.com/C8LyNn/Model-Test/blob/c01/props-02-independent-qa/C01InteriorProps_QA/W27/W27_EXECUTED_EXACT_SHA_ACCEPTANCE.md) — 3/3 STATIC+UV PASS, two movable motion PASS. **Not visual/Unity PASS**.
-- C01-02 [W28 independent visual findings](https://github.com/C8LyNn/Model-Test/blob/c01/props-02-independent-qa/C01InteriorProps_QA/W28/W28_INDEPENDENT_FINAL_MESH_ACCEPTANCE_HANDOFF.md): P19-01 visible mattress stripe z-fighting P1, no current producer fix; P17-01/P19-07/P19-08 current numerical warnings without actionable visible defect.
+- C01-02 [W28 independent visual findings](https://github.com/C8LyNn/Model-Test/blob/c01/props-02-independent-qa/C01InteriorProps_QA/W28/W28_INDEPENDENT_FINAL_MESH_ACCEPTANCE_HANDOFF.md): P19-01 historical original FBX P1 mattress stripe z-fighting; C01-19 has now produced genuine Blender4/FBX corrective native files on Draft PR #15 (FBX SHA `80c7dc228e61b36392914ed36919b39fca58b772286ee569b505cf81ad5c29d1` / BLEND SHA `eb026e37ba5e34369d254cfc50d5dc043ca43cb7f52ce34046ae5e0c61dcc879`, [producer Action #41735847975 SUCCESS](https://github.com/C8LyNn/Model-Test/actions/runs/41735847975)), but C01-02 independent NEW-SHA visual/static retest is still PENDING. P17-01/P19-07/P19-08 current numerical warnings have no other actionable visible defect.
 - Existing tested **3-FBX first-slice Windows execution script** and exact output rules: [PASS20 runbook](https://github.com/C8LyNn/Model-Test/blob/c01/props-10-showcase-integration/C01InteriorProps/Pass20/UNITY6_WINDOWS_OWNER_RUNBOOK.md). Previous source preparation run #41540521732 did **not** execute Unity Editor (license gate). **Do not rerun blocked hosted CI.**
 
 | Phase | Asset | Real current FBX SHA256 | Existing evidence / hold |
@@ -18,7 +18,7 @@
 | Follow-on exact-new-SHA native import | P18-03 | `f932c5fb36624ef91c039b1de04367fff4e99da7c400bbcb4cadd4138f83618f` | C01-02 static/UV/1168 wheel-clearance samples PASS; six frame-only collider contract requires actual PhysX test |
 | Follow-on exact-new-SHA native import | P19-03 | `4a1ad590e79515b0a699f0fb643d9999b4d1726bd68fce97505f401bb8375967` | C01-02 static/UV PASS; C01-13 current physical placement test #41730728371 PASS, not Unity |
 
-**Exclude P19-01 from positive visual QA until C01-19 fixes its verified defect, provides new SHA and C01-02 independent retest.** P18-07 must **not** be signed off before C01-01's written locked-depth +1mm and 0.361m latch swept-envelope clearance ruling.
+**Exclude P19-01 from positive visual QA until C01-02 independently retests new signed FBX `80c7dc228e61b36392914ed36919b39fca58b772286ee569b505cf81ad5c29d1` and confirms the new +1.5mm visible stripe emboss / 0.05mm hidden mounting embed without a rendered fault.** C01-01 has now formally approved the P18-07 model-specific locked 341mm vs nominal 340mm under ±2mm dimensional tolerance: [signed W29 standard ruling](https://github.com/C8LyNn/Model-Test/blob/c01/standards-mesh-topology-pass03/Docs/C01InteriorProps/C01_01_W29_P18_07_SCOPED_DIMENSION_AND_SWEEP_RULING.md). **That does NOT clear the separate 361mm latch motion swept placement or Unity collider/PlayMode gate**; do not retouch native geometry to remove an accepted 1mm.
 
 ## One authorized Windows owner step: real editor first, then door-free layout
 
@@ -38,7 +38,11 @@
 
 - `STATIC_ACCEPTED`: C01-02's scoped static/UV/native motion proof only for signed same-SHA models.
 - `UNITY_ACCEPTED`: **NONE**, until real authorized Editor + tests + visual acceptance.
-- `BLOCKED`: P19-01 visible defect; P18-07 dimension/sweep decision; W01/W02/W03 curated version mismatch; other current-source assembly/visual holds.
+- `BLOCKED`: P19-01 new repaired producer FBX pending independent current-SHA visible and assembly retest; P18-07 model-specific static dimension now formally accepted but 361mm swept scene/collider clearance pending; W01/W02/W03 curated version mismatch; other current-source assembly/visual holds.
 - `NOT_RUN`: all Unity 6000.3.14f1 URP Editor/prefab/scene/EditMode/PlayMode, entire 44 asset final release.
 
 **CLAUDE_DOORS_EXTERNAL_HOLD:** no D01/D02, W04 opening or any Claude-assigned door/gate test/import/export/edit; old PR #19/#32 remain untouched. No ship layout change, no new 3D model IDs, no merge, no unauthenticated license workaround.
+
+## W29 live SHA and independent 1080p addendum
+
+C01-02 has also executed genuine original signed FBX **1920×1080 Blender4 shaded/true-indexed-wire captures** for P15-03, P18-03 and P19-03: [independent current run #41736031650 SUCCESS](https://github.com/C8LyNn/Model-Test/actions/runs/41736031650) (including corrected P18-03 camera framing). These images are evidence for evaluating visual detail, but **NOT a licensed Unity URP GameView render, material/lighting/PhysX/PlayMode approval**. Reuse them; do not rerun Blender for unchanged SHA. [C01-02 W29 exact 36+8 independent record](https://github.com/C8LyNn/Model-Test/blob/c01/props-02-independent-qa/C01InteriorProps_QA/W29/W29_C01_02_INDEPENDENT_RC_36_PLUS_8.json). C01-03 [W29 current RC metadata with P19-01 new SHA and P18-07 ruling](https://github.com/C8LyNn/Model-Test/blob/c01/props-03-library-wave02/C01InteriorProps_Library/Pass29/C01_03_W29_RELEASE_CANDIDATE_36_PLUS_8.json) remains blocked for Unity.

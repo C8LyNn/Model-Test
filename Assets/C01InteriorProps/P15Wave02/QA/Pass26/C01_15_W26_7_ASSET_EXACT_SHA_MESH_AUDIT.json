@@ -53,7 +53,7 @@
       "normal_inverted_corners": 0,
       "uv0_degenerate_faces": 0,
       "boundary_edges": 0,
-      "qa_status": "REQUIRES_NEW_SHA_INDEPENDENT_QA_AND_FIXED_BVH_MOTION_RETEST",
+      "qa_status": "PRODUCER_UV0_STATIC_PASS_AND_CORRECTED_BVH_SAMPLED_MOTION_PASS__C01_02_NEW_SHA_INDEPENDENT_PENDING",
       "unity6_editor": "NOT_RUN",
       "final_release": "HOLD",
       "provenance": "W26 original repair and real import Action 41708819671"
@@ -132,10 +132,10 @@
     }
   ],
   "known_exceptions": {
-    "P15-03": "Original full binary FBX had 120 collapsed UV0 faces: DoorSkin 24, each hinge sleeve 48. Producer repaired 3 custom mesh UV layers in actual Blender4, full new BLEND+3 signed binary FBX exported and true FBX reimport verified 0 UV degeneracy, unchanged 34 parts / 400 verts / 666 Blender edges / 330 Blender faces / 672 triangles. Old PASS19 motion QA AABB broadphase was INCORRECT; its motion PASS cannot be inherited; W26 corrected actual sweep queued; independent C01-02 must sign the NEW SHA.",
+    "P15-03": "UV0 defect original 120 collapsed triangles, repaired to 0 in genuine Blender4 native plus full FBX reimport, no geometry edits. Prior PASS19 falsely filtered collision candidates because inverted AABB comparisons; prior PASS revoked. Corrected broadphase A.low<=B.high and B.low<=A.high, new W26 native Blender and real imported FBX BVHTree 361 critical +46 all-moving samples EACH: 0 triangle crossings, 25/25 stage checks PASS. Producer only; new SHA C01-02 independent and Unity Editor still PENDING.",
     "P15-07": "Exactly 48 boundary edges are on two intentional single-sided 24-triangle gauge faces, previously independently STATIC_PASS, not defects.",
     "UV_out_of_0_1": "Existing intentionally procedural generated UV mapping can place coordinates outside [0,1]; this is not considered an automatic defect absent texture policy and visible failure.",
-    "genuine_wireframe": "W26 initial wireframe-labelled PNG files were pixel identical to shaded; corrected wireframe rendering and motion tests scheduled on new signed model; do not cite false wire PNG as proof."
+    "genuine_wireframe": "Original W26 wire-labelled PNGs were pixel-identical shaded images and withdrawn; final Blender4 read-only run #41711037346 created actual indexed-edge curve overlay from newly signed FBX, visible pixel difference PASS, temporary QA geometry never saved or exported. Final original SHA unchanged."
   },
   "constraints": [
     "All delegated external Claude doors and old PR19/32 excluded",
@@ -148,7 +148,11 @@
     "p15_03_new_original_full_binary_artifact": "https://github.com/C8LyNn/Model-Test/actions/runs/41708819671/artifacts/13267756860",
     "prior_native_p15w01": "https://github.com/C8LyNn/Model-Test/actions/runs/41536225400",
     "prior_native_p15w02": "https://github.com/C8LyNn/Model-Test/actions/runs/41545208813",
-    "independent_sha_QA": "https://github.com/C8LyNn/Model-Test/blob/c01/props-02-independent-qa/C01InteriorProps_QA/DETAIL_PASS23/W23_36_NONDOOR_SHA_INDEPENDENT_QA_MATRIX.csv"
+    "independent_sha_QA": "https://github.com/C8LyNn/Model-Test/blob/c01/props-02-independent-qa/C01InteriorProps_QA/DETAIL_PASS23/W23_36_NONDOOR_SHA_INDEPENDENT_QA_MATRIX.csv",
+    "p15_03_corrected_full_motion": "https://github.com/C8LyNn/Model-Test/actions/runs/41709944153",
+    "p15_03_final_real_wireframe_corrected_motion": "https://github.com/C8LyNn/Model-Test/actions/runs/41711037346",
+    "p15_03_final_artifact": "https://github.com/C8LyNn/Model-Test/actions/runs/41711037346/artifacts/13267968948",
+    "real_wireframe": "https://github.com/C8LyNn/Model-Test/blob/c01/props-15-installations/Assets/C01InteriorProps/P15/QA/Pass26/Previews/P15-03_REAL_TRIANGLE_WIREFRAME.png"
   },
   "checks": {
     "model_ids": 7,
@@ -162,7 +166,13 @@
     "original_degenerate_faces": 0,
     "original_inverted_normal_corners": 0,
     "original_duplicate_triangles": 0,
-    "intentional_gauge_boundary_edges": 48
+    "intentional_gauge_boundary_edges": 48,
+    "p15_03_latest_blender_critical_hinge_angles": 361,
+    "p15_03_latest_blender_all_moving_angles": 46,
+    "p15_03_latest_fbx_critical_hinge_angles": 361,
+    "p15_03_latest_fbx_all_moving_angles": 46,
+    "p15_03_corrected_BVH_surface_hits": 0,
+    "p15_03_corrected_BVH_pass_count": 25
   },
-  "release_state": "PRODUCER_STATIC_QA_SCOPED_6_STABLE_1_UV_REPAIRED_HINGE_RETEST_AND_C01_02_PENDING_UNITY_NOT_RUN"
+  "release_state": "C01_15_ALL_7_NATIVE_STATIC_SCOPED_PRODUCER_PASS_P15_03_UV_REPAIRED_AND_CORRECTED_BVH_MOTION_PASS_C01_02_NEW_SHA_INDEPENDENT_PENDING_UNITY_NOT_RUN"
 }

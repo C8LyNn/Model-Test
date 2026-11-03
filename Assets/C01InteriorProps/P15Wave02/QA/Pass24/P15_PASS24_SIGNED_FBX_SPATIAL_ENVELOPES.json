@@ -1,0 +1,189 @@
+{
+  "format": "C01_15_PASS24_REAL_FBX_NON_DOOR_SPATIAL_QA_V1",
+  "owner": "C01-15",
+  "date": "2026-11-03",
+  "status": "READ_ONLY_PRODUCER_SPATIAL_MEASUREMENT_PASS_NOT_RELEASE_APPROVAL",
+  "immutable_source": {
+    "run": "https://github.com/C8LyNn/Model-Test/actions/runs/41545208813",
+    "artifact_id": 13189385320,
+    "artifact_url": "https://github.com/C8LyNn/Model-Test/actions/runs/41545208813/artifacts/13189385320",
+    "original_zip_size_bytes": 1071317,
+    "original_zip_sha256": "4f90cdd6f38d3b53eca52ec4a995e9563c5ca9b16ae565a49ddce5dc4bd99dfe",
+    "zip_crc": "PASS",
+    "native_blend_and_fbx_actual_sha": "PASS_8_OF_8",
+    "git_lfs_current_oid_match": "PASS_8_OF_8"
+  },
+  "measured_method": "Read actual original FBX7400 binary Objects/Geometry vertex arrays + polygon indices, validate 4 part/triangle counts, UV0/normal layers and root (-90 X, 100cm units); transform to Unity metres (X,Z,-Y), yaw rotate 90/270 degrees, translate to explicitly specified corridor roots. X-axis vertex min/max separation is a rigorous exclusion proof for triangle-triangle overlap for each shown arrangement. No proxies and no Blender re-export.",
+  "real_original_files": {
+    "P15-04": {
+      "native_BLEND_sha256": "54a4b2efdfe0cc3766ff1a04ce3bca24f1adcdf2e8d7812058fc000e297393cd",
+      "binary_FBX_sha256": "58252505554c65354f9ebce7e3264868d3ff7a57c850d16323e71e6356c5ce04",
+      "fbx_geometry_objects": 24,
+      "indexed_triangle_count": 1740,
+      "axis_aligned_local_unity_xyz_bounds_m": [
+        [
+          0,
+          -0.18000000715255737,
+          -0.1899999976158142
+        ],
+        [
+          3,
+          0,
+          0.1899999976158142
+        ]
+      ]
+    },
+    "P15-05": {
+      "native_BLEND_sha256": "4f30880643a17d97c9f7cfca4cd0a219e12fff6f8868fa1ba31017e9083f2c01",
+      "binary_FBX_sha256": "5d254249234c100ca2e7c0b4d65fe8ed8bc366f275d4718b4d90bac416d3da5e",
+      "fbx_geometry_objects": 9,
+      "indexed_triangle_count": 4512,
+      "axis_aligned_local_unity_xyz_bounds_m": [
+        [
+          -0.00013421813491731882,
+          -0.18000000715255737,
+          -0.1899999976158142
+        ],
+        [
+          0.7400000095367432,
+          -0.00800000037997961,
+          0.5501342415809631
+        ]
+      ]
+    },
+    "P15-06": {
+      "native_BLEND_sha256": "644b1fab278bf1694fc6eb61b6a1cfe0f4bcfce204ecfd25a6b4cb13221a82aa",
+      "binary_FBX_sha256": "e48b943e7926a3d62e3f956f1b1bc59218dbe310837d179dfbbfee435001f448",
+      "fbx_geometry_objects": 33,
+      "indexed_triangle_count": 7356,
+      "axis_aligned_local_unity_xyz_bounds_m": [
+        [
+          -0.0008739072945900261,
+          -0.09799999743700027,
+          0
+        ],
+        [
+          1.5008009672164917,
+          0.09799999743700027,
+          0.25
+        ]
+      ]
+    },
+    "P15-07": {
+      "native_BLEND_sha256": "00a456375c5fd731f811d61d1ae171330a5291d5669ae9fdcc752b174b72aa6e",
+      "binary_FBX_sha256": "ffc0211cc73a2056b815f3a494c24ab97d3c808d7ad9eb5b472472c555fb47f2",
+      "fbx_geometry_objects": 21,
+      "indexed_triangle_count": 5420,
+      "axis_aligned_local_unity_xyz_bounds_m": [
+        [
+          -0.6000000238418579,
+          0,
+          0
+        ],
+        [
+          0.6000000238418579,
+          0.8999999761581421,
+          0.2800000011920929
+        ]
+      ]
+    }
+  },
+  "corridor_test": {
+    "dimensions_xz_m": [
+      2,
+      4
+    ],
+    "wall_and_doors": "NONE_MODELED",
+    "cases": [
+      {
+        "case": "two_opposing_P15_07_in_2x4m_corridor",
+        "left": {
+          "asset": "P15-07",
+          "origin_xyz_m": [
+            0,
+            0,
+            2
+          ],
+          "yaw_deg": 90,
+          "bounds_xyz_m": [
+            [
+              0,
+              0,
+              1.399999976158142
+            ],
+            [
+              0.2800000011920929,
+              0.8999999761581421,
+              2.600000023841858
+            ]
+          ]
+        },
+        "right": {
+          "asset": "P15-07",
+          "origin_xyz_m": [
+            2,
+            0,
+            2
+          ],
+          "yaw_deg": 270,
+          "bounds_xyz_m": [
+            [
+              1.719999998807907,
+              0,
+              1.399999976158142
+            ],
+            [
+              2,
+              0.8999999761581421,
+              2.600000023841858
+            ]
+          ]
+        },
+        "gap_m": 1.4399999976158142,
+        "x_axis_separates_meshes": true,
+        "corridor_footprint_fits": true,
+        "walkable_minimum_threshold": "UNDEFINED"
+      },
+      {
+        "case": "left_high_P15_06_right_low_P15_07_in_2x4m_corridor",
+        "left": {
+          "asset": "P15-06",
+          "origin_xyz_m": [
+            0,
+            1.7,
+            2.75
+          ],
+          "yaw_deg": 90
+        },
+        "right": {
+          "asset": "P15-07",
+          "origin_xyz_m": [
+            2,
+            0,
+            2
+          ],
+          "yaw_deg": 270
+        },
+        "gap_m": 1.469999998807907,
+        "x_axis_separates_meshes": true,
+        "shared_longitudinal_z_extent_m": 1.2000000476837158,
+        "shared_vertical_y_extent_m": 0,
+        "corridor_footprint_fits": true,
+        "walkable_minimum_threshold": "UNDEFINED"
+      }
+    ]
+  },
+  "other_gates": {
+    "independent_C01_02": "W22_P15_04_TO_06_STATIC_PASS_P15_07_GAUGE_REVIEW_CLOSED_UNCHANGED",
+    "unity_editor": "NOT_RUN",
+    "walkable_threshold": "DESIGN_THRESHOLD_UNDEFINED_C01_00_C01_01",
+    "physics_colliders": "NOT_RUN",
+    "navmesh": "NOT_RUN",
+    "final_release": "HOLD"
+  },
+  "caveats": [
+    "Measured vertex envelope only; no corridor walls, player capsule, equipment operating clearances, navigation agent or headroom contract tested.",
+    "Disjoint X intervals prove no pairwise mesh contact in the two stated examples, not a compliant walking path or pass for arbitrary placements.",
+    "No model, door, gate, ship structure, source material, pivot, prefab, or FBX changed. Do not rerun successful native exporter."
+  ]
+}

@@ -37,7 +37,7 @@
       16,
       25
     ],
-    "w29_git_changes": "ONE_JSON_RC_METADATA_ONLY",
+    "w29_git_changes": "ONE_JSON_RC_METADATA_ONLY_CREATED_AND_UPDATED_FOR_NEW_CROSS_LANE_W29_PROVENANCE",
     "independent_full_visual_status": "NOT_ACCEPTED",
     "final_models_approved": 0
   },
@@ -50,11 +50,11 @@
     "evidence_rule": "No claimed Unity result until real Editor signs SHA, import, materials, physical scale/pivot/colliders, both test XML and actual screenshots."
   },
   "global_top_blockers_max_five": [
-    "BLOCKER_1_LICENSED_EDITOR Unity6.3.14f1 URP actual prefabs/QA Scene/EditMode/PlayMode/1080p NOT_RUN",
-    "BLOCKER_2_P19-01 new independent P1 visible mattress-accent z-fight: producer C01-19 repair + new SHA Blender4 + C01-02 retest",
-    "BLOCKER_3_P18-07 +1mm static depth and 0.361m full latch sweep scoped standard ruling by C01-01",
-    "BLOCKER_4_W01_W02_W03 curated vs native physically-tested SHA mismatch, C01-03/C01-11/C01-10 version choice needed",
-    "BLOCKER_5_INDEPENDENT_VISUAL final acceptance of prop/ship-scale materials, actual Unity GameView at 1080p not yet awarded"
+    "1/ Unity licensed 6000.3.14f1 Editor 4x4m room 2x4m corridor original signed FBX, scene/prefabs, EditMode/PlayMode and 1080p Scene/Game NOT_RUN/OWNER_ACTION_REQUIRED.",
+    "2/ P19-01 C01-19 producer REAL Blender4 native source+FBX repair completed W29 at FBX SHA 80c7dc228e61b36392914ed36919b39fca58b772286ee569b505cf81ad5c29d1; C01-02 independent NEW SHA visual/narrowphase signoff PENDING. Do not mark repaired SHA visually approved on producer testimony.",
+    "3/ P18-07 C01-01 scoped static+1mm size and +20mm latch reservation ACCEPTED W29; still requires current-FBX actual 11-position placement/whole lid clearance by C01-13 and real Unity/PhysX plus HQ corridor width decision.",
+    "4/ W01/W02/W03 curated FBX version SHA differs from older Blender independent tested candidate. C01-03/C01-11/C01-10 must choose original/curated exact source before integrated scene claim.",
+    "5/ C01-02+C01-10 final independent 1080p real URP/material/lighting/UV/pivot/collider and visual appearance acceptance not signed; new 3-FBX independent visual workflow in progress at W29 snapshot."
   ],
   "protection": "CLAUDE_DOORS_EXTERNAL_HOLD all D01 D02 and any entrusted doors/gates, PR19 PR32 frozen and not inspected/tested/modified/exported/imported. Ship layout unchanged. Never merge unapproved.",
   "rows": [
@@ -212,5 +212,53 @@
       "BLOCKER": "LICENSED_UNITY6000_3_14F1_URP_REAL_IMPORT_VISUAL_PREFAB_EDITMODE_PLAYMODE_NOT_RUN",
       "PROOF": "https://github.com/C8LyNn/Model-Test/pull/25#issuecomment-6591162466"
     }
-  ]
+  ],
+  "global_current_RC_W29_authority": {
+    "url": "https://github.com/C8LyNn/Model-Test/blob/c01/props-03-library-wave02/C01InteriorProps_Library/Pass29/C01_03_W29_RELEASE_CANDIDATE_36_PLUS_8.json",
+    "blob_sha_at_W29_read": "5221e426cfabe4f5f1451f9f91b5371d1d58e6df",
+    "counts": {
+      "canonical": 36,
+      "ancillary": 8,
+      "total": 44,
+      "blocked": 44,
+      "final_approved": 0,
+      "unity_accepted": 0
+    },
+    "notice": "This RC manifest was authored before the later W29 C01-01 dimensional ruling and C01-19 P19-01 new native producer file. C01-03 MUST update current per-asset row after independent new SHA, not claim PASS based on producer repair alone."
+  },
+  "cross_lane_W29_late_verified_evidence": {
+    "P18-07": {
+      "standards": "ACCEPT_P18_07_SCOPED_STATIC_PLUS_SWEPT_CLEARANCE",
+      "rule": "https://github.com/C8LyNn/Model-Test/blob/c01/standards-mesh-topology-pass03/Docs/C01InteriorProps/C01_01_W29_P18_07_SCOPED_DIMENSION_AND_SWEEP_RULING.md",
+      "rule_commit": "11ebe4e8be1d11ea2b46f1f3eda66e887d9b9f58",
+      "fbx_sha": "858a24db4338804ee3a3a70c310cd4936e3c45f559b9c4ab81c6037add564554",
+      "static_depth_m": 0.341000006,
+      "nominal_depth_m": 0.34,
+      "swept_depth_m": 0.361000001,
+      "remaining": "Placement 11 steps and full lid/Unity collider PhysX NOT_RUN; HQ min corridor width policy open."
+    },
+    "P19-01": {
+      "producer_status": "ACTUAL_BLENDER4_NATIVE_REPAIR_PASS__INDEPENDENT_NEW_SHA_PENDING",
+      "real_action": "https://github.com/C8LyNn/Model-Test/actions/runs/41735847975",
+      "producer_report": "https://github.com/C8LyNn/Model-Test/blob/c01/props-19-furniture/Assets/C01InteriorProps/C01-19/QA/PASS29/P19-01/W29_P19_01_ACTUAL_BLENDER_FBX_REPAIR.json",
+      "producer_pr": 15,
+      "producer_blend_sha": "eb026e37ba5e34369d254cfc50d5dc043ca43cb7f52ce34046ae5e0c61dcc879",
+      "producer_fbx_sha": "80c7dc228e61b36392914ed36919b39fca58b772286ee569b505cf81ad5c29d1",
+      "visible_stripe_top_delta_m": 0.001499950885772705,
+      "new_native_original_meshes": 4,
+      "mesh_vertices": 269,
+      "triangles": 470,
+      "remaining": "C01-02 independent current NEW SHA Blender + FBX reimport and visual A/B, Unity6 NOT_RUN. Current global canonical RC old SHA must not be treated as repaired."
+    },
+    "Unity_C01_10_W29": {
+      "status": "OWNER_ACTION_REQUIRED",
+      "runbook": "https://github.com/C8LyNn/Model-Test/blob/c01/props-10-showcase-integration/C01InteriorProps/Pass29/C01_10_W29_UNITY6000_3_14F1_OWNER_EXECUTION_GATE.md",
+      "notes": "C01-10 W29 did not run Editor; positive W29 result not authorized."
+    },
+    "C01_02_visual_new_workflow": {
+      "run_id": 41736031650,
+      "state_at_read": "IN_PROGRESS__NOT_PASS",
+      "scope": "three exact signed changed-current FBX visuals, not an executed Unity test"
+    }
+  }
 }

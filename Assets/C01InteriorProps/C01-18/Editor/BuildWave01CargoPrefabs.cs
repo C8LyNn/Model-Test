@@ -7,7 +7,7 @@ using UnityEngine;
 namespace C01.Cargo {
 public static class BuildWave01CargoPrefabs {
  const string Root="Assets/C01InteriorProps/C01-18";
- const string SignedP1803FbxSha256 = "f169ab74086ee3853c14b46ac6f6199cd255cfca15d8b7cbef32c3758cde7926";
+ const string SignedP1803FbxSha256 = "f932c5fb36624ef91c039b1de04367fff4e99da7c400bbcb4cadd4138f83618f";
  // PASS17 exact current authoring OBJ usemtl slots, not unreliable name guesses.
  static readonly System.Collections.Generic.Dictionary<string,string> SourceMaterials =
   new System.Collections.Generic.Dictionary<string,string>(StringComparer.Ordinal) {
@@ -255,7 +255,7 @@ public static class BuildWave01CargoPrefabs {
   AssetDatabase.SaveAssets();AssetDatabase.Refresh();
  }
  private static void VerifyGenuineP1803BeforeWrites() {
-  const int signedLength=194060;
+  const int signedLength=194156;
   string p=Root+"/Models/P18-03.fbx";
   if(!File.Exists(p))throw new FileNotFoundException("Missing signed P18-03 FBX (Git LFS hydration required)",p);
   using(var fs=File.OpenRead(p))

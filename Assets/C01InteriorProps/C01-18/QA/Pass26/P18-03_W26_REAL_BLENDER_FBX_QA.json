@@ -1,0 +1,53 @@
+{
+  "scope": "C01-18 W26 P18-03 ONLY; all Claude doors/gates excluded",
+  "input_binary_provenance": {
+    "source_obj_sha256": "1e6ff7b7d01cbb815e5c0375222877400923c323522936dfa959373a9b05c1e0",
+    "source_blend_sha256": "1c8086b048ac1c62a6791bea5df22a22168b5aea4bc17008a2ce233d86ede41e",
+    "exported_fbx_sha256": "f932c5fb36624ef91c039b1de04367fff4e99da7c400bbcb4cadd4138f83618f",
+    "binary_header": "Kaydara FBX Binary  \u0000\u001a\u0000"
+  },
+  "before_obj_sha256": "4446cfc77a6c4a9de4cf7c172ae06395b9dad9e39941566046d952eab0f16a6a",
+  "source": "original P18-03 parts, modified eight Hub_In/Hub_Out vertex X coordinates only",
+  "verified_blend": {
+    "name": "saved_native_blend",
+    "meshes": 63,
+    "triangles": 1780,
+    "hub_vs_fixed_fork_axial_gaps_m": {
+      "Wheel_LB_Hub_In/Wheel_LB_ForkOuter": 0.002,
+      "Wheel_LB_Hub_Out/Wheel_LB_ForkInner": 0.00199997,
+      "Wheel_LF_Hub_In/Wheel_LF_ForkOuter": 0.002,
+      "Wheel_LF_Hub_Out/Wheel_LF_ForkInner": 0.00199997,
+      "Wheel_RB_Hub_In/Wheel_RB_ForkInner": 0.00199997,
+      "Wheel_RB_Hub_Out/Wheel_RB_ForkOuter": 0.002,
+      "Wheel_RF_Hub_In/Wheel_RF_ForkInner": 0.00199997,
+      "Wheel_RF_Hub_Out/Wheel_RF_ForkOuter": 0.002
+    },
+    "full_360_rotation_proof": "All 8 fixed fork vs rotating hub closed AABBs are disjoint on invariant X axle by >=1.8mm, hence cannot intersect at any wheel rotation angle."
+  },
+  "verified_fbx": {
+    "name": "reimported_binary_fbx",
+    "meshes": 63,
+    "triangles": 1780,
+    "hub_vs_fixed_fork_axial_gaps_m": {
+      "Wheel_LB_Hub_In/Wheel_LB_ForkOuter": 0.00199997,
+      "Wheel_LB_Hub_Out/Wheel_LB_ForkInner": 0.00199997,
+      "Wheel_LF_Hub_In/Wheel_LF_ForkOuter": 0.00199997,
+      "Wheel_LF_Hub_Out/Wheel_LF_ForkInner": 0.00199997,
+      "Wheel_RB_Hub_In/Wheel_RB_ForkInner": 0.00199997,
+      "Wheel_RB_Hub_Out/Wheel_RB_ForkOuter": 0.00199997,
+      "Wheel_RF_Hub_In/Wheel_RF_ForkInner": 0.00199997,
+      "Wheel_RF_Hub_Out/Wheel_RF_ForkOuter": 0.00199997
+    },
+    "full_360_rotation_proof": "All 8 fixed fork vs rotating hub closed AABBs are disjoint on invariant X axle by >=1.8mm, hence cannot intersect at any wheel rotation angle."
+  },
+  "original_hub_fork_axial_overlap_m": 0.002,
+  "new_hub_fork_axial_clearance_m": 0.002,
+  "original_parts": 63,
+  "final_parts": 63,
+  "original_triangles": 1780,
+  "final_triangles": 1780,
+  "blender_native_roundtrip": "PASS",
+  "independent_C01_02": "PENDING",
+  "unity_editor": "NOT_RUN",
+  "classification": "PRODUCER_NATIVE_CLEARANCE_PASS__INDEPENDENT_AND_UNITY_HOLD"
+}

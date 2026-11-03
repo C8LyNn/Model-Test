@@ -110,8 +110,29 @@ def camera_set(target, offset, scale):
     camera.rotation_euler=direction.to_track_quat('-Z','Y').to_euler()
     cam_data.ortho_scale=scale
     scene.camera=camera
+# Blender 4.0 Workbench lacks View3DShading.show_wireframes.
+# Create a 3D edge overlay from ORIGINAL imported FBX edges for visual QA only.
+# Curves are ephemeral render helpers; no source mesh vertices/edges are modified.
+wiredata=bpy.data.curves.new("W27_QA_ONLY_RENDER_EDGE_LINES","CURVE")
+wiredata.dimensions='3D'
+wiredata.resolution_u=1
+wiredata.bevel_depth=0.0005
+wiredata.bevel_resolution=0
+for obj in render_objects:
+    for edge in obj.data.edges:
+        v0=obj.matrix_world @ obj.data.vertices[edge.vertices[0]].co
+        v1=obj.matrix_world @ obj.data.vertices[edge.vertices[1]].co
+        spline=wiredata.splines.new('POLY')
+        spline.points.add(1)
+        spline.points[0].co=(*v0,1.0)
+        spline.points[1].co=(*v1,1.0)
+wireobj=bpy.data.objects.new("W27_QA_ONLY_WIREFRAME_OVERLAY",wiredata)
+scene.collection.objects.link(wireobj)
+wireobj.color=(0.015,0.015,0.015,1.0)
+wireobj.hide_render=True
 def render(name, wire):
-    sh.show_wireframes=wire
+    wireobj.hide_render=not wire
+    sh.color_type='OBJECT' if wire else 'MATERIAL'
     sh.show_cavity=not wire
     sh.show_shadows=not wire
     scene.render.filepath=str(OUT/name)

@@ -76,7 +76,7 @@ def build_architecture(wall,floor):
     wbounds=[extents(x) for x in copies]
     fbounds=[extents(x) for x in floors]
     wall_volume_within=(all(
-        (abs(box[0][0])<2e-3 or abs(box[0][1]-4.2)<2e-3
+        (abs(box[0][0]+.2)<2e-3 or abs(box[0][1]-4.2)<2e-3
          or abs(box[2][0]+.2)<2e-3 or abs(box[2][1]-4.2)<2e-3)
         for box in wbounds))
     if not wall_volume_within:raise AssertionError("W01_TILED_WALL_NOT_AT_EXPECTED_BOUNDARY")

@@ -3,7 +3,7 @@
 Original producer tests are NOT imported. This file never saves or exports any asset.
 Use: blender -b -t 2 --python independent_native_3.py -- $GITHUB_WORKSPACE/producers
 """
-import bpy, sys, math, json, hashlib, pathlib, collections, importlib.util, traceback
+import bpy, sys, math, json, hashlib, pathlib, collections, importlib.util, traceback, os
 from mathutils import Vector, Matrix
 from mathutils.bvhtree import BVHTree
 
@@ -131,7 +131,7 @@ def check_p18():
     obj=meshes();witness={};total_samples=0
     for wheel in ("Wheel_LB","Wheel_LF","Wheel_RB","Wheel_RF"):
         require(wheel in obj,f"{wheel} missing original rubber wheel")
-        bbox=box(obj[wheel]); require(abs(bbox[1][0])<.001,f"{wheel} wheel no ground contact")
+        bbox=box(obj[wheel]); require(abs(bbox[2][0])<.001,f"{wheel} wheel no ground contact on Blender Z-up floor")
         require(abs((bbox[1][1]-bbox[1][0])-.210)<.0002,f"{wheel} wheel radius changed")
         center=Vector([(v[0]+v[1])*.5 for v in bbox])
         side=wheel.split("_")[1][0]
@@ -210,7 +210,10 @@ def main():
     src=ROOT/"C01InteriorProps_QA"/"GLOBAL_MESH_W26"/"W26_FBX_POLYGON_QA.py"
     mod=importlib.util.module_from_spec(importlib.util.spec_from_file_location("c01_w26_fbx",src))
     mod.__spec__.loader.exec_module(mod)
-    results=[run_one(a,base,mod) for a in SPECS]
+    target=os.environ.get("C01_W27_TARGET","all")
+    targets=list(SPECS) if target=="all" else [target]
+    require(all(k in SPECS for k in targets),"unknown independent test target")
+    results=[run_one(a,base,mod) for a in targets]
     summary={"scope":"C01-02 independent, no Claude doors/no exported assets/no Unity",
              "blender":bpy.app.version_string,"per_model":[{"id":x["id"],"status":x["status"],"failure":x.get("failure")} for x in results],
              "unity":"OWNER_ACTION_REQUIRED","release":"HOLD"}

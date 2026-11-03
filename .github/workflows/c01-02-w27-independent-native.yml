@@ -46,14 +46,14 @@ jobs:
           sudo DEBIAN_FRONTEND=noninteractive apt-get install -y blender python3-numpy git-lfs
           blender --version | head -1
           git lfs version
-      - name: Hydrate exactly six CURRENT native binaries from signed producer refs
+      - name: Hydrate only P18-03 current Blender and FBX for focused axis-corrected retest
         working-directory: qa
         run: |
-          git -C producers/p15 lfs pull --include="Assets/C01InteriorProps/P15/Sources/Blender/P15-03.blend,Assets/C01InteriorProps/P15/Models/FBX/P15-03.fbx" --exclude=""
           git -C producers/p18 lfs pull --include="Assets/C01InteriorProps/C01-18/Sources/P18-03.blend,Assets/C01InteriorProps/C01-18/Models/P18-03.fbx" --exclude=""
-          git -C producers/p19 lfs pull --include="Assets/C01InteriorProps/C01-19/Models/P19-03/P19-03.blend,Assets/C01InteriorProps/C01-19/Models/P19-03/P19-03.fbx" --exclude=""
       - name: Execute separate C01-02 Blender native+FBX audit, UV/normal and motion
         working-directory: qa
+        env:
+          C01_W27_TARGET: P18-03
         run: |
           set -o pipefail
           blender -b -t 2 --python C01InteriorProps_QA/W27/independent_native_3.py -- "$PWD/producers" 2>&1 | tee c01_w27_independent_blender.log

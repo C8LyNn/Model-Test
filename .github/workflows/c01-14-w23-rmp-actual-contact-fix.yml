@@ -1,0 +1,77 @@
+name: C01-14 W23 RMP-01 Real Blender 4 Strip Contact Fix
+on:
+  push:
+    branches:
+      - c01/structures-14-prototypes-w02
+    paths:
+      - .github/workflows/c01-14-w23-rmp-actual-contact-fix.yml
+      - Tools/C01Structural14/blender_pass23_rmp_strip_mount_fix.py
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  real-rmp-native-fbx:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - name: Checkout signed original native source with full Git LFS hydration
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+          fetch-depth: 1
+      - name: Verify and install actual Blender 4.x
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends blender python3-numpy xvfb libegl1 libgl1 libgl1-mesa-dri libopengl0
+          blender --version | head -1 | grep -E '^Blender 4\.'
+      - name: Execute targeted existing RMP mesh contact correction and real Blender FBX import
+        shell: bash
+        run: |
+          set -euo pipefail
+          LIBGL_ALWAYS_SOFTWARE=1 xvfb-run -a blender --background --python Tools/C01Structural14/blender_pass23_rmp_strip_mount_fix.py 2>&1 | tee c01_14_w23_rmp_blender_native.log
+          if grep -E 'Traceback \(most recent call last\)|AssertionError|ModuleNotFoundError|Error: Python:' c01_14_w23_rmp_blender_native.log; then
+            echo "FAIL Blender Python exception"; exit 1
+          fi
+      - name: Independently verify created file signatures exact receipt and intended mesh topology
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json,hashlib,pathlib
+          root=pathlib.Path('Assets/C01StructuralPrototypes/P14/Pass23')
+          receipt=root/'QA/RMP-01_PASS23_NATIVE_CONTACT_QA.json'
+          report=json.loads(receipt.read_text())
+          assert report['status']=='REAL_NATIVE_RMP23_BLENDER_SAVE_EXPORT_REIMPORT_PASS'
+          assert report['parts']==6 and report['triangles']==72
+          assert report['strip_contact_count']==4 and len(report['witnesses'])==4
+          assert sum(x['exact_vertices_changed'] for x in report['witnesses'])==16
+          assert report['unity6']=='NOT RUN' and report['independent_C01_02']=='PENDING'
+          for type_,suffix,magic in [('blend','.blend',b'BLENDER'),('fbx','.fbx',b'Kaydara FBX Binary')]:
+              p=next((root/'Native').glob('C01_14_RMP-01_PASS23_v003'+suffix))
+              data=p.read_bytes()
+              assert data.startswith(magic) and len(data)>30000
+              assert hashlib.sha256(data).hexdigest()==report[type_+'_sha256']
+              print(type_,p,len(data),report[type_+'_sha256'])
+          print('PASS: 4/4 real strips bottom seated 0.4mm, original profile unmodified; Unity NOT RUN')
+          PY
+      - name: Upload full actual new native RMP BLEND FBX and strict machine receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-14-W23-RMP-01-REAL-BLENDER-STRIP-CONTACT
+          path: |
+            Assets/C01StructuralPrototypes/P14/Pass23/Native/*.blend
+            Assets/C01StructuralPrototypes/P14/Pass23/Native/*.fbx
+            Assets/C01StructuralPrototypes/P14/Pass23/QA/RMP-01_PASS23_NATIVE_CONTACT_QA.json
+          retention-days: 14
+      - name: Commit ONLY newly repaired RMP native outputs on OWN existing Draft branch
+        shell: bash
+        run: |
+          git lfs install --local
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Assets/C01StructuralPrototypes/P14/Pass23/Native/
+          git add Assets/C01StructuralPrototypes/P14/Pass23/QA/RMP-01_PASS23_NATIVE_CONTACT_QA.json
+          if ! git diff --cached --quiet; then
+            git commit -m "C01-14 W23 real RMP-01 anti-slip mounting fix native BLEND FBX"
+            git push origin HEAD:c01/structures-14-prototypes-w02
+          fi

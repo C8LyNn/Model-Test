@@ -1,5 +1,5 @@
 {
-  "schema": "C01-03_W26_CANONICAL_36_SHA_WITH_P18_03_NEW_UNMERGED_PRODUCER_CANDIDATE_V2",
+  "schema": "C01-03_W26_CANONICAL_36_SHA_THREE_NEW_ISOLATED_NATIVE_FIXES_V3",
   "source_W25_sha1": "88fb52912d5a347e526c8652c669a337c10811c6",
   "independent_W25_sha1": "e713bbc79f3afbb9fafb48ebc5729e976c4274c5",
   "producer_PR26_verified_2c7a": "2c7a88083f513b9cb8d6fabcb7e65013cda0d144",
@@ -7,7 +7,11 @@
     "all": 36,
     "all_hold": 36,
     "release_approved": 0,
-    "producer_new_signed_native_candids_pending_independent": 1
+    "producer_new_signed_native_candids_pending_independent": 1,
+    "original_36": 36,
+    "original_source_sha_unchanged_count": 33,
+    "actual_new_native_SHA_unmerged_drafts": 3,
+    "independent_new_SHA_pending": 3
   },
   "unity": "NOT_RUN_OWNER_ACTION_REQUIRED",
   "doors": "CLAUDE_DOORS_EXTERNAL_HOLD",
@@ -68,27 +72,40 @@
       "id": "P15-03",
       "tier": "CANONICAL_P15_P19",
       "identity_path": "Assets/C01InteriorProps/P15/Models/FBX/P15-03.fbx",
-      "version": "CURRENT_CANONICAL",
-      "branch": "C01-03_W25_SOURCE_REFERENCED_PRODUCER_PR16",
+      "version": "W26_NEW_NATIVE_UV_REPAIR_DRAFT_UNMERGED",
+      "branch": "c01/props-15-installations",
       "producer_pr": 16,
-      "producer_head": "49e1e4b5cc1a4783b55e7ed113c8a4a57665f721",
+      "producer_head": "7eef12868dd214852e44adf72d4b76200c382487",
       "owner": "C01-15",
       "source_blend_path": "Assets/C01InteriorProps/P15/Sources/Blender/P15-03.blend",
-      "blend_SHA256": "1deb3df36a1c87be8fe6ebec7529233b1d9eececa38230f4d9f693bf40fceb9a",
+      "blend_SHA256": "e787a9455baa08d5e6b198b4c47d236376b240e08781792020b93be899ca38de",
       "fbx_path": "Assets/C01InteriorProps/P15/Models/FBX/P15-03.fbx",
-      "fbx_SHA256": "7be76765763308deb8c0fa9d4c11cec8c74b60777e0199a160ebab088c59189d",
+      "fbx_SHA256": "ea25d2d7b47baa50fdca3000b101c65b19ba252994553ee6fe6691ca89d5c149",
       "fbx_GitSHA1": "",
       "obj_path": "",
       "obj_GitSHA1": "",
-      "identity_grade": "PRIOR_FULL_BYTE_BLEND_FBX_SHA_VERIFIED_NATIVE; W26_NO_NEW_EXPORT",
-      "audit_state": "PRIOR_SCOPED_CURRENT_SHA_QA",
-      "defect_state": "NO_NEW_CONFIRMED_DEFECT",
-      "repair_state": "NO_REPAIR_WITHOUT_CONFIRMED_DEFECT",
-      "independent_QA": "INDEPENDENT_SCOPED_STATIC_AND_PREVIOUS_MOTION_EVIDENCE__UNITY_HOLD",
+      "identity_grade": "W26_PRODUCER_ACTUAL_BLENDER4_FBX_SHA_AND_PHYSICAL_ARTIFACT_13267968948; C01_03_DID_NOT_TEST_INTERNAL_DOOR_NAMED_GEOMETRY",
+      "audit_state": "PRODUCER_NEW_CURRENT_34_PART_UV0_120_TO_0_AND_CORRECTED_BVH_361_PLUS_46_SAMPLES_PASS; C01_02_CURRENT_SHA_NOT_RUN",
+      "defect_state": "OLD_SIGNED_FBX_120_OF_672_ZERO_AREA_UV0_TRIANGLES; OLD_W19_MOTION_EVIDENCE_REVOKED_DUE_INVERTED_AABB_PREFILTER",
+      "repair_state": "PRODUCER_W26_REAL_NATIVE_UV_MAPPING_REPAIR_NO_PART_COUNT_OR_PIVOT_CHANGE; 34_MESHES_672_TRIS",
+      "independent_QA": "PENDING_C01_02_CURRENT_P15_03_FBX_EA25D2D7_UV_AND_CORRECTED_MOTION; NO_W19_MOTION_PASS",
       "unity": "NOT_RUN_OWNER_ACTION_REQUIRED",
       "release": "HOLD",
-      "next_action": "C01-02 selective QA; C01-10 licensed Unity",
-      "qa_link": "C01InteriorProps_QA/DETAIL_PASS24/W24_36_EXACT_SHA_INDEPENDENT_NONDOOR_QA.csv"
+      "next_action": "C01-00 first confirm P15-03 internal DoorSkin is NOT delegated Claude door model; C01-02 may test only authorized non-Claude asset current full SHA, 120->0 UV0 and fixed broadphase 361+46 hinge samples; Unity gate still blocked",
+      "qa_link": "https://github.com/C8LyNn/Model-Test/issues/8#issuecomment-6614512078",
+      "superseded_native": {
+        "FBX_SHA256": "7be76765763308deb8c0fa9d4c11cec8c74b60777e0199a160ebab088c59189d",
+        "BLEND_SHA256": "1deb3df36a1c87be8fe6ebec7529233b1d9eececa38230f4d9f693bf40fceb9a",
+        "producer_head": "49e1e4b5cc1a4783b55e7ed113c8a4a57665f721"
+      },
+      "scope_guard": "INTERNAL_PART_NAMED_DOORSKIN; OWNER_C01_15_STATES_NOT_CLAUDE; C01_03_PERFORMED_NO_NATIVE_TEST_OR_EDIT; C01_00_CLASSIFY_BEFORE_ANY_ADDITIONAL_PROTECTED_PART_QA",
+      "provenance": {
+        "run_uv": 41708819671,
+        "run_motion": 41709944153,
+        "run_wire": 41711037346,
+        "artifact_id": 13267968948,
+        "old_sha_evidence": "W19_MOTION_INVALID_AABB"
+      }
     },
     {
       "id": "P15-04",
@@ -814,27 +831,39 @@
       "id": "P19-03",
       "tier": "CANONICAL_P15_P19",
       "identity_path": "Assets/C01InteriorProps/C01-19/Models/P19-03/P19-03.fbx",
-      "version": "CURRENT_CANONICAL",
-      "branch": "C01-03_W25_SOURCE_REFERENCED_PRODUCER_PR15",
+      "version": "W26_NEW_NATIVE_NGON_REPAIR_DRAFT_UNMERGED",
+      "branch": "c01/props-19-furniture",
       "producer_pr": 15,
-      "producer_head": "dece710d3672d8eb4ef4183eb3f8657ea6790b21",
+      "producer_head": "e053a786ffe8f08e5121c3ae5aa0f974a629660d",
       "owner": "C01-19",
       "source_blend_path": "Assets/C01InteriorProps/C01-19/Models/P19-03/P19-03.blend",
-      "blend_SHA256": "3652b4f738783e3fab0940311d77b5cd9e6435a23ef60c2c7249f209fa4b11cd",
+      "blend_SHA256": "ce43931f9116fe3aef6f795c98e505665c921e6c1080c7d61c5cd518e7f7f5b8",
       "fbx_path": "Assets/C01InteriorProps/C01-19/Models/P19-03/P19-03.fbx",
-      "fbx_SHA256": "1bd730b2382879d7d9c2f3d67c4b9646b8ca036c04de663e53b3019c403af2df",
-      "fbx_GitSHA1": "",
+      "fbx_SHA256": "4a1ad590e79515b0a699f0fb643d9999b4d1726bd68fce97505f401bb8375967",
+      "fbx_GitSHA1": "17e48064cbd8ffbba463c80f1efdd692938000cf",
       "obj_path": "",
       "obj_GitSHA1": "",
-      "identity_grade": "PRIOR_FULL_BYTE_BLEND_FBX_SHA_VERIFIED_NATIVE; W26_NO_NEW_EXPORT",
-      "audit_state": "PRIOR_SCOPED_CURRENT_SHA_QA",
-      "defect_state": "NO_NEW_CONFIRMED_DEFECT",
-      "repair_state": "NO_REPAIR_WITHOUT_CONFIRMED_DEFECT",
-      "independent_QA": "PENDING / PENDING",
+      "identity_grade": "W26_REAL_BLENDER4_SIGNED_FULL_NEW_BLEND_AND_FBX_SHA_MATCH_GIT_LFS_POINTER; C01_02_NEW_SHA_PENDING",
+      "audit_state": "PRODUCER_BLENDER4_SAVE_FBX_EXPORT_REIMPORT_NGONS_10_TO_0; SOURCE_UV_WINDING_MATERIALS_SCOPED; C01_02_NEW_SHA_PENDING",
+      "defect_state": "TEN_SOURCE_NGONS_OVER_FOUR_VERTICES_IN_EXISTING_LEG_PART_CONFIRMED",
+      "repair_state": "SURGICAL_BMESH_EAR_CLIP_ONLY_TEN_FACES; 5_PARTS_72_VERTICES_128_TRI_EQUIVALENTS_PRESERVED",
+      "independent_QA": "PENDING_C01_02_NEW_P19_03_FBX_SHA_4A1AD590; PREVIOUS_STATIC_PASS_SUPERSEDED",
       "unity": "NOT_RUN_OWNER_ACTION_REQUIRED",
       "release": "HOLD",
-      "next_action": "C01-02 selective QA; C01-10 licensed Unity",
-      "qa_link": "C01InteriorProps_QA/DETAIL_PASS24/W24_36_EXACT_SHA_INDEPENDENT_NONDOOR_QA.csv"
+      "next_action": "C01-02 hydrate original signed current BLEND/FBX and review 10 modified source polygons triangulation, per-corner UV/shading, normals, material/pivot; Unity EditMode/PlayMode NOT_RUN",
+      "qa_link": "Assets/C01InteriorProps/C01-19/QA/PASS26/P19-03_NGON_REPAIR/REPAIR_AND_ROUNDTRIP.json",
+      "superseded_native": {
+        "FBX_SHA256": "1bd730b2382879d7d9c2f3d67c4b9646b8ca036c04de663e53b3019c403af2df",
+        "BLEND_SHA256": "3652b4f738783e3fab0940311d77b5cd9e6435a23ef60c2c7249f209fa4b11cd",
+        "producer_head": "dece710d3672d8eb4ef4183eb3f8657ea6790b21"
+      },
+      "provenance": {
+        "run_Blender": 41709447234,
+        "producer_originals": "63? no; 5 mesh, 72 vertices, 128 tris",
+        "FBX_new_bytes": 29308,
+        "BLEND_new_bytes": 907792,
+        "full_git_LFS_OID_new_2of2": "MATCH"
+      }
     },
     {
       "id": "P19-04",
@@ -984,6 +1013,36 @@
     "currentP1803": true,
     "oldP1803Archived": true,
     "allhold": true,
-    "noDoorIDs": true
-  }
+    "noDoorIDs": true,
+    "currentP1503": true,
+    "currentP1903": true,
+    "threeChanged": true,
+    "noDoorSpecificAssetIDs": true,
+    "allSHA64": true,
+    "releaseHold": true
+  },
+  "W26_C01_03_current_changes": [
+    {
+      "id": "P15-03",
+      "original_fbx": "7be76765763308deb8c0fa9d4c11cec8c74b60777e0199a160ebab088c59189d",
+      "new_fbx": "ea25d2d7b47baa50fdca3000b101c65b19ba252994553ee6fe6691ca89d5c149",
+      "producer_pr": 16,
+      "C01_02": "PENDING",
+      "scope": "INTERNAL_DoorSkin_POTENTIAL_FREEZE_REVIEW"
+    },
+    {
+      "id": "P18-03",
+      "original_fbx": "f169ab74086ee3853c14b46ac6f6199cd255cfca15d8b7cbef32c3758cde7926",
+      "new_fbx": "f932c5fb36624ef91c039b1de04367fff4e99da7c400bbcb4cadd4138f83618f",
+      "producer_pr": 43,
+      "C01_02": "PENDING"
+    },
+    {
+      "id": "P19-03",
+      "original_fbx": "1bd730b2382879d7d9c2f3d67c4b9646b8ca036c04de663e53b3019c403af2df",
+      "new_fbx": "4a1ad590e79515b0a699f0fb643d9999b4d1726bd68fce97505f401bb8375967",
+      "producer_pr": 15,
+      "C01_02": "PENDING"
+    }
+  ]
 }

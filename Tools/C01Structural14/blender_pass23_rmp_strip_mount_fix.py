@@ -29,7 +29,7 @@ EXPECTED={'Deck_Main','COL_RampDeck','AntiSlipMark_01','AntiSlipMark_02','AntiSl
 assert set(meshes)==EXPECTED,sorted(meshes)
 for o in meshes.values():
  assert o.data.uv_layers and o.data.materials,(o.name,'UV0/MATERIAL')
- assert len(o.data.vertices)==8 and len(o.data.polygons)==6,(o.name,'SOURCE_TOPOLOGY')
+ assert len(o.data.vertices)==8 and sum(len(p.vertices)-2 for p in o.data.polygons)==12,(o.name,'SOURCE_TOPOLOGY')
 assert sum(len(p.vertices)-2 for o in meshes.values() for p in o.data.polygons)==72
 before={name:{
  'coordinates':[(float((o.matrix_world @ v.co)[i])) for v in o.data.vertices for i in range(3)],

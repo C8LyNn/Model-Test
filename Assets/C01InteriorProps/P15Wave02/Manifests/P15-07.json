@@ -1,0 +1,85 @@
+{
+  "id": "P15-07",
+  "owner": "C01-15",
+  "version": "0.1.0",
+  "project": "C01 — INTERIOR PROPS / WAVE 02",
+  "name": "Wall coolant distribution and manometers",
+  "mounting_surface": "wall; local Z=0 is mounting plane; bottom at local Y=0",
+  "root_pivot_local_m": [
+    0,
+    0,
+    0
+  ],
+  "coordinate_system": "Unity X-right Y-up Z-forward",
+  "root_scale": [
+    1,
+    1,
+    1
+  ],
+  "nominal_extent_WDH_m": [
+    1.2,
+    0.35,
+    0.9
+  ],
+  "measured_bounds_XYZ_m": [
+    [
+      -0.6000000238418579,
+      0,
+      0
+    ],
+    [
+      0.6000000238418579,
+      0.8999999761581421,
+      0.2800000011920929
+    ]
+  ],
+  "triangle_count_blender": 5420,
+  "mesh_objects": 21,
+  "materials": [
+    "STEEL",
+    "DARK",
+    "WARN",
+    "COOLANT"
+  ],
+  "input_port": null,
+  "output_port": null,
+  "blender_file": "Sources/Blender/P15-07.blend",
+  "fbx_file": "Models/FBX/P15-07.fbx",
+  "previews": [
+    "Previews/Blender/P15-07_front.png",
+    "Previews/Blender/P15-07_iso.png",
+    "Previews/Blender/P15-07_side.png"
+  ],
+  "unity_prefab": "PENDING — build via C01Props15Wave02PrefabBuilder in Unity 6",
+  "blender_fbX": "SEE QA/blender_roundtrip.json",
+  "unity_import": "NOT RUN",
+  "independent_QA": "NOT RUN",
+  "gauge_face_surface_contract": {
+    "source": "Tools/C01Props15Wave02/blender_build.py make_coolant(): Gauge_Face_0, Gauge_Face_1",
+    "exact_existing_fbx_sha256": "ffc0211cc73a2056b815f3a494c24ab97d3c808d7ad9eb5b472472c555fb47f2",
+    "parts": [
+      "Gauge_Face_0_MESH",
+      "Gauge_Face_1_MESH"
+    ],
+    "intent": "Intentional one-sided decorative flat gauge dials inside steel rings; not a pressure shell, closed solid or collision surface.",
+    "triangles_per_face_mesh": 24,
+    "unique_vertices_per_face_mesh": 25,
+    "expected_open_boundary_edges_per_face_mesh": 24,
+    "actual_nonmanifold_edges_per_face_mesh": 0,
+    "front_normal_in_blender_fbx_geometry": [
+      0,
+      -1,
+      0
+    ],
+    "intended_front_normal_in_unity_local_axes": [
+      0,
+      0,
+      1
+    ],
+    "unity_local_dial_plane_z_m": 0.256,
+    "shader_policy": "Single-sided front-facing URP/Lit material, Cull Back. Do not cap, bulk-weld, recalculate or flip normals; the back is mounted away from the corridor-facing camera.",
+    "collider_policy": "No MeshCollider is needed on open decorative dial triangles; use structural body/ring for collision if a collider is needed.",
+    "release_qa": "C01-02 W21 STATIC_TOPOLOGY_PASS_WITH_GAUGE_SURFACE_REVIEW; independent visual and Unity6 URP Game View still required",
+    "required_unity_validation": "In actual Unity6 URP, verify gauges visible from +Z front at intended view distance and not spuriously invisible due to import normal/negative transform; inspect material Cull Back. If viewing from -Z is a design requirement, request an explicit two-sided material policy from C01-01/02, NOT a blind mesh solidification."
+  }
+}

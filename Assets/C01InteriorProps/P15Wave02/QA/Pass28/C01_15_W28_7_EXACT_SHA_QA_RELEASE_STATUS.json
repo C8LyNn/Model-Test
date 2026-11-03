@@ -1,0 +1,188 @@
+{
+  "schema": "C01_15_W28_SCOPED_7_NATIVE_SHA_INDEPENDENT_RELEASE_RECONCILIATION_V1",
+  "repo": "C8LyNn/Model-Test",
+  "role": "C01-15_TECHNICAL_INSTALLATIONS",
+  "date": "2026-11-03",
+  "primary": "https://github.com/C8LyNn/Model-Test/issues/36",
+  "purpose": "Evidence-only per-model final status; snapshot of C01-02 independent W28 canonical matrix and W27 physical Blender4 results; no new Blender/Unity or mesh export",
+  "current_producer_PRs": {
+    "16": {
+      "head": "880c3c6eaa199da3490a4ca66413a247bd08e78e",
+      "draft": true,
+      "merged": false
+    },
+    "25": {
+      "head": "0032d31314d93df218301f1b4ba1f5ac55838670",
+      "draft": true,
+      "merged": false
+    }
+  },
+  "independent_C01_02_W28_matrix": {
+    "url": "https://github.com/C8LyNn/Model-Test/blob/c01/props-02-independent-qa/C01InteriorProps_QA/W28/W28_36_CANONICAL_CURRENT_SHA_QA_MATRIX.json",
+    "blob_sha": "79135fa8d1db9669378e1e5c998d9f3a767e2f47"
+  },
+  "checks": {
+    "models": 7,
+    "live_current_blend_and_fbx_Git_LFS_OID_pointer_pairs": "14/14 MATCH W28 INDEPENDENT MATRIX",
+    "genuine_full_byte_fbx_new_this_wave": "NOT_RUN__REUSED_PRIOR_EXACT_SHA_EVIDENCE",
+    "new_mesh_repair_this_wave": 0,
+    "new_model_export_this_wave": 0,
+    "new_automated_CI_this_wave": 0,
+    "owner_scope_final_approved": 0,
+    "global_independent_current_native_blend_fbx_P15_03": "STATIC_PASS_UV_PASS_MOTION_PASS",
+    "producer_blender_P15_03_last_full_export_action": 41708819671,
+    "producer_motion_witness_action": 41711037346,
+    "independent_qa_P15_03_actions": [
+      41717112468,
+      41717691683
+    ],
+    "independent_visual_final": "NOT_PASSED",
+    "unity_editor": "NOT_RUN"
+  },
+  "notes": {
+    "P15-03": "W26 actual custom UV0 repair removed 120 collapsed triangulated UV0 faces to 0; P15-03 true original geometry/pivots/unmodified 34 meshes. C01-02 W27 independently passed 361 critical+46 all-moving pose hinge motion on actual current BLEND and re-imported FBX. No new W28 SHA or actionable P15 defect.",
+    "P15-07": "48 intentionally open gauge-dial boundary edges reviewed and independently accepted in previous unchanged-SHA static QA. Full URP front-face visibility not tested.",
+    "UV_TILE_RANGE": "W27 producer measured 102 UV triangles outside [0,1] on two hollow P15-03 hinge sleeves with 3 materials/0 FBX Texture objects; review if image-textured variants are introduced; no current material display bug confirmed.",
+    "STATIC_VS_FULL_FUNCTIONAL": "Unchanged P15-01/02/04/05/06/07 static QA is not evidence of complete runtime animation, Unity prefab or collision compliance.",
+    "CLAUDE_DOORS_EXTERNAL_HOLD": "All external D01,D02, gate and doors including old PR19/32 excluded. P15-03 internal technical cabinet is separate source as authorized by W27 Issue45.",
+    "GLOBAL_DEPENDENCIES": "C01-02 W28 found P19-01 confirmed visible z-fighting; belongs to C01-19, not P15. C01-01 P18-07 +1mm / 0.361m envelope formal ruling pending. C01-03 architecture W01/W02/W03 version SHA divergence and C01-10 Unity Editor blockers remain. This C01-15 producer receipt does not approve the global 36 or address those other lanes."
+  },
+  "source_results": [
+    {
+      "ASSET": "P15-01",
+      "SHA": {
+        "FBX256": "bff1a07223b61762e4dcb27df7ff4c91dae11d42e0695163fe17bedc6b314c5a",
+        "BLEND256": "d91783a2be0b13fcaec8477eb73cc2bb4717be17be6cf6bad329a89dd88ae4c0"
+      },
+      "DEFECT": "NO_NEW_CONFIRMED_DEFECT_IN_SCOPED_STATIC_AUDIT",
+      "REPAIR": "NO_NEW_MODEL_GEOMETRY_REEXPORT",
+      "BLENDER_QA": "UNCHANGED_SHA_PREVIOUS_PRODUCER_NATIVE_EVIDENCE__NO_W28_BLENDER_RERUN",
+      "INDEPENDENT_QA": "W26_INDEPENDENT_ORIGINAL_BINARY_SCOPED_STATIC_INDEX_UV_NORMAL_PASS",
+      "UV": "W26_NO_ZERO_UV_ORIGINAL_POLYGONS",
+      "NORMALS": "W26_NO_INVERTED_POLYGON_CORNERS",
+      "MOTION": "STATIC_OR_MOTION_NOT_FULLY_TESTED",
+      "FBX_IMPORT": "CURRENT_SHA_W26_FBX_BINARY_STATIC_ONLY__PRIOR_PRODUCER_BLENDER_EVIDENCE",
+      "VISUAL": "WORKBENCH_IMAGES_AVAILABLE_NOT_UNITY_URP_SIGNOFF",
+      "UNITY": "NOT_RUN_OWNER_ACTION_REQUIRED",
+      "STATUS": "FINAL_RELEASE_HOLD",
+      "PROOF": "https://github.com/C8LyNn/Model-Test/blob/c01/props-02-independent-qa/C01InteriorProps_QA/GLOBAL_MESH_W26/W26_44_SIGNED_FBX_INDEPENDENT_POLYGON_QA.csv"
+    },
+    {
+      "ASSET": "P15-02",
+      "SHA": {
+        "FBX256": "470fdbdfad19d6b94ee227fc546053548b709da31115fd928f07790780066590",
+        "BLEND256": "2244f6d72ba7bb8fc336b033ccbf89d07a60eaee96e4d448b6e61f6da8c165c3"
+      },
+      "DEFECT": "NO_NEW_CONFIRMED_DEFECT_IN_SCOPED_STATIC_AUDIT",
+      "REPAIR": "NO_NEW_MODEL_GEOMETRY_REEXPORT",
+      "BLENDER_QA": "UNCHANGED_SHA_PREVIOUS_PRODUCER_NATIVE_EVIDENCE__NO_W28_BLENDER_RERUN",
+      "INDEPENDENT_QA": "W26_INDEPENDENT_ORIGINAL_BINARY_SCOPED_STATIC_INDEX_UV_NORMAL_PASS",
+      "UV": "W26_NO_ZERO_UV_ORIGINAL_POLYGONS",
+      "NORMALS": "W26_NO_INVERTED_POLYGON_CORNERS",
+      "MOTION": "STATIC_OR_MOTION_NOT_FULLY_TESTED",
+      "FBX_IMPORT": "CURRENT_SHA_W26_FBX_BINARY_STATIC_ONLY__PRIOR_PRODUCER_BLENDER_EVIDENCE",
+      "VISUAL": "WORKBENCH_IMAGES_AVAILABLE_NOT_UNITY_URP_SIGNOFF",
+      "UNITY": "NOT_RUN_OWNER_ACTION_REQUIRED",
+      "STATUS": "FINAL_RELEASE_HOLD",
+      "PROOF": "https://github.com/C8LyNn/Model-Test/blob/c01/props-02-independent-qa/C01InteriorProps_QA/GLOBAL_MESH_W26/W26_44_SIGNED_FBX_INDEPENDENT_POLYGON_QA.csv"
+    },
+    {
+      "ASSET": "P15-03",
+      "SHA": {
+        "FBX256": "ea25d2d7b47baa50fdca3000b101c65b19ba252994553ee6fe6691ca89d5c149",
+        "BLEND256": "e787a9455baa08d5e6b198b4c47d236376b240e08781792020b93be899ca38de"
+      },
+      "DEFECT": "W26_REPAIR_ACCEPTED_AT_CURRENT_SHA_NO_NEW_DEFECT",
+      "REPAIR": "W26_120_ZERO_UV_TRIS_TARGETED_REPAIR_PASS",
+      "BLENDER_QA": "ACTUAL_INDEPENDENT_BLENDER4_NATIVE_AND_FBX_REIMPORT_ACTION_41717112468",
+      "INDEPENDENT_QA": "INDEPENDENT_W27_STATIC_PASS_UV_PASS_MOTION_PASS",
+      "UV": "0_DEGENERATE_UV0_PASS",
+      "NORMALS": "RAW_CORNER_NO_INVERSION",
+      "MOTION": "361_CRITICAL_PLUS_46_ALL_MOVING_BOTH_NATIVE_IMPORT_PASS",
+      "FBX_IMPORT": "CURRENT_SHA_REAL_BLENDER4_IMPORTED",
+      "VISUAL": "INDEPENDENT_RENDERED_VISUAL_NOT_PASSED__PRODUCER_TRUE_SHADED_AND_WIREFRAME_EXISTS",
+      "UNITY": "NOT_RUN_OWNER_ACTION_REQUIRED",
+      "STATUS": "FINAL_RELEASE_HOLD",
+      "PROOF": "https://github.com/C8LyNn/Model-Test/blob/c01/props-02-independent-qa/C01InteriorProps_QA/W27/W27_EXECUTED_EXACT_SHA_ACCEPTANCE.md"
+    },
+    {
+      "ASSET": "P15-04",
+      "SHA": {
+        "FBX256": "58252505554c65354f9ebce7e3264868d3ff7a57c850d16323e71e6356c5ce04",
+        "BLEND256": "54a4b2efdfe0cc3766ff1a04ce3bca24f1adcdf2e8d7812058fc000e297393cd"
+      },
+      "DEFECT": "NO_NEW_CONFIRMED_DEFECT_IN_SCOPED_STATIC_AUDIT",
+      "REPAIR": "NO_NEW_MODEL_GEOMETRY_REEXPORT",
+      "BLENDER_QA": "UNCHANGED_SHA_PREVIOUS_PRODUCER_NATIVE_EVIDENCE__NO_W28_BLENDER_RERUN",
+      "INDEPENDENT_QA": "W26_INDEPENDENT_ORIGINAL_BINARY_SCOPED_STATIC_INDEX_UV_NORMAL_PASS",
+      "UV": "W26_NO_ZERO_UV_ORIGINAL_POLYGONS",
+      "NORMALS": "W26_NO_INVERTED_POLYGON_CORNERS",
+      "MOTION": "STATIC_OR_MOTION_NOT_FULLY_TESTED",
+      "FBX_IMPORT": "CURRENT_SHA_W26_FBX_BINARY_STATIC_ONLY__PRIOR_PRODUCER_BLENDER_EVIDENCE",
+      "VISUAL": "WORKBENCH_IMAGES_AVAILABLE_NOT_UNITY_URP_SIGNOFF",
+      "UNITY": "NOT_RUN_OWNER_ACTION_REQUIRED",
+      "STATUS": "FINAL_RELEASE_HOLD",
+      "PROOF": "https://github.com/C8LyNn/Model-Test/blob/c01/props-02-independent-qa/C01InteriorProps_QA/GLOBAL_MESH_W26/W26_44_SIGNED_FBX_INDEPENDENT_POLYGON_QA.csv"
+    },
+    {
+      "ASSET": "P15-05",
+      "SHA": {
+        "FBX256": "5d254249234c100ca2e7c0b4d65fe8ed8bc366f275d4718b4d90bac416d3da5e",
+        "BLEND256": "4f30880643a17d97c9f7cfca4cd0a219e12fff6f8868fa1ba31017e9083f2c01"
+      },
+      "DEFECT": "NO_NEW_CONFIRMED_DEFECT_IN_SCOPED_STATIC_AUDIT",
+      "REPAIR": "NO_NEW_MODEL_GEOMETRY_REEXPORT",
+      "BLENDER_QA": "UNCHANGED_SHA_PREVIOUS_PRODUCER_NATIVE_EVIDENCE__NO_W28_BLENDER_RERUN",
+      "INDEPENDENT_QA": "W26_INDEPENDENT_ORIGINAL_BINARY_SCOPED_STATIC_INDEX_UV_NORMAL_PASS",
+      "UV": "W26_NO_ZERO_UV_ORIGINAL_POLYGONS",
+      "NORMALS": "W26_NO_INVERTED_POLYGON_CORNERS",
+      "MOTION": "STATIC_OR_MOTION_NOT_FULLY_TESTED",
+      "FBX_IMPORT": "CURRENT_SHA_W26_FBX_BINARY_STATIC_ONLY__PRIOR_PRODUCER_BLENDER_EVIDENCE",
+      "VISUAL": "WORKBENCH_IMAGES_AVAILABLE_NOT_UNITY_URP_SIGNOFF",
+      "UNITY": "NOT_RUN_OWNER_ACTION_REQUIRED",
+      "STATUS": "FINAL_RELEASE_HOLD",
+      "PROOF": "https://github.com/C8LyNn/Model-Test/blob/c01/props-02-independent-qa/C01InteriorProps_QA/GLOBAL_MESH_W26/W26_44_SIGNED_FBX_INDEPENDENT_POLYGON_QA.csv"
+    },
+    {
+      "ASSET": "P15-06",
+      "SHA": {
+        "FBX256": "e48b943e7926a3d62e3f956f1b1bc59218dbe310837d179dfbbfee435001f448",
+        "BLEND256": "644b1fab278bf1694fc6eb61b6a1cfe0f4bcfce204ecfd25a6b4cb13221a82aa"
+      },
+      "DEFECT": "NO_NEW_CONFIRMED_DEFECT_IN_SCOPED_STATIC_AUDIT",
+      "REPAIR": "NO_NEW_MODEL_GEOMETRY_REEXPORT",
+      "BLENDER_QA": "UNCHANGED_SHA_PREVIOUS_PRODUCER_NATIVE_EVIDENCE__NO_W28_BLENDER_RERUN",
+      "INDEPENDENT_QA": "W26_INDEPENDENT_ORIGINAL_BINARY_SCOPED_STATIC_INDEX_UV_NORMAL_PASS",
+      "UV": "W26_NO_ZERO_UV_ORIGINAL_POLYGONS",
+      "NORMALS": "W26_NO_INVERTED_POLYGON_CORNERS",
+      "MOTION": "STATIC_OR_MOTION_NOT_FULLY_TESTED",
+      "FBX_IMPORT": "CURRENT_SHA_W26_FBX_BINARY_STATIC_ONLY__PRIOR_PRODUCER_BLENDER_EVIDENCE",
+      "VISUAL": "WORKBENCH_IMAGES_AVAILABLE_NOT_UNITY_URP_SIGNOFF",
+      "UNITY": "NOT_RUN_OWNER_ACTION_REQUIRED",
+      "STATUS": "FINAL_RELEASE_HOLD",
+      "PROOF": "https://github.com/C8LyNn/Model-Test/blob/c01/props-02-independent-qa/C01InteriorProps_QA/GLOBAL_MESH_W26/W26_44_SIGNED_FBX_INDEPENDENT_POLYGON_QA.csv"
+    },
+    {
+      "ASSET": "P15-07",
+      "SHA": {
+        "FBX256": "ffc0211cc73a2056b815f3a494c24ab97d3c808d7ad9eb5b472472c555fb47f2",
+        "BLEND256": "00a456375c5fd731f811d61d1ae171330a5291d5669ae9fdcc752b174b72aa6e"
+      },
+      "DEFECT": "INTENTIONAL_SINGLE_SIDED_GAUGE_COMPONENTS_NOT_DEFECT",
+      "REPAIR": "NO_NEW_MODEL_GEOMETRY_REEXPORT",
+      "BLENDER_QA": "UNCHANGED_SHA_PREVIOUS_PRODUCER_NATIVE_EVIDENCE__NO_W28_BLENDER_RERUN",
+      "INDEPENDENT_QA": "W26_INDEPENDENT_ORIGINAL_BINARY_SCOPED_STATIC_INDEX_UV_NORMAL_PASS",
+      "UV": "W26_NO_ZERO_UV_ORIGINAL_POLYGONS",
+      "NORMALS": "W26_NO_INVERTED_POLYGON_CORNERS",
+      "MOTION": "STATIC_OR_MOTION_NOT_FULLY_TESTED",
+      "FBX_IMPORT": "CURRENT_SHA_W26_FBX_BINARY_STATIC_ONLY__PRIOR_PRODUCER_BLENDER_EVIDENCE",
+      "VISUAL": "WORKBENCH_IMAGES_AVAILABLE_NOT_UNITY_URP_SIGNOFF",
+      "UNITY": "NOT_RUN_OWNER_ACTION_REQUIRED",
+      "STATUS": "FINAL_RELEASE_HOLD",
+      "PROOF": "https://github.com/C8LyNn/Model-Test/blob/c01/props-02-independent-qa/C01InteriorProps_QA/GLOBAL_MESH_W26/W26_44_SIGNED_FBX_INDEPENDENT_POLYGON_QA.csv"
+    }
+  ],
+  "release": "HOLD_7_OF_7_FINAL_RELEASE__0_OF_36_PROJECT_FINAL",
+  "merge": "NO_MERGE",
+  "actions": "NO_REPAIR_NO_EXPORT_THIS_WAVE; UPDATE_METADATA_ONLY"
+}

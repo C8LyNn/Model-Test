@@ -1,0 +1,59 @@
+name: C01-15 WAVE02 Blender FBX real assets
+on:
+  push:
+    branches: [c01/props-15-installations-wave02]
+    paths:
+      - .github/workflows/c01-props15-wave02.yml
+      - Tools/C01Props15Wave02/**
+  workflow_dispatch:
+concurrency:
+  group: c01-props-15-wave02-producer
+  cancel-in-progress: true
+permissions:
+  contents: write
+jobs:
+  blender-native:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+      - name: Install Blender headless + FBX dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends blender python3-numpy xvfb libegl1 libgl1 libgl1-mesa-dri libopengl0
+      - name: Create four actual .blend .fbx and twelve previews
+        run: LIBGL_ALWAYS_SOFTWARE=1 xvfb-run -a blender --background --python Tools/C01Props15Wave02/blender_build.py
+      - name: Actual Blender reimport audit UV/normal/material and 90-degree port geometry
+        run: LIBGL_ALWAYS_SOFTWARE=1 xvfb-run -a blender --background --python Tools/C01Props15Wave02/blender_verify.py
+      - name: File signatures and SHA256 report
+        run: python3 Tools/C01Props15Wave02/validate_files.py
+      - name: Commit verified exports atop freshest producer branch (binary-safe)
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$GITHUB_WORKSPACE"
+          TAR_PATH="$RUNNER_TEMP/c01-p15-wave02-verified.tar"
+          tar -cf "$TAR_PATH" \
+            Assets/C01InteriorProps/P15Wave02/Sources/Blender/ \
+            Assets/C01InteriorProps/P15Wave02/Models/FBX/ \
+            Assets/C01InteriorProps/P15Wave02/Previews/Blender/ \
+            Assets/C01InteriorProps/P15Wave02/Manifests/ \
+            Assets/C01InteriorProps/P15Wave02/QA/
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config lfs.https://github.com/C8LyNn/Model-Test.git/info/lfs.locksverify false
+          git fetch origin c01/props-15-installations-wave02
+          GIT_LFS_SKIP_SMUDGE=1 git reset --hard FETCH_HEAD
+          tar -xf "$TAR_PATH"
+          git add \
+            Assets/C01InteriorProps/P15Wave02/Sources/Blender/ \
+            Assets/C01InteriorProps/P15Wave02/Models/FBX/ \
+            Assets/C01InteriorProps/P15Wave02/Previews/Blender/ \
+            Assets/C01InteriorProps/P15Wave02/Manifests/ \
+            Assets/C01InteriorProps/P15Wave02/QA/
+          if ! git diff --cached --quiet; then
+            git commit -m "C01-15 W02: verified Blender FBX, preview binaries, manifests and QA"
+            git push origin HEAD:c01/props-15-installations-wave02
+          fi

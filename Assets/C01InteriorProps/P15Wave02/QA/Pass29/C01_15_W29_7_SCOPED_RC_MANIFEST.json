@@ -1,0 +1,306 @@
+{
+  "schema": "C01_15_W29_EXISTING_SEVEN_PROPS_RELEASE_CANDIDATE_INTAKE_V1",
+  "date": "2026-11-03",
+  "repo": "C8LyNn/Model-Test",
+  "owner": "C01-15_TECHNICAL_INSTALLATIONS",
+  "wave": "W29_UNITY_INTEGRATION_RELEASE_CANDIDATE",
+  "scope": "Seven existing P15-01..07 installations ONLY; NOT a 36/36 or 44/44 integrated RC. Do not overwrite C01-03 global registry or C01-10 Unity project.",
+  "source_w28_own_qa": {
+    "url": "https://github.com/C8LyNn/Model-Test/blob/c01/props-15-installations-wave02/Assets/C01InteriorProps/P15Wave02/QA/Pass28/C01_15_W28_7_EXACT_SHA_QA_RELEASE_STATUS.json",
+    "blob_sha": "8d52968c364fd8964babb8ed24101b5db1972fff"
+  },
+  "source_global_36": {
+    "path": "C01InteriorProps_Library/Pass28/C01_03_W28_CANONICAL_36_STATUS.csv",
+    "url": "https://github.com/C8LyNn/Model-Test/blob/c01/props-03-library-wave02/C01InteriorProps_Library/Pass28/C01_03_W28_CANONICAL_36_STATUS.csv",
+    "blob_sha": "248c683b13a8771ad91fc869c5394a4759d1ff42"
+  },
+  "source_auxiliary_8": {
+    "path": "C01InteriorProps_Library/Pass28/C01_03_W28_ARCHITECTURE_8_STATUS.csv",
+    "url": "https://github.com/C8LyNn/Model-Test/blob/c01/props-03-library-wave02/C01InteriorProps_Library/Pass28/C01_03_W28_ARCHITECTURE_8_STATUS.csv",
+    "blob_sha": "59e436300daae8ecdf4aecdb05adbb684cd8b5b7"
+  },
+  "independent_36": {
+    "url": "https://github.com/C8LyNn/Model-Test/blob/c01/props-02-independent-qa/C01InteriorProps_QA/W28/W28_36_CANONICAL_CURRENT_SHA_QA_MATRIX.json",
+    "blob_sha": "79135fa8d1db9669378e1e5c998d9f3a767e2f47"
+  },
+  "source_evidence": "W29 refreshed 14/14 ORIGINAL LIVE P15 Git LFS pointer OID AND declared byte size EXACT MATCH previous signed original Blender/FBX and W28 independent 36 matrix; this is pointer provenance, not fresh binary hydration.",
+  "W29_EXECUTION": {
+    "original_p15_models": 7,
+    "live_verified_LFS_sha_and_size": 14,
+    "unchanged_model_SHA": 7,
+    "new_native_BLENDER_exports": 0,
+    "new_FBX_exports": 0,
+    "new_Unity_Editor_runs": 0,
+    "new_GitHub_CI_runs": 0,
+    "prior_P15_03_current_SHA_independent_ACCEPTED": true,
+    "original_existing_DraftPRs": [
+      16,
+      25
+    ],
+    "w29_git_changes": "ONE_JSON_RC_METADATA_ONLY_CREATED_AND_UPDATED_FOR_NEW_CROSS_LANE_W29_PROVENANCE",
+    "independent_full_visual_status": "NOT_ACCEPTED",
+    "final_models_approved": 0
+  },
+  "unity_owner_action": {
+    "status": "UNITY_NOT_RUN_OWNER_ACTION_REQUIRED",
+    "existing_runbook": "https://github.com/C8LyNn/Model-Test/blob/c01/props-10-showcase-integration/C01InteriorProps/Pass20/UNITY6_WINDOWS_OWNER_RUNBOOK.md",
+    "existing_integrator_PR": "https://github.com/C8LyNn/Model-Test/pull/11",
+    "one_required_owner_action": "On owner's Windows PC, activate valid Unity Hub entitlement and use installed Unity 6000.3.14f1 Editor to execute existing isolated PR11 run_real_unity_windows.ps1 -Mode Execute with real SHA-validated FBX; return sanitized EditMode/PlayMode XML, Editor logs, generated scene/prefabs and real Scene/Game 1080p screenshots.",
+    "pilot_requires": "Already described in PR11 owner runbook P16-01/P17-02/P18-01; C01-15 P15-03 must be separately staged/assessed by C01-10 at current signed SHA; NO automatic run inferred.",
+    "evidence_rule": "No claimed Unity result until real Editor signs SHA, import, materials, physical scale/pivot/colliders, both test XML and actual screenshots."
+  },
+  "global_top_blockers_max_five": [
+    "1/ Unity licensed 6000.3.14f1 Editor 4x4m room 2x4m corridor original signed FBX, scene/prefabs, EditMode/PlayMode and 1080p Scene/Game NOT_RUN/OWNER_ACTION_REQUIRED.",
+    "2/ P19-01 C01-19 producer REAL Blender4 native source+FBX repair completed W29 at FBX SHA 80c7dc228e61b36392914ed36919b39fca58b772286ee569b505cf81ad5c29d1; C01-02 independent NEW SHA visual/narrowphase signoff PENDING. Do not mark repaired SHA visually approved on producer testimony.",
+    "3/ P18-07 C01-01 scoped static+1mm size and +20mm latch reservation ACCEPTED W29; still requires current-FBX actual 11-position placement/whole lid clearance by C01-13 and real Unity/PhysX plus HQ corridor width decision.",
+    "4/ W01/W02/W03 curated FBX version SHA differs from older Blender independent tested candidate. C01-03/C01-11/C01-10 must choose original/curated exact source before integrated scene claim.",
+    "5/ Licensed Unity6 actual 1920x1080 URP GameView render/material/collider/pivot and final independent cross-part visual/gameplay signoff still absent. C01-02 W29 signed native Blender4 1080p shaded/wire images of P15-03/P18-03/P19-03 DO NOT count as Unity visual."
+  ],
+  "protection": "CLAUDE_DOORS_EXTERNAL_HOLD all D01 D02 and any entrusted doors/gates, PR19 PR32 frozen and not inspected/tested/modified/exported/imported. Ship layout unchanged. Never merge unapproved.",
+  "rows": [
+    {
+      "ASSET": "P15-01",
+      "OWNER": "C01-15",
+      "SOURCE_PR": 16,
+      "SOURCE_COMMIT_SHA": "880c3c6eaa199da3490a4ca66413a247bd08e78e",
+      "BLEND_SHA256": "d91783a2be0b13fcaec8477eb73cc2bb4717be17be6cf6bad329a89dd88ae4c0",
+      "BLEND_BYTES": 606720,
+      "FBX_SHA256": "bff1a07223b61762e4dcb27df7ff4c91dae11d42e0695163fe17bedc6b314c5a",
+      "FBX_BYTES": 80908,
+      "DEFECT": "NO_NEW_CONFIRMED_DEFECT",
+      "REPAIR": "NONE_REQUIRED",
+      "BLENDER_QA": "W20 original real Blender source/FBX parity PASS #41536225400",
+      "INDEPENDENT_QA": "C01-02 unchanged SHA W26 original binary STATIC_INDEX_UV_NORMAL_PASS",
+      "STATIC_ACCEPTANCE": "STATIC_ACCEPTED_SCOPED_CURRENT_SHA",
+      "MOTION": "STATIC_OR_MOTION_NOT_FULLY_TESTED",
+      "VISUAL": "NOT_ACCEPTED",
+      "UNITY": "NOT_RUN_OWNER_ACTION_REQUIRED",
+      "UNITY_ACCEPTED": false,
+      "RC_STATUS": "BLOCKED",
+      "BLOCKER": "LICENSED_UNITY6000_3_14F1_URP_REAL_IMPORT_VISUAL_PREFAB_EDITMODE_PLAYMODE_NOT_RUN",
+      "PROOF": "https://github.com/C8LyNn/Model-Test/actions/runs/41536225400"
+    },
+    {
+      "ASSET": "P15-02",
+      "OWNER": "C01-15",
+      "SOURCE_PR": 16,
+      "SOURCE_COMMIT_SHA": "880c3c6eaa199da3490a4ca66413a247bd08e78e",
+      "BLEND_SHA256": "2244f6d72ba7bb8fc336b033ccbf89d07a60eaee96e4d448b6e61f6da8c165c3",
+      "BLEND_BYTES": 657632,
+      "FBX_SHA256": "470fdbdfad19d6b94ee227fc546053548b709da31115fd928f07790780066590",
+      "FBX_BYTES": 103644,
+      "DEFECT": "NO_NEW_CONFIRMED_DEFECT",
+      "REPAIR": "NONE_REQUIRED",
+      "BLENDER_QA": "W20 original real Blender source/FBX parity PASS #41536225400",
+      "INDEPENDENT_QA": "C01-02 unchanged SHA W26 original binary STATIC_INDEX_UV_NORMAL_PASS",
+      "STATIC_ACCEPTANCE": "STATIC_ACCEPTED_SCOPED_CURRENT_SHA",
+      "MOTION": "STATIC_OR_MOTION_NOT_FULLY_TESTED",
+      "VISUAL": "NOT_ACCEPTED",
+      "UNITY": "NOT_RUN_OWNER_ACTION_REQUIRED",
+      "UNITY_ACCEPTED": false,
+      "RC_STATUS": "BLOCKED",
+      "BLOCKER": "LICENSED_UNITY6000_3_14F1_URP_REAL_IMPORT_VISUAL_PREFAB_EDITMODE_PLAYMODE_NOT_RUN",
+      "PROOF": "https://github.com/C8LyNn/Model-Test/actions/runs/41536225400"
+    },
+    {
+      "ASSET": "P15-03",
+      "OWNER": "C01-15",
+      "SOURCE_PR": 16,
+      "SOURCE_COMMIT_SHA": "880c3c6eaa199da3490a4ca66413a247bd08e78e",
+      "BLEND_SHA256": "e787a9455baa08d5e6b198b4c47d236376b240e08781792020b93be899ca38de",
+      "BLEND_BYTES": 661300,
+      "FBX_SHA256": "ea25d2d7b47baa50fdca3000b101c65b19ba252994553ee6fe6691ca89d5c149",
+      "FBX_BYTES": 102252,
+      "DEFECT": "W26_120_DEGENERATE_UV0_TRIANGLES_REPAIRED",
+      "REPAIR": "W26_PHYSICAL_BLENDER_UV_FIX__120_TO_0_AND_REAL_FBX_REIMPORT",
+      "BLENDER_QA": "W26 real native UV0 repaired, Blender save FBX export/reimport #41708819671; actual corrected BVH #41711037346",
+      "INDEPENDENT_QA": "C01-02 W27 independently actual native source BLEND/FBX SHA STATIC_PASS / UV_PASS / MOTION_PASS; 361 critical+46 whole-motion poses in each source and FBX #41717112468",
+      "STATIC_ACCEPTANCE": "STATIC_ACCEPTED_SCOPED_CURRENT_SHA",
+      "MOTION": "INDEPENDENT_NATIVE_AND_IMPORTED_FBX_HINGE_MOTION_PASS",
+      "VISUAL": "INDEPENDENT_NATIVE_BLENDER4_1920x1080_SHADED_TRUE_WIRE_CAPTURED__ACTUAL_UNITY_URP_GAMEVIEW_NOT_RUN",
+      "UNITY": "NOT_RUN_OWNER_ACTION_REQUIRED",
+      "UNITY_ACCEPTED": false,
+      "RC_STATUS": "BLOCKED",
+      "BLOCKER": "LICENSED_UNITY6000_3_14F1_URP_REAL_IMPORT_GAMEVIEW_1080P_PREFAB_EDITMODE_PLAYMODE_NOT_RUN",
+      "PROOF": "https://github.com/C8LyNn/Model-Test/actions/runs/41717112468",
+      "NATIVE_1080P_VISUAL_EVIDENCE": "https://github.com/C8LyNn/Model-Test/actions/runs/41735420957",
+      "INDEPENDENT_NATIVE_VISUAL_CANDIDATE_SHA_PASS": true,
+      "VISUAL_URP_ACCEPTED": false
+    },
+    {
+      "ASSET": "P15-04",
+      "OWNER": "C01-15",
+      "SOURCE_PR": 25,
+      "SOURCE_COMMIT_SHA": "dbfc8eb4b6ec774b9928a59f59192b8ef807e361",
+      "BLEND_SHA256": "54a4b2efdfe0cc3766ff1a04ce3bca24f1adcdf2e8d7812058fc000e297393cd",
+      "BLEND_BYTES": 684588,
+      "FBX_SHA256": "58252505554c65354f9ebce7e3264868d3ff7a57c850d16323e71e6356c5ce04",
+      "FBX_BYTES": 89596,
+      "DEFECT": "NO_NEW_CONFIRMED_DEFECT",
+      "REPAIR": "NONE_REQUIRED",
+      "BLENDER_QA": "W20/W22 original real Blender source/FBX import PASS #41536480455",
+      "INDEPENDENT_QA": "C01-02 current SHA W26 original binary STATIC_TOPOLOGY_UV_NORMAL_PASS",
+      "STATIC_ACCEPTANCE": "STATIC_ACCEPTED_SCOPED_CURRENT_SHA",
+      "MOTION": "STATIC_OR_MOTION_NOT_FULLY_TESTED",
+      "VISUAL": "NOT_ACCEPTED",
+      "UNITY": "NOT_RUN_OWNER_ACTION_REQUIRED",
+      "UNITY_ACCEPTED": false,
+      "RC_STATUS": "BLOCKED",
+      "BLOCKER": "LICENSED_UNITY6000_3_14F1_URP_REAL_IMPORT_VISUAL_PREFAB_EDITMODE_PLAYMODE_NOT_RUN",
+      "PROOF": "https://github.com/C8LyNn/Model-Test/actions/runs/41536480455"
+    },
+    {
+      "ASSET": "P15-05",
+      "OWNER": "C01-15",
+      "SOURCE_PR": 25,
+      "SOURCE_COMMIT_SHA": "dbfc8eb4b6ec774b9928a59f59192b8ef807e361",
+      "BLEND_SHA256": "4f30880643a17d97c9f7cfca4cd0a219e12fff6f8868fa1ba31017e9083f2c01",
+      "BLEND_BYTES": 728540,
+      "FBX_SHA256": "5d254249234c100ca2e7c0b4d65fe8ed8bc366f275d4718b4d90bac416d3da5e",
+      "FBX_BYTES": 124684,
+      "DEFECT": "NO_NEW_CONFIRMED_DEFECT",
+      "REPAIR": "NONE_REQUIRED",
+      "BLENDER_QA": "W20/W22 original real Blender source/FBX import PASS #41536480455",
+      "INDEPENDENT_QA": "C01-02 current SHA W26 original binary STATIC_TOPOLOGY_UV_NORMAL_PASS",
+      "STATIC_ACCEPTANCE": "STATIC_ACCEPTED_SCOPED_CURRENT_SHA",
+      "MOTION": "STATIC_OR_MOTION_NOT_FULLY_TESTED",
+      "VISUAL": "NOT_ACCEPTED",
+      "UNITY": "NOT_RUN_OWNER_ACTION_REQUIRED",
+      "UNITY_ACCEPTED": false,
+      "RC_STATUS": "BLOCKED",
+      "BLOCKER": "LICENSED_UNITY6000_3_14F1_URP_REAL_IMPORT_VISUAL_PREFAB_EDITMODE_PLAYMODE_NOT_RUN",
+      "PROOF": "https://github.com/C8LyNn/Model-Test/actions/runs/41536480455"
+    },
+    {
+      "ASSET": "P15-06",
+      "OWNER": "C01-15",
+      "SOURCE_PR": 25,
+      "SOURCE_COMMIT_SHA": "dbfc8eb4b6ec774b9928a59f59192b8ef807e361",
+      "BLEND_SHA256": "644b1fab278bf1694fc6eb61b6a1cfe0f4bcfce204ecfd25a6b4cb13221a82aa",
+      "BLEND_BYTES": 1011612,
+      "FBX_SHA256": "e48b943e7926a3d62e3f956f1b1bc59218dbe310837d179dfbbfee435001f448",
+      "FBX_BYTES": 260908,
+      "DEFECT": "NO_NEW_CONFIRMED_DEFECT",
+      "REPAIR": "NONE_REQUIRED",
+      "BLENDER_QA": "W20/W22 original real Blender source/FBX import PASS #41536480455",
+      "INDEPENDENT_QA": "C01-02 current SHA W26 original binary STATIC_TOPOLOGY_UV_NORMAL_PASS",
+      "STATIC_ACCEPTANCE": "STATIC_ACCEPTED_SCOPED_CURRENT_SHA",
+      "MOTION": "STATIC_OR_MOTION_NOT_FULLY_TESTED",
+      "VISUAL": "NOT_ACCEPTED",
+      "UNITY": "NOT_RUN_OWNER_ACTION_REQUIRED",
+      "UNITY_ACCEPTED": false,
+      "RC_STATUS": "BLOCKED",
+      "BLOCKER": "LICENSED_UNITY6000_3_14F1_URP_REAL_IMPORT_VISUAL_PREFAB_EDITMODE_PLAYMODE_NOT_RUN",
+      "PROOF": "https://github.com/C8LyNn/Model-Test/actions/runs/41536480455"
+    },
+    {
+      "ASSET": "P15-07",
+      "OWNER": "C01-15",
+      "SOURCE_PR": 25,
+      "SOURCE_COMMIT_SHA": "dbfc8eb4b6ec774b9928a59f59192b8ef807e361",
+      "BLEND_SHA256": "00a456375c5fd731f811d61d1ae171330a5291d5669ae9fdcc752b174b72aa6e",
+      "BLEND_BYTES": 853560,
+      "FBX_SHA256": "ffc0211cc73a2056b815f3a494c24ab97d3c808d7ad9eb5b472472c555fb47f2",
+      "FBX_BYTES": 148828,
+      "DEFECT": "48_INTENTIONAL_SINGLE_SIDED_GAUGE_EDGES_NO_DEFECT",
+      "REPAIR": "NONE_REQUIRED",
+      "BLENDER_QA": "W20/W22 original real Blender source/FBX import PASS #41536480455",
+      "INDEPENDENT_QA": "C01-02 current SHA W26 STATIC_PASS; 48 deliberately open indicator disk boundary edges CLOSED review #6591162466",
+      "STATIC_ACCEPTANCE": "STATIC_ACCEPTED_SCOPED_CURRENT_SHA",
+      "MOTION": "STATIC_OR_MOTION_NOT_FULLY_TESTED",
+      "VISUAL": "GAUGE_ONE_SIDED_INTENT_CONFIRMED__UNITY_FRONT_FACE_VISUAL_NOT_RUN",
+      "UNITY": "NOT_RUN_OWNER_ACTION_REQUIRED",
+      "UNITY_ACCEPTED": false,
+      "RC_STATUS": "BLOCKED",
+      "BLOCKER": "LICENSED_UNITY6000_3_14F1_URP_REAL_IMPORT_VISUAL_PREFAB_EDITMODE_PLAYMODE_NOT_RUN",
+      "PROOF": "https://github.com/C8LyNn/Model-Test/pull/25#issuecomment-6591162466"
+    }
+  ],
+  "global_current_RC_W29_authority": {
+    "url": "https://github.com/C8LyNn/Model-Test/blob/c01/props-03-library-wave02/C01InteriorProps_Library/Pass29/C01_03_W29_RELEASE_CANDIDATE_36_PLUS_8.json",
+    "blob_sha_at_W29_read": "5221e426cfabe4f5f1451f9f91b5371d1d58e6df",
+    "counts": {
+      "canonical": 36,
+      "ancillary": 8,
+      "total": 44,
+      "blocked": 44,
+      "final_approved": 0,
+      "unity_accepted": 0
+    },
+    "notice": "This RC manifest was authored before the later W29 C01-01 dimensional ruling and C01-19 P19-01 new native producer file. C01-03 MUST update current per-asset row after independent new SHA, not claim PASS based on producer repair alone."
+  },
+  "cross_lane_W29_late_verified_evidence": {
+    "P18-07": {
+      "standards": "ACCEPT_P18_07_SCOPED_STATIC_PLUS_SWEPT_CLEARANCE",
+      "rule": "https://github.com/C8LyNn/Model-Test/blob/c01/standards-mesh-topology-pass03/Docs/C01InteriorProps/C01_01_W29_P18_07_SCOPED_DIMENSION_AND_SWEEP_RULING.md",
+      "rule_commit": "11ebe4e8be1d11ea2b46f1f3eda66e887d9b9f58",
+      "fbx_sha": "858a24db4338804ee3a3a70c310cd4936e3c45f559b9c4ab81c6037add564554",
+      "static_depth_m": 0.341000006,
+      "nominal_depth_m": 0.34,
+      "swept_depth_m": 0.361000001,
+      "remaining": "Placement 11 steps and full lid/Unity collider PhysX NOT_RUN; HQ min corridor width policy open."
+    },
+    "P19-01": {
+      "producer_status": "ACTUAL_BLENDER4_NATIVE_REPAIR_PASS__INDEPENDENT_NEW_SHA_PENDING",
+      "real_action": "https://github.com/C8LyNn/Model-Test/actions/runs/41735847975",
+      "producer_report": "https://github.com/C8LyNn/Model-Test/blob/c01/props-19-furniture/Assets/C01InteriorProps/C01-19/QA/PASS29/P19-01/W29_P19_01_ACTUAL_BLENDER_FBX_REPAIR.json",
+      "producer_pr": 15,
+      "producer_blend_sha": "eb026e37ba5e34369d254cfc50d5dc043ca43cb7f52ce34046ae5e0c61dcc879",
+      "producer_fbx_sha": "80c7dc228e61b36392914ed36919b39fca58b772286ee569b505cf81ad5c29d1",
+      "visible_stripe_top_delta_m": 0.001499950885772705,
+      "new_native_original_meshes": 4,
+      "mesh_vertices": 269,
+      "triangles": 470,
+      "remaining": "C01-02 independent current NEW SHA Blender + FBX reimport and visual A/B, Unity6 NOT_RUN. Current global canonical RC old SHA must not be treated as repaired."
+    },
+    "Unity_C01_10_W29": {
+      "status": "OWNER_ACTION_REQUIRED",
+      "runbook": "https://github.com/C8LyNn/Model-Test/blob/c01/props-10-showcase-integration/C01InteriorProps/Pass29/C01_10_W29_UNITY6000_3_14F1_OWNER_EXECUTION_GATE.md",
+      "notes": "C01-10 W29 did not run Editor; positive W29 result not authorized."
+    },
+    "C01_02_visual_new_workflow": {
+      "run_id": 41736031650,
+      "state_at_read": "IN_PROGRESS__NOT_PASS",
+      "scope": "three exact signed changed-current FBX visuals, not an executed Unity test"
+    },
+    "C01_02_independent_native_1920x1080_visual": {
+      "scope": "Native Blender4 original full signed FBX 1920x1080 Workbench shaded + true indexed edge wire on three current repaired SHAs; no new geometry; not Unity URP/actual GameView final",
+      "asset_ids": [
+        "P15-03",
+        "P18-03",
+        "P19-03"
+      ],
+      "initial_action": 41735420957,
+      "focused_p18_corrected_framing_action": 41736031650,
+      "original_resolution": [
+        1920,
+        1080
+      ],
+      "native_current_sha_C01_02_visual_proof_current_P15_03": "https://github.com/C8LyNn/Model-Test/actions/runs/41735420957",
+      "qa_w29_manifest": "https://github.com/C8LyNn/Model-Test/blob/c01/props-02-independent-qa/C01InteriorProps_QA/W29/W29_C01_02_INDEPENDENT_RC_36_PLUS_8.json",
+      "visual_status_P15_03": "INDEPENDENT_NATIVE_1080P_CAPTURED__UNITY_URP_NOT_RUN",
+      "no_source_mesh_modification": true
+    }
+  },
+  "latest_global_C01_03_W29_RELEASE_INDEX": {
+    "authoritative_release_metadata": "https://github.com/C8LyNn/Model-Test/blob/c01/props-03-library-wave02/C01InteriorProps_Library/Pass29/C01_03_W29_RC_44_CANONICAL_AND_ARCHITECTURE_SHA_GATES.json",
+    "authoritative_release_csv": "https://github.com/C8LyNn/Model-Test/blob/c01/props-03-library-wave02/C01InteriorProps_Library/Pass29/C01_03_W29_RC_44_ASSET_GATE_MATRIX.csv",
+    "blob_at_read": "89b2932e71d7f3fb8e9084dd147d5e967ff2bcfc",
+    "counts": {
+      "canonical": 36,
+      "architecture": 8,
+      "total": 44,
+      "rc_status": {
+        "STATIC_ACCEPTED": 39,
+        "BLOCKED": 5
+      },
+      "unity_accepted": 0,
+      "final_approved": 0,
+      "release_hold": 44,
+      "blender_retested_in_w29": 0,
+      "unity_run_in_w29": false
+    },
+    "interpretation": "39/44 are scoped STATIC_ACCEPTED but 44/44 RELEASE_HOLD (not 39 READY/FINAL); all Unity Editor NOT_RUN. C01-03 RC snapshot P19-01/P18-07 may predate newer producer repair+standards accepted decision, cross-lane evidence above governs pending review and C01-03 must reconcile.",
+    "DO_NOT_RENAME_OLD_SHA_TO_NEW_SHA": true
+  }
+}

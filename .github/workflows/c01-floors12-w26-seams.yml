@@ -22,7 +22,7 @@ jobs:
         run: |
           set -euo pipefail
           sudo apt-get update
-          sudo apt-get install -y --no-install-recommends blender xvfb libgl1 libgl1-mesa-dri libopengl0 git-lfs
+          sudo apt-get install -y --no-install-recommends blender python3-numpy xvfb libgl1 libgl1-mesa-dri libopengl0 git-lfs
           blender --version | head -3
           git lfs install --local
           git lfs pull --include="C01StandaloneKits/FloorCeiling/DetailPass17/Blend/*,C01StandaloneKits/FloorCeiling/DetailPass17/FBX/*" --exclude=""

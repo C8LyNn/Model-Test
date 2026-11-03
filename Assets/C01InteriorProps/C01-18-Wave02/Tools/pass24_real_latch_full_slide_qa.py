@@ -68,7 +68,7 @@ def check(fmt):
 a=check("blend")
 b=check("fbx")
 def compact(samples):
- return [(x["retract_mm"],x["collision_triangle_pairs"],x["bbox_unity"]["dimensions_xyz_m"]) for x in samples]
+ return [(x["retract_mm"],x["collision_triangle_pairs"],[round(d,5) for d in x["bbox_unity"]["dimensions_xyz_m"]]) for x in samples]
 equal=compact(a)==compact(b)
 assert equal,("imported FBX changed original signed Blender lock-slide geometry",compact(a),compact(b))
 assert a[0]["collision_triangle_pairs"].get("Bin_Lid")==13

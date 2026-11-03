@@ -34,7 +34,7 @@ jobs:
             echo "ASSET_ROOT=Assets/C01InteriorProps/C01-19" >> "$GITHUB_ENV"
             root="Assets/C01InteriorProps/C01-19"
           fi
-          git lfs pull --include="$root/Models/**" --exclude="*"
+          git lfs pull --include="$root/Models/**" --exclude=""
           test "$(find "$root/Models" -name '*.blend' -type f | wc -l)" -eq 4
           test "$(find "$root/Models" -name '*.fbx' -type f | wc -l)" -eq 4
       - name: Execute actual Blender 4.x original BLEND + unchanged signed original FBX QA, generate 16 physical renders
@@ -68,7 +68,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: C01-19-W26-REAL-SIGNED-NATIVE-MESH-AUDIT-${{ github.ref_name }}
+          name: C01-19-W26-REAL-SIGNED-NATIVE-MESH-AUDIT
           if-no-files-found: warn
           path: ${{ env.ASSET_ROOT }}/QA/PASS26/
       - name: Commit actual QA evidence only into existing isolated Draft branch; no meshes or doors

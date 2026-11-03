@@ -69,12 +69,13 @@ public static class BuildWave02CargoPrefabs {
        throw new InvalidOperationException("P18-07 moving lid/handle child not parented to hinge: "+child);
      }
      var lockCollider=lockNode.GetComponent<BoxCollider>();
-     if(!lockCollider || lockCollider.isTrigger)
-      throw new InvalidOperationException("P18-07 requires physical non-trigger Front_Lock collider");
+     var lockRenderer=lockNode.GetComponent<MeshRenderer>();
+     if(!lockCollider || lockCollider.isTrigger || !lockRenderer || !lockRenderer.enabled)
+      throw new InvalidOperationException("P18-07 requires VISIBLE lock mesh with physical non-trigger Front_Lock collider");
      var gate=root.AddComponent<C01ToolBinLatchGate>();
      gate.Configure(hinge,lockCollider);
-     if(gate.IsUnlocked || !lockCollider.enabled)
-      throw new InvalidOperationException("P18-07 prefab MUST initialize locked");
+     if(gate.IsUnlocked || gate.IsLockVisiblyReleased || !lockCollider.enabled)
+      throw new InvalidOperationException("P18-07 prefab MUST initialize with VISIBLE latch ENGAGED and lid LOCKED");
     }
     // A kinematic Rigidbody allows later pickup by gameplay scripts; no autonomous falling.
     var body=root.AddComponent<Rigidbody>();

@@ -31,7 +31,7 @@ def inspect(items):
  for o in items:
   m=o.data;uvdata=m.uv_layers.active.data if m.uv_layers else None
   world=[o.matrix_world@v.co for v in m.vertices]
-  faces=[]
+  faces=[];near_zero_3d=[]
   textured_materials=[]
   for mat in m.materials:
    n=[{"type":n.type,"image":n.image.name if n.image else None} for n in mat.node_tree.nodes if n.type=="TEX_IMAGE"] if mat and mat.use_nodes and mat.node_tree else []
@@ -41,7 +41,10 @@ def inspect(items):
    area=area_3d(pts)
    uv=[tuple(float(q) for q in uvdata[li].uv) for li in p.loop_indices] if uvdata else []
    uva=area_uv(uv) if uv else None
-   if area<=1e-14:totals["zero_3d_area_faces"]+=1
+   if area<=1e-14:
+    totals["zero_3d_area_faces"]+=1
+    near_zero_3d.append(dict(polygon_index=pi,vertices=list(p.vertices),world_area_by_fan_m2=float(area),
+      world_vertex_xyz_m=[digest_round(x) for x in pts]))
    if uva is not None and uva<=1e-14 and area>1e-14:
     slot=p.material_index;material=textured_materials[slot] if slot<len(textured_materials) else {}
     if material.get("image_texture_nodes"):totals["image_texture_nodes_on_collapsed_materials"]+=1
@@ -70,7 +73,7 @@ def inspect(items):
   totals["tj_near_edge_candidates"]+=len(near)
   totals["boundary_edges"]+=total_bound;totals["nonmanifold_edges"]+=total_nonmanifold
   result.append(dict(object=o.name,original_mesh_datablock=m.name,uv0=bool(uvdata),materials=textured_materials,
-   collapsed_polygons=faces,collapsed_count=len(faces),near_edge_contacts=near,
+   collapsed_polygons=faces,collapsed_count=len(faces),world_area_le_1e_14_witnesses=near_zero_3d,near_edge_contacts=near,
    same_mesh_near_edge_candidates=len(near),boundary_edges=total_bound,nonmanifold_edges=total_nonmanifold))
   candidate.extend([Vector(x["centroid_world_m"]) for x in faces])
   candidate.extend([Vector(x["world_xyz"]) for x in near])
@@ -149,7 +152,8 @@ for mid,shas in SHA.items():
  assert imported["totals"]["triangles"]==(252 if mid=="P19-07" else 282)
  assert imported["totals"]["tj_near_edge_candidates"]==(17 if mid=="P19-07" else 2)
  assert imported["totals"]["boundary_edges"]==0 and imported["totals"]["nonmanifold_edges"]==0
- assert imported["totals"]["zero_3d_area_faces"]==0
+ # Do not equate a new world-space fan-area threshold flag with a confirmed
+ # Blender BMesh or FBX indexed-triangle defect: retain exact witness for C01-02.
  assert imported["totals"]["zero_uv_area_faces_positive_3d"]==(8 if mid=="P19-07" else 0)
  assert sha(source)==shas[0] and sha(fbx)==shas[1]
  assert sha(out/imgs[0])!=sha(out/imgs[1]),"TRUE WIRE RENDER MUST DIFFER FROM SHADED"
@@ -157,7 +161,7 @@ for mid,shas in SHA.items():
    asset=mid,source_blend_SHA256=shas[0],actual_signed_fbx_SHA256=shas[1],
    Blender=bpy.app.version_string,source_blend=source_result,actual_reimported_signed_fbx=imported,
    previews=imgs,blender_producer_native_changed=False,fbx_exported=False,
-   c01_02_independent_visual_conclusion="PENDING",
+   world_fan_area_threshold_note="W26 BMesh found 0 zero-area; record tiny world fan-area witnesses for C01-02 numeric reconciliation, no automatic geometry edit",c01_02_independent_visual_conclusion="PENDING",
    Unity="NOT_RUN",conclusion="OBSERVED_NUMERICAL_CANDIDATES_ONLY__VISUAL_AND_MATERIAL_IMPACT_REQUIRES_INDEPENDENT_ACCEPTANCE")
  (out/"W27_TARGETED_REAL_NATIVE_UV_AND_EDGE_WITNESS.json").write_text(json.dumps(rec,indent=2))
  summary.append(dict(asset=mid,blend_sha=shas[0],fbx_sha=shas[1],

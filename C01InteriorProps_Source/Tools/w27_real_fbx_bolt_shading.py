@@ -50,7 +50,7 @@ def analyze(tag):
         for t in m.loop_triangles:
             pos=[o.matrix_world @ m.vertices[i].co for i in t.vertices]
             v=(pos[1]-pos[0]).cross(pos[2]-pos[0])
-            if v.length < 1e-12: continue
+            if v.length < 1e-24: continue  # tiny signed bolt faces must not be skipped by absolute area cutoff
             v.normalize()
             for i in t.loops:
                 if hasattr(m.loops[i],"normal"):
@@ -67,6 +67,7 @@ def analyze(tag):
                 bolt["dot_min"]=min(bolt["dot_min"],dot)
                 bolt["dot_lt_0p2"]+=int(dot<0.2)
                 bolt["negative_dot"]+=int(dot < -0.0001)
+        assert bolt["corner_count"] == bolt["triangles"]*3, ("UNSAMPLED_BOLT_NORMALS", tag, bolt)
         report["bolt_objects"].append(bolt)
         report["bolt_dot_lt_0p2"]+=bolt["dot_lt_0p2"]
         report["bolt_negative_dot"]+=bolt["negative_dot"]

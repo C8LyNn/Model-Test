@@ -15,14 +15,14 @@ P = ROOT / "Assets/C01InteriorProps/P15"
 OUT = ROOT / "C01_PASS19_P15_NATIVE_QA"
 OUT.mkdir(parents=True, exist_ok=True)
 BINS = {
-    "Sources/Blender/P15-03.blend": "1deb3df36a1c87be8fe6ebec7529233b1d9eececa38230f4d9f693bf40fceb9a",
-    "Models/FBX/P15-03.fbx": "7be76765763308deb8c0fa9d4c11cec8c74b60777e0199a160ebab088c59189d",
-    "Models/FBX/P15-03_Body.fbx": "e03f774da5977f0aeb8dcb7eadf8e09aaf2cd4f16fa184c7ad92c672ee8cc112",
-    "Models/FBX/P15-03_Door.fbx": "96f2d542fc0bdb2376642f1ed082ca77c9b03aed28d7bffb0ef6c111a7cca03d",
+    "Sources/Blender/P15-03.blend": "e787a9455baa08d5e6b198b4c47d236376b240e08781792020b93be899ca38de",
+    "Models/FBX/P15-03.fbx": "ea25d2d7b47baa50fdca3000b101c65b19ba252994553ee6fe6691ca89d5c149",
+    "Models/FBX/P15-03_Body.fbx": "28b5ac854c9ecd869c587a6e337e3cc76919141a1fad38ab2d0a078ab0f6802c",
+    "Models/FBX/P15-03_Door.fbx": "c4a7aa9fd054b7106faf692868681290f6880e45f0e0a7d7bcc52f5e88ad0d7d",
 }
 SPEC_SHA = "9394e90c72b78ce8d33e0629e383fe32b9faafb0a1cbf3fcb817281623cf05f3"
 REPORT = {
-    "gate": "C01-15_PASS19_REAL_NATIVE_P15-03_HINGE_SWEEP",
+    "gate": "C01-15_PASS26_POST_UV_REAL_NATIVE_P15-03_HINGE_SWEEP_FIXED_AABB",
     "scope": "existing signed source + hydrated genuine .blend and 3 Blender FBX, no new model export",
     "model": "P15-03", "blender_version": bpy.app.version_string,
     "files": {}, "stages": [], "result": "HOLD",
@@ -48,11 +48,24 @@ def bvh_object(obj):
     high = [max(v[i] for v in xyz) for i in range(3)]
     return BVHTree.FromPolygons(xyz, tri, all_triangles=True, epsilon=0.0), low, high
 def aabb_intersect(a,b):
-    return all(a[1][i] >= b[2][i] and b[1][i] >= a[2][i] for i in range(3))
+    return all(a[1][i] <= b[2][i] and b[1][i] <= a[2][i] for i in range(3))
 def triangle_hits(a,b):
     if not aabb_intersect(a,b):
         return []
     return a[0].overlap(b[0])
+
+def real_uv_zero_area_count(ob):
+    m=ob.data
+    u=m.uv_layers.active
+    if not u:return -1
+    n=0
+    for p in m.polygons:
+        ll=list(p.loop_indices)
+        for j in range(1,len(ll)-1):
+            a,b,c=[u.data[ll[k]].uv for k in (0,j,j+1)]
+            n += abs((b.x-a.x)*(c.y-a.y)-(b.y-a.y)*(c.x-a.x))*.5<1e-10
+    return n
+
 def check_scene(label, source):
     expected = {p["name"]: p["component"] for p in source["parts"] if p["asset"] == "P15-03"}
     objs = {o.name: o for o in bpy.data.objects if o.type == "MESH"}
@@ -66,6 +79,9 @@ def check_scene(label, source):
     receipt(label + "_uv_normals_triangle_area", all(o.data.uv_layers.active is not None
                 and len(o.data.polygons)>0 and all(p.area > 1e-12 for p in o.data.polygons)
                 for o in objs.values()))
+    uv_bad={name:real_uv_zero_area_count(ob) for name,ob in objs.items()}
+    receipt(label+"_NEW_FBXd_UV0_no_collapsed_triangles",sum(uv_bad.values())==0,
+        {"total":sum(uv_bad.values()),"details":{k:v for k,v in uv_bad.items() if v}})
     receipt(label + "_native_hinge_world_position",
             max(abs(door.matrix_world.translation[i]-v) for i,v in
                 enumerate((-0.352,-0.138,0.0))) < 1e-5,
@@ -119,6 +135,46 @@ def check_scene(label, source):
     receipt(label+"_actual_world_triangle_motion",not critical_clashes and not full_clashes,detail)
     return {"parts":len(objs),"native_movement":detail}
 
+
+def render_true_mesh_wire_from_actual_signed_fbx():
+    """Actual Blender Workbench shaded and triangle-edge geometry overlay; no exporter."""
+    meshes=[o for o in bpy.data.objects if o.type=="MESH"]
+    camera_data=bpy.data.cameras.new("C01_PASS26_TEMP_CAMERA")
+    cam=bpy.data.objects.new("C01_PASS26_TEMP_CAMERA",camera_data)
+    bpy.context.scene.collection.objects.link(cam)
+    target=__import__("mathutils").Vector((0,0,.9))
+    cam.location=target+__import__("mathutils").Vector((4.4,-5.2,4.0))
+    cam.rotation_euler=(target-cam.location).to_track_quat("-Z","Y").to_euler()
+    camera_data.type="ORTHO";camera_data.ortho_scale=3.2
+    sc=bpy.context.scene;sc.camera=cam;sc.render.engine="BLENDER_WORKBENCH"
+    sc.display.shading.light="STUDIO";sc.display.shading.color_type="MATERIAL"
+    sc.render.resolution_x=900;sc.render.resolution_y=700;sc.render.resolution_percentage=100
+    sc.render.image_settings.file_format="PNG"
+    def snap(name):
+        path=OUT/name;sc.render.filepath=str(path)
+        bpy.ops.render.render(write_still=True)
+        receipt("genuine_workbench_image_"+name,path.is_file() and path.stat().st_size>1000)
+    snap("P15-03_POST_UV_SHADED.png")
+    mat=bpy.data.materials.new("C01_PASS26_TEMP_VISIBLE_BLACK_TRI_EDGE")
+    mat.diffuse_color=(.015,.015,.018,1)
+    overlay=[]
+    for obj in meshes:
+        wire=obj.copy()
+        wire.data=obj.data.copy()
+        bpy.context.scene.collection.objects.link(wire)
+        wire.name="C01_PASS26_TEMP_WIRE_"+obj.name
+        wire.data.materials.clear()
+        wire.data.materials.append(mat)
+        wire.modifiers.new("C01_TEMP_REAL_TRIANGULATION","TRIANGULATE")
+        edge=wire.modifiers.new("C01_TEMP_TRUE_TRIANGLE_EDGE_TUBES","WIREFRAME")
+        edge.thickness=.0018;edge.offset=1;edge.use_replace=True
+        overlay.append(wire)
+    bpy.context.view_layer.update()
+    snap("P15-03_POST_UV_REAL_TRIANGLE_WIREFRAME.png")
+    # Source originals are not saved and the overlays are never exported.
+    for obj in overlay:bpy.data.objects.remove(obj,do_unlink=True)
+    bpy.data.objects.remove(cam,do_unlink=True)
+
 def main():
     receipt("runtime_blender4", bpy.app.version[0] == 4)
     srcpath = P / "Sources/geometry_spec.json"
@@ -140,7 +196,8 @@ def main():
     bpy.ops.wm.read_factory_settings(use_empty=True)
     bpy.ops.import_scene.fbx(filepath=str(P/"Models/FBX/P15-03.fbx"))
     REPORT["fbx"] = check_scene("fbx",source)
-    REPORT["result"]="NATIVE_PRODUCER_MOTION_PASS_C01_02_PENDING"
+    render_true_mesh_wire_from_actual_signed_fbx()
+    REPORT["result"]="NATIVE_POST_UV_MOTION_BVH_AND_TRUE_WIREFRAME_PASS_INDEPENDENT_QA_PENDING"
 
 try:
     main()
@@ -148,7 +205,7 @@ except Exception as exc:
     REPORT["error"]=repr(exc)
     REPORT["result"]="HOLD"
 finally:
-    (OUT/"P15-03_PASS19_NATIVE_MOTION.json").write_text(
+    (OUT/"P15-03_PASS26_POST_UV_NATIVE_MOTION.json").write_text(
         json.dumps(REPORT,indent=2)+"\n",encoding="utf-8")
     print("C01_PASS19_RESULT",json.dumps(
         {"result":REPORT["result"],"checks":len(REPORT["stages"]),

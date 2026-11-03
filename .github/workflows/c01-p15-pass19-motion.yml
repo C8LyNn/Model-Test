@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   existing-native-p15-03:
@@ -44,6 +44,47 @@ jobs:
           mkdir -p C01_PASS19_P15_NATIVE_QA
           set -o pipefail
           LIBGL_ALWAYS_SOFTWARE=1 xvfb-run -a blender --background --python Tools/C01MeshPass19/P15/native_hinge_gate.py 2>&1 | tee C01_PASS19_P15_NATIVE_QA/Blender4_P15-03_motion.log
+
+
+      - name: Check actual shaded and TRUE triangulated wireframe pixel data differ
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import struct,zlib,pathlib
+          folder=pathlib.Path("C01_PASS19_P15_NATIVE_QA")
+          def pixels(path):
+              s=path.read_bytes()
+              assert s[:8]==b'\x89PNG\r\n\x1a\n'
+              off=8;chunks=[]
+              while off<len(s):
+                  n=struct.unpack_from(">I",s,off)[0];typ=s[off+4:off+8]
+                  if typ==b"IDAT":chunks.append(s[off+8:off+8+n])
+                  off+=n+12
+              return zlib.decompress(b"".join(chunks))
+          a=pixels(folder/"P15-03_POST_UV_SHADED.png")
+          b=pixels(folder/"P15-03_POST_UV_REAL_TRIANGLE_WIREFRAME.png")
+          assert len(a)==len(b) and a!=b,"Wireframe is not visibly distinct!"
+          print("C01-15 W26 true signed-FBX shaded vs actual wireframe PIXEL DIFFERENCE PASS")
+          PY
+      - name: Publish ONLY corrected witness imagery and latest post UV motion QA to own PR16
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT=Assets/C01InteriorProps/P15/QA/Pass26
+          mkdir -p "$OUT/Previews"
+          cp C01_PASS19_P15_NATIVE_QA/P15-03_PASS26_POST_UV_NATIVE_MOTION.json "$OUT/P15-03_PASS26_POST_UV_NATIVE_MOTION.json"
+          cp C01_PASS19_P15_NATIVE_QA/P15-03_POST_UV_SHADED.png "$OUT/Previews/P15-03_REAL_SHADED.png"
+          cp C01_PASS19_P15_NATIVE_QA/P15-03_POST_UV_REAL_TRIANGLE_WIREFRAME.png "$OUT/Previews/P15-03_REAL_TRIANGLE_WIREFRAME.png"
+          tar -cf "$RUNNER_TEMP/QA_only.tar" "$OUT/"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin c01/props-15-installations
+          GIT_LFS_SKIP_SMUDGE=1 git reset --hard FETCH_HEAD
+          tar -xf "$RUNNER_TEMP/QA_only.tar"
+          git rm -f --ignore-unmatch "$OUT/Previews/BEFORE_wire.png" "$OUT/Previews/AFTER_wire.png"
+          git add "$OUT/P15-03_PASS26_POST_UV_NATIVE_MOTION.json" "$OUT/Previews/P15-03_REAL_SHADED.png" "$OUT/Previews/P15-03_REAL_TRIANGLE_WIREFRAME.png"
+          git commit -m "C01-15 W26: correct AABB BVH, retest latest signed P15-03 hinge, replace false wireframes"
+          git push origin HEAD:c01/props-15-installations
 
       - name: Upload genuine hydrated native files and measured independent QA evidence
         if: always()

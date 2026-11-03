@@ -114,7 +114,8 @@
         "unity": "NOT_RUN",
         "final": "HOLD"
       },
-      "w23_status": "SIGNED_REAL_NATIVE_BVH_VISUAL_LOCK_RELEASE_PASS_20MM; runtime SOURCE_FIXED; Unity NOT_RUN / C01-02 W23 + C01-01 acceptance HOLD"
+      "w23_status": "SIGNED_REAL_NATIVE_BVH_VISUAL_LOCK_RELEASE_PASS_20MM; runtime SOURCE_FIXED; Unity NOT_RUN / C01-02 W23 + C01-01 acceptance HOLD",
+      "w24_status": "REAL_BLENDER_FBX_LATCH_SLIDE_11_POSITIONS_PASS + 45_ACTUAL_CSHARP_OFFLINE_PASS / C01_02_C01_01_UNITY_FINAL_HOLD"
     }
   ],
   "wave19": {
@@ -271,5 +272,81 @@
     "door_changes": 0,
     "merge": false,
     "notes": "Geometry proof is genuine Blender 4 source+FBX reimport. Unity local axis behavior and actual prefab/PlayMode depend on owner licensed editor; source-level code alone must never be represented as Unity success."
+  },
+  "wave24": {
+    "owner": "C01-18",
+    "asset": "P18-07",
+    "original_binary_fbx_sha256": "858a24db4338804ee3a3a70c310cd4936e3c45f559b9c4ab81c6037add564554",
+    "original_blend_sha256": "5fd990d8153430dd4f1a8893ebef0097465a404d1b2c6bbd77777de695b3e87d",
+    "original_native_mesh_parts": 10,
+    "original_triangles": 120,
+    "actual_signed_Blender4_and_FBX_source_step_execution": {
+      "run": "https://github.com/C8LyNn/Model-Test/actions/runs/41630768388",
+      "report": "https://github.com/C8LyNn/Model-Test/blob/c01/props-18-cargo-wave02/Assets/C01InteriorProps/C01-18-Wave02/QA/Pass24/P18-07_REAL_BLENDER_FBX_20MM_SLIDE_ENVELOPE.json",
+      "incremental_slide_positions_mm": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16,
+        18,
+        20
+      ],
+      "lock_lid_triangle_intersection_pairs": [
+        13,
+        13,
+        13,
+        11,
+        11,
+        11,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "source_vs_imported_binary_FBX_exact_contact_parity": true,
+      "slide_20mm_other_static_intersections": 0,
+      "geometry_dynamic_bounds_closed_xyz_m": [
+        0.560000002,
+        0.380000025,
+        0.341000006
+      ],
+      "geometry_dynamic_bounds_released_xyz_m": [
+        0.560000002,
+        0.380000025,
+        0.361000001
+      ],
+      "visual_latch_extension_m": 0.02,
+      "note": "Dynamic model footprint 361mm while visually released; nominal static depth 340mm, actual static 341mm, C01-01 must approve separately and C01-13 may assess placement/overhang"
+    },
+    "actual_production_CSharp_offline_Mono": {
+      "action": "https://github.com/C8LyNn/Model-Test/actions/runs/41630291683",
+      "report": "https://github.com/C8LyNn/Model-Test/blob/c01/props-18-cargo-wave02/QA/C01-18/Pass24/Wave02/P18-07_W24_REAL_CSHARP_MOCK_QA.json",
+      "compiled_actual_source": "Assets/C01InteriorProps/C01-18-Wave02/Runtime/C01ToolBinLatchGate.cs",
+      "tests_passed": 45,
+      "tests_failed": 0,
+      "type": "Real production C# class executed against offline UnityEngine mock; NOT Unity Editor / real PhysX / PlayMode",
+      "runtime_state_machine": "LOCKED -> RETRACTING for 0.25s (collider ON, no lid motion) -> UNLOCKED (visible lock +20mm, collider OFF) -> LID 0..110deg -> CLOSED -> RELOCKING 0.25s (collider OFF) -> LOCKED (original visual position, collider ON)",
+      "importer_parent_basis": "Root +Z release converted into Front_Lock parent's local coordinates using TransformVector / InverseTransformVector, tested with 90-degree imported-parent rotation",
+      "failsafe": "External lock visibility/parent tamper forces lid closed and solid collider ON; invalid angle/time inputs rejected"
+    },
+    "producer_gate": "REAL_BLENDER_FBX_STEP_AND_OFFLINE_COMPILED_CSHARP_PASS",
+    "C01_02_latest": "STATIC_PASS / LOCK_STATE_MOTION_HOLD; W24 runtime independent acceptance PENDING",
+    "C01_01_locked_static_depth_variance_mm": 1,
+    "C01_01_dynamic_slide_extra_depth_mm": 20,
+    "C01_01_dimension_and_envelope_signoff": "PENDING (both 341mm locked and 361mm extended rendered envelopes)",
+    "Unity_Editor": "NOT_RUN / OWNER_ACTION_REQUIRED",
+    "Unity_PlayMode": "NOT_RUN",
+    "no_native_FBX_or_BLEND_change": true,
+    "native_exports": 0,
+    "door_and_gate_changes": 0,
+    "no_new_asset_ids": true,
+    "no_merge": true,
+    "release": "HOLD"
   }
 }

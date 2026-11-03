@@ -1,0 +1,46 @@
+{
+  "owner": "C01-17",
+  "base": "codex/c01-ship-integration",
+  "issue": 5,
+  "models": [
+    {
+      "id": "P17-01",
+      "dimensions": [
+        1.6,
+        0.65,
+        1.1
+      ],
+      "pivot": "floor bottom center; Y=0",
+      "triangles": 380,
+      "parts": 25,
+      "mount": "floor",
+      "detailPass15": "8 functional parts, repaired OBJ ScreenGlass +103mm to match actual glTF"
+    },
+    {
+      "id": "P17-02",
+      "dimensions": [
+        0.18,
+        0.07,
+        0.28
+      ],
+      "pivot": "wall mounting plane Z=0; bottom center Y=0",
+      "triangles": 536,
+      "parts": 38,
+      "mount": "wall +Z into accessible interior; mounting center 1.35m above floor",
+      "detailPass12": "functional geometry added to existing asset only; Blender/FBX stale until native rebuild"
+    },
+    {
+      "id": "P17-03",
+      "dimensions": [
+        0.4,
+        0.3,
+        0.55
+      ],
+      "pivot": "floor bottom center; lever pivot at [0,0.35,-0.02] Y-up",
+      "triangles": 424,
+      "parts": 20,
+      "mount": "floor; machinery and laboratory",
+      "detailPass15": "8 functional parts static root; lever pivot and movable components unchanged"
+    }
+  ]
+}

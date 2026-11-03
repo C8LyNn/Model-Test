@@ -1,0 +1,210 @@
+{
+  "schema": "C01-17_W24_READONLY_NATIVE_AND_QA_RECEIPT",
+  "wave": 24,
+  "project": "C01 3D Asset Factory",
+  "date": "2026-11-03",
+  "source": "GitHub current immutable PR17/PR23 native Git LFS pointer readback + C01-03 independent exact-SHA W23 release matrix",
+  "source_matrix": {
+    "repo": "C8LyNn/Model-Test",
+    "ref": "da5309117898dd70c54eff26868e8c28aa4b35e2",
+    "git_blob_sha1": "52db4d1a9c02836f1cdd5f636f9a40026f5e10ce"
+  },
+  "owner_branches": {
+    "PR17": {
+      "head": "d37f6cb8355d98324db44ca8eb139681beb7ea9b",
+      "draft": true
+    },
+    "PR23": {
+      "head": "05cb633b9427a1804e473aabb9ec497e1f193584",
+      "draft": true
+    }
+  },
+  "checks": {
+    "native_lfs_pointer_records_valid": 14,
+    "native_lfs_pointer_records_total": 14,
+    "current_sha_vs_W23_matrix_matched": 14,
+    "model_id_count": 7,
+    "sha_drift_detected": 0,
+    "source_geometry_mutations": 0,
+    "native_export_repetitions": 0,
+    "new_models": 0,
+    "doors_or_gates_touched": 0,
+    "ship_layout_changes": 0,
+    "unauthorized_merge": 0
+  },
+  "real_physical_provenance_inherited": {
+    "P17_01_02": "https://github.com/C8LyNn/Model-Test/actions/runs/41347796593",
+    "P17_03": "https://github.com/C8LyNn/Model-Test/actions/runs/41540952660",
+    "P17_04_07": "https://github.com/C8LyNn/Model-Test/actions/runs/41345178998",
+    "note": "These previous successful native workflows provide historical physical origin; W24 performed LFS pointer plus canonical SHA readback, NOT fresh full-byte artifact hydration."
+  },
+  "independent_QA": {
+    "P17_03": {
+      "exact_FBX_sha256": "32d460d54a396d3171b639ef7656eb30fbae2c79023cdb510abeefe0428021f8",
+      "source": "https://github.com/C8LyNn/Model-Test/issues/36#issuecomment-6591177213",
+      "decision": "STATIC_PASS + SAMPLED_MOTION_PASS",
+      "poses_independent": 91,
+      "angle_min_deg": -45,
+      "angle_max_deg": 45,
+      "step_deg": 1,
+      "triangle_collisions": 0,
+      "min_anchor_housing_vertical_clearance_mm": 6.433,
+      "release_gate": "UNITY_NOT_RUN"
+    },
+    "P17_01": {
+      "exact_FBX_sha256": "cd6a5787bb7b4c088f0af35382385e4274c85c415c60467f9a22e46fe33ef02c",
+      "decision": "SOURCE_NORMALS_SHADING_REVIEW_ONLY",
+      "scope": "W23 source indexed glTF dot-product audit, not actual FBX/Unity shaded acceptance; no independently confirmed visible defect",
+      "source": "https://github.com/C8LyNn/Model-Test/pull/17#issuecomment-6602183224"
+    },
+    "C01_13_non_door_placement": {
+      "source": "https://github.com/C8LyNn/Model-Test/issues/36#issuecomment-6602421722",
+      "P17_01_native_FBX_same_SHA": true,
+      "classification": "placement clearance depends on orientation and location; no model defect proven; design threshold undefined",
+      "independent_of_producer_geometry": true
+    }
+  },
+  "claude_doors_external_hold": "PRESERVED; no door/gate file, script or frozen PR changed",
+  "pending_external": {
+    "C01_02": "Visual shading severity for P17-01 from actual FBX/URP; no speculative normals reset",
+    "C01_10": "Licensed Unity 6000.3.14f1 actual Editor import and PlayMode first three signed props, including P17-02",
+    "owner": "Authorize Unity through Unity Hub on Windows and execute existing C01-10 runbook; no repeat blocked CI"
+  },
+  "unity6": "NOT_RUN",
+  "release_status": "HOLD",
+  "models": [
+    {
+      "asset_id": "P17-01",
+      "owner": "C01-17",
+      "producer_pr": 17,
+      "producer_HEAD": "d37f6cb8355d98324db44ca8eb139681beb7ea9b",
+      "blender_path": "C01InteriorProps_Source/Blender/P17-01.blend",
+      "blender_SHA256": "7e7fb3911d7f0d061dfa202804a42b18ef0d99510f95e6cc1b6b42d0c53c17eb",
+      "blender_bytes": 605064,
+      "blender_git_pointer_sha1": "bc8854c02412efadd52d5458f0bd0e6626ac19c3",
+      "fbx_path": "Assets/C01InteriorProps/Models/P17-01.fbx",
+      "fbx_SHA256": "cd6a5787bb7b4c088f0af35382385e4274c85c415c60467f9a22e46fe33ef02c",
+      "fbx_bytes": 63916,
+      "fbx_git_pointer_sha1": "9c2fec4a07d4c1ed714bdf65b0308c06a75e5c28",
+      "independent_qa_scope": "W19_W20_W21_PRIOR_EXACT_SHA_REFERENCE_NOT_NEW_RETEST",
+      "independent_qa_status": "STATIC_PASS__NORMAL_SHADING_VISUAL_REVIEW",
+      "independent_motion": "NOT_EVIDENCED_IN_CANONICAL_W23",
+      "unity_Editor": "NOT_RUN",
+      "final_approved": false
+    },
+    {
+      "asset_id": "P17-02",
+      "owner": "C01-17",
+      "producer_pr": 17,
+      "producer_HEAD": "d37f6cb8355d98324db44ca8eb139681beb7ea9b",
+      "blender_path": "C01InteriorProps_Source/Blender/P17-02.blend",
+      "blender_SHA256": "9039029aece72ad4416ebe162c55141c8a3123572142423235e61e7865d1d756",
+      "blender_bytes": 640904,
+      "blender_git_pointer_sha1": "009b640ebac0f27794b6ad645f40bccbcce8c4e3",
+      "fbx_path": "Assets/C01InteriorProps/Models/P17-02.fbx",
+      "fbx_SHA256": "db49121a520f16ca636626795550b83e8a4df94ded56a7ccb76308520bb7c3f6",
+      "fbx_bytes": 77420,
+      "fbx_git_pointer_sha1": "729862f41196032450d5a02e81f0f60242935d39",
+      "independent_qa_scope": "W19_W20_W21_PRIOR_EXACT_SHA_REFERENCE_NOT_NEW_RETEST",
+      "independent_qa_status": "PENDING / PENDING",
+      "independent_motion": "NOT_EVIDENCED_IN_CANONICAL_W23",
+      "unity_Editor": "NOT_RUN",
+      "final_approved": false
+    },
+    {
+      "asset_id": "P17-03",
+      "owner": "C01-17",
+      "producer_pr": 17,
+      "producer_HEAD": "d37f6cb8355d98324db44ca8eb139681beb7ea9b",
+      "blender_path": "C01InteriorProps_Source/Blender/P17-03.blend",
+      "blender_SHA256": "fb651c56224e4b390ed86feba74de6af56436dd37cb5d141fb084dc8f7e7852a",
+      "blender_bytes": 585224,
+      "blender_git_pointer_sha1": "2d2dd89f6a5ce1728c490150c4e99535434edd8a",
+      "fbx_path": "Assets/C01InteriorProps/Models/P17-03.fbx",
+      "fbx_SHA256": "32d460d54a396d3171b639ef7656eb30fbae2c79023cdb510abeefe0428021f8",
+      "fbx_bytes": 55772,
+      "fbx_git_pointer_sha1": "d26b78829f4824edc6a616bd6154707f6d1ddca5",
+      "independent_qa_scope": "W22_REAL_NATIVE_INDEPENDENT_PHYSICAL_RETEST",
+      "independent_qa_status": "INDEPENDENT_STATIC_PASS_AND_91_SAMPLED_MOTION_PASS",
+      "independent_motion": "INDEPENDENT_91_ANGLES_MINUS45_TO_PLUS45_STEP1_ZERO_TRI_CROSSINGS_MIN_ANCHOR_HOUSING_VERTICAL_GAP_6_433MM",
+      "unity_Editor": "NOT_RUN",
+      "final_approved": false
+    },
+    {
+      "asset_id": "P17-04",
+      "owner": "C01-17",
+      "producer_pr": 23,
+      "producer_HEAD": "05cb633b9427a1804e473aabb9ec497e1f193584",
+      "blender_path": "C01InteriorProps_W02/Blender/P17-04.blend",
+      "blender_SHA256": "33809376bbde7dbd585c03fac718bc690947aef9ae46ff8b6b40ea9dca6cefde",
+      "blender_bytes": 660104,
+      "blender_git_pointer_sha1": "a3375bd0f6eb88bac57ecd483a254df0ec1961d0",
+      "fbx_path": "Assets/C01InteriorProps/W02/Models/P17-04.fbx",
+      "fbx_SHA256": "f0c7f316ff0861873dde1e808dfbf13f709022d4427e60a77e706f37947d6fcd",
+      "fbx_bytes": 83916,
+      "fbx_git_pointer_sha1": "679ec227ab150e2ad86509204671c3ed300c84ea",
+      "independent_qa_scope": "W19_W20_W21_PRIOR_EXACT_SHA_REFERENCE_NOT_NEW_RETEST",
+      "independent_qa_status": "PENDING / PENDING",
+      "independent_motion": "NOT_EVIDENCED_IN_CANONICAL_W23",
+      "unity_Editor": "NOT_RUN",
+      "final_approved": false
+    },
+    {
+      "asset_id": "P17-05",
+      "owner": "C01-17",
+      "producer_pr": 23,
+      "producer_HEAD": "05cb633b9427a1804e473aabb9ec497e1f193584",
+      "blender_path": "C01InteriorProps_W02/Blender/P17-05.blend",
+      "blender_SHA256": "3707060640a772e92b74ca7d20fd5bd040e3fa50770d01a157d61a590acfb3d4",
+      "blender_bytes": 603584,
+      "blender_git_pointer_sha1": "fafeacb65a0df8d00f33b6e5d136c740940a4232",
+      "fbx_path": "Assets/C01InteriorProps/W02/Models/P17-05.fbx",
+      "fbx_SHA256": "ee2f4dfb9e0af327633c24ff3e665df3a5aaff91a05634a84cadfb4d0b04c4f2",
+      "fbx_bytes": 63116,
+      "fbx_git_pointer_sha1": "b13970483b2e040b1656825eb609c0305084c288",
+      "independent_qa_scope": "W19_W20_W21_PRIOR_EXACT_SHA_REFERENCE_NOT_NEW_RETEST",
+      "independent_qa_status": "PENDING / PENDING",
+      "independent_motion": "NOT_EVIDENCED_IN_CANONICAL_W23",
+      "unity_Editor": "NOT_RUN",
+      "final_approved": false
+    },
+    {
+      "asset_id": "P17-06",
+      "owner": "C01-17",
+      "producer_pr": 23,
+      "producer_HEAD": "05cb633b9427a1804e473aabb9ec497e1f193584",
+      "blender_path": "C01InteriorProps_W02/Blender/P17-06.blend",
+      "blender_SHA256": "4920e42306234d0c396bfdf64cd97b5ab024896a04c0477618cbf9a6ae64eb14",
+      "blender_bytes": 562904,
+      "blender_git_pointer_sha1": "fb25d1c6d312f871698a991b83a625d6981781b1",
+      "fbx_path": "Assets/C01InteriorProps/W02/Models/P17-06.fbx",
+      "fbx_SHA256": "718d59780e304186a82c600685fe6a15875b4f30e928ec2a859803c841d8fefe",
+      "fbx_bytes": 48300,
+      "fbx_git_pointer_sha1": "2b44240f111a9a642d9e2fcc764fafb6f9dc5060",
+      "independent_qa_scope": "W19_W20_W21_PRIOR_EXACT_SHA_REFERENCE_NOT_NEW_RETEST",
+      "independent_qa_status": "PENDING / PENDING",
+      "independent_motion": "NOT_EVIDENCED_IN_CANONICAL_W23",
+      "unity_Editor": "NOT_RUN",
+      "final_approved": false
+    },
+    {
+      "asset_id": "P17-07",
+      "owner": "C01-17",
+      "producer_pr": 23,
+      "producer_HEAD": "05cb633b9427a1804e473aabb9ec497e1f193584",
+      "blender_path": "C01InteriorProps_W02/Blender/P17-07.blend",
+      "blender_SHA256": "0eebee6672e4e666d57b4b20b08f36ffda0e2a404463e5faa4c1217d8270bb3f",
+      "blender_bytes": 598944,
+      "blender_git_pointer_sha1": "d656f91359ecb979305158ad1496af97c93a7f83",
+      "fbx_path": "Assets/C01InteriorProps/W02/Models/P17-07.fbx",
+      "fbx_SHA256": "e870c9bb2527743b193a9aaf49edc5732fa9d855e1354aa4c6f7b1eb9af5ca3e",
+      "fbx_bytes": 61644,
+      "fbx_git_pointer_sha1": "816a1555df69f293c3888306a680a63aaa805160",
+      "independent_qa_scope": "W19_W20_W21_PRIOR_EXACT_SHA_REFERENCE_NOT_NEW_RETEST",
+      "independent_qa_status": "PENDING / PENDING",
+      "independent_motion": "NOT_EVIDENCED_IN_CANONICAL_W23",
+      "unity_Editor": "NOT_RUN",
+      "final_approved": false
+    }
+  ]
+}

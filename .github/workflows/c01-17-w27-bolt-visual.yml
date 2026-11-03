@@ -1,0 +1,47 @@
+name: C01-17 W27 P17-01 Signed Native FBX Shading Review
+on:
+  push:
+    branches:
+      - c01/props-17-controls
+    paths:
+      - '.github/workflows/c01-17-w27-bolt-visual.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: c01-17-w27-p17-01-readonly
+  cancel-in-progress: false
+
+jobs:
+  real-native-fbx-visual:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      LIBGL_ALWAYS_SOFTWARE: "1"
+    steps:
+      - name: Checkout existing model files (real LFS)
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+          fetch-depth: 1
+      - name: Install native Blender 4 and headless rendering dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y blender python3-numpy git-lfs xvfb xauth libegl1 libgl1 libopengl0
+          git lfs install --local
+          git lfs pull --include="C01InteriorProps_Source/Blender/P17-01.blend,Assets/C01InteriorProps/Models/P17-01.fbx"
+      - name: Read-only genuine P17-01 Blender and FBX SHA+shaded/wireframe QA
+        run: |
+          python3 -m py_compile C01InteriorProps_Source/Tools/w27_real_fbx_bolt_shading.py
+          xvfb-run -a blender -b --factory-startup --python-exit-code 1 --python C01InteriorProps_Source/Tools/w27_real_fbx_bolt_shading.py
+      - name: Upload original FBX reimport shaded/wireframe proof (no model export)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-17-W27-P17-01-REAL-FBX-SHADED-WIREFRAME
+          if-no-files-found: warn
+          path: |
+            C01InteriorProps_Source/QA/PASS27/Artifacts/*.png
+            C01InteriorProps_Source/QA/PASS27/Artifacts/*.json

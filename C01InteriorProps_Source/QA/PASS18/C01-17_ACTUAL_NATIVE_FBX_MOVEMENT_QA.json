@@ -1,0 +1,160 @@
+{
+  "schema": "C01-17-DETAIL-PASS18-INDEPENDENT-NATIVE-FBX-QA-v1",
+  "source": {
+    "producer_PR": 17,
+    "repo": "C8LyNn/Model-Test",
+    "producer_branch": "c01/props-17-controls",
+    "real_Blender_workflow_run": 41347796593,
+    "workflow_artifact_id": 13099877855,
+    "raw_zip_sha256": "2ddab5c829475d29a8e22cdde37861de43e4e2eaf9f67f2dc46c25f86afccd51",
+    "raw_zip_CRC": "PASS",
+    "origin": "actual Blender 4.0.2 artifact from successful workflow; current producer Git LFS OIDs independently checked"
+  },
+  "static_native": {
+    "P17-01": {
+      "meshes": 25,
+      "triangles": 380,
+      "blend_sha256": "7e7fb3911d7f0d061dfa202804a42b18ef0d99510f95e6cc1b6b42d0c53c17eb",
+      "fbx_sha256": "cd6a5787bb7b4c088f0af35382385e4274c85c415c60467f9a22e46fe33ef02c",
+      "topology": "PASS independent indexed binary",
+      "UV0": "PASS",
+      "normals": "PASS",
+      "manifold": "PASS",
+      "winding": "PASS",
+      "degenerates": 0,
+      "real_support_trimesh_crossings": {
+        "KeyboardGuide_L->Keyboard": 15,
+        "KeyboardGuide_R->Keyboard": 13,
+        "Backbone->Plinth": 10,
+        "ScreenMountBolt_LB->ScreenHousing": 16,
+        "ScreenMountBolt_LT->ScreenHousing": 16,
+        "ScreenMountBolt_RB->ScreenHousing": 16,
+        "ScreenMountBolt_RT->ScreenHousing": 16
+      },
+      "status": "STATIC_PASS"
+    },
+    "P17-02": {
+      "meshes": 38,
+      "triangles": 536,
+      "blend_sha256": "9039029aece72ad4416ebe162c55141c8a3123572142423235e61e7865d1d756",
+      "fbx_sha256": "db49121a520f16ca636626795550b83e8a4df94ded56a7ccb76308520bb7c3f6",
+      "topology": "PASS independent indexed binary",
+      "UV0": "PASS",
+      "normals": "PASS",
+      "manifold": "PASS",
+      "winding": "PASS",
+      "degenerates": 0,
+      "real_support_trimesh_crossings": {
+        "LeftBottomMountScrew->MountBacking": 16,
+        "LeftTopMountScrew->MountBacking": 18,
+        "RightBottomMountScrew->MountBacking": 18,
+        "RightTopMountScrew->MountBacking": 16,
+        "Keybed->Housing": 10,
+        "LeftClampReinforcement->LeftClamp": 10,
+        "RightClampReinforcement->RightClamp": 10
+      },
+      "status": "STATIC_PASS"
+    },
+    "P17-03": {
+      "meshes": 20,
+      "triangles": 424,
+      "blend_sha256": "c06f6388a948fa0264fae1278c7753587e7eae746b9e58748e642f458b65898d",
+      "fbx_sha256": "a48c9dde921c25f61cef175896c5b7fde997392fc898784e16bb9612f39a4520",
+      "topology": "PASS independent indexed binary",
+      "UV0": "PASS",
+      "normals": "PASS",
+      "manifold": "PASS",
+      "winding": "PASS",
+      "degenerates": 0,
+      "moving_pivot_structure": "PASS genuine FBX Model->Model connections LeverShaft,LeverGrip,PivotAnchorVisual under LeverPivot; detail fixings under static root",
+      "status": "STATIC_PASS_DYNAMIC_P0_HOLD"
+    }
+  },
+  "motion": {
+    "model": "P17-03",
+    "test_axis": "FBX world +X",
+    "real_FBXPivot_world_m": [
+      0,
+      0.35,
+      -0.015
+    ],
+    "swept_angles_degrees": "-45 through +45 in 5 degree steps",
+    "samples": 19,
+    "animation_clip": "NOT TESTED; rotation applied independently to actual FBX mesh world vertices",
+    "new_8_fixture_vs_3_moving_parts_AABB_checks": 456,
+    "candidates_or_overlaps": 0,
+    "actual_narrowphase_segment_triangle_surface_intersections": {
+      "0": {
+        "LeverShaft->TopCap": 26,
+        "LeverShaft->LeverSocket": 52,
+        "PivotAnchorVisual->TopCap": 10
+      },
+      "-45": {
+        "LeverShaft->TopCap": 24,
+        "LeverShaft->LeverSocket": 46,
+        "PivotAnchorVisual->TopCap": 10
+      },
+      "+15": {
+        "LeverShaft->TopCap": 26,
+        "LeverShaft->LeverSocket": 51,
+        "PivotAnchorVisual->TopCap": 9
+      },
+      "+30": {
+        "LeverShaft->TopCap": 26,
+        "LeverShaft->LeverSocket": 46,
+        "PivotAnchorVisual->TopCap": 9
+      },
+      "+45": {
+        "LeverShaft->TopCap": 26,
+        "LeverShaft->LeverSocket": 46,
+        "PivotAnchorVisual->TopCap": 10
+      }
+    },
+    "world_witnesses_m": {
+      "neutral_LeverShaft_TopCap": [
+        0.014,
+        0.361,
+        -0.015
+      ],
+      "neutral_LeverShaft_LeverSocket": [
+        0.014,
+        0.3865,
+        -0.015
+      ],
+      "fortyfive_LeverShaft_TopCap": [
+        0.014,
+        0.361,
+        -0.004
+      ]
+    },
+    "result": "P0_HOLD_THROUGH_STATIC_SOLID_TOPCAP_AND_LEVERSOCKET",
+    "qualification": "Surface intersections are real FBX triangles, not AABB guesses. They may be intentionally concealed mechanical penetration at rest, but no actual clearance slot is modeled. Static QA must not be used as proof that physical movement is collision-free."
+  },
+  "summary": {
+    "actual_real_NATIVE_FBXS": 3,
+    "actual_real_native_BLENDS": 3,
+    "meshes": 83,
+    "triangles": 1340,
+    "independent_indexed_topology_pass": 3,
+    "independent_mounting_contacts_pass": 14,
+    "Blender_native_export": "PASS from PASS17 unchanged current FBX/BLEND",
+    "Blender_pass18_reexport": "NOT_RUN; no source geometry modified",
+    "final_C01_02": "PENDING",
+    "Unity6_URP": "NOT_RUN",
+    "merge": false,
+    "release": "HOLD_P17-03_DYNAMIC_P0"
+  },
+  "distribution": {
+    "physical_zip": "C01-17_PASS18_NATIVE_MOTION_QA_DELIVERY.zip",
+    "zip_bytes": 5810998,
+    "sha256": "eea3b0df2af64e8a0df74ceb3d1306ef907062419825a64034b90b6d70f2b55c",
+    "CRC": "PASS",
+    "physical_machine_report_sha256": "0bb7577479ba5ca80cd3cafa3723f291706ed8f1ff7cb5291ba6b4d1f3715694",
+    "interactive_viewer": "PASS18_CURRENT_NATIVE_FBX_INTERACTIVE_MOTION.html",
+    "viewer_sha256": "da686ace24afc10fc66b8e8185848df724159de0a14fb4b4c9e84c20fd5aca08",
+    "viewer_js_syntax": "PASS node --check",
+    "viewer_full_visual_browser_smoke": "NOT_RUN due Chromium headless launch timeout",
+    "real_Blender_before_after_screenshots": 3,
+    "physical_binary_repack": 6
+  }
+}

@@ -1,0 +1,130 @@
+{
+  "schema": "C01-17-DETAIL-PASS15-AUTHORED-SOURCE-QA",
+  "issue": 36,
+  "owner": "C01-17",
+  "status": "SOURCE_GEOMETRY_PASS__NATIVE_EXPORT_NOT_RUN",
+  "models": {
+    "P17-01": {
+      "name": "Bridge Control Console",
+      "parts_before": 17,
+      "parts_after": 25,
+      "triangles_before": 204,
+      "triangles_after": 380,
+      "added_functional_parts": 8,
+      "added_triangles": 176,
+      "additions": {
+        "ScreenMountBolt": 4,
+        "KeyboardGuide": 2,
+        "RearServiceLatch": 2
+      },
+      "actual_source_repair": "ScreenGlass original OBJ all 24 existing coordinates Z+0.103m; its old OBJ depth 0.169..0.179m corrected to 0.272..0.282m matching preexisting correct real Blender FBX and glTF. No existing glTF screen changed.",
+      "new_detail_support_tests": 8,
+      "new_detail_support_pass": 8,
+      "original_real_blender_fbx_sha256": "fca67dad3e35e7070575c7d7d141fab3e6756eecb0d618d325ec36266eca2772",
+      "original_real_blend_sha256": "daf6f0daadb391ce5ccc667e50f05386845cb2e998cf694449c4667094f40daf",
+      "files_sha256": {
+        "gltf": "6dbb6933acdcbb3ee5ef9d1480bd786ad2da4ec5368046e8e579084af57c65b0",
+        "obj": "6d59188c759a01e1540f87eba7e1ea7386f138769db09b9fa4bf5c9850e20640",
+        "spec": "9a064e7ceaf927381269a652faa18fe390cb7fb1370f020533f51a4189fa70a1"
+      },
+      "statics": {
+        "gltf_OBJ_world_triangles_equal": "380/380 at 1 micron",
+        "degenerate_triangles": 0,
+        "dimensions_xyz_m": [
+          1.6,
+          1.1,
+          0.65
+        ],
+        "each_new_component_watertight": "PASS 8/8",
+        "each_new_component_winding": "PASS 8/8",
+        "UV0": "PRESENT source glTF original and added primitive",
+        "screw_support": "4/4 triangle-plane intersections",
+        "box_support": "4/4 positive solid XYZ intersection"
+      }
+    },
+    "P17-02": {
+      "name": "Access Reader",
+      "parts_after": 38,
+      "triangles_after": 536,
+      "source_revision": "UNCHANGED from PASS13",
+      "source_contacts": "Prior PASS13 4/4 mounted screws and Keybed/Housing seated PASS",
+      "source_gltf_sha256": "a9995704a70776b49f2bd6916a50cf222a4ab40b370a0a9e258b63bdc4429786",
+      "source_export": "PASS14 OFFLINE FBX CANDIDATE ONLY, NOT Blender origin; production LFS remains stale"
+    },
+    "P17-03": {
+      "name": "Mechanical Lever Control",
+      "parts_before": 12,
+      "parts_after": 20,
+      "triangles_before": 208,
+      "triangles_after": 424,
+      "added_functional_parts": 8,
+      "added_triangles": 216,
+      "additions": {
+        "PanelBolt": 4,
+        "SocketRetainer": 2,
+        "CoverBolt": 2
+      },
+      "original_moving_LeverPivot_children": [
+        "LeverShaft",
+        "LeverGrip",
+        "PivotAnchorVisual"
+      ],
+      "motion_static_test": {
+        "range_degrees": [
+          0,
+          45
+        ],
+        "step_deg": 5,
+        "checked_pairs": 240,
+        "new_detail_swept_AABB_broadphase_overlap": 0,
+        "minimum_demonstrated_clearance_m": 0.00999999955,
+        "unity_physics": "NOT_RUN"
+      },
+      "new_detail_support_tests": 8,
+      "new_detail_support_pass": 8,
+      "original_real_blender_fbx_sha256": "749c0a6e3df59e927fc448e01ae233504b46d0caed1d6ecd1768be8c926a412c",
+      "original_real_blend_sha256": "42d6551d54464809cefbca4ae4ba653fa7352422d78b398c7457446ee73ab62d",
+      "files_sha256": {
+        "gltf": "f38ed83c806b30deb55854b061492a0d89d278f7a7c20f900b2aeaed7933b23d",
+        "obj": "764b4cf53343abcf7d85ca1bbc08d7d72d2c2c7d6af3693708c701321a0cb560",
+        "spec": "c954bcb99be72f2f148cffb8695cb1c3e88324b44406417e325346f1670e3959"
+      },
+      "statics": {
+        "gltf_OBJ_world_triangles_equal": "424/424 at 1 micron",
+        "degenerate_triangles": 0,
+        "dimensions_xyz_m": [
+          0.4,
+          0.55,
+          0.3
+        ],
+        "each_new_component_watertight": "PASS 8/8",
+        "each_new_component_winding": "PASS 8/8",
+        "UV0": "PRESENT source glTF original and added primitive",
+        "screw_support": "6/6 triangle-plane intersections",
+        "box_support": "2/2 positive solid XYZ intersection"
+      }
+    }
+  },
+  "source_catalog_sha256": "39e73aba2cc92d3a103e04ff9f8560b7c68dcacdd650e7a3214dd3ec38ad097b",
+  "physical_bundle": {
+    "name": "C01-17_PASS15_P17-01_P17-03_DETAILS_SOURCE_QA.zip",
+    "size_bytes": 1980076,
+    "sha256": "666ff5cd2b9dcdbe5352524ff7222829b086327a7528441ab7d94b039b8de713",
+    "ZIP_CRC": "PASS",
+    "includes": "Two real historical Blender4.0.2 .blend + .fbx originals labeled BEFORE; two true detail-only meshes OBJ; two 25/380 and 20/424 analytical world OBJ references; 2 shaded/wire previews and historic Blender screenshots; runner code NOT RUN; SHA256SUMS"
+  },
+  "blender_runtime": {
+    "available_in_current_execution_environment": false,
+    "latest_after_native_blend": "NOT_RUN",
+    "latest_after_Blender_origin_binary_fbx": "NOT_RUN",
+    "Blender_import_export_reimport": "NOT_RUN",
+    "Blender_after_render": "NOT_RUN"
+  },
+  "release": {
+    "C01_02_independent_approval": "PENDING",
+    "Unity6_URP": "NOT_RUN",
+    "git_merge": "NOT_PERFORMED",
+    "native_producer_LFS_overwrite": "NOT_PERFORMED",
+    "NEEDS_OWNER_ACTION": "Run actual Blender4.x on authorized Windows machine or restore private repo Actions runner; verify exact AFTER SHA, independent C01-02 and real Unity import; do not accept historical or offline FBX as fresh Blender export"
+  }
+}

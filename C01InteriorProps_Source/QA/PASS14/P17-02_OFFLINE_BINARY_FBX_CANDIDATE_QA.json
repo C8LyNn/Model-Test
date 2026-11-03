@@ -1,0 +1,50 @@
+{
+  "schema": "C01-17-DETAIL-PASS14-REAL-BINARY-CANDIDATE-v1",
+  "asset": "P17-02",
+  "status": "QUARANTINED_OFFLINE_BINARY_FBX_NOT_BLENDER_EXPORT",
+  "actual_physical_binary_file": {
+    "name": "P17-02_PASS14_OFFLINE_BINARY_FBX_CANDIDATE.fbx",
+    "bytes": 147186,
+    "sha256": "028aac19cfe3bb7ff873a08c948a95cfa31344cee2e87347f636030620e1ebe1",
+    "format": "Kaydara FBX Binary 7400",
+    "distribution": "downloadable physical ZIP in C01-17 PASS14 conversation, not yet in producer Git-LFS"
+  },
+  "physical_zip": {
+    "name": "C01-17_PASS14_P17-02_REAL_BINARY_FBX_CANDIDATE.zip",
+    "bytes": 1135669,
+    "sha256": "4b7648797f7b4c266f701a32fe744f60cfef28fb22c3be8d78077d9340152db3",
+    "crc": "PASS"
+  },
+  "original_native_sha": {
+    "blend_old": "183d4ebbcc9e13ad220aaa869db80949fb315d58666f79c2e1c7ae85f6e69649",
+    "fbx_old": "af858385a0abae9c623ee4002bcf22bcbc401b5687024acd8df142eb1b848147"
+  },
+  "authoring_source_sha": {
+    "gltf": "a9995704a70776b49f2bd6916a50cf222a4ab40b370a0a9e258b63bdc4429786",
+    "obj": "3c6fda66cecba7f10e40a741b2b8dcef6ad6e0021853647444c6bbe39c03ccf3",
+    "spec": "a25a7aa74efe8cb59ccb659243c62daee6429d86e3f95578144f9777efba5b44"
+  },
+  "physical_binary_generation": "Offline FBX7400 writer; preserves all 20 Blender-PASS03 original Geometry nodes exactly and adds 18 previously authored details as Geometry/Model pairs; adjusts only existing Housing transform for PASS13 contact.",
+  "physical_independent_parse_QA": {
+    "parts": 38,
+    "triangles": 536,
+    "original_geometry_nodes_exactly_identical": 20,
+    "new_detail_parts": 18,
+    "triangle_parity_vs_536_triangle_PASS13_actual_OBJ": "PASS 536/536 at 1 micron, zero missing/extra",
+    "degenerate_triangles": 0,
+    "UV0_index_ranges": "PASS 38/38",
+    "normals": "PASS 38/38",
+    "material_and_root_links": "PASS all 18 new"
+  },
+  "runtime": {
+    "Blender_import": "NOT_RUN",
+    "new_Blend_4x_save": "NOT_RUN",
+    "new_Blender_binary_FBX_export": "NOT_RUN",
+    "Blender_reimport": "NOT_RUN",
+    "independent_C01_02": "PENDING",
+    "Unity6_URP": "NOT_RUN"
+  },
+  "source_producer_LFS_FBX_unchanged": true,
+  "source_producer_LFS_BLEND_unchanged": true,
+  "blocked": "NEEDS_OWNER_ACTION: C01 private repo Actions no runner (runner_id=0 steps=[]), no local Blender/bpy; must run real Blender with archive runner and obtain newly saved .blend plus reexported .fbx, then independent QA. Do NOT merge or promote offline binary."
+}

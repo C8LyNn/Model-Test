@@ -1,0 +1,140 @@
+{
+  "schema": "C01_17_WAVE27_P17_01_SIGNED_PHYSICAL_FBX_SHADED_BOLT_CORNER_NORMAL_QA",
+  "asset_id": "P17-01",
+  "date": "2026-11-03",
+  "owner": "C01-17",
+  "scope": "Existing console P17-01 from own existing Draft PR17 only. No door or gate assets, no model edits, no production export.",
+  "fbx": {
+    "path": "Assets/C01InteriorProps/Models/P17-01.fbx",
+    "sha256": "cd6a5787bb7b4c088f0af35382385e4274c85c415c60467f9a22e46fe33ef02c",
+    "physical_bytes": 63916,
+    "header": "Kaydara FBX Binary 7400",
+    "sha_verification": "Verified original full binary bytes from prior genuine Actions ZIP and independently in W27 Blender render job"
+  },
+  "blend": {
+    "path": "C01InteriorProps_Source/Blender/P17-01.blend",
+    "sha256": "7e7fb3911d7f0d061dfa202804a42b18ef0d99510f95e6cc1b6b42d0c53c17eb",
+    "physical_bytes": 605064,
+    "header": "BLENDER-v400",
+    "sha_verification": "Verified original full binary bytes and W27 read-only actual Blender4 open"
+  },
+  "previous_original_zip": {
+    "run": 41347796593,
+    "artifact_id": 13099877855,
+    "sha256": "2ddab5c829475d29a8e22cdde37861de43e4e2eaf9f67f2dc46c25f86afccd51",
+    "bytes": 15376948,
+    "zip_crc": "PASS",
+    "original_full_native_fbx_blend_hashes": "MATCH_2_OF_2"
+  },
+  "w27_real_blender": {
+    "run_id": 41717976474,
+    "run_url": "https://github.com/C8LyNn/Model-Test/actions/runs/41717976474",
+    "result": "SUCCESS",
+    "blender_version": "4.0.2",
+    "origin": "genuine current native Blender-v400 and binary FBX7400 from Git LFS; source opened then actual binary FBX reimported",
+    "original_source_objects": 25,
+    "reimported_fbx_mesh_objects": 25,
+    "original_source_triangles": 380,
+    "reimported_fbx_triangles": 380,
+    "readback_gate": {
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "loose_vertices": 0,
+      "degenerate_faces": 0,
+      "missing_UV0_meshes": 0
+    },
+    "strict_release": "BLENDER_IMPORT_STATIC_SCOPED_PASS; UNITY6_NOT_RUN"
+  },
+  "w27_render_artifact": {
+    "id": 13269404464,
+    "url": "https://github.com/C8LyNn/Model-Test/actions/runs/41717976474/artifacts/13269404464",
+    "zip_sha256": "4d1368416fe4b34acccb52691b50661614b7a45e0c3d062e02ffb146a1d57cc1",
+    "zip_bytes": 5322902,
+    "zip_crc": "PASS",
+    "file_count": 7,
+    "images": [
+      {
+        "name": "P17-01_REAL_FBX_ISO_SHADED.png",
+        "bytes": 732470,
+        "sha256": "70c190116eaeb33177850d47545fdd3b7792a38a3d42c04ece03e4af16112a61"
+      },
+      {
+        "name": "P17-01_REAL_FBX_ISO_WIREFRAME.png",
+        "bytes": 719122,
+        "sha256": "01c8d20968d1d8c6af01257b57f7bd0fbbd4463c453a576005cdf8bc4a9f3eaf"
+      },
+      {
+        "name": "P17-01_REAL_FBX_FRONT_SHADED.png",
+        "bytes": 747657,
+        "sha256": "1ca1ebf39e9178507a632becc4c157b59d92fd91905b4d35c5388b47ee28ef64"
+      },
+      {
+        "name": "P17-01_REAL_FBX_FRONT_WIREFRAME.png",
+        "bytes": 742555,
+        "sha256": "c084cb1b9aebeace741187de5089177c0c2c6e0082d125d88143e36a885c2f50"
+      },
+      {
+        "name": "P17-01_REAL_FBX_BOLT_CLOSEUP_SHADED.png",
+        "bytes": 1326278,
+        "sha256": "cb423822d3d2fdf07ea4faa08b48824123971a6559ff13ee8e84f79d13141cb4"
+      },
+      {
+        "name": "P17-01_REAL_FBX_BOLT_CLOSEUP_WIREFRAME.png",
+        "bytes": 1109562,
+        "sha256": "acd7db5ef755b65936a4d980c717663a42501d24f4a64d33c5621fc0a1bf52f4"
+      }
+    ],
+    "render_engine": "Blender 4.0.2 Workbench studio shaded + real original FBX mesh edge wire overlays; no Unity URP shader claim"
+  },
+  "independent_direct_current_binary_FBX_corner_normals": {
+    "method": "Downloaded actual original full-byte P17-01 FBX7400; parsed Objects/Geometry/Vertices and PolygonVertexIndex, LayerElementNormal MappingInformationType=ByPolygonVertex, ReferenceInformationType=Direct; per-corner dot against local original geometric cross-product face normal; fan tri count/area verified. Unlike initial Blender script, does not skip tiny actual bolt mesh faces due absolute world-area threshold.",
+    "fbx_sha256": "cd6a5787bb7b4c088f0af35382385e4274c85c415c60467f9a22e46fe33ef02c",
+    "geometry_definitions": 18,
+    "unique_mesh_triangles": 236,
+    "inspected_face_corner_normals": 708,
+    "near_perpendicular_corner_normals_dot_lt_0p2": 32,
+    "negative_corner_normals_dot_below_minus_0p001": 0,
+    "zero_area_triangles": 0,
+    "bolt_geometry_name": "C01_AccessBolt_8s",
+    "bolt_unique_triangles": 32,
+    "bolt_corner_normals_checked": 96,
+    "bolt_near_perpendicular_corners": 32,
+    "bolt_normal_min_dot_approx": -0.000001,
+    "bolts_instanced_names": [
+      "ScreenMountBolt_LB",
+      "ScreenMountBolt_LT",
+      "ScreenMountBolt_RB",
+      "ScreenMountBolt_RT"
+    ],
+    "interpretation": "These 32 source/exported FBX corner-normal mismatches are real, not inverted faces. They affect only tiny 8-sided decorative bolt side/cap shading, repeated by 4 bolt instances, not general console mesh/UV failure."
+  },
+  "critical_invalid_initial_metric": {
+    "issue": "W27 Blender render JSON reports bolt_dot_lt_0p2=0 but bolt_objects all have corner_count=0: absolute cross-area filtering skipped all tiny bolt faces. This numerical ZERO IS INVALID, not PASS.",
+    "resolution": "Recomputed independently on exact full binary FBX: 32 of 708 original source polygon-corner normals dot <0.2, 0 inverted. Corrected read-only Blender test script to use smaller face threshold and fail closed unless 3 per triangle sampled.",
+    "script_correction_commit": "a9c9d31dd1c73e6fd3e9d70a868565976e3cf998",
+    "corrected_script_rerun": "NOT_RUN; correction does not change W27 successful real image render proof and is not falsely declared as a new Blender test."
+  },
+  "witness_visual_observation": {
+    "iso_and_front": "At full console framing the four bolts are tiny and show no obvious missing faces, exploded normals, exposed cracks or overlapping flickering from static images.",
+    "closeup": "Macro Blender Workbench shows smooth/specular highlight on octagonal bolt cap; local smooth shading is visible but not independently proven materially unacceptable for intended Unity URP low-poly prop. Source polygon corner normals are near perpendicular on 32 corner samples; this is a localized shading-design review, not inverted winding.",
+    "priority": "P2_VISUAL_ONLY_REVIEW",
+    "decision": "NO_CURRENT_CONFIRMED_MATERIAL_VISUAL_DEFECT; DO_NOT_RECALCULATE_NORMALS_OR_REEXPORT_WITHOUT_INDEPENDENT_VISUAL_WITNESS",
+    "limitations": "A static Workbench preview cannot prove game-camera Unity URP material/shader behavior, specular animation, z-fighting over time, or PlayMode."
+  },
+  "w27_history": {
+    "initial_failed_run_41716754403": "ENVIRONMENT_FAILURE: Blender FBX importer lacked python3-numpy, no model failure",
+    "second_failed_run_41717397823": "QA_RENDER_API_FAILURE: unavailable Workbench show_wireframes property; native import/static pre-render checks passed, no model failure",
+    "third_run_41717976474": "SUCCESS genuine native file SHA verified + shaded/wireframe six PNG artifact"
+  },
+  "model_mutations": 0,
+  "fbx_exports": 0,
+  "blender_saves": 0,
+  "models_added": 0,
+  "doors_gates_touched": 0,
+  "old_door_PRS_touched": 0,
+  "unauthorized_merges": 0,
+  "new_independent_c01_02_verdict": "PENDING_REAL_SHA_VISUAL_SEVERITY_REVIEW",
+  "unity6_urp": "NOT_RUN_OWNER_ACTION_REQUIRED",
+  "final_release": "HOLD",
+  "next_action": "C01-02 classify appearance from true six W27 P17-01 signed native FBX shaded/wireframe images vs intended stylized low-poly console; approve cosmetic smoothed bolt or return exact visual failure with real screenshot/part/lighting witness. No producer mesh correction until confirmed."
+}

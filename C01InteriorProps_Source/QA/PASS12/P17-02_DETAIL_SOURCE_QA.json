@@ -1,0 +1,72 @@
+{
+  "asset_id": "P17-02",
+  "role": "C01-17",
+  "wave": "C01_DETAIL_PASS_12",
+  "status": "AUTHORING_SOURCE_DETAIL_APPLIED; NATIVE_BLEND_FBX_STALE",
+  "geometry_changes": {
+    "prior_parts": 20,
+    "current_parts": 38,
+    "original_triangles": 240,
+    "additional_triangles": 296,
+    "total_triangles": 536,
+    "added_key_guides": 12,
+    "added_mount_screw_heads": 4,
+    "added_clamp_reinforcements": 2,
+    "original_model_ids_unchanged": true,
+    "original_tris_unchanged": 240,
+    "silhouette_bounds_m": [
+      0.18,
+      0.07,
+      0.28
+    ],
+    "pivot": "unchanged; existing wall mount +Z, bottom center Y=0"
+  },
+  "current_sources_sha256": {
+    "Assets/C01InteriorProps/Models/P17-02.gltf": "3fba39e0e5813e6abc486c8ca5685247b59b0614a4186a545dd57903ed51e077",
+    "C01InteriorProps_Source/MeshText/P17-02.obj.txt": "1c54a13792661fa06ff7e56d7aef4dd9534227d5c2a54a22bbd5fa1eaba6bd53",
+    "C01InteriorProps_Source/Specs/P17-02.json": "715c018b12134a9ce47fb6bf18d0036dee9288a194c2199be798ff28b7bcb472",
+    "C01InteriorProps_Source/Specs/catalog.json": "f387049adcadfe28f84db0d3d0c11d4b8799935cdb4335601a9ef29137e466d2"
+  },
+  "actual_native_blend_old": {
+    "lfs_sha256": "183d4ebbcc9e13ad220aaa869db80949fb315d58666f79c2e1c7ae85f6e69649",
+    "bytes": 603584,
+    "stale": true
+  },
+  "actual_binary_fbx_old": {
+    "lfs_sha256": "af858385a0abae9c623ee4002bcf22bcbc401b5687024acd8df142eb1b848147",
+    "bytes": 63004,
+    "stale": true
+  },
+  "qa_static": {
+    "gltf_embedded_buffer_decode": "PASS",
+    "gltf_OBJ_triangle_geometry_parity_at_1e_6_meter": "PASS 536/536",
+    "zero_area_glTF_triangles": "PASS 0",
+    "detail_screw_indexed_manifold": "PASS 18 vertices,48 indexed edges,32 faces, each edge exactly 2 incident triangles",
+    "detail_nonfloating_contact": "PASS 18/18 analytic support AABB overlaps; button guide + Keybed contact 1 mm, clamp rib + existing clamp 0.5 mm, screw base + backing 0.5 mm",
+    "baseline_fbx_crosspart_exposed_coplanar_triangle_candidates": 0,
+    "after_authoring_crosspart_exposed_coplanar_triangle_candidates": 0,
+    "original_fbx_world_aabb_vs_new_authoring_projection": "PASS equal (0.18m x 0.07m x 0.28m)",
+    "original_mesh_shapes": "unchanged by glTF source node/mesh reuse; new 8-sided cylinder is additional independent indexed mesh",
+    "UV0": "PRESENT in original glTF parts and new screw primitive; full Blender validation NOT RUN",
+    "source_qa_method": "readback from GitHub + independent geometric projection of previously genuine PASS03 Blender FBX with exact detail geometry specification"
+  },
+  "preview": {
+    "file": "C01-17_PASS12_P17-02_BEFORE_AFTER_ANALYTIC.png",
+    "sha256": "cc36d511683389029b6334f9196cf5978f13211d9a26f24d0a21defd0a656682",
+    "note": "4-panel technical render from actual old FBX triangles + source-authored new details; not Blender shaded AFTER"
+  },
+  "native_gates": {
+    "blender_after_save": "NOT_RUN",
+    "fbx_binary_export": "NOT_RUN",
+    "fbx_blender_reimport": "NOT_RUN",
+    "unity6_urp": "NOT_RUN",
+    "c01_02_independent_approval": "PENDING"
+  },
+  "constraints": {
+    "asset_id_changed": false,
+    "ship_edited": false,
+    "merge": false,
+    "uncontrolled_welding": false
+  },
+  "blocker": "NEEDS_OWNER_ACTION: private GitHub Actions C01 lacks assigned runners, no Blender/bpy available in session. Need execute native Blender 4.x with Git LFS locally, then C01-02 QA exact new FBX SHA before Unity."
+}

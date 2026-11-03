@@ -1,0 +1,136 @@
+{
+  "schema": "C01-17-P17-02-DETAIL-PASS13",
+  "model": "P17-02",
+  "issue": 36,
+  "status": "AUTHORING_GEOMETRY_FIXED__NATIVE_BLENDER_FBX_NOT_RUN",
+  "git_source_sha256": {
+    "Assets/C01InteriorProps/Models/P17-02.gltf": "a9995704a70776b49f2bd6916a50cf222a4ab40b370a0a9e258b63bdc4429786",
+    "C01InteriorProps_Source/MeshText/P17-02.obj.txt": "3c6fda66cecba7f10e40a741b2b8dcef6ad6e0021853647444c6bbe39c03ccf3",
+    "C01InteriorProps_Source/Specs/P17-02.json": "a25a7aa74efe8cb59ccb659243c62daee6429d86e3f95578144f9777efba5b44"
+  },
+  "git_blobs_sha1": {
+    "gltf": "d80a67af140e434b983104aaec0078f9cf5bd66f",
+    "obj": "95406264730fc594ec9c1bb48724bab78986d974",
+    "spec": "9955af9a99b181fd5b24b049294b188bc5f55fab"
+  },
+  "actual_geometry_change": {
+    "only_existing_Housing_node_transform_changed": true,
+    "housing_glTF_translation_before": [
+      0,
+      0.14,
+      0.04
+    ],
+    "housing_glTF_translation_after": [
+      0,
+      0.14,
+      0.0405
+    ],
+    "housing_glTF_scale_after": [
+      1,
+      1,
+      1.0285714285714285
+    ],
+    "housing_world_Z_before_m": [
+      0.0225,
+      0.0575
+    ],
+    "housing_world_Z_after_m": [
+      0.0225,
+      0.0585
+    ],
+    "keybed_world_Z_unchanged_m": [
+      0.058,
+      0.064
+    ],
+    "gap_before_mm": 0.5,
+    "intentional_mating_overlap_after_mm": 0.5,
+    "existing_OBJ_Housing_front_vertex_records_modified": 12,
+    "all_other_mesh_data_materials_UV0_and_pivots_unchanged": true,
+    "all_old_screws_keys_guides_clamps_unchanged": true,
+    "parts": 38,
+    "triangle_count": 536
+  },
+  "screw_support_test": [
+    {
+      "part": "LeftBottomMountScrew",
+      "xy_diameter_mm": 9,
+      "z_thickness_mm": 3,
+      "penetration_backing_mm": 0.5,
+      "triangle_plane_crossings": 32,
+      "witness_xyz_m": [
+        -0.07981802,
+        0.01318198,
+        0.016
+      ]
+    },
+    {
+      "part": "LeftTopMountScrew",
+      "xy_diameter_mm": 9,
+      "z_thickness_mm": 3,
+      "penetration_backing_mm": 0.5,
+      "triangle_plane_crossings": 32,
+      "witness_xyz_m": [
+        -0.07981802,
+        0.27318198,
+        0.016
+      ]
+    },
+    {
+      "part": "RightBottomMountScrew",
+      "xy_diameter_mm": 9,
+      "z_thickness_mm": 3,
+      "penetration_backing_mm": 0.5,
+      "triangle_plane_crossings": 32,
+      "witness_xyz_m": [
+        0.08618198,
+        0.01318198,
+        0.016
+      ]
+    },
+    {
+      "part": "RightTopMountScrew",
+      "xy_diameter_mm": 9,
+      "z_thickness_mm": 3,
+      "penetration_backing_mm": 0.5,
+      "triangle_plane_crossings": 32,
+      "witness_xyz_m": [
+        0.08618198,
+        0.27318198,
+        0.016
+      ]
+    }
+  ],
+  "qa_static": {
+    "gltf_to_OBJ_all_world_triangles_parity": "PASS 536/536 to 0.000001m after 3-axis node translation and scale",
+    "degenerate_triangles": 0,
+    "screw_indexed_edges_nonmanifold": 0,
+    "screw_details_are_supported": "PASS four screw side triangles intersect backing front plane at four verified XY coordinates",
+    "housing_keybed_contact": "PASS: volumetric XY overlap and now 0.5mm front-back depth penetration",
+    "outer_bounds_m": [
+      0.18,
+      0.28,
+      0.07
+    ],
+    "previous_pass12_claim": "SUPERSEDED: prior 18/18 AABB attachment evidence was insufficient; source-specific triangle support has now been verified"
+  },
+  "native": {
+    "blend_current_lfs_old_sha256": "183d4ebbcc9e13ad220aaa869db80949fb315d58666f79c2e1c7ae85f6e69649",
+    "fbx_current_lfs_old_sha256": "af858385a0abae9c623ee4002bcf22bcbc401b5687024acd8df142eb1b848147",
+    "blend_saved_after": "NOT_RUN",
+    "FBX_export_after": "NOT_RUN",
+    "Blender_FBX_reimport": "NOT_RUN",
+    "Unity_6_URP": "NOT_RUN",
+    "C01_02_acceptance": "PENDING"
+  },
+  "user_facing_static_artifacts": {
+    "zip": "C01-17_PASS13_P17-02_STATIC_CONTACT_FIX.zip",
+    "zip_sha256": "f86729714d0ce61b1fbfd6c68c97f519b90d7e82792fa97852f63853f1b57847",
+    "bytes": 175205,
+    "analytic_contact_png": "P17-02_PASS13_BEFORE_AFTER_CONTACT_ANALYTIC.png",
+    "png_sha256": "b9933b3977cedfc186d9cc0a28dfd58f4d86dfdf7009ae54e21046ca14c4ddfd",
+    "reference_obj": "P17-02_PASS13_REFERENCE_CORRECTED_536_TRIANGLES.obj",
+    "reference_obj_sha256": "a8d08651fdbabb47e5016abd55ecc5aae0a1a27295e3bdc9044c27cf35a2c243",
+    "origin": "GitHub PR #17 authoring source; local reference OBJ formed from actual original Blender PASS03 FBX and PASS12 details; analytic diagram is NOT Blender AFTER render"
+  },
+  "release": "BLOCKED_NEEDS_OWNER_ACTION"
+}

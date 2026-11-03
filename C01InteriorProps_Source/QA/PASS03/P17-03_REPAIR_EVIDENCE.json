@@ -1,0 +1,1589 @@
+{
+  "model_id": "P17-03",
+  "source_blend_before_sha256": "7ca503fdeb7c12f39ebafcf8cdf3c933d6e9e3397be2a10ef37cc28b576bcb96",
+  "source_origin": "real preexisting .blend from branch before PASS03, not reconstructed",
+  "tolerance_m": 1e-06,
+  "before": {
+    "vertices": 612,
+    "edges": 888,
+    "faces": 424,
+    "triangles": 424,
+    "connected_components": 142,
+    "coincident_vertices": 358,
+    "loose_vertices": 0,
+    "loose_edges": 0,
+    "zero_length_edges": 0,
+    "degenerate_faces": 0,
+    "duplicate_faces": 0,
+    "boundary_edges": 504,
+    "non_manifold_edges": 504,
+    "inverted_closed_volume": 0
+  },
+  "after": {
+    "vertices": 252,
+    "edges": 636,
+    "faces": 424,
+    "triangles": 424,
+    "connected_components": 20,
+    "coincident_vertices": 0,
+    "loose_vertices": 0,
+    "loose_edges": 0,
+    "zero_length_edges": 0,
+    "degenerate_faces": 0,
+    "duplicate_faces": 0,
+    "boundary_edges": 0,
+    "non_manifold_edges": 0,
+    "inverted_closed_volume": 0
+  },
+  "parts_before": [
+    {
+      "name": "LeverShaft",
+      "vertices": 108,
+      "edges": 120,
+      "faces": 44,
+      "triangles": 44,
+      "connected_components": 32,
+      "coincident_vertices": 83,
+      "loose_vertices": 0,
+      "loose_edges": 0,
+      "zero_length_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "boundary_edges": 108,
+      "non_manifold_edges": 108,
+      "inverted_closed_volume": 0,
+      "signed_volume": null,
+      "uv_layers": 1,
+      "materials": [
+        "STEEL"
+      ],
+      "bounds_local": [
+        [
+          -0.014000000432133675,
+          -0.014000000432133675,
+          -0.09000000357627869
+        ],
+        [
+          0.014000000432133675,
+          0.014000000432133675,
+          0.09000000357627869
+        ]
+      ],
+      "self_intersection_candidates": "NOT_RUN; requires dedicated BVH narrowphase across separate objects",
+      "t_junction_candidates": "NOT_RUN; no confirmed repair; manual review if source anomaly",
+      "coplanar_overlap_candidates": "NOT_RUN; layered separate components are intentional unless independently proven faulty"
+    },
+    {
+      "name": "LeverGrip",
+      "vertices": 108,
+      "edges": 120,
+      "faces": 44,
+      "triangles": 44,
+      "connected_components": 32,
+      "coincident_vertices": 83,
+      "loose_vertices": 0,
+      "loose_edges": 0,
+      "zero_length_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "boundary_edges": 108,
+      "non_manifold_edges": 108,
+      "inverted_closed_volume": 0,
+      "signed_volume": null,
+      "uv_layers": 1,
+      "materials": [
+        "CAUTION"
+      ],
+      "bounds_local": [
+        [
+          -0.03400000184774399,
+          -0.03400000184774399,
+          -0.029999999329447746
+        ],
+        [
+          0.03400000184774399,
+          0.03400000184774399,
+          0.029999999329447746
+        ]
+      ],
+      "self_intersection_candidates": "NOT_RUN; requires dedicated BVH narrowphase across separate objects",
+      "t_junction_candidates": "NOT_RUN; no confirmed repair; manual review if source anomaly",
+      "coplanar_overlap_candidates": "NOT_RUN; layered separate components are intentional unless independently proven faulty"
+    },
+    {
+      "name": "PivotAnchorVisual",
+      "vertices": 24,
+      "edges": 30,
+      "faces": 12,
+      "triangles": 12,
+      "connected_components": 6,
+      "coincident_vertices": 16,
+      "loose_vertices": 0,
+      "loose_edges": 0,
+      "zero_length_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "boundary_edges": 24,
+      "non_manifold_edges": 24,
+      "inverted_closed_volume": 0,
+      "signed_volume": null,
+      "uv_layers": 1,
+      "materials": [
+        "DARK"
+      ],
+      "bounds_local": [
+        [
+          -0.042500000447034836,
+          -0.03500000014901161,
+          -0.012500000186264515
+        ],
+        [
+          0.042500000447034836,
+          0.03500000014901161,
+          0.012500000186264515
+        ]
+      ],
+      "self_intersection_candidates": "NOT_RUN; requires dedicated BVH narrowphase across separate objects",
+      "t_junction_candidates": "NOT_RUN; no confirmed repair; manual review if source anomaly",
+      "coplanar_overlap_candidates": "NOT_RUN; layered separate components are intentional unless independently proven faulty"
+    },
+    {
+      "name": "Base",
+      "vertices": 24,
+      "edges": 30,
+      "faces": 12,
+      "triangles": 12,
+      "connected_components": 6,
+      "coincident_vertices": 16,
+      "loose_vertices": 0,
+      "loose_edges": 0,
+      "zero_length_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "boundary_edges": 24,
+      "non_manifold_edges": 24,
+      "inverted_closed_volume": 0,
+      "signed_volume": null,
+      "uv_layers": 1,
+      "materials": [
+        "DARK"
+      ],
+      "bounds_local": [
+        [
+          -0.20000000298023224,
+          -0.15000000596046448,
+          -0.052000001072883606
+        ],
+        [
+          0.20000000298023224,
+          0.15000000596046448,
+          0.052000001072883606
+        ]
+      ],
+      "self_intersection_candidates": "NOT_RUN; requires dedicated BVH narrowphase across separate objects",
+      "t_junction_candidates": "NOT_RUN; no confirmed repair; manual review if source anomaly",
+      "coplanar_overlap_candidates": "NOT_RUN; layered separate components are intentional unless independently proven faulty"
+    },
+    {
+      "name": "Housing",
+      "vertices": 24,
+      "edges": 30,
+      "faces": 12,
+      "triangles": 12,
+      "connected_components": 6,
+      "coincident_vertices": 16,
+      "loose_vertices": 0,
+      "loose_edges": 0,
+      "zero_length_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "boundary_edges": 24,
+      "non_manifold_edges": 24,
+      "inverted_closed_volume": 0,
+      "signed_volume": null,
+      "uv_layers": 1,
+      "materials": [
+        "STEEL"
+      ],
+      "bounds_local": [
+        [
+          -0.17749999463558197,
+          -0.13500000536441803,
+          -0.10899999737739563
+        ],
+        [
+          0.17749999463558197,
+          0.13500000536441803,
+          0.10899999737739563
+        ]
+      ],
+      "self_intersection_candidates": "NOT_RUN; requires dedicated BVH narrowphase across separate objects",
+      "t_junction_candidates": "NOT_RUN; no confirmed repair; manual review if source anomaly",
+      "coplanar_overlap_candidates": "NOT_RUN; layered separate components are intentional unless independently proven faulty"
+    },
+    {
+      "name": "TopCap",
+      "vertices": 24,
+      "edges": 30,
+      "faces": 12,
+      "triangles": 12,
+      "connected_components": 6,
+      "coincident_vertices": 16,
+      "loose_vertices": 0,
+      "loose_edges": 0,
+      "zero_length_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "boundary_edges": 24,
+      "non_manifold_edges": 24,
+      "inverted_closed_volume": 0,
+      "signed_volume": null,
+      "uv_layers": 1,
+      "materials": [
+        "DARK"
+      ],
+      "bounds_local": [
+        [
+          -0.1899999976158142,
+          -0.14749999344348907,
+          -0.024000000208616257
+        ],
+        [
+          0.1899999976158142,
+          0.14749999344348907,
+          0.024000000208616257
+        ]
+      ],
+      "self_intersection_candidates": "NOT_RUN; requires dedicated BVH narrowphase across separate objects",
+      "t_junction_candidates": "NOT_RUN; no confirmed repair; manual review if source anomaly",
+      "coplanar_overlap_candidates": "NOT_RUN; layered separate components are intentional unless independently proven faulty"
+    },
+    {
+      "name": "FrontPanel",
+      "vertices": 24,
+      "edges": 30,
+      "faces": 12,
+      "triangles": 12,
+      "connected_components": 6,
+      "coincident_vertices": 16,
+      "loose_vertices": 0,
+      "loose_edges": 0,
+      "zero_length_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "boundary_edges": 24,
+      "non_manifold_edges": 24,
+      "inverted_closed_volume": 0,
+      "signed_volume": null,
+      "uv_layers": 1,
+      "materials": [
+        "DARK"
+      ],
+      "bounds_local": [
+        [
+          -0.11500000208616257,
+          -0.00800000037997961,
+          -0.06499999761581421
+        ],
+        [
+          0.11500000208616257,
+          0.00800000037997961,
+          0.06499999761581421
+        ]
+      ],
+      "self_intersection_candidates": "NOT_RUN; requires dedicated BVH narrowphase across separate objects",
+      "t_junction_candidates": "NOT_RUN; no confirmed repair; manual review if source anomaly",
+      "coplanar_overlap_candidates": "NOT_RUN; layered separate components are intentional unless independently proven faulty"
+    },
+    {
+      "name": "StatusLED",
+      "vertices": 24,
+      "edges": 30,
+      "faces": 12,
+      "triangles": 12,
+      "connected_components": 6,
+      "coincident_vertices": 16,
+      "loose_vertices": 0,
+      "loose_edges": 0,
+      "zero_length_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "boundary_edges": 24,
+      "non_manifold_edges": 24,
+      "inverted_closed_volume": 0,
+      "signed_volume": null,
+      "uv_layers": 1,
+      "materials": [
+        "EMISSION"
+      ],
+      "bounds_local": [
+        [
+          -0.06499999761581421,
+          -0.0035000001080334187,
+          -0.008500000461935997
+        ],
+        [
+          0.06499999761581421,
+          0.0035000001080334187,
+          0.008500000461935997
+        ]
+      ],
+      "self_intersection_candidates": "NOT_RUN; requires dedicated BVH narrowphase across separate objects",
+      "t_junction_candidates": "NOT_RUN; no confirmed repair; manual review if source anomaly",
+      "coplanar_overlap_candidates": "NOT_RUN; layered separate components are intentional unless independently proven faulty"
+    },
+    {
+      "name": "WarningBar",
+      "vertices": 24,
+      "edges": 30,
+      "faces": 12,
+      "triangles": 12,
+      "connected_components": 6,
+      "coincident_vertices": 16,
+      "loose_vertices": 0,
+      "loose_edges": 0,
+      "zero_length_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "boundary_edges": 24,
+      "non_manifold_edges": 24,
+      "inverted_closed_volume": 0,
+      "signed_volume": null,
+      "uv_layers": 1,
+      "materials": [
+        "CAUTION"
+      ],
+      "bounds_local": [
+        [
+          -0.1550000011920929,
+          -0.006000000052154064,
+          -0.008999999612569809
+        ],
+        [
+          0.1550000011920929,
+          0.006000000052154064,
+          0.008999999612569809
+        ]
+      ],
+      "self_intersection_candidates": "NOT_RUN; requires dedicated BVH narrowphase across separate objects",
+      "t_junction_candidates": "NOT_RUN; no confirmed repair; manual review if source anomaly",
+      "coplanar_overlap_candidates": "NOT_RUN; layered separate components are intentional unless independently proven faulty"
+    },
+    {
+      "name": "LeverSocket",
+      "vertices": 24,
+      "edges": 30,
+      "faces": 12,
+      "triangles": 12,
+      "connected_components": 6,
+      "coincident_vertices": 16,
+      "loose_vertices": 0,
+      "loose_edges": 0,
+      "zero_length_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "boundary_edges": 24,
+      "non_manifold_edges": 24,
+      "inverted_closed_volume": 0,
+      "signed_volume": null,
+      "uv_layers": 1,
+      "materials": [
+        "STEEL"
+      ],
+      "bounds_local": [
+        [
+          -0.06750000268220901,
+          -0.06750000268220901,
+          -0.017500000074505806
+        ],
+        [
+          0.06750000268220901,
+          0.06750000268220901,
+          0.017500000074505806
+        ]
+      ],
+      "self_intersection_candidates": "NOT_RUN; requires dedicated BVH narrowphase across separate objects",
+      "t_junction_candidates": "NOT_RUN; no confirmed repair; manual review if source anomaly",
+      "coplanar_overlap_candidates": "NOT_RUN; layered separate components are intentional unless independently proven faulty"
+    },
+    {
+      "name": "FootL",
+      "vertices": 24,
+      "edges": 30,
+      "faces": 12,
+      "triangles": 12,
+      "connected_components": 6,
+      "coincident_vertices": 16,
+      "loose_vertices": 0,
+      "loose_edges": 0,
+      "zero_length_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "boundary_edges": 24,
+      "non_manifold_edges": 24,
+      "inverted_closed_volume": 0,
+      "signed_volume": null,
+      "uv_layers": 1,
+      "materials": [
+        "STEEL"
+      ],
+      "bounds_local": [
+        [
+          -0.03999999910593033,
+          -0.07000000029802322,
+          -0.01600000075995922
+        ],
+        [
+          0.03999999910593033,
+          0.07000000029802322,
+          0.01600000075995922
+        ]
+      ],
+      "self_intersection_candidates": "NOT_RUN; requires dedicated BVH narrowphase across separate objects",
+      "t_junction_candidates": "NOT_RUN; no confirmed repair; manual review if source anomaly",
+      "coplanar_overlap_candidates": "NOT_RUN; layered separate components are intentional unless independently proven faulty"
+    },
+    {
+      "name": "FootR",
+      "vertices": 24,
+      "edges": 30,
+      "faces": 12,
+      "triangles": 12,
+      "connected_components": 6,
+      "coincident_vertices": 16,
+      "loose_vertices": 0,
+      "loose_edges": 0,
+      "zero_length_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "boundary_edges": 24,
+      "non_manifold_edges": 24,
+      "inverted_closed_volume": 0,
+      "signed_volume": null,
+      "uv_layers": 1,
+      "materials": [
+        "STEEL"
+      ],
+      "bounds_local": [
+        [
+          -0.03999999910593033,
+          -0.07000000029802322,
+          -0.01600000075995922
+        ],
+        [
+          0.03999999910593033,
+          0.07000000029802322,
+          0.01600000075995922
+        ]
+      ],
+      "self_intersection_candidates": "NOT_RUN; requires dedicated BVH narrowphase across separate objects",
+      "t_junction_candidates": "NOT_RUN; no confirmed repair; manual review if source anomaly",
+      "coplanar_overlap_candidates": "NOT_RUN; layered separate components are intentional unless independently proven faulty"
+    },
+    {
+      "name": "PanelBolt_LB",
+      "vertices": 18,
+      "edges": 48,
+      "faces": 32,
+      "triangles": 32,
+      "connected_components": 1,
+      "coincident_vertices": 0,
+      "loose_vertices": 0,
+      "loose_edges": 0,
+      "zero_length_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "boundary_edges": 0,
+      "non_manifold_edges": 0,
+      "inverted_closed_volume": 0,
+      "signed_volume": 2.828427076339722,
+      "uv_layers": 1,
+      "materials": [
+        "STEEL"
+      ],
+      "bounds_local": [
+        [
+          -1.0,
+          -0.5,
+          -1.0
+        ],
+        [
+          1.0,
+          0.5,
+          1.0
+        ]
+      ],
+      "self_intersection_candidates": "NOT_RUN; requires dedicated BVH narrowphase across separate objects",
+      "t_junction_candidates": "NOT_RUN; no confirmed repair; manual review if source anomaly",
+      "coplanar_overlap_candidates": "NOT_RUN; layered separate components are intentional unless independently proven faulty"
+    },
+    {
+      "name": "PanelBolt_LT",
+      "vertices": 18,
+      "edges": 48,
+      "faces": 32,
+      "triangles": 32,
+      "connected_components": 1,
+      "coincident_vertices": 0,
+      "loose_vertices": 0,
+      "loose_edges": 0,
+      "zero_length_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "boundary_edges": 0,
+      "non_manifold_edges": 0,
+      "inverted_closed_volume": 0,
+      "signed_volume": 2.828427076339722,
+      "uv_layers": 1,
+      "materials": [
+        "STEEL"
+      ],
+      "bounds_local": [
+        [
+          -1.0,
+          -0.5,
+          -1.0
+        ],
+        [
+          1.0,
+          0.5,
+          1.0
+        ]
+      ],
+      "self_intersection_candidates": "NOT_RUN; requires dedicated BVH narrowphase across separate objects",
+      "t_junction_candidates": "NOT_RUN; no confirmed repair; manual review if source anomaly",
+      "coplanar_overlap_candidates": "NOT_RUN; layered separate components are intentional unless independently proven faulty"
+    },
+    {
+      "name": "PanelBolt_RB",
+      "vertices": 18,
+      "edges": 48,
+      "faces": 32,
+      "triangles": 32,
+      "connected_components": 1,
+      "coincident_vertices": 0,
+      "loose_vertices": 0,
+      "loose_edges": 0,
+      "zero_length_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "boundary_edges": 0,
+      "non_manifold_edges": 0,
+      "inverted_closed_volume": 0,
+      "signed_volume": 2.828427076339722,
+      "uv_layers": 1,
+      "materials": [
+        "STEEL"
+      ],
+      "bounds_local": [
+        [
+          -1.0,
+          -0.5,
+          -1.0
+        ],
+        [
+          1.0,
+          0.5,
+          1.0
+        ]
+      ],
+      "self_intersection_candidates": "NOT_RUN; requires dedicated BVH narrowphase across separate objects",
+      "t_junction_candidates": "NOT_RUN; no confirmed repair; manual review if source anomaly",
+      "coplanar_overlap_candidates": "NOT_RUN; layered separate components are intentional unless independently proven faulty"
+    },
+    {
+      "name": "PanelBolt_RT",
+      "vertices": 18,
+      "edges": 48,
+      "faces": 32,
+      "triangles": 32,
+      "connected_components": 1,
+      "coincident_vertices": 0,
+      "loose_vertices": 0,
+      "loose_edges": 0,
+      "zero_length_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "boundary_edges": 0,
+      "non_manifold_edges": 0,
+      "inverted_closed_volume": 0,
+      "signed_volume": 2.828427076339722,
+      "uv_layers": 1,
+      "materials": [
+        "STEEL"
+      ],
+      "bounds_local": [
+        [
+          -1.0,
+          -0.5,
+          -1.0
+        ],
+        [
+          1.0,
+          0.5,
+          1.0
+        ]
+      ],
+      "self_intersection_candidates": "NOT_RUN; requires dedicated BVH narrowphase across separate objects",
+      "t_junction_candidates": "NOT_RUN; no confirmed repair; manual review if source anomaly",
+      "coplanar_overlap_candidates": "NOT_RUN; layered separate components are intentional unless independently proven faulty"
+    },
+    {
+      "name": "SocketRetainer_L",
+      "vertices": 24,
+      "edges": 30,
+      "faces": 12,
+      "triangles": 12,
+      "connected_components": 6,
+      "coincident_vertices": 16,
+      "loose_vertices": 0,
+      "loose_edges": 0,
+      "zero_length_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "boundary_edges": 24,
+      "non_manifold_edges": 24,
+      "inverted_closed_volume": 0,
+      "signed_volume": null,
+      "uv_layers": 1,
+      "materials": [
+        "STEEL"
+      ],
+      "bounds_local": [
+        [
+          -0.17749999463558197,
+          -0.13500000536441803,
+          -0.10899999737739563
+        ],
+        [
+          0.17749999463558197,
+          0.13500000536441803,
+          0.10899999737739563
+        ]
+      ],
+      "self_intersection_candidates": "NOT_RUN; requires dedicated BVH narrowphase across separate objects",
+      "t_junction_candidates": "NOT_RUN; no confirmed repair; manual review if source anomaly",
+      "coplanar_overlap_candidates": "NOT_RUN; layered separate components are intentional unless independently proven faulty"
+    },
+    {
+      "name": "SocketRetainer_R",
+      "vertices": 24,
+      "edges": 30,
+      "faces": 12,
+      "triangles": 12,
+      "connected_components": 6,
+      "coincident_vertices": 16,
+      "loose_vertices": 0,
+      "loose_edges": 0,
+      "zero_length_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "boundary_edges": 24,
+      "non_manifold_edges": 24,
+      "inverted_closed_volume": 0,
+      "signed_volume": null,
+      "uv_layers": 1,
+      "materials": [
+        "STEEL"
+      ],
+      "bounds_local": [
+        [
+          -0.17749999463558197,
+          -0.13500000536441803,
+          -0.10899999737739563
+        ],
+        [
+          0.17749999463558197,
+          0.13500000536441803,
+          0.10899999737739563
+        ]
+      ],
+      "self_intersection_candidates": "NOT_RUN; requires dedicated BVH narrowphase across separate objects",
+      "t_junction_candidates": "NOT_RUN; no confirmed repair; manual review if source anomaly",
+      "coplanar_overlap_candidates": "NOT_RUN; layered separate components are intentional unless independently proven faulty"
+    },
+    {
+      "name": "CoverBolt_L",
+      "vertices": 18,
+      "edges": 48,
+      "faces": 32,
+      "triangles": 32,
+      "connected_components": 1,
+      "coincident_vertices": 0,
+      "loose_vertices": 0,
+      "loose_edges": 0,
+      "zero_length_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "boundary_edges": 0,
+      "non_manifold_edges": 0,
+      "inverted_closed_volume": 0,
+      "signed_volume": 2.828427076339722,
+      "uv_layers": 1,
+      "materials": [
+        "STEEL"
+      ],
+      "bounds_local": [
+        [
+          -1.0,
+          -0.5,
+          -1.0
+        ],
+        [
+          1.0,
+          0.5,
+          1.0
+        ]
+      ],
+      "self_intersection_candidates": "NOT_RUN; requires dedicated BVH narrowphase across separate objects",
+      "t_junction_candidates": "NOT_RUN; no confirmed repair; manual review if source anomaly",
+      "coplanar_overlap_candidates": "NOT_RUN; layered separate components are intentional unless independently proven faulty"
+    },
+    {
+      "name": "CoverBolt_R",
+      "vertices": 18,
+      "edges": 48,
+      "faces": 32,
+      "triangles": 32,
+      "connected_components": 1,
+      "coincident_vertices": 0,
+      "loose_vertices": 0,
+      "loose_edges": 0,
+      "zero_length_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "boundary_edges": 0,
+      "non_manifold_edges": 0,
+      "inverted_closed_volume": 0,
+      "signed_volume": 2.828427076339722,
+      "uv_layers": 1,
+      "materials": [
+        "STEEL"
+      ],
+      "bounds_local": [
+        [
+          -1.0,
+          -0.5,
+          -1.0
+        ],
+        [
+          1.0,
+          0.5,
+          1.0
+        ]
+      ],
+      "self_intersection_candidates": "NOT_RUN; requires dedicated BVH narrowphase across separate objects",
+      "t_junction_candidates": "NOT_RUN; no confirmed repair; manual review if source anomaly",
+      "coplanar_overlap_candidates": "NOT_RUN; layered separate components are intentional unless independently proven faulty"
+    }
+  ],
+  "parts_after": [
+    {
+      "name": "LeverShaft",
+      "vertices": 24,
+      "edges": 66,
+      "faces": 44,
+      "triangles": 44,
+      "connected_components": 1,
+      "coincident_vertices": 0,
+      "loose_vertices": 0,
+      "loose_edges": 0,
+      "zero_length_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "boundary_edges": 0,
+      "non_manifold_edges": 0,
+      "inverted_closed_volume": 0,
+      "signed_volume": 0.00010584000947540054,
+      "uv_layers": 1,
+      "materials": [
+        "STEEL"
+      ],
+      "bounds_local": [
+        [
+          -0.014000000432133675,
+          -0.014000000432133675,
+          -0.09000000357627869
+        ],
+        [
+          0.014000000432133675,
+          0.014000000432133675,
+          0.09000000357627869
+        ]
+      ],
+      "self_intersection_candidates": "NOT_RUN; requires dedicated BVH narrowphase across separate objects",
+      "t_junction_candidates": "NOT_RUN; no confirmed repair; manual review if source anomaly",
+      "coplanar_overlap_candidates": "NOT_RUN; layered separate components are intentional unless independently proven faulty"
+    },
+    {
+      "name": "LeverGrip",
+      "vertices": 24,
+      "edges": 66,
+      "faces": 44,
+      "triangles": 44,
+      "connected_components": 1,
+      "coincident_vertices": 0,
+      "loose_vertices": 0,
+      "loose_edges": 0,
+      "zero_length_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "boundary_edges": 0,
+      "non_manifold_edges": 0,
+      "inverted_closed_volume": 0,
+      "signed_volume": 0.000208080008714242,
+      "uv_layers": 1,
+      "materials": [
+        "CAUTION"
+      ],
+      "bounds_local": [
+        [
+          -0.03400000184774399,
+          -0.03400000184774399,
+          -0.029999999329447746
+        ],
+        [
+          0.03400000184774399,
+          0.03400000184774399,
+          0.029999999329447746
+        ]
+      ],
+      "self_intersection_candidates": "NOT_RUN; requires dedicated BVH narrowphase across separate objects",
+      "t_junction_candidates": "NOT_RUN; no confirmed repair; manual review if source anomaly",
+      "coplanar_overlap_candidates": "NOT_RUN; layered separate components are intentional unless independently proven faulty"
+    },
+    {
+      "name": "PivotAnchorVisual",
+      "vertices": 8,
+      "edges": 18,
+      "faces": 12,
+      "triangles": 12,
+      "connected_components": 1,
+      "coincident_vertices": 0,
+      "loose_vertices": 0,
+      "loose_edges": 0,
+      "zero_length_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "boundary_edges": 0,
+      "non_manifold_edges": 0,
+      "inverted_closed_volume": 0,
+      "signed_volume": 0.0001487500044144691,
+      "uv_layers": 1,
+      "materials": [
+        "DARK"
+      ],
+      "bounds_local": [
+        [
+          -0.042500000447034836,
+          -0.03500000014901161,
+          -0.012500000186264515
+        ],
+        [
+          0.042500000447034836,
+          0.03500000014901161,
+          0.012500000186264515
+        ]
+      ],
+      "self_intersection_candidates": "NOT_RUN; requires dedicated BVH narrowphase across separate objects",
+      "t_junction_candidates": "NOT_RUN; no confirmed repair; manual review if source anomaly",
+      "coplanar_overlap_candidates": "NOT_RUN; layered separate components are intentional unless independently proven faulty"
+    },
+    {
+      "name": "Base",
+      "vertices": 8,
+      "edges": 18,
+      "faces": 12,
+      "triangles": 12,
+      "connected_components": 1,
+      "coincident_vertices": 0,
+      "loose_vertices": 0,
+      "loose_edges": 0,
+      "zero_length_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "boundary_edges": 0,
+      "non_manifold_edges": 0,
+      "inverted_closed_volume": 0,
+      "signed_volume": 0.012480000939369221,
+      "uv_layers": 1,
+      "materials": [
+        "DARK"
+      ],
+      "bounds_local": [
+        [
+          -0.20000000298023224,
+          -0.15000000596046448,
+          -0.052000001072883606
+        ],
+        [
+          0.20000000298023224,
+          0.15000000596046448,
+          0.052000001072883606
+        ]
+      ],
+      "self_intersection_candidates": "NOT_RUN; requires dedicated BVH narrowphase across separate objects",
+      "t_junction_candidates": "NOT_RUN; no confirmed repair; manual review if source anomaly",
+      "coplanar_overlap_candidates": "NOT_RUN; layered separate components are intentional unless independently proven faulty"
+    },
+    {
+      "name": "Housing",
+      "vertices": 8,
+      "edges": 18,
+      "faces": 12,
+      "triangles": 12,
+      "connected_components": 1,
+      "coincident_vertices": 0,
+      "loose_vertices": 0,
+      "loose_edges": 0,
+      "zero_length_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "boundary_edges": 0,
+      "non_manifold_edges": 0,
+      "inverted_closed_volume": 0,
+      "signed_volume": 0.020895299696052052,
+      "uv_layers": 1,
+      "materials": [
+        "STEEL"
+      ],
+      "bounds_local": [
+        [
+          -0.17749999463558197,
+          -0.13500000536441803,
+          -0.10899999737739563
+        ],
+        [
+          0.17749999463558197,
+          0.13500000536441803,
+          0.10899999737739563
+        ]
+      ],
+      "self_intersection_candidates": "NOT_RUN; requires dedicated BVH narrowphase across separate objects",
+      "t_junction_candidates": "NOT_RUN; no confirmed repair; manual review if source anomaly",
+      "coplanar_overlap_candidates": "NOT_RUN; layered separate components are intentional unless independently proven faulty"
+    },
+    {
+      "name": "TopCap",
+      "vertices": 8,
+      "edges": 18,
+      "faces": 12,
+      "triangles": 12,
+      "connected_components": 1,
+      "coincident_vertices": 0,
+      "loose_vertices": 0,
+      "loose_edges": 0,
+      "zero_length_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "boundary_edges": 0,
+      "non_manifold_edges": 0,
+      "inverted_closed_volume": 0,
+      "signed_volume": 0.0053807997400701045,
+      "uv_layers": 1,
+      "materials": [
+        "DARK"
+      ],
+      "bounds_local": [
+        [
+          -0.1899999976158142,
+          -0.14749999344348907,
+          -0.024000000208616257
+        ],
+        [
+          0.1899999976158142,
+          0.14749999344348907,
+          0.024000000208616257
+        ]
+      ],
+      "self_intersection_candidates": "NOT_RUN; requires dedicated BVH narrowphase across separate objects",
+      "t_junction_candidates": "NOT_RUN; no confirmed repair; manual review if source anomaly",
+      "coplanar_overlap_candidates": "NOT_RUN; layered separate components are intentional unless independently proven faulty"
+    },
+    {
+      "name": "FrontPanel",
+      "vertices": 8,
+      "edges": 18,
+      "faces": 12,
+      "triangles": 12,
+      "connected_components": 1,
+      "coincident_vertices": 0,
+      "loose_vertices": 0,
+      "loose_edges": 0,
+      "zero_length_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "boundary_edges": 0,
+      "non_manifold_edges": 0,
+      "inverted_closed_volume": 0,
+      "signed_volume": 0.00047840001385360877,
+      "uv_layers": 1,
+      "materials": [
+        "DARK"
+      ],
+      "bounds_local": [
+        [
+          -0.11500000208616257,
+          -0.00800000037997961,
+          -0.06499999761581421
+        ],
+        [
+          0.11500000208616257,
+          0.00800000037997961,
+          0.06499999761581421
+        ]
+      ],
+      "self_intersection_candidates": "NOT_RUN; requires dedicated BVH narrowphase across separate objects",
+      "t_junction_candidates": "NOT_RUN; no confirmed repair; manual review if source anomaly",
+      "coplanar_overlap_candidates": "NOT_RUN; layered separate components are intentional unless independently proven faulty"
+    },
+    {
+      "name": "StatusLED",
+      "vertices": 8,
+      "edges": 18,
+      "faces": 12,
+      "triangles": 12,
+      "connected_components": 1,
+      "coincident_vertices": 0,
+      "loose_vertices": 0,
+      "loose_edges": 0,
+      "zero_length_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "boundary_edges": 0,
+      "non_manifold_edges": 0,
+      "inverted_closed_volume": 0,
+      "signed_volume": 1.5470000750794984e-05,
+      "uv_layers": 1,
+      "materials": [
+        "EMISSION"
+      ],
+      "bounds_local": [
+        [
+          -0.06499999761581421,
+          -0.0035000001080334187,
+          -0.008500000461935997
+        ],
+        [
+          0.06499999761581421,
+          0.0035000001080334187,
+          0.008500000461935997
+        ]
+      ],
+      "self_intersection_candidates": "NOT_RUN; requires dedicated BVH narrowphase across separate objects",
+      "t_junction_candidates": "NOT_RUN; no confirmed repair; manual review if source anomaly",
+      "coplanar_overlap_candidates": "NOT_RUN; layered separate components are intentional unless independently proven faulty"
+    },
+    {
+      "name": "WarningBar",
+      "vertices": 8,
+      "edges": 18,
+      "faces": 12,
+      "triangles": 12,
+      "connected_components": 1,
+      "coincident_vertices": 0,
+      "loose_vertices": 0,
+      "loose_edges": 0,
+      "zero_length_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "boundary_edges": 0,
+      "non_manifold_edges": 0,
+      "inverted_closed_volume": 0,
+      "signed_volume": 6.695999821454282e-05,
+      "uv_layers": 1,
+      "materials": [
+        "CAUTION"
+      ],
+      "bounds_local": [
+        [
+          -0.1550000011920929,
+          -0.006000000052154064,
+          -0.008999999612569809
+        ],
+        [
+          0.1550000011920929,
+          0.006000000052154064,
+          0.008999999612569809
+        ]
+      ],
+      "self_intersection_candidates": "NOT_RUN; requires dedicated BVH narrowphase across separate objects",
+      "t_junction_candidates": "NOT_RUN; no confirmed repair; manual review if source anomaly",
+      "coplanar_overlap_candidates": "NOT_RUN; layered separate components are intentional unless independently proven faulty"
+    },
+    {
+      "name": "LeverSocket",
+      "vertices": 8,
+      "edges": 18,
+      "faces": 12,
+      "triangles": 12,
+      "connected_components": 1,
+      "coincident_vertices": 0,
+      "loose_vertices": 0,
+      "loose_edges": 0,
+      "zero_length_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "boundary_edges": 0,
+      "non_manifold_edges": 0,
+      "inverted_closed_volume": 0,
+      "signed_volume": 0.0006378750534094882,
+      "uv_layers": 1,
+      "materials": [
+        "STEEL"
+      ],
+      "bounds_local": [
+        [
+          -0.06750000268220901,
+          -0.06750000268220901,
+          -0.017500000074505806
+        ],
+        [
+          0.06750000268220901,
+          0.06750000268220901,
+          0.017500000074505806
+        ]
+      ],
+      "self_intersection_candidates": "NOT_RUN; requires dedicated BVH narrowphase across separate objects",
+      "t_junction_candidates": "NOT_RUN; no confirmed repair; manual review if source anomaly",
+      "coplanar_overlap_candidates": "NOT_RUN; layered separate components are intentional unless independently proven faulty"
+    },
+    {
+      "name": "FootL",
+      "vertices": 8,
+      "edges": 18,
+      "faces": 12,
+      "triangles": 12,
+      "connected_components": 1,
+      "coincident_vertices": 0,
+      "loose_vertices": 0,
+      "loose_edges": 0,
+      "zero_length_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "boundary_edges": 0,
+      "non_manifold_edges": 0,
+      "inverted_closed_volume": 0,
+      "signed_volume": 0.000358400010538101,
+      "uv_layers": 1,
+      "materials": [
+        "STEEL"
+      ],
+      "bounds_local": [
+        [
+          -0.03999999910593033,
+          -0.07000000029802322,
+          -0.01600000075995922
+        ],
+        [
+          0.03999999910593033,
+          0.07000000029802322,
+          0.01600000075995922
+        ]
+      ],
+      "self_intersection_candidates": "NOT_RUN; requires dedicated BVH narrowphase across separate objects",
+      "t_junction_candidates": "NOT_RUN; no confirmed repair; manual review if source anomaly",
+      "coplanar_overlap_candidates": "NOT_RUN; layered separate components are intentional unless independently proven faulty"
+    },
+    {
+      "name": "FootR",
+      "vertices": 8,
+      "edges": 18,
+      "faces": 12,
+      "triangles": 12,
+      "connected_components": 1,
+      "coincident_vertices": 0,
+      "loose_vertices": 0,
+      "loose_edges": 0,
+      "zero_length_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "boundary_edges": 0,
+      "non_manifold_edges": 0,
+      "inverted_closed_volume": 0,
+      "signed_volume": 0.000358400010538101,
+      "uv_layers": 1,
+      "materials": [
+        "STEEL"
+      ],
+      "bounds_local": [
+        [
+          -0.03999999910593033,
+          -0.07000000029802322,
+          -0.01600000075995922
+        ],
+        [
+          0.03999999910593033,
+          0.07000000029802322,
+          0.01600000075995922
+        ]
+      ],
+      "self_intersection_candidates": "NOT_RUN; requires dedicated BVH narrowphase across separate objects",
+      "t_junction_candidates": "NOT_RUN; no confirmed repair; manual review if source anomaly",
+      "coplanar_overlap_candidates": "NOT_RUN; layered separate components are intentional unless independently proven faulty"
+    },
+    {
+      "name": "PanelBolt_LB",
+      "vertices": 18,
+      "edges": 48,
+      "faces": 32,
+      "triangles": 32,
+      "connected_components": 1,
+      "coincident_vertices": 0,
+      "loose_vertices": 0,
+      "loose_edges": 0,
+      "zero_length_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "boundary_edges": 0,
+      "non_manifold_edges": 0,
+      "inverted_closed_volume": 0,
+      "signed_volume": 2.828427076339722,
+      "uv_layers": 1,
+      "materials": [
+        "STEEL"
+      ],
+      "bounds_local": [
+        [
+          -1.0,
+          -0.5,
+          -1.0
+        ],
+        [
+          1.0,
+          0.5,
+          1.0
+        ]
+      ],
+      "self_intersection_candidates": "NOT_RUN; requires dedicated BVH narrowphase across separate objects",
+      "t_junction_candidates": "NOT_RUN; no confirmed repair; manual review if source anomaly",
+      "coplanar_overlap_candidates": "NOT_RUN; layered separate components are intentional unless independently proven faulty"
+    },
+    {
+      "name": "PanelBolt_LT",
+      "vertices": 18,
+      "edges": 48,
+      "faces": 32,
+      "triangles": 32,
+      "connected_components": 1,
+      "coincident_vertices": 0,
+      "loose_vertices": 0,
+      "loose_edges": 0,
+      "zero_length_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "boundary_edges": 0,
+      "non_manifold_edges": 0,
+      "inverted_closed_volume": 0,
+      "signed_volume": 2.828427076339722,
+      "uv_layers": 1,
+      "materials": [
+        "STEEL"
+      ],
+      "bounds_local": [
+        [
+          -1.0,
+          -0.5,
+          -1.0
+        ],
+        [
+          1.0,
+          0.5,
+          1.0
+        ]
+      ],
+      "self_intersection_candidates": "NOT_RUN; requires dedicated BVH narrowphase across separate objects",
+      "t_junction_candidates": "NOT_RUN; no confirmed repair; manual review if source anomaly",
+      "coplanar_overlap_candidates": "NOT_RUN; layered separate components are intentional unless independently proven faulty"
+    },
+    {
+      "name": "PanelBolt_RB",
+      "vertices": 18,
+      "edges": 48,
+      "faces": 32,
+      "triangles": 32,
+      "connected_components": 1,
+      "coincident_vertices": 0,
+      "loose_vertices": 0,
+      "loose_edges": 0,
+      "zero_length_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "boundary_edges": 0,
+      "non_manifold_edges": 0,
+      "inverted_closed_volume": 0,
+      "signed_volume": 2.828427076339722,
+      "uv_layers": 1,
+      "materials": [
+        "STEEL"
+      ],
+      "bounds_local": [
+        [
+          -1.0,
+          -0.5,
+          -1.0
+        ],
+        [
+          1.0,
+          0.5,
+          1.0
+        ]
+      ],
+      "self_intersection_candidates": "NOT_RUN; requires dedicated BVH narrowphase across separate objects",
+      "t_junction_candidates": "NOT_RUN; no confirmed repair; manual review if source anomaly",
+      "coplanar_overlap_candidates": "NOT_RUN; layered separate components are intentional unless independently proven faulty"
+    },
+    {
+      "name": "PanelBolt_RT",
+      "vertices": 18,
+      "edges": 48,
+      "faces": 32,
+      "triangles": 32,
+      "connected_components": 1,
+      "coincident_vertices": 0,
+      "loose_vertices": 0,
+      "loose_edges": 0,
+      "zero_length_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "boundary_edges": 0,
+      "non_manifold_edges": 0,
+      "inverted_closed_volume": 0,
+      "signed_volume": 2.828427076339722,
+      "uv_layers": 1,
+      "materials": [
+        "STEEL"
+      ],
+      "bounds_local": [
+        [
+          -1.0,
+          -0.5,
+          -1.0
+        ],
+        [
+          1.0,
+          0.5,
+          1.0
+        ]
+      ],
+      "self_intersection_candidates": "NOT_RUN; requires dedicated BVH narrowphase across separate objects",
+      "t_junction_candidates": "NOT_RUN; no confirmed repair; manual review if source anomaly",
+      "coplanar_overlap_candidates": "NOT_RUN; layered separate components are intentional unless independently proven faulty"
+    },
+    {
+      "name": "SocketRetainer_L",
+      "vertices": 8,
+      "edges": 18,
+      "faces": 12,
+      "triangles": 12,
+      "connected_components": 1,
+      "coincident_vertices": 0,
+      "loose_vertices": 0,
+      "loose_edges": 0,
+      "zero_length_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "boundary_edges": 0,
+      "non_manifold_edges": 0,
+      "inverted_closed_volume": 0,
+      "signed_volume": 0.020895299696052052,
+      "uv_layers": 1,
+      "materials": [
+        "STEEL"
+      ],
+      "bounds_local": [
+        [
+          -0.17749999463558197,
+          -0.13500000536441803,
+          -0.10899999737739563
+        ],
+        [
+          0.17749999463558197,
+          0.13500000536441803,
+          0.10899999737739563
+        ]
+      ],
+      "self_intersection_candidates": "NOT_RUN; requires dedicated BVH narrowphase across separate objects",
+      "t_junction_candidates": "NOT_RUN; no confirmed repair; manual review if source anomaly",
+      "coplanar_overlap_candidates": "NOT_RUN; layered separate components are intentional unless independently proven faulty"
+    },
+    {
+      "name": "SocketRetainer_R",
+      "vertices": 8,
+      "edges": 18,
+      "faces": 12,
+      "triangles": 12,
+      "connected_components": 1,
+      "coincident_vertices": 0,
+      "loose_vertices": 0,
+      "loose_edges": 0,
+      "zero_length_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "boundary_edges": 0,
+      "non_manifold_edges": 0,
+      "inverted_closed_volume": 0,
+      "signed_volume": 0.020895299696052052,
+      "uv_layers": 1,
+      "materials": [
+        "STEEL"
+      ],
+      "bounds_local": [
+        [
+          -0.17749999463558197,
+          -0.13500000536441803,
+          -0.10899999737739563
+        ],
+        [
+          0.17749999463558197,
+          0.13500000536441803,
+          0.10899999737739563
+        ]
+      ],
+      "self_intersection_candidates": "NOT_RUN; requires dedicated BVH narrowphase across separate objects",
+      "t_junction_candidates": "NOT_RUN; no confirmed repair; manual review if source anomaly",
+      "coplanar_overlap_candidates": "NOT_RUN; layered separate components are intentional unless independently proven faulty"
+    },
+    {
+      "name": "CoverBolt_L",
+      "vertices": 18,
+      "edges": 48,
+      "faces": 32,
+      "triangles": 32,
+      "connected_components": 1,
+      "coincident_vertices": 0,
+      "loose_vertices": 0,
+      "loose_edges": 0,
+      "zero_length_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "boundary_edges": 0,
+      "non_manifold_edges": 0,
+      "inverted_closed_volume": 0,
+      "signed_volume": 2.828427076339722,
+      "uv_layers": 1,
+      "materials": [
+        "STEEL"
+      ],
+      "bounds_local": [
+        [
+          -1.0,
+          -0.5,
+          -1.0
+        ],
+        [
+          1.0,
+          0.5,
+          1.0
+        ]
+      ],
+      "self_intersection_candidates": "NOT_RUN; requires dedicated BVH narrowphase across separate objects",
+      "t_junction_candidates": "NOT_RUN; no confirmed repair; manual review if source anomaly",
+      "coplanar_overlap_candidates": "NOT_RUN; layered separate components are intentional unless independently proven faulty"
+    },
+    {
+      "name": "CoverBolt_R",
+      "vertices": 18,
+      "edges": 48,
+      "faces": 32,
+      "triangles": 32,
+      "connected_components": 1,
+      "coincident_vertices": 0,
+      "loose_vertices": 0,
+      "loose_edges": 0,
+      "zero_length_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "boundary_edges": 0,
+      "non_manifold_edges": 0,
+      "inverted_closed_volume": 0,
+      "signed_volume": 2.828427076339722,
+      "uv_layers": 1,
+      "materials": [
+        "STEEL"
+      ],
+      "bounds_local": [
+        [
+          -1.0,
+          -0.5,
+          -1.0
+        ],
+        [
+          1.0,
+          0.5,
+          1.0
+        ]
+      ],
+      "self_intersection_candidates": "NOT_RUN; requires dedicated BVH narrowphase across separate objects",
+      "t_junction_candidates": "NOT_RUN; no confirmed repair; manual review if source anomaly",
+      "coplanar_overlap_candidates": "NOT_RUN; layered separate components are intentional unless independently proven faulty"
+    }
+  ],
+  "meshes_modified": [
+    {
+      "mesh": "LeverShaft",
+      "welded": 83
+    },
+    {
+      "mesh": "LeverGrip",
+      "welded": 83
+    },
+    {
+      "mesh": "PivotAnchorVisual",
+      "welded": 16
+    },
+    {
+      "mesh": "Base",
+      "welded": 16
+    },
+    {
+      "mesh": "Housing",
+      "welded": 16
+    },
+    {
+      "mesh": "TopCap",
+      "welded": 16
+    },
+    {
+      "mesh": "FrontPanel",
+      "welded": 16
+    },
+    {
+      "mesh": "StatusLED",
+      "welded": 16
+    },
+    {
+      "mesh": "WarningBar",
+      "welded": 16
+    },
+    {
+      "mesh": "LeverSocket",
+      "welded": 16
+    },
+    {
+      "mesh": "FootL",
+      "welded": 16
+    },
+    {
+      "mesh": "FootR",
+      "welded": 16
+    },
+    {
+      "mesh": "SocketRetainer_L",
+      "welded": 0
+    },
+    {
+      "mesh": "SocketRetainer_R",
+      "welded": 0
+    }
+  ],
+  "preserved_dimensions": true,
+  "preserved_polygons": true,
+  "preserved_materials": true,
+  "preserved_pivots": true,
+  "source_mesh_topology": "PASS",
+  "blender_native_repair": "PASS",
+  "fbx_round_trip": "PENDING next CI step",
+  "unity": "NOT RUN",
+  "independent_c01_02": "PENDING"
+}

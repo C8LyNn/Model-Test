@@ -62,7 +62,7 @@ def snapshot(asset):
             sig=tuple(sorted(tuple(round(z*10000) for z in xyz) for xyz in (a,b,c)))
             triangles[(name,sig)]+=1
             u0,u1,u2=[uv[i].uv for i in tri.loops]
-            uvarea=abs((u1-u0).cross(u2-u0))*.5
+            uvarea=abs((u1.x-u0.x)*(u2.y-u0.y)-(u1.y-u0.y)*(u2.x-u0.x))*.5
             if not math.isfinite(uvarea) or uvarea<1e-11:bad_uv+=1
             poly=m.polygons[tri.polygon_index]
             if poly.normal.length<.99:normals+=1
@@ -82,7 +82,7 @@ def bvh(o):
     return BVHTree.FromPolygons(verts,faces,all_triangles=True,epsilon=0),box(o)
 def bvh_overlap(a,b):
     # Correct closed AABB overlap. Older producer had this predicate INVERTED.
-    if any(a[1][i]>b[2][i] or b[1][i]>a[2][i] for i in range(3)):
+    if any(a[1][i][0]>b[1][i][1] or b[1][i][0]>a[1][i][1] for i in range(3)):
         return []
     return a[0].overlap(b[0])
 def negative_control():

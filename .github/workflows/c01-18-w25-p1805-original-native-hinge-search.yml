@@ -1,0 +1,58 @@
+name: C01-18 W25 REAL Signed P18-05 BLEND FBX Hinge Release Search
+on:
+  push:
+    branches: [c01/props-18-cargo-wave02]
+    paths:
+      - '.github/workflows/c01-18-w25-p1805-original-native-hinge-search.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  original-native-lid-mechanics:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - name: Hydrate ONLY P18-05 original signed physical BLEND+binary FBX and Blender4
+        run: |
+          set -euo pipefail
+          git lfs install --local
+          git lfs pull --include='Assets/C01InteriorProps/C01-18-Wave02/Sources/P18-05.blend,Assets/C01InteriorProps/C01-18-Wave02/Models/P18-05.fbx' --exclude=''
+          sudo apt-get update -qq
+          sudo apt-get install -y blender python3-numpy
+          blender --version | grep -E '^Blender 4\.'
+      - name: Real original Blender and reimported FBX hinge motion search without model edits
+        run: |
+          set -euo pipefail
+          root="$PWD/Assets/C01InteriorProps/C01-18-Wave02"
+          blender -b --factory-startup --python-exit-code 1 \
+            --python "$root/Tools/pass25_p1805_real_native_motion_search.py" -- "$root"
+          python3 - <<'PY'
+          import json,pathlib
+          p=pathlib.Path('Assets/C01InteriorProps/C01-18-Wave02/QA/Pass25/P18-05_ORIGINAL_NATIVE_BLENDER_FBX_HINGE_RELEASE_SEARCH.json')
+          j=json.loads(p.read_text())
+          assert j['mesh_changes']==j['fbx_exports']==0
+          assert len(j['all_angles_degrees'])==23
+          assert len(j['candidates'])>=3
+          assert j['source_sha']['fbx']=='58e33516ead13e35e8a48228045c67bd53d6caf8de01883a11625fa2961957e5'
+          print('C01_18_W25_ACTUAL_NATIVE_READONLY_SUCCESS',j['baseline_parity'],j['candidates'][:5],j['best_zero'][:5])
+          PY
+      - name: Commit ONLY native measured JSON receipt on current Draft #26
+        run: |
+          set -euo pipefail
+          p=Assets/C01InteriorProps/C01-18-Wave02/QA/Pass25/P18-05_ORIGINAL_NATIVE_BLENDER_FBX_HINGE_RELEASE_SEARCH.json
+          git add "$p"
+          test "$(git diff --cached --name-only)" = "$p"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'C01-18 W25: genuine original BLEND and FBX P18-05 hinge motion sweep evidence [skip ci]'
+          git push origin HEAD:c01/props-18-cargo-wave02
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: C01-18-W25-ORIGINAL-P1805-SIGNED-MOTION
+          path: Assets/C01InteriorProps/C01-18-Wave02/QA/Pass25/P18-05_ORIGINAL_NATIVE_BLENDER_FBX_HINGE_RELEASE_SEARCH.json
+          if-no-files-found: warn
+          retention-days: 21

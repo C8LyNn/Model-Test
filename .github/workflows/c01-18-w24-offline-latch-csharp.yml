@@ -63,7 +63,7 @@ jobs:
       - name: Commit only QA receipt to existing isolated Draft branch
         run: |
           set -euo pipefail
-          git add QA/C01-18/Pass24/Wave02/P18-07_W24_REAL_CSHARP_MOCK_QA.json QA/C01-18/Pass24/Wave02/P18-07_W24_REAL_CSHARP_MOCK_QA.log
+          git add -f QA/C01-18/Pass24/Wave02/P18-07_W24_REAL_CSHARP_MOCK_QA.json QA/C01-18/Pass24/Wave02/P18-07_W24_REAL_CSHARP_MOCK_QA.log
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git commit -m 'C01-18 W24: executable real CSharp offline latch QA proof [skip ci]'

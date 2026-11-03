@@ -1,0 +1,69 @@
+name: C01-12 W26 real signed native mesh modular seam QA
+on:
+  push:
+    branches: [c01/floors-12-legacy-repair]
+    paths:
+      - .github/workflows/c01-floors12-w26-seams.yml
+      - Tools/C01Floors12/pass26_real_modular_seams.py
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  real-non-door-modular-qa:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 24
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+          persist-credentials: false
+      - name: Hydrate ONLY 3 native BLEND and 3 final binary FBX
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends blender python3-numpy xvfb libgl1 libgl1-mesa-dri libopengl0 git-lfs
+          blender --version | head -3
+          git lfs install --local
+          git lfs pull --include="C01StandaloneKits/FloorCeiling/DetailPass17/Blend/*,C01StandaloneKits/FloorCeiling/DetailPass17/FBX/*" --exclude=""
+      - name: Inspect original real meshes & FBX and assemble 4x4m room + 2x4m corridor
+        shell: bash
+        run: |
+          set -euo pipefail
+          LIBGL_ALWAYS_SOFTWARE=1 xvfb-run -a blender --background --factory-startup --python Tools/C01Floors12/pass26_real_modular_seams.py 2>&1 | tee /tmp/c01-12-w26.txt
+          grep -q "C01-12 W26 REAL SOURCE+FBX 3/3 MODULAR SEAMS AND ASSEMBLY PASS" /tmp/c01-12-w26.txt
+          ! grep -q "Traceback (most recent call last)" /tmp/c01-12-w26.txt
+      - name: Fail closed on fake Unity PASS, missing previews and model/source changes
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib,json,pathlib
+          root=pathlib.Path("C01StandaloneKits/FloorCeiling/DetailPass26/QA")
+          x=json.loads((root/"W26_C01_12_REAL_MODULAR_SEAM_QA.json").read_text())
+          assert set(x["individual_models"])=={"F01","F02","C01"}
+          assert x["layout"]["floor_instances"]==24
+          assert x["layout"]["ceiling_instances"]==16
+          assert x["layout"]["floor_direct_face_adjacencies"]==36
+          assert x["layout"]["positive_volume_intersections"]==0
+          assert x["real_native_models_modified"]==0
+          assert x["independent_C01_02_final"]=="PENDING"
+          assert x["unity_6_urp_import_prefabs_playmode"]=="NOT_RUN"
+          assert x["doors_or_gates_touched"] is False
+          for id,rec in x["individual_models"].items():
+              assert rec["source"]["connected_shells"]==rec["fbx"]["connected_shells"]==1
+              assert rec["source"]["quad_uv_material_sha256"]==rec["fbx"]["quad_uv_material_sha256"]
+              assert len(rec["fbx"]["boundary_side_coverage"])==4
+          for key,v in x["previews"].items():
+              p=pathlib.Path(v["path"]);b=p.read_bytes()
+              assert b[:8]==b"\x89PNG\r\n\x1a\n" and len(b)>18000
+              assert hashlib.sha256(b).hexdigest()==v["sha256"]
+          print("C01-12 W26 REAL FBX+BLEND measured / previews / honest Unity HOLD PASS")
+          PY
+      - name: Preserve actual SHA-pinned geometry and proof PNG/JSON in Actions artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-12-W26-REAL-NONDOOR-FLOOR-CEILING-SEAM-QA
+          path: C01StandaloneKits/FloorCeiling/DetailPass26/QA/
+          retention-days: 14
+          if-no-files-found: error

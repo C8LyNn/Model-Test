@@ -1,0 +1,104 @@
+name: C01-12 PASS18 real native QA and offline Chrome all 3
+on:
+  push:
+    branches: [c01/floors-12-legacy-repair]
+    paths:
+      - .github/workflows/c01-floors12-pass18-readonly.yml
+      - Tools/C01Floors12/pass18_native_readonly_qa.py
+      - Tools/C01Floors12/pass18_prepare_viewer.py
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  real-v004-readonly:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+          persist-credentials: false
+      - name: Install Blender 4.x and hydrate true LFS binaries
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends blender python3-numpy xvfb libgl1 libgl1-mesa-dri libopengl0 git-lfs
+          blender --version | head -3
+          git lfs pull
+      - name: Read-only original BLEND and current BLEND FBX GLB topology UV and materials
+        shell: bash
+        run: |
+          set -euo pipefail
+          LIBGL_ALWAYS_SOFTWARE=1 xvfb-run -a blender --background --factory-startup --python Tools/C01Floors12/pass18_native_readonly_qa.py 2>&1 | tee /tmp/c01_12_pass18_native.log
+          grep -q 'C01-12 PASS18 NATIVE READONLY AUDIT COMPLETE' /tmp/c01_12_pass18_native.log
+          ! grep -q 'Traceback (most recent call last)' /tmp/c01_12_pass18_native.log
+      - name: Build offline 3-model GLB viewer from current v004 source data only
+        run: |
+          set -euo pipefail
+          python3 Tools/C01Floors12/pass18_prepare_viewer.py
+      - name: Test real GLB rendering for all three through headless Chrome
+        shell: bash
+        run: |
+          set -euo pipefail
+          BROWSER="$(command -v google-chrome || command -v chromium || command -v chromium-browser || true)"
+          if [ -z "$BROWSER" ]; then
+            echo '{"chrome_all_three":"NOT_RUN","reason":"No Chrome/Chromium"}' > C01StandaloneKits/FloorCeiling/DetailPass18/QA/PASS18_CHROME_REAL_GLB_QA.json
+            exit 2
+          fi
+          ROOT="C01StandaloneKits/FloorCeiling/DetailPass18"
+          for MODEL in F01 F02 C01; do
+            echo "Testing actual model $MODEL"
+            timeout 80s "$BROWSER" --headless=new --no-sandbox --disable-dev-shm-usage \
+              --enable-unsafe-swiftshader --use-gl=angle --use-angle=swiftshader \
+              --window-size=1280,940 --virtual-time-budget=24000 \
+              --screenshot="$(pwd)/$ROOT/QA/PASS18_${MODEL}_REAL_CHROME.png" \
+              --dump-dom "file://$(pwd)/$ROOT/Interactive/C01_12_PASS18_REAL_GLB_VIEWER.html?asset=$MODEL" \
+              > "/tmp/c01_pass18_$MODEL.html" 2> "/tmp/c01_pass18_$MODEL.err"
+          done
+          python3 - <<'PY'
+          import hashlib,json,pathlib,re
+          root=pathlib.Path('C01StandaloneKits/FloorCeiling')
+          qa=root/'DetailPass18/QA'
+          prior=json.loads((root/'DetailPass17/QA/DETAIL_PASS17_NATIVE_SHA256.json').read_text())
+          results={}
+          for id in ('F01','F02','C01'):
+              dom=pathlib.Path('/tmp/c01_pass18_'+id+'.html').read_text(errors='replace')
+              match=re.search(r'<div id="status"[^>]*>(.*?)</div>',dom,re.S)
+              status=re.sub(r'<[^>]+>','',match.group(1)) if match else ''
+              sha=prior['asset_ids'][id]['native']['glb']['sha256']
+              expected=id+' | real v004 GLB | 28 triangulated GLB faces | SHA256: '+sha
+              screenshot=qa/('PASS18_'+id+'_REAL_CHROME.png')
+              blob=screenshot.read_bytes() if screenshot.is_file() else b''
+              good=status==expected and blob[:8]==b'\x89PNG\r\n\x1a\n' and len(blob)>20000
+              results[id]={'result':'PASS' if good else 'FAIL','actual_glb_status':status[:300],
+                  'glb_sha256':sha,'screenshot_bytes':len(blob),
+                  'screenshot_sha256':hashlib.sha256(blob).hexdigest() if blob else None}
+          report={'scope':'F01_F02_C01_NOT_36_PROPS','chrome_all_three':'PASS' if all(x['result']=='PASS' for x in results.values()) else 'FAIL',
+               'models':results,'manual_visual_review':'NOT_RUN',
+               'Unity6_URP':'NOT_RUN','independent_C01_02_final':'PENDING'}
+          (qa/'PASS18_CHROME_REAL_GLB_QA.json').write_text(json.dumps(report,indent=2)+'\n')
+          print(json.dumps(report,indent=2))
+          assert report['chrome_all_three']=='PASS'
+          PY
+      - name: Fail-closed verify Blender Chrome and pending acceptance flags
+        run: |
+          python3 - <<'PY'
+          import json,pathlib
+          p=pathlib.Path('C01StandaloneKits/FloorCeiling/DetailPass18/QA')
+          native=json.loads((p/'PASS18_REAL_NATIVE_READONLY_QA.json').read_text())
+          chrome=json.loads((p/'PASS18_CHROME_REAL_GLB_QA.json').read_text())
+          assert set(native['models'])==set(chrome['models'])=={'F01','F02','C01'}
+          assert all(m['producer_static_native_qa']=='PASS' and m['v004_real_blender_glb_import_triangles']==28 for m in native['models'].values())
+          assert all(m['result']=='PASS' for m in chrome['models'].values())
+          assert native['unity_6_urp_actual_editor']==chrome['Unity6_URP']=='NOT_RUN'
+          assert native['C01_02_independent_final_approval']==chrome['independent_C01_02_final']=='PENDING'
+          print('PASS18 actual Blender and Chrome 3/3; final C01-02 Unity NOT RUN')
+          PY
+      - name: Upload native QA + three real Chrome screenshots without modifying sources
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-12-PASS18-REAL-NATIVE-3-MODEL-CHROME
+          path: C01StandaloneKits/FloorCeiling/DetailPass18/
+          retention-days: 14
+          if-no-files-found: error

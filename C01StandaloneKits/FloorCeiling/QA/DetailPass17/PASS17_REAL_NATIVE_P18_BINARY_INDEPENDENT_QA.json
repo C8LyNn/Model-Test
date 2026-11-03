@@ -1,0 +1,86 @@
+{
+  "schema": "C01-12_PASS17_P18_NATIVE_BINARY_INDEPENDENT_STATIC_QA",
+  "date": "2026-11-01",
+  "producer": "C01-18",
+  "producer_source_commit": "a12ad3b39145b7462db2f5efebf8ba17b36f4bdb",
+  "producer_live_PR_head_at_recheck": "91673c58417642c0f52b713beb60728c23384bd0",
+  "native_run": {
+    "url": "https://github.com/C8LyNn/Model-Test/actions/runs/41344872313",
+    "id": 41344872313,
+    "runner_blender_version": "4.0.2",
+    "producer_export": "PASS",
+    "producer_FBX_reimport": "PASS",
+    "native_run_source_commit": "5769d0326a1bc4bdcfa892de0f95d912ab30b55a"
+  },
+  "artifact": {
+    "id": 13099325067,
+    "name": "C01-18-native-blender-fbx",
+    "zip_sha256": "24ecf87d774e9ff3de87f22f34a59564a4668f926c7813b9f3ae2ea0b35683b0",
+    "zip_crc": "PASS",
+    "real_bytes_physically_downloaded": true,
+    "files_count": 6
+  },
+  "independent_static_reader": {
+    "method": "Python 3; FBX Binary 7400 field/array parsing; read every model's Geometry, PolygonVertexIndex, UV0, Normals and Material layer; local edge incidence, loop UV0 area and face normals",
+    "status": "PASS",
+    "models": 3,
+    "meshes": 169,
+    "triangles": 4044,
+    "invalid": 0,
+    "boundaries": 0,
+    "nonmanifold": 0,
+    "bad_winding": 0,
+    "degenerate_xyz_triangles": 0,
+    "collapsed_UV0_triangles": 0,
+    "bad_normals": 0,
+    "bad_face_indices": 0,
+    "duplicate_indexed_triangles": 0,
+    "physically_compared_six_SHA256_to_live_producer_LFS_OIDs": true
+  },
+  "models": {
+    "P18-01": {
+      "obj_blob_sha1": "7dc5c975e39ff6eb9be093b77e8720b7c26a89ab",
+      "meshes": 47,
+      "fbx_vertices": 584,
+      "fbx_polygons": 598,
+      "fbx_triangles": 980,
+      "blend_sha256": "d8a525acdb0eb7dcfd7b37fb31117b42a53bb655a6543282adac3dff857900a1",
+      "fbx_sha256": "f541d502ba9eaaf5c7a0a7279c44f71f36dd482e3aed3ba0734058dcf1045f6c",
+      "native_version": "BLENDER-v400",
+      "static_errors": 0
+    },
+    "P18-02": {
+      "obj_blob_sha1": "fe96d137d0ac6de5b4c53820cade6cce89ccf2b9",
+      "meshes": 59,
+      "fbx_vertices": 760,
+      "fbx_polygons": 822,
+      "fbx_triangles": 1284,
+      "blend_sha256": "49b3697ff01efe0497f12703421f05fedb4e9a29636626bf72d1e57493a369d5",
+      "fbx_sha256": "e962c47fc60d84fb0d06d69f7aec3eead745705be002b7eb0abf11c5da452558",
+      "native_version": "BLENDER-v400",
+      "static_errors": 0
+    },
+    "P18-03": {
+      "obj_blob_sha1": "2aaea1148ca37d8835c1298fadf1010b7ebf7875",
+      "meshes": 63,
+      "fbx_vertices": 1016,
+      "fbx_polygons": 1274,
+      "fbx_triangles": 1780,
+      "blend_sha256": "ea1b4f5cc5612f8d8ff5c3c585b9b48843659972c2371204b5d3b5c4df3a3b56",
+      "fbx_sha256": "f169ab74086ee3853c14b46ac6f6199cd255cfca15d8b7cbef32c3758cde7926",
+      "native_version": "BLENDER-v400",
+      "static_errors": 0
+    }
+  },
+  "scoping": {
+    "C01_12_own_floor_ceiling_new_Blender": "NOT_RUN",
+    "C01_12_own_old_Blender_FBX_binary_static": "PASS_3_OF_3",
+    "independent_blender_application_reimport_by_C01_12": "NOT_RUN",
+    "independent_full_P18_rig_pivot_animation_collision": "NOT_RUN",
+    "Unity6_URP_real_import": "NOT_RUN",
+    "C01_02_final_36_approval": "PENDING",
+    "merge": "NOT_EXECUTED",
+    "shaded_wireframe_source_SVGs": "4_REPUBLISHED_REAL_SOURCE",
+    "interactive_WebGL_browser_execution": "NOT_RUN"
+  }
+}

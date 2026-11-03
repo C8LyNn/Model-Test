@@ -1,0 +1,164 @@
+name: C01-12 DETAIL PASS17 real Blender4 material-only native and preview
+on:
+  push:
+    branches: [c01/floors-12-legacy-repair]
+    paths:
+      - .github/workflows/c01-floors12-detail-pass17.yml
+      - Tools/C01Floors12/detail_pass17_material_native.py
+      - Tools/C01Floors12/detail_pass17_glb_viewer.py
+      - Tools/C01Floors12/detail_pass17_bundle_offline.py
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  actual-v003-to-v004:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+          persist-credentials: true
+      - name: Install actual Blender and software renderer
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends blender python3-numpy xvfb libgl1 libgl1-mesa-dri libopengl0 git-lfs
+          blender --version | head -4
+          git lfs pull
+      - name: Execute native Blender source / non-destructive PBR / real FBX+GLB
+        shell: bash
+        run: |
+          set -euo pipefail
+          LIBGL_ALWAYS_SOFTWARE=1 xvfb-run -a blender --background --factory-startup --python Tools/C01Floors12/detail_pass17_material_native.py 2>&1 | tee /tmp/c01_12_pass17.log
+          grep -q 'C01-12 DETAIL PASS17 NATIVE EXPORTS COMPLETED' /tmp/c01_12_pass17.log
+          ! grep -q 'Traceback (most recent call last)' /tmp/c01_12_pass17.log
+      - name: Fail-closed genuine bytes and evidence gate
+        run: |
+          python3 - <<'PY'
+          import pathlib,json,hashlib
+          repo=pathlib.Path('.')
+          out=repo/'C01StandaloneKits/FloorCeiling/DetailPass17'
+          info=json.loads((out/'QA/DETAIL_PASS17_NATIVE_SHA256.json').read_text())
+          assert set(info['asset_ids'])=={'F01','F02','C01'}
+          for asset,d in info['asset_ids'].items():
+            assert d['before_mesh_signature_sha256']==d['after_mesh_signature_sha256']
+            assert d['native_blender_4_save']==d['fbx_binary_roundtrip']=='PASS'
+            for typ,head in [('blend',b'BLENDER'),('fbx',b'Kaydara FBX Binary  '+bytes([0,26,0])),('glb',b'glTF')]:
+              f=repo/d['native'][typ]['path'];raw=f.read_bytes()
+              assert raw.startswith(head) and not raw.startswith(b'version https://git-lfs'),f
+              assert hashlib.sha256(raw).hexdigest()==d['native'][typ]['sha256'],f
+            for m in d['texture_files'].values():
+              f=repo/m['path'];assert f.read_bytes().startswith(b'\x89PNG\r\n\x1a\n')
+              assert hashlib.sha256(f.read_bytes()).hexdigest()==m['sha256']
+            for p in d['previews']['before']+d['previews']['after']:
+              f=repo/p['path'];assert f.read_bytes().startswith(b'\x89PNG\r\n\x1a\n')
+              assert hashlib.sha256(f.read_bytes()).hexdigest()==p['sha256']
+          assert info['unity6_urp']=='NOT_RUN'
+          assert info['independent_C01_02_final_QA']=='PENDING'
+          print('C01-12 PASS17 actual artifacts verified; Unity NOT RUN')
+          PY
+      - name: Generate real GLB WebGL viewer and Blender before-after images
+        run: |
+          python3 Tools/C01Floors12/detail_pass17_glb_viewer.py
+          python3 - <<'PY'
+          import base64,hashlib,json,pathlib
+          repo=pathlib.Path('.')
+          root=repo/'C01StandaloneKits/FloorCeiling/DetailPass17'
+          page=(root/'C01_12_DETAIL_PASS17_REAL_GLB_INTERACTIVE.html').read_text()
+          data=json.loads((root/'QA/DETAIL_PASS17_NATIVE_SHA256.json').read_text())
+          assert '__EMBEDDED_SOURCE_DATA__' not in page
+          for name in ('F01','F02','C01'):
+            row=data['asset_ids'][name]
+            glb=(repo/row['native']['glb']['path']).read_bytes()
+            assert base64.b64encode(glb).decode() in page, name
+            assert row['native']['glb']['sha256'] in page
+            for key in ('before','after'):
+              for still in row['previews'][key]:
+                png=(repo/still['path']).read_bytes()
+                assert base64.b64encode(png).decode() in page,(name,key)
+          print('PASS17 viewer embeds genuine NEW GLB and Blender previews 3/3; WebGL browser NOT RUN')
+          PY
+      - name: Embed pinned Three.js into ONE fully OFFLINE real-GLB viewer
+        shell: bash
+        run: |
+          set -euo pipefail
+          WORKDIR=/tmp/c01_12_offline_3d
+          mkdir -p "$WORKDIR"
+          python3 Tools/C01Floors12/detail_pass17_bundle_offline.py extract "$WORKDIR"
+          npm install --prefix "$WORKDIR" --no-audit --no-fund --no-save three@0.165.0 esbuild@0.24.0
+          "$WORKDIR/node_modules/.bin/esbuild" "$WORKDIR/viewer_client.mjs" --bundle --format=iife --minify --outfile="$WORKDIR/viewer_bundle.js"
+          python3 Tools/C01Floors12/detail_pass17_bundle_offline.py embed "$WORKDIR"
+          python3 - <<'PY'
+          from pathlib import Path
+          s=Path('C01StandaloneKits/FloorCeiling/DetailPass17/C01_12_DETAIL_PASS17_REAL_GLB_INTERACTIVE.html').read_text()
+          assert 'C01_PASS17_BUNDLED_OFFLINE_THREE' in s
+          assert '<script type="module">' not in s and 'three@0.165.0/' not in s
+          assert 'glb_base64' in s and 'MIT LICENSE' in s
+          print('SELF-CONTAINED OFFLINE 3D viewer static PASS')
+          PY
+      - name: Smoke-test REAL GLB rendering in installed Chrome (fail closed)
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import pathlib
+          p=pathlib.Path('C01StandaloneKits/FloorCeiling/DetailPass17')
+          assert (p/'C01_12_DETAIL_PASS17_REAL_GLB_INTERACTIVE.html').stat().st_size>100000
+          PY
+          BROWSER="$(command -v google-chrome || command -v chromium || command -v chromium-browser || true)"
+          if [ -z "$BROWSER" ]; then
+            echo '{"chrome_browser":"NOT_RUN","reason":"No Chrome/Chromium binary on hosted runner"}' > C01StandaloneKits/FloorCeiling/DetailPass17/QA/DETAIL_PASS17_BROWSER_SMOKE.json
+            echo "BROWSER NOT RUN — no browser installed"
+          else
+            HTML="file://$(pwd)/C01StandaloneKits/FloorCeiling/DetailPass17/C01_12_DETAIL_PASS17_REAL_GLB_INTERACTIVE.html"
+            timeout 90s "$BROWSER" --headless=new --no-sandbox --disable-dev-shm-usage \
+              --enable-unsafe-swiftshader --use-gl=angle --use-angle=swiftshader \
+              --window-size=1280,940 --virtual-time-budget=20000 \
+              --screenshot="$(pwd)/C01StandaloneKits/FloorCeiling/DetailPass17/QA/DETAIL_PASS17_REAL_CHROME_F01.png" \
+              --dump-dom "$HTML" > /tmp/c01_12_pass17_chrome_dom.html 2> /tmp/c01_12_pass17_chrome_err.log
+            python3 - <<'PY'
+          import json,pathlib,re
+          root=pathlib.Path('C01StandaloneKits/FloorCeiling/DetailPass17/QA')
+          dom=pathlib.Path('/tmp/c01_12_pass17_chrome_dom.html').read_text(errors='replace')
+          match=re.search(r'<div id="status"[^>]*>(.*?)</div>',dom,re.S)
+          status=re.sub('<[^>]*>','',match.group(1)) if match else ''
+          screenshot=root/'DETAIL_PASS17_REAL_CHROME_F01.png'
+          result={'chrome_browser':'PASS' if 'F01 | real v004 GLB' in status else 'FAIL',
+             'actual_glb_loader_status':status[:512],
+             'real_chrome_screenshot_saved':screenshot.is_file() and screenshot.read_bytes().startswith(b'\x89PNG\r\n\x1a\n'),
+             'models_browser_tested':['F01'],
+             'other_model_browser_runtime':'NOT_RUN',
+             'unity6_urp':'NOT_RUN'}
+          (root/'DETAIL_PASS17_BROWSER_SMOKE.json').write_text(json.dumps(result,indent=2)+'\n')
+          assert result['chrome_browser']=='PASS' and result['real_chrome_screenshot_saved'],result
+          print('REAL CHROME F01 GLB LOADER AND SCREENSHOT PASS; F02/C01 BROWSER NOT RUN')
+          PY
+          fi
+      - name: Upload genuine v004 native, 9 maps and 12 Blender source-mesh previews
+        uses: actions/upload-artifact@v4
+        with:
+          name: C01-12-DETAIL-PASS17-REAL-F01-F02-C01
+          path: C01StandaloneKits/FloorCeiling/DetailPass17/
+          if-no-files-found: error
+          retention-days: 14
+      - name: Commit evidence to existing isolated Draft PR branch only
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git lfs install --local
+          git add C01StandaloneKits/FloorCeiling/DetailPass17
+          if ! git diff --cached --quiet; then
+            git commit -m "C01-12 PASS17: real Blender4 v004 material-only FBX GLB PNG and SHA evidence"
+            # Blender/checkout may touch unrelated tracked binaries. Do not include them in the producer commit.
+            git status --short
+            git stash push --include-untracked -m "C01-12 PASS17 temporary non-delivery worktree changes"
+            # Existing repository LFS mismatch: the tutorial URP.png is restored as non-pointer by checkout.
+            # Ignore ONLY this unrelated file for clean-rebase inspection; do not stage/ship it.
+            git update-index --assume-unchanged Assets/TutorialInfo/Icons/URP.png
+            git diff --quiet || { git status --short; echo "Unexpected worktree edits - fail closed"; exit 1; }
+            git fetch origin c01/floors-12-legacy-repair
+            git rebase origin/c01/floors-12-legacy-repair
+            git push origin HEAD:c01/floors-12-legacy-repair
+          fi

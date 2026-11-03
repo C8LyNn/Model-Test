@@ -1,0 +1,98 @@
+{
+  "schema": "C01-18-W26-REGISTRY-1",
+  "updated_at": "2026-11-03",
+  "owner": "C01-18",
+  "source_scope": "Existing seven cargo/movable P18-01..07; global other owners C01-00/C01-10",
+  "frozen": "CLAUDE_DOORS_EXTERNAL_HOLD: no doors/gates, no PR19/PR32, no door QA/export",
+  "draft_pr": 43,
+  "native_run": "https://github.com/C8LyNn/Model-Test/actions/runs/41707987897",
+  "qa_report": "Assets/C01InteriorProps/C01-18/QA/Pass26/P18-03_W26_REAL_BLENDER_FBX_QA.json",
+  "note": "This W26 registry is a producer status overlay and must NOT be mistaken for seven new W26 native audits. Preserve prior independent evidence and original exact SHA for all unchanged models. C01-02 independent retest of new P18-03 SHA pending. Unity Editor never claimed.",
+  "rows": [
+    {
+      "asset_id": "P18-01",
+      "owner": "C01-18",
+      "producer_pr": 18,
+      "current_binary_fbx_sha256": "f541d502ba9eaaf5c7a0a7279c44f71f36dd482e3aed3ba0734058dcf1045f6c",
+      "evidence": "C01-02 prior original binary static PASS; lid hinge dynamic awaits confirmation",
+      "producer_status": "ORIGINAL_UNCHANGED",
+      "independent_c01_02": "PRIOR_SCOPE_ONLY_NO_W26_RETEST",
+      "unity_6_editor": "NOT_RUN",
+      "release": "HOLD",
+      "remaining": "C01-02 motion/Unity hold"
+    },
+    {
+      "asset_id": "P18-02",
+      "owner": "C01-18",
+      "producer_pr": 18,
+      "current_binary_fbx_sha256": "e962c47fc60d84fb0d06d69f7aec3eead745705be002b7eb0abf11c5da452558",
+      "evidence": "Original OBJ 59 meshes includes Top_Label_L/R_MountingBackplate from y=1.96 to 2.072m supporting label bottom 2.025m; no new defect established in W26",
+      "producer_status": "ORIGINAL_UNCHANGED",
+      "independent_c01_02": "PRIOR_SCOPE_ONLY_NO_W26_RETEST",
+      "unity_6_editor": "NOT_RUN",
+      "release": "HOLD",
+      "remaining": "C01-02 final assembly and Unity hold"
+    },
+    {
+      "asset_id": "P18-03",
+      "owner": "C01-18",
+      "producer_pr": 43,
+      "current_binary_fbx_sha256": "f932c5fb36624ef91c039b1de04367fff4e99da7c400bbcb4cadd4138f83618f",
+      "evidence": "W26 genuine source OBJ 8 hubs shifted 4mm, gap 2mm all 8 pairs on native Blender and freshly reimported FBX",
+      "producer_status": "REPAIRED__PRODUCER_NATIVE_QA_PASS",
+      "independent_c01_02": "PENDING_NEW_SIGNED_SHA",
+      "unity_6_editor": "NOT_RUN",
+      "release": "HOLD",
+      "remaining": "INDEPENDENT_C01_02_AND_UNITY_HOLD"
+    },
+    {
+      "asset_id": "P18-04",
+      "owner": "C01-18",
+      "producer_pr": 26,
+      "current_binary_fbx_sha256": "233253cea4a872052ef87c33f79c08794885dacac4caadf276e95701d0a70803",
+      "evidence": "W24 prior original native static indexed PASS; no new W26 audit executed",
+      "producer_status": "BASELINE_AUDITED_PREVIOUS_WAVE",
+      "independent_c01_02": "PRIOR_SCOPE_ONLY_NO_W26_RETEST",
+      "unity_6_editor": "NOT_RUN",
+      "release": "HOLD",
+      "remaining": "Unity hold"
+    },
+    {
+      "asset_id": "P18-05",
+      "owner": "C01-18",
+      "producer_pr": 26,
+      "current_binary_fbx_sha256": "58e33516ead13e35e8a48228045c67bd53d6caf8de01883a11625fa2961957e5",
+      "evidence": "W25 original BLEND+FBX physically 23/23 post-release hinge states 0 contacts using latch retract 8mm and 2mm lid+handles lift; producer runtime/builder source changed; original native unchanged",
+      "producer_status": "W25_MECHANICAL_SOURCE_FIXED_AND_INDEPENDENT_NATIVE_MOTION_PASS",
+      "independent_c01_02": "PRIOR_SCOPE_ONLY_NO_W26_RETEST",
+      "unity_6_editor": "NOT_RUN",
+      "release": "HOLD",
+      "remaining": "Unity Editor PlayMode hold"
+    },
+    {
+      "asset_id": "P18-06",
+      "owner": "C01-18",
+      "producer_pr": 26,
+      "current_binary_fbx_sha256": "e83be5fac79ba0d4baf57f9a4c6050a978383da4f3bd95d046b38462fbabb220",
+      "evidence": "W24 prior original native static indexed PASS; no new W26 audit executed",
+      "producer_status": "BASELINE_AUDITED_PREVIOUS_WAVE",
+      "independent_c01_02": "PRIOR_SCOPE_ONLY_NO_W26_RETEST",
+      "unity_6_editor": "NOT_RUN",
+      "release": "HOLD",
+      "remaining": "Unity hold"
+    },
+    {
+      "asset_id": "P18-07",
+      "owner": "C01-18",
+      "producer_pr": 26,
+      "current_binary_fbx_sha256": "858a24db4338804ee3a3a70c310cd4936e3c45f559b9c4ab81c6037add564554",
+      "evidence": "W25 latch 20mm transform-axis source repair and 0/23 unlocked lid contacts; 0.341m native depth vs nominal 0.340m requires C01-01 specific decision",
+      "producer_status": "W25_SOURCE_AXIS_PASS_NATIVE_HOLD",
+      "independent_c01_02": "PRIOR_SCOPE_ONLY_NO_W26_RETEST",
+      "unity_6_editor": "NOT_RUN",
+      "release": "HOLD",
+      "remaining": "C01-01 dimension acceptance and Unity hold"
+    }
+  ],
+  "outcome": "P18-03 PRODUCER_NATIVE_PASS 1; no new final approvals; no merge"
+}

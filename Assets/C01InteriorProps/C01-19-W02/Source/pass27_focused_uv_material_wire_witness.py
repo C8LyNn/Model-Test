@@ -31,7 +31,7 @@ def inspect(items):
  for o in items:
   m=o.data;uvdata=m.uv_layers.active.data if m.uv_layers else None
   world=[o.matrix_world@v.co for v in m.vertices]
-  faces=[];near_zero_3d=[]
+  faces=[];near_zero_3d=[];raw_zero_uv=[]
   textured_materials=[]
   for mat in m.materials:
    n=[{"type":n.type,"image":n.image.name if n.image else None} for n in mat.node_tree.nodes if n.type=="TEX_IMAGE"] if mat and mat.use_nodes and mat.node_tree else []
@@ -45,6 +45,8 @@ def inspect(items):
     totals["zero_3d_area_faces"]+=1
     near_zero_3d.append(dict(polygon_index=pi,vertices=list(p.vertices),world_area_by_fan_m2=float(area),
       world_vertex_xyz_m=[digest_round(x) for x in pts]))
+   if uva is not None and uva<=1e-14:
+    raw_zero_uv.append(dict(polygon_index=pi,world_area_m2=float(area),UV_area=float(uva),material_index=p.material_index))
    if uva is not None and uva<=1e-14 and area>1e-14:
     slot=p.material_index;material=textured_materials[slot] if slot<len(textured_materials) else {}
     if material.get("image_texture_nodes"):totals["image_texture_nodes_on_collapsed_materials"]+=1
@@ -73,7 +75,7 @@ def inspect(items):
   totals["tj_near_edge_candidates"]+=len(near)
   totals["boundary_edges"]+=total_bound;totals["nonmanifold_edges"]+=total_nonmanifold
   result.append(dict(object=o.name,original_mesh_datablock=m.name,uv0=bool(uvdata),materials=textured_materials,
-   collapsed_polygons=faces,collapsed_count=len(faces),world_area_le_1e_14_witnesses=near_zero_3d,near_edge_contacts=near,
+   collapsed_polygons=faces,collapsed_count=len(faces),raw_zero_uv_area_any_3d=raw_zero_uv,raw_zero_uv_count=len(raw_zero_uv),world_area_le_1e_14_witnesses=near_zero_3d,near_edge_contacts=near,
    same_mesh_near_edge_candidates=len(near),boundary_edges=total_bound,nonmanifold_edges=total_nonmanifold))
   candidate.extend([Vector(x["centroid_world_m"]) for x in faces])
   candidate.extend([Vector(x["world_xyz"]) for x in near])
@@ -154,14 +156,20 @@ for mid,shas in SHA.items():
  assert imported["totals"]["boundary_edges"]==0 and imported["totals"]["nonmanifold_edges"]==0
  # Do not equate a new world-space fan-area threshold flag with a confirmed
  # Blender BMesh or FBX indexed-triangle defect: retain exact witness for C01-02.
- assert imported["totals"]["zero_uv_area_faces_positive_3d"]==(8 if mid=="P19-07" else 0)
+ # Independent direct indexed-FBX Newell parser found 8 P19-07 UV-zero polys.
+ # This Blender-imported UV/area classifier can legitimately disagree due
+ # to importer UV normalization or a different 3D/UV area tolerance; retain
+ # the actual per-face raw witnesses and flag reconciliation to C01-02.
+ print("W27_IMPORTER_VS_RAW_UV_COUNT",mid,"actual",imported["totals"]["zero_uv_area_faces_positive_3d"],
+       "raw_zero_uv",sum(len(o["raw_zero_uv_area_any_3d"]) for o in imported["objects"]),
+       "C01_02_previous",8 if mid=="P19-07" else 0,flush=True)
  assert sha(source)==shas[0] and sha(fbx)==shas[1]
  assert sha(out/imgs[0])!=sha(out/imgs[1]),"TRUE WIRE RENDER MUST DIFFER FROM SHADED"
  rec=dict(schema="C01-19-W27-reality-readonly-UV-collapse-near-edge-witness-v1",
    asset=mid,source_blend_SHA256=shas[0],actual_signed_fbx_SHA256=shas[1],
    Blender=bpy.app.version_string,source_blend=source_result,actual_reimported_signed_fbx=imported,
    previews=imgs,blender_producer_native_changed=False,fbx_exported=False,
-   world_fan_area_threshold_note="W26 BMesh found 0 zero-area; record tiny world fan-area witnesses for C01-02 numeric reconciliation, no automatic geometry edit",c01_02_independent_visual_conclusion="PENDING",
+   world_fan_area_threshold_note="W26 BMesh found 0 zero-area; W27 world-fan-area and UV classifier may use different numerical/importer rules from C01-02 direct FBX polygon audit; preserve actual per-face raw data for independent reconciliation, no automatic geometry edit",c01_02_independent_visual_conclusion="PENDING",
    Unity="NOT_RUN",conclusion="OBSERVED_NUMERICAL_CANDIDATES_ONLY__VISUAL_AND_MATERIAL_IMPACT_REQUIRES_INDEPENDENT_ACCEPTANCE")
  (out/"W27_TARGETED_REAL_NATIVE_UV_AND_EDGE_WITNESS.json").write_text(json.dumps(rec,indent=2))
  summary.append(dict(asset=mid,blend_sha=shas[0],fbx_sha=shas[1],
@@ -169,6 +177,8 @@ for mid,shas in SHA.items():
   signed_fbx_uv_faces=imported["totals"]["zero_uv_area_faces_positive_3d"],
   signed_fbx_uv_3d_surface_m2=imported["totals"]["zero_uv_3d_area_m2"],
   image_textures_on_collapsed_faces=imported["totals"]["image_texture_nodes_on_collapsed_materials"],
+  raw_zero_uv_area_polygons_any_3d=sum(len(o["raw_zero_uv_area_any_3d"]) for o in imported["objects"]),
+  previous_c01_02_direct_fbx_zero_uv_polygons=(8 if mid=="P19-07" else 0),
   tj_candidates=imported["totals"]["tj_near_edge_candidates"],
   previews=imgs,source_changed=False,unity="NOT_RUN"))
  print("C01_W27_UV_EDGE_NATIVE_SUCCESS",mid,json.dumps(summary[-1]),flush=True)

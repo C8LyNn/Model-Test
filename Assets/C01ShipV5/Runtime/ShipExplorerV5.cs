@@ -30,7 +30,7 @@ namespace C01.Ship.V5
         {
             public Renderer renderer;
             public ShipInstanceV5 marker;
-            public bool zoneLabel, ceiling, shell, floor;
+            public bool zoneLabel, buttonLabel, ceiling, shell, floor;
         }
         VisibilityRecord[] visibility = new VisibilityRecord[0];
         GameObject cachedMaster;
@@ -63,6 +63,7 @@ namespace C01.Ship.V5
                 var category = marker != null ? marker.category ?? "" : "";
                 visibility[i] = new VisibilityRecord { renderer = r, marker = marker,
                     zoneLabel = r.GetComponentInParent<ShipZoneV5>() != null,
+                    buttonLabel = r.name == "Button_Label" && r.GetComponentInParent<ShipButtonV5>() != null,
                     ceiling = category.IndexOf("roof", StringComparison.OrdinalIgnoreCase) >= 0 || category.IndexOf("ceiling", StringComparison.OrdinalIgnoreCase) >= 0,
                     shell = category.IndexOf("hull", StringComparison.OrdinalIgnoreCase) >= 0 || category.IndexOf("shell", StringComparison.OrdinalIgnoreCase) >= 0,
                     floor = category.IndexOf("floor", StringComparison.OrdinalIgnoreCase) >= 0 };
@@ -190,13 +191,16 @@ namespace C01.Ship.V5
             if (master == null) return;
             if (master != cachedMaster || visibility.Length == 0) CacheScene();
             float floor = Floor(selectedDeck);
+            // Fitted button text owns the visible label whenever signage is enabled.
+            var signage = master.GetComponent("ButtonSignage") as Behaviour;
+            bool hideLegacyButtonLabels = signage != null && signage.isActiveAndEnabled;
             foreach (var record in visibility)
             {
                 var renderer = record.renderer;
                 if (renderer == null) continue;
                 // Floor labels are enabled explicitly for editor plan captures only.
                 // Runtime labels use OnGUI and follow the L toggle.
-                if (record.zoneLabel)
+                if (record.zoneLabel || (hideLegacyButtonLabels && record.buttonLabel))
                 {
                     renderer.enabled = false;
                     continue;

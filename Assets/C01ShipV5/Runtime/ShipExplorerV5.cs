@@ -68,7 +68,7 @@ namespace C01.Ship.V5
                 var marker = r.GetComponentInParent<ShipInstanceV5>();
                 var category = marker != null ? marker.category ?? "" : "";
                 visibility[i] = new VisibilityRecord { renderer = r, marker = marker,
-                    zoneLabel = r.GetComponentInParent<ShipZoneV5>() != null,
+                    zoneLabel = marker == null && r.GetComponentInParent<ShipZoneV5>() != null,
                     buttonLabel = r.name == "Button_Label" && r.GetComponentInParent<ShipButtonV5>() != null,
                     ceiling = category.IndexOf("roof", StringComparison.OrdinalIgnoreCase) >= 0 || category.IndexOf("ceiling", StringComparison.OrdinalIgnoreCase) >= 0,
                     shell = category.IndexOf("hull", StringComparison.OrdinalIgnoreCase) >= 0 || category.IndexOf("shell", StringComparison.OrdinalIgnoreCase) >= 0,
@@ -245,8 +245,11 @@ namespace C01.Ship.V5
         public bool ShouldShowZoneLabel(ShipZoneV5 zone)
         {
             if (zone == null || view == null) return false;
-            if (!walking) return selectedDeck < 0 || zone.deck == selectedDeck;
-            if (player != null && Mathf.Abs(player.transform.position.y - zone.floor) > 3) return false;
+            if (!walking) return selectedDeck < 0 || zone.deck == selectedDeck ||
+                (zone.spansDecks && selectedDeck == zone.deck + 1);
+            if (player != null && (zone.spansDecks
+                ? player.transform.position.y < zone.floor - .5f || player.transform.position.y > zone.floor + zone.height
+                : Mathf.Abs(player.transform.position.y - zone.floor) > 3)) return false;
             var target = new Vector3(zone.transform.position.x,
                 zone.floor + Mathf.Min(zone.height * .5f, 2), zone.transform.position.z);
             var offset = target - view.transform.position;

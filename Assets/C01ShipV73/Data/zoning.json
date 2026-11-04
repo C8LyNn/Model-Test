@@ -1,0 +1,107 @@
+{
+  "version": "C01.SHIP.7.3",
+  "swaps": [
+    {
+      "original": "L1_CARGO",
+      "replacement": "L1_TECH",
+      "label": "SEKTOR TECHNICZNY"
+    },
+    {
+      "original": "L1_TECH",
+      "replacement": "L1_CARGO",
+      "label": "MAGAZYN LADUNKOWY"
+    }
+  ],
+  "relabels": [
+    {
+      "id": "L1_S_SUPPORT_03",
+      "label": "WARSZTAT"
+    },
+    {
+      "id": "L1_S_SUPPORT_04",
+      "label": "CZESCI ZAMIENNE"
+    },
+    {
+      "id": "L1_S_SUPPORT_11",
+      "label": "EWIDENCJA LADUNKU"
+    },
+    {
+      "id": "L1_S_SUPPORT_12",
+      "label": "NARZEDZIA LADUNKOWE"
+    }
+  ],
+  "moves": [
+    {
+      "id": "L1_CARGO_CRATE_0",
+      "model": "P_Crate",
+      "zone": "L1_CARGO",
+      "fromX": 2,
+      "toX": 86,
+      "y": 0.0,
+      "z": 17
+    },
+    {
+      "id": "L1_CARGO_CRATE_1",
+      "model": "P_Crate",
+      "zone": "L1_CARGO",
+      "fromX": 5,
+      "toX": 89,
+      "y": 0.0,
+      "z": 17
+    },
+    {
+      "id": "L1_CARGO_CRATE_2",
+      "model": "P_Crate",
+      "zone": "L1_CARGO",
+      "fromX": 14,
+      "toX": 98,
+      "y": 0.0,
+      "z": 17
+    },
+    {
+      "id": "L1_CARGO_CRATE_3",
+      "model": "P_Crate",
+      "zone": "L1_CARGO",
+      "fromX": 17,
+      "toX": 101,
+      "y": 0.0,
+      "z": 20
+    },
+    {
+      "id": "L1_TECH_TECH_SERVER_0",
+      "model": "P_Server",
+      "zone": "L1_TECH",
+      "fromX": 86,
+      "toX": 2,
+      "y": 0.0,
+      "z": 18
+    },
+    {
+      "id": "L1_TECH_TECH_SERVER_1",
+      "model": "P_Server",
+      "zone": "L1_TECH",
+      "fromX": 90,
+      "toX": 6,
+      "y": 0.0,
+      "z": 18
+    },
+    {
+      "id": "L1_TECH_TECH_SERVER_2",
+      "model": "P_Server",
+      "zone": "L1_TECH",
+      "fromX": 97,
+      "toX": 13,
+      "y": 0.0,
+      "z": 18
+    },
+    {
+      "id": "L1_TECH_TECH_SERVER_3",
+      "model": "P_Server",
+      "zone": "L1_TECH",
+      "fromX": 101,
+      "toX": 17,
+      "y": 0.0,
+      "z": 18
+    }
+  ]
+}

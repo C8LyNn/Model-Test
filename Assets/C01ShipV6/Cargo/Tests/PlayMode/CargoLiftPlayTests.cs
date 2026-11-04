@@ -3,10 +3,12 @@ using C01.Ship.V5;
 using C01.Ship.V6.Cargo;
 using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
 
 public class CargoLiftPlayTests
 {
+    static int sceneNumber;
     GameObject root, playerObject, cargoObject, offCarObject;
     CargoLiftController lift;
     ShipGateV5[] gates;
@@ -16,6 +18,16 @@ public class CargoLiftPlayTests
     [UnitySetUp]
     public IEnumerator SetUp()
     {
+        // Previous integration tests load whole ships. Their colliders must not
+        // disturb the free-standing cargo and platform used by this fixture.
+        var isolated = SceneManager.CreateScene("CargoLiftTest_" + ++sceneNumber);
+        SceneManager.SetActiveScene(isolated);
+        for (int i = SceneManager.sceneCount - 1; i >= 0; i--)
+        {
+            var previous = SceneManager.GetSceneAt(i);
+            if (previous != isolated && previous.isLoaded)
+                yield return SceneManager.UnloadSceneAsync(previous);
+        }
         root = new GameObject("test lift");
         var platformRoot = new GameObject("platform root");
         platformRoot.transform.SetParent(root.transform);

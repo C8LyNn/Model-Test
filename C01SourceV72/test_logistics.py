@@ -16,7 +16,7 @@ class LogisticsLayout(unittest.TestCase):
     def test_engine_room_is_below_engine_control(self):
         a = self.zones['L0_ENGINE_ROOM']['bounds']
         b = self.zones['L1_ENGINE_CONTROL']['bounds']
-        self.assertEqual(a[:2], b[:2])
+        self.assertEqual(a, b)
 
     def test_freight_sector_touches_freight_dock(self):
         cargo = self.zones['L0_CARGO']['bounds']
@@ -30,13 +30,18 @@ class LogisticsLayout(unittest.TestCase):
         galley = self.zones['L2_N_SUPPORT_03']['waypoint'][0]
         self.assertLess(abs(food-galley), abs(cargo-galley))
 
+    def test_food_and_hydroponics_share_the_same_longitudinal_section(self):
+        self.assertEqual(self.zones['L0_FOOD_RESERVE']['bounds'][:2],
+                         self.zones['L0_HYDROPONICS']['bounds'][:2])
+
     def test_each_sector_contains_its_assigned_equipment(self):
-        by_zone = {name: [] for name in ('L0_ENGINE_ROOM', 'L0_PURIFICATION', 'L0_CARGO', 'L0_FOOD_RESERVE')}
+        by_zone = {name: [] for name in ('L0_ENGINE_ROOM', 'L0_PURIFICATION', 'L0_HYDROPONICS', 'L0_CARGO', 'L0_FOOD_RESERVE')}
         for p in self.data['placements']:
             if p['zone'] in by_zone and p['category'] == 'Props':
                 by_zone[p['zone']].append(p)
         for name, prefix, count in (('L0_ENGINE_ROOM', 'P_Reactor', 2),
                                     ('L0_PURIFICATION', 'P_Purifier', 4),
+                                    ('L0_HYDROPONICS', 'P_Plant', 40),
                                     ('L0_CARGO', 'P_Crate', 4),
                                     ('L0_FOOD_RESERVE', 'P_Crate', 4)):
             items = by_zone[name]
@@ -64,7 +69,7 @@ class LogisticsLayout(unittest.TestCase):
         after = {p['id']: p for p in self.data['placements']}
         self.assertEqual(set(before), set(after))
         for ident, p in before.items():
-            if p['id'].startswith(('L0_ENGINE_ROOM_CORE_REACTOR_', 'L0_PURIFICATION_PURIFIER_',
+            if p['id'].startswith(('L0_ENGINE_ROOM_CORE_REACTOR_', 'L0_HYDROPONICS_PLANT_',
                                    'L0_CARGO_CRATE_', 'L0_FOOD_RESERVE_CRATE_')):
                 continue
             q = after[ident]

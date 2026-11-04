@@ -13,7 +13,10 @@ for obj in bpy.data.objects:
         m = moves[obj.name]
         if obj.get('model_id') != m['model'] or abs(obj.location.x - m['fromX']) > .0001:
             raise RuntimeError('Unexpected object ' + obj.name)
+        if abs(obj.location.y + m['fromZ']) > .0001:
+            raise RuntimeError('Unexpected object depth ' + obj.name)
         obj.location.x = m['toX']
+        obj.location.y = -m['toZ']
         seen.add(obj.name)
     elif obj.get('zone') in swaps:
         obj['zone'] = swaps[obj['zone']]

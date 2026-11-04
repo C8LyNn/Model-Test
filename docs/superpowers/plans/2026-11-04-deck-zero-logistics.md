@@ -1,6 +1,6 @@
 # Deck zero logistics implementation plan
 
-**Goal:** Align engineering with its control room and put cargo at the freight dock while keeping food nearer the galley and hydroponics.
+**Goal:** Align engineering directly below its control room in both axes and put cargo at the freight dock while keeping food nearer the galley and hydroponics across the corridor.
 
 **Architecture:** Reassign four existing same-sized sectors and translate their existing reusable equipment. Keep the modular architecture and gate controller IDs stable; update zone IDs, labels and connectivity metadata to reflect the new functions.
 

@@ -2,7 +2,7 @@
 
 Otwórz scenę `Assets/C01ShipV72/Scenes/C01_Ship_Multideck_v72.unity`. Główny prefab znajduje się w `Assets/C01ShipV72/Prefabs/C01_SHIP_MASTER_V72.prefab`. Wersja v7.1 pozostaje oddzielna.
 
-Maszynownia znajduje się pod sterownią maszynowni na poziomie 1. Ładownia graniczy ze śluzą towarową; zapasy żywności znajdują się bliżej kuchni oraz sąsiadują z hydroponiką. Oczyszczalnię przeniesiono do zwolnionego sektora przy dziobie. Ściany, bramy i wymiary sektorów pozostały na siatce, a wyposażenie jest nadal edytowalne jako osobne moduły.
+Maszynownia znajduje się bezpośrednio pod sterownią maszynowni na poziomie 1. Ładownia graniczy ze śluzą towarową; zapasy żywności znajdują się bliżej kuchni i w tej samej części statku co hydroponika, po drugiej stronie korytarza. Oczyszczalnia pozostaje w swoim sektorze. Ściany, bramy i wymiary sektorów pozostały na siatce, a wyposażenie jest nadal edytowalne jako osobne moduły.
 
 `Data/logistics.json` opisuje przeniesienia i zmianę funkcji stref. Ze względu na istniejące odwołania identyfikatory bram zachowują dawne nazwy techniczne; identyfikatory stref i ich etykiety odpowiadają nowemu układowi. Scenę można przebudować z v7.1 przez `Tools/C01 Ship v7.2/Improve deck zero logistics`.
 

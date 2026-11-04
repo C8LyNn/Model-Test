@@ -8,7 +8,7 @@ for m in plan['moves']:
     obj = bpy.data.objects.get(m['id'])
     if obj is None or obj.get('model_id') != m['model'] or obj.get('zone') != m['zone']:
         raise RuntimeError('Wrong object ' + m['id'])
-    if abs(obj.location.x-m['toX']) > .0001 or not obj.children:
+    if abs(obj.location.x-m['toX']) > .0001 or abs(obj.location.y+m['toZ']) > .0001 or not obj.children:
         raise RuntimeError('Wrong object position or geometry ' + m['id'])
 report = {'status': 'PASS', 'reopened': True, 'blender': bpy.app.version_string,
           'movedItems': len(plan['moves']), 'remappedZones': len(plan['swaps'])}

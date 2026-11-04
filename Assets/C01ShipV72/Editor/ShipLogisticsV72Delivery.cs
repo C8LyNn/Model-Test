@@ -29,7 +29,7 @@ public static class ShipLogisticsV72Delivery
         var cam=new GameObject("LogisticsCapture").AddComponent<Camera>();cam.enabled=false;
         cam.clearFlags=CameraClearFlags.SolidColor;cam.backgroundColor=new Color(.025f,.04f,.06f);
         cam.nearClipPlane=.05f;cam.farClipPlane=600;cam.fieldOfView=70;
-        Shot(cam,new Vector3(64,-1.5f,57.5f),new Vector3(54,-2.5f,65),QA+"/Screenshots/engineering_"+tag+".png");
+        Shot(cam,new Vector3(64,-1.5f,30.5f),new Vector3(54,-2.5f,24),QA+"/Screenshots/engineering_"+tag+".png");
         Shot(cam,new Vector3(116,-1.5f,26),new Vector3(98,-2.5f,18),QA+"/Screenshots/cargo_"+tag+".png");
         explorer.SetWalking(false);explorer.SetDeck(0);cam.orthographic=true;cam.orthographicSize=60;
         Shot(cam,new Vector3(63,90,43.5f),new Vector3(63,-3.4f,43.5f),QA+"/Screenshots/deck0_"+tag+".png");

@@ -16,14 +16,14 @@ public static class ShipLogisticsV72Builder
     const string PreviousScene="Assets/C01ShipV71/Scenes/C01_Ship_Multideck_v71.unity";
     [Serializable] class Plan { public Swap[] swaps; public Move[] moves; }
     [Serializable] class Swap { public string original,replacement,label; }
-    [Serializable] class Move { public string id,model,zone; public float fromX,toX,y,z; }
+    [Serializable] class Move { public string id,model,zone; public float fromX,toX,fromZ,toZ,y; }
 
     [MenuItem("Tools/C01 Ship v7.2/Improve deck zero logistics")]
     public static void Build()
     {
         if(EditorApplication.isPlayingOrWillChangePlaymode) throw new Exception("Stop play mode first");
         var plan=JsonUtility.FromJson<Plan>(File.ReadAllText(Root+"/Data/logistics.json"));
-        if(plan==null || plan.swaps.Length!=4 || plan.moves.Length!=14)throw new Exception("Invalid logistics plan");
+        if(plan==null || plan.swaps.Length!=4 || plan.moves.Length!=50)throw new Exception("Invalid logistics plan");
         foreach(var folder in new[]{"Scenes","Prefabs"}) Directory.CreateDirectory(Root+"/"+folder);
         AssetDatabase.Refresh();
         var scene=EditorSceneManager.OpenScene(PreviousScene,OpenSceneMode.Single);
@@ -42,9 +42,9 @@ public static class ShipLogisticsV72Builder
                 if(instance.modelId!=move.model || instance.zoneId!=move.zone ||
                    Mathf.Abs(instance.transform.position.x-move.fromX)>.001f ||
                    Mathf.Abs(instance.transform.position.y-move.y)>.001f ||
-                   Mathf.Abs(instance.transform.position.z-move.z)>.001f)
+                   Mathf.Abs(instance.transform.position.z-move.fromZ)>.001f)
                     throw new Exception("Unexpected item: "+move.id);
-                var pos=instance.transform.position;pos.x=move.toX;instance.transform.position=pos;
+                var pos=instance.transform.position;pos.x=move.toX;pos.z=move.toZ;instance.transform.position=pos;
                 PrefabUtility.RecordPrefabInstancePropertyModifications(instance.transform);
                 moved++;
             }

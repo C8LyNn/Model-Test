@@ -20,7 +20,7 @@ with tarfile.open(package, 'r:gz') as archive:
                 'Assets/C01ShipV72/README.md']
     assert all(p in paths for p in required), [p for p in required if p not in paths]
     plan = json.loads(archive.extractfile(members[paths[required[2]]+'/asset']).read())
-    assert len(plan['moves']) == 14 and len(plan['swaps']) == 4
+    assert len(plan['moves']) == 50 and len(plan['swaps']) == 4
 report = {'status':'PASS','bytes':package.stat().st_size,
           'sha256':hashlib.sha256(package.read_bytes()).hexdigest(),
           'required_assets':required,'moved_items':len(plan['moves']),'sectors':len(plan['swaps'])}

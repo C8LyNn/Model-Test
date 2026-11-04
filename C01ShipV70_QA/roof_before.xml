@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Failed(Child)" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-11-04 10:23:39Z" end-time="2026-11-04 10:23:51Z" duration="12,0871397">
+  <test-suite type="TestSuite" id="1168" name="Model Test" fullname="Model Test" runstate="Runnable" testcasecount="111" result="Failed" site="Child" start-time="2026-11-04 10:23:39Z" end-time="2026-11-04 10:23:51Z" duration="12.087140" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1164" name="C01ShipV70.PlayTests.dll" fullname="C:/Users/kubap/Desktop/C01_GeneralPolish_Work/Library/ScriptAssemblies/C01ShipV70.PlayTests.dll" runstate="Runnable" testcasecount="3" result="Failed" site="Child" start-time="2026-11-04 10:23:39Z" end-time="2026-11-04 10:23:51Z" duration="12.080020" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="48732" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestFixture" id="1160" name="WallRepairGeometryTests" fullname="WallRepairGeometryTests" classname="WallRepairGeometryTests" runstate="Runnable" testcasecount="3" result="Failed" site="Child" start-time="2026-11-04 10:23:39Z" end-time="2026-11-04 10:23:51Z" duration="12.078830" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-case id="1163" name="SectorRoofsHaveFlushTopsAndKeepTheirCeilingHeight" fullname="WallRepairGeometryTests.SectorRoofsHaveFlushTopsAndKeepTheirCeilingHeight" methodname="SectorRoofsHaveFlushTopsAndKeepTheirCeilingHeight" classname="WallRepairGeometryTests" runstate="Runnable" seed="192446962" result="Failed" start-time="2026-11-04 10:23:39Z" end-time="2026-11-04 10:23:51Z" duration="12.068227" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[  C1_0_18 exterior top
+  Expected: 6.5999999f +/- 0.00200000009f
+  But was:  6.19999981f
+]]></message>
+            <stack-trace><![CDATA[at WallRepairGeometryTests+<SectorRoofsHaveFlushTopsAndKeepTheirCeilingHeight>d__12.MoveNext () [0x00115] in C:\Users\kubap\Desktop\C01_GeneralPolish_Work\Assets\C01ShipV70\Tests\PlayMode\WallRepairGeometryTests.cs:79
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@aebcb98460c6\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+          </failure>
+          <output><![CDATA[Saving results to: C:/Users/kubap/AppData/LocalLow/DefaultCompany/Model Test\TestResults.xml
+]]></output>
+        </test-case>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

@@ -88,7 +88,12 @@ namespace C01.Ship.V5
         {
             CacheLeaves();
             if (interlockLift != null && !interlockLift.CanOpenLanding(this)) target = 0;
-            openness = Mathf.MoveTowards(openness, Mathf.Clamp01(target), Mathf.Max(0, speed) * Time.fixedDeltaTime);
+            var next = Mathf.MoveTowards(openness, Mathf.Clamp01(target), Mathf.Max(0, speed) * Time.fixedDeltaTime);
+            // A stationary gate needs no repeated Rigidbody.MovePosition calls. The
+            // lift interlock is still evaluated every tick and SetImmediate still
+            // applies and synchronizes geometry immediately.
+            if (next == openness) return;
+            openness = next;
             Apply(false);
         }
 

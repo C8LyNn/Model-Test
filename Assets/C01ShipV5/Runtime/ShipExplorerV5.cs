@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -54,7 +55,12 @@ namespace C01.Ship.V5
             if (master == null) { InvalidateSceneCache(); return; }
             zones = master.GetComponentsInChildren<ShipZoneV5>(true);
             renderers = master.GetComponentsInChildren<Renderer>(true);
-            ladders = master.GetComponentsInChildren<ShipInstanceV5>(true);
+            var climbable = new List<ShipInstanceV5>();
+            foreach (var instance in master.GetComponentsInChildren<ShipInstanceV5>(true))
+                if (instance != null && instance.modelId == "P_Ladder_3m" &&
+                    instance.placementId != null && instance.placementId.EndsWith("_LADDER_0"))
+                    climbable.Add(instance);
+            ladders = climbable.ToArray();
             visibility = new VisibilityRecord[renderers.Length];
             for (int i = 0; i < renderers.Length; i++)
             {
@@ -71,7 +77,7 @@ namespace C01.Ship.V5
             cachedMaster = master;
         }
 
-        // Call after changing the ship hierarchy or a module's category at runtime.
+        // Call after changing the hierarchy, module category or ladder IDs at runtime.
         public void InvalidateSceneCache()
         {
             cachedMaster = null;

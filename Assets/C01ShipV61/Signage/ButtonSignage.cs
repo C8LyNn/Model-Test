@@ -80,7 +80,11 @@ namespace C01.Ship.V61.Signage
                 var renderer = go.GetComponent<Renderer>();
                 renderer.sharedMaterial = material;
                 renderer.enabled = false;
-                labels.Add(new Label { original = oldRenderer, originalEnabled = oldRenderer.enabled, generated = go,
+                bool originalEnabled = oldRenderer.enabled;
+                // The legacy font material ignores depth; never show it while
+                // waiting for the fitted, depth-tested text to acquire bounds.
+                oldRenderer.enabled = false;
+                labels.Add(new Label { original = oldRenderer, originalEnabled = originalEnabled, generated = go,
                     renderer = renderer, screen = screen.GetComponent<Renderer>(), screenSize = new Vector2(bounds.size.x, bounds.size.y) });
             }
             FitPendingLabels();

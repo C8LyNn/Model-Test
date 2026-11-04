@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Failed(Child)" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-11-03 23:57:36Z" end-time="2026-11-03 23:57:45Z" duration="9,26714">
+  <test-suite type="TestSuite" id="1141" name="Model Test" fullname="Model Test" runstate="Runnable" testcasecount="91" result="Failed" site="Child" start-time="2026-11-03 23:57:36Z" end-time="2026-11-03 23:57:45Z" duration="9.267140" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1137" name="C01ShipV68.PlayTests.dll" fullname="C:/Users/kubap/Desktop/C01_GeneralPolish_Work/Library/ScriptAssemblies/C01ShipV68.PlayTests.dll" runstate="Runnable" testcasecount="1" result="Failed" site="Child" start-time="2026-11-03 23:57:36Z" end-time="2026-11-03 23:57:45Z" duration="9.260748" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="64500" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestFixture" id="1135" name="ShipV68SignageTests" fullname="ShipV68SignageTests" classname="ShipV68SignageTests" runstate="Runnable" testcasecount="1" result="Failed" site="Child" start-time="2026-11-03 23:57:36Z" end-time="2026-11-03 23:57:45Z" duration="9.259716" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-case id="1136" name="LegacyButtonTextNeverFlashesThroughWallsOnModeChange" fullname="ShipV68SignageTests.LegacyButtonTextNeverFlashesThroughWallsOnModeChange" methodname="LegacyButtonTextNeverFlashesThroughWallsOnModeChange" classname="ShipV68SignageTests" runstate="Runnable" seed="582866846" result="Failed" start-time="2026-11-03 23:57:36Z" end-time="2026-11-03 23:57:45Z" duration="9.250492" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[  Walking view re-enabled the old overlay labels
+  Expected: 0
+  But was:  308
+]]></message>
+            <stack-trace><![CDATA[at ShipV68SignageTests+<LegacyButtonTextNeverFlashesThroughWallsOnModeChange>d__0.MoveNext () [0x0016a] in C:\Users\kubap\Desktop\C01_GeneralPolish_Work\Assets\C01ShipV68\Tests\PlayMode\ShipV68SignageTests.cs:24
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@aebcb98460c6\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+          </failure>
+          <output><![CDATA[Saving results to: C:/Users/kubap/AppData/LocalLow/DefaultCompany/Model Test\TestResults.xml
+]]></output>
+        </test-case>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

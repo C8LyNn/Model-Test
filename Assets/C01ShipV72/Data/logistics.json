@@ -1,0 +1,153 @@
+{
+  "version": "C01.SHIP.7.2",
+  "swaps": [
+    {
+      "original": "L0_ENGINE_ROOM",
+      "replacement": "L0_PURIFICATION",
+      "label": "OCZYSZCZALNIA"
+    },
+    {
+      "original": "L0_PURIFICATION",
+      "replacement": "L0_ENGINE_ROOM",
+      "label": "MASZYNOWNIA"
+    },
+    {
+      "original": "L0_CARGO",
+      "replacement": "L0_FOOD_RESERVE",
+      "label": "ZAPASY ZYWNOSCI"
+    },
+    {
+      "original": "L0_FOOD_RESERVE",
+      "replacement": "L0_CARGO",
+      "label": "LADOWNIA"
+    }
+  ],
+  "moves": [
+    {
+      "id": "L0_ENGINE_ROOM_CORE_REACTOR_0",
+      "model": "P_Reactor",
+      "zone": "L0_ENGINE_ROOM",
+      "fromX": 2,
+      "toX": 44,
+      "y": -3.4,
+      "z": 63
+    },
+    {
+      "id": "L0_ENGINE_ROOM_CORE_REACTOR_1",
+      "model": "P_Reactor",
+      "zone": "L0_ENGINE_ROOM",
+      "fromX": 13,
+      "toX": 55,
+      "y": -3.4,
+      "z": 63
+    },
+    {
+      "id": "L0_PURIFICATION_PURIFIER_0",
+      "model": "P_Purifier_ROOM3",
+      "zone": "L0_PURIFICATION",
+      "fromX": 44,
+      "toX": 2,
+      "y": -3.4,
+      "z": 65
+    },
+    {
+      "id": "L0_PURIFICATION_PURIFIER_1",
+      "model": "P_Purifier_ROOM3",
+      "zone": "L0_PURIFICATION",
+      "fromX": 53,
+      "toX": 11,
+      "y": -3.4,
+      "z": 65
+    },
+    {
+      "id": "L0_PURIFICATION_PURIFIER_2",
+      "model": "P_Purifier_ROOM3",
+      "zone": "L0_PURIFICATION",
+      "fromX": 44,
+      "toX": 2,
+      "y": -3.4,
+      "z": 68.8
+    },
+    {
+      "id": "L0_PURIFICATION_PURIFIER_3",
+      "model": "P_Purifier_ROOM3",
+      "zone": "L0_PURIFICATION",
+      "fromX": 53,
+      "toX": 11,
+      "y": -3.4,
+      "z": 68.8
+    },
+    {
+      "id": "L0_CARGO_CRATE_0",
+      "model": "P_Crate",
+      "zone": "L0_CARGO",
+      "fromX": 2,
+      "toX": 86,
+      "y": -3.4,
+      "z": 17
+    },
+    {
+      "id": "L0_CARGO_CRATE_1",
+      "model": "P_Crate",
+      "zone": "L0_CARGO",
+      "fromX": 5,
+      "toX": 89,
+      "y": -3.4,
+      "z": 17
+    },
+    {
+      "id": "L0_CARGO_CRATE_2",
+      "model": "P_Crate",
+      "zone": "L0_CARGO",
+      "fromX": 14,
+      "toX": 98,
+      "y": -3.4,
+      "z": 17
+    },
+    {
+      "id": "L0_CARGO_CRATE_3",
+      "model": "P_Crate",
+      "zone": "L0_CARGO",
+      "fromX": 17,
+      "toX": 101,
+      "y": -3.4,
+      "z": 20
+    },
+    {
+      "id": "L0_FOOD_RESERVE_CRATE_0",
+      "model": "P_Crate",
+      "zone": "L0_FOOD_RESERVE",
+      "fromX": 86,
+      "toX": 2,
+      "y": -3.4,
+      "z": 17
+    },
+    {
+      "id": "L0_FOOD_RESERVE_CRATE_1",
+      "model": "P_Crate",
+      "zone": "L0_FOOD_RESERVE",
+      "fromX": 89,
+      "toX": 5,
+      "y": -3.4,
+      "z": 17
+    },
+    {
+      "id": "L0_FOOD_RESERVE_CRATE_2",
+      "model": "P_Crate",
+      "zone": "L0_FOOD_RESERVE",
+      "fromX": 98,
+      "toX": 14,
+      "y": -3.4,
+      "z": 17
+    },
+    {
+      "id": "L0_FOOD_RESERVE_CRATE_3",
+      "model": "P_Crate",
+      "zone": "L0_FOOD_RESERVE",
+      "fromX": 101,
+      "toX": 17,
+      "y": -3.4,
+      "z": 20
+    }
+  ]
+}

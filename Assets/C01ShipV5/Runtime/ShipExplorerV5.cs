@@ -15,6 +15,7 @@ namespace C01.Ship.V5
         public ShipButtonV5[] buttons = new ShipButtonV5[0];
         public bool walking;
         public int selectedDeck = 1;
+        public int minDeck;
         public float walkSpeed = 5, overviewSpeed = 20;
         public float sprintMultiplier = 1.4f, walkingFieldOfView = 65f;
         public bool scaleAwareOverviewControls;
@@ -129,7 +130,7 @@ namespace C01.Ship.V5
 
         public void SetDeck(int deck)
         {
-            selectedDeck = Mathf.Clamp(deck, -1, 2);
+            selectedDeck = deck < 0 ? -1 : Mathf.Clamp(deck, Mathf.Clamp(minDeck, 0, 2), 2);
             if (selectedDeck >= 0) lastDeck = selectedDeck;
             RefreshVisibility();
             if (!walking) ResetView();
@@ -394,7 +395,7 @@ namespace C01.Ship.V5
             GUILayout.Label("1: podgląd | 2: spacer | WASD: ruch | mysz: obrót");
             GUILayout.Label("Spacja: skok | Shift: bieg | E: drabina/przycisk | LPM: przycisk | Esc: kursor");
             GUILayout.BeginHorizontal();
-            for (int deck = 0; deck < 3; deck++)
+            for (int deck = Mathf.Clamp(minDeck, 0, 2); deck < 3; deck++)
                 if (GUILayout.Button((selectedDeck == deck ? "● " : "") + "Deck " + deck)) SetDeck(deck);
             if (GUILayout.Button("All")) ShowAll(true);
             if (GUILayout.Button("Reset view")) ResetView();

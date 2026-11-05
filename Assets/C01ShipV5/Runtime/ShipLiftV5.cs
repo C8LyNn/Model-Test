@@ -34,7 +34,7 @@ namespace C01.Ship.V5
                 }
         }
 
-        bool Valid(int floor) => floor >= 0 && floor < elevations.Length && floor < landings.Length;
+        bool Valid(int floor) => floor >= 0 && floor < elevations.Length && floor < landings.Length && landings[floor] != null;
 
         public bool CanOpenLanding(ShipGateV5 gate)
         {

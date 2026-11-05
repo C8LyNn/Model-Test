@@ -14,6 +14,7 @@ namespace C01.Ship.V6.Cargo
         [SerializeField, HideInInspector] ShipLiftV5 lift;
         [SerializeField, HideInInspector] Collider[] surfaces;
         [SerializeField, HideInInspector] bool configured;
+        public bool allowMissingDeckZero;
 
         public ShipLiftV5 Lift => lift;
         public bool IsMoving => configured && lift != null && lift.IsMoving;
@@ -65,7 +66,8 @@ namespace C01.Ship.V6.Cargo
         /// <summary>Call with floor 0, 1, or 2; returns false when unavailable or invalid.</summary>
         public bool RequestFloor(int floor)
         {
-            if (!configured || !isActiveAndEnabled || lift == null || !lift.enabled || floor < 0 || floor > 2)
+            if (!configured || !isActiveAndEnabled || lift == null || !lift.enabled || floor < 0 || floor > 2 ||
+                floor >= lift.landings.Length || lift.landings[floor] == null)
                 return false;
             lift.RequestFloor(floor);
             return true;
@@ -75,9 +77,10 @@ namespace C01.Ship.V6.Cargo
         {
             if (!configured || lift == null || !lift.enabled || !lift.IsMoving || lift.car == null || surfaces == null) return;
             // ShipLiftV5 will not move until every gate has fully closed.
-            foreach (var gate in lift.landings)
+            for (int i = 0; i < lift.landings.Length; i++)
             {
-                if (gate == null) { lift.enabled = false; return; }
+                var gate=lift.landings[i];
+                if (gate == null) { if (i == 0 && allowMissingDeckZero) continue; lift.enabled = false; return; }
                 if (!gate.IsClosed) return;
             }
             var y = lift.car.position.y;

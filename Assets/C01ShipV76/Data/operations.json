@@ -1,0 +1,987 @@
+{
+  "version": "C01.SHIP.7.6",
+  "labels": [
+    {
+      "id": "L2_S_SUPPORT_03",
+      "fromLabel": "SALON ZALOGI",
+      "label": "LACZNOSC"
+    },
+    {
+      "id": "L2_S_SUPPORT_11",
+      "fromLabel": "LACZNOSC",
+      "label": "SALON ZALOGI"
+    },
+    {
+      "id": "L2_N_SUPPORT_08",
+      "fromLabel": "POSCIEL I ODZIEZ",
+      "label": "NADZOR WODY I POWIETRZA"
+    },
+    {
+      "id": "L2_S_SUPPORT_12",
+      "fromLabel": "NADZOR WODY I POWIETRZA",
+      "label": "POSCIEL I ODZIEZ"
+    },
+    {
+      "id": "L2_N_SUPPORT_07",
+      "fromLabel": "PRALNIA",
+      "label": "SRODKI HIGIENY"
+    },
+    {
+      "id": "L2_S_SUPPORT_07",
+      "fromLabel": "SRODKI HIGIENY",
+      "label": "PRALNIA"
+    }
+  ],
+  "moves": [
+    {
+      "id": "L2_S_SUPPORT_03_SERVICE_0",
+      "model": "P_LoungeBench",
+      "fromZone": "L2_S_SUPPORT_03",
+      "toZone": "L2_S_SUPPORT_11",
+      "before": [
+        21.6,
+        3.4,
+        33.6,
+        0
+      ],
+      "after": [
+        105.6,
+        3.4,
+        33.6,
+        0
+      ]
+    },
+    {
+      "id": "L2_S_SUPPORT_03_SERVICE_1",
+      "model": "P_MessTable",
+      "fromZone": "L2_S_SUPPORT_03",
+      "toZone": "L2_S_SUPPORT_11",
+      "before": [
+        25.4,
+        3.4,
+        33.6,
+        0
+      ],
+      "after": [
+        109.4,
+        3.4,
+        33.6,
+        0
+      ]
+    },
+    {
+      "id": "L2_S_SUPPORT_07_SERVICE_0",
+      "model": "P_Desk",
+      "fromZone": "L2_S_SUPPORT_07",
+      "toZone": "L2_N_SUPPORT_07",
+      "before": [
+        63.6,
+        3.4,
+        33.6,
+        0
+      ],
+      "after": [
+        63.6,
+        3.4,
+        45.6,
+        0
+      ]
+    },
+    {
+      "id": "L2_S_SUPPORT_07_SERVICE_1",
+      "model": "P_ServiceRack",
+      "fromZone": "L2_S_SUPPORT_07",
+      "toZone": "L2_N_SUPPORT_07",
+      "before": [
+        67.4,
+        3.4,
+        33.6,
+        0
+      ],
+      "after": [
+        67.4,
+        3.4,
+        45.6,
+        0
+      ]
+    },
+    {
+      "id": "L2_N_SUPPORT_07_SERVICE_0",
+      "model": "P_LaundryUnit",
+      "fromZone": "L2_N_SUPPORT_07",
+      "toZone": "L2_S_SUPPORT_07",
+      "before": [
+        63.6,
+        3.4,
+        45.6,
+        0
+      ],
+      "after": [
+        63.6,
+        3.4,
+        33.6,
+        0
+      ]
+    },
+    {
+      "id": "L2_N_SUPPORT_07_SERVICE_1",
+      "model": "P_LaundryUnit",
+      "fromZone": "L2_N_SUPPORT_07",
+      "toZone": "L2_S_SUPPORT_07",
+      "before": [
+        67.4,
+        3.4,
+        45.6,
+        0
+      ],
+      "after": [
+        67.4,
+        3.4,
+        33.6,
+        0
+      ]
+    },
+    {
+      "id": "L2_N_SUPPORT_07_WASHER_0",
+      "model": "P_LaundryUnit",
+      "fromZone": "L2_N_SUPPORT_07",
+      "toZone": "L2_S_SUPPORT_07",
+      "before": [
+        65.5,
+        3.4,
+        45.6,
+        0
+      ],
+      "after": [
+        65.5,
+        3.4,
+        33.6,
+        0
+      ]
+    },
+    {
+      "id": "L2_N_SUPPORT_07_WASHER_1",
+      "model": "P_LaundryUnit",
+      "fromZone": "L2_N_SUPPORT_07",
+      "toZone": "L2_S_SUPPORT_07",
+      "before": [
+        69.3,
+        3.4,
+        45.6,
+        0
+      ],
+      "after": [
+        69.3,
+        3.4,
+        33.6,
+        0
+      ]
+    },
+    {
+      "id": "L2_N_SUPPORT_08_SERVICE_0",
+      "model": "P_Desk",
+      "fromZone": "L2_N_SUPPORT_08",
+      "toZone": "L2_S_SUPPORT_12",
+      "before": [
+        75.6,
+        3.4,
+        45.6,
+        0
+      ],
+      "after": [
+        117.6,
+        3.4,
+        33.6,
+        0
+      ]
+    },
+    {
+      "id": "L2_N_SUPPORT_08_SERVICE_1",
+      "model": "P_ServiceRack",
+      "fromZone": "L2_N_SUPPORT_08",
+      "toZone": "L2_S_SUPPORT_12",
+      "before": [
+        79.4,
+        3.4,
+        45.6,
+        0
+      ],
+      "after": [
+        121.4,
+        3.4,
+        33.6,
+        0
+      ]
+    },
+    {
+      "id": "L2_S_SUPPORT_11_SERVICE_0",
+      "model": "P_Desk",
+      "fromZone": "L2_S_SUPPORT_11",
+      "toZone": "L2_S_SUPPORT_03",
+      "before": [
+        105.6,
+        3.4,
+        33.6,
+        0
+      ],
+      "after": [
+        21.6,
+        3.4,
+        33.6,
+        0
+      ]
+    },
+    {
+      "id": "L2_S_SUPPORT_11_SERVICE_1",
+      "model": "P_LifeSupportPanel",
+      "fromZone": "L2_S_SUPPORT_11",
+      "toZone": "L2_S_SUPPORT_03",
+      "before": [
+        109.4,
+        3.4,
+        33.6,
+        0
+      ],
+      "after": [
+        25.4,
+        3.4,
+        33.6,
+        0
+      ]
+    },
+    {
+      "id": "L2_S_SUPPORT_12_SERVICE_0",
+      "model": "P_Desk",
+      "fromZone": "L2_S_SUPPORT_12",
+      "toZone": "L2_N_SUPPORT_08",
+      "before": [
+        117.6,
+        3.4,
+        33.6,
+        0
+      ],
+      "after": [
+        75.6,
+        3.4,
+        45.6,
+        0
+      ]
+    },
+    {
+      "id": "L2_S_SUPPORT_12_SERVICE_1",
+      "model": "P_LifeSupportPanel",
+      "fromZone": "L2_S_SUPPORT_12",
+      "toZone": "L2_N_SUPPORT_08",
+      "before": [
+        121.4,
+        3.4,
+        33.6,
+        0
+      ],
+      "after": [
+        79.4,
+        3.4,
+        45.6,
+        0
+      ]
+    },
+    {
+      "id": "L0_EVAC_HANGAR_EVAC_SHUTTLE",
+      "model": "P_Shuttle_ROOM3",
+      "fromZone": "L0_EVAC_HANGAR",
+      "toZone": "L0_EVAC_HANGAR",
+      "before": [
+        90,
+        -3.4,
+        64.5,
+        0
+      ],
+      "after": [
+        113,
+        -3.4,
+        57,
+        -90
+      ]
+    }
+  ],
+  "removed": [
+    "W_H_108_72_-3.4",
+    "W_H_111_72_-3.4",
+    "N_111_72_-3.4"
+  ],
+  "added": [
+    {
+      "id": "L0_LAUNCH_FRAME_L",
+      "model": "G76_LaunchLeft",
+      "category": "GateFrames",
+      "zone": "L0_EVAC_HANGAR",
+      "deck": 0,
+      "x": 108,
+      "y": -3.4,
+      "z": 72,
+      "yaw": 0,
+      "parent": "",
+      "gate": "",
+      "buttonGate": "",
+      "buttonLift": "",
+      "buttonFloor": 0,
+      "travel": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "L0_LAUNCH_FRAME_R",
+      "model": "G76_LaunchRight",
+      "category": "GateFrames",
+      "zone": "L0_EVAC_HANGAR",
+      "deck": 0,
+      "x": 111,
+      "y": -3.4,
+      "z": 72,
+      "yaw": 0,
+      "parent": "",
+      "gate": "",
+      "buttonGate": "",
+      "buttonLift": "",
+      "buttonFloor": 0,
+      "travel": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "L0_LAUNCH_LEAF_0_0",
+      "model": "G76_LaunchLeaf",
+      "category": "GateLeaves",
+      "zone": "L0_EVAC_HANGAR",
+      "deck": 0,
+      "x": 108.31,
+      "y": -3.4,
+      "z": 71.82,
+      "yaw": 0,
+      "parent": "",
+      "gate": "L0_LAUNCH_GATE",
+      "buttonGate": "",
+      "buttonLift": "",
+      "buttonFloor": 0,
+      "travel": [
+        0.0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "L0_LAUNCH_LEAF_0_1",
+      "model": "G76_LaunchLeaf",
+      "category": "GateLeaves",
+      "zone": "L0_EVAC_HANGAR",
+      "deck": 0,
+      "x": 108.755,
+      "y": -3.4,
+      "z": 71.86,
+      "yaw": 0,
+      "parent": "",
+      "gate": "L0_LAUNCH_GATE",
+      "buttonGate": "",
+      "buttonLift": "",
+      "buttonFloor": 0,
+      "travel": [
+        -0.445,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "L0_LAUNCH_LEAF_0_2",
+      "model": "G76_LaunchLeaf",
+      "category": "GateLeaves",
+      "zone": "L0_EVAC_HANGAR",
+      "deck": 0,
+      "x": 109.2,
+      "y": -3.4,
+      "z": 71.9,
+      "yaw": 0,
+      "parent": "",
+      "gate": "L0_LAUNCH_GATE",
+      "buttonGate": "",
+      "buttonLift": "",
+      "buttonFloor": 0,
+      "travel": [
+        -0.89,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "L0_LAUNCH_LEAF_0_3",
+      "model": "G76_LaunchLeaf",
+      "category": "GateLeaves",
+      "zone": "L0_EVAC_HANGAR",
+      "deck": 0,
+      "x": 109.645,
+      "y": -3.4,
+      "z": 71.94,
+      "yaw": 0,
+      "parent": "",
+      "gate": "L0_LAUNCH_GATE",
+      "buttonGate": "",
+      "buttonLift": "",
+      "buttonFloor": 0,
+      "travel": [
+        -1.335,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "L0_LAUNCH_LEAF_0_4",
+      "model": "G76_LaunchLeaf",
+      "category": "GateLeaves",
+      "zone": "L0_EVAC_HANGAR",
+      "deck": 0,
+      "x": 110.09,
+      "y": -3.4,
+      "z": 71.98,
+      "yaw": 0,
+      "parent": "",
+      "gate": "L0_LAUNCH_GATE",
+      "buttonGate": "",
+      "buttonLift": "",
+      "buttonFloor": 0,
+      "travel": [
+        -1.78,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "L0_LAUNCH_LEAF_0_5",
+      "model": "G76_LaunchLeaf",
+      "category": "GateLeaves",
+      "zone": "L0_EVAC_HANGAR",
+      "deck": 0,
+      "x": 110.535,
+      "y": -3.4,
+      "z": 72.02,
+      "yaw": 0,
+      "parent": "",
+      "gate": "L0_LAUNCH_GATE",
+      "buttonGate": "",
+      "buttonLift": "",
+      "buttonFloor": 0,
+      "travel": [
+        -2.225,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "L0_LAUNCH_LEAF_1_0",
+      "model": "G76_LaunchLeaf",
+      "category": "GateLeaves",
+      "zone": "L0_EVAC_HANGAR",
+      "deck": 0,
+      "x": 110.98,
+      "y": -3.4,
+      "z": 71.82,
+      "yaw": 0,
+      "parent": "",
+      "gate": "L0_LAUNCH_GATE",
+      "buttonGate": "",
+      "buttonLift": "",
+      "buttonFloor": 0,
+      "travel": [
+        2.22,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "L0_LAUNCH_LEAF_1_1",
+      "model": "G76_LaunchLeaf",
+      "category": "GateLeaves",
+      "zone": "L0_EVAC_HANGAR",
+      "deck": 0,
+      "x": 111.425,
+      "y": -3.4,
+      "z": 71.86,
+      "yaw": 0,
+      "parent": "",
+      "gate": "L0_LAUNCH_GATE",
+      "buttonGate": "",
+      "buttonLift": "",
+      "buttonFloor": 0,
+      "travel": [
+        1.775,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "L0_LAUNCH_LEAF_1_2",
+      "model": "G76_LaunchLeaf",
+      "category": "GateLeaves",
+      "zone": "L0_EVAC_HANGAR",
+      "deck": 0,
+      "x": 111.87,
+      "y": -3.4,
+      "z": 71.9,
+      "yaw": 0,
+      "parent": "",
+      "gate": "L0_LAUNCH_GATE",
+      "buttonGate": "",
+      "buttonLift": "",
+      "buttonFloor": 0,
+      "travel": [
+        1.33,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "L0_LAUNCH_LEAF_1_3",
+      "model": "G76_LaunchLeaf",
+      "category": "GateLeaves",
+      "zone": "L0_EVAC_HANGAR",
+      "deck": 0,
+      "x": 112.315,
+      "y": -3.4,
+      "z": 71.94,
+      "yaw": 0,
+      "parent": "",
+      "gate": "L0_LAUNCH_GATE",
+      "buttonGate": "",
+      "buttonLift": "",
+      "buttonFloor": 0,
+      "travel": [
+        0.885,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "L0_LAUNCH_LEAF_1_4",
+      "model": "G76_LaunchLeaf",
+      "category": "GateLeaves",
+      "zone": "L0_EVAC_HANGAR",
+      "deck": 0,
+      "x": 112.76,
+      "y": -3.4,
+      "z": 71.98,
+      "yaw": 0,
+      "parent": "",
+      "gate": "L0_LAUNCH_GATE",
+      "buttonGate": "",
+      "buttonLift": "",
+      "buttonFloor": 0,
+      "travel": [
+        0.44,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "L0_LAUNCH_LEAF_1_5",
+      "model": "G76_LaunchLeaf",
+      "category": "GateLeaves",
+      "zone": "L0_EVAC_HANGAR",
+      "deck": 0,
+      "x": 113.205,
+      "y": -3.4,
+      "z": 72.02,
+      "yaw": 0,
+      "parent": "",
+      "gate": "L0_LAUNCH_GATE",
+      "buttonGate": "",
+      "buttonLift": "",
+      "buttonFloor": 0,
+      "travel": [
+        -0.005,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "L0_LAUNCH_BUTTON_0",
+      "model": "P_Button",
+      "category": "Buttons",
+      "zone": "L0_EVAC_HANGAR",
+      "deck": 0,
+      "x": 107.7,
+      "y": -2.3,
+      "z": 71.85,
+      "yaw": 180,
+      "parent": "",
+      "gate": "",
+      "buttonGate": "L0_LAUNCH_GATE",
+      "buttonLift": "",
+      "buttonFloor": 0,
+      "travel": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "L0_LAUNCH_BUTTON_1",
+      "model": "P_Button",
+      "category": "Buttons",
+      "zone": "L0_EVAC_HANGAR",
+      "deck": 0,
+      "x": 107.48,
+      "y": -2.3,
+      "z": 72.15,
+      "yaw": 0,
+      "parent": "",
+      "gate": "",
+      "buttonGate": "L0_LAUNCH_GATE",
+      "buttonLift": "",
+      "buttonFloor": 0,
+      "travel": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "L0_LAUNCH_APRON_108_72",
+      "model": "F_47e7295d38df",
+      "category": "Floors",
+      "zone": "L0_LAUNCH_EXIT",
+      "deck": 0,
+      "x": 108,
+      "y": -3.4,
+      "z": 72,
+      "yaw": 0,
+      "parent": "",
+      "gate": "",
+      "buttonGate": "",
+      "buttonLift": "",
+      "buttonFloor": 0,
+      "travel": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "L0_LAUNCH_APRON_108_75",
+      "model": "F_47e7295d38df",
+      "category": "Floors",
+      "zone": "L0_LAUNCH_EXIT",
+      "deck": 0,
+      "x": 108,
+      "y": -3.4,
+      "z": 75,
+      "yaw": 0,
+      "parent": "",
+      "gate": "",
+      "buttonGate": "",
+      "buttonLift": "",
+      "buttonFloor": 0,
+      "travel": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "L0_LAUNCH_APRON_108_78",
+      "model": "F_47e7295d38df",
+      "category": "Floors",
+      "zone": "L0_LAUNCH_EXIT",
+      "deck": 0,
+      "x": 108,
+      "y": -3.4,
+      "z": 78,
+      "yaw": 0,
+      "parent": "",
+      "gate": "",
+      "buttonGate": "",
+      "buttonLift": "",
+      "buttonFloor": 0,
+      "travel": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "L0_LAUNCH_APRON_108_81",
+      "model": "F_47e7295d38df",
+      "category": "Floors",
+      "zone": "L0_LAUNCH_EXIT",
+      "deck": 0,
+      "x": 108,
+      "y": -3.4,
+      "z": 81,
+      "yaw": 0,
+      "parent": "",
+      "gate": "",
+      "buttonGate": "",
+      "buttonLift": "",
+      "buttonFloor": 0,
+      "travel": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "L0_LAUNCH_APRON_111_72",
+      "model": "F_47e7295d38df",
+      "category": "Floors",
+      "zone": "L0_LAUNCH_EXIT",
+      "deck": 0,
+      "x": 111,
+      "y": -3.4,
+      "z": 72,
+      "yaw": 0,
+      "parent": "",
+      "gate": "",
+      "buttonGate": "",
+      "buttonLift": "",
+      "buttonFloor": 0,
+      "travel": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "L0_LAUNCH_APRON_111_75",
+      "model": "F_47e7295d38df",
+      "category": "Floors",
+      "zone": "L0_LAUNCH_EXIT",
+      "deck": 0,
+      "x": 111,
+      "y": -3.4,
+      "z": 75,
+      "yaw": 0,
+      "parent": "",
+      "gate": "",
+      "buttonGate": "",
+      "buttonLift": "",
+      "buttonFloor": 0,
+      "travel": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "L0_LAUNCH_APRON_111_78",
+      "model": "F_47e7295d38df",
+      "category": "Floors",
+      "zone": "L0_LAUNCH_EXIT",
+      "deck": 0,
+      "x": 111,
+      "y": -3.4,
+      "z": 78,
+      "yaw": 0,
+      "parent": "",
+      "gate": "",
+      "buttonGate": "",
+      "buttonLift": "",
+      "buttonFloor": 0,
+      "travel": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "L0_LAUNCH_APRON_111_81",
+      "model": "F_47e7295d38df",
+      "category": "Floors",
+      "zone": "L0_LAUNCH_EXIT",
+      "deck": 0,
+      "x": 111,
+      "y": -3.4,
+      "z": 81,
+      "yaw": 0,
+      "parent": "",
+      "gate": "",
+      "buttonGate": "",
+      "buttonLift": "",
+      "buttonFloor": 0,
+      "travel": [
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "gate": {
+    "id": "L0_LAUNCH_GATE",
+    "deck": 0,
+    "x": 108,
+    "y": -3.4,
+    "z": 72,
+    "yaw": 0,
+    "width": 6,
+    "height": 3,
+    "zones": [
+      "L0_EVAC_HANGAR",
+      "L0_LAUNCH_EXIT"
+    ],
+    "leaves": [
+      "L0_LAUNCH_LEAF_0_0",
+      "L0_LAUNCH_LEAF_0_1",
+      "L0_LAUNCH_LEAF_0_2",
+      "L0_LAUNCH_LEAF_0_3",
+      "L0_LAUNCH_LEAF_0_4",
+      "L0_LAUNCH_LEAF_0_5",
+      "L0_LAUNCH_LEAF_1_0",
+      "L0_LAUNCH_LEAF_1_1",
+      "L0_LAUNCH_LEAF_1_2",
+      "L0_LAUNCH_LEAF_1_3",
+      "L0_LAUNCH_LEAF_1_4",
+      "L0_LAUNCH_LEAF_1_5"
+    ],
+    "buttons": [
+      "L0_LAUNCH_BUTTON_0",
+      "L0_LAUNCH_BUTTON_1"
+    ],
+    "airlock": "",
+    "lift": "",
+    "floor": -1,
+    "initialOpen": 0
+  },
+  "models": [
+    {
+      "id": "G76_LaunchLeft",
+      "family": "gate",
+      "nominal": [
+        3,
+        3,
+        0.3
+      ],
+      "sockets": [],
+      "parts": [
+        {
+          "role": "METAL",
+          "outline": [
+            0.15,
+            -0.15,
+            0.3,
+            -0.15,
+            0.3,
+            0.15,
+            0.15,
+            0.15
+          ],
+          "y0": 0,
+          "y1": 3
+        },
+        {
+          "role": "METAL",
+          "outline": [
+            0.3,
+            -0.15,
+            3,
+            -0.15,
+            3,
+            0.15,
+            0.3,
+            0.15
+          ],
+          "y0": 2.9,
+          "y1": 3
+        }
+      ]
+    },
+    {
+      "id": "G76_LaunchRight",
+      "family": "gate",
+      "nominal": [
+        3,
+        3,
+        0.3
+      ],
+      "sockets": [],
+      "parts": [
+        {
+          "role": "METAL",
+          "outline": [
+            2.7,
+            -0.15,
+            2.85,
+            -0.15,
+            2.85,
+            0.15,
+            2.7,
+            0.15
+          ],
+          "y0": 0,
+          "y1": 3
+        },
+        {
+          "role": "METAL",
+          "outline": [
+            0,
+            -0.15,
+            2.7,
+            -0.15,
+            2.7,
+            0.15,
+            0,
+            0.15
+          ],
+          "y0": 2.9,
+          "y1": 3
+        }
+      ]
+    },
+    {
+      "id": "G76_LaunchLeaf",
+      "family": "gate",
+      "nominal": [
+        0.47,
+        2.9,
+        0.018
+      ],
+      "sockets": [],
+      "parts": [
+        {
+          "role": "PANEL",
+          "outline": [
+            0,
+            -0.009,
+            0.47,
+            -0.009,
+            0.47,
+            0.009,
+            0,
+            0.009
+          ],
+          "y0": 0,
+          "y1": 2.9
+        }
+      ]
+    }
+  ],
+  "exitZone": {
+    "id": "L0_LAUNCH_EXIT",
+    "label": "WYLOT PROMU",
+    "kind": "exterior",
+    "parent": "",
+    "deck": 0,
+    "floor": -3.4,
+    "height": 3,
+    "bounds": [
+      108,
+      114,
+      72,
+      84
+    ],
+    "waypoint": [
+      111,
+      -3.4,
+      76
+    ]
+  }
+}
